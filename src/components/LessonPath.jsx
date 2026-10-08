@@ -137,6 +137,7 @@ export default function LessonPath() {
                 <div className="lesson-nodes-grid">
                   {unit.lessons.map((lesson, lessonIdx) => {
                     const isCompleted = completedLessons.includes(lesson.id);
+                    const isReview = lesson.isReview || lesson.id.includes('review') || lesson.title.toLowerCase().includes('review');
                     // Determine if lesson is unlocked:
                     // First lesson of Unit 1 is always unlocked.
                     // Subsequent lessons unlocked if previous lesson is completed or if already completed.
@@ -158,18 +159,20 @@ export default function LessonPath() {
                     return (
                       <div 
                         key={lesson.id} 
-                        className={`lesson-node-card ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'unlocked' : 'locked'}`}
+                        className={`lesson-node-card ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'unlocked' : 'locked'} ${isReview ? 'review-checkpoint-card' : ''}`}
                       >
                         <div className="lesson-node-inner">
                           <button
-                            className={`node-circle-btn ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'active-pulse' : 'locked'}`}
+                            className={`node-circle-btn ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'active-pulse' : 'locked'} ${isReview ? 'review-circle-btn' : ''}`}
                             onClick={() => isUnlocked && startLesson(lesson)}
                             disabled={!isUnlocked}
-                            aria-label={`Start lesson ${lesson.title}`}
+                            aria-label={`Start ${lesson.title}`}
                             id={`lesson-node-${lesson.id}`}
                           >
                             {isCompleted ? (
                               <Check size={26} strokeWidth={3} className="node-icon-check" />
+                            ) : isReview ? (
+                              <Award size={26} className="node-icon-award" />
                             ) : isUnlocked ? (
                               <Play size={24} fill="currentColor" className="node-icon-play" />
                             ) : (
@@ -178,18 +181,26 @@ export default function LessonPath() {
                           </button>
 
                           <div className="lesson-node-meta">
-                            <span className="lesson-step-tag">Lesson {lessonIdx + 1}</span>
+                            {isReview ? (
+                              <span className="lesson-step-tag review-checkpoint-tag">
+                                <Award size={13} /> Unit {unitIdx + 1} Checkpoint Review
+                              </span>
+                            ) : (
+                              <span className="lesson-step-tag">Lesson {lessonIdx + 1}</span>
+                            )}
                             <h3 className="lesson-node-title">{lesson.title}</h3>
                             <p className="lesson-node-desc">{lesson.description}</p>
                             
                             <div className="lesson-action-row">
-                              <span className="lesson-xp-tag">+{lesson.xp} XP</span>
+                              <span className={`lesson-xp-tag ${isReview ? 'review-xp-tag' : ''}`}>
+                                +{lesson.xp} XP
+                              </span>
                               {isUnlocked && (
                                 <button 
-                                  className="node-start-label-btn"
+                                  className={`node-start-label-btn ${isReview ? 'review-start-btn' : ''}`}
                                   onClick={() => startLesson(lesson)}
                                 >
-                                  {isCompleted ? 'Review' : 'Start'} <ChevronRight size={14} />
+                                  {isCompleted ? 'Retake Review' : isReview ? 'Start Checkpoint' : 'Start'} <ChevronRight size={14} />
                                 </button>
                               )}
                             </div>

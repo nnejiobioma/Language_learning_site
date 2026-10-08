@@ -836,6 +836,51 @@ button:active {
   background: rgba(96, 165, 250, 0.2);
 }
 
+/* Review Checkpoint Card Enhancements */
+.lesson-node-card.review-checkpoint-card .lesson-node-inner {
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(30, 41, 59, 0.6));
+  position: relative;
+  overflow: hidden;
+}
+
+.lesson-node-card.review-checkpoint-card:hover .lesson-node-inner {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.12);
+}
+
+.review-checkpoint-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fbbf24 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em;
+}
+
+.review-circle-btn.unlocked:not(.completed) {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.5) !important;
+}
+
+.review-xp-tag {
+  color: #fbbf24 !important;
+  background: rgba(245, 158, 11, 0.22) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.review-start-btn {
+  color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.review-start-btn:hover {
+  background: rgba(245, 158, 11, 0.28) !important;
+}
+
+
 /* Sidebar Widgets */
 .curriculum-sidebar {
   display: flex;

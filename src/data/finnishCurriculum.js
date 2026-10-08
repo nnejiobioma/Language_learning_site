@@ -238,9 +238,180 @@ export const finnishAllUnits = [
             prompt: "Listen to the directions and select what it means:",
             options: ["Go straight ahead", "Turn right", "Stop here", "Cross the street"],
             correctAnswer: "Go straight ahead",
-            explanation: "'Mene suoraan eteenpäin' instructs you to go straight ahead."
-          }
+            explanation: "'Mene suoraan eteenpäin' instructs you to go straight ahead."          }
         ]
+      },
+      {
+            "id": "fi-u2-review",
+            "isReview": true,
+            "title": "Unit 2 Review: Essential Everyday Life Checkpoint",
+            "description": "Checkpoint reviewing the partitive singular, internal & external local cases, ordering food, and city navigation.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u2-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "What is the partitive singular form of 'tee' (tea)?",
+                        "options": [
+                              "teetä",
+                              "teen",
+                              "teessä",
+                              "teelle"
+                        ],
+                        "correctAnswer": "teetä",
+                        "explanation": "Words ending in two vowels or diphthongs add '-ta/-tä': 'tee' -> 'teetä' (Juon teetä)."
+                  },
+                  {
+                        "id": "fi-u2-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Ostin torilta viisi ___.",
+                        "missingWord": "omenaa",
+                        "options": [
+                              "omenaa",
+                              "omena",
+                              "omenat",
+                              "omenalla"
+                        ],
+                        "correctAnswer": "omenaa",
+                        "explanation": "Numbers greater than 1 require the partitive singular: 'viisi omenaa'."
+                  },
+                  {
+                        "id": "fi-u2-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match local cases with their spatial meanings:",
+                        "pairs": [
+                              {
+                                    "native": "Talossa (Inessive)",
+                                    "english": "Inside the house"
+                              },
+                              {
+                                    "native": "Talosta (Elative)",
+                                    "english": "Out of the house"
+                              },
+                              {
+                                    "native": "Taloon (Illative)",
+                                    "english": "Into the house"
+                              },
+                              {
+                                    "native": "Torilla (Adessive)",
+                                    "english": "At the market square"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u2-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "How do you ask 'How much does this cost?' in Finnish?",
+                        "options": [
+                              "Paljonko tämä maksaa?",
+                              "Missä tämä on?",
+                              "Mitä sinä teet?",
+                              "Miksi tämä on kallis?"
+                        ],
+                        "correctAnswer": "Paljonko tämä maksaa?",
+                        "explanation": "'Paljonko tämä maksaa?' is the universal phrase for asking a price."
+                  },
+                  {
+                        "id": "fi-u2-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble the café order: 'Saisinko yhden korvapuustin?'",
+                        "tokens": [
+                              "Saisinko",
+                              "yhden",
+                              "korvapuustin?",
+                              "kiitos"
+                        ],
+                        "correctTokens": [
+                              "Saisinko",
+                              "yhden",
+                              "korvapuustin?"
+                        ],
+                        "explanation": "'Saisinko yhden korvapuustin?' is the polite way to ask for a cinnamon bun."
+                  },
+                  {
+                        "id": "fi-u2-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Lasku, kiitos",
+                        "prompt": "Listen to the phrase and select what it means:",
+                        "options": [
+                              "The bill / check, please",
+                              "One coffee, please",
+                              "Where is the bathroom?",
+                              "Thank you very much"
+                        ],
+                        "correctAnswer": "The bill / check, please",
+                        "explanation": "'Lasku, kiitos' asks for the restaurant or cafe bill."
+                  },
+                  {
+                        "id": "fi-u2-rev-q7",
+                        "type": "multiple_choice",
+                        "prompt": "What time is 'Kello on puoli viisi'?",
+                        "options": [
+                              "4:30 (half past four)",
+                              "5:30 (half past five)",
+                              "5:00 (five o'clock)",
+                              "4:15 (quarter past four)"
+                        ],
+                        "correctAnswer": "4:30 (half past four)",
+                        "explanation": "'Puoli viisi' means halfway to five, which is 4:30."
+                  },
+                  {
+                        "id": "fi-u2-rev-q8",
+                        "type": "matching",
+                        "prompt": "Match weather phrases with English:",
+                        "pairs": [
+                              {
+                                    "native": "Aurinko paistaa",
+                                    "english": "The sun is shining"
+                              },
+                              {
+                                    "native": "Sataa vettä",
+                                    "english": "It is raining"
+                              },
+                              {
+                                    "native": "Sataa lunta",
+                                    "english": "It is snowing"
+                              },
+                              {
+                                    "native": "On kova pakkanen",
+                                    "english": "It is severely freezing"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u2-rev-q9",
+                        "type": "fill_blank",
+                        "sentence": "Käänny risteyksestä ___ ja mene suoraan.",
+                        "missingWord": "oikealle",
+                        "options": [
+                              "oikealle",
+                              "oikea",
+                              "oikeassa",
+                              "oikealta"
+                        ],
+                        "correctAnswer": "oikealle",
+                        "explanation": "'Käänny oikealle' means 'turn to the right' (allative direction)."
+                  },
+                  {
+                        "id": "fi-u2-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'The supermarket is next to the train station'",
+                        "tokens": [
+                              "Supermarketti",
+                              "on",
+                              "aseman",
+                              "vieressä",
+                              "talossa"
+                        ],
+                        "correctTokens": [
+                              "Supermarketti",
+                              "on",
+                              "aseman",
+                              "vieressä"
+                        ],
+                        "explanation": "'Aseman vieressä' uses the genitive case + postposition meaning 'next to the station'."
+                  }
+            ]
       }
     ]
   },
@@ -469,9 +640,180 @@ export const finnishAllUnits = [
             prompt: "Listen to the sentence and select what it means:",
             options: ["The keys are inside the bag", "The keys are under the bag", "The keys are lost", "The bag is on the table"],
             correctAnswer: "The keys are inside the bag",
-            explanation: "'Sisällä' means 'inside of'."
-          }
+            explanation: "'Sisällä' means 'inside of'."          }
         ]
+      },
+      {
+            "id": "fi-u3-review",
+            "isReview": true,
+            "title": "Unit 3 Review: Routines & Verb Types Checkpoint",
+            "description": "Checkpoint reviewing Finnish verb types 1–5, direct object rules (accusative vs partitive), hobbies, and apartment living.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u3-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "To which verb type does 'syödä' (to eat) belong?",
+                        "options": [
+                              "Verb Type 2 (-da/-dä)",
+                              "Verb Type 1 (-a/-ä)",
+                              "Verb Type 3 (-lla/-llä)",
+                              "Verb Type 4 (-ata/-ätä)"
+                        ],
+                        "correctAnswer": "Verb Type 2 (-da/-dä)",
+                        "explanation": "Verb Type 2 verbs end in -da/-dä with stem drop: 'syödä' -> 'minä syön'."
+                  },
+                  {
+                        "id": "fi-u3-rev-q2",
+                        "type": "matching",
+                        "prompt": "Match infinitives with their 'minä' (I) present forms:",
+                        "pairs": [
+                              {
+                                    "native": "Puhua",
+                                    "english": "Puhun (I speak)"
+                              },
+                              {
+                                    "native": "Juoda",
+                                    "english": "Juon (I drink)"
+                              },
+                              {
+                                    "native": "Tulla",
+                                    "english": "Tulen (I come)"
+                              },
+                              {
+                                    "native": "Herätä",
+                                    "english": "Herään (I wake up)"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u3-rev-q3",
+                        "type": "fill_blank",
+                        "sentence": "Luen illalla hyvän ___.",
+                        "missingWord": "kirjan",
+                        "options": [
+                              "kirjan",
+                              "kirjaa",
+                              "kirja",
+                              "kirjassa"
+                        ],
+                        "correctAnswer": "kirjan",
+                        "explanation": "A completed action on a countable direct object takes the genitive-accusative: 'Luen kirjan'."
+                  },
+                  {
+                        "id": "fi-u3-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "Why does 'En osta autoa' use the partitive 'autoa'?",
+                        "options": [
+                              "Direct objects in negative sentences MUST be partitive",
+                              "Because auto is an expensive object",
+                              "Because of vowel harmony",
+                              "Because it's past tense"
+                        ],
+                        "correctAnswer": "Direct objects in negative sentences MUST be partitive",
+                        "explanation": "The direct object of ANY negative sentence is always in the partitive case."
+                  },
+                  {
+                        "id": "fi-u3-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'I wake up at seven o'clock'",
+                        "tokens": [
+                              "Herään",
+                              "kello",
+                              "seitsemän",
+                              "aamulla",
+                              "illalla"
+                        ],
+                        "correctTokens": [
+                              "Herään",
+                              "kello",
+                              "seitsemän",
+                              "aamulla"
+                        ],
+                        "explanation": "'Herään kello seitsemän aamulla' means 'I wake up at seven in the morning'."
+                  },
+                  {
+                        "id": "fi-u3-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Harrastan uintia",
+                        "prompt": "Listen to the statement and select what hobby it describes:",
+                        "options": [
+                              "I do swimming",
+                              "I play guitar",
+                              "I do running",
+                              "I read novels"
+                        ],
+                        "correctAnswer": "I do swimming",
+                        "explanation": "'Harrastaa' takes the partitive: 'Harrastan uintia' (I do swimming / My hobby is swimming)."
+                  },
+                  {
+                        "id": "fi-u3-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match Finnish hobbies with English:",
+                        "pairs": [
+                              {
+                                    "native": "Hiihdän talvella",
+                                    "english": "I ski in the winter"
+                              },
+                              {
+                                    "native": "Pelaan jalkapalloa",
+                                    "english": "I play football"
+                              },
+                              {
+                                    "native": "Käyn kuntosalilla",
+                                    "english": "I go to the gym"
+                              },
+                              {
+                                    "native": "Soitan pianoa",
+                                    "english": "I play the piano"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u3-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Kissa nukkuu sängyn ___.",
+                        "missingWord": "alla",
+                        "options": [
+                              "alla",
+                              "päällä",
+                              "takana",
+                              "edessä"
+                        ],
+                        "correctAnswer": "alla",
+                        "explanation": "'Sängyn alla' means 'under the bed'."
+                  },
+                  {
+                        "id": "fi-u3-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does 'Asun kerrostalossa kolmannessa kerroksessa' mean?",
+                        "options": [
+                              "I live in an apartment building on the 3rd floor",
+                              "I live in a wooden detached house",
+                              "I live on the ground floor with a garden",
+                              "I rent a shared room"
+                        ],
+                        "correctAnswer": "I live in an apartment building on the 3rd floor",
+                        "explanation": "'Kerrostalossa' = apartment building; 'kolmannessa kerroksessa' = on the 3rd floor."
+                  },
+                  {
+                        "id": "fi-u3-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'We eat dinner together'",
+                        "tokens": [
+                              "Syömme",
+                              "päivällistä",
+                              "yhdessä",
+                              "yksin"
+                        ],
+                        "correctTokens": [
+                              "Syömme",
+                              "päivällistä",
+                              "yhdessä"
+                        ],
+                        "explanation": "'Syömme päivällistä yhdessä' translates to 'We eat dinner together'."
+                  }
+            ]
       }
     ]
   },
@@ -695,9 +1037,183 @@ export const finnishAllUnits = [
             prompt: "Listen to the train announcement and select what it means:",
             options: ["The next station is Pasila", "This train terminates at Pasila", "Pasila platform 3", "Doors open on the right"],
             correctAnswer: "The next station is Pasila",
-            explanation: "'Seuraava asema on...' is heard on all Finnish trains."
-          }
+            explanation: "'Seuraava asema on...' is heard on all Finnish trains."          }
         ]
+      },
+      {
+            "id": "fi-u4-review",
+            "isReview": true,
+            "title": "Unit 4 Review: Errands, Services & Modals Checkpoint",
+            "description": "Checkpoint reviewing negative past tense, necessity modal verbs (täytyy/pitää), doctor visits, and public transportation.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u4-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "How do you form the negative past tense for 'minä' with 'ostaa'?",
+                        "options": [
+                              "En ostanut",
+                              "En ostin",
+                              "En ostaa",
+                              "En ostaisi"
+                        ],
+                        "correctAnswer": "En ostanut",
+                        "explanation": "Negative past singular uses negative verb + past active participle (-nut/-nyt): 'En ostanut'."
+                  },
+                  {
+                        "id": "fi-u4-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "He eivät ___ eilen kurssille.",
+                        "missingWord": "tulleet",
+                        "options": [
+                              "tulleet",
+                              "tullut",
+                              "tulivat",
+                              "tule"
+                        ],
+                        "correctAnswer": "tulleet",
+                        "explanation": "Plural negative past takes -neet/-eet: 'He eivät tulleet' (They did not come)."
+                  },
+                  {
+                        "id": "fi-u4-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match necessity constructions with their English meanings:",
+                        "pairs": [
+                              {
+                                    "native": "Minun täytyy lähteä",
+                                    "english": "I must leave"
+                              },
+                              {
+                                    "native": "Sinun pitää levätä",
+                                    "english": "You need to rest"
+                              },
+                              {
+                                    "native": "Hänen täytyy opiskella",
+                                    "english": "He/She has to study"
+                              },
+                              {
+                                    "native": "Meidän täytyy odottaa",
+                                    "english": "We must wait"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u4-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "In necessity sentences (täytyy / pitää), what case is the person who has the obligation?",
+                        "options": [
+                              "Genitive case (minun, sinun, Matin)",
+                              "Nominative case (minä, sinä, Matti)",
+                              "Partitive case (minua, sinua)",
+                              "Inessive case (minussa)"
+                        ],
+                        "correctAnswer": "Genitive case (minun, sinun, Matin)",
+                        "explanation": "Necessity verbs require a genitive subject: 'Minun täytyy' (literally: 'Of me it is necessary')."
+                  },
+                  {
+                        "id": "fi-u4-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'I have a high fever'",
+                        "tokens": [
+                              "Minulla",
+                              "on",
+                              "korkea",
+                              "kuume",
+                              "kipua"
+                        ],
+                        "correctTokens": [
+                              "Minulla",
+                              "on",
+                              "korkea",
+                              "kuume"
+                        ],
+                        "explanation": "'Minulla on korkea kuume' means 'I have a high fever'."
+                  },
+                  {
+                        "id": "fi-u4-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Haluaisin varata ajan lääkärille",
+                        "prompt": "Listen to the healthcare inquiry and select what it means:",
+                        "options": [
+                              "I would like to book a doctor's appointment",
+                              "I need to buy cough medicine",
+                              "Where is the emergency room?",
+                              "The clinic is closed today"
+                        ],
+                        "correctAnswer": "I would like to book a doctor's appointment",
+                        "explanation": "'Varata ajan lääkärille' means to book an appointment with a doctor."
+                  },
+                  {
+                        "id": "fi-u4-rev-q7",
+                        "type": "fill_blank",
+                        "sentence": "Haluaisin ostaa yhden menolipun ___.",
+                        "missingWord": "Tampereelle",
+                        "options": [
+                              "Tampereelle",
+                              "Tampereella",
+                              "Tampereelta",
+                              "Tampere"
+                        ],
+                        "correctAnswer": "Tampereelle",
+                        "explanation": "Destination for cities often takes the allative case (-lle): 'menolippu Tampereelle'."
+                  },
+                  {
+                        "id": "fi-u4-rev-q8",
+                        "type": "matching",
+                        "prompt": "Match transport and transit terms with English:",
+                        "pairs": [
+                              {
+                                    "native": "Laituri kolme",
+                                    "english": "Platform three"
+                              },
+                              {
+                                    "native": "Aikataulu",
+                                    "english": "Timetable / Schedule"
+                              },
+                              {
+                                    "native": "Vaihtoyhteys",
+                                    "english": "Connecting transfer"
+                              },
+                              {
+                                    "native": "Myöhässä",
+                                    "english": "Delayed / Late"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u4-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does 'Tarvitsen kuitin' mean at a customer service desk?",
+                        "options": [
+                              "I need a receipt",
+                              "I need cash",
+                              "I need a stamp",
+                              "I need a bag"
+                        ],
+                        "correctAnswer": "I need a receipt",
+                        "explanation": "'Kuitti' is the receipt; 'Tarvitsen kuitin' = I need a receipt."
+                  },
+                  {
+                        "id": "fi-u4-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'The train departs in ten minutes'",
+                        "tokens": [
+                              "Juna",
+                              "lähtee",
+                              "kymmenen",
+                              "minuutin",
+                              "kuluttua"
+                        ],
+                        "correctTokens": [
+                              "Juna",
+                              "lähtee",
+                              "kymmenen",
+                              "minuutin",
+                              "kuluttua"
+                        ],
+                        "explanation": "'Kymmenen minuutin kuluttua' is the idiomatic expression for 'in ten minutes'."
+                  }
+            ]
       }
     ]
   },
@@ -921,9 +1437,188 @@ export const finnishAllUnits = [
             prompt: "Listen to the cover letter phrase and select what it means:",
             options: ["I look forward to new challenges", "I am tired of my current job", "I have finished the project", "When can I start?"],
             correctAnswer: "I look forward to new challenges",
-            explanation: "'Odotan innolla uusia haasteita' is a classic Finnish cover-letter sign-off."
-          }
+            explanation: "'Odotan innolla uusia haasteita' is a classic Finnish cover-letter sign-off."          }
         ]
+      },
+      {
+            "id": "fi-u5-review",
+            "isReview": true,
+            "title": "Unit 5 Review: Narrative, Comparison & Modals Checkpoint",
+            "description": "Checkpoint reviewing plural cases, the conditional mood (-isi-), comparatives, and career experience narratives.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u5-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "How is the basic nominative plural formed in Finnish?",
+                        "options": [
+                              "Adding '-t' to the inflectional stem (talo -> talot)",
+                              "Adding '-i' to the stem",
+                              "Adding '-ja/-jä'",
+                              "Doubling the final consonant"
+                        ],
+                        "correctAnswer": "Adding '-t' to the inflectional stem (talo -> talot)",
+                        "explanation": "The nominative plural marker is '-t': 'kirja' -> 'kirjat', 'talo' -> 'talot'."
+                  },
+                  {
+                        "id": "fi-u5-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Kaupungissa on paljon vanhoja ___.",
+                        "missingWord": "taloja",
+                        "options": [
+                              "taloja",
+                              "talot",
+                              "talon",
+                              "talo"
+                        ],
+                        "correctAnswer": "taloja",
+                        "explanation": "Quantifier 'paljon' requires the partitive plural: 'paljon vanhoja taloja'."
+                  },
+                  {
+                        "id": "fi-u5-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match conditional mood sentences with English:",
+                        "pairs": [
+                              {
+                                    "native": "Ostaisin asunnon",
+                                    "english": "I would buy an apartment"
+                              },
+                              {
+                                    "native": "Matkustaisin Lappiin",
+                                    "english": "I would travel to Lapland"
+                              },
+                              {
+                                    "native": "Voisitko auttaa?",
+                                    "english": "Could you help?"
+                              },
+                              {
+                                    "native": "Söisin jotain hyvää",
+                                    "english": "I would eat something delicious"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u5-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "What is the comparative form of 'nopea' (fast)?",
+                        "options": [
+                              "nopeampi",
+                              "nopein",
+                              "nopean",
+                              "nopeasti"
+                        ],
+                        "correctAnswer": "nopeampi",
+                        "explanation": "Comparative adjectives take the suffix '-mpi': 'nopea' -> 'nopeampi' (faster)."
+                  },
+                  {
+                        "id": "fi-u5-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'Helsinki is larger than Tampere'",
+                        "tokens": [
+                              "Helsinki",
+                              "on",
+                              "suurempi",
+                              "kuin",
+                              "Tampere"
+                        ],
+                        "correctTokens": [
+                              "Helsinki",
+                              "on",
+                              "suurempi",
+                              "kuin",
+                              "Tampere"
+                        ],
+                        "explanation": "'Kuin' connects comparative clauses: 'suurempi kuin' = larger than."
+                  },
+                  {
+                        "id": "fi-u5-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Olen työskennellyt ohjelmistokehittäjänä kolme vuotta",
+                        "prompt": "Listen to the professional introduction and choose the career statement:",
+                        "options": [
+                              "I have worked as a software developer for three years",
+                              "I graduated from university three years ago",
+                              "I am applying for a junior developer role",
+                              "I manage a development team"
+                        ],
+                        "correctAnswer": "I have worked as a software developer for three years",
+                        "explanation": "Essive case '-na/-nä' marks a professional role: 'työskennellyt kehittäjänä'."
+                  },
+                  {
+                        "id": "fi-u5-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match adjectives with their superlatives (-in):",
+                        "pairs": [
+                              {
+                                    "native": "Suuri (Big)",
+                                    "english": "Suurin (Biggest)"
+                              },
+                              {
+                                    "native": "Vanha (Old)",
+                                    "english": "Vanhin (Oldest)"
+                              },
+                              {
+                                    "native": "Kaunis (Beautiful)",
+                                    "english": "Kaunein (Most beautiful)"
+                              },
+                              {
+                                    "native": "Hyvä (Good)",
+                                    "english": "Paras (Best)"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u5-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Vaikka oli kylmä, me ___ ulkona kävelyllä.",
+                        "missingWord": "olimme",
+                        "options": [
+                              "olimme",
+                              "olemme",
+                              "olisimme",
+                              "olla"
+                        ],
+                        "correctAnswer": "olimme",
+                        "explanation": "'Vaikka' (although) followed by past tense narrative: 'olimme ulkona'."
+                  },
+                  {
+                        "id": "fi-u5-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What personality trait does 'luotettava ja täsmällinen' express in a job interview?",
+                        "options": [
+                              "Reliable and punctual",
+                              "Creative and artistic",
+                              "Strict and ambitious",
+                              "Shy and quiet"
+                        ],
+                        "correctAnswer": "Reliable and punctual",
+                        "explanation": "'Luotettava' means reliable/trustworthy; 'täsmällinen' means punctual."
+                  },
+                  {
+                        "id": "fi-u5-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'If I have time, I will read this book'",
+                        "tokens": [
+                              "Jos",
+                              "minulla",
+                              "on",
+                              "aikaa,",
+                              "luen",
+                              "tämän",
+                              "kirjan"
+                        ],
+                        "correctTokens": [
+                              "Jos",
+                              "minulla",
+                              "on",
+                              "aikaa,",
+                              "luen",
+                              "tämän",
+                              "kirjan"
+                        ],
+                        "explanation": "Conditional complex clause: 'Jos minulla on aikaa, luen tämän kirjan'."
+                  }
+            ]
       }
     ]
   },
@@ -1157,9 +1852,180 @@ export const finnishAllUnits = [
             prompt: "Listen to the media intro and select what it means:",
             options: ["Yle News in Plain Finnish", "Morning paper headlines", "Radio music broadcast", "Weather bulletin"],
             correctAnswer: "Yle News in Plain Finnish",
-            explanation: "'Uutiset selkosuomeksi' is simplified Finnish news for learners."
-          }
+            explanation: "'Uutiset selkosuomeksi' is simplified Finnish news for learners."          }
         ]
+      },
+      {
+            "id": "fi-u6-review",
+            "isReview": true,
+            "title": "Unit 6 Review: Workplace & YKI Threshold Checkpoint",
+            "description": "Checkpoint reviewing the passive voice, perfect & pluperfect tenses, workplace meetings, and media article comprehension.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u6-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "What is the present passive form of 'puhua' (to speak)?",
+                        "options": [
+                              "puhutaan",
+                              "puhuttiin",
+                              "puhuttu",
+                              "puhuttaisiin"
+                        ],
+                        "correctAnswer": "puhutaan",
+                        "explanation": "Present passive for Type 1 adds '-taan/-tään': 'puhua' -> 'puhutaan' (it is spoken / people speak)."
+                  },
+                  {
+                        "id": "fi-u6-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Eilen kokouksessa ___ tärkeistä uudistuksista.",
+                        "missingWord": "päätettiin",
+                        "options": [
+                              "päätettiin",
+                              "päätetään",
+                              "päättää",
+                              "päätetty"
+                        ],
+                        "correctAnswer": "päätettiin",
+                        "explanation": "Past passive imperfect uses '-ttiin': 'päätettiin' (it was decided)."
+                  },
+                  {
+                        "id": "fi-u6-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match tenses with their correct examples:",
+                        "pairs": [
+                              {
+                                    "native": "Preesens (Present)",
+                                    "english": "Asun Suomessa"
+                              },
+                              {
+                                    "native": "Imperfekti (Past)",
+                                    "english": "Asuin Suomessa"
+                              },
+                              {
+                                    "native": "Perfekti (Perfect)",
+                                    "english": "Olen asunut Suomessa"
+                              },
+                              {
+                                    "native": "Pluskvamperfekti (Pluperfect)",
+                                    "english": "Olin asunut Suomessa"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u6-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "How do you constructively express disagreement in a professional Finnish meeting?",
+                        "options": [
+                              "Olen hieman eri mieltä tästä asiasta",
+                              "Olet täysin väärässä!",
+                              "En välitä tästä ollenkaan",
+                              "Lopetetaan tämä heti"
+                        ],
+                        "correctAnswer": "Olen hieman eri mieltä tästä asiasta",
+                        "explanation": "'Olen hieman eri mieltä...' politely softens disagreement with professional tact."
+                  },
+                  {
+                        "id": "fi-u6-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'Next we will discuss the project budget'",
+                        "tokens": [
+                              "Seuraavaksi",
+                              "käsittelemme",
+                              "projektin",
+                              "budjettia",
+                              "aikataulua"
+                        ],
+                        "correctTokens": [
+                              "Seuraavaksi",
+                              "käsittelemme",
+                              "projektin",
+                              "budjettia"
+                        ],
+                        "explanation": "'Käsitellä' (to process/discuss) governs partitive: 'käsittelemme projektin budjettia'."
+                  },
+                  {
+                        "id": "fi-u6-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Hallitus sopi uudesta työllisyyspaketista",
+                        "prompt": "Listen to the news headline and select what it reports:",
+                        "options": [
+                              "The government agreed on a new employment package",
+                              "Taxes will increase next year",
+                              "Unemployment reached a record low",
+                              "Public transport prices will fall"
+                        ],
+                        "correctAnswer": "The government agreed on a new employment package",
+                        "explanation": "'Sopia' + elative: 'sopi uudesta työllisyyspaketista' = agreed on the new employment package."
+                  },
+                  {
+                        "id": "fi-u6-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match modern corporate Finnish terminology with English:",
+                        "pairs": [
+                              {
+                                    "native": "Määräaika (Deadline)",
+                                    "english": "Due date for submission"
+                              },
+                              {
+                                    "native": "Esihenkilö (Supervisor)",
+                                    "english": "Team lead / Manager"
+                              },
+                              {
+                                    "native": "Etätyö (Remote work)",
+                                    "english": "Working from home"
+                              },
+                              {
+                                    "native": "Perehdytys (Onboarding)",
+                                    "english": "Orientation for new hires"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u6-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Hän oli jo lähtenyt, kun minä ___ toimistolle.",
+                        "missingWord": "saavuin",
+                        "options": [
+                              "saavuin",
+                              "saapunut",
+                              "saavun",
+                              "saapua"
+                        ],
+                        "correctAnswer": "saavuin",
+                        "explanation": "Pluperfect action ('oli lähtenyt') completed before the past imperfect event ('saavuin')."
+                  },
+                  {
+                        "id": "fi-u6-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does 'YKI-todistus' certify in Finland?",
+                        "options": [
+                              "Official National Certificate of Language Proficiency",
+                              "University entrance diploma",
+                              "Driving license",
+                              "Work tax deduction card"
+                        ],
+                        "correctAnswer": "Official National Certificate of Language Proficiency",
+                        "explanation": "YKI (Yleinen kielitutkinto) is the official Finnish national language certificate required for citizenship."
+                  },
+                  {
+                        "id": "fi-u6-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'The project was completed on schedule'",
+                        "tokens": [
+                              "Projekti",
+                              "valmistui",
+                              "aikataulussa",
+                              "budjetissa"
+                        ],
+                        "correctTokens": [
+                              "Projekti",
+                              "valmistui",
+                              "aikataulussa"
+                        ],
+                        "explanation": "'Aikataulussa' in inessive means 'on schedule / on time'."
+                  }
+            ]
       }
     ]
   },
@@ -1388,9 +2254,182 @@ export const finnishAllUnits = [
             prompt: "Listen to the closing line and select what it means:",
             options: ["I look forward to your reply as soon as possible", "I have not received any reply", "Please do not reply to this email", "Thank you for meeting me"],
             correctAnswer: "I look forward to your reply as soon as possible",
-            explanation: "'Mahdollisimman pian' = as soon as possible."
-          }
+            explanation: "'Mahdollisimman pian' = as soon as possible."          }
         ]
+      },
+      {
+            "id": "fi-u7-review",
+            "isReview": true,
+            "title": "Unit 7 Review: Societal Integration & Fluency Checkpoint",
+            "description": "Checkpoint reviewing relative pronouns (joka vs mikä), imperative commands, administrative services (Kela, Vero, DVV), and formal email correspondence.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u7-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "When must you use 'joka' instead of 'mikä' as a relative pronoun?",
+                        "options": [
+                              "When referring back to a specific preceding noun",
+                              "When referring to an entire preceding clause",
+                              "When following a superlative adjective",
+                              "Only when asking direct questions"
+                        ],
+                        "correctAnswer": "When referring back to a specific preceding noun",
+                        "explanation": "'Joka' refers to an individual noun; 'mikä' refers to a whole clause or indefinite concept."
+                  },
+                  {
+                        "id": "fi-u7-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Hän ei tullut juhliin, ___ yllätti kaikki vieraat.",
+                        "missingWord": "mikä",
+                        "options": [
+                              "mikä",
+                              "joka",
+                              "kuka",
+                              "jonka"
+                        ],
+                        "correctAnswer": "mikä",
+                        "explanation": "Referring back to the entire clause ('hän ei tullut') requires 'mikä'."
+                  },
+                  {
+                        "id": "fi-u7-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match imperative forms with English instructions:",
+                        "pairs": [
+                              {
+                                    "native": "Tule tänne!",
+                                    "english": "Come here! (Singular casual)"
+                              },
+                              {
+                                    "native": "Olkaa hyvät ja istuutukaa!",
+                                    "english": "Please be seated! (Plural / Polite)"
+                              },
+                              {
+                                    "native": "Älä unohda tätä!",
+                                    "english": "Don't forget this! (Negative singular)"
+                              },
+                              {
+                                    "native": "Lukekaa ohjeet!",
+                                    "english": "Read the instructions! (Plural)"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u7-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "Which public agency handles social security and healthcare reimbursements in Finland?",
+                        "options": [
+                              "Kela (Kansaneläkelaitos)",
+                              "Vero (Verohallinto)",
+                              "DVV (Digi- ja väestötietovirasto)",
+                              "Trafi (Traficom)"
+                        ],
+                        "correctAnswer": "Kela (Kansaneläkelaitos)",
+                        "explanation": "Kela is the Social Insurance Institution of Finland."
+                  },
+                  {
+                        "id": "fi-u7-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'Address change must be reported to DVV'",
+                        "tokens": [
+                              "Muuttoilmoitus",
+                              "täytyy",
+                              "tehdä",
+                              "DVV:lle",
+                              "Kelalle"
+                        ],
+                        "correctTokens": [
+                              "Muuttoilmoitus",
+                              "täytyy",
+                              "tehdä",
+                              "DVV:lle"
+                        ],
+                        "explanation": "'Muuttoilmoitus täytyy tehdä DVV:lle' (Notification of move must be made to DVV)."
+                  },
+                  {
+                        "id": "fi-u7-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Kirjoitan tiedustellakseni hakemukseni käsittelytilannetta",
+                        "prompt": "Listen to the formal administrative correspondence and choose what it means:",
+                        "options": [
+                              "I am writing to inquire about the processing status of my application",
+                              "I wish to cancel my appointment",
+                              "I have received my approved decision",
+                              "Please send me the original documents"
+                        ],
+                        "correctAnswer": "I am writing to inquire about the processing status of my application",
+                        "explanation": "'Tiedustellakseni' is a formal final infinitive meaning 'in order to inquire'."
+                  },
+                  {
+                        "id": "fi-u7-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match formal letter components with their Finnish terms:",
+                        "pairs": [
+                              {
+                                    "native": "Arvoisa vastaanottaja",
+                                    "english": "Dear recipient (Formal opening)"
+                              },
+                              {
+                                    "native": "Ystävällisin terveisin",
+                                    "english": "Kind regards (Polite sign-off)"
+                              },
+                              {
+                                    "native": "Liitteenä löydätte...",
+                                    "english": "Attached you will find..."
+                              },
+                              {
+                                    "native": "Valitusaika",
+                                    "english": "Appeal period"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u7-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Tarkistin esitäytetyn ___ verkossa OmaVerossa.",
+                        "missingWord": "veroilmoituksen",
+                        "options": [
+                              "veroilmoituksen",
+                              "veron",
+                              "passin",
+                              "laskun"
+                        ],
+                        "correctAnswer": "veroilmoituksen",
+                        "explanation": "'Esitäytetty veroilmoitus' is the pre-completed annual tax return in Finland."
+                  },
+                  {
+                        "id": "fi-u7-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "Which cohesive connector means 'On the other hand' in a formal argumentative essay?",
+                        "options": [
+                              "Toisaalta",
+                              "Ensinnäkin",
+                              "Koska",
+                              "Siksi"
+                        ],
+                        "correctAnswer": "Toisaalta",
+                        "explanation": "'Toisaalta' expresses 'on the other hand' for balanced deliberation."
+                  },
+                  {
+                        "id": "fi-u7-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'First of all, recycling saves natural resources'",
+                        "tokens": [
+                              "Ensinnäkin,",
+                              "kierrätys",
+                              "säästää",
+                              "luonnonvaroja",
+                              "energiaa"
+                        ],
+                        "correctTokens": [
+                              "Ensinnäkin,",
+                              "kierrätys",
+                              "säästää",
+                              "luonnonvaroja"
+                        ],
+                        "explanation": "'Ensinnäkin' opens the first point of an argumentative paragraph."
+                  }
+            ]
       }
     ]
   },
@@ -1614,9 +2653,182 @@ export const finnishAllUnits = [
             prompt: "Listen to the debate pivot and select what it means:",
             options: ["Let us examine the issue from another perspective", "This concludes the argument", "Nobody agrees with this", "Please rephrase your claim"],
             correctAnswer: "Let us examine the issue from another perspective",
-            explanation: "'Toisesta näkökulmasta' = from another perspective."
-          }
+            explanation: "'Toisesta näkökulmasta' = from another perspective."          }
         ]
+      },
+      {
+            "id": "fi-u8-review",
+            "isReview": true,
+            "title": "Unit 8 Review: Academic & Professional Discourse Checkpoint",
+            "description": "Checkpoint reviewing the Finnish nominal style (substantiivityyli), advanced participles, macroeconomics, and academic debate.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u8-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "What characterizes the academic 'nominal style' (substantiivityyli) in Finnish?",
+                        "options": [
+                              "Replacing verbal clauses with derivative verbal nouns ending in '-minen'",
+                              "Using only short simple sentences",
+                              "Avoiding all adjective modifiers",
+                              "Writing purely in slang contractions"
+                        ],
+                        "correctAnswer": "Replacing verbal clauses with derivative verbal nouns ending in '-minen'",
+                        "explanation": "Nominal style compacts verbal clauses into nouns: 'päätetään' -> 'päätöksen tekeminen'."
+                  },
+                  {
+                        "id": "fi-u8-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Tutkimuksen keskeinen ___ perustuu laajaan empiiriseen aineistoon.",
+                        "missingWord": "johtopäätös",
+                        "options": [
+                              "johtopäätös",
+                              "aloitus",
+                              "syy",
+                              "lehti"
+                        ],
+                        "correctAnswer": "johtopäätös",
+                        "explanation": "'Johtopäätös' means conclusion or deduction in scientific discourse."
+                  },
+                  {
+                        "id": "fi-u8-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match advanced participial modifiers with English:",
+                        "pairs": [
+                              {
+                                    "native": "Kasvava talous",
+                                    "english": "Growing economy (1st participle active)"
+                              },
+                              {
+                                    "native": "Hyväksytty lakiesitys",
+                                    "english": "Approved legislative bill (2nd participle passive)"
+                              },
+                              {
+                                    "native": "Tuleva kehitys",
+                                    "english": "Upcoming / future development"
+                              },
+                              {
+                                    "native": "Vaadittava pätevyys",
+                                    "english": "Required qualification (participle of necessity)"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u8-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "What does 'bruttokansantuote' (BKT) signify in economics?",
+                        "options": [
+                              "Gross Domestic Product (GDP)",
+                              "Consumer price index",
+                              "Annual inflation rate",
+                              "National trade balance"
+                        ],
+                        "correctAnswer": "Gross Domestic Product (GDP)",
+                        "explanation": "BKT (bruttokansantuote) is GDP in Finnish."
+                  },
+                  {
+                        "id": "fi-u8-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'The goal of carbon neutrality requires systemic change'",
+                        "tokens": [
+                              "Hiilineutraaliustavoite",
+                              "vaatii",
+                              "systeemistä",
+                              "muutosta",
+                              "nopeaa"
+                        ],
+                        "correctTokens": [
+                              "Hiilineutraaliustavoite",
+                              "vaatii",
+                              "systeemistä",
+                              "muutosta"
+                        ],
+                        "explanation": "'Vaatia' governs partitive: 'vaatii systeemistä muutosta'."
+                  },
+                  {
+                        "id": "fi-u8-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Tilastokeskuksen julkaisemien lukujen valossa talouskasvu hidastuu",
+                        "prompt": "Listen to the macro-analysis statement and select what it means:",
+                        "options": [
+                              "In light of figures published by Statistics Finland, economic growth is slowing down",
+                              "Consumer spending rose sharply last quarter",
+                              "Inflation will drop to zero next month",
+                              "Foreign investments set an all-time record"
+                        ],
+                        "correctAnswer": "In light of figures published by Statistics Finland, economic growth is slowing down",
+                        "explanation": "'Tilastokeskuksen julkaisemien lukujen valossa' = In light of figures published by Statistics Finland."
+                  },
+                  {
+                        "id": "fi-u8-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match debate and rhetoric phrases with English:",
+                        "pairs": [
+                              {
+                                    "native": "Siitä huolimatta, että...",
+                                    "english": "Notwithstanding the fact that..."
+                              },
+                              {
+                                    "native": "Päinvastoin kuin väitetään...",
+                                    "english": "Contrary to what is claimed..."
+                              },
+                              {
+                                    "native": "On syytä korostaa, että...",
+                                    "english": "It is justified to emphasize that..."
+                              },
+                              {
+                                    "native": "Aineiston perusteella...",
+                                    "english": "On the basis of the data..."
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u8-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Korrelaatio ei välttämättä todista suoraa ___.",
+                        "missingWord": "syy-seuraussuhdetta",
+                        "options": [
+                              "syy-seuraussuhdetta",
+                              "vaihtoehtoa",
+                              "tulosta",
+                              "tutkimusta"
+                        ],
+                        "correctAnswer": "syy-seuraussuhdetta",
+                        "explanation": "'Syy-seuraussuhde' is the scientific term for causal relationship (cause and effect)."
+                  },
+                  {
+                        "id": "fi-u8-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does 'kiertotalous' mean in modern sustainability discourse?",
+                        "options": [
+                              "Circular economy",
+                              "Free market economy",
+                              "Planned economy",
+                              "Barter trade"
+                        ],
+                        "correctAnswer": "Circular economy",
+                        "explanation": "'Kiertotalous' is the circular economy where resources are recycled and reused sustainably."
+                  },
+                  {
+                        "id": "fi-u8-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'The hypothesis was confirmed by the research results'",
+                        "tokens": [
+                              "Hypoteesi",
+                              "vahvistui",
+                              "tutkimustulosten",
+                              "myötä",
+                              "heti"
+                        ],
+                        "correctTokens": [
+                              "Hypoteesi",
+                              "vahvistui",
+                              "tutkimustulosten",
+                              "myötä"
+                        ],
+                        "explanation": "'Tutkimustulosten myötä' = along with / as a result of the research results."
+                  }
+            ]
       }
     ]
   },
@@ -1845,9 +3057,182 @@ export const finnishAllUnits = [
             prompt: "Listen to the ironic tone and determine what happened:",
             options: ["Something went unexpectedly wrong", "They received a wonderful birthday gift", "The sun came out", "They won the lottery"],
             correctAnswer: "Something went unexpectedly wrong",
-            explanation: "'Vasta mukava yllätys' is almost always sarcastic in difficult situations."
-          }
+            explanation: "'Vasta mukava yllätys' is almost always sarcastic in difficult situations."          }
         ]
+      },
+      {
+            "id": "fi-u9-review",
+            "isReview": true,
+            "title": "Unit 9 Review: Puhekieli, Slang & Dialects Checkpoint",
+            "description": "Checkpoint reviewing marginal Finnish cases (abessiivi/instruktiivi), spoken contractions, regional dialects, and Finnish understatement.",
+            "xp": 50,
+            "questions": [
+                  {
+                        "id": "fi-u9-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "What does the rare abessive case (-tta/-ttä) express without needing 'ilman'?",
+                        "options": [
+                              "Absence or lack of something (e.g. rahatta = without money)",
+                              "Accompaniment with someone",
+                              "The means of doing an action",
+                              "Direction towards an object"
+                        ],
+                        "correctAnswer": "Absence or lack of something (e.g. rahatta = without money)",
+                        "explanation": "The abessive case indicates 'without': 'rahatta' = ilman rahaa."
+                  },
+                  {
+                        "id": "fi-u9-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Todistin tapahtuneen omin ___.",
+                        "missingWord": "silmin",
+                        "options": [
+                              "silmin",
+                              "silmät",
+                              "silmillä",
+                              "silmissä"
+                        ],
+                        "correctAnswer": "silmin",
+                        "explanation": "'Omin silmin' is the instructive plural meaning 'with my own eyes'."
+                  },
+                  {
+                        "id": "fi-u9-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match standard Finnish (kirjakieli) with spoken contractions (puhekieli):",
+                        "pairs": [
+                              {
+                                    "native": "Minä olen",
+                                    "english": "Mä oon"
+                              },
+                              {
+                                    "native": "Me menemme",
+                                    "english": "Me mennään"
+                              },
+                              {
+                                    "native": "Yksitoista",
+                                    "english": "Ykstoist"
+                              },
+                              {
+                                    "native": "Televisio",
+                                    "english": "Telkkari"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u9-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "In everyday Helsinki slang, what do 'dösä' and 'fillari' mean?",
+                        "options": [
+                              "Bus and bicycle",
+                              "Car and train",
+                              "Coffee and donut",
+                              "Apartment and room"
+                        ],
+                        "correctAnswer": "Bus and bicycle",
+                        "explanation": "'Dösä' is bus (bussi) and 'fillari' is bicycle (polkupyörä)."
+                  },
+                  {
+                        "id": "fi-u9-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble in colloquial spoken Finnish: 'Mä lähen nyt himaan'",
+                        "tokens": [
+                              "Mä",
+                              "lähen",
+                              "nyt",
+                              "himaan",
+                              "kotiin"
+                        ],
+                        "correctTokens": [
+                              "Mä",
+                              "lähen",
+                              "nyt",
+                              "himaan"
+                        ],
+                        "explanation": "'Mä lähen nyt himaan' = 'I'm leaving for home now' in casual puhekieli."
+                  },
+                  {
+                        "id": "fi-u9-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Ei paha ollenkaan",
+                        "prompt": "Listen to the typical Finnish deadpan evaluation and choose what it culturally conveys:",
+                        "options": [
+                              "High praise and enthusiastic approval ('Really good / Impressive!')",
+                              "Severe dissatisfaction",
+                              "Total confusion",
+                              "A neutral warning"
+                        ],
+                        "correctAnswer": "High praise and enthusiastic approval ('Really good / Impressive!')",
+                        "explanation": "In Finnish culture, litotes/understatement like 'Ei paha' (Not bad at all) conveys hearty praise."
+                  },
+                  {
+                        "id": "fi-u9-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match regional dialect features with their Finnish regions:",
+                        "pairs": [
+                              {
+                                    "native": "Mie ja sie",
+                                    "english": "Eastern / Karelian / Lapland dialects"
+                              },
+                              {
+                                    "native": "Ketä siellä oli?",
+                                    "english": "Southwestern (Turku) dialect"
+                              },
+                              {
+                                    "native": "Nääs ja moro",
+                                    "english": "Tampere / Häme regional marker"
+                              },
+                              {
+                                    "native": "Daa / stadi slang",
+                                    "english": "Helsinki metropolitan urban dialect"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u9-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Tota noin, mä en ___ tienny tästä.",
+                        "missingWord": "oikein",
+                        "options": [
+                              "oikein",
+                              "hyvin",
+                              "paljon",
+                              "oikea"
+                        ],
+                        "correctAnswer": "oikein",
+                        "explanation": "'En oikein tienny' = 'I didn't really know' in casual conversation."
+                  },
+                  {
+                        "id": "fi-u9-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does the common conversational filler 'niinku' correspond to in English?",
+                        "options": [
+                              "'Like' / 'You know'",
+                              "'Therefore'",
+                              "'Consequently'",
+                              "'Nevertheless'"
+                        ],
+                        "correctAnswer": "'Like' / 'You know'",
+                        "explanation": "'Niinku' is the universal spoken filler equivalent to English 'like'."
+                  },
+                  {
+                        "id": "fi-u9-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'Ootsä nähny mun puhelinta?'",
+                        "tokens": [
+                              "Ootsä",
+                              "nähny",
+                              "mun",
+                              "puhelinta?",
+                              "sun"
+                        ],
+                        "correctTokens": [
+                              "Ootsä",
+                              "nähny",
+                              "mun",
+                              "puhelinta?"
+                        ],
+                        "explanation": "Spoken contraction for 'Oletko sinä nähnyt minun puhelintani?'."
+                  }
+            ]
       }
     ]
   },
@@ -2081,9 +3466,184 @@ export const finnishAllUnits = [
             prompt: "Listen to the philosophical thought and select what it means:",
             options: ["Happy is the one who knows how to appreciate silence", "Silence is golden in the forest", "One must never remain silent", "The happiest people live in Finland"],
             correctAnswer: "Happy is the one who knows how to appreciate silence",
-            explanation: "Reflects the quintessential Finnish cultural valuation of peace and quiet."
-          }
+            explanation: "Reflects the quintessential Finnish cultural valuation of peace and quiet."          }
         ]
+      },
+      {
+            "id": "fi-u10-review",
+            "isReview": true,
+            "title": "Unit 10 Review: Advanced Literature & C2 Mastery Checkpoint",
+            "description": "The crowning achievement checkpoint: participial replacement clauses (lauseenvastikkeet), statutory jurisprudence, rhetoric, and cultural epics.",
+            "xp": 60,
+            "questions": [
+                  {
+                        "id": "fi-u10-rev-q1",
+                        "type": "multiple_choice",
+                        "prompt": "Which participial replacement structure (lauseenvastike) replaces 'Kun aurinko nousi'?",
+                        "options": [
+                              "Auringon noustessa (Temporal replacement -essa/-essä)",
+                              "Aurinko nousemaan",
+                              "Auringon noustua",
+                              "Noustaakseen auringon"
+                        ],
+                        "correctAnswer": "Auringon noustessa (Temporal replacement -essa/-essä)",
+                        "explanation": "The temporal structure with genitive agent + 2nd infinitive inessive: 'Auringon noustessa' = When the sun rose."
+                  },
+                  {
+                        "id": "fi-u10-rev-q2",
+                        "type": "fill_blank",
+                        "sentence": "Hän opiskeli ahkerasti ___ kokeen erinomaisin arvosanoin.",
+                        "missingWord": "läpäistäkseen",
+                        "options": [
+                              "läpäistäkseen",
+                              "läpäisee",
+                              "läpäisi",
+                              "läpäisemään"
+                        ],
+                        "correctAnswer": "läpäistäkseen",
+                        "explanation": "The final structure expresses purpose ('in order to pass'): translative 1st infinitive + possessive suffix."
+                  },
+                  {
+                        "id": "fi-u10-rev-q3",
+                        "type": "matching",
+                        "prompt": "Match participial replacement clauses with their subordinate clause meanings:",
+                        "pairs": [
+                              {
+                                    "native": "Tietämäni asia",
+                                    "english": "Asia, jonka minä tiedän (Agent construction)"
+                              },
+                              {
+                                    "native": "Kotiin tultuaan",
+                                    "english": "Kun hän oli tullut kotiin (Past temporal)"
+                              },
+                              {
+                                    "native": "Sanoaksemme suoraan",
+                                    "english": "Jotta sanoisimme suoraan (Final purpose)"
+                              },
+                              {
+                                    "native": "Kuulin hänen laulavan",
+                                    "english": "Kuulin, että hän laulaa (Indirect discourse)"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u10-rev-q4",
+                        "type": "multiple_choice",
+                        "prompt": "What is 'oikeusvaltioperiaate' in constitutional jurisprudence?",
+                        "options": [
+                              "The Rule of Law principle",
+                              "Separation of church and state",
+                              "Freedom of the press",
+                              "Universal suffrage"
+                        ],
+                        "correctAnswer": "The Rule of Law principle",
+                        "explanation": "'Oikeusvaltioperiaate' defines the fundamental constitutional tenet that all public authority is bound by law."
+                  },
+                  {
+                        "id": "fi-u10-rev-q5",
+                        "type": "scramble",
+                        "prompt": "Assemble formal ceremonial address: 'Arvoisa juhlaväki ja hyvät kuulijat'",
+                        "tokens": [
+                              "Arvoisa",
+                              "juhlaväki",
+                              "ja",
+                              "hyvät",
+                              "kuulijat"
+                        ],
+                        "correctTokens": [
+                              "Arvoisa",
+                              "juhlaväki",
+                              "ja",
+                              "hyvät",
+                              "kuulijat"
+                        ],
+                        "explanation": "'Arvoisa juhlaväki ja hyvät kuulijat' is the classic dignified opening for a formal Finnish keynote address."
+                  },
+                  {
+                        "id": "fi-u10-rev-q6",
+                        "type": "audio_listen",
+                        "phrase": "Mieleni minun tekevi, aivoni ajattelevi",
+                        "prompt": "Listen to the famous opening verse and identify the seminal national work:",
+                        "options": [
+                              "Kalevala (The national epic compiled by Elias Lönnrot)",
+                              "Seitsemän veljestä by Aleksis Kivi",
+                              "Tuntematon sotilas by Väinö Linna",
+                              "Vänrikki Stoolin tarinat by J.L. Runeberg"
+                        ],
+                        "correctAnswer": "Kalevala (The national epic compiled by Elias Lönnrot)",
+                        "explanation": "The immortal opening runo meter of the Kalevala: 'Mieleni minun tekevi, aivoni ajattelevi...'"
+                  },
+                  {
+                        "id": "fi-u10-rev-q7",
+                        "type": "matching",
+                        "prompt": "Match literary milestones of Finnish history:",
+                        "pairs": [
+                              {
+                                    "native": "Mikael Agricola",
+                                    "english": "Father of written Finnish (ABC-kiria, 1543)"
+                              },
+                              {
+                                    "native": "Elias Lönnrot",
+                                    "english": "Compiler of the national epic Kalevala (1835/1849)"
+                              },
+                              {
+                                    "native": "Aleksis Kivi",
+                                    "english": "Author of Seitsemän veljestä (First major Finnish novel, 1870)"
+                              },
+                              {
+                                    "native": "Väinö Linna",
+                                    "english": "Author of Tuntematon sotilas & Täällä Pohjantähden alla"
+                              }
+                        ]
+                  },
+                  {
+                        "id": "fi-u10-rev-q8",
+                        "type": "fill_blank",
+                        "sentence": "Päätös on saanut lainvoiman ja se on nyt ___.",
+                        "missingWord": "täytäntöönpanokelpoinen",
+                        "options": [
+                              "täytäntöönpanokelpoinen",
+                              "vanhentunut",
+                              "hylätty",
+                              "kumottu"
+                        ],
+                        "correctAnswer": "täytäntöönpanokelpoinen",
+                        "explanation": "'Täytäntöönpanokelpoinen' means legally enforceable in administrative and court decisions."
+                  },
+                  {
+                        "id": "fi-u10-rev-q9",
+                        "type": "multiple_choice",
+                        "prompt": "What does the timeless Finnish concept of 'Sisu' represent at the C2 cultural mastery level?",
+                        "options": [
+                              "Quiet, unwavering grit and stoic courage against overwhelming odds",
+                              "A traditional folk dance",
+                              "A culinary pastry baked in winter",
+                              "A greeting ritual"
+                        ],
+                        "correctAnswer": "Quiet, unwavering grit and stoic courage against overwhelming odds",
+                        "explanation": "'Sisu' is Finland's defining cultural soul: indomitable perseverance when all hope seems exhausted."
+                  },
+                  {
+                        "id": "fi-u10-rev-q10",
+                        "type": "scramble",
+                        "prompt": "Assemble: 'Lopuksi haluan esittää sydämelliset kiitokseni'",
+                        "tokens": [
+                              "Lopuksi",
+                              "haluan",
+                              "esittää",
+                              "sydämelliset",
+                              "kiitokseni"
+                        ],
+                        "correctTokens": [
+                              "Lopuksi",
+                              "haluan",
+                              "esittää",
+                              "sydämelliset",
+                              "kiitokseni"
+                        ],
+                        "explanation": "'Lopuksi haluan esittää sydämelliset kiitokseni' = 'In closing, I wish to express my heartfelt gratitude'."
+                  }
+            ]
       }
     ]
   }

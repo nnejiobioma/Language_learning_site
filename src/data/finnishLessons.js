@@ -1703,5 +1703,196 @@ export const finnishUnit1Lessons = [
         explanation: "'Tuolla' indicates over there: 'Juna-asema on tuolla'."
       }
     ]
+  },
+  {
+    id: "fi-u1-review",
+    isReview: true,
+    title: "Unit 1 Review: Introduce Yourself & Foundations Checkpoint",
+    description: "Comprehensive checkpoint reviewing pronunciation, greetings, pronouns, household items, verbs, tenses, and places from Unit 1.",
+    xp: 50,
+    questions: [
+      {
+        id: "fi-u1-rev-q1",
+        type: "multiple_choice",
+        prompt: "Which Finnish vowel harmony group includes front vowels only?",
+        options: ["ä, ö, y", "a, o, u", "e, i only", "a, ä, o"],
+        correctAnswer: "ä, ö, y",
+        explanation: "Front vowels in Finnish are 'ä', 'ö', and 'y'. Back vowels are 'a', 'o', and 'u'."
+      },
+      {
+        id: "fi-u1-rev-q2",
+        type: "matching",
+        prompt: "Match basic greetings and courtesy phrases:",
+        pairs: [
+          { native: "Moi / Hei", english: "Hello / Hi" },
+          { native: "Kiitos paljon", english: "Thank you very much" },
+          { native: "Ole hyvä", english: "You're welcome / Here you go" },
+          { native: "Näkemiin", english: "Goodbye" }
+        ]
+      },
+      {
+        id: "fi-u1-rev-q3",
+        type: "fill_blank",
+        sentence: "Hei! Minun ___ on Laura.",
+        missingWord: "nimeni",
+        options: ["nimeni", "talo", "kissa", "päivä"],
+        correctAnswer: "nimeni",
+        explanation: "'Minun nimeni on...' means 'My name is...'."
+      },
+      {
+        id: "fi-u1-rev-q4",
+        type: "scramble",
+        prompt: "Assemble: 'How are you?'",
+        tokens: ["Mitä", "sinulle", "kuuluu?", "hyvää"],
+        correctTokens: ["Mitä", "sinulle", "kuuluu?"],
+        explanation: "'Mitä sinulle kuuluu?' (or simply 'Mitä kuuluu?') means 'How are you?'."
+      },
+      {
+        id: "fi-u1-rev-q5",
+        type: "audio_listen",
+        phrase: "Minä puhun suomea",
+        prompt: "Listen to the phrase and select what it means:",
+        options: ["I speak Finnish", "I live in Finland", "I study Finnish", "I love Finland"],
+        correctAnswer: "I speak Finnish",
+        explanation: "'Puhun suomea' means 'I speak Finnish'."
+      },
+      {
+        id: "fi-u1-rev-q6",
+        type: "matching",
+        prompt: "Match personal pronouns with English:",
+        pairs: [
+          { native: "Minä", english: "I" },
+          { native: "Sinä", english: "You (singular)" },
+          { native: "Hän", english: "He / She" },
+          { native: "Me", english: "We" }
+        ]
+      },
+      {
+        id: "fi-u1-rev-q7",
+        type: "multiple_choice",
+        prompt: "How do you conjugate 'olla' (to be) for 'me' (we)?",
+        options: ["olemme", "olen", "olet", "ovat"],
+        correctAnswer: "olemme",
+        explanation: "'Me olemme' means 'We are'."
+      },
+      {
+        id: "fi-u1-rev-q8",
+        type: "fill_blank",
+        sentence: "Olen kotoisin ___.",
+        missingWord: "Suomesta",
+        options: ["Suomesta", "Suomi", "Suomessa", "Suomeen"],
+        correctAnswer: "Suomesta",
+        explanation: "Origin uses the elative case (-sta/-stä): 'kotoisin Suomesta' (originally from Finland)."
+      },
+      {
+        id: "fi-u1-rev-q9",
+        type: "matching",
+        prompt: "Match household items with English:",
+        pairs: [
+          { native: "Pöytä", english: "Table" },
+          { native: "Tuoli", english: "Chair" },
+          { native: "Sänky", english: "Bed" },
+          { native: "Keittiö", english: "Kitchen" }
+        ]
+      },
+      {
+        id: "fi-u1-rev-q10",
+        type: "scramble",
+        prompt: "Assemble: 'The book is on the table'",
+        tokens: ["Kirja", "on", "pöydällä", "tuolilla"],
+        correctTokens: ["Kirja", "on", "pöydällä"],
+        explanation: "'Pöydällä' is the adessive case (-lla) meaning 'on the table'."
+      },
+      {
+        id: "fi-u1-rev-q11",
+        type: "multiple_choice",
+        prompt: "What is the present tense of 'puhua' for 'he/she' (hän)?",
+        options: ["puhuu", "puhun", "puhut", "puhu"],
+        correctAnswer: "puhuu",
+        explanation: "Verb Type 1 lengthens the final vowel: 'hän puhuu' (he/she speaks)."
+      },
+      {
+        id: "fi-u1-rev-q12",
+        type: "fill_blank",
+        sentence: "Eilen minä ___ suomea.",
+        missingWord: "opiskelin",
+        options: ["opiskelin", "opiskelen", "opiskella", "opiskellut"],
+        correctAnswer: "opiskelin",
+        explanation: "'Eilen' (yesterday) takes the past imperfect tense: 'opiskelin' (I studied)."
+      },
+      {
+        id: "fi-u1-rev-q13",
+        type: "matching",
+        prompt: "Match present tense with its past imperfect equivalent:",
+        pairs: [
+          { native: "Olen (I am)", english: "Olin (I was)" },
+          { native: "Menen (I go)", english: "Menin (I went)" },
+          { native: "Syön (I eat)", english: "Söin (I ate)" },
+          { native: "Sanon (I say)", english: "Sanoin (I said)" }
+        ]
+      },
+      {
+        id: "fi-u1-rev-q14",
+        type: "multiple_choice",
+        prompt: "How do you say 'I live in Helsinki' in Finnish?",
+        options: ["Asun Helsingissä", "Asun Helsinkiin", "Asun Helsingistä", "Asun Helsinki"],
+        correctAnswer: "Asun Helsingissä",
+        explanation: "Living 'in' a city takes the inessive case (-ssa/-ssä): 'Asun Helsingissä'."
+      },
+      {
+        id: "fi-u1-rev-q15",
+        type: "audio_listen",
+        phrase: "Missä kirjasto on?",
+        prompt: "Listen to the question and select the correct translation:",
+        options: ["Where is the library?", "Where is the train station?", "Where is the school?", "Where is the museum?"],
+        correctAnswer: "Where is the library?",
+        explanation: "'Missä kirjasto on?' asks where the library is."
+      },
+      {
+        id: "fi-u1-rev-q16",
+        type: "scramble",
+        prompt: "Assemble: 'I do not speak Finnish'",
+        tokens: ["En", "puhu", "suomea", "puhun"],
+        correctTokens: ["En", "puhu", "suomea"],
+        explanation: "Negation: 'En puhu suomea' (negative auxiliary 'en' + verb stem)."
+      },
+      {
+        id: "fi-u1-rev-q17",
+        type: "matching",
+        prompt: "Match places and services with English:",
+        pairs: [
+          { native: "Kauppa", english: "Shop / Store" },
+          { native: "Apteekki", english: "Pharmacy" },
+          { native: "Sairaala", english: "Hospital" },
+          { native: "Ravintola", english: "Restaurant" }
+        ]
+      },
+      {
+        id: "fi-u1-rev-q18",
+        type: "fill_blank",
+        sentence: "Tämä talo on hyvin ___.",
+        missingWord: "vanha",
+        options: ["vanha", "vanhassa", "vanhalle", "vanhaa"],
+        correctAnswer: "vanha",
+        explanation: "Predicate adjective in the basic nominative form: 'Tämä talo on hyvin vanha' (This house is very old)."
+      },
+      {
+        id: "fi-u1-rev-q19",
+        type: "multiple_choice",
+        prompt: "What does 'Hyvää päivänjatkoa!' mean when parting ways?",
+        options: ["Have a nice rest of the day!", "Good night!", "See you tomorrow!", "Welcome!"],
+        correctAnswer: "Have a nice rest of the day!",
+        explanation: "'Hyvää päivänjatkoa!' is a courteous wish for the remainder of someone's day."
+      },
+      {
+        id: "fi-u1-rev-q20",
+        type: "scramble",
+        prompt: "Assemble: 'Welcome to Finland!'",
+        tokens: ["Tervetuloa", "Suomeen!", "Suomessa", "Hei"],
+        correctTokens: ["Tervetuloa", "Suomeen!"],
+        explanation: "'Tervetuloa Suomeen!' welcomes someone into Finland (illative case)."
+      }
+    ]
   }
 ];
+
