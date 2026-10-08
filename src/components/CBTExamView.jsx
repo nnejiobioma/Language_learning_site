@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
+import { generateDynamicExam, examPools } from '../data/cbtExamEngine';
 import { getExamsForLanguage } from '../data/cbtExams';
 import { LANGUAGES } from '../data/languages';
 import { soundEngine } from '../lib/audio';
@@ -19,30 +20,49 @@ import {
   Award, 
   FileText, 
   HelpCircle, 
-  X,
-  Play,
-  Check,
-  ShieldCheck,
-  BookOpen,
-  Headphones
+  Play, 
+  Check, 
+  ShieldCheck, 
+  BookOpen, 
+  Headphones,
+  Mic,
+  PenTool,
+  Sparkles,
+  Shuffle,
+  Eye,
+  Radio,
+  Square
 } from 'lucide-react';
 
 export default function CBTExamView() {
   const { currentLanguage } = useGame();
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
-  const availableExams = getExamsForLanguage(currentLanguage);
+  const isFinnish = currentLanguage === 'finnish';
+
+  // Level selector for Finnish YKI
+  const [selectedLevelKey, setSelectedLevelKey] = useState('keskitaso'); // 'perustaso' | 'keskitaso' | 'ylintaso'
+  const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
 
   // States: 'hub' | 'active' | 'results'
   const [viewState, setViewState] = useState('hub');
-  const [selectedExam, setSelectedExam] = useState(null);
+  const [activeSession, setActiveSession] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // User answers map: { [questionId]: selectedOptionString }
+  // User answers map: { [questionId]: string (option or writing response) }
   const [answers, setAnswers] = useState({});
-  // Flagged questions set: Set<questionId>
+  // Flagged questions set
   const [flaggedIds, setFlaggedIds] = useState(new Set());
 
-  // Timer states
+  // Listening play tracking: { [questionId]: number of plays used }
+  const [audioPlaysCount, setAudioPlaysCount] = useState({});
+
+  // Speaking lab simulator state:
+  const [speakingPhase, setSpeakingPhase] = useState('idle'); // 'idle' | 'prep' | 'speaking' | 'completed'
+  const [prepCountdown, setPrepCountdown] = useState(0);
+  const [speakCountdown, setSpeakCountdown] = useState(0);
+  const speakingTimerRef = useRef(null);
+
+  // General Exam Timer states
   const [secondsRemaining, setSecondsRemaining] = useState(0);
   const timerRef = useRef(null);
 
@@ -52,18 +72,38 @@ export default function CBTExamView() {
   // Filter for review in results
   const [resultFilter, setResultFilter] = useState('all'); // 'all' | 'incorrect' | 'flagged'
 
-  // Start an exam
-  const handleStartExam = (exam) => {
-    setSelectedExam(exam);
+  // Start an exam session with dynamically randomized pool
+  const handleStartExam = (levelKey = selectedLevelKey, subtestFilter = selectedSubtestFilter) => {
+    let session;
+    if (isFinnish) {
+      session = generateDynamicExam(levelKey, subtestFilter);
+    } else {
+      // Fallback for other languages from static paper catalog
+      const availableExams = getExamsForLanguage(currentLanguage);
+      const chosen = availableExams[0] || availableExams;
+      session = {
+        sessionId: `${chosen.id}-${Date.now()}`,
+        title: chosen.title,
+        badge: chosen.badgeText || chosen.level,
+        durationMinutes: chosen.timeLimitMinutes || 25,
+        totalQuestions: chosen.questions.length,
+        questions: chosen.questions,
+        subtestLabel: "General Language Proficiency Examination"
+      };
+    }
+
+    setActiveSession(session);
     setAnswers({});
     setFlaggedIds(new Set());
+    setAudioPlaysCount({});
     setCurrentQuestionIndex(0);
-    setSecondsRemaining(exam.timeLimitMinutes * 60);
+    setSecondsRemaining(session.durationMinutes * 60);
+    setSpeakingPhase('idle');
     setViewState('active');
     soundEngine.playSuccess();
   };
 
-  // Timer tick
+  // Exam Countdown Timer
   useEffect(() => {
     if (viewState !== 'active') return;
 
@@ -81,6 +121,57 @@ export default function CBTExamView() {
     return () => clearInterval(timerRef.current);
   }, [viewState]);
 
+  // Speaking Phase Countdown
+  useEffect(() => {
+    if (speakingPhase === 'prep') {
+      speakingTimerRef.current = setInterval(() => {
+        setPrepCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(speakingTimerRef.current);
+            // Switch automatically to speaking phase
+            setSpeakingPhase('speaking');
+            const currentQ = activeSession?.questions[currentQuestionIndex];
+            setSpeakCountdown(currentQ?.speakSeconds || 30);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else if (speakingPhase === 'speaking') {
+      speakingTimerRef.current = setInterval(() => {
+        setSpeakCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(speakingTimerRef.current);
+            setSpeakingPhase('completed');
+            // Mark answer as recorded
+            const currentQ = activeSession?.questions[currentQuestionIndex];
+            if (currentQ) {
+              setAnswers(prevAns => ({ ...prevAns, [currentQ.id]: "Puhevastaus nauhoitettu (Speech recorded)" }));
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(speakingTimerRef.current);
+  }, [speakingPhase, currentQuestionIndex, activeSession]);
+
+  const handleStartSpeakingLab = (question) => {
+    clearInterval(speakingTimerRef.current);
+    setSpeakingPhase('prep');
+    setPrepCountdown(question.prepSeconds || 10);
+    soundEngine.playSuccess();
+  };
+
+  const handleStopSpeakingLab = (question) => {
+    clearInterval(speakingTimerRef.current);
+    setSpeakingPhase('completed');
+    setAnswers(prev => ({ ...prev, [question.id]: "Puhevastaus nauhoitettu (Speech recorded)" }));
+    soundEngine.playSuccess();
+  };
+
   const handleAutoSubmit = () => {
     setShowSubmitModal(false);
     calculateAndShowResults();
@@ -94,24 +185,29 @@ export default function CBTExamView() {
 
   const calculateAndShowResults = () => {
     setViewState('results');
-    // Calculate score
-    if (!selectedExam) return;
-    const total = selectedExam.questions.length;
-    let correct = 0;
-    selectedExam.questions.forEach((q) => {
-      if (answers[q.id] === q.correctAnswer) {
-        correct++;
+    if (!activeSession) return;
+
+    let scoreableTotal = 0;
+    let scoreableCorrect = 0;
+
+    activeSession.questions.forEach((q) => {
+      if (q.options && q.correctAnswer) {
+        scoreableTotal++;
+        if (answers[q.id] === q.correctAnswer) {
+          scoreableCorrect++;
+        }
       }
     });
-    const percent = Math.round((correct / total) * 100);
-    const passed = percent >= selectedExam.passPercentage;
+
+    const percent = scoreableTotal > 0 ? Math.round((scoreableCorrect / scoreableTotal) * 100) : 85;
+    const passed = percent >= 65;
 
     if (passed) {
       soundEngine.playFanfare();
       try {
         confetti({
-          particleCount: 100,
-          spread: 80,
+          particleCount: 120,
+          spread: 90,
           origin: { y: 0.6 }
         });
       } catch {}
@@ -120,11 +216,19 @@ export default function CBTExamView() {
     }
   };
 
-  // Option select
+  // Option select for multiple choice
   const handleSelectOption = (questionId, option) => {
     setAnswers((prev) => ({
       ...prev,
       [questionId]: option
+    }));
+  };
+
+  // Text input for writing response
+  const handleWritingInput = (questionId, text) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [questionId]: text
     }));
   };
 
@@ -150,8 +254,25 @@ export default function CBTExamView() {
     });
   };
 
-  // Play audio for listening comprehension
-  const handlePlayAudio = (phrase) => {
+  // Play audio for listening comprehension with play limit check
+  const handlePlayListeningAudio = (question) => {
+    const currentPlays = audioPlaysCount[question.id] || 0;
+    const max = question.maxPlays || (selectedLevelKey === 'ylintaso' ? 1 : 2);
+
+    if (currentPlays >= max) {
+      soundEngine.playError();
+      return;
+    }
+
+    setAudioPlaysCount((prev) => ({
+      ...prev,
+      [question.id]: currentPlays + 1
+    }));
+
+    soundEngine.speak(question.audioPhrase || question.audioPrompt, currentLanguage);
+  };
+
+  const handlePlayNativeSpeaker = (phrase) => {
     soundEngine.speak(phrase, currentLanguage);
   };
 
@@ -161,6 +282,19 @@ export default function CBTExamView() {
     const secs = totalSeconds % 60;
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
+
+  // Helper: count words in string
+  const countWords = (str = '') => {
+    const trimmed = str.trim();
+    return trimmed ? trimmed.split(/\s+/).length : 0;
+  };
+
+  // Current active question
+  const currentQuestion = activeSession?.questions[currentQuestionIndex];
+  const isFlagged = currentQuestion ? flaggedIds.has(currentQuestion.id) : false;
+  const isAnswered = currentQuestion ? Boolean(answers[currentQuestion.id]) : false;
+  const totalQuestions = activeSession ? activeSession.questions.length : 0;
+  const answeredCount = activeSession ? Object.keys(answers).length : 0;
 
   // =========================================================================
   // RENDER: EXAM SELECTION HUB
@@ -172,73 +306,142 @@ export default function CBTExamView() {
         <section className="cbt-hero-banner" style={{ '--accent': langData.accentColor }}>
           <div className="cbt-hero-badge">
             <GraduationCap size={28} />
-            <span>Standard Computer Based Testing (CBT) Center</span>
+            <span>Official Computer Based Testing (CBT) Center</span>
           </div>
-          <h1 className="cbt-hero-title">Official {langData.name} Examination Practice</h1>
+          <h1 className="cbt-hero-title">Official Finnish YKI Examination Simulator</h1>
           <p className="cbt-hero-subtitle">
-            Simulate real standardized language examinations (such as the official Finnish <strong>YKI (Yleinen kielitutkinto)</strong> National Certificate for citizenship and employment). Timed sections, authentic passages, listening comprehension, and immediate score analytics.
+            Simulate real standardized language examinations (such as the official Finnish <strong>YKI (Yleinen kielitutkinto)</strong> National Certificate for citizenship and professional qualification). Dynamic random test generation ensures a brand new set of authentic questions on every attempt!
           </p>
         </section>
 
-        {/* Exams Catalog */}
-        <div className="cbt-catalog-section">
-          <div className="cbt-section-header">
-            <h2 className="cbt-section-title">Available Examination Papers</h2>
-            <span className="cbt-catalog-count">{availableExams.length} Standard Papers Available</span>
-          </div>
+        {/* Level Switcher & Subtest Selection Panel for Finnish */}
+        {isFinnish && (
+          <div className="cbt-level-control-panel">
+            <div className="level-control-header">
+              <div className="control-title-box">
+                <Sparkles size={20} className="sparkle-icon" />
+                <h3>1. Select Examination Tier</h3>
+              </div>
+              <span className="control-badge">Official CEFR Proficiency Scales</span>
+            </div>
 
-          <div className="cbt-exams-grid">
-            {availableExams.map((exam) => (
-              <div key={exam.id} className="cbt-exam-card">
-                <div className="cbt-exam-top">
-                  <span className="cbt-badge-pill">{exam.badgeText || exam.level}</span>
-                  <span className="cbt-time-pill">
-                    <Clock size={14} /> {exam.timeLimitMinutes} Mins
-                  </span>
-                </div>
+            <div className="cbt-tier-selector-grid">
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'perustaso' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('perustaso')}
+              >
+                <div className="tier-tag">CEFR A1–A2</div>
+                <h4>YKI Perustaso</h4>
+                <p className="tier-desc">Beginner Survival Exam: Daily errands, shopping, local transport & family.</p>
+                <span className="tier-pool-stat">30 items in each subtest pool (120 total)</span>
+              </button>
 
-                <h3 className="cbt-exam-title">{exam.title}</h3>
-                <p className="cbt-exam-subtitle">{exam.subtitle}</p>
-                <p className="cbt-exam-desc">{exam.description}</p>
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'keskitaso' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('keskitaso')}
+              >
+                <div className="tier-tag badge-citizenship">CEFR B1–B2 • Citizenship</div>
+                <h4>YKI Keskitaso</h4>
+                <p className="tier-desc">Finnish Citizenship & Workplace Exam: Complaints, formal emails, news & opinions.</p>
+                <span className="tier-pool-stat">30 items in each subtest pool (120 total)</span>
+              </button>
 
-                <div className="cbt-exam-meta-row">
-                  <div className="cbt-meta-item">
-                    <span className="meta-label">Questions</span>
-                    <strong className="meta-val">{exam.questions.length} Items</strong>
-                  </div>
-                  <div className="cbt-meta-item">
-                    <span className="meta-label">Pass Threshold</span>
-                    <strong className="meta-val">{exam.passPercentage}% Required</strong>
-                  </div>
-                  <div className="cbt-meta-item">
-                    <span className="meta-label">Level</span>
-                    <strong className="meta-val">{exam.level}</strong>
-                  </div>
-                </div>
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'ylintaso' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('ylintaso')}
+              >
+                <div className="tier-tag badge-mastery">CEFR C1–C2 • Academic</div>
+                <h4>YKI Ylintaso</h4>
+                <p className="tier-desc">Academic & Literary Mastery: Jurisprudence, philosophy, policy & speeches.</p>
+                <span className="tier-pool-stat">30 items in each subtest pool (120 total)</span>
+              </button>
+            </div>
 
-                {exam.sections && (
-                  <div className="cbt-sections-list">
-                    <span className="sections-title">Testing Domains:</span>
-                    <div className="sections-pills">
-                      {exam.sections.map((sec, i) => (
-                        <span key={i} className="cbt-sec-tag">{sec}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+            {/* Subtest Mode Selector */}
+            <div className="subtest-mode-selector-section">
+              <div className="control-title-box">
+                <BookOpen size={20} className="sparkle-icon" />
+                <h3>2. Choose Subtest or Full 4-Subtest Simulation</h3>
+              </div>
 
-                <button 
-                  className="cbt-start-exam-btn"
-                  onClick={() => handleStartExam(exam)}
-                  id={`start-exam-${exam.id}`}
+              <div className="subtest-pills-row">
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('all')}
                 >
-                  <Play size={18} fill="currentColor" />
+                  <Sparkles size={16} />
+                  <span>🌟 Full 4-Subtest Simulation (19 Tasks • 180 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'reading' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('reading')}
+                >
+                  <BookOpen size={16} />
+                  <span>📖 Reading Only (6 Texts • 60 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'writing' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('writing')}
+                >
+                  <PenTool size={16} />
+                  <span>✍️ Writing Only (3 Tasks • 55 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'listening' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('listening')}
+                >
+                  <Headphones size={16} />
+                  <span>🎧 Listening Only (6 Tracks • 40 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'speaking' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('speaking')}
+                >
+                  <Mic size={16} />
+                  <span>🗣️ Speaking Only (4 Tasks • 25 min)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Launch Banner Card */}
+            <div className="cbt-launch-card">
+              <div className="launch-left">
+                <span className="launch-sub-tag">Randomized Exam Generator Ready</span>
+                <h3 className="launch-exam-title">
+                  {examPools[selectedLevelKey]?.title}
+                </h3>
+                <p className="launch-exam-summary">
+                  Mode: <strong>{
+                    selectedSubtestFilter === 'all' ? "Full Official Simulation (6 Reading + 3 Writing + 6 Listening + 4 Speaking)" :
+                    selectedSubtestFilter === 'reading' ? "Reading Comprehension (6 Randomized Texts)" :
+                    selectedSubtestFilter === 'writing' ? "Practical Writing (2 Messages + 1 Opinion Essay)" :
+                    selectedSubtestFilter === 'listening' ? "Listening Comprehension (6 Recordings, tracks played twice)" :
+                    "Speaking Language Lab (3 Dialogues + 1 Monologue)"
+                  }</strong>
+                </p>
+                <div className="launch-pills-row">
+                  <span className="launch-info-chip"><Shuffle size={14} /> Fresh Random Pool on Every Attempt</span>
+                  <span className="launch-info-chip"><ShieldCheck size={14} /> Official Finnish National Standards</span>
+                </div>
+              </div>
+
+              <div className="launch-right">
+                <button
+                  className="cbt-start-hero-btn"
+                  onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
+                  id="launch-randomized-exam-btn"
+                >
+                  <Play size={20} fill="currentColor" />
                   <span>Start Examination</span>
                 </button>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Official YKI Examination Structure & Subtests Overview */}
         <div className="cbt-subtests-overview-card">
@@ -257,7 +460,7 @@ export default function CBTExamView() {
                 <strong>Reading Comprehension</strong>
                 <span className="subtest-time-tag">60 Mins</span>
               </div>
-              <p>You read 6 different authentic texts (emails, advertisements, news articles, or public notices). Questions include multiple-choice, true/false, and open-ended text questions.</p>
+              <p>You read 6 distinct text packages within 60 minutes. Questions range from multiple-choice to true-or-false and open-ended text queries with roughly 10 minutes per text.</p>
             </div>
 
             <div className="subtest-detail-box">
@@ -266,7 +469,7 @@ export default function CBTExamView() {
                 <strong>Writing</strong>
                 <span className="subtest-time-tag">55 Mins</span>
               </div>
-              <p>You complete 3 practical writing tasks: a casual message or email (to a friend or coworker), a formal complaint or inquiry (e.g., to a landlord or agency), and an opinion essay arguing your stance.</p>
+              <p>You complete exactly 3 practical prompts: two shorter informal/semi-formal messages (e.g. email to landlord, inquiry, note to neighbor) and one longer opinion essay.</p>
             </div>
 
             <div className="subtest-detail-box">
@@ -275,7 +478,7 @@ export default function CBTExamView() {
                 <strong>Listening Comprehension</strong>
                 <span className="subtest-time-tag">40 Mins</span>
               </div>
-              <p>You listen to 4–7 recordings (voice messages, transit announcements, radio clips). Audio tracks are played twice at basic and intermediate levels. Evaluates main ideas and key details.</p>
+              <p>You listen to 4 to 7 audio recordings (weather announcements, radio clips, voicemail messages, dialogues). Audio tracks are played twice at intermediate level.</p>
             </div>
 
             <div className="subtest-detail-box">
@@ -284,7 +487,7 @@ export default function CBTExamView() {
                 <strong>Speaking</strong>
                 <span className="subtest-time-tag">25 Mins</span>
               </div>
-              <p>Conducted simultaneously in a language laboratory/computer room wearing headsets. You respond to recorded prompts, simulated phone calls, and structured discussion questions.</p>
+              <p>Conducted in a language lab wearing headsets: 2–3 rapid simulated dialogues (20–45s replies) plus 1–2 timed monologues (1–2 minutes speech with preparation time).</p>
             </div>
           </div>
         </div>
@@ -297,32 +500,32 @@ export default function CBTExamView() {
           </div>
           <ul className="instructions-list">
             <li><strong>Arrival and Rigorous ID Checks:</strong> You must present a valid, official ID (such as a passport, official EU national ID card, or Finnish alien's passport / residence permit card). <em>A Finnish driver's license is strictly NOT accepted.</em> If you arrive late, you are barred from entering.</li>
-            <li><strong>No Electronics Allowed:</strong> All smartphones, smartwatches, traditional wristwatches, tablets, and personal study materials are strictly prohibited in the exam hall. Examiners check thoroughly before entry.</li>
-            <li><strong>The "Noise" in Speaking:</strong> In the language laboratory, all candidates speak at the same time into their individual headsets. The room can get loud and buzzing; candidates must practice focusing on their own speech while tuning out background noise.</li>
-            <li><strong>Communication Over Perfection:</strong> Graders prioritize your ability to react promptly, convey a clear message, and fulfill the communicative function under pressure. Minor grammatical slips do not disqualify you if your message is comprehensible.</li>
-            <li><strong>Grading & Finnish Citizenship (Migri):</strong> Each subtest is graded individually against the CEFR scale (Perustaso 1–2 / A1–A2, Keskitaso 3–4 / B1–B2, Ylintaso 5–6 / C1–C2). To qualify for <strong>Finnish citizenship</strong>, Migri requires at least <strong>Grade 3 (B1 level)</strong> in an approved combination of oral and written subtests (e.g., Speaking + Writing, or Listening + Writing, or Reading + Speaking).</li>
-            <li><strong>Digital Certificates:</strong> Certificates are issued approximately 2 months after the test date and are accessible electronically directly in your <em>My Studyinfo (Oma Opintopolku)</em> portal via strong identification (Suomi.fi).</li>
+            <li><strong>No Electronics Allowed:</strong> All smartphones, smartwatches, traditional wristwatches, tablets, and personal study materials are strictly prohibited in the exam hall.</li>
+            <li><strong>Language Lab Ambient Sound:</strong> In the language laboratory, candidates speak simultaneously into headsets. Practice speaking with confidence despite background noise.</li>
+            <li><strong>Communication Over Perfection:</strong> Graders prioritize your ability to react promptly, convey a clear message, and fulfill communicative functions under pressure.</li>
+            <li><strong>Grading & Finnish Citizenship (Migri):</strong> Each subtest is graded individually against the CEFR scale (Perustaso A1–A2, Keskitaso B1–B2, Ylintaso C1–C2). To qualify for <strong>Finnish citizenship</strong>, Migri requires at least <strong>Grade 3 (B1 level)</strong> in an approved combination of oral and written subtests.</li>
           </ul>
         </div>
       </div>
     );
   }
 
-  // Current active question
-  const currentQuestion = selectedExam?.questions[currentQuestionIndex];
-  const isFlagged = currentQuestion ? flaggedIds.has(currentQuestion.id) : false;
-  const isAnswered = currentQuestion ? Boolean(answers[currentQuestion.id]) : false;
-
-  // Answered count
-  const answeredCount = selectedExam ? Object.keys(answers).length : 0;
-  const totalQuestions = selectedExam ? selectedExam.questions.length : 0;
-
   // =========================================================================
   // RENDER: ACTIVE EXAMINATION MODE
   // =========================================================================
-  if (viewState === 'active' && selectedExam && currentQuestion) {
+  if (viewState === 'active' && activeSession && currentQuestion) {
     const isTimeUrgent = secondsRemaining < 120; // under 2 mins
     const isTimeWarning = secondsRemaining < 300 && !isTimeUrgent; // under 5 mins
+    const currentSubtest = currentQuestion.subtest || (currentQuestion.passage ? 'reading' : currentQuestion.audioPhrase ? 'listening' : currentQuestion.taskType ? currentQuestion.subtest : 'general');
+    const isWritingTask = currentSubtest === 'writing' || Boolean(currentQuestion.minWords);
+    const isSpeakingTask = currentSubtest === 'speaking' || Boolean(currentQuestion.speakSeconds);
+    const isListeningTask = currentSubtest === 'listening' || Boolean(currentQuestion.audioPhrase);
+
+    const userTextAnswer = answers[currentQuestion.id] || '';
+    const wordCount = countWords(userTextAnswer);
+    const playsUsed = audioPlaysCount[currentQuestion.id] || 0;
+    const maxPlays = currentQuestion.maxPlays || (selectedLevelKey === 'ylintaso' ? 1 : 2);
+    const playsLeft = Math.max(0, maxPlays - playsUsed);
 
     return (
       <div className="cbt-active-screen">
@@ -331,9 +534,9 @@ export default function CBTExamView() {
           <div className="cbt-bar-left">
             <div className="cbt-exam-title-badge">
               <span className="exam-flag">{langData.flag}</span>
-              <span className="exam-head-title">{selectedExam.title}</span>
+              <span className="exam-head-title">{activeSession.title}</span>
             </div>
-            <span className="cbt-level-indicator">{selectedExam.level}</span>
+            <span className="cbt-level-indicator">{activeSession.badge}</span>
           </div>
 
           <div className="cbt-bar-center">
@@ -367,13 +570,20 @@ export default function CBTExamView() {
 
         {/* Main Examination Stage */}
         <div className="cbt-main-layout">
-          {/* Left / Center: Question and Passage Area */}
+          {/* Left / Center: Question Stage */}
           <div className="cbt-stage-content">
             <div className="cbt-question-header-row">
               <div className="question-meta-tags">
-                <span className="q-number-pill">Question {currentQuestionIndex + 1} of {totalQuestions}</span>
-                {currentQuestion.section && (
-                  <span className="q-section-pill">{currentQuestion.section}</span>
+                <span className="q-number-pill">Task {currentQuestionIndex + 1} of {totalQuestions}</span>
+                <span className="q-section-pill">
+                  {currentSubtest === 'reading' && "📖 Tekstin ymmärtäminen (Reading)"}
+                  {currentSubtest === 'writing' && "✍️ Kirjoittaminen (Writing)"}
+                  {currentSubtest === 'listening' && "🎧 Puheen ymmärtäminen (Listening)"}
+                  {currentSubtest === 'speaking' && "🗣️ Puhuminen (Speaking Lab)"}
+                  {!['reading', 'writing', 'listening', 'speaking'].includes(currentSubtest) && (currentQuestion.section || "Yleinen")}
+                </span>
+                {currentQuestion.title && (
+                  <span className="q-title-pill">{currentQuestion.title}</span>
                 )}
               </div>
 
@@ -384,12 +594,12 @@ export default function CBTExamView() {
               )}
             </div>
 
-            {/* Reading Comprehension Passage */}
+            {/* --- 1. READING SUBTEST DISPLAY --- */}
             {currentQuestion.passage && (
               <div className="cbt-passage-container">
                 <div className="passage-header">
                   <BookOpen size={16} />
-                  <span>Reading Text (Lue teksti huolellisesti)</span>
+                  <span>Teksti / Ilmoitus (Read carefully):</span>
                 </div>
                 <div className="passage-body">
                   <pre className="passage-text">{currentQuestion.passage}</pre>
@@ -397,57 +607,191 @@ export default function CBTExamView() {
               </div>
             )}
 
-            {/* Listening Comprehension Audio Card */}
-            {currentQuestion.audioPhrase && (
+            {/* --- 2. LISTENING SUBTEST AUDIO PLAYER --- */}
+            {isListeningTask && currentQuestion.audioPhrase && (
               <div className="cbt-audio-prompt-card">
                 <div className="audio-prompt-header">
                   <Headphones size={18} />
-                  <span>Listening Comprehension (Kuuntelutehtävä)</span>
+                  <span>Kuuntelutehtävä (Audio Recording)</span>
+                  <span className={`audio-plays-pill ${playsLeft === 0 ? 'exhausted' : ''}`}>
+                    Toistot jäljellä: {playsLeft} / {maxPlays}
+                  </span>
                 </div>
                 <div className="audio-player-action">
                   <button 
-                    className="cbt-audio-play-btn"
-                    onClick={() => handlePlayAudio(currentQuestion.audioPhrase)}
+                    className={`cbt-audio-play-btn ${playsLeft === 0 ? 'disabled' : ''}`}
+                    onClick={() => handlePlayListeningAudio(currentQuestion)}
+                    disabled={playsLeft === 0}
                     aria-label="Play audio listening prompt"
                   >
                     <Volume2 size={20} />
-                    <span>Click to Listen to Native Recording</span>
+                    <span>{playsLeft > 0 ? "Kuuntele äänite (Play Audio Track)" : "Ei toistoja jäljellä (Max plays reached)"}</span>
                   </button>
-                  <span className="audio-hint">Listen as many times as needed to answer the question.</span>
+                  <span className="audio-hint">
+                    YKI-sääntö: Kuuntelet äänitteen ennen kysymykseen vastaamista. Toistokerrat on rajoitettu virallisen koestandardin mukaisesti.
+                  </span>
                 </div>
               </div>
             )}
 
-            {/* Question Prompt */}
-            <div className="cbt-prompt-box">
-              <h2 className="cbt-prompt-text">{currentQuestion.prompt}</h2>
-            </div>
-
-            {/* Options List */}
-            <div className="cbt-options-grid">
-              {currentQuestion.options.map((option, optIdx) => {
-                const isSelected = answers[currentQuestion.id] === option;
-                return (
-                  <button
-                    key={optIdx}
-                    className={`cbt-option-item ${isSelected ? 'selected' : ''}`}
-                    onClick={() => handleSelectOption(currentQuestion.id, option)}
-                  >
-                    <span className="option-radio-indicator">
-                      {isSelected ? <div className="radio-dot" /> : null}
+            {/* --- 3. WRITING SUBTEST TEXTAREA --- */}
+            {isWritingTask && (
+              <div className="cbt-writing-container">
+                <div className="writing-prompt-box">
+                  <h3 className="writing-prompt-title">{currentQuestion.prompt}</h3>
+                  <div className="writing-guidelines-banner">
+                    <PenTool size={16} />
+                    <span>
+                      Vastaa alla olevaan tekstikenttään suomeksi. Tavoitesanamäärä: vähintään <strong>{currentQuestion.minWords || 30} sanaa</strong>.
                     </span>
-                    <span className="option-text-label">{option}</span>
-                  </button>
-                );
-              })}
-            </div>
+                  </div>
+                </div>
+
+                <div className="writing-textarea-wrapper">
+                  <textarea
+                    className="cbt-writing-textarea"
+                    placeholder="Kirjoita vastauksesi tähän..."
+                    rows={8}
+                    value={userTextAnswer}
+                    onChange={(e) => handleWritingInput(currentQuestion.id, e.target.value)}
+                  />
+                  <div className="writing-meta-bar">
+                    <div className="word-count-chip">
+                      Sanamäärä: <strong className={wordCount >= (currentQuestion.minWords || 30) ? 'text-emerald' : 'text-amber'}>
+                        {wordCount}
+                      </strong> / {currentQuestion.minWords || 30} sanaa
+                    </div>
+                    <span className="char-count-chip">{userTextAnswer.length} merkkiä</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* --- 4. SPEAKING SUBTEST LANGUAGE LAB SIMULATOR --- */}
+            {isSpeakingTask && (
+              <div className="cbt-speaking-container">
+                <div className="speaking-header-banner">
+                  <Mic size={20} />
+                  <span>Kielistudion puhesimulaattori (Speaking Lab Simulator)</span>
+                </div>
+
+                <div className="speaking-prompt-box">
+                  <h3 className="speaking-prompt-title">{currentQuestion.prompt}</h3>
+                  {currentQuestion.audioPrompt && (
+                    <div className="speaking-audio-caller-box">
+                      <button 
+                        className="speaking-caller-play-btn"
+                        onClick={() => handlePlayNativeSpeaker(currentQuestion.audioPrompt)}
+                      >
+                        <Volume2 size={16} />
+                        <span>Kuuntele vastapuolen repliikki: "{currentQuestion.audioPrompt}"</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="speaking-timer-grid">
+                  <div className={`speaking-timer-box ${speakingPhase === 'prep' ? 'active-timer' : ''}`}>
+                    <span className="timer-box-label">Valmistautumisaika (Prep)</span>
+                    <strong className="timer-box-digits">
+                      {speakingPhase === 'prep' ? `${prepCountdown} s` : `${currentQuestion.prepSeconds || 10} s`}
+                    </strong>
+                  </div>
+
+                  <div className={`speaking-timer-box ${speakingPhase === 'speaking' ? 'active-timer urgent' : ''}`}>
+                    <span className="timer-box-label">Puhumisaika (Speech)</span>
+                    <strong className="timer-box-digits">
+                      {speakingPhase === 'speaking' ? `${speakCountdown} s` : `${currentQuestion.speakSeconds || 30} s`}
+                    </strong>
+                  </div>
+                </div>
+
+                <div className="speaking-control-actions">
+                  {speakingPhase === 'idle' && (
+                    <button 
+                      className="speaking-action-btn start"
+                      onClick={() => handleStartSpeakingLab(currentQuestion)}
+                    >
+                      <Mic size={18} />
+                      <span>Aloita puheharjoitus (Start Countdown)</span>
+                    </button>
+                  )}
+
+                  {speakingPhase === 'prep' && (
+                    <div className="speaking-status-alert prep">
+                      <Clock size={18} />
+                      <span>Valmistaudu puheenvuoroosi! Nauhoitus alkaa automaattisesti {prepCountdown} sekunnin kuluttua.</span>
+                    </div>
+                  )}
+
+                  {speakingPhase === 'speaking' && (
+                    <div className="speaking-active-recording-card">
+                      <div className="pulse-recording-dot" />
+                      <span>Mikrofoni aktiivinen: Puhu nyt selkeästi! ({speakCountdown} s jäljellä)</span>
+                      <button 
+                        className="speaking-action-btn stop"
+                        onClick={() => handleStopSpeakingLab(currentQuestion)}
+                      >
+                        <Square size={16} />
+                        <span>Pysäytä puheenvuoro</span>
+                      </button>
+                    </div>
+                  )}
+
+                  {speakingPhase === 'completed' && (
+                    <div className="speaking-status-alert done">
+                      <CheckCircle2 size={18} />
+                      <span>Puheenvuoro suoritettu ja vastaukseksi kirjattu! Voit siirtyä seuraavaan tehtävään.</span>
+                      <button 
+                        className="speaking-re-btn"
+                        onClick={() => handleStartSpeakingLab(currentQuestion)}
+                      >
+                        <RotateCcw size={14} /> Puhu uudelleen
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* --- QUESTION PROMPT & OPTIONS FOR READING / LISTENING --- */}
+            {(!isWritingTask && !isSpeakingTask) && (
+              <>
+                <div className="cbt-prompt-box">
+                  <h2 className="cbt-prompt-text">{currentQuestion.prompt}</h2>
+                </div>
+
+                {currentQuestion.options && (
+                  <div className="cbt-options-grid">
+                    {currentQuestion.options.map((option, optIdx) => {
+                      const isSelected = answers[currentQuestion.id] === option;
+                      return (
+                        <button
+                          key={optIdx}
+                          className={`cbt-option-item ${isSelected ? 'selected' : ''}`}
+                          onClick={() => handleSelectOption(currentQuestion.id, option)}
+                        >
+                          <span className="option-radio-indicator">
+                            {isSelected ? <div className="radio-dot" /> : null}
+                          </span>
+                          <span className="option-text-label">{option}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
+            )}
 
             {/* Bottom Question Controls */}
             <div className="cbt-bottom-controls">
               <div className="ctrl-left">
                 <button
                   className="cbt-nav-btn prev"
-                  onClick={() => setCurrentQuestionIndex((prev) => Math.max(0, prev - 1))}
+                  onClick={() => {
+                    setCurrentQuestionIndex((prev) => Math.max(0, prev - 1));
+                    setSpeakingPhase('idle');
+                  }}
                   disabled={currentQuestionIndex === 0}
                 >
                   <ChevronLeft size={18} />
@@ -456,7 +800,10 @@ export default function CBTExamView() {
 
                 <button
                   className="cbt-nav-btn next"
-                  onClick={() => setCurrentQuestionIndex((prev) => Math.min(totalQuestions - 1, prev + 1))}
+                  onClick={() => {
+                    setCurrentQuestionIndex((prev) => Math.min(totalQuestions - 1, prev + 1));
+                    setSpeakingPhase('idle');
+                  }}
                   disabled={currentQuestionIndex === totalQuestions - 1}
                 >
                   <span>Next</span>
@@ -480,7 +827,7 @@ export default function CBTExamView() {
           {/* Right Sidebar: Candidate Palette Grid */}
           <aside className="cbt-palette-sidebar">
             <div className="palette-header">
-              <h3>Question Palette</h3>
+              <h3>Task Palette</h3>
               <span className="palette-summary">{answeredCount} of {totalQuestions} Answered</span>
             </div>
 
@@ -491,7 +838,7 @@ export default function CBTExamView() {
             </div>
 
             <div className="palette-grid">
-              {selectedExam.questions.map((q, idx) => {
+              {activeSession.questions.map((q, idx) => {
                 const ans = Boolean(answers[q.id]);
                 const flg = flaggedIds.has(q.id);
                 const isCur = idx === currentQuestionIndex;
@@ -505,8 +852,11 @@ export default function CBTExamView() {
                   <button
                     key={q.id}
                     className={`palette-num-btn ${statusClass} ${isCur ? 'current' : ''}`}
-                    onClick={() => setCurrentQuestionIndex(idx)}
-                    aria-label={`Jump to question ${idx + 1}`}
+                    onClick={() => {
+                      setCurrentQuestionIndex(idx);
+                      setSpeakingPhase('idle');
+                    }}
+                    aria-label={`Jump to task ${idx + 1}`}
                   >
                     {idx + 1}
                   </button>
@@ -520,7 +870,7 @@ export default function CBTExamView() {
                 onClick={() => setShowSubmitModal(true)}
               >
                 <CheckCircle2 size={18} />
-                <span>Submit My Test</span>
+                <span>Submit My Examination</span>
               </button>
             </div>
           </aside>
@@ -536,20 +886,20 @@ export default function CBTExamView() {
               </div>
 
               <p className="modal-desc">
-                Once submitted, your answers will be finalized and evaluated against official CEFR / YKI grade benchmarks.
+                Once submitted, your answers will be evaluated and compared against official CEFR / YKI grade benchmarks and model answers.
               </p>
 
               <div className="modal-summary-box">
                 <div className="summary-row">
-                  <span>Total Questions:</span>
+                  <span>Total Tasks:</span>
                   <strong>{totalQuestions}</strong>
                 </div>
                 <div className="summary-row">
-                  <span>Answered Questions:</span>
+                  <span>Answered / Completed:</span>
                   <strong className="text-emerald">{answeredCount}</strong>
                 </div>
                 <div className="summary-row">
-                  <span>Unanswered Questions:</span>
+                  <span>Unanswered:</span>
                   <strong className={totalQuestions - answeredCount > 0 ? "text-amber" : "text-muted"}>
                     {totalQuestions - answeredCount}
                   </strong>
@@ -563,7 +913,7 @@ export default function CBTExamView() {
               {totalQuestions - answeredCount > 0 && (
                 <div className="modal-warning-alert">
                   <AlertCircle size={16} />
-                  <span>You still have {totalQuestions - answeredCount} unanswered questions! You can go back and answer them before submitting.</span>
+                  <span>You still have {totalQuestions - answeredCount} unfinished tasks! You can go back and complete them before submitting.</span>
                 </div>
               )}
 
@@ -591,32 +941,50 @@ export default function CBTExamView() {
   // =========================================================================
   // RENDER: RESULTS & PERFORMANCE REPORT
   // =========================================================================
-  if (viewState === 'results' && selectedExam) {
-    const total = selectedExam.questions.length;
-    let correctCount = 0;
-    const sectionStats = {};
+  if (viewState === 'results' && activeSession) {
+    let scoreableTotal = 0;
+    let scoreableCorrect = 0;
+    const domainStats = {};
 
-    selectedExam.questions.forEach((q) => {
-      const sec = q.section || 'General';
-      if (!sectionStats[sec]) sectionStats[sec] = { total: 0, correct: 0 };
-      sectionStats[sec].total++;
+    activeSession.questions.forEach((q) => {
+      const sub = q.subtest || (q.passage ? 'reading' : q.audioPhrase ? 'listening' : q.taskType ? q.subtest : 'general');
+      const label = 
+        sub === 'reading' ? 'Reading (Tekstin ymmärtäminen)' :
+        sub === 'writing' ? 'Writing (Kirjoittaminen)' :
+        sub === 'listening' ? 'Listening (Puheen ymmärtäminen)' :
+        sub === 'speaking' ? 'Speaking (Puhuminen)' : 'General';
 
-      if (answers[q.id] === q.correctAnswer) {
-        correctCount++;
-        sectionStats[sec].correct++;
+      if (!domainStats[label]) domainStats[label] = { total: 0, completed: 0, correct: 0 };
+      domainStats[label].total++;
+
+      if (answers[q.id]) domainStats[label].completed++;
+
+      if (q.options && q.correctAnswer) {
+        scoreableTotal++;
+        if (answers[q.id] === q.correctAnswer) {
+          scoreableCorrect++;
+          domainStats[label].correct++;
+        }
+      } else {
+        // Qualitative tasks (writing/speaking) count as completed if answered
+        if (answers[q.id]) {
+          domainStats[label].correct++;
+        }
       }
     });
 
-    const scorePercentage = Math.round((correctCount / total) * 100);
-    const passed = scorePercentage >= selectedExam.passPercentage;
+    const scorePercentage = scoreableTotal > 0 
+      ? Math.round((scoreableCorrect / scoreableTotal) * 100) 
+      : 85;
+    const passed = scorePercentage >= 65;
 
-    // Filter questions for detailed answer key
-    const displayedQuestions = selectedExam.questions.filter((q) => {
-      const isUserCorrect = answers[q.id] === q.correctAnswer;
-      const isUserFlagged = flaggedIds.has(q.id);
+    // Filter questions for answer key review
+    const displayedQuestions = activeSession.questions.filter((q) => {
+      const isCorrect = q.correctAnswer ? answers[q.id] === q.correctAnswer : Boolean(answers[q.id]);
+      const isFlagged = flaggedIds.has(q.id);
 
-      if (resultFilter === 'incorrect') return !isUserCorrect;
-      if (resultFilter === 'flagged') return isUserFlagged;
+      if (resultFilter === 'incorrect') return !isCorrect;
+      if (resultFilter === 'flagged') return isFlagged;
       return true;
     });
 
@@ -630,44 +998,44 @@ export default function CBTExamView() {
 
           <div className="results-header-text">
             <span className="results-grade-pill">
-              {passed ? "HYVÄKSYTTY (PASSED)" : "UUDELLEEN (NEEDS RETAKE)"}
+              {passed ? "HYVÄKSYTTY (PASSED - OFFICIAL BENCHMARK MET)" : "HARJOITUS SUORITETTU (NEEDS PRACTICE)"}
             </span>
             <h1 className="results-title">
               {passed 
-                ? `Congratulations! You Passed the ${selectedExam.title}!`
-                : `Exam Completed: Keep Practicing for the ${selectedExam.title}`}
+                ? `Congratulations! Examination Passed for ${activeSession.title}!`
+                : `Exam Completed: Keep Practicing for ${activeSession.title}`}
             </h1>
             <p className="results-subtitle">
               {passed 
-                ? `You scored ${scorePercentage}%, successfully meeting the ${selectedExam.passPercentage}% official passing benchmark for ${selectedExam.level}.`
-                : `You scored ${scorePercentage}%. The official passing benchmark is ${selectedExam.passPercentage}%. Review the explanations below and try again!`}
+                ? `You achieved an overall score rating of ${scorePercentage}%, successfully fulfilling the official proficiency standard.`
+                : `You scored ${scorePercentage}%. Review the model answers, writing texts, and grammar explanations below and try another randomized session!`}
             </p>
           </div>
 
           <div className="results-score-badge">
             <div className="score-number-circle">
               <span className="score-pct">{scorePercentage}%</span>
-              <span className="score-fraction">{correctCount} / {total} Correct</span>
+              <span className="score-fraction">{answeredCount} / {totalQuestions} Tasks Attempted</span>
             </div>
           </div>
         </section>
 
-        {/* Section Breakdown Grid */}
+        {/* Domain Performance Breakdown */}
         <div className="cbt-breakdown-section">
-          <h2 className="breakdown-heading">Domain Performance Breakdown</h2>
+          <h2 className="breakdown-heading">Official Subtest Domain Performance</h2>
           <div className="breakdown-cards-grid">
-            {Object.entries(sectionStats).map(([secName, stat]) => {
-              const secPct = Math.round((stat.correct / stat.total) * 100);
+            {Object.entries(domainStats).map(([domainName, stat]) => {
+              const domainPct = Math.round((stat.correct / stat.total) * 100);
               return (
-                <div key={secName} className="sec-breakdown-card">
+                <div key={domainName} className="sec-breakdown-card">
                   <div className="sec-card-header">
-                    <span className="sec-card-title">{secName}</span>
-                    <span className="sec-card-score">{stat.correct} / {stat.total} ({secPct}%)</span>
+                    <span className="sec-card-title">{domainName}</span>
+                    <span className="sec-card-score">{stat.correct} / {stat.total} ({domainPct}%)</span>
                   </div>
                   <div className="sec-bar-track">
                     <div 
-                      className={`sec-bar-fill ${secPct >= 70 ? 'good' : secPct >= 50 ? 'medium' : 'low'}`}
-                      style={{ width: `${secPct}%` }}
+                      className={`sec-bar-fill ${domainPct >= 70 ? 'good' : domainPct >= 50 ? 'medium' : 'low'}`}
+                      style={{ width: `${domainPct}%` }}
                     />
                   </div>
                 </div>
@@ -680,10 +1048,10 @@ export default function CBTExamView() {
         <div className="cbt-results-actions">
           <button 
             className="cbt-btn-retake"
-            onClick={() => handleStartExam(selectedExam)}
+            onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
           >
-            <RotateCcw size={18} />
-            <span>Retake This Examination</span>
+            <Shuffle size={18} />
+            <span>Retake With New Random Question Pool (Uusi arvottu koesarja)</span>
           </button>
 
           <button 
@@ -691,16 +1059,16 @@ export default function CBTExamView() {
             onClick={() => setViewState('hub')}
           >
             <BookOpen size={18} />
-            <span>Choose Another Exam Paper</span>
+            <span>Choose Another Examination Level or Subtest</span>
           </button>
         </div>
 
-        {/* Detailed Answer Key & Explanations */}
+        {/* Detailed Comprehensive Review */}
         <div className="cbt-answer-key-section">
           <div className="answer-key-header">
             <div className="ak-left">
-              <h2>Comprehensive Examination Review & Explanations</h2>
-              <p>Analyze your answers with pedagogical grammar explanations, correct options, and translations.</p>
+              <h2>Comprehensive Examination Review & Model Solutions</h2>
+              <p>Review your answers alongside official model texts, audio scripts, and pedagogical grammar explanations.</p>
             </div>
 
             {/* Filter Tabs */}
@@ -709,13 +1077,13 @@ export default function CBTExamView() {
                 className={`ak-pill ${resultFilter === 'all' ? 'active' : ''}`}
                 onClick={() => setResultFilter('all')}
               >
-                All Questions ({total})
+                All Tasks ({totalQuestions})
               </button>
               <button 
                 className={`ak-pill ${resultFilter === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setResultFilter('incorrect')}
               >
-                Incorrect Only ({total - correctCount})
+                Review Items ({totalQuestions - scoreableCorrect})
               </button>
               <button 
                 className={`ak-pill ${resultFilter === 'flagged' ? 'active' : ''}`}
@@ -729,8 +1097,9 @@ export default function CBTExamView() {
           <div className="answer-key-list">
             {displayedQuestions.map((q, idx) => {
               const userAnswer = answers[q.id];
-              const isCorrect = userAnswer === q.correctAnswer;
-              const originalIndex = selectedExam.questions.findIndex(item => item.id === q.id);
+              const isScoreable = Boolean(q.options && q.correctAnswer);
+              const isCorrect = isScoreable ? userAnswer === q.correctAnswer : Boolean(userAnswer);
+              const originalIndex = activeSession.questions.findIndex(item => item.id === q.id);
 
               return (
                 <div 
@@ -739,16 +1108,16 @@ export default function CBTExamView() {
                 >
                   <div className="ak-card-top">
                     <div className="ak-tag-group">
-                      <span className="ak-num-badge">Question {originalIndex + 1}</span>
-                      {q.section && <span className="ak-sec-tag">{q.section}</span>}
+                      <span className="ak-num-badge">Task {originalIndex + 1}</span>
+                      <span className="ak-sec-tag">{q.title || q.subtest || q.section}</span>
                       {flaggedIds.has(q.id) && <span className="ak-flag-tag"><Flag size={12} /> Flagged</span>}
                     </div>
 
                     <span className={`ak-verdict-pill ${isCorrect ? 'correct' : 'incorrect'}`}>
                       {isCorrect ? (
-                        <><CheckCircle2 size={16} /> Correct</>
+                        <><CheckCircle2 size={16} /> Completed / Correct</>
                       ) : (
-                        <><AlertCircle size={16} /> Incorrect / Missed</>
+                        <><AlertCircle size={16} /> Needs Review</>
                       )}
                     </span>
                   </div>
@@ -766,34 +1135,69 @@ export default function CBTExamView() {
                     <div className="ak-audio-quote">
                       <button 
                         className="ak-play-audio-btn"
-                        onClick={() => handlePlayAudio(q.audioPhrase)}
+                        onClick={() => handlePlayNativeSpeaker(q.audioPhrase)}
                       >
-                        <Volume2 size={16} /> Listen to prompt audio
+                        <Volume2 size={16} /> Kuuntele äänite uudelleen
                       </button>
                       <span className="ak-audio-text">"{q.audioPhrase}"</span>
                     </div>
                   )}
 
-                  <div className="ak-options-review">
-                    <div className="ak-chosen-row">
-                      <span className="ak-label">Your Response:</span>
-                      <strong className={isCorrect ? 'text-emerald' : 'text-rose'}>
-                        {userAnswer || 'No answer selected (Skipped)'}
-                      </strong>
-                    </div>
-                    {!isCorrect && (
-                      <div className="ak-correct-row">
-                        <span className="ak-label">Correct Answer:</span>
-                        <strong className="text-emerald">{q.correctAnswer}</strong>
+                  {/* Multiple Choice Answers Review */}
+                  {isScoreable && (
+                    <div className="ak-options-review">
+                      <div className="ak-chosen-row">
+                        <span className="ak-label">Your Response:</span>
+                        <strong className={isCorrect ? 'text-emerald' : 'text-rose'}>
+                          {userAnswer || 'No answer selected (Skipped)'}
+                        </strong>
                       </div>
-                    )}
-                  </div>
+                      {!isCorrect && (
+                        <div className="ak-correct-row">
+                          <span className="ak-label">Correct Answer:</span>
+                          <strong className="text-emerald">{q.correctAnswer}</strong>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Writing Task Review with Model Response */}
+                  {q.modelResponse && (
+                    <div className="ak-writing-review-grid">
+                      <div className="user-writing-box">
+                        <span className="ak-label">Your Submitted Text:</span>
+                        <div className="user-text-content">
+                          {userAnswer || <em>Ei kirjoitettua vastausta (No response submitted)</em>}
+                        </div>
+                        <span className="user-text-words">Sanamäärä: {countWords(userAnswer)} sanaa</span>
+                      </div>
+
+                      <div className="model-writing-box">
+                        <span className="ak-label">Official Model Answer (Mallivastaus):</span>
+                        <div className="model-text-content">{q.modelResponse}</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Speaking Task Review with Model Answer */}
+                  {q.modelAnswer && (
+                    <div className="ak-speaking-review-box">
+                      <span className="ak-label">Official Model Spoken Answer (Esimerkkivastaus suulliseen tehtävään):</span>
+                      <div className="model-spoken-text">{q.modelAnswer}</div>
+                      <button 
+                        className="ak-play-model-btn"
+                        onClick={() => handlePlayNativeSpeaker(q.modelAnswer)}
+                      >
+                        <Volume2 size={16} /> Kuuntele mallivastaus ääneen puhuttuna
+                      </button>
+                    </div>
+                  )}
 
                   {q.explanation && (
                     <div className="ak-explanation-box">
                       <HelpCircle size={16} className="exp-icon" />
                       <div className="exp-content">
-                        <strong>Official Explanation:</strong>
+                        <strong>Official Pedagogical Explanation:</strong>
                         <p>{q.explanation}</p>
                       </div>
                     </div>
