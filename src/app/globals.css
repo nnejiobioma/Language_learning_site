@@ -462,6 +462,9 @@ button:active {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .main-content-area {
@@ -511,7 +514,7 @@ button:active {
   align-items: center;
   gap: 1.75rem;
   flex: 1;
-  min-width: 320px;
+  min-width: 0;
 }
 
 .hero-badge-container {
@@ -2741,7 +2744,20 @@ button:active {
    Responsive Breakpoints
    ========================================================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
+  .header-container {
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+  .nav-tabs {
+    order: 3;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
   .curriculum-layout {
     grid-template-columns: 1fr;
   }
@@ -2754,21 +2770,75 @@ button:active {
 }
 
 @media (max-width: 768px) {
+  .header-root {
+    padding: 0.65rem 0.85rem;
+    overflow-x: clip;
+  }
   .header-container {
     flex-wrap: wrap;
+    gap: 0.65rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .user-name-text {
+    display: none;
   }
   .nav-tabs {
     order: 3;
     width: 100%;
-    justify-content: space-around;
+    min-width: 0;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.3rem 0.5rem;
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 9999px;
+    box-sizing: border-box;
+  }
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-tab-btn {
+    flex-shrink: 0;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .main-content-area {
+    padding: 1.5rem 1rem 4rem 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .course-hero-banner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .hero-content {
+    min-width: 0;
+    width: 100%;
+  }
+  .hero-title {
+    font-size: 1.65rem;
   }
   .hero-summary-chips {
     width: 100%;
-    justify-content: space-between;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .summary-chip {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 0;
+    padding: 0.75rem 1rem;
   }
   .options-grid {
     grid-template-columns: 1fr;
@@ -2785,6 +2855,381 @@ button:active {
   }
   .tips-grid, .slang-cards-grid {
     grid-template-columns: 1fr;
+  }
+  .flashcard-3d-scene {
+    min-height: 340px;
+  }
+  .flashcard-face {
+    padding: 1.5rem;
+  }
+  .card-word-native {
+    font-size: 2rem;
+  }
+  .flashcards-controls-row {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.25rem;
+  }
+  .card-nav-arrow-btn {
+    padding: 0.6rem 0.95rem;
+    font-size: 0.85rem;
+  }
+  .podium-row {
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .podium-card {
+    flex: 1;
+    max-width: 110px;
+    width: auto;
+  }
+  .podium-avatar {
+    font-size: 1.8rem;
+  }
+  .podium-avatar.large {
+    font-size: 2.2rem;
+  }
+  .podium-name {
+    max-width: 90px;
+    font-size: 0.8rem;
+  }
+  .podium-stand.stand-1 {
+    height: 100px;
+  }
+  .podium-stand.stand-2 {
+    height: 75px;
+  }
+  .podium-stand.stand-3 {
+    height: 55px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-root {
+    padding: 0.5rem 0.75rem;
+  }
+  .header-container {
+    gap: 0.5rem;
+  }
+  .brand-tagline {
+    display: none;
+  }
+  .logo-badge {
+    gap: 0.5rem;
+  }
+  .mascot-avatar-small {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .brand-name {
+    font-size: 1.2rem;
+  }
+  .lang-pill-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.82rem;
+  }
+  .stats-controls-group {
+    gap: 0.4rem;
+  }
+  .stat-chip {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    gap: 0.3rem;
+  }
+  .user-profile-btn {
+    padding: 0.2rem;
+  }
+  .main-content-area {
+    padding: 1.25rem 0.75rem 3.5rem 0.75rem;
+  }
+  .course-hero-banner {
+    padding: 1.25rem;
+    border-radius: 18px;
+  }
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-badge-container {
+    width: 85px;
+    height: 85px;
+    border-radius: 16px;
+  }
+  .hero-text-meta {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .hero-badge-pill {
+    margin: 0 auto;
+  }
+  .hero-title {
+    font-size: 1.4rem;
+    text-align: center;
+    word-break: break-word;
+  }
+  .hero-motto {
+    font-size: 0.88rem;
+    text-align: center;
+  }
+  .hero-audio-greeting {
+    max-width: 100%;
+    justify-content: center;
+  }
+  .summary-chip {
+    flex: 1 1 calc(50% - 0.5rem);
+    padding: 0.65rem 0.75rem;
+  }
+  .unit-header-box {
+    padding: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    border-radius: 14px;
+  }
+  .unit-heading {
+    font-size: 1.15rem;
+  }
+  .lesson-nodes-grid {
+    padding-left: 0.25rem;
+    gap: 1rem;
+  }
+  .lesson-nodes-grid::before {
+    left: 28px;
+  }
+  .lesson-node-inner {
+    padding: 0.85rem 1rem;
+    gap: 0.85rem;
+    border-radius: 16px;
+  }
+  .node-circle-btn {
+    width: 48px;
+    height: 48px;
+  }
+  .lesson-node-title {
+    font-size: 0.98rem;
+  }
+  .lesson-node-desc {
+    font-size: 0.8rem;
+  }
+  .lesson-action-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  /* Flashcards */
+  .card-stage-wrapper {
+    margin: 1rem auto;
+  }
+  .flashcard-3d-scene {
+    min-height: 320px;
+  }
+  .flashcard-face {
+    padding: 1.25rem 1rem;
+    border-radius: 20px;
+  }
+  .card-word-native {
+    font-size: 1.75rem;
+  }
+  .card-translation-text {
+    font-size: 1.35rem;
+  }
+  .card-example-box {
+    padding: 0.75rem 1rem;
+  }
+  .flashcards-controls-row {
+    gap: 0.5rem;
+  }
+  .card-nav-arrow-btn {
+    padding: 0.6rem 0.95rem;
+    font-size: 0.88rem;
+  }
+  /* Culture Vault */
+  .vault-hero-card {
+    padding: 1.25rem;
+    gap: 1.25rem;
+    border-radius: 18px;
+  }
+  .vault-title {
+    font-size: 1.55rem;
+  }
+  .proverb-spotlight-box {
+    padding: 1.15rem;
+    border-radius: 16px;
+  }
+  /* CBT Exam Section */
+  .cbt-top-bar {
+    flex-wrap: wrap;
+    padding: 0.65rem 0.85rem;
+    gap: 0.5rem;
+  }
+  .cbt-bar-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .cbt-exam-title-badge {
+    font-size: 0.82rem;
+    max-width: 210px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cbt-timer-widget {
+    font-size: 0.95rem;
+    padding: 0.35rem 0.75rem;
+  }
+  .cbt-bar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .cbt-flag-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .cbt-submit-nav-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+  }
+  .cbt-hub-hero {
+    padding: 1.35rem;
+    border-radius: 18px;
+  }
+  .cbt-hub-hero h1 {
+    font-size: 1.45rem;
+  }
+  .cbt-level-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.35rem;
+  }
+  .cbt-level-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .cbt-level-tab-btn {
+    flex-shrink: 0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.82rem;
+  }
+  .subtest-mode-selector {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.35rem;
+  }
+  .subtest-mode-selector::-webkit-scrollbar {
+    display: none;
+  }
+  .subtest-mode-pill {
+    flex-shrink: 0;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
+  }
+  .cbt-launch-card {
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: 16px;
+  }
+  .launch-exam-title {
+    font-size: 1.2rem;
+  }
+  .cbt-start-hero-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.25rem;
+  }
+  .subtest-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .speaking-timer-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .breakdown-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .cbt-results-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cbt-btn-retake, .cbt-btn-hub {
+    width: 100%;
+    justify-content: center;
+  }
+  .cbt-bottom-controls {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  .ctrl-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .cbt-nav-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .cbt-clear-answer-btn {
+    align-self: center;
+  }
+  /* Modals */
+  .cbt-modal-dialog, .quiz-modal-container, .auth-modal-card {
+    max-width: calc(100vw - 1.5rem);
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
+  .quiz-top-bar {
+    padding: 1rem 1.25rem;
+  }
+  .quiz-body-content {
+    padding: 1.25rem 1rem;
+  }
+  .q-prompt-text {
+    font-size: 1.25rem;
+  }
+  .quiz-footer-tray {
+    padding: 1rem 1.25rem;
+  }
+  .footer-tray-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .footer-tray-inner button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .lang-name-display {
+    display: none;
+  }
+  .summary-chip {
+    flex: 1 1 100%;
+  }
+  .stat-chip {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.75rem;
+  }
+  .score-number-circle {
+    width: 110px;
+    height: 110px;
+  }
+  .score-pct {
+    font-size: 1.85rem;
   }
 }
 
