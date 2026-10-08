@@ -1,5 +1,6 @@
 import { finnishUnit1Lessons } from './finnishLessons';
 import { finnishFlashcards } from './finnishFlashcards';
+import { finnishCultureVault } from './finnishCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -831,24 +832,7 @@ export const LANGUAGES = {
     secondaryColor: "#64748b",
     greeting: "Hei! Mitä kuuluu?",
     description: "Discover Finnish with Northern Lights wonders, sauna etiquette, and unique phonetic harmony.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Alku aina hankalaa, lopussa kiitos seisoo.",
-        translation: "The beginning is always difficult, but at the end gratitude stands.",
-        context: "Encouragement for learners navigating Finnish grammar: persistence leads to immense triumph."
-      },
-      slangs: [
-        { term: "Sisu", meaning: "Extraordinary determination, grit, and resilience in the face of adversity", example: "Suomalaisilla on paljon sisua!" },
-        { term: "Kiitos", meaning: "Thank you", example: "Kiitos paljon avustasi!" },
-        { term: "Ole hyvä", meaning: "You're welcome / Please / Here you go", example: "Tässä on kahvisi, ole hyvä." },
-        { term: "Moi moi!", meaning: "Bye bye! (Casual and cheerful)", example: "Nähdään huomenna, moi moi!" },
-        { term: "Totta kai", meaning: "Of course / Absolutely", example: "Tuletko mukaan? — Totta kai!" }
-      ],
-      cultureTips: [
-        { title: "The Spirit of 'Sisu'", description: "Sisu is a uniquely Finnish cultural concept embodying stoic determination, bravery, and grit against any odds." },
-        { title: "The Sauna Sanctuary", description: "Finland has over 3 million saunas for 5.5 million citizens. It is a tranquil sanctuary for relaxation, purification, and community bonding." }
-      ]
-    },
+    cultureVault: finnishCultureVault,
     flashcards: finnishFlashcards,
     units: [
       {
