@@ -1,4 +1,5 @@
 import { finnishUnit1Lessons } from './finnishLessons';
+import { finnishFlashcards } from './finnishFlashcards';
 
 export const LANGUAGES = {
   spanish: {
@@ -848,61 +849,7 @@ export const LANGUAGES = {
         { title: "The Sauna Sanctuary", description: "Finland has over 3 million saunas for 5.5 million citizens. It is a tranquil sanctuary for relaxation, purification, and community bonding." }
       ]
     },
-    flashcards: [
-      // Lesson 1: Vocabulary building
-      { id: "fi-fc-l1-1", front: "Vesi", phonetic: "VEH-see", back: "Water", category: "Lesson 1: Vocabulary building", example: "Juon lasillisen vettä." },
-      { id: "fi-fc-l1-2", front: "Leipä", phonetic: "LAY-pah", back: "Bread", category: "Lesson 1: Vocabulary building", example: "Tuoretta leipää, kiitos." },
-      { id: "fi-fc-l1-3", front: "Kirja", phonetic: "KEER-yah", back: "Book", category: "Lesson 1: Vocabulary building", example: "Luen mielenkiintoista kirjaa." },
-      { id: "fi-fc-l1-4", front: "Talo", phonetic: "TAH-loh", back: "House / Building", category: "Lesson 1: Vocabulary building", example: "Tämä on kaunis talo." },
-
-      // Lesson 2: Use Common Phrases
-      { id: "fi-fc-l2-1", front: "Minun nimeni on...", phonetic: "MEE-noon NEE-meh-nee on...", back: "My name is...", category: "Lesson 2: Common Phrases", example: "Minun nimeni on Matti." },
-      { id: "fi-fc-l2-2", front: "Anteeksi", phonetic: "AHN-tehk-see", back: "Excuse me / Sorry", category: "Lesson 2: Common Phrases", example: "Anteeksi, missä juna-asema on?" },
-      { id: "fi-fc-l2-3", front: "Puhutko englantia?", phonetic: "POO-hoot-koh ENG-lahn-tee-ah", back: "Do you speak English?", category: "Lesson 2: Common Phrases", example: "Anteeksi, puhutko englantia?" },
-      { id: "fi-fc-l2-4", front: "Ole hyvä", phonetic: "OH-leh HEW-vah", back: "You're welcome / Here you go", category: "Lesson 2: Common Phrases", example: "Kiitos! — Ole hyvä!" },
-
-      // Lesson 3: Talk about people
-      { id: "fi-fc-l3-1", front: "Äiti & Isä", phonetic: "EYE-tee & EE-sah", back: "Mother & Father", category: "Lesson 3: Talk about people", example: "Äitini ja isäni asuvat täällä." },
-      { id: "fi-fc-l3-2", front: "Ystävä", phonetic: "EWS-tah-vah", back: "Friend", category: "Lesson 3: Talk about people", example: "Hän on paras ystäväni." },
-      { id: "fi-fc-l3-3", front: "Hän", phonetic: "HAN", back: "He / She (Gender-neutral in Finnish)", category: "Lesson 3: Talk about people", example: "Hän on mukava ihminen." },
-      { id: "fi-fc-l3-4", front: "Lapsi", phonetic: "LAHP-see", back: "Child", category: "Lesson 3: Talk about people", example: "Lapset leikkivät ulkona." },
-
-      // Lesson 4: Describe things
-      { id: "fi-fc-l4-1", front: "Kaunis", phonetic: "KOW-nees", back: "Beautiful", category: "Lesson 4: Describe things", example: "Suomen luonto on kaunis." },
-      { id: "fi-fc-l4-2", front: "Iso & Pieni", phonetic: "EE-soh & PEE-eh-nee", back: "Big & Small", category: "Lesson 4: Describe things", example: "Iso järvi, pieni saari." },
-      { id: "fi-fc-l4-3", front: "Uusi & Vanha", phonetic: "OO-see & VAHN-hah", back: "New & Old", category: "Lesson 4: Describe things", example: "Uusi auto ja vanha kirja." },
-      { id: "fi-fc-l4-4", front: "Kylmä & Kuuma", phonetic: "KEWL-mah & KOO-mah", back: "Cold & Hot", category: "Lesson 4: Describe things", example: "Talvella on kylmä, saunassa kuuma." },
-
-      // Lesson 5: House hold
-      { id: "fi-fc-l5-1", front: "Keittiö", phonetic: "KAYT-tee-ur", back: "Kitchen", category: "Lesson 5: House hold", example: "Keittiössä tuoksuu kahvi." },
-      { id: "fi-fc-l5-2", front: "Pöytä & Tuoli", phonetic: "POY-tah & TOO-oh-lee", back: "Table & Chair", category: "Lesson 5: House hold", example: "Istun tuolilla pöydän ääressä." },
-      { id: "fi-fc-l5-3", front: "Ovi & Ikkuna", phonetic: "OH-vee & EEK-koo-nah", back: "Door & Window", category: "Lesson 5: House hold", example: "Sulje ovi ja avaa ikkuna." },
-      { id: "fi-fc-l5-4", front: "Sauna", phonetic: "SOW-nah", back: "Sauna", category: "Lesson 5: House hold", example: "Menen saunaan joka lauantai." },
-
-      // Lesson 6: Using verbs
-      { id: "fi-fc-l6-1", front: "Puhua (Puhun)", phonetic: "POO-hoo-ah (POO-hoon)", back: "To speak (I speak)", category: "Lesson 6: Using verbs", example: "Puhun vähän suomea." },
-      { id: "fi-fc-l6-2", front: "Syödä (Syön)", phonetic: "SEW-ur-dah (SEW-ern)", back: "To eat (I eat)", category: "Lesson 6: Using verbs", example: "Syön aamiaista keittiössä." },
-      { id: "fi-fc-l6-3", front: "Juoda (Juon)", phonetic: "YOO-oh-dah (YOO-ohn)", back: "To drink (I drink)", category: "Lesson 6: Using verbs", example: "Juon mustaa kahvia." },
-      { id: "fi-fc-l6-4", front: "Mennä (Menen)", phonetic: "MEN-nah (MEH-nen)", back: "To go (I go)", category: "Lesson 6: Using verbs", example: "Menen huomenna kouluun." },
-
-      // Lesson 7: Discussion about past tense
-      { id: "fi-fc-l7-1", front: "Minä olin", phonetic: "MEE-nah OH-leen", back: "I was (Past tense of olla)", category: "Lesson 7: Discussion about past tense", example: "Eilen olin kotona." },
-      { id: "fi-fc-l7-2", front: "Minä söin", phonetic: "MEE-nah SER-een", back: "I ate (Past tense of syödä)", category: "Lesson 7: Discussion about past tense", example: "Söin hyvää kalaa illalla." },
-      { id: "fi-fc-l7-3", front: "Minä menin", phonetic: "MEE-nah MEH-neen", back: "I went (Past tense of mennä)", category: "Lesson 7: Discussion about past tense", example: "Menin kauppaan eilen." },
-      { id: "fi-fc-l7-4", front: "Eilen", phonetic: "AY-len", back: "Yesterday", category: "Lesson 7: Discussion about past tense", example: "Mitä teit eilen?" },
-
-      // Lesson 9: Present tense
-      { id: "fi-fc-l9-1", front: "Minä olen / Sinä olet", phonetic: "MEE-nah OH-len / SEE-nah OH-let", back: "I am / You are (Present)", category: "Lesson 9: Present tense", example: "Minä olen iloinen, sinä olet ystävällinen." },
-      { id: "fi-fc-l9-2", front: "Hän on / He ovat", phonetic: "HAN on / HEH OH-vaht", back: "He/She is / They are (Present)", category: "Lesson 9: Present tense", example: "Hän on opettaja, he ovat opiskelijoita." },
-      { id: "fi-fc-l9-3", front: "Me asumme", phonetic: "MEH AH-soom-meh", back: "We live / reside", category: "Lesson 9: Present tense", example: "Me asumme Suomessa." },
-      { id: "fi-fc-l9-4", front: "Puhutko suomea?", phonetic: "POO-hoot-koh SOO-oh-meh-ah", back: "Do you speak Finnish? (Present question)", category: "Lesson 9: Present tense", example: "Kyllä, puhun suomea joka päivä." },
-
-      // Lesson 10: Talk about places
-      { id: "fi-fc-l10-1", front: "Kaupunki", phonetic: "KOW-poon-kee", back: "City / Town", category: "Lesson 10: Talk about places", example: "Helsinki on kaunis kaupunki." },
-      { id: "fi-fc-l10-2", front: "Kirjasto & Koulu", phonetic: "KEER-yahs-toh & KOH-oo-loo", back: "Library & School", category: "Lesson 10: Talk about places", example: "Opiskelen kirjastossa ja koulussa." },
-      { id: "fi-fc-l10-3", front: "Järvi & Metsä", phonetic: "YAR-vee & MET-sah", back: "Lake & Forest", category: "Lesson 10: Talk about places", example: "Suomessa on tuhat järveä ja vihreää metsää." },
-      { id: "fi-fc-l10-4", front: "Koulussa / Kaupungissa", phonetic: "KOH-oo-loos-sah / KOW-poon-gees-sah", back: "At school / In the city (-ssa case)", category: "Lesson 10: Talk about places", example: "Olen nyt kaupungissa." }
-    ],
+    flashcards: finnishFlashcards,
     units: [
       {
         id: "fi-unit-1",
