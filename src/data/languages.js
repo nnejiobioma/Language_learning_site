@@ -1,4 +1,4 @@
-import { finnishUnit1Lessons } from './finnishLessons';
+import { finnishAllUnits } from './finnishCurriculum';
 import { finnishFlashcards } from './finnishFlashcards';
 import { finnishCultureVault } from './finnishCultureVault';
 
@@ -834,16 +834,7 @@ export const LANGUAGES = {
     description: "Discover Finnish with Northern Lights wonders, sauna etiquette, and unique phonetic harmony.",
     cultureVault: finnishCultureVault,
     flashcards: finnishFlashcards,
-    units: [
-      {
-        id: "fi-unit-1",
-        title: "Introduce yourself",
-        subtitle: "Build foundational vocabulary, common phrases, describe people, places and homes, and master verb tenses with 20 questions per lesson.",
-        icon: "Sun",
-        color: "#0ea5e9",
-        lessons: finnishUnit1Lessons
-      }
-    ]
+    units: finnishAllUnits
   },
 
   igbo: {

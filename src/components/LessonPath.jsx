@@ -15,7 +15,11 @@ import {
   Award,
   ChevronRight,
   Flame,
-  Volume2
+  Volume2,
+  Shield,
+  Compass,
+  Smile,
+  GraduationCap
 } from 'lucide-react';
 import { soundEngine } from '../lib/audio';
 
@@ -25,7 +29,13 @@ const iconMap = {
   Utensils: Utensils,
   ShoppingBag: ShoppingBag,
   Sun: Sun,
-  BookOpen: BookOpen
+  BookOpen: BookOpen,
+  Award: Award,
+  Flame: Flame,
+  Shield: Shield,
+  Compass: Compass,
+  Smile: Smile,
+  GraduationCap: GraduationCap
 };
 
 export default function LessonPath() {
@@ -91,7 +101,7 @@ export default function LessonPath() {
           <div className="summary-chip">
             <span className="chip-label">Completed</span>
             <span className="chip-val">
-              {completedLessons.filter(id => id.startsWith(currentLanguage === 'pidgin' ? 'p-' : 'y-')).length} Completed
+              {completedLessons.filter(id => id.startsWith(langData.id.slice(0, 2) + '-') || id.startsWith(currentLanguage.slice(0, 2))).length} Completed
             </span>
           </div>
         </div>
