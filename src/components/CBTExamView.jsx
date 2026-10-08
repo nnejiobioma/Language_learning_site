@@ -240,17 +240,68 @@ export default function CBTExamView() {
           </div>
         </div>
 
-        {/* Standard Examination Instructions */}
+        {/* Official YKI Examination Structure & Subtests Overview */}
+        <div className="cbt-subtests-overview-card">
+          <div className="instructions-header">
+            <BookOpen size={22} className="inst-icon" />
+            <h3>Official YKI Examination Structure (Yleiset kielitutkinnot)</h3>
+          </div>
+          <p className="cbt-subtests-intro">
+            The standard official language test in Finland is the National Certificate of Language Proficiency (YKI). It is an intense, practical exam designed for adults that takes <strong>5 to 6 hours</strong> to complete on a single examination day across four distinct subtests:
+          </p>
+
+          <div className="cbt-subtests-grid">
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">📖</span>
+                <strong>Reading Comprehension</strong>
+                <span className="subtest-time-tag">60 Mins</span>
+              </div>
+              <p>You read 6 different authentic texts (emails, advertisements, news articles, or public notices). Questions include multiple-choice, true/false, and open-ended text questions.</p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">✍️</span>
+                <strong>Writing</strong>
+                <span className="subtest-time-tag">55 Mins</span>
+              </div>
+              <p>You complete 3 practical writing tasks: a casual message or email (to a friend or coworker), a formal complaint or inquiry (e.g., to a landlord or agency), and an opinion essay arguing your stance.</p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">🎧</span>
+                <strong>Listening Comprehension</strong>
+                <span className="subtest-time-tag">40 Mins</span>
+              </div>
+              <p>You listen to 4–7 recordings (voice messages, transit announcements, radio clips). Audio tracks are played twice at basic and intermediate levels. Evaluates main ideas and key details.</p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">🗣️</span>
+                <strong>Speaking</strong>
+                <span className="subtest-time-tag">25 Mins</span>
+              </div>
+              <p>Conducted simultaneously in a language laboratory/computer room wearing headsets. You respond to recorded prompts, simulated phone calls, and structured discussion questions.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Standard Candidate Guidelines & Rules */}
         <div className="cbt-instructions-card">
           <div className="instructions-header">
             <ShieldCheck size={22} className="inst-icon" />
-            <h3>Candidate Exam Guidelines & Rules</h3>
+            <h3>Candidate Exam Guidelines & Regulations</h3>
           </div>
           <ul className="instructions-list">
-            <li><strong>Live Countdown:</strong> The exam is timed. An active countdown timer will display at the top of your screen. If time expires, your exam will be automatically submitted for grading.</li>
-            <li><strong>Question Navigation:</strong> Use the Question Palette on the right to jump between questions. Answered questions turn green; unanswered remain grey.</li>
-            <li><strong>Flag for Review:</strong> You can mark difficult questions with the <strong>Flag</strong> button to return to them later before submitting.</li>
-            <li><strong>Pass Standards:</strong> Official YKI certification benchmark is typically 70% (Level 3 / B1 threshold for Finnish citizenship). Detailed answer keys and explanations will be revealed upon submission.</li>
+            <li><strong>Arrival and Rigorous ID Checks:</strong> You must present a valid, official ID (such as a passport, official EU national ID card, or Finnish alien's passport / residence permit card). <em>A Finnish driver's license is strictly NOT accepted.</em> If you arrive late, you are barred from entering.</li>
+            <li><strong>No Electronics Allowed:</strong> All smartphones, smartwatches, traditional wristwatches, tablets, and personal study materials are strictly prohibited in the exam hall. Examiners check thoroughly before entry.</li>
+            <li><strong>The "Noise" in Speaking:</strong> In the language laboratory, all candidates speak at the same time into their individual headsets. The room can get loud and buzzing; candidates must practice focusing on their own speech while tuning out background noise.</li>
+            <li><strong>Communication Over Perfection:</strong> Graders prioritize your ability to react promptly, convey a clear message, and fulfill the communicative function under pressure. Minor grammatical slips do not disqualify you if your message is comprehensible.</li>
+            <li><strong>Grading & Finnish Citizenship (Migri):</strong> Each subtest is graded individually against the CEFR scale (Perustaso 1–2 / A1–A2, Keskitaso 3–4 / B1–B2, Ylintaso 5–6 / C1–C2). To qualify for <strong>Finnish citizenship</strong>, Migri requires at least <strong>Grade 3 (B1 level)</strong> in an approved combination of oral and written subtests (e.g., Speaking + Writing, or Listening + Writing, or Reading + Speaking).</li>
+            <li><strong>Digital Certificates:</strong> Certificates are issued approximately 2 months after the test date and are accessible electronically directly in your <em>My Studyinfo (Oma Opintopolku)</em> portal via strong identification (Suomi.fi).</li>
           </ul>
         </div>
       </div>
