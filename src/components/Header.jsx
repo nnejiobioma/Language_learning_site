@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useGame } from '../context/GameContext';
 import { useAuth } from '../context/AuthContext';
 import { LANGUAGES } from '../data/languages';
@@ -32,11 +32,11 @@ export default function Header() {
     toggleSound,
     activeTab,
     setActiveTab,
-    setShowAuthModal,
     setShowHeartModal
   } = useGame();
 
-  const { user, isGuest, isFirebaseConfigured, logout } = useAuth();
+  const router = useRouter();
+  const { user, profile, isFirebaseConfigured, logout } = useAuth();
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
@@ -180,41 +180,37 @@ export default function Header() {
           <div className="user-profile-wrapper">
             <button 
               className="user-profile-btn"
-              onClick={() => {
-                if (isGuest) {
-                  setShowAuthModal(true);
-                } else {
-                  setUserDropdownOpen(!userDropdownOpen);
-                }
-              }}
+              onClick={() => setUserDropdownOpen(!userDropdownOpen)}
               aria-label="User Account"
+              aria-expanded={userDropdownOpen}
             >
               <div className="user-avatar-circle">
                 <User size={16} />
               </div>
               <span className="user-name-text">
-                {user ? (user.displayName || (isGuest ? 'Guest' : 'User')) : 'Sign In'}
+                {profile?.displayName || user?.displayName || 'Learner'}
               </span>
             </button>
 
-            {userDropdownOpen && !isGuest && (
+            {userDropdownOpen && (
               <div className="user-dropdown-card">
                 <div className="user-card-header">
-                  <p className="card-name">{user?.displayName || 'Learner'}</p>
-                  <p className="card-email">{user?.email || 'Authenticated'}</p>
+                  <p className="card-name">{profile?.displayName || user?.displayName || 'Learner'}</p>
+                  <p className="card-email">{user?.email || 'Signed in'}</p>
                   <div className="cloud-status-badge">
                     {isFirebaseConfigured ? (
-                      <span className="cloud-connected">🟢 Firebase Synced</span>
+                      <span className="cloud-connected">🟢 Progress synced</span>
                     ) : (
-                      <span className="cloud-demo">🟡 Local Demo Mode</span>
+                      <span className="cloud-demo">🟡 Demo mode (this browser only)</span>
                     )}
                   </div>
                 </div>
                 <button 
                   className="dropdown-signout-btn"
-                  onClick={() => {
-                    logout();
+                  onClick={async () => {
                     setUserDropdownOpen(false);
+                    await logout();
+                    router.replace('/');
                   }}
                 >
                   Sign Out

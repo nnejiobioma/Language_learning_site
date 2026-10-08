@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signInAnonymously
+  updateProfile
 } from 'firebase/auth';
 import { 
   getFirestore, 
@@ -55,7 +55,7 @@ export {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signInAnonymously,
+  updateProfile,
   doc,
   getDoc,
   setDoc,

@@ -2742,3 +2742,9 @@ button:active {
     grid-template-columns: 1fr;
   }
 }
+
+.auth-gate-message{min-height:100vh;display:flex;align-items:center;justify-content:center;color:#e5e7eb;font-weight:600}
+.auth-back-link{display:inline-block;margin-bottom:12px;font-size:.85rem;color:#9ca3af;text-decoration:none}
+.auth-back-link:hover{color:#58cc02}
+a.link-switch-btn{text-decoration:none;cursor:pointer}
+.auth-modal-overlay{overflow-y:auto}

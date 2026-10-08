@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { 
   auth, 
   db, 
@@ -11,7 +11,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signInAnonymously,
+  updateProfile,
   doc,
   getDoc,
   setDoc,
@@ -20,79 +20,76 @@ import {
 
 const AuthContext = createContext(null);
 
+// Every learner must have an account, so a new account starts from zero.
 const DEFAULT_PROFILE = {
-  xp: 120,
+  xp: 0,
   hearts: 5,
-  streak: 3,
+  streak: 0,
   level: 1,
-  completedLessons: ['es-u1-l1'],
+  completedLessons: [],
   currentLanguage: 'spanish',
-  displayName: 'Lingo Explorer',
+  displayName: 'Learner',
   photoURL: null,
   role: 'student'
 };
+
+const DEMO_USER_KEY = 'lingo_demo_user';
+const DEMO_PROFILE_KEY = 'lingo_profile';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(DEFAULT_PROFILE);
   const [loading, setLoading] = useState(true);
-  const [isGuest, setIsGuest] = useState(false);
+  // Name chosen on the signup form, used when the profile document is first created.
+  const pendingNameRef = useRef(null);
 
-  // Initialize and listen to Auth
   useEffect(() => {
-    // If Firebase Auth is configured and available
     if (isFirebaseConfigured && auth) {
       const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+        // Guest (anonymous) sessions are not allowed.
+        if (fbUser && fbUser.isAnonymous) {
+          await fbSignOut(auth);
+          return;
+        }
         if (fbUser) {
+          setLoading(true);
           setUser(fbUser);
-          setIsGuest(fbUser.isAnonymous);
-          await loadUserProfile(fbUser.uid, fbUser.displayName || 'Learner', fbUser.email);
+          await loadUserProfile(fbUser.uid, fbUser.displayName, fbUser.email);
         } else {
-          // Check for local guest session
-          loadLocalGuest();
+          setUser(null);
+          setProfile(DEFAULT_PROFILE);
         }
         setLoading(false);
       });
       return () => unsubscribe();
-    } else {
-      // Offline / Demo mode
-      loadLocalGuest();
-      setLoading(false);
     }
-  }, []);
 
-  const loadLocalGuest = () => {
+    // Local demo mode (Firebase not configured): the account lives in this browser only.
     try {
-      const saved = localStorage.getItem('lingo_profile');
-      if (saved) {
-        setProfile(JSON.parse(saved));
-      } else {
-        setProfile(DEFAULT_PROFILE);
+      const savedUser = localStorage.getItem(DEMO_USER_KEY);
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
+        const savedProfile = localStorage.getItem(DEMO_PROFILE_KEY);
+        setProfile(savedProfile ? JSON.parse(savedProfile) : DEFAULT_PROFILE);
       }
-      const guestUser = {
-        uid: 'guest_' + Math.random().toString(36).substring(2, 9),
-        displayName: 'Guest Explorer',
-        email: null,
-        isAnonymous: true,
-      };
-      setUser(guestUser);
-      setIsGuest(true);
     } catch {
-      setProfile(DEFAULT_PROFILE);
+      // Ignore unreadable local data and treat as signed out.
     }
-  };
+    setLoading(false);
+  }, []);
 
   const loadUserProfile = async (uid, defaultName, email) => {
     if (!db) return;
+    const name = pendingNameRef.current || defaultName || (email ? email.split('@')[0] : 'Learner');
     try {
       const userRef = doc(db, 'users', uid);
       const snap = await getDoc(userRef);
       if (snap.exists()) {
-        setProfile(snap.data());
+        setProfile({ ...DEFAULT_PROFILE, ...snap.data() });
       } else {
         const newProfile = {
           ...DEFAULT_PROFILE,
-          displayName: defaultName,
+          displayName: name,
           email: email || null,
           createdAt: new Date().toISOString()
         };
@@ -100,8 +97,10 @@ export function AuthProvider({ children }) {
         setProfile(newProfile);
       }
     } catch (err) {
-      console.warn("Could not fetch profile from Firestore, using local:", err);
-      loadLocalGuest();
+      console.warn("Could not load profile from Firestore:", err);
+      setProfile({ ...DEFAULT_PROFILE, displayName: name });
+    } finally {
+      pendingNameRef.current = null;
     }
   };
 
@@ -109,96 +108,73 @@ export function AuthProvider({ children }) {
     const updated = { ...profile, ...updatedFields };
     setProfile(updated);
 
-    // Save locally
-    try {
-      localStorage.setItem('lingo_profile', JSON.stringify(updated));
-    } catch (e) {
-      console.warn("Local storage write error:", e);
-    }
-
-    // Save to Firestore if connected
-    if (isFirebaseConfigured && db && user?.uid && !user.uid.startsWith('guest_')) {
+    if (isFirebaseConfigured && db && user?.uid) {
       try {
-        const userRef = doc(db, 'users', user.uid);
-        await updateDoc(userRef, updatedFields);
+        await updateDoc(doc(db, 'users', user.uid), updatedFields);
       } catch (err) {
         console.warn("Firestore update error:", err);
+      }
+    } else {
+      try {
+        localStorage.setItem(DEMO_PROFILE_KEY, JSON.stringify(updated));
+      } catch (e) {
+        console.warn("Local storage write error:", e);
       }
     }
   };
 
+  const startDemoSession = (demoUser) => {
+    localStorage.setItem(DEMO_USER_KEY, JSON.stringify(demoUser));
+    const savedProfile = localStorage.getItem(DEMO_PROFILE_KEY);
+    setProfile(
+      savedProfile
+        ? JSON.parse(savedProfile)
+        : { ...DEFAULT_PROFILE, displayName: demoUser.displayName, email: demoUser.email }
+    );
+    setUser(demoUser);
+  };
+
   const loginWithGoogle = async () => {
     if (!isFirebaseConfigured || !auth) {
-      // Simulate guest sign-in
-      const demoUser = {
-        uid: 'demo_google_' + Date.now(),
-        displayName: 'Google Explorer',
-        email: 'explorer@example.com'
-      };
-      setUser(demoUser);
-      setIsGuest(false);
+      startDemoSession({ uid: 'demo_google', displayName: 'Google Learner', email: 'learner@example.com' });
       return;
     }
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    return signInWithPopup(auth, new GoogleAuthProvider());
   };
 
   const loginWithEmail = async (email, password) => {
     if (!isFirebaseConfigured || !auth) {
-      const demoUser = {
-        uid: 'demo_' + Date.now(),
-        displayName: email.split('@')[0],
-        email: email
-      };
-      setUser(demoUser);
-      setIsGuest(false);
+      startDemoSession({ uid: 'demo_' + email, displayName: email.split('@')[0], email });
       return;
     }
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const signupWithEmail = async (email, password, displayName) => {
+    const name = displayName?.trim() || email.split('@')[0];
     if (!isFirebaseConfigured || !auth) {
-      const demoUser = {
-        uid: 'demo_' + Date.now(),
-        displayName: displayName || email.split('@')[0],
-        email: email
-      };
-      setUser(demoUser);
-      setIsGuest(false);
+      startDemoSession({ uid: 'demo_' + email, displayName: name, email });
       return;
     }
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-    if (cred.user && db) {
-      const userRef = doc(db, 'users', cred.user.uid);
-      const newProfile = {
-        ...DEFAULT_PROFILE,
-        displayName: displayName || email.split('@')[0],
-        email: email,
-        createdAt: new Date().toISOString()
-      };
-      await setDoc(userRef, newProfile);
-      setProfile(newProfile);
+    pendingNameRef.current = name;
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(cred.user, { displayName: name });
+      return cred;
+    } catch (err) {
+      pendingNameRef.current = null;
+      throw err;
     }
-    return cred;
-  };
-
-  const loginAsGuest = async () => {
-    if (isFirebaseConfigured && auth) {
-      try {
-        return await signInAnonymously(auth);
-      } catch (err) {
-        console.warn("Anonymous auth failed, falling back to local guest:", err);
-      }
-    }
-    loadLocalGuest();
   };
 
   const logout = async () => {
-    if (isFirebaseConfigured && auth && !user?.uid?.startsWith('guest_')) {
+    if (isFirebaseConfigured && auth) {
       await fbSignOut(auth);
+    } else {
+      localStorage.removeItem(DEMO_USER_KEY);
+      setUser(null);
+      setProfile(DEFAULT_PROFILE);
     }
-    loadLocalGuest();
   };
 
   return (
@@ -206,13 +182,12 @@ export function AuthProvider({ children }) {
       user,
       profile,
       loading,
-      isGuest,
+      isAuthenticated: Boolean(user),
       isFirebaseConfigured,
       saveProfileData,
       loginWithGoogle,
       loginWithEmail,
       signupWithEmail,
-      loginAsGuest,
       logout
     }}>
       {children}
