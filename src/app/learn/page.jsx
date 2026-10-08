@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import LessonPath from '../../components/LessonPath';
 import FlashcardsView from '../../components/FlashcardsView';
 import CultureVault from '../../components/CultureVault';
+import CBTExamView from '../../components/CBTExamView';
 import LeaderboardView from '../../components/LeaderboardView';
 import QuizModal from '../../components/QuizModal';
 import HeartModal from '../../components/HeartModal';
@@ -40,6 +41,7 @@ export default function LearnPage() {
         {activeTab === 'learn' && <LessonPath />}
         {activeTab === 'flashcards' && <FlashcardsView />}
         {activeTab === 'culture' && <CultureVault />}
+        {activeTab === 'cbt' && <CBTExamView />}
         {activeTab === 'leaderboard' && <LeaderboardView />}
       </main>
 

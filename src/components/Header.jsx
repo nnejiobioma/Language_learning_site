@@ -17,6 +17,7 @@ import {
   Layers, 
   Crown, 
   Globe2, 
+  GraduationCap,
   ChevronDown,
   CloudCheck,
   CloudOff
@@ -129,6 +130,15 @@ export default function Header() {
           >
             <Globe2 size={18} />
             <span>Culture Vault</span>
+          </button>
+
+          <button 
+            className={`nav-tab-btn ${activeTab === 'cbt' ? 'active' : ''}`}
+            onClick={() => setActiveTab('cbt')}
+            id="nav-tab-cbt"
+          >
+            <GraduationCap size={18} />
+            <span>CBT Exams</span>
           </button>
 
           <button 
