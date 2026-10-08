@@ -201,7 +201,7 @@ export default function LessonPath() {
             <div className="mascot-img-wrap">
               <img 
                 src="/images/mascot.jpg" 
-                alt="AfroLingo Sunbird Mascot" 
+                alt="FiksLingo Sunbird Mascot" 
                 className="sidebar-mascot-img"
               />
             </div>

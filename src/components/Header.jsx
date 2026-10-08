@@ -51,12 +51,12 @@ export default function Header() {
             <div className="mascot-avatar-small">
               <img 
                 src="/images/mascot.jpg" 
-                alt="AfroLingo Mascot" 
+                alt="FiksLingo Mascot" 
                 className="mascot-img"
               />
             </div>
             <div className="brand-text">
-              <span className="brand-name">GlobalLingo</span>
+              <span className="brand-name">FiksLingo</span>
               <span className="brand-tagline">Master World Languages</span>
             </div>
           </div>

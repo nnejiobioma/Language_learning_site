@@ -3,7 +3,7 @@ import { AuthProvider } from '../context/AuthContext';
 import { GameProvider } from '../context/GameContext';
 
 export const metadata = {
-  title: 'GlobalLingo — Master World Languages with Gamified Learning',
+  title: 'FiksLingo — Master World Languages with Gamified Learning',
   description: 'Learn Spanish, French, German, Japanese, Mandarin Chinese, Nigerian Pidgin, and Yoruba with interactive gamified quizzes, speech pronunciation, streak tracking, and cultural insights.',
   keywords: 'Spanish, French, German, Japanese, Mandarin Chinese, Nigerian Pidgin, Yoruba, Multi-language learning app, Next.js, Firebase',
 };

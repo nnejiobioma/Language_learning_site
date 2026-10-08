@@ -1,7 +1,7 @@
 {
-  "name": "language_learning_site",
+  "name": "fikslingo",
   "version": "1.0.0",
-  "description": "Various language site.",
+  "description": "FiksLingo — Master World Languages with Gamified Learning.",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

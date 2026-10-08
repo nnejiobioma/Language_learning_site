@@ -194,7 +194,7 @@ export default function QuizModal() {
             <div className="celebration-mascot-wrap">
               <img 
                 src="/images/mascot.jpg" 
-                alt="AfroLingo celebration" 
+                alt="FiksLingo celebration" 
                 className="mascot-finish-img"
               />
             </div>

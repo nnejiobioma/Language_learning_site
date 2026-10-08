@@ -98,12 +98,12 @@ export default function AuthModal() {
           <div className="auth-mascot-icon">
             <img 
               src="/images/mascot.jpg" 
-              alt="AfroLingo Mascot" 
+              alt="FiksLingo Mascot" 
               className="auth-mascot-img" 
             />
           </div>
           <h2 className="auth-title">
-            {mode === 'login' ? 'Welcome Back, Learner!' : 'Join the AfroLingo Family'}
+            {mode === 'login' ? 'Welcome Back, Learner!' : 'Join the FiksLingo Family'}
           </h2>
           <p className="auth-sub">
             Save your progress, maintain streaks across devices, and compete on leaderboards!
