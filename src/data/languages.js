@@ -850,44 +850,462 @@ export const LANGUAGES = {
       ]
     },
     flashcards: [
-      { id: "fi-fc-1", front: "Hei / Moi", phonetic: "hay / moy", back: "Hello / Hi", category: "Greetings", example: "Hei kaikille!" },
-      { id: "fi-fc-2", front: "Mitä kuuluu?", phonetic: "MEE-tah KOO-loo", back: "How are you? / What's up?", category: "Greetings", example: "Hei Matti, mitä kuuluu?" },
-      { id: "fi-fc-3", front: "Kiitos", phonetic: "KEE-tohs", back: "Thank you", category: "Courtesy", example: "Kiitos paljon!" },
-      { id: "fi-fc-4", front: "Ole hyvä", phonetic: "OH-leh HEW-vah", back: "You're welcome / Here you go", category: "Courtesy", example: "Ole hyvä, ota lisää." },
-      { id: "fi-fc-5", front: "Näkemiin", phonetic: "NAH-keh-meen", back: "Goodbye", category: "Farewell", example: "Näkemiin ja hyvää päivää!" }
+      // Lesson 1: Vocabulary building
+      { id: "fi-fc-l1-1", front: "Vesi", phonetic: "VEH-see", back: "Water", category: "Lesson 1: Vocabulary building", example: "Juon lasillisen vettä." },
+      { id: "fi-fc-l1-2", front: "Leipä", phonetic: "LAY-pah", back: "Bread", category: "Lesson 1: Vocabulary building", example: "Tuoretta leipää, kiitos." },
+      { id: "fi-fc-l1-3", front: "Kirja", phonetic: "KEER-yah", back: "Book", category: "Lesson 1: Vocabulary building", example: "Luen mielenkiintoista kirjaa." },
+      { id: "fi-fc-l1-4", front: "Talo", phonetic: "TAH-loh", back: "House / Building", category: "Lesson 1: Vocabulary building", example: "Tämä on kaunis talo." },
+
+      // Lesson 2: Use Common Phrases
+      { id: "fi-fc-l2-1", front: "Minun nimeni on...", phonetic: "MEE-noon NEE-meh-nee on...", back: "My name is...", category: "Lesson 2: Common Phrases", example: "Minun nimeni on Matti." },
+      { id: "fi-fc-l2-2", front: "Anteeksi", phonetic: "AHN-tehk-see", back: "Excuse me / Sorry", category: "Lesson 2: Common Phrases", example: "Anteeksi, missä juna-asema on?" },
+      { id: "fi-fc-l2-3", front: "Puhutko englantia?", phonetic: "POO-hoot-koh ENG-lahn-tee-ah", back: "Do you speak English?", category: "Lesson 2: Common Phrases", example: "Anteeksi, puhutko englantia?" },
+      { id: "fi-fc-l2-4", front: "Ole hyvä", phonetic: "OH-leh HEW-vah", back: "You're welcome / Here you go", category: "Lesson 2: Common Phrases", example: "Kiitos! — Ole hyvä!" },
+
+      // Lesson 3: Talk about people
+      { id: "fi-fc-l3-1", front: "Äiti & Isä", phonetic: "EYE-tee & EE-sah", back: "Mother & Father", category: "Lesson 3: Talk about people", example: "Äitini ja isäni asuvat täällä." },
+      { id: "fi-fc-l3-2", front: "Ystävä", phonetic: "EWS-tah-vah", back: "Friend", category: "Lesson 3: Talk about people", example: "Hän on paras ystäväni." },
+      { id: "fi-fc-l3-3", front: "Hän", phonetic: "HAN", back: "He / She (Gender-neutral in Finnish)", category: "Lesson 3: Talk about people", example: "Hän on mukava ihminen." },
+      { id: "fi-fc-l3-4", front: "Lapsi", phonetic: "LAHP-see", back: "Child", category: "Lesson 3: Talk about people", example: "Lapset leikkivät ulkona." },
+
+      // Lesson 4: Describe things
+      { id: "fi-fc-l4-1", front: "Kaunis", phonetic: "KOW-nees", back: "Beautiful", category: "Lesson 4: Describe things", example: "Suomen luonto on kaunis." },
+      { id: "fi-fc-l4-2", front: "Iso & Pieni", phonetic: "EE-soh & PEE-eh-nee", back: "Big & Small", category: "Lesson 4: Describe things", example: "Iso järvi, pieni saari." },
+      { id: "fi-fc-l4-3", front: "Uusi & Vanha", phonetic: "OO-see & VAHN-hah", back: "New & Old", category: "Lesson 4: Describe things", example: "Uusi auto ja vanha kirja." },
+      { id: "fi-fc-l4-4", front: "Kylmä & Kuuma", phonetic: "KEWL-mah & KOO-mah", back: "Cold & Hot", category: "Lesson 4: Describe things", example: "Talvella on kylmä, saunassa kuuma." },
+
+      // Lesson 5: House hold
+      { id: "fi-fc-l5-1", front: "Keittiö", phonetic: "KAYT-tee-ur", back: "Kitchen", category: "Lesson 5: House hold", example: "Keittiössä tuoksuu kahvi." },
+      { id: "fi-fc-l5-2", front: "Pöytä & Tuoli", phonetic: "POY-tah & TOO-oh-lee", back: "Table & Chair", category: "Lesson 5: House hold", example: "Istun tuolilla pöydän ääressä." },
+      { id: "fi-fc-l5-3", front: "Ovi & Ikkuna", phonetic: "OH-vee & EEK-koo-nah", back: "Door & Window", category: "Lesson 5: House hold", example: "Sulje ovi ja avaa ikkuna." },
+      { id: "fi-fc-l5-4", front: "Sauna", phonetic: "SOW-nah", back: "Sauna", category: "Lesson 5: House hold", example: "Menen saunaan joka lauantai." },
+
+      // Lesson 6: Using verbs
+      { id: "fi-fc-l6-1", front: "Puhua (Puhun)", phonetic: "POO-hoo-ah (POO-hoon)", back: "To speak (I speak)", category: "Lesson 6: Using verbs", example: "Puhun vähän suomea." },
+      { id: "fi-fc-l6-2", front: "Syödä (Syön)", phonetic: "SEW-ur-dah (SEW-ern)", back: "To eat (I eat)", category: "Lesson 6: Using verbs", example: "Syön aamiaista keittiössä." },
+      { id: "fi-fc-l6-3", front: "Juoda (Juon)", phonetic: "YOO-oh-dah (YOO-ohn)", back: "To drink (I drink)", category: "Lesson 6: Using verbs", example: "Juon mustaa kahvia." },
+      { id: "fi-fc-l6-4", front: "Mennä (Menen)", phonetic: "MEN-nah (MEH-nen)", back: "To go (I go)", category: "Lesson 6: Using verbs", example: "Menen huomenna kouluun." },
+
+      // Lesson 7: Discussion about past tense
+      { id: "fi-fc-l7-1", front: "Minä olin", phonetic: "MEE-nah OH-leen", back: "I was (Past tense of olla)", category: "Lesson 7: Discussion about past tense", example: "Eilen olin kotona." },
+      { id: "fi-fc-l7-2", front: "Minä söin", phonetic: "MEE-nah SER-een", back: "I ate (Past tense of syödä)", category: "Lesson 7: Discussion about past tense", example: "Söin hyvää kalaa illalla." },
+      { id: "fi-fc-l7-3", front: "Minä menin", phonetic: "MEE-nah MEH-neen", back: "I went (Past tense of mennä)", category: "Lesson 7: Discussion about past tense", example: "Menin kauppaan eilen." },
+      { id: "fi-fc-l7-4", front: "Eilen", phonetic: "AY-len", back: "Yesterday", category: "Lesson 7: Discussion about past tense", example: "Mitä teit eilen?" },
+
+      // Lesson 9: Present tense
+      { id: "fi-fc-l9-1", front: "Minä olen / Sinä olet", phonetic: "MEE-nah OH-len / SEE-nah OH-let", back: "I am / You are (Present)", category: "Lesson 9: Present tense", example: "Minä olen iloinen, sinä olet ystävällinen." },
+      { id: "fi-fc-l9-2", front: "Hän on / He ovat", phonetic: "HAN on / HEH OH-vaht", back: "He/She is / They are (Present)", category: "Lesson 9: Present tense", example: "Hän on opettaja, he ovat opiskelijoita." },
+      { id: "fi-fc-l9-3", front: "Me asumme", phonetic: "MEH AH-soom-meh", back: "We live / reside", category: "Lesson 9: Present tense", example: "Me asumme Suomessa." },
+      { id: "fi-fc-l9-4", front: "Puhutko suomea?", phonetic: "POO-hoot-koh SOO-oh-meh-ah", back: "Do you speak Finnish? (Present question)", category: "Lesson 9: Present tense", example: "Kyllä, puhun suomea joka päivä." },
+
+      // Lesson 10: Talk about places
+      { id: "fi-fc-l10-1", front: "Kaupunki", phonetic: "KOW-poon-kee", back: "City / Town", category: "Lesson 10: Talk about places", example: "Helsinki on kaunis kaupunki." },
+      { id: "fi-fc-l10-2", front: "Kirjasto & Koulu", phonetic: "KEER-yahs-toh & KOH-oo-loo", back: "Library & School", category: "Lesson 10: Talk about places", example: "Opiskelen kirjastossa ja koulussa." },
+      { id: "fi-fc-l10-3", front: "Järvi & Metsä", phonetic: "YAR-vee & MET-sah", back: "Lake & Forest", category: "Lesson 10: Talk about places", example: "Suomessa on tuhat järveä ja vihreää metsää." },
+      { id: "fi-fc-l10-4", front: "Koulussa / Kaupungissa", phonetic: "KOH-oo-loos-sah / KOW-poon-gees-sah", back: "At school / In the city (-ssa case)", category: "Lesson 10: Talk about places", example: "Olen nyt kaupungissa." }
     ],
     units: [
       {
         id: "fi-unit-1",
-        title: "Unit 1: First Steps in Helsinki (Ensiaskeleet)",
-        subtitle: "Essential Finnish greetings, courtesies, and daily practical phrases.",
+        title: "Introduce yourself",
+        subtitle: "Build foundational vocabulary, common phrases, describe people, places and homes, and master verb tenses.",
         icon: "Sun",
         color: "#0ea5e9",
         lessons: [
           {
             id: "fi-u1-l1",
-            title: "First Finnish Greetings",
-            description: "Learn Hei, Kiitos, and polite acknowledgments.",
+            title: "Lesson 1. Vocabulary Building",
+            description: "Learn essential Finnish foundation words: water, bread, book, house, and everyday items.",
             xp: 20,
             questions: [
               {
                 id: "q1",
                 type: "multiple_choice",
-                prompt: "How do you say 'Thank you' in Finnish?",
-                options: ["Kiitos", "Hei", "Näkemiin", "Kyllä"],
-                correctAnswer: "Kiitos",
-                explanation: "'Kiitos' is the universal Finnish word for 'Thank you'."
+                prompt: "What does the Finnish word 'vesi' mean?",
+                options: ["Water", "Bread", "House", "Book"],
+                correctAnswer: "Water",
+                explanation: "'Vesi' means water in Finnish."
               },
               {
                 id: "q2",
                 type: "matching",
-                prompt: "Match Finnish words with English:",
+                prompt: "Match the Finnish vocabulary with English:",
                 pairs: [
-                  { native: "Hei", english: "Hello" },
-                  { native: "Kiitos", english: "Thank you" },
-                  { native: "Kyllä", english: "Yes" },
-                  { native: "Ei", english: "No" }
+                  { native: "Leipä", english: "Bread" },
+                  { native: "Kirja", english: "Book" },
+                  { native: "Talo", english: "House" },
+                  { native: "Auto", english: "Car" }
                 ]
+              },
+              {
+                id: "q3",
+                type: "audio_listen",
+                phrase: "Koira",
+                prompt: "Listen to the word and select what it means:",
+                options: ["Dog", "Cat", "Horse", "Bird"],
+                correctAnswer: "Dog",
+                explanation: "'Koira' is the Finnish word for dog, while 'kissa' is cat."
+              },
+              {
+                id: "q4",
+                type: "fill_blank",
+                sentence: "Minulla on ___.",
+                missingWord: "kissa",
+                options: ["kissa", "kyllä", "kiitos", "hyvä"],
+                correctAnswer: "kissa",
+                explanation: "'Minulla on kissa' translates to 'I have a cat'."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l2",
+            title: "Lesson 2. Use Common Phrases",
+            description: "Master polite greetings, courtesies, introducing yourself, and asking questions.",
+            xp: 25,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "How do you say 'My name is Anna' in Finnish?",
+                options: ["Minun nimeni on Anna", "Mitä kuuluu Anna", "Kiitos Anna", "Anna on hyvä"],
+                correctAnswer: "Minun nimeni on Anna",
+                explanation: "'Minun nimeni on...' is the classic formal and friendly way to say 'My name is...'."
+              },
+              {
+                id: "q2",
+                type: "scramble",
+                prompt: "Assemble: 'Do you speak English?'",
+                tokens: ["Puhutko", "englantia?", "suomea", "kiitos"],
+                correctTokens: ["Puhutko", "englantia?"],
+                explanation: "'Puhutko englantia?' asks 'Do you speak English?' in Finnish."
+              },
+              {
+                id: "q3",
+                type: "audio_listen",
+                phrase: "Anteeksi",
+                prompt: "Listen to the word and select what it means:",
+                options: ["Excuse me / Sorry", "Thank you very much", "Good night", "Goodbye"],
+                correctAnswer: "Excuse me / Sorry",
+                explanation: "'Anteeksi' is used both for apologies ('Sorry') and to politely grab someone's attention."
+              },
+              {
+                id: "q4",
+                type: "matching",
+                prompt: "Match the Finnish common phrases:",
+                pairs: [
+                  { native: "Hyvää huomenta", english: "Good morning" },
+                  { native: "Hyvää yötä", english: "Good night" },
+                  { native: "En ymmärrä", english: "I don't understand" },
+                  { native: "Ole hyvä", english: "You're welcome" }
+                ]
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l3",
+            title: "Lesson 3. Talk about people",
+            description: "Describe family members, relationships, and introduce companions.",
+            xp: 25,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "What does 'äiti' mean?",
+                options: ["Mother", "Father", "Sister", "Friend"],
+                correctAnswer: "Mother",
+                explanation: "'Äiti' means mother, and 'isä' means father."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match the family and people terms:",
+                pairs: [
+                  { native: "Veli", english: "Brother" },
+                  { native: "Sisko", english: "Sister" },
+                  { native: "Ystävä", english: "Friend" },
+                  { native: "Lapsi", english: "Child" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "scramble",
+                prompt: "Assemble: 'He/She is my friend'",
+                tokens: ["Hän", "on", "minun", "ystäväni", "talo"],
+                correctTokens: ["Hän", "on", "minun", "ystäväni"],
+                explanation: "Finnish uses the gender-neutral pronoun 'Hän' for both 'he' and 'she'."
+              },
+              {
+                id: "q4",
+                type: "fill_blank",
+                sentence: "Minä ___ opettaja.",
+                missingWord: "olen",
+                options: ["olen", "olet", "on", "ovat"],
+                correctAnswer: "olen",
+                explanation: "'Minä olen' means 'I am' ('Minä olen opettaja' = 'I am a teacher')."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l4",
+            title: "Lesson 4. Describe things",
+            description: "Use descriptive adjectives: size, age, aesthetics, and temperatures.",
+            xp: 25,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "What does 'kaunis' mean in Finnish?",
+                options: ["Beautiful", "Cold", "Small", "Old"],
+                correctAnswer: "Beautiful",
+                explanation: "'Kaunis' means beautiful or pretty."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match Finnish descriptive opposites:",
+                pairs: [
+                  { native: "Iso", english: "Big" },
+                  { native: "Pieni", english: "Small" },
+                  { native: "Uusi", english: "New" },
+                  { native: "Vanha", english: "Old" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "audio_listen",
+                phrase: "Kylmä",
+                prompt: "Listen to the word and select what it means:",
+                options: ["Cold", "Hot", "New", "Big"],
+                correctAnswer: "Cold",
+                explanation: "'Kylmä' means cold. 'Kuuma' means hot."
+              },
+              {
+                id: "q4",
+                type: "scramble",
+                prompt: "Assemble: 'The car is new'",
+                tokens: ["Auto", "on", "uusi", "vanha"],
+                correctTokens: ["Auto", "on", "uusi"],
+                explanation: "Finnish has no definite articles ('the'), so 'Auto on uusi' directly means 'The car is new'."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l5",
+            title: "Lesson 5. House hold",
+            description: "Explore rooms, furniture, everyday household objects, and the Finnish sauna.",
+            xp: 25,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "What room is 'keittiö'?",
+                options: ["Kitchen", "Bedroom", "Bathroom", "Balcony"],
+                correctAnswer: "Kitchen",
+                explanation: "'Keittiö' is the kitchen in a Finnish house."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match the household objects:",
+                pairs: [
+                  { native: "Ovi", english: "Door" },
+                  { native: "Ikkuna", english: "Window" },
+                  { native: "Pöytä", english: "Table" },
+                  { native: "Sänky", english: "Bed" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "audio_listen",
+                phrase: "Tuoli",
+                prompt: "Listen to the word and select what it means:",
+                options: ["Chair", "Table", "Door", "Bed"],
+                correctAnswer: "Chair",
+                explanation: "'Tuoli' means chair in Finnish."
+              },
+              {
+                id: "q4",
+                type: "scramble",
+                prompt: "Assemble: 'Where is the kitchen?'",
+                tokens: ["Missä", "keittiö", "on?", "ovi"],
+                correctTokens: ["Missä", "keittiö", "on?"],
+                explanation: "'Missä' means 'Where' ('Missä keittiö on?' = 'Where is the kitchen?')."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l6",
+            title: "Lesson 6. Using verbs",
+            description: "Practice essential active verbs: to speak, eat, drink, go, and live.",
+            xp: 30,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "What does 'syödä' mean?",
+                options: ["To eat", "To drink", "To go", "To speak"],
+                correctAnswer: "To eat",
+                explanation: "'Syödä' is the infinitive verb meaning 'to eat'."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match Finnish verbs with their meanings:",
+                pairs: [
+                  { native: "Mennä", english: "To go" },
+                  { native: "Juoda", english: "To drink" },
+                  { native: "Puhua", english: "To speak" },
+                  { native: "Asua", english: "To live / dwell" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "scramble",
+                prompt: "Assemble: 'I speak Finnish'",
+                tokens: ["Minä", "puhun", "suomea", "puhut"],
+                correctTokens: ["Minä", "puhun", "suomea"],
+                explanation: "'Puhun' is 'I speak'. 'Suomea' is the partitive form of suomi."
+              },
+              {
+                id: "q4",
+                type: "fill_blank",
+                sentence: "Minä ___ vettä.",
+                missingWord: "juon",
+                options: ["juon", "syön", "menen", "asun"],
+                correctAnswer: "juon",
+                explanation: "'Juon' is the first person form of 'juoda' (to drink): 'Minä juon vettä' = 'I drink water'."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l7",
+            title: "Lesson 7: Discussion about past tense",
+            description: "Narrate yesterday's events using past tense forms like olin, söin, join, and menin.",
+            xp: 30,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "How do you say 'I was' in Finnish past tense?",
+                options: ["Minä olin", "Minä olen", "Minä olet", "Minä oli"],
+                correctAnswer: "Minä olin",
+                explanation: "The past tense of 'olla' for 'minä' is 'olin' (I was)."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match the Finnish past tense forms:",
+                pairs: [
+                  { native: "Söin", english: "I ate" },
+                  { native: "Join", english: "I drank" },
+                  { native: "Menin", english: "I went" },
+                  { native: "Puhuin", english: "I spoke" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "scramble",
+                prompt: "Assemble: 'Yesterday I went to the shop'",
+                tokens: ["Eilen", "menin", "kauppaan", "menen"],
+                correctTokens: ["Eilen", "menin", "kauppaan"],
+                explanation: "'Eilen' means yesterday, and 'kauppaan' indicates movement into the shop."
+              },
+              {
+                id: "q4",
+                type: "fill_blank",
+                sentence: "Eilen minä ___ kahvia.",
+                missingWord: "join",
+                options: ["join", "juon", "juot", "juo"],
+                correctAnswer: "join",
+                explanation: "'Join' is the past form of 'juoda' (I drank coffee yesterday)."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l9",
+            title: "Lesson 9: Present tense",
+            description: "Master Finnish present tense verb endings across all pronouns.",
+            xp: 30,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "How do you say 'We speak' in present tense?",
+                options: ["Me puhumme", "Me puhun", "Me puhuu", "Me puhuvat"],
+                correctAnswer: "Me puhumme",
+                explanation: "The 1st person plural ('me') takes the ending '-mme': 'Me puhumme'."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match the present tense forms of 'olla' (to be):",
+                pairs: [
+                  { native: "Minä olen", english: "I am" },
+                  { native: "Sinä olet", english: "You are" },
+                  { native: "Hän on", english: "He / She is" },
+                  { native: "He ovat", english: "They are" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "fill_blank",
+                sentence: "Hän ___ suomea.",
+                missingWord: "puhuu",
+                options: ["puhuu", "puhun", "puhut", "puhumme"],
+                correctAnswer: "puhuu",
+                explanation: "Third person singular lengthens the vowel: 'Hän puhuu suomea'."
+              },
+              {
+                id: "q4",
+                type: "scramble",
+                prompt: "Assemble: 'We live in Finland'",
+                tokens: ["Me", "asumme", "Suomessa", "asun"],
+                correctTokens: ["Me", "asumme", "Suomessa"],
+                explanation: "'Me asumme Suomessa' means 'We live in Finland'."
+              }
+            ]
+          },
+          {
+            id: "fi-u1-l10",
+            title: "Lesson 10 : talk about places",
+            description: "Explore cities, schools, nature, and express location with Finnish cases.",
+            xp: 30,
+            questions: [
+              {
+                id: "q1",
+                type: "multiple_choice",
+                prompt: "What is 'kirjasto'?",
+                options: ["Library", "School", "Train station", "Forest"],
+                correctAnswer: "Library",
+                explanation: "'Kirjasto' is library, derived from 'kirja' (book)."
+              },
+              {
+                id: "q2",
+                type: "matching",
+                prompt: "Match the places in Finnish:",
+                pairs: [
+                  { native: "Kaupunki", english: "City / Town" },
+                  { native: "Koulu", english: "School" },
+                  { native: "Järvi", english: "Lake" },
+                  { native: "Metsä", english: "Forest" }
+                ]
+              },
+              {
+                id: "q3",
+                type: "scramble",
+                prompt: "Assemble: 'Where is the library?'",
+                tokens: ["Missä", "on", "kirjasto?", "koulu"],
+                correctTokens: ["Missä", "on", "kirjasto?"],
+                explanation: "'Missä on kirjasto?' translates to 'Where is the library?'."
+              },
+              {
+                id: "q4",
+                type: "fill_blank",
+                sentence: "Minä olen ___.",
+                missingWord: "koulussa",
+                options: ["koulussa", "kouluun", "koulu", "koulusta"],
+                correctAnswer: "koulussa",
+                explanation: "The inessive suffix '-ssa' means 'inside/at': 'koulussa' = 'at school'."
               }
             ]
           }

@@ -2748,3 +2748,6 @@ button:active {
 .auth-back-link:hover{color:#58cc02}
 a.link-switch-btn{text-decoration:none;cursor:pointer}
 .auth-modal-overlay{overflow-y:auto}
+
+.fl-avatar{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;line-height:1}
+.fl-avatar-photo{object-fit:cover}

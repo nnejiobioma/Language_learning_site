@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGame } from '../context/GameContext';
 import { useAuth } from '../context/AuthContext';
+import Avatar from './Avatar';
 import { LANGUAGES } from '../data/languages';
 import { 
   Flame, 
@@ -184,9 +185,7 @@ export default function Header() {
               aria-label="User Account"
               aria-expanded={userDropdownOpen}
             >
-              <div className="user-avatar-circle">
-                <User size={16} />
-              </div>
+              <Avatar profile={profile} size={30} />
               <span className="user-name-text">
                 {profile?.displayName || user?.displayName || 'Learner'}
               </span>
@@ -205,6 +204,17 @@ export default function Header() {
                     )}
                   </div>
                 </div>
+                <button 
+                  className="dropdown-signout-btn"
+                  style={{ marginBottom: 8 }}
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    router.push('/profile');
+                  }}
+                >
+                  <User size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
+                  My Profile
+                </button>
                 <button 
                   className="dropdown-signout-btn"
                   onClick={async () => {
