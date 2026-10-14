@@ -2,8 +2,381 @@
 
 export const finnishUnit1Lessons = [
   {
+    id: "fi-u1-l01-alphabet",
+    title: "Lesson 1: Finnish Alphabet & Phonetics",
+    description: "Master Finnish letters, special vowels (Ä, Ö, Å, Y), letter sounds, and vowel & consonant lengths.",
+    xp: 20,
+    questions: [
+      {
+        id: "fi-l01-q1",
+        type: "multiple_choice",
+        prompt: "How many letters are in the standard Finnish alphabet (including Å, Ä, and Ö)?",
+        options: ["29", "26", "24", "32"],
+        correctAnswer: "29",
+        explanation: "The Finnish alphabet has 29 letters: 26 standard Latin letters plus Å, Ä, and Ö."
+      },
+      {
+        id: "fi-l01-q2",
+        type: "multiple_choice",
+        prompt: "How is the Finnish letter 'J' pronounced?",
+        options: ["Always like 'y' in 'yes'", "Like 'j' in 'jump'", "Like 'h' in 'hat'", "Like 'sh' in 'ship'"],
+        correctAnswer: "Always like 'y' in 'yes'",
+        explanation: "In Finnish, 'j' is always pronounced like the English 'y' in 'yes' (e.g. 'juna' sounds like 'yoo-nah')."
+      },
+      {
+        id: "fi-l01-q3",
+        type: "matching",
+        prompt: "Match the special Finnish vowels to their pronunciation sounds:",
+        pairs: [
+          { native: "Ä (ä)", english: "Like 'a' in 'cat' or 'hat'" },
+          { native: "Ö (ö)", english: "Like 'er' in 'bird' or French 'eu'" },
+          { native: "Y (y)", english: "Like German 'ü' (front rounded 'ee')" },
+          { native: "Å (å)", english: "Swedish 'O' (ruotsalainen o)" }
+        ]
+      },
+      {
+        id: "fi-l01-q4",
+        type: "audio_listen",
+        phrase: "Äiti",
+        prompt: "Listen to the word 'Äiti' (mother). What special Finnish letter does it start with?",
+        options: ["Ä", "A", "O", "Ö"],
+        correctAnswer: "Ä",
+        explanation: "'Äiti' (mother) starts with the front vowel Ä, pronounced like 'a' in 'cat'."
+      },
+      {
+        id: "fi-l01-q5",
+        type: "fill_blank",
+        sentence: "Sanan 'kissa' ensimmäinen kirjain on ___.",
+        missingWord: "K",
+        options: ["K", "S", "M", "T"],
+        correctAnswer: "K",
+        explanation: "The word 'kissa' (cat) begins with the letter K."
+      },
+      {
+        id: "fi-l01-q6",
+        type: "multiple_choice",
+        prompt: "What happens when a Finnish vowel is written double (e.g. 'aa', 'uu', 'ii')?",
+        options: [
+          "It is held twice as long and can change the word's meaning",
+          "It becomes silent",
+          "It is pronounced with a higher pitch only",
+          "It turns into an English sound"
+        ],
+        correctAnswer: "It is held twice as long and can change the word's meaning",
+        explanation: "Double vowels (kaksoisvokaalit) are held twice as long. Compare 'tuli' (fire) vs 'tuuli' (wind)!"
+      },
+      {
+        id: "fi-l01-q7",
+        type: "matching",
+        prompt: "Match words that differ only by vowel length (single vs double vowel):",
+        pairs: [
+          { native: "Tuli", english: "Fire (short 'u')" },
+          { native: "Tuuli", english: "Wind (long 'uu')" },
+          { native: "Muta", english: "Mud (short 'u')" },
+          { native: "Muuta", english: "Other / something else (long 'uu')" }
+        ]
+      },
+      {
+        id: "fi-l01-q8",
+        type: "audio_listen",
+        phrase: "Yö",
+        prompt: "Listen to the word 'Yö' (night). What two special vowels make up this word?",
+        options: ["Y and Ö", "I and O", "U and Ä", "Y and A"],
+        correctAnswer: "Y and Ö",
+        explanation: "'Yö' means 'night' in Finnish, composed of the two front vowels Y and Ö."
+      },
+      {
+        id: "fi-l01-q9",
+        type: "multiple_choice",
+        prompt: "What happens with double consonants (e.g., 'kk', 'pp', 'tt') in Finnish?",
+        options: [
+          "There is a short pause / stop before release",
+          "One letter is silent",
+          "The consonant becomes soft",
+          "It is skipped completely"
+        ],
+        correctAnswer: "There is a short pause / stop before release",
+        explanation: "Double consonants have a distinct stop: 'kuka' (who) vs 'kukka' (flower)."
+      },
+      {
+        id: "fi-l01-q10",
+        type: "fill_blank",
+        sentence: "Sana 'yö' tarkoittaa ___.",
+        missingWord: "night",
+        options: ["night", "day", "sun", "water"],
+        correctAnswer: "night",
+        explanation: "'Yö' is the Finnish word for night."
+      },
+      {
+        id: "fi-l01-q11",
+        type: "matching",
+        prompt: "Match Finnish letters with example words:",
+        pairs: [
+          { native: "J -> Juna", english: "Train (starts with J)" },
+          { native: "K -> Kissa", english: "Cat (starts with K)" },
+          { native: "P -> Pöllö", english: "Owl (starts with P)" },
+          { native: "S -> Suomi", english: "Finland (starts with S)" }
+        ]
+      },
+      {
+        id: "fi-l01-q12",
+        type: "audio_listen",
+        phrase: "Suomi",
+        prompt: "Listen to the country name 'Suomi'. How is the letter 'S' pronounced?",
+        options: [
+          "Sharp voiceless 's' (never 'z')",
+          "Voiced 'z' like 'buzz'",
+          "Like 'sh' in 'shoe'",
+          "Silent 's'"
+        ],
+        correctAnswer: "Sharp voiceless 's' (never 'z')",
+        explanation: "Finnish 's' is always crisp and voiceless, never buzzing like English 'z'."
+      },
+      {
+        id: "fi-l01-q13",
+        type: "multiple_choice",
+        prompt: "Which of these vowels are back vowels in Finnish vowel harmony?",
+        options: ["A, O, U", "Ä, Ö, Y", "E, I", "Å, B, C"],
+        correctAnswer: "A, O, U",
+        explanation: "A, O, and U are back vowels, while Ä, Ö, and Y are front vowels. E and I are neutral."
+      },
+      {
+        id: "fi-l01-q14",
+        type: "matching",
+        prompt: "Match the vowel types in Finnish vowel harmony:",
+        pairs: [
+          { native: "Takavokaalit (A, O, U)", english: "Back vowels" },
+          { native: "Etuvokaalit (Ä, Ö, Y)", english: "Front vowels" },
+          { native: "Neutraalit (E, I)", english: "Neutral vowels" },
+          { native: "Ruotsalainen Å", english: "Swedish O" }
+        ]
+      },
+      {
+        id: "fi-l01-q15",
+        type: "fill_blank",
+        sentence: "Pöllö tarkoittaa ___.",
+        missingWord: "owl",
+        options: ["owl", "bear", "wolf", "dog"],
+        correctAnswer: "owl",
+        explanation: "'Pöllö' (owl) is a great example of the front rounded vowel Ö."
+      },
+      {
+        id: "fi-l01-q16",
+        type: "audio_listen",
+        phrase: "Pöllö",
+        prompt: "Listen to the word 'Pöllö' (owl). Which vowel repeats twice?",
+        options: ["Ö", "O", "Ä", "U"],
+        correctAnswer: "Ö",
+        explanation: "'Pöllö' contains two 'ö' sounds."
+      },
+      {
+        id: "fi-l01-q17",
+        type: "scramble",
+        prompt: "Arrange the words to say: 'Finnish language alphabet'",
+        tokens: ["Suomen", "kielen", "aakkoset"],
+        correctTokens: ["Suomen", "kielen", "aakkoset"],
+        explanation: "'Suomen kielen aakkoset' means 'The Finnish language alphabet'."
+      },
+      {
+        id: "fi-l01-q18",
+        type: "multiple_choice",
+        prompt: "In Finnish, is every letter pronounced consistently as written (phonetic orthography)?",
+        options: [
+          "Yes, Finnish is almost completely phonetic",
+          "No, letters are usually silent",
+          "Only vowels are pronounced",
+          "It changes unpredictably"
+        ],
+        correctAnswer: "Yes, Finnish is almost completely phonetic",
+        explanation: "Finnish has one of the most transparent phonetic spelling systems in the world: you read each letter almost exactly as it is written!"
+      }
+    ]
+  },
+  {
+    id: "fi-u1-l02-numbers",
+    title: "Lesson 2: Finnish Numbers 0–10 & Counting",
+    description: "Learn to count from 0 to 10 in Finnish (nolla, yksi, kaksi, kolme...) and understand Finnish number logic.",
+    xp: 20,
+    questions: [
+      {
+        id: "fi-l02-q1",
+        type: "multiple_choice",
+        prompt: "What is the Finnish word for the number 1?",
+        options: ["Yksi", "Kaksi", "Kolme", "Nolla"],
+        correctAnswer: "Yksi",
+        explanation: "'Yksi' is the number one in Finnish."
+      },
+      {
+        id: "fi-l02-q2",
+        type: "matching",
+        prompt: "Match the first numbers (0 to 3) in Finnish with English digits:",
+        pairs: [
+          { native: "Nolla", english: "0 (Zero)" },
+          { native: "Yksi", english: "1 (One)" },
+          { native: "Kaksi", english: "2 (Two)" },
+          { native: "Kolme", english: "3 (Three)" }
+        ]
+      },
+      {
+        id: "fi-l02-q3",
+        type: "audio_listen",
+        phrase: "Kaksi",
+        prompt: "Listen to the audio. What number did you hear?",
+        options: ["Two (2)", "One (1)", "Three (3)", "Five (5)"],
+        correctAnswer: "Two (2)",
+        explanation: "'Kaksi' is two."
+      },
+      {
+        id: "fi-l02-q4",
+        type: "fill_blank",
+        sentence: "Yksi, kaksi, ___.",
+        missingWord: "kolme",
+        options: ["kolme", "nolla", "kymmenen", "kuusi"],
+        correctAnswer: "kolme",
+        explanation: "One, two, three -> 'Yksi, kaksi, kolme'."
+      },
+      {
+        id: "fi-l02-q5",
+        type: "matching",
+        prompt: "Match numbers 4 to 7 with their English values:",
+        pairs: [
+          { native: "Neljä", english: "4 (Four)" },
+          { native: "Viisi", english: "5 (Five)" },
+          { native: "Kuusi", english: "6 (Six)" },
+          { native: "Seitsemän", english: "7 (Seven)" }
+        ]
+      },
+      {
+        id: "fi-l02-q6",
+        type: "multiple_choice",
+        prompt: "What interesting double meaning does the Finnish word 'kuusi' have?",
+        options: [
+          "It means both the number 6 and 'spruce tree'",
+          "It means both 6 and 'cloud'",
+          "It means both 6 and 'water'",
+          "It has no other meaning"
+        ],
+        correctAnswer: "It means both the number 6 and 'spruce tree'",
+        explanation: "'Kuusi palaa' is a famous Finnish pun meaning 'the number six is burning', 'the spruce is on fire', or 'the spruce returns'!"
+      },
+      {
+        id: "fi-l02-q7",
+        type: "audio_listen",
+        phrase: "Viisi",
+        prompt: "Listen to the number. What does 'Viisi' mean?",
+        options: ["Five (5)", "Four (4)", "Seven (7)", "Ten (10)"],
+        correctAnswer: "Five (5)",
+        explanation: "'Viisi' means 5."
+      },
+      {
+        id: "fi-l02-q8",
+        type: "fill_blank",
+        sentence: "Neljä, viisi, ___.",
+        missingWord: "kuusi",
+        options: ["kuusi", "yksi", "nolla", "sata"],
+        correctAnswer: "kuusi",
+        explanation: "Four, five, six -> 'Neljä, viisi, kuusi'."
+      },
+      {
+        id: "fi-l02-q9",
+        type: "matching",
+        prompt: "Match numbers 8, 9, 10, and 100 with English:",
+        pairs: [
+          { native: "Kahdeksan", english: "8 (Eight)" },
+          { native: "Yhdeksän", english: "9 (Nine)" },
+          { native: "Kymmenen", english: "10 (Ten)" },
+          { native: "Sata", english: "100 (One hundred)" }
+        ]
+      },
+      {
+        id: "fi-l02-q10",
+        type: "multiple_choice",
+        prompt: "What is the historical etymology of 'kahdeksan' (8) and 'yhdeksän' (9)?",
+        options: [
+          "'Two left from ten' and 'one left from ten'",
+          "They are borrowed from Latin",
+          "They mean 'double four' and 'triple three'",
+          "They come from bird names"
+        ],
+        correctAnswer: "'Two left from ten' and 'one left from ten'",
+        explanation: "'Kaks-teksa' / 'kahdeksan' literally meant 'two before ten', and 'yhdeksän' meant 'one before ten'!"
+      },
+      {
+        id: "fi-l02-q11",
+        type: "audio_listen",
+        phrase: "Kymmenen",
+        prompt: "Listen to the word. What number is 'Kymmenen'?",
+        options: ["10 (Ten)", "9 (Nine)", "8 (Eight)", "0 (Zero)"],
+        correctAnswer: "10 (Ten)",
+        explanation: "'Kymmenen' is ten."
+      },
+      {
+        id: "fi-l02-q12",
+        type: "scramble",
+        prompt: "Put the numbers in order from 1 to 3:",
+        tokens: ["kolme", "yksi", "kaksi"],
+        correctTokens: ["yksi", "kaksi", "kolme"],
+        explanation: "1 (yksi), 2 (kaksi), 3 (kolme)."
+      },
+      {
+        id: "fi-l02-q13",
+        type: "fill_blank",
+        sentence: "Seitsemän, kahdeksan, yhdeksän, ___.",
+        missingWord: "kymmenen",
+        options: ["kymmenen", "nolla", "viisi", "kolme"],
+        correctAnswer: "kymmenen",
+        explanation: "7, 8, 9, 10 -> 'Seitsemän, kahdeksan, yhdeksän, kymmenen'."
+      },
+      {
+        id: "fi-l02-q14",
+        type: "multiple_choice",
+        prompt: "How do you say 'One coffee, please' in Finnish?",
+        options: ["Yksi kahvi, kiitos", "Kaksi teetä, kiitos", "Kymmenen leipää", "Nolla euroa"],
+        correctAnswer: "Yksi kahvi, kiitos",
+        explanation: "'Yksi kahvi, kiitos' means 'One coffee, please'."
+      },
+      {
+        id: "fi-l02-q15",
+        type: "matching",
+        prompt: "Match the Finnish numbers with their teen forms (adding -toista):",
+        pairs: [
+          { native: "Yksitoista", english: "11 (Eleven)" },
+          { native: "Kaksitoista", english: "12 (Twelve)" },
+          { native: "Kolmetoista", english: "13 (Thirteen)" },
+          { native: "Neljätoista", english: "14 (Fourteen)" }
+        ]
+      },
+      {
+        id: "fi-l02-q16",
+        type: "audio_listen",
+        phrase: "Seitsemän",
+        prompt: "Listen carefully. Which number is spoken?",
+        options: ["7 (Seitsemän)", "6 (Kuusi)", "8 (Kahdeksan)", "5 (Viisi)"],
+        correctAnswer: "7 (Seitsemän)",
+        explanation: "'Seitsemän' is the number 7."
+      },
+      {
+        id: "fi-l02-q17",
+        type: "fill_blank",
+        sentence: "Minulla on ___ euroa.",
+        missingWord: "viisi",
+        options: ["viisi", "nimetön", "huomenta", "anteeksi"],
+        correctAnswer: "viisi",
+        explanation: "'Minulla on viisi euroa' means 'I have five euros'."
+      },
+      {
+        id: "fi-l02-q18",
+        type: "scramble",
+        prompt: "Count backwards from 3 to 1 in Finnish:",
+        tokens: ["yksi", "kolme", "kaksi"],
+        correctTokens: ["kolme", "kaksi", "yksi"],
+        explanation: "3, 2, 1 -> 'Kolme, kaksi, yksi'."
+      }
+    ]
+  },
+  {
     id: "fi-u1-l1",
-    title: "Lesson 1. Vocabulary Building",
+    title: "Lesson 3. Vocabulary Building",
     description: "Learn essential Finnish foundation words: food, drinks, animals, nature, and everyday objects.",
     xp: 20,
     questions: [
@@ -195,7 +568,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l2",
-    title: "Lesson 2. Use Common Phrases",
+    title: "Lesson 4. Use Common Phrases",
     description: "Master polite greetings, courtesies, introductions, questions, and daily social phrases.",
     xp: 25,
     questions: [
@@ -383,7 +756,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l3",
-    title: "Lesson 3. Talk about people",
+    title: "Lesson 5. Talk about people",
     description: "Describe family members, relationships, pronouns, and introduce friends and companions.",
     xp: 25,
     questions: [
@@ -576,7 +949,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l4",
-    title: "Lesson 4. Describe things",
+    title: "Lesson 6. Describe things",
     description: "Use descriptive adjectives: size, age, aesthetics, temperature, colors, and quality.",
     xp: 25,
     questions: [
@@ -767,7 +1140,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l5",
-    title: "Lesson 5. House hold",
+    title: "Lesson 7. House hold",
     description: "Explore rooms, furniture, home appliances, household objects, and the Finnish sauna.",
     xp: 25,
     questions: [
@@ -955,7 +1328,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l6",
-    title: "Lesson 6. Using verbs",
+    title: "Lesson 8. Using verbs",
     description: "Practice essential core action verbs: speaking, eating, drinking, moving, living, and desiring.",
     xp: 30,
     questions: [
@@ -1143,7 +1516,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l7",
-    title: "Lesson 7: Discussion about past tense",
+    title: "Lesson 9: Discussion about past tense",
     description: "Narrate past events, yesterday's activities, and master the Finnish imperfect/past tense.",
     xp: 30,
     questions: [
@@ -1331,7 +1704,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l9",
-    title: "Lesson 9: Present tense",
+    title: "Lesson 10: Present tense",
     description: "Master Finnish present tense verb endings across all pronouns, question forms, and negatives.",
     xp: 30,
     questions: [
@@ -1519,7 +1892,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l10",
-    title: "Lesson 10 : talk about places",
+    title: "Lesson 11: Talk about places",
     description: "Explore cities, schools, nature, transit, and master Finnish location cases (-ssa, -lla, -lle, -on).",
     xp: 30,
     questions: [

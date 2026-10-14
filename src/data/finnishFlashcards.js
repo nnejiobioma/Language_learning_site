@@ -5,7 +5,53 @@
 
 export const finnishFlashcards = [
   // =========================================================================
-  // Unit 1 (A1.1): Foundations & Phonetics (Introduce Yourself) (180 cards)
+  // Unit 1 (A1.1): Alphabet, Special Sounds & Numbers (41 cards)
+  // =========================================================================
+  { id: "fi-fc-alpha-01", front: "A / a", phonetic: "AH", back: "A — pronounced like 'a' in 'father'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Aurinko paistaa. (The sun is shining.)" },
+  { id: "fi-fc-alpha-02", front: "B / b", phonetic: "BEH", back: "B — used primarily in modern loanwords", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Banaani on keltainen. (The banana is yellow.)" },
+  { id: "fi-fc-alpha-03", front: "C / c", phonetic: "SEH", back: "C — used in international loanwords", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Celsius-asteet. (Degrees Celsius.)" },
+  { id: "fi-fc-alpha-04", front: "D / d", phonetic: "DEH", back: "D — soft dental stop, key to k-p-t gradation", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Pöytä -> Pöydällä. (Table -> On the table.)" },
+  { id: "fi-fc-alpha-05", front: "E / e", phonetic: "EH", back: "E — neutral vowel, like 'e' in 'bed'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Ei tarkoittaa no. (Ei means no.)" },
+  { id: "fi-fc-alpha-06", front: "F / f", phonetic: "EF", back: "F — used in loanwords and names", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Farkut ovat siniset. (The jeans are blue.)" },
+  { id: "fi-fc-alpha-07", front: "G / g", phonetic: "GEH", back: "G — voiced velar stop; 'ng' makes a nasal sound", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Helsingissä sataa. (In Helsinki it's raining.)" },
+  { id: "fi-fc-alpha-08", front: "H / h", phonetic: "HOH", back: "H — clearly aspirated, even before consonants", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kahvi on kuumaa. (Coffee is hot.)" },
+  { id: "fi-fc-alpha-09", front: "I / i", phonetic: "EE", back: "I — neutral vowel, pronounced like 'ee' in 'see'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Ilta on kaunis. (The evening is beautiful.)" },
+  { id: "fi-fc-alpha-10", front: "J / j", phonetic: "YEE", back: "J — ALWAYS pronounced like 'y' in 'yes'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Juna saapuu asemalle. (The train arrives at the station.)" },
+  { id: "fi-fc-alpha-11", front: "K / k", phonetic: "KOOH", back: "K — crisp unaspirated stop; central to k-p-t", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kissa leikkii langalla. (The cat plays with yarn.)" },
+  { id: "fi-fc-alpha-12", front: "L / l", phonetic: "EL", back: "L — bright alveolar lateral", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Lintu laulaa puussa. (The bird sings in the tree.)" },
+  { id: "fi-fc-alpha-13", front: "M / m", phonetic: "EM", back: "M — voiced bilabial nasal", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Maito on kylmää. (The milk is cold.)" },
+  { id: "fi-fc-alpha-14", front: "N / n", phonetic: "EN", back: "N — voiced alveolar nasal", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Mikä sinun nimesi on? (What is your name?)" },
+  { id: "fi-fc-alpha-15", front: "O / o", phonetic: "OH", back: "O — back vowel, like 'o' in 'or' or 'pot'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Omena on makea. (The apple is sweet.)" },
+  { id: "fi-fc-alpha-16", front: "P / p", phonetic: "PEH", back: "P — crisp unaspirated bilabial stop", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Puu on vihreä. (The tree is green.)" },
+  { id: "fi-fc-alpha-17", front: "R / r", phonetic: "AR", back: "R — rolled trill with tip of the tongue", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Raha ei kasva puissa. (Money doesn't grow on trees.)" },
+  { id: "fi-fc-alpha-18", front: "S / s", phonetic: "ES", back: "S — voiceless sibilant, always sharp 's' (never 'z')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Suomi on kaunis maa. (Finland is a beautiful country.)" },
+  { id: "fi-fc-alpha-19", front: "T / t", phonetic: "TEH", back: "T — crisp unaspirated dental stop", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Talo on vanha. (The house is old.)" },
+  { id: "fi-fc-alpha-20", front: "U / u", phonetic: "OO", back: "U — back vowel, pronounced like 'oo' in 'boot'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Uusi kirja on mielenkiintoinen. (The new book is interesting.)" },
+  { id: "fi-fc-alpha-21", front: "V / v", phonetic: "VEH", back: "V — soft voiced labiodental, gentler than English 'v'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Vesi on puhdasta. (The water is pure.)" },
+  { id: "fi-fc-alpha-22", front: "Y / y", phonetic: "EW", back: "Y — front rounded vowel (say 'ee' with rounded lips, German 'ü')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Yö on pimeä. (The night is dark.)" },
+  { id: "fi-fc-alpha-23", front: "Ä / ä", phonetic: "AA / AE", back: "Ä — front vowel, like 'a' in 'cat' or 'hat'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Äiti leipoo leipää. (Mother is baking bread.)" },
+  { id: "fi-fc-alpha-24", front: "Ö / ö", phonetic: "ER / EU", back: "Ö — front rounded vowel, like 'er' in 'bird' or French 'eu'", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Pöllö istuu oksalla. (The owl sits on the branch.)" },
+  { id: "fi-fc-alpha-25", front: "Å / å", phonetic: "OH (Ruotsalainen O)", back: "Å — Swedish O (used in Swedish loanwords & names)", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Åland on Ahvenanmaa. (Åland is the Åland Islands.)" },
+  { id: "fi-fc-alpha-26", front: "Kaksoisvokaalit (aa, ee, ii, oo, uu, yy, ää, öö)", phonetic: "Double length vowel", back: "Double Vowels — held twice as long, changes word meaning!", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Tuli (fire) vs. Tuuli (wind)." },
+  { id: "fi-fc-alpha-27", front: "Kaksoiskonsonantit (kk, pp, tt, ll, mm, nn, rr, ss)", phonetic: "Double consonant stop", back: "Double Consonants — micro-pause before release, changes meaning!", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kuka (who) vs. Kukka (flower)." },
+  { id: "fi-fc-num-00", front: "0 — Nolla", phonetic: "NOHL-lah", back: "0 — Zero", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Ulkona on nolla astetta. (Outside it is zero degrees.)" },
+  { id: "fi-fc-num-01", front: "1 — Yksi", phonetic: "EWK-see", back: "1 — One", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Yksi kahvi, kiitos. (One coffee, please.)" },
+  { id: "fi-fc-num-02", front: "2 — Kaksi", phonetic: "KAHK-see", back: "2 — Two", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kaksi lippua teatteriin. (Two tickets to the theater.)" },
+  { id: "fi-fc-num-03", front: "3 — Kolme", phonetic: "KOHL-meh", back: "3 — Three", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Pöydällä on kolme omenaa. (There are three apples on the table.)" },
+  { id: "fi-fc-num-04", front: "4 — Neljä", phonetic: "NEL-yah", back: "4 — Four", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kello on neljä iltapäivällä. (It is four in the afternoon.)" },
+  { id: "fi-fc-num-05", front: "5 — Viisi", phonetic: "VEE-see", back: "5 — Five", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Minulla on viisi euroa. (I have five euros.)" },
+  { id: "fi-fc-num-06", front: "6 — Kuusi", phonetic: "KOO-see", back: "6 — Six (Also means 'spruce tree')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Viikossa on kuusi arkipäivää. (There are six weekdays in a week.)" },
+  { id: "fi-fc-num-07", front: "7 — Seitsemän", phonetic: "SAYT-seh-man", back: "7 — Seven", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Seitsemän päivää viikossa. (Seven days in a week.)" },
+  { id: "fi-fc-num-08", front: "8 — Kahdeksan", phonetic: "KAH-dek-sahn", back: "8 — Eight (Literally: 'two left to ten')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Nukun kahdeksan tuntia. (I sleep eight hours.)" },
+  { id: "fi-fc-num-09", front: "9 — Yhdeksän", phonetic: "EW-dek-sahn", back: "9 — Nine (Literally: 'one left to ten')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Juna lähtee kello yhdeksän. (The train leaves at nine o'clock.)" },
+  { id: "fi-fc-num-10", front: "10 — Kymmenen", phonetic: "KEWM-meh-nen", back: "10 — Ten", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Sain kymmenen pistettä kokeesta. (I got ten points on the exam.)" },
+  { id: "fi-fc-num-11", front: "11 — Yksitoista", phonetic: "EWK-see-toy-stah", back: "11 — Eleven (-toista = 'of the second [ten]')", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Hän on yksitoista vuotta vanha. (He is eleven years old.)" },
+  { id: "fi-fc-num-12", front: "12 — Kaksitoista", phonetic: "KAHK-see-toy-stah", back: "12 — Twelve", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Vuodessa on kaksitoista kuukautta. (There are twelve months in a year.)" },
+  { id: "fi-fc-num-20", front: "20 — Kaksikymmentä", phonetic: "KAHK-see-kewm-men-tah", back: "20 — Twenty", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Kirja maksaa kaksikymmentä euroa. (The book costs twenty euros.)" },
+  { id: "fi-fc-num-100", front: "100 — Sata", phonetic: "SAH-tah", back: "100 — One hundred", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Sata metriä maaliin. (One hundred meters to the finish line.)" },
+
+  // =========================================================================
+  // Unit 1 (A1.1): Foundations & Daily Phrases (180 cards)
   // =========================================================================
   { id: "fi-fc-l1-01", front: "Vesi", phonetic: "VEH-see", back: "Water", category: "Unit 1 (A1.1): Foundations & Daily Phrases", example: "Juon lasillisen vettä." },
   { id: "fi-fc-l1-02", front: "Leipä", phonetic: "LAY-pah", back: "Bread", category: "Unit 1 (A1.1): Foundations & Daily Phrases", example: "Tuore leipä tuoksuu hyvältä." },
