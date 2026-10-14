@@ -298,6 +298,7 @@ export default function TermsPage() {
             />
             <Link href="/">Home</Link>
             <Link href="/terms">Terms of Use</Link>
+            <Link href="/privacy">Privacy Policy</Link>
             <Link href="/signup">Sign Up</Link>
             <Link href="/login">Log In</Link>
           </div>

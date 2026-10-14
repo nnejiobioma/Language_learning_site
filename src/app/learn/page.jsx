@@ -61,6 +61,9 @@ export default function LearnPage() {
             <Link href="/terms" target="_blank" rel="noopener noreferrer" className="app-footer-link">
               Terms of Use
             </Link>
+            <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="app-footer-link">
+              Privacy Policy
+            </Link>
             <Link href="/profile" className="app-footer-link">
               Profile & Settings
             </Link>

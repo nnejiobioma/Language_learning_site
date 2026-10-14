@@ -94,8 +94,12 @@ export default function CookieBanner() {
             )}
 
             <div className="cookie-banner-footer">
+              <Link href="/privacy" className="cookie-policy-link">
+                Privacy Policy
+              </Link>
+              <span className="cookie-policy-dot">·</span>
               <Link href="/terms" className="cookie-policy-link">
-                Review Terms & Cookie Notice
+                Terms of Use
               </Link>
 
               <button 

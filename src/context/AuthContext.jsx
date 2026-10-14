@@ -41,7 +41,9 @@ const DEFAULT_PROFILE = {
   photoURL: null,
   role: 'student',
   acceptedTerms: true,
-  termsAcceptedAt: null
+  termsAcceptedAt: null,
+  acceptedPrivacy: true,
+  privacyAcceptedAt: null
 };
 
 const DEMO_USER_KEY = 'lingo_demo_user';
@@ -136,6 +138,8 @@ export function AuthProvider({ children }) {
           email: email || null,
           acceptedTerms: true,
           termsAcceptedAt: new Date().toISOString(),
+          acceptedPrivacy: true,
+          privacyAcceptedAt: new Date().toISOString(),
           createdAt: cached?.createdAt || new Date().toISOString()
         };
         await setDoc(userRef, newProfile);
@@ -198,7 +202,9 @@ export function AuthProvider({ children }) {
           displayName: demoUser.displayName, 
           email: demoUser.email,
           acceptedTerms: true,
-          termsAcceptedAt: new Date().toISOString()
+          termsAcceptedAt: new Date().toISOString(),
+          acceptedPrivacy: true,
+          privacyAcceptedAt: new Date().toISOString()
         };
     setProfile(initial);
     setUser(demoUser);

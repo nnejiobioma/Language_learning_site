@@ -122,6 +122,11 @@
   color: #34d399;
 }
 
+.cookie-policy-dot {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
 .cookie-details-toggle {
   background: none;
   border: none;

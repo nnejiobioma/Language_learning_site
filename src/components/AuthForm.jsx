@@ -77,7 +77,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
           return;
         }
         if (!acceptedTerms) {
-          setError('You must accept the Terms of Use before creating an account.');
+          setError('You must accept the Terms of Use and Privacy Policy before creating an account.');
           setSubmitting(false);
           return;
         }
@@ -92,7 +92,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
 
   const handleGoogle = async () => {
     if (isSignup && !acceptedTerms) {
-      setError('Please review and agree to the Terms of Use before signing up with Google.');
+      setError('Please review and agree to the Terms of Use and Privacy Policy before signing up with Google.');
       return;
     }
     setError('');
@@ -260,6 +260,10 @@ export default function AuthForm({ initialMode = 'signup' }) {
                   <Link href="/terms" target="_blank" rel="noopener noreferrer" className="terms-link-inline">
                     Terms of Use
                   </Link>
+                  {' '}and{' '}
+                  <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="terms-link-inline">
+                    Privacy Policy
+                  </Link>
                 </span>
               </label>
             </div>
@@ -315,6 +319,10 @@ export default function AuthForm({ initialMode = 'signup' }) {
         <div className="auth-card-footer">
           <Link href="/terms" target="_blank" className="auth-footer-link">
             Terms of Use
+          </Link>
+          <span className="auth-footer-dot">·</span>
+          <Link href="/privacy" target="_blank" className="auth-footer-link">
+            Privacy Policy
           </Link>
           <span className="auth-footer-dot">·</span>
           <span>© {new Date().getFullYear()} FiksLingo</span>

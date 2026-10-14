@@ -184,6 +184,7 @@ export default function LandingPage() {
               buttonId="footer-subscribe-btn"
             />
             <Link href="/terms" id="footer-terms-link">Terms of Use</Link>
+            <Link href="/privacy" id="footer-privacy-link">Privacy Policy</Link>
             <Link href="/login">Log in</Link>
             <Link href="/signup">Sign up</Link>
           </div>
