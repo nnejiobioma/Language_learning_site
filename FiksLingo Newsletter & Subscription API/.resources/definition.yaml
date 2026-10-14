@@ -1,0 +1,9 @@
+$kind: collection
+description: |-
+  Postman Collection to test and configure the FiksLingo Newsletter Subscription Service.
+
+  Endpoints:
+  - `POST /api/subscribe` (Subscribe with name and email)
+  - `GET /api/subscribe` (Health check & list subscribers)
+variables:
+  baseUrl: http://localhost:3000

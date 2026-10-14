@@ -1,0 +1,27 @@
+$kind: http-request
+description: Verifies server-side validation when name is empty or missing.
+url: "{{baseUrl}}/api/subscribe"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "",
+      "email": "test@example.com"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 400 Bad Request", function () {
+          pm.response.to.have.status(400);
+      });
+
+      pm.test("Returns error for missing name", function () {
+          var jsonData = pm.response.json();
+          pm.expect(jsonData.success).to.eql(false);
+          pm.expect(jsonData.error).to.include("valid name");
+      });
+    language: text/javascript
+order: 3000

@@ -1,5 +1,12 @@
 [
   {
+    "id": "sub_1792011215531_5x0gwg",
+    "name": "Verification Bot",
+    "email": "audit.test@fikslingo.com",
+    "source": "audit",
+    "subscribedAt": "2026-10-14T20:53:35.531Z"
+  },
+  {
     "id": "sub_1792008769750_oyap33",
     "name": "Alex Rivera",
     "email": "alex.rivera@example.com",

@@ -1,0 +1,29 @@
+$kind: http-request
+description: Subscribes a new user to FiksLingo updates with their name and email.
+url: "{{baseUrl}}/api/subscribe"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "Alex Rivera",
+      "email": "learner.test@example.com",
+      "source": "postman"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 201 Created or 200 OK", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+
+      pm.test("Response is successful with confirmation message", function () {
+          var jsonData = pm.response.json();
+          pm.expect(jsonData.success).to.eql(true);
+          pm.expect(jsonData.subscriber).to.be.an('object');
+          pm.expect(jsonData.subscriber.email).to.eql("learner.test@example.com");
+      });
+    language: text/javascript
+order: 1000

@@ -1,0 +1,28 @@
+$kind: http-request
+description: Verifies that submitting an existing email returns a friendly 'already subscribed' message without breaking or duplicating records.
+url: "{{baseUrl}}/api/subscribe"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "Alex Rivera",
+      "email": "learner.test@example.com",
+      "source": "postman_duplicate"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200 OK for already subscribed email", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Recognizes user is already subscribed", function () {
+          var jsonData = pm.response.json();
+          pm.expect(jsonData.success).to.eql(true);
+          pm.expect(jsonData.alreadySubscribed).to.eql(true);
+      });
+    language: text/javascript
+order: 2000
