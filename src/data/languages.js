@@ -1,6 +1,8 @@
 import { finnishAllUnits } from './finnishCurriculum';
 import { finnishFlashcards } from './finnishFlashcards';
 import { finnishCultureVault } from './finnishCultureVault';
+import { frenchAllUnits } from './frenchCurriculum';
+import { frenchFlashcards } from './frenchFlashcards';
 
 export const LANGUAGES = {
   spanish: {
@@ -173,69 +175,8 @@ export const LANGUAGES = {
         { title: "The Silent Letters", description: "French is famous for final consonants often being silent (e.g., 'Paris' is pronounced 'Pah-ree')." }
       ]
     },
-    flashcards: [
-      { id: "fr-fc-1", front: "Bonjour", phonetic: "bohn-ZHOOR", back: "Hello / Good day", category: "Greetings", example: "Bonjour monsieur, comment allez-vous ?" },
-      { id: "fr-fc-2", front: "S'il vous plaît", phonetic: "seel voo PLEH", back: "Please (Formal / Polite)", category: "Courtesy", example: "Une baguette, s'il vous plaît." },
-      { id: "fr-fc-3", front: "Merci beaucoup", phonetic: "mehr-SEE boh-KOO", back: "Thank you very much", category: "Courtesy", example: "Merci beaucoup pour votre aide !" },
-      { id: "fr-fc-4", front: "Enchanté(e)", phonetic: "ahn-shahn-TAY", back: "Delighted to meet you", category: "Courtesy", example: "Je m'appelle Claire. Enchantée !" },
-      { id: "fr-fc-5", front: "L'addition", phonetic: "lah-dee-SYOHN", back: "The bill / check", category: "Dining", example: "L'addition, s'il vous plaît." },
-      { id: "fr-fc-6", front: "Où est... ?", phonetic: "oo EH", back: "Where is... ?", category: "Travel", example: "Où est la station de métro ?" }
-    ],
-    units: [
-      {
-        id: "fr-unit-1",
-        title: "Unit 1: Parisian Greetings & Etiquette",
-        subtitle: "Polite salutations, café etiquette, and essential travel courtesies.",
-        icon: "BookOpen",
-        color: "#2563eb",
-        lessons: [
-          {
-            id: "fr-u1-l1",
-            title: "Polite French Salutations",
-            description: "Master 'Bonjour', 'Merci', and asking how someone is doing.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the polite phrase for 'Thank you very much' in French?",
-                options: ["Merci beaucoup", "S'il vous plaît", "Bonsoir", "Au revoir"],
-                correctAnswer: "Merci beaucoup",
-                explanation: "'Merci beaucoup' is the heartfelt expression for 'Thank you very much'."
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Build: 'Je m'appelle Sophie' (My name is Sophie)",
-                tokens: ["Je", "m'appelle", "Sophie", "suis", "bien"],
-                correctTokens: ["Je", "m'appelle", "Sophie"],
-                explanation: "'Je m'appelle...' is how you introduce your name in French."
-              },
-              {
-                id: "q3",
-                type: "audio_listen",
-                phrase: "Enchanté",
-                prompt: "What does this phrase mean when someone introduces themselves?",
-                options: ["Delighted to meet you", "Where are you going?", "Excuse me", "Good evening"],
-                correctAnswer: "Delighted to meet you",
-                explanation: "'Enchanté' signifies pleasure at making someone's acquaintance."
-              },
-              {
-                id: "q4",
-                type: "matching",
-                prompt: "Match French courtesies with English:",
-                pairs: [
-                  { native: "Bonjour", english: "Hello / Good morning" },
-                  { native: "Au revoir", english: "Goodbye" },
-                  { native: "S'il vous plaît", english: "Please" },
-                  { native: "De rien", english: "You're welcome" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    flashcards: frenchFlashcards,
+    units: frenchAllUnits
   },
 
   german: {
