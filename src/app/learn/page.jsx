@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
 import LessonPath from '../../components/LessonPath';
@@ -44,6 +45,20 @@ export default function LearnPage() {
         {activeTab === 'cbt' && <CBTExamView />}
         {activeTab === 'leaderboard' && <LeaderboardView />}
       </main>
+
+      <footer className="app-main-footer">
+        <div className="app-footer-container">
+          <p className="app-footer-copy">© {new Date().getFullYear()} FiksLingo · Master 12 World Languages.</p>
+          <div className="app-footer-links">
+            <Link href="/terms" target="_blank" rel="noopener noreferrer" className="app-footer-link">
+              Terms of Use
+            </Link>
+            <Link href="/profile" className="app-footer-link">
+              Profile & Settings
+            </Link>
+          </div>
+        </div>
+      </footer>
 
       <QuizModal />
       <HeartModal />

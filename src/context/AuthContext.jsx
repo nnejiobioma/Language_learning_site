@@ -31,7 +31,9 @@ const DEFAULT_PROFILE = {
   currentLanguage: 'spanish',
   displayName: 'Learner',
   photoURL: null,
-  role: 'student'
+  role: 'student',
+  acceptedTerms: true,
+  termsAcceptedAt: null
 };
 
 const DEMO_USER_KEY = 'lingo_demo_user';
@@ -124,6 +126,8 @@ export function AuthProvider({ children }) {
           ...(cached || {}),
           displayName: cached?.displayName || name,
           email: email || null,
+          acceptedTerms: true,
+          termsAcceptedAt: new Date().toISOString(),
           createdAt: cached?.createdAt || new Date().toISOString()
         };
         await setDoc(userRef, newProfile);
@@ -181,7 +185,13 @@ export function AuthProvider({ children }) {
     const savedProfile = localStorage.getItem(userProfileKey) || localStorage.getItem(DEMO_PROFILE_KEY);
     const initial = savedProfile
       ? JSON.parse(savedProfile)
-      : { ...DEFAULT_PROFILE, displayName: demoUser.displayName, email: demoUser.email };
+      : { 
+          ...DEFAULT_PROFILE, 
+          displayName: demoUser.displayName, 
+          email: demoUser.email,
+          acceptedTerms: true,
+          termsAcceptedAt: new Date().toISOString()
+        };
     setProfile(initial);
     setUser(demoUser);
     try {

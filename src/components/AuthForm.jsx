@@ -35,6 +35,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
@@ -55,6 +56,12 @@ export default function AuthForm({ initialMode = 'signup' }) {
       } else {
         if (!displayName.trim()) {
           setError('Please tell us your name.');
+          setSubmitting(false);
+          return;
+        }
+        if (!acceptedTerms) {
+          setError('You must accept the Terms of Use before creating an account.');
+          setSubmitting(false);
           return;
         }
         await signupWithEmail(email, password, displayName);
@@ -67,6 +74,10 @@ export default function AuthForm({ initialMode = 'signup' }) {
   };
 
   const handleGoogle = async () => {
+    if (isSignup && !acceptedTerms) {
+      setError('Please review and agree to the Terms of Use before signing up with Google.');
+      return;
+    }
     setError('');
     setSubmitting(true);
     try {
@@ -196,6 +207,30 @@ export default function AuthForm({ initialMode = 'signup' }) {
             </div>
           </div>
 
+          {isSignup && (
+            <div className="terms-agreement-row">
+              <label className="terms-checkbox-label" htmlFor="auth-terms-checkbox">
+                <input
+                  id="auth-terms-checkbox"
+                  type="checkbox"
+                  checked={acceptedTerms}
+                  onChange={(e) => {
+                    setAcceptedTerms(e.target.checked);
+                    if (e.target.checked) setError('');
+                  }}
+                  required
+                  className="terms-checkbox-input"
+                />
+                <span className="terms-checkbox-text">
+                  I agree to the{' '}
+                  <Link href="/terms" target="_blank" rel="noopener noreferrer" className="terms-link-inline">
+                    Terms of Use
+                  </Link>
+                </span>
+              </label>
+            </div>
+          )}
+
           <button type="submit" className="auth-submit-btn" disabled={submitting} id="auth-submit-button">
             {submitting ? 'Please wait...' : isSignup ? 'Create free account' : 'Sign in'}
           </button>
@@ -213,6 +248,14 @@ export default function AuthForm({ initialMode = 'signup' }) {
               <Link href="/signup" className="link-switch-btn">Create an account</Link>
             </p>
           )}
+        </div>
+
+        <div className="auth-card-footer">
+          <Link href="/terms" target="_blank" className="auth-footer-link">
+            Terms of Use
+          </Link>
+          <span className="auth-footer-dot">·</span>
+          <span>© {new Date().getFullYear()} FiksLingo</span>
         </div>
       </div>
     </div>

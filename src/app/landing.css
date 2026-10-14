@@ -483,14 +483,26 @@ html[data-theme="dark"] .lp-highlight {
 .lp-footer-inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.lp-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .lp-footer a {
   color: var(--lp-green);
   font-weight: 700;
   text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lp-footer a:hover {
+  color: var(--lp-green-bright);
 }
 
 /* Animations */

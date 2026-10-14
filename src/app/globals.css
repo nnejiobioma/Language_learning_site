@@ -3231,6 +3231,157 @@ html[data-theme="light"] .theme-segment-btn:hover {
   text-decoration: underline;
 }
 
+/* ==========================================================================
+   Terms Agreement Checkbox & Footers
+   ========================================================================== */
+
+.terms-agreement-row {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.terms-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  line-height: 1.45;
+  user-select: none;
+}
+
+.terms-checkbox-input {
+  width: 17px;
+  height: 17px;
+  border-radius: 4px;
+  accent-color: var(--emerald);
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.terms-checkbox-text {
+  flex: 1;
+}
+
+.terms-link-inline {
+  color: var(--emerald);
+  text-decoration: underline;
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+
+.terms-link-inline:hover {
+  color: #34d399;
+}
+
+/* Auth Card Footer */
+.auth-card-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.auth-footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.auth-footer-link:hover {
+  color: var(--emerald);
+  text-decoration: underline;
+}
+
+.auth-footer-dot {
+  opacity: 0.5;
+}
+
+/* App Main Footer (e.g. on /learn) */
+.app-main-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-header);
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.app-footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.app-footer-copy {
+  margin: 0;
+}
+
+.app-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.app-footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.app-footer-link:hover {
+  color: var(--emerald);
+}
+
+/* Profile Legal Footer */
+.profile-legal-footer {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.profile-legal-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.profile-legal-footer a:hover {
+  color: var(--emerald);
+  text-decoration: underline;
+}
+
+/* Light mode overrides for Auth inputs */
+html.light .input-with-icon,
+html[data-theme="light"] .input-with-icon {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+html.light .input-with-icon input,
+html[data-theme="light"] .input-with-icon input {
+  color: #0f172a;
+}
+
 /* Heart Modal */
 .heart-graphic-area {
   display: flex;

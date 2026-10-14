@@ -156,7 +156,11 @@ export default function LandingPage() {
       <footer className="lp-footer">
         <div className="lp-container lp-footer-inner">
           <span>© {new Date().getFullYear()} FiksLingo. Master world languages.</span>
-          <Link href="/login">Log in</Link>
+          <div className="lp-footer-links">
+            <Link href="/terms" id="footer-terms-link">Terms of Use</Link>
+            <Link href="/login">Log in</Link>
+            <Link href="/signup">Sign up</Link>
+          </div>
         </div>
       </footer>
     </div>
