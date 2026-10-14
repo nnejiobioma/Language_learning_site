@@ -2118,7 +2118,16 @@ button:active {
 .section-title-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-title-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
 }
 
 .section-title {
@@ -2127,8 +2136,183 @@ button:active {
   font-weight: 800;
 }
 
+.section-count-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.vault-toggle-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.vault-toggle-all-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
 .accent-icon {
   color: var(--emerald);
+}
+
+.vault-subsections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.vault-subsection-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vault-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.85));
+  border: 1px solid var(--border-subtle);
+  border-left: 5px solid var(--emerald);
+  border-radius: 18px;
+  padding: 1.15rem 1.45rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  width: 100%;
+}
+
+.vault-sub-header:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28);
+}
+
+.vault-sub-header.is-open {
+  border-left-color: #38bdf8;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95));
+}
+
+.vault-sub-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vault-sub-icon-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  flex-shrink: 0;
+}
+
+.vault-sub-icon-badge.slang-badge-color {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.35);
+  color: #fb7185;
+}
+
+.vault-sub-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.vault-sub-title {
+  font-family: var(--font-primary);
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.vault-sub-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.vault-sub-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.vault-sub-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.vault-sub-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.vault-sub-chevron.open {
+  transform: rotate(180deg);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.vault-sub-content {
+  animation: fadeInVaultSub 0.25s ease-out;
+}
+
+@keyframes fadeInVaultSub {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lexicon-controls-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
 }
 
 .tips-grid {
@@ -5428,6 +5612,31 @@ a.link-switch-btn{text-decoration:none;cursor:pointer}
   }
   .ak-writing-review-grid {
     grid-template-columns: 1fr;
+  }
+  .vault-sub-header {
+    padding: 0.95rem 1.15rem;
+  }
+  .vault-sub-title {
+    font-size: 1.05rem;
+  }
+  .vault-toggle-all-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .section-title-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lexicon-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lexicon-controls-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lexicon-search-bar {
+    min-width: 100%;
   }
 }
 
