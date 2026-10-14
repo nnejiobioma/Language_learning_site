@@ -102,10 +102,15 @@ export function GameProvider({ children }) {
       ? completedLessons
       : [...completedLessons, lessonId];
 
+    const nextStreak = (streak || 0) + 1;
+    const nextXp = (xp || 0) + earnedXp;
+
     saveProfileData({
-      xp: xp + earnedXp,
+      xp: nextXp,
+      streak: nextStreak,
       completedLessons: nextCompleted,
-      level: Math.floor((xp + earnedXp) / 100) + 1
+      level: Math.floor(nextXp / 100) + 1,
+      lastActive: new Date().toISOString()
     });
   };
 

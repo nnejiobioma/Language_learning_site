@@ -86,10 +86,12 @@ export function AuthProvider({ children }) {
 
     // Local demo mode (Firebase not configured): the account lives in this browser only.
     try {
-      const savedUser = localStorage.getItem(DEMO_USER_KEY);
-      if (savedUser) {
-        setUser(JSON.parse(savedUser));
-        const savedProfile = localStorage.getItem(DEMO_PROFILE_KEY);
+      const savedUserStr = localStorage.getItem(DEMO_USER_KEY);
+      if (savedUserStr) {
+        const savedUser = JSON.parse(savedUserStr);
+        setUser(savedUser);
+        const userProfileKey = `lingo_profile_${savedUser.uid}`;
+        const savedProfile = localStorage.getItem(userProfileKey) || localStorage.getItem(DEMO_PROFILE_KEY);
         setProfile(savedProfile ? JSON.parse(savedProfile) : DEFAULT_PROFILE);
       }
     } catch {
@@ -105,38 +107,68 @@ export function AuthProvider({ children }) {
       const userRef = doc(db, 'users', uid);
       const snap = await getDoc(userRef);
       if (snap.exists()) {
-        setProfile({ ...DEFAULT_PROFILE, ...snap.data() });
+        const data = snap.data();
+        setProfile({ ...DEFAULT_PROFILE, ...data });
+        try {
+          localStorage.setItem(`lingo_profile_${uid}`, JSON.stringify({ ...DEFAULT_PROFILE, ...data }));
+        } catch {}
       } else {
+        let cached = null;
+        try {
+          const cachedStr = localStorage.getItem(`lingo_profile_${uid}`);
+          if (cachedStr) cached = JSON.parse(cachedStr);
+        } catch {}
+
         const newProfile = {
           ...DEFAULT_PROFILE,
-          displayName: name,
+          ...(cached || {}),
+          displayName: cached?.displayName || name,
           email: email || null,
-          createdAt: new Date().toISOString()
+          createdAt: cached?.createdAt || new Date().toISOString()
         };
         await setDoc(userRef, newProfile);
         setProfile(newProfile);
+        try {
+          localStorage.setItem(`lingo_profile_${uid}`, JSON.stringify(newProfile));
+        } catch {}
       }
     } catch (err) {
-      console.warn("Could not load profile from Firestore:", err);
-      setProfile({ ...DEFAULT_PROFILE, displayName: name });
+      console.warn("Could not load profile from Firestore, checking local backup:", err);
+      let cached = null;
+      try {
+        const cachedStr = localStorage.getItem(`lingo_profile_${uid}`);
+        if (cachedStr) cached = JSON.parse(cachedStr);
+      } catch {}
+      setProfile(cached ? { ...DEFAULT_PROFILE, ...cached } : { ...DEFAULT_PROFILE, displayName: name });
     } finally {
       pendingNameRef.current = null;
     }
   };
 
   const saveProfileData = async (updatedFields) => {
-    let updated;
-    setProfile((prev) => {
-      updated = { ...prev, ...updatedFields };
-      return updated;
-    });
+    const currentUid = user?.uid || auth?.currentUser?.uid;
+    const nextData = { ...profile, ...updatedFields };
 
-    if (isFirebaseConfigured && db && user?.uid) {
-      // merge: true creates the document if it is missing instead of failing.
-      await setDoc(doc(db, 'users', user.uid), updatedFields, { merge: true });
+    setProfile(nextData);
+
+    if (isFirebaseConfigured && db && currentUid) {
+      try {
+        // merge: true creates or updates the document
+        await setDoc(doc(db, 'users', currentUid), updatedFields, { merge: true });
+        try {
+          localStorage.setItem(`lingo_profile_${currentUid}`, JSON.stringify(nextData));
+        } catch {}
+      } catch (err) {
+        console.warn("Cloud save failed, caching locally:", err);
+        try {
+          localStorage.setItem(`lingo_profile_${currentUid}`, JSON.stringify(nextData));
+        } catch {}
+        throw err;
+      }
     } else {
       try {
-        localStorage.setItem(DEMO_PROFILE_KEY, JSON.stringify(updated ?? { ...profile, ...updatedFields }));
+        const key = currentUid ? `lingo_profile_${currentUid}` : DEMO_PROFILE_KEY;
+        localStorage.setItem(key, JSON.stringify(nextData));
       } catch (e) {
         console.warn("Local storage write error:", e);
       }
@@ -145,13 +177,16 @@ export function AuthProvider({ children }) {
 
   const startDemoSession = (demoUser) => {
     localStorage.setItem(DEMO_USER_KEY, JSON.stringify(demoUser));
-    const savedProfile = localStorage.getItem(DEMO_PROFILE_KEY);
-    setProfile(
-      savedProfile
-        ? JSON.parse(savedProfile)
-        : { ...DEFAULT_PROFILE, displayName: demoUser.displayName, email: demoUser.email }
-    );
+    const userProfileKey = `lingo_profile_${demoUser.uid}`;
+    const savedProfile = localStorage.getItem(userProfileKey) || localStorage.getItem(DEMO_PROFILE_KEY);
+    const initial = savedProfile
+      ? JSON.parse(savedProfile)
+      : { ...DEFAULT_PROFILE, displayName: demoUser.displayName, email: demoUser.email };
+    setProfile(initial);
     setUser(demoUser);
+    try {
+      localStorage.setItem(userProfileKey, JSON.stringify(initial));
+    } catch {}
   };
 
   const loginWithGoogle = async () => {
