@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import { soundEngine } from '../lib/audio';
 import confetti from 'canvas-confetti';
+import { getSavedLanguage, saveLanguagePreference } from '../lib/cookies';
 
 const GameContext = createContext(null);
 
@@ -13,7 +14,9 @@ export function GameProvider({ children }) {
   const saveProfileData = (fields) =>
     saveToCloud(fields).catch((err) => console.warn('Progress save failed:', err));
 
-  const [currentLanguage, setCurrentLanguage] = useState('spanish');
+  const [currentLanguage, setCurrentLanguage] = useState(() => {
+    return typeof window !== 'undefined' ? getSavedLanguage('spanish') : 'spanish';
+  });
   const [activeLesson, setActiveLesson] = useState(null);
   const [activeTab, setActiveTab] = useState('learn'); // 'learn' | 'flashcards' | 'culture' | 'leaderboard'
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -41,6 +44,7 @@ export function GameProvider({ children }) {
 
   const switchLanguage = (langId) => {
     setCurrentLanguage(langId);
+    saveLanguagePreference(langId); // 365-day persistent cookie
     saveProfileData({ currentLanguage: langId });
   };
 

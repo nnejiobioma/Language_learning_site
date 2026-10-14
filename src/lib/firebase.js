@@ -8,7 +8,10 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  updateProfile
+  updateProfile,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence
 } from 'firebase/auth';
 import { 
   getFirestore, 
@@ -59,6 +62,9 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
   doc,
   getDoc,
   setDoc,

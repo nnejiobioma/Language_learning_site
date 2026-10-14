@@ -8,9 +8,5 @@ description: |-
       
   - `GET /api/subscribe` (Health check & list subscribers)
 variables:
-  - key: baseUrl
-    value: http://localhost:3000
-    disabled: false
-  - key: baseUrl
-    value: ""
-    disabled: false
+  baseUrl: http://localhost:3000
+  "": ""

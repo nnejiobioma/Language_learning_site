@@ -131,7 +131,14 @@ export default function TermsPage() {
                 <li><strong>Credential Confidentiality:</strong> You are responsible for safeguarding your login credentials and for any activity that occurs under your account.</li>
                 <li><strong>Notification:</strong> You must immediately notify FiksLingo of any unauthorized access or breach of security concerning your account.</li>
                 <li><strong>One Account Per User:</strong> You may not create multiple accounts for the purpose of manipulating leaderboards, streaks, or gamified challenges.</li>
+                <li><strong>Persistent Cookies:</strong> Files that feature an expiration date and stay saved on your hard drive even after you close the browser. They are used for long-term settings like saved language preferences, "remember me" login options, and theme settings.</li>
               </ul>
+              <div className="terms-callout info">
+                <CheckCircle2 size={20} className="callout-icon" />
+                <p>
+                  <strong>Persistent Cookies Notice:</strong> When you select "Remember me on this device", FiksLingo writes a persistent cookie (with a 30-day expiration date) to your hard drive so you do not have to re-enter your credentials on every visit. Your chosen language (365 days) and theme preferences (365 days) are likewise saved via persistent cookies. You can remove these at any time in your browser settings.
+                </p>
+              </div>
             </section>
 
             {/* Section 4 */}

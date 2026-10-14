@@ -12,12 +12,20 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
   doc,
   getDoc,
   setDoc,
   updateDoc,
   onSnapshot
 } from '../lib/firebase';
+import { 
+  saveRememberedLogin, 
+  getRememberedLogin, 
+  getSavedLanguage 
+} from '../lib/cookies';
 
 const AuthContext = createContext(null);
 
@@ -28,7 +36,7 @@ const DEFAULT_PROFILE = {
   streak: 0,
   level: 1,
   completedLessons: [],
-  currentLanguage: 'spanish',
+  currentLanguage: typeof window !== 'undefined' ? getSavedLanguage('spanish') : 'spanish',
   displayName: 'Learner',
   photoURL: null,
   role: 'student',
@@ -199,27 +207,45 @@ export function AuthProvider({ children }) {
     } catch {}
   };
 
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (rememberMe = true) => {
+    saveRememberedLogin('google_user', rememberMe);
     if (!isFirebaseConfigured || !auth) {
       startDemoSession({ uid: 'demo_google', displayName: 'Google Learner', email: 'learner@example.com' });
       return;
     }
+    try {
+      await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+    } catch (e) {
+      console.warn('Could not set auth persistence:', e);
+    }
     return signInWithPopup(auth, new GoogleAuthProvider());
   };
 
-  const loginWithEmail = async (email, password) => {
+  const loginWithEmail = async (email, password, rememberMe = true) => {
+    saveRememberedLogin(email, rememberMe);
     if (!isFirebaseConfigured || !auth) {
       startDemoSession({ uid: 'demo_' + email, displayName: email.split('@')[0], email });
       return;
     }
+    try {
+      await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+    } catch (e) {
+      console.warn('Could not set auth persistence:', e);
+    }
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signupWithEmail = async (email, password, displayName) => {
+  const signupWithEmail = async (email, password, displayName, rememberMe = true) => {
+    saveRememberedLogin(email, rememberMe);
     const name = displayName?.trim() || email.split('@')[0];
     if (!isFirebaseConfigured || !auth) {
       startDemoSession({ uid: 'demo_' + email, displayName: name, email });
       return;
+    }
+    try {
+      await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+    } catch (e) {
+      console.warn('Could not set auth persistence:', e);
     }
     pendingNameRef.current = name;
     try {

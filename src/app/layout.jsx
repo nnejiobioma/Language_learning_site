@@ -4,6 +4,7 @@ import { AuthProvider } from '../context/AuthContext';
 import { GameProvider } from '../context/GameContext';
 import { ThemeProvider } from '../context/ThemeContext';
 import TimedSubscribePopup from '../components/TimedSubscribePopup';
+import CookieBanner from '../components/CookieBanner';
 
 export const metadata = {
   title: 'FiksLingo — Master World Languages with Gamified Learning',
@@ -15,7 +16,12 @@ export const metadata = {
 const themeInitScript = `
   (function() {
     try {
-      var pref = localStorage.getItem('theme-preference') || 'system';
+      function getCookie(name) {
+        var m = document.cookie.match(new RegExp('(^|; )' + name + '=([^;]+)'));
+        return m ? decodeURIComponent(m[2]) : null;
+      }
+      var cookiePref = getCookie('fikslingo_theme');
+      var pref = cookiePref || localStorage.getItem('theme-preference') || 'system';
       var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       var isDark = pref === 'dark' || (pref === 'system' && sysDark);
       var root = document.documentElement;
@@ -55,6 +61,7 @@ export default function RootLayout({ children }) {
             <GameProvider>
               {children}
               <TimedSubscribePopup />
+              <CookieBanner />
             </GameProvider>
           </AuthProvider>
         </ThemeProvider>

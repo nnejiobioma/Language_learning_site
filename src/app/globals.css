@@ -3239,6 +3239,47 @@ html[data-theme="light"] .theme-segment-btn:hover {
   margin: 0.25rem 0 0.5rem;
 }
 
+/* Remember Me Persistent Cookie Row */
+.remember-me-row {
+  margin: 0.65rem 0 0.5rem 0;
+}
+
+.remember-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-checkbox-input {
+  width: 17px;
+  height: 17px;
+  border-radius: 4px;
+  accent-color: var(--emerald);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.remember-checkbox-text {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.remember-checkbox-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.remember-subtext {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
 .terms-checkbox-label {
   display: flex;
   align-items: flex-start;

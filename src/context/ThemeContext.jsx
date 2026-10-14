@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { getSavedTheme, saveThemePreference } from '../lib/cookies';
 
 const ThemeContext = createContext();
 
@@ -44,11 +45,10 @@ export function ThemeProvider({ children }) {
     }
   }, []);
 
-  // Initialize theme from localStorage on mount
+  // Initialize theme from persistent cookie / localStorage on mount
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('theme-preference');
-      const pref = (stored === 'light' || stored === 'dark' || stored === 'system') ? stored : 'system';
+      const pref = getSavedTheme('system');
       setThemePreferenceState(pref);
 
       const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -103,11 +103,7 @@ export function ThemeProvider({ children }) {
     
     setThemePreferenceState(newPref);
     try {
-      if (newPref === 'system') {
-        localStorage.removeItem('theme-preference');
-      } else {
-        localStorage.setItem('theme-preference', newPref);
-      }
+      saveThemePreference(newPref); // 365-day persistent cookie
     } catch (e) {}
 
     const resolved = computeResolvedTheme(newPref);

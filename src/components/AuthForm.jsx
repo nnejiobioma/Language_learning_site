@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, User, AlertCircle, ShieldCheck, CheckCircle2, ArrowLeft, BellRing } from 'lucide-react';
 import SubscribeModal from './SubscribeModal';
+import { getRememberedLogin } from '../lib/cookies';
 
 const FRIENDLY_ERRORS = {
   'auth/email-already-in-use': 'An account with this email already exists. Try signing in instead.',
@@ -40,6 +41,20 @@ export default function AuthForm({ initialMode = 'signup' }) {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [subscribeModalOpen, setSubscribeModalOpen] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
+
+  // Auto-fill remembered email from persistent cookie on mount
+  useEffect(() => {
+    try {
+      const { rememberMe: savedRemember, savedEmail } = getRememberedLogin();
+      if (savedEmail) {
+        setEmail(savedEmail);
+      }
+      if (typeof savedRemember === 'boolean') {
+        setRememberMe(savedRemember);
+      }
+    } catch {}
+  }, []);
 
   // Already signed in: go straight to the app.
   useEffect(() => {
@@ -54,7 +69,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
     setSubmitting(true);
     try {
       if (mode === 'login') {
-        await loginWithEmail(email, password);
+        await loginWithEmail(email, password, rememberMe);
       } else {
         if (!displayName.trim()) {
           setError('Please tell us your name.');
@@ -66,7 +81,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
           setSubmitting(false);
           return;
         }
-        await signupWithEmail(email, password, displayName);
+        await signupWithEmail(email, password, displayName, rememberMe);
       }
     } catch (err) {
       setError(friendlyError(err));
@@ -83,7 +98,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
     setError('');
     setSubmitting(true);
     try {
-      await loginWithGoogle();
+      await loginWithGoogle(rememberMe);
     } catch (err) {
       setError(friendlyError(err));
     } finally {
@@ -207,6 +222,23 @@ export default function AuthForm({ initialMode = 'signup' }) {
                 minLength={6}
               />
             </div>
+          </div>
+
+          {/* Remember Me Persistent Cookie Option */}
+          <div className="remember-me-row">
+            <label className="remember-checkbox-label" htmlFor="auth-remember-checkbox">
+              <input
+                id="auth-remember-checkbox"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="remember-checkbox-input"
+              />
+              <span className="remember-checkbox-text">
+                <strong>Remember me on this device</strong>
+                <span className="remember-subtext"> (Uses 30-day persistent cookie)</span>
+              </span>
+            </label>
           </div>
 
           {isSignup && (
