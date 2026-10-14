@@ -16,6 +16,23 @@ import {
   Award
 } from 'lucide-react';
 
+// Creates a guaranteed derangement (a shuffle where no item is at the same row/index as the native word)
+function derangePairs(pairs) {
+  if (!pairs || pairs.length <= 1) return pairs ? [...pairs] : [];
+
+  let shuffled = [...pairs];
+  for (let attempt = 0; attempt < 100; attempt++) {
+    shuffled = [...pairs].sort(() => Math.random() - 0.5);
+    const hasOverlap = shuffled.some((item, idx) => item.native === pairs[idx].native);
+    if (!hasOverlap) {
+      return shuffled;
+    }
+  }
+
+  // Deterministic fallback: cyclic shift by 1 position (guaranteed zero matching row overlaps)
+  return pairs.slice(1).concat(pairs.slice(0, 1));
+}
+
 export default function QuizModal() {
   const { 
     activeLesson, 
@@ -33,6 +50,7 @@ export default function QuizModal() {
   const [scrambleAnswer, setScrambleAnswer] = useState([]);
   const [availableTokens, setAvailableTokens] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
+  const [shuffledEnglishPairs, setShuffledEnglishPairs] = useState([]);
   const [selectedNative, setSelectedNative] = useState(null);
   const [selectedEnglish, setSelectedEnglish] = useState(null);
   const [feedbackStatus, setFeedbackStatus] = useState(null); // 'correct' | 'wrong' | null
@@ -57,6 +75,7 @@ export default function QuizModal() {
       setAvailableTokens(shuffled.map((word, i) => ({ id: `${word}-${i}`, word })));
     } else if (currentQ.type === 'matching') {
       setMatchedPairs([]);
+      setShuffledEnglishPairs(derangePairs(currentQ.pairs || []));
     } else if (currentQ.type === 'audio_listen') {
       // Auto-play audio on question load
       soundEngine.speak(currentQ.phrase, currentLanguage);
@@ -334,13 +353,12 @@ export default function QuizModal() {
 
                   <div className="matching-col">
                     <span className="col-label">English Translation</span>
-                    {/* Shuffle right column for challenge */}
-                    {currentQ.pairs.map((p, i) => {
+                    {(shuffledEnglishPairs.length > 0 ? shuffledEnglishPairs : currentQ.pairs).map((p, i) => {
                       const isMatched = matchedPairs.includes(p.native);
                       const isSelected = selectedEnglish === p.english;
                       return (
                         <button
-                          key={i}
+                          key={`${p.english}-${i}`}
                           className={`match-tile-btn ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''}`}
                           onClick={() => !isMatched && handleMatchSelect('english', p.english)}
                           disabled={isMatched}
