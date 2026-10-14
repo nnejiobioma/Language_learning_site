@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { db, isFirebaseConfigured, doc, setDoc } from '../../../lib/firebase';
+import { db, isFirebaseConfigured, doc, setDoc, getDoc, collection, getDocs } from '../../../lib/firebase';
 
 const SUBSCRIBERS_FILE = path.join(process.cwd(), 'src', 'data', 'subscribers.json');
 
@@ -34,12 +34,25 @@ function saveSubscribers(list) {
 // Basic email validation regex
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * GET /api/subscribe
- * Health check & subscribers overview (useful for Postman testing)
- */
 export async function GET() {
-  const subscribers = getSubscribers();
+  let subscribers = getSubscribers();
+
+  // If Firestore is available, fetch live list
+  if (isFirebaseConfigured && db) {
+    try {
+      const snap = await getDocs(collection(db, 'subscribers'));
+      if (!snap.empty) {
+        const cloudList = [];
+        snap.forEach(docSnap => cloudList.push(docSnap.data()));
+        if (cloudList.length > 0) {
+          subscribers = cloudList;
+        }
+      }
+    } catch (err) {
+      console.warn('Firestore fetch failed in GET /api/subscribe (using local):', err);
+    }
+  }
+
   return NextResponse.json({
     status: 'online',
     service: 'FiksLingo Newsletter & Updates Service',
@@ -101,8 +114,19 @@ export async function POST(request) {
     const cleanEmail = email.trim().toLowerCase();
     const subscribers = getSubscribers();
 
-    // Check if subscriber already exists
-    const existing = subscribers.find(s => s.email === cleanEmail);
+    // Check if subscriber already exists locally or in Firestore
+    let existing = subscribers.find(s => s.email === cleanEmail);
+    if (!existing && isFirebaseConfigured && db) {
+      try {
+        const cloudDoc = await getDoc(doc(db, 'subscribers', cleanEmail));
+        if (cloudDoc.exists()) {
+          existing = cloudDoc.data();
+        }
+      } catch (err) {
+        // Ignore read errors and proceed
+      }
+    }
+
     if (existing) {
       return NextResponse.json(
         {
