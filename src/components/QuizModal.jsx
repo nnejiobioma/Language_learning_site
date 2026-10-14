@@ -33,6 +33,17 @@ function derangePairs(pairs) {
   return pairs.slice(1).concat(pairs.slice(0, 1));
 }
 
+// Fisher-Yates shuffle to randomize questions order each time a lesson starts
+function shuffleQuestions(questions) {
+  if (!questions || questions.length <= 1) return questions ? [...questions] : [];
+  const copy = [...questions];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function QuizModal() {
   const { 
     activeLesson, 
@@ -46,6 +57,7 @@ export default function QuizModal() {
   } = useGame();
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [scrambleAnswer, setScrambleAnswer] = useState([]);
   const [availableTokens, setAvailableTokens] = useState([]);
@@ -57,10 +69,27 @@ export default function QuizModal() {
   const [isFinished, setIsFinished] = useState(false);
   const [earnedLessonXp, setEarnedLessonXp] = useState(0);
 
-  const questions = activeLesson?.questions || [];
+  const questions = shuffledQuestions.length > 0 ? shuffledQuestions : (activeLesson?.questions || []);
   const currentQ = questions[currentIndex];
 
-  // Initialize question state whenever current index changes
+  // Randomize question order from the beginning every time a lesson is launched
+  useEffect(() => {
+    if (activeLesson?.questions) {
+      setCurrentIndex(0);
+      setIsFinished(false);
+      setEarnedLessonXp(0);
+      setSelectedOption(null);
+      setFeedbackStatus(null);
+      setMatchedPairs([]);
+      setSelectedNative(null);
+      setSelectedEnglish(null);
+      setShuffledQuestions(shuffleQuestions(activeLesson.questions));
+    } else {
+      setShuffledQuestions([]);
+    }
+  }, [activeLesson]);
+
+  // Initialize question state whenever current index or current question changes
   useEffect(() => {
     if (!currentQ) return;
     setSelectedOption(null);
@@ -80,7 +109,7 @@ export default function QuizModal() {
       // Auto-play audio on question load
       soundEngine.speak(currentQ.phrase, currentLanguage);
     }
-  }, [currentIndex, activeLesson, currentLanguage]);
+  }, [currentIndex, currentQ, currentLanguage]);
 
   if (!activeLesson || !currentQ) return null;
 

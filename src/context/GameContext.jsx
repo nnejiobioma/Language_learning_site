@@ -49,7 +49,7 @@ export function GameProvider({ children }) {
       setShowHeartModal(true);
       return;
     }
-    setActiveLesson(lesson);
+    setActiveLesson({ ...lesson, _startedAt: Date.now() });
     setCombo(0);
   };
 
