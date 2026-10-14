@@ -40,7 +40,7 @@ export default function CookieBanner() {
         <div className="cookie-banner-main">
           <div className="cookie-banner-icon-col">
             <div className="cookie-icon-bubble">
-              <Cookie size={22} className="cookie-icon" />
+              <Cookie size={30} className="cookie-icon" />
             </div>
           </div>
 
@@ -104,9 +104,9 @@ export default function CookieBanner() {
                 onClick={() => setShowDetails(!showDetails)}
               >
                 {showDetails ? (
-                  <>Hide Cookie Details <ChevronUp size={14} /></>
+                  <>Hide Cookie Details <ChevronUp size={16} /></>
                 ) : (
-                  <>View Cookie Details <ChevronDown size={14} /></>
+                  <>View Cookie Details <ChevronDown size={16} /></>
                 )}
               </button>
             </div>
@@ -119,8 +119,8 @@ export default function CookieBanner() {
               onClick={handleAccept}
               id="cookie-consent-accept-btn"
             >
-              <Check size={16} />
-              <span>Accept & Save</span>
+              <Check size={19} />
+              <span>Accept & Save Preferences</span>
             </button>
             <button
               type="button"
@@ -128,7 +128,7 @@ export default function CookieBanner() {
               onClick={handleDismiss}
               aria-label="Dismiss cookie notice"
             >
-              <X size={16} />
+              <X size={20} />
             </button>
           </div>
         </div>
