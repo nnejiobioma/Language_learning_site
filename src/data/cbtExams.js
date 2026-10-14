@@ -2,7 +2,8 @@
 // Grounded in official examination standards (e.g. YKI - Yleinen kielitutkinto in Finland, CEFR standards)
 
 import { generateDynamicExam, examPools } from "./cbtExamEngine.js";
-export { generateDynamicExam, examPools };
+import { generateFrenchDynamicExam, frenchExamPools } from "./cbtFrenchExamEngine.js";
+export { generateDynamicExam, examPools, generateFrenchDynamicExam, frenchExamPools };
 
 export const CBT_EXAMS = {
   finnish: [
@@ -554,48 +555,292 @@ Jos tukea ei palauteta ajoissa, Kela perii liikaa maksetun tuen takaisin 7,5 pro
   french: [
     {
       id: "fr-delf-b1",
-      title: "DELF B1 Intermediate French Simulation",
-      subtitle: "Official France Éducation International Exam for Fluency & Autonomy",
-      badgeText: "DELF B1 (France Éducation)",
-      level: "B1 (CEFR Intermediate)",
-      timeLimitMinutes: 20,
+      title: "DELF B1 Épreuve Officielle (Naturalisation & Autonomie)",
+      subtitle: "Diplôme officiel du Ministère de l'Éducation Nationale — Niveau requis pour la naturalisation et la carte de résident",
+      badgeText: "DELF B1 • Nationalité & Séjour",
+      level: "B1 (CEFR Indépendant)",
+      timeLimitMinutes: 30,
       passPercentage: 70,
-      description: "Timed exam testing French Reading Comprehension, Passé Composé vs Imparfait, Subjunctive, and Formal Email Etiquette.",
-      sections: ["Compréhension des écrits", "Structures linguistiques", "Production et interactions"],
+      description: "Examen standardisé évaluant la compréhension d'articles de presse, la rédaction d'un courriel formel de réclamation, la maîtrise du subjonctif et l'interaction orale citoyenne.",
+      sections: [
+        "Compréhension des écrits (Presse & Droits)",
+        "Structures & Grammaire (Subjonctif & Passé)",
+        "Compréhension de l'oral (Radio & Annonces)",
+        "Production écrite (Lettre de réclamation)"
+      ],
       questions: [
         {
-          id: "fr-cbt-1",
-          section: "Structures linguistiques",
-          prompt: "Choisissez la bonne forme : 'Il faut absolument que vous ___ (venir) à l'heure.'",
-          options: ["A) venez", "B) veniez", "C) veniez", "D) viendrez"],
-          correctAnswer: "B) veniez",
-          explanation: "L'obligation impersonnelle 'il faut que' est suivie du subjonctif : 'que vous veniez'."
+          id: "fr-cbt-delf-1",
+          section: "Compréhension des écrits (Presse & Droits)",
+          passage: `RÉPUBLIQUE FRANÇAISE — CODE DE LA CONSOMMATION
+Tout consommateur dispose d'un délai légal de rétractation de quatorze jours francs pour exercer son droit de retour lors d'un achat à distance (internet, correspondance ou téléphone) au sein de l'Union européenne, sans avoir à motiver sa décision ni à supporter de pénalités.
+Le professionnel est tenu de rembourser le consommateur de la totalité des sommes versées, y compris les frais de livraison standard, au plus tard dans les quatorze jours suivant la date à laquelle il est informé de la rétractation.`,
+          prompt: "Quel est le délai légal accordé à un consommateur pour se rétracter lors d'un achat sur internet ?",
+          options: [
+            "A) 7 jours ouvrables",
+            "B) 14 jours francs",
+            "C) Un mois calendaire",
+            "D) 48 heures seulement"
+          ],
+          correctAnswer: "B) 14 jours francs",
+          explanation: "L'article de loi dispose formellement : 'd'un délai légal de rétractation de quatorze jours francs'."
         },
         {
-          id: "fr-cbt-2",
-          section: "Compréhension des écrits",
-          prompt: "Que signifie l'expression familière française 'avoir du pain sur la planche' ?",
+          id: "fr-cbt-delf-2",
+          section: "Structures & Grammaire (Subjonctif & Passé)",
+          prompt: "Sélectionnez la phrase grammaticalement correcte exigeant le subjonctif :",
           options: [
-            "A) Avoir beaucoup de travail ou de tâches à accomplir.",
-            "B) Être boulanger de profession.",
-            "C) Avoir très faim avant le déjeuner.",
-            "D) Ne rien avoir à faire pendant le week-end."
+            "A) Je pense qu'il est indispensable que nous soyons présents à la réunion.",
+            "B) Je pense qu'il est indispensable que nous sommes présents à la réunion.",
+            "C) Il est certain que vous veniez demain matin.",
+            "D) J'espère que tu sois heureux dans ta nouvelle maison."
           ],
-          correctAnswer: "A) Avoir beaucoup de travail ou de tâches à accomplir.",
-          explanation: "'Avoir du pain sur la planche' signifie avoir une grande charge de travail."
+          correctAnswer: "A) Je pense qu'il est indispensable que nous soyons présents à la réunion.",
+          explanation: "La locution impersonnelle exprimant la nécessité 'il est indispensable que' exige le subjonctif présent ('que nous soyons')."
         },
         {
-          id: "fr-cbt-3",
-          section: "Production et interactions",
-          prompt: "Quelle formule de politesse finale convient à une lettre administrative formelle ?",
+          id: "fr-cbt-delf-3",
+          section: "Compréhension de l'oral (Radio & Annonces)",
+          audioPhrase: "Flash spécial RFI : En raison d'un épisode de pollution aux particules fines sur l'Île-de-France, la vitesse maximale autorisée sur les autoroutes et voies rapides est abaissée de 20 kilomètres par heure dès 06 heures demain. Les transports en commun proposent un forfait anti-pollution à tarif réduit.",
+          prompt: "Quelle mesure est prise pour faire face à la pollution selon le flash radio ?",
           options: [
-            "A) 'Bisous et à bientôt !'",
-            "B) 'Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.'",
-            "C) 'Salut, merci beaucoup !'",
-            "D) 'Bonne journée mon ami !'"
+            "A) La fermeture de tous les aéroports parisiens",
+            "B) L'abaissement de la vitesse de 20 km/h et un forfait transport à tarif réduit",
+            "C) La gratuité totale du carburant en station-service",
+            "D) L'interdiction complète de sortir de chez soi"
           ],
-          correctAnswer: "B) 'Veuillez agréer, Madame, Monsieur, l'expression de mes salutations distinguées.'",
-          explanation: "C'est la formule d'usage la plus respectueuse et classique dans la correspondance administrative française."
+          correctAnswer: "B) L'abaissement de la vitesse de 20 km/h et un forfait transport à tarif réduit",
+          explanation: "Le message indique : 'la vitesse maximale autorisée... est abaissée de 20 km/h' et 'un forfait anti-pollution à tarif réduit'."
+        },
+        {
+          id: "fr-cbt-delf-4",
+          section: "Production écrite (Lettre de réclamation)",
+          prompt: "Quelle est la formule d'attaque et de clôture la plus appropriée pour une lettre formelle adressée à un préfet ou à un juge ?",
+          options: [
+            "A) 'Salut Monsieur' / 'Bisous et merci.'",
+            "B) 'Monsieur le Préfet,' / 'Je vous prie d'agréer, Monsieur le Préfet, l'expression de ma haute considération.'",
+            "C) 'Bonjour cher ami,' / 'À la revoyure !'",
+            "D) 'Cher Monsieur,' / 'Prends soin de toi.'"
+          ],
+          correctAnswer: "B) 'Monsieur le Préfet,' / 'Je vous prie d'agréer, Monsieur le Préfet, l'expression de ma haute considération.'",
+          explanation: "L'étiquette administrative française requiert de nommer le titre en formule d'attaque ('Monsieur le Préfet') et dans la formule de clôture protocolaire."
+        }
+      ]
+    },
+    {
+      id: "fr-delf-b2",
+      title: "DELF B2 Avancé (Accès Universités & Cadre Professionnel)",
+      subtitle: "Diplôme d'État certifiant l'autonomie complète en contexte académique, technique et professionnel",
+      badgeText: "DELF B2 • Études & Débats",
+      level: "B2 (CEFR Indépendant Avancé)",
+      timeLimitMinutes: 35,
+      passPercentage: 70,
+      description: "Examen officiel requis pour l'entrée dans les universités françaises en Licence et Master, testant la défense d'un point de vue argumenté, la synthèse critique et la négociation formelle.",
+      sections: [
+        "Compréhension des écrits (Essais & Débats)",
+        "Rhétorique & Connecteurs logiques",
+        "Compréhension orale (Conférences & Médias)",
+        "Production argumentée (Prise de position)"
+      ],
+      questions: [
+        {
+          id: "fr-cbt-b2-1",
+          section: "Compréhension des écrits (Essais & Débats)",
+          passage: `TRIBUNE DU MONDE — LA TRANSITION ÉNERGÉTIQUE ET L'ACCEPTABILITÉ CITOYENNE
+La mise en œuvre de grands chantiers éoliens et photovoltaïques se heurte fréquemment au phénomène NIMBY (« Not In My Back Yard » ou « Pas chez moi »). Si l'immense majorité des citoyens approuve la nécessité impérieuse de sortir des énergies fossiles à l'échelle nationale, l'implantation concrète d'infrastructures à proximité immédiate de leur domicile suscite des recours juridiques suspensifs.
+Les sociologues de l'environnement soulignent que la seule clé pour surmonter ces blocages réside dans la co-construction participative précoce, associant les riverains dès la genèse du projet et prévoyant des retombées fiscales ou d'actionnariat citoyen direct dans l'exploitation des parcs énergétiques.`,
+          prompt: "Quelle stratégie est préconisée par les sociologues pour faciliter l'adoption des projets d'énergies renouvelables ?",
+          options: [
+            "A) Imposer les chantiers sans aucune consultation par décret préfectoral d'urgence",
+            "B) Associer les riverains dès la genèse du projet et instaurer des retombées financières et citoyennes directes",
+            "C) Supprimer tous les parcs éoliens du territoire national",
+            "D) Déplacer les éoliennes exclusivement à l'étranger"
+          ],
+          correctAnswer: "B) Associer les riverains dès la genèse du projet et instaurer des retombées financières et citoyennes directes",
+          explanation: "Le texte préconise 'la co-construction participative précoce, associant les riverains dès la genèse... et prévoyant des retombées fiscales ou d'actionnariat citoyen direct'."
+        },
+        {
+          id: "fr-cbt-b2-2",
+          section: "Rhétorique & Connecteurs logiques",
+          prompt: "Quel connecteur logique exprime l'opposition avec une nuance de concession rigoureuse ?",
+          options: [
+            "A) C'est pourquoi (conséquence)",
+            "B) Quoique (+ subjonctif)",
+            "C) En outre (addition)",
+            "D) Étant donné que (cause)"
+          ],
+          correctAnswer: "B) Quoique (+ subjonctif)",
+          explanation: "'Quoique' exprime la concession/opposition et s'emploie obligatoirement avec le subjonctif (ex: 'Quoiqu'il soit tard, il continue à travailler')."
+        },
+        {
+          id: "fr-cbt-b2-3",
+          section: "Compréhension orale (Conférences & Médias)",
+          audioPhrase: "Extrait de l'émission Géopolitique : L'économiste en chef rappelle que la relocalisation des chaînes de valeur industrielles critiques en Europe ne peut pas reposer sur des subventions perpétuelles. Elle exige un investissement massif dans la recherche fondamentale, la robotisation de pointe et la qualification continue des travailleurs pour compenser le différentiel de coût de main-d'œuvre.",
+          prompt: "Que requiert la pérennité de la réindustrialisation européenne selon l'intervenant ?",
+          options: [
+            "A) Une dépendance exclusive aux aides d'État permanentes",
+            "B) L'investissement dans la recherche, la robotisation et la formation continue de la main-d'œuvre",
+            "C) La fermeture complète de toutes les frontières commerciales",
+            "D) La réduction du temps de travail à deux heures par semaine"
+          ],
+          correctAnswer: "B) L'investissement dans la recherche, la robotisation et la formation continue de la main-d'œuvre",
+          explanation: "L'économiste affirme que cela 'exige un investissement massif dans la recherche fondamentale, la robotisation de pointe et la qualification continue'."
+        }
+      ]
+    },
+    {
+      id: "fr-tcf-irn",
+      title: "TCF IRN (Intégration, Résidence et Nationalité)",
+      subtitle: "Test de Connaissance du Français officiel administré par France Éducation International",
+      badgeText: "TCF IRN • Officiel",
+      level: "A1 à B1 (CEFR Multi-Niveaux)",
+      timeLimitMinutes: 25,
+      passPercentage: 70,
+      description: "Test officiel standardisé d'évaluation conçu spécifiquement pour les démarches en préfecture : demande de carte de séjour pluriannuelle (A2), carte de résident de 10 ans (A2/B1) et acquisition de la nationalité française par décret (B1/B2).",
+      sections: [
+        "Compréhension orale (Écoute)",
+        "Compréhension écrite (Documents du quotidien)",
+        "Lexique & Maîtrise des structures"
+      ],
+      questions: [
+        {
+          id: "fr-tcf-1",
+          section: "Compréhension écrite (Documents du quotidien)",
+          passage: `ASSURANCE MALADIE — RENOUVELLEMENT DE LA CARTE VITALE
+Pour renouveler votre carte Vitale égarée ou défectueuse, connectez-vous à votre compte Ameli.fr muni de vos identifiants de sécurité.
+Vous devez télécharger une photo d'identité numérique conforme aux normes officielles ainsi qu'une copie numérisée de votre pièce d'identité en cours de validité. La nouvelle carte vous parviendra par voie postale sous un délai moyen de trois semaines. Durant cette période, votre attestation de droits téléchargeable fait foi auprès des professionnels de santé.`,
+          prompt: "Que peut utiliser l'assuré pour justifier de ses droits médicaux en attendant sa nouvelle carte Vitale ?",
+          options: [
+            "A) Son contrat de bail locatif",
+            "B) Son attestation de droits téléchargeable sur son compte Ameli",
+            "C) Une simple déclaration verbale au médecin",
+            "D) Son permis de conduire uniquement"
+          ],
+          correctAnswer: "B) Son attestation de droits téléchargeable sur son compte Ameli",
+          explanation: "Le texte précise que 'votre attestation de droits téléchargeable fait foi auprès des professionnels de santé'."
+        },
+        {
+          id: "fr-tcf-2",
+          section: "Lexique & Maîtrise des structures",
+          prompt: "Quelle phrase illustre un accord correct du participe passé avec le pronom 'avoir' ?",
+          options: [
+            "A) Les lettres que j'ai écrit étaient très claires.",
+            "B) Les lettres que j'ai écrites étaient très claires.",
+            "C) Elle a écrites une belle lettre ce matin.",
+            "D) Nous avons allés à la préfecture ensemble."
+          ],
+          correctAnswer: "B) Les lettres que j'ai écrites étaient très claires.",
+          explanation: "Avec l'auxiliaire avoir, le participe passé s'accorde en genre et en nombre avec le COD s'il est placé avant le verbe ('les lettres que' = féminin pluriel -> 'écrites')."
+        },
+        {
+          id: "fr-tcf-3",
+          section: "Compréhension orale (Écoute)",
+          audioPhrase: "Message des services municipaux : Chers parents, en raison du mouvement de grève des transports de demain, le ramassage scolaire sera suspendu sur l'ensemble de la commune. Cependant, un service d'accueil minimum pour les élèves sera assuré à l'école élémentaire Pasteur de 08 heures 30 à 16 heures 30.",
+          prompt: "Quelle disposition exceptionnelle est prise pour les enfants demain ?",
+          options: [
+            "A) Tous les cours sont annulés pour toute la semaine",
+            "B) Les bus scolaires rouleront deux fois plus vite",
+            "C) Le ramassage est suspendu mais un service d'accueil minimum est mis en place à l'école Pasteur",
+            "D) Les parents doivent garder obligatoirement leurs enfants à la maison"
+          ],
+          correctAnswer: "C) Le ramassage est suspendu mais un service d'accueil minimum est mis en place à l'école Pasteur",
+          explanation: "L'annonce indique : 'le ramassage scolaire sera suspendu... Cependant, un service d'accueil minimum pour les élèves sera assuré à l'école élémentaire Pasteur'."
+        }
+      ]
+    },
+    {
+      id: "fr-tef-canada",
+      title: "TEF Canada & Québec (CCI Paris Île-de-France)",
+      subtitle: "Test d'Évaluation de Français officiel pour l'immigration et la citoyenneté canadienne",
+      badgeText: "TEF • CCI Paris IdF",
+      level: "A1 à C2 (Score Standardisé 0–699)",
+      timeLimitMinutes: 30,
+      passPercentage: 70,
+      description: "Test informatisé certifié par la Chambre de Commerce et d'Industrie de Paris, indispensable pour les dossiers d'immigration vers le Canada (Entrée Express) et le Québec.",
+      sections: [
+        "Compréhension écrite (Articles & Annonces)",
+        "Lexique & Structures de la langue",
+        "Compréhension orale (Conversations & Radio)"
+      ],
+      questions: [
+        {
+          id: "fr-tef-1",
+          section: "Lexique & Structures de la langue",
+          prompt: "Trouvez le synonyme le plus précis du mot 'incontournable' dans la phrase : « C'est un monument incontournable de la culture québécoise. »",
+          options: [
+            "A) Inévitable / Indispensable à connaître",
+            "B) Dangereux et inaccessible",
+            "C) Récent et sans importance",
+            "D) Difficile à regarder"
+          ],
+          correctAnswer: "A) Inévitable / Indispensable à connaître",
+          explanation: "'Incontournable' désigne un élément essentiel et incontestable que l'on ne peut pas ignorer."
+        },
+        {
+          id: "fr-tef-2",
+          section: "Compréhension écrite (Articles & Annonces)",
+          passage: `EMPLOI MONTRÉAL — TRANSITION NUMÉRIQUE ET SUBVENTIONS AUX PME
+Le ministère du Développement économique du Québec annonce une enveloppe budgétaire de 50 millions de dollars visant à soutenir l'adoption de l'intelligence artificielle et du commerce électronique par les petites et moyennes entreprises locales.
+Les entreprises admissibles employant moins de 250 salariés peuvent obtenir une subvention non remboursable couvrant jusqu'à 50 % des honoraires de consultants spécialisés en automatisation des processus. Le programme vise à stimuler la productivité provinciale face à la pénurie chronique de main-d'œuvre qualifiée.`,
+          prompt: "Quelle proportion des frais d'accompagnement peut être financée par la subvention québécoise ?",
+          options: [
+            "A) L'intégralité (100 %) sans aucun plafond",
+            "B) Jusqu'à 50 % des honoraires des consultants spécialisés",
+            "C) Seulement 10 % sous forme de prêt remboursable",
+            "D) Aucune somme d'argent, uniquement du matériel informatique d'occasion"
+          ],
+          correctAnswer: "B) Jusqu'à 50 % des honoraires des consultants spécialisés",
+          explanation: "Le texte stipule que les entreprises peuvent recevoir 'une subvention non remboursable couvrant jusqu'à 50 % des honoraires de consultants'."
+        }
+      ]
+    },
+    {
+      id: "fr-dcl-affaires",
+      title: "DCL (Diplôme de Compétence en Langue - Affaires & Professionnel)",
+      subtitle: "Diplôme national professionnel du Ministère de l'Éducation Nationale pour adultes",
+      badgeText: "DCL • Compétences Pro",
+      level: "A2 à C1 (Scénario d'Entreprise)",
+      timeLimitMinutes: 30,
+      passPercentage: 70,
+      description: "Épreuve professionnelle unique plongeant le candidat au cœur d'une mission d'entreprise : audit de rentabilité, traitement d'un litige fournisseur et rédaction d'une synthèse stratégique.",
+      sections: [
+        "Traitement documentaire d'entreprise",
+        "Communication commerciale & Négociation",
+        "Prise de décision & Synthèse managériale"
+      ],
+      questions: [
+        {
+          id: "fr-dcl-1",
+          section: "Communication commerciale & Négociation",
+          passage: `ÉCHANGE DE COURRIELS — LITIGE FOURNISSEUR EMBALLAGES
+De : direction.achats@ecopack-france.com
+À : commercial@verre-nord.fr
+Objet : Retard critique de livraison commande N° 45872
+Monsieur,
+Notre chaîne de mise en bouteille est actuellement à l'arrêt faute de réception des 50 000 flacons en verre commandés le 3 septembre, dont la livraison ferme était contractuellement convenue pour le 2 octobre au plus tard.
+Ce retard occasionne un préjudice financier journalier de 4 500 euros pour notre entreprise. Sans livraison complète ou solution de substitution validée sous 48 heures, nous ferons jouer la clause résolutoire du contrat et exigerons l'application des pénalités de retard contractuelles de 5 % par jour calendaire.`,
+          prompt: "Quelle conséquence juridique et financière le client envisage-t-il d'actionner sans solution sous 48 heures ?",
+          options: [
+            "A) Doubler le montant de sa commande de flacons",
+            "B) Résilier le contrat et exiger les pénalités contractuelles de retard de 5% par jour",
+            "C) Embaucher le personnel de l'entreprise fournisseuse",
+            "D) Offrir une prime de livraison exceptionnelle"
+          ],
+          correctAnswer: "B) Résilier le contrat et exiger les pénalités contractuelles de retard de 5% par jour",
+          explanation: "Le courriel énonce clairement : 'nous ferons jouer la clause résolutoire du contrat et exigerons l'application des pénalités de retard contractuelles de 5 % par jour'."
+        },
+        {
+          id: "fr-dcl-2",
+          section: "Prise de décision & Synthèse managériale",
+          prompt: "Dans un rapport de synthèse managériale, quelle formulation exprime une recommandation stratégique avec tact et professionnalisme ?",
+          options: [
+            "A) 'Il faut tout jeter à la poubelle immédiatement.'",
+            "B) 'Au vu des indicateurs de performance récents, nous préconisons d'optimiser le canal logistique avant d'envisager une expansion commerciale.'",
+            "C) 'Je m'en fiche complètement de ce que vous déciderez.'",
+            "D) 'Vous n'avez rien compris à la gestion des stocks.'"
+          ],
+          correctAnswer: "B) 'Au vu des indicateurs de performance récents, nous préconisons d'optimiser le canal logistique avant d'envisager une expansion commerciale.'",
+          explanation: "C'est la formulation managériale équilibrée, argumentée et étayée par les indicateurs opérationnels."
         }
       ]
     }
