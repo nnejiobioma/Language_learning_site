@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
 import { 
@@ -14,6 +14,7 @@ import {
   Sun, 
   Award,
   ChevronRight,
+  ChevronDown,
   Flame,
   Volume2,
   Shield,
@@ -49,6 +50,34 @@ export default function LessonPath() {
   } = useGame();
 
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+
+  // Track which units are open/expanded (all open by default)
+  const [openUnitIds, setOpenUnitIds] = useState(() => new Set((langData.units || []).map(u => u.id)));
+
+  // Sync open units when language changes
+  useEffect(() => {
+    setOpenUnitIds(new Set((langData.units || []).map(u => u.id)));
+  }, [currentLanguage, langData.units]);
+
+  const toggleUnit = (unitId) => {
+    setOpenUnitIds(prev => {
+      const next = new Set(prev);
+      if (next.has(unitId)) {
+        next.delete(unitId);
+      } else {
+        next.add(unitId);
+      }
+      return next;
+    });
+  };
+
+  const toggleAllUnits = () => {
+    if (openUnitIds.size > 0) {
+      setOpenUnitIds(new Set());
+    } else {
+      setOpenUnitIds(new Set((langData.units || []).map(u => u.id)));
+    }
+  };
 
   const handleSpeak = (text) => {
     soundEngine.speak(text, currentLanguage);
@@ -111,13 +140,45 @@ export default function LessonPath() {
       <div className="curriculum-layout">
         {/* Left / Center: Units and Lessons Path */}
         <div className="units-roadmap-flow">
+          {/* Quick Collapse / Expand All Control */}
+          <div className="roadmap-toolbar">
+            <button 
+              className="roadmap-toggle-all-btn"
+              onClick={toggleAllUnits}
+              aria-label={openUnitIds.size > 0 ? "Collapse all units" : "Expand all units"}
+            >
+              <ChevronDown 
+                size={14} 
+                style={{ 
+                  transform: openUnitIds.size === 0 ? 'rotate(-90deg)' : 'rotate(0deg)', 
+                  transition: 'transform 0.2s ease' 
+                }} 
+              />
+              <span>{openUnitIds.size > 0 ? 'Collapse all units' : 'Expand all units'}</span>
+            </button>
+          </div>
+
           {langData.units.map((unit, unitIdx) => {
             const UnitIcon = iconMap[unit.icon] || BookOpen;
+            const isOpen = openUnitIds.has(unit.id);
+            const completedInUnit = unit.lessons.filter(l => completedLessons.includes(l.id)).length;
+            const isUnitComplete = completedInUnit === unit.lessons.length && unit.lessons.length > 0;
+
             return (
               <div key={unit.id} className="unit-card-wrapper">
-                {/* Unit Header */}
+                {/* Collapsible Unit Header */}
                 <div 
-                  className="unit-header-box" 
+                  className={`unit-header-box ${isOpen ? 'is-open' : 'is-collapsed'}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  onClick={() => toggleUnit(unit.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      toggleUnit(unit.id);
+                    }
+                  }}
                   style={{ 
                     borderLeftColor: unit.color,
                     background: `linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.07))` 
@@ -131,85 +192,96 @@ export default function LessonPath() {
                     <h2 className="unit-heading">{unit.title}</h2>
                     <p className="unit-desc">{unit.subtitle}</p>
                   </div>
+
+                  <div className="unit-header-right">
+                    <span className={`unit-progress-pill ${isUnitComplete ? 'completed' : ''}`}>
+                      {isUnitComplete ? '✓ Completed' : `${completedInUnit}/${unit.lessons.length} Lessons`}
+                    </span>
+                    <div className={`unit-chevron-btn ${isOpen ? 'open' : ''}`} aria-hidden="true">
+                      <ChevronDown size={18} />
+                    </div>
+                  </div>
                 </div>
 
-                {/* Lesson Nodes Tree */}
-                <div className="lesson-nodes-grid">
-                  {unit.lessons.map((lesson, lessonIdx) => {
-                    const isCompleted = completedLessons.includes(lesson.id);
-                    const isReview = lesson.isReview || lesson.id.includes('review') || lesson.title.toLowerCase().includes('review');
-                    // Determine if lesson is unlocked:
-                    // First lesson of Unit 1 is always unlocked.
-                    // Subsequent lessons unlocked if previous lesson is completed or if already completed.
-                    const isFirstEver = unitIdx === 0 && lessonIdx === 0;
-                    let isUnlocked = isFirstEver || isCompleted;
+                {/* Lesson Nodes Tree (visible only when unit is dropped down) */}
+                {isOpen && (
+                  <div className="lesson-nodes-grid">
+                    {unit.lessons.map((lesson, lessonIdx) => {
+                      const isCompleted = completedLessons.includes(lesson.id);
+                      const isReview = lesson.isReview || lesson.id.includes('review') || lesson.title.toLowerCase().includes('review');
+                      // Determine if lesson is unlocked:
+                      // First lesson of Unit 1 is always unlocked.
+                      // Subsequent lessons unlocked if previous lesson is completed or if already completed.
+                      const isFirstEver = unitIdx === 0 && lessonIdx === 0;
+                      let isUnlocked = isFirstEver || isCompleted;
 
-                    if (!isUnlocked) {
-                      // Check previous lesson
-                      if (lessonIdx > 0) {
-                        const prevLesson = unit.lessons[lessonIdx - 1];
-                        isUnlocked = completedLessons.includes(prevLesson.id);
-                      } else if (unitIdx > 0) {
-                        const prevUnit = langData.units[unitIdx - 1];
-                        const lastOfPrev = prevUnit.lessons[prevUnit.lessons.length - 1];
-                        isUnlocked = completedLessons.includes(lastOfPrev.id);
+                      if (!isUnlocked) {
+                        // Check previous lesson
+                        if (lessonIdx > 0) {
+                          const prevLesson = unit.lessons[lessonIdx - 1];
+                          isUnlocked = completedLessons.includes(prevLesson.id);
+                        } else if (unitIdx > 0) {
+                          const prevUnit = langData.units[unitIdx - 1];
+                          const lastOfPrev = prevUnit.lessons[prevUnit.lessons.length - 1];
+                          isUnlocked = completedLessons.includes(lastOfPrev.id);
+                        }
                       }
-                    }
 
-                    return (
-                      <div 
-                        key={lesson.id} 
-                        className={`lesson-node-card ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'unlocked' : 'locked'} ${isReview ? 'review-checkpoint-card' : ''}`}
-                      >
-                        <div className="lesson-node-inner">
-                          <button
-                            className={`node-circle-btn ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'active-pulse' : 'locked'} ${isReview ? 'review-circle-btn' : ''}`}
-                            onClick={() => isUnlocked && startLesson(lesson)}
-                            disabled={!isUnlocked}
-                            aria-label={`Start ${lesson.title}`}
-                            id={`lesson-node-${lesson.id}`}
-                          >
-                            {isCompleted ? (
-                              <Check size={26} strokeWidth={3} className="node-icon-check" />
-                            ) : isReview ? (
-                              <Award size={26} className="node-icon-award" />
-                            ) : isUnlocked ? (
-                              <Play size={24} fill="currentColor" className="node-icon-play" />
-                            ) : (
-                              <Lock size={20} className="node-icon-lock" />
-                            )}
-                          </button>
-
-                          <div className="lesson-node-meta">
-                            {isReview ? (
-                              <span className="lesson-step-tag review-checkpoint-tag">
-                                <Award size={13} /> Unit {unitIdx + 1} Checkpoint Review
-                              </span>
-                            ) : (
-                              <span className="lesson-step-tag">Lesson {lessonIdx + 1}</span>
-                            )}
-                            <h3 className="lesson-node-title">{lesson.title}</h3>
-                            <p className="lesson-node-desc">{lesson.description}</p>
-                            
-                            <div className="lesson-action-row">
-                              <span className={`lesson-xp-tag ${isReview ? 'review-xp-tag' : ''}`}>
-                                +{lesson.xp} XP
-                              </span>
-                              {isUnlocked && (
-                                <button 
-                                  className={`node-start-label-btn ${isReview ? 'review-start-btn' : ''}`}
-                                  onClick={() => startLesson(lesson)}
-                                >
-                                  {isCompleted ? 'Retake Review' : isReview ? 'Start Checkpoint' : 'Start'} <ChevronRight size={14} />
-                                </button>
+                      return (
+                        <div 
+                          key={lesson.id} 
+                          className={`lesson-node-card ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'unlocked' : 'locked'} ${isReview ? 'review-checkpoint-card' : ''}`}
+                        >
+                          <div className="lesson-node-inner">
+                            <button
+                              className={`node-circle-btn ${isCompleted ? 'completed' : ''} ${isUnlocked ? 'active-pulse' : 'locked'} ${isReview ? 'review-circle-btn' : ''}`}
+                              onClick={() => isUnlocked && startLesson(lesson)}
+                              disabled={!isUnlocked}
+                              aria-label={`Start ${lesson.title}`}
+                              id={`lesson-node-${lesson.id}`}
+                            >
+                              {isCompleted ? (
+                                <Check size={26} strokeWidth={3} className="node-icon-check" />
+                              ) : isReview ? (
+                                <Award size={26} className="node-icon-award" />
+                              ) : isUnlocked ? (
+                                <Play size={24} fill="currentColor" className="node-icon-play" />
+                              ) : (
+                                <Lock size={20} className="node-icon-lock" />
                               )}
+                            </button>
+
+                            <div className="lesson-node-meta">
+                              {isReview ? (
+                                <span className="lesson-step-tag review-checkpoint-tag">
+                                  <Award size={13} /> Unit {unitIdx + 1} Checkpoint Review
+                                </span>
+                              ) : (
+                                <span className="lesson-step-tag">Lesson {lessonIdx + 1}</span>
+                              )}
+                              <h3 className="lesson-node-title">{lesson.title}</h3>
+                              <p className="lesson-node-desc">{lesson.description}</p>
+                              
+                              <div className="lesson-action-row">
+                                <span className={`lesson-xp-tag ${isReview ? 'review-xp-tag' : ''}`}>
+                                  +{lesson.xp} XP
+                                </span>
+                                {isUnlocked && (
+                                  <button 
+                                    className={`node-start-label-btn ${isReview ? 'review-start-btn' : ''}`}
+                                    onClick={() => startLesson(lesson)}
+                                  >
+                                    {isCompleted ? 'Retake Review' : isReview ? 'Start Checkpoint' : 'Start'} <ChevronRight size={14} />
+                                  </button>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             );
           })}

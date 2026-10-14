@@ -651,6 +651,35 @@ button:active {
   gap: 3rem;
 }
 
+.roadmap-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -1.75rem;
+  padding: 0 0.25rem;
+}
+
+.roadmap-toggle-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.roadmap-toggle-all-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--emerald);
+  background: rgba(16, 185, 129, 0.08);
+}
+
 .unit-card-wrapper {
   display: flex;
   flex-direction: column;
@@ -660,12 +689,79 @@ button:active {
 .unit-header-box {
   border-left: 5px solid #10b981;
   border-radius: 18px;
-  padding: 1.5rem;
+  padding: 1.35rem 1.5rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
   border: 1px solid var(--border-subtle);
   border-left-width: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.unit-header-box:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.unit-header-box:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
+}
+
+.unit-header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.unit-progress-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.unit-progress-pill.completed {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+}
+
+.unit-chevron-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s;
+  flex-shrink: 0;
+}
+
+.unit-chevron-btn.open {
+  transform: rotate(180deg);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 640px) {
+  .unit-header-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
 }
 
 .unit-icon-badge {
