@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useGame } from '../context/GameContext';
 import { useAuth } from '../context/AuthContext';
 import Avatar from './Avatar';
+import ThemeSwitcher from './ThemeSwitcher';
 import { LANGUAGES } from '../data/languages';
 import { 
   Flame, 
@@ -186,6 +187,9 @@ export default function Header() {
           >
             {soundEnabled ? <Volume2 size={18} /> : <VolumeX size={18} className="muted-icon" />}
           </button>
+
+          {/* Theme Switcher (Light / Dark / System) */}
+          <ThemeSwitcher />
 
           {/* User Account / Profile */}
           <div className="user-profile-wrapper">

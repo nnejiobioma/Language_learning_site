@@ -14,6 +14,14 @@
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.18);
 
+  --bg-header: rgba(9, 13, 22, 0.85);
+  --bg-dropdown: #111827;
+  --bg-dropdown-item-hover: rgba(255, 255, 255, 0.08);
+  --bg-nav-tabs: rgba(15, 23, 42, 0.6);
+  --bg-nav-tab-hover: rgba(255, 255, 255, 0.04);
+  --bg-modal: #111827;
+  --bg-node-locked: #1e293b;
+
   /* Primary Accent & Glows */
   --emerald: #10b981;
   --emerald-glow: rgba(16, 185, 129, 0.35);
@@ -34,6 +42,64 @@
   --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.2);
   --shadow-3d: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   Light Mode Theme Overrides
+   Activated when html has class 'light' or data-theme="light",
+   or via system preference when no explicit 'dark' class is present.
+   ========================================================================== */
+html.light,
+html[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-glass: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-dropdown: #ffffff;
+  --bg-dropdown-item-hover: #f1f5f9;
+  --bg-nav-tabs: #eef2f6;
+  --bg-nav-tab-hover: #ffffff;
+  --bg-modal: #ffffff;
+  --bg-node-locked: #e2e8f0;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --shadow-soft: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.15);
+  --shadow-3d: 0 4px 0 rgba(148, 163, 184, 0.45);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not(.dark) {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --bg-glass: #ffffff;
+    --border-subtle: #e2e8f0;
+    --border-hover: #cbd5e1;
+
+    --bg-header: rgba(255, 255, 255, 0.92);
+    --bg-dropdown: #ffffff;
+    --bg-dropdown-item-hover: #f1f5f9;
+    --bg-nav-tabs: #eef2f6;
+    --bg-nav-tab-hover: #ffffff;
+    --bg-modal: #ffffff;
+    --bg-node-locked: #e2e8f0;
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    --shadow-soft: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.15);
+    --shadow-3d: 0 4px 0 rgba(148, 163, 184, 0.45);
+  }
 }
 
 * {
@@ -77,7 +143,7 @@ button:active {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(9, 13, 22, 0.85);
+  background: var(--bg-header);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
@@ -189,15 +255,15 @@ button:active {
   min-width: 260px;
   max-height: 440px;
   overflow-y: auto;
-  background: #111827;
+  background: var(--bg-dropdown);
   border: 1px solid var(--border-hover);
   border-radius: 16px;
   padding: 0.5rem;
-  box-shadow: var(--shadow-soft), 0 0 20px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-soft), 0 0 20px rgba(0, 0, 0, 0.25);
   z-index: 110;
   animation: fadeInDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
 }
 
 .dropdown-label {
@@ -219,7 +285,7 @@ button:active {
 }
 
 .lang-option-item:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-dropdown-item-hover);
 }
 
 .lang-option-item.active {
@@ -261,7 +327,7 @@ button:active {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-nav-tabs);
   padding: 0.3rem;
   border-radius: 9999px;
   border: 1px solid var(--border-subtle);
@@ -280,7 +346,7 @@ button:active {
 
 .nav-tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-nav-tab-hover);
 }
 
 .nav-tab-btn.active {
@@ -402,7 +468,7 @@ button:active {
   top: calc(100% + 8px);
   right: 0;
   min-width: 220px;
-  background: #111827;
+  background: var(--bg-dropdown);
   border: 1px solid var(--border-hover);
   border-radius: 16px;
   padding: 0.85rem;
@@ -453,6 +519,189 @@ button:active {
 
 .dropdown-signout-btn:hover {
   background: rgba(239, 68, 68, 0.25);
+}
+
+/* ==========================================================================
+   Theme Switcher Component Styles (Light / Dark / System)
+   ========================================================================== */
+
+.theme-switcher-wrapper {
+  position: relative;
+}
+
+.theme-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-switcher-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+.theme-current-icon {
+  display: flex;
+  align-items: center;
+  color: var(--gold);
+}
+
+html.light .theme-current-icon,
+html[data-theme="light"] .theme-current-icon {
+  color: #d97706;
+}
+
+.theme-btn-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.theme-chevron {
+  transition: transform 0.2s ease;
+  color: var(--text-muted);
+}
+
+.theme-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Theme Dropdown Menu */
+.theme-dropdown-card {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 250px;
+  background: var(--bg-dropdown);
+  border: 1px solid var(--border-hover);
+  border-radius: 18px;
+  padding: 0.55rem;
+  box-shadow: var(--shadow-soft), 0 12px 30px rgba(0, 0, 0, 0.2);
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  animation: fadeInDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-dropdown-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 0.35rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.theme-option-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  text-align: left;
+  width: 100%;
+  color: var(--text-primary);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.theme-option-row:hover {
+  background: var(--bg-dropdown-item-hover);
+}
+
+.theme-option-row.active {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.theme-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.theme-option-row.active .theme-option-icon {
+  color: var(--emerald);
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.theme-option-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.theme-option-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.theme-option-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.theme-check-icon {
+  color: var(--emerald);
+  flex-shrink: 0;
+}
+
+/* Segmented Theme Switcher (for Profile & Settings) */
+.theme-segmented-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem;
+  border-radius: 14px;
+}
+
+.theme-segment-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-segment-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+html.light .theme-segment-btn:hover,
+html[data-theme="light"] .theme-segment-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.theme-segment-btn.active {
+  background: var(--bg-card-hover);
+  color: var(--emerald);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: var(--shadow-soft);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -2734,12 +2983,12 @@ button:active {
 .auth-modal-card, .heart-modal-card {
   width: 100%;
   max-width: 480px;
-  background: #111827;
+  background: var(--bg-modal);
   border: 1px solid var(--border-hover);
   border-radius: 28px;
   padding: 2.2rem;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
   animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -4459,13 +4708,13 @@ a.link-switch-btn{text-decoration:none;cursor:pointer}
 }
 
 .cbt-modal-dialog {
-  background: #111827;
+  background: var(--bg-modal);
   border: 1px solid var(--border-hover);
   border-radius: 20px;
   padding: 2rem;
   max-width: 480px;
   width: 100%;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -5639,4 +5888,145 @@ a.link-switch-btn{text-decoration:none;cursor:pointer}
     min-width: 100%;
   }
 }
+
+/* ==========================================================================
+   Comprehensive Light Mode Component Overrides
+   Activated when html.light, html[data-theme="light"], or system light
+   ========================================================================== */
+
+html.light body,
+html[data-theme="light"] body {
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.05), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(79, 70, 229, 0.05), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.04), transparent 45%);
+}
+
+@media (prefers-color-scheme: light) {
+  html:not(.dark) body {
+    background-image: 
+      radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.05), transparent 35%),
+      radial-gradient(circle at 85% 20%, rgba(79, 70, 229, 0.05), transparent 35%),
+      radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.04), transparent 45%);
+  }
+}
+
+/* Culture Vault Subsections */
+html.light .vault-sub-header,
+html[data-theme="light"] .vault-sub-header {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-color: var(--border-subtle);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+html.light .vault-sub-header:hover,
+html[data-theme="light"] .vault-sub-header:hover {
+  background: #ffffff;
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+html.light .vault-sub-header.is-open,
+html[data-theme="light"] .vault-sub-header.is-open {
+  background: #ffffff;
+  border-left-color: #0284c7;
+}
+
+html.light .tip-number,
+html[data-theme="light"] .tip-number {
+  color: rgba(15, 23, 42, 0.15);
+}
+
+html.light .proverb-spotlight-box,
+html[data-theme="light"] .proverb-spotlight-box {
+  background: #fffbeb;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+html.light .proverb-highlight-text,
+html[data-theme="light"] .proverb-highlight-text {
+  color: #92400e;
+}
+
+html.light .proverb-trans,
+html[data-theme="light"] .proverb-trans {
+  color: #1e293b;
+}
+
+/* Flashcards */
+html.light .flashcard-face,
+html[data-theme="light"] .flashcard-face {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+html.light .flashcard-back,
+html[data-theme="light"] .flashcard-back {
+  background: linear-gradient(135deg, #f0fdf4, #ffffff);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+html.light .card-word-native,
+html[data-theme="light"] .card-word-native {
+  color: #0f172a;
+}
+
+html.light .card-phonetic,
+html[data-theme="light"] .card-phonetic {
+  color: #0f172a;
+}
+
+html.light .card-phonetic-badge,
+html[data-theme="light"] .card-phonetic-badge {
+  background: #f1f5f9;
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+html.light .card-translation-text,
+html[data-theme="light"] .card-translation-text {
+  color: #1d4ed8;
+}
+
+html.light .card-example-box,
+html[data-theme="light"] .card-example-box {
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid #e2e8f0;
+}
+
+html.light .example-quote,
+html[data-theme="light"] .example-quote {
+  color: #1e293b;
+}
+
+/* User Profile button */
+html.light .user-profile-btn,
+html[data-theme="light"] .user-profile-btn {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(124, 58, 237, 0.08));
+  border-color: rgba(124, 58, 237, 0.25);
+  color: #4f46e5;
+}
+
+/* Curriculum node button */
+html.light .node-circle-btn.locked,
+html[data-theme="light"] .node-circle-btn.locked {
+  background: #e2e8f0;
+  color: #94a3b8;
+}
+
+/* Word token chip in Quiz sentence builder */
+html.light .word-token-chip,
+html[data-theme="light"] .word-token-chip {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 0 #cbd5e1;
+}
+
+html.light .word-token-chip:hover,
+html[data-theme="light"] .word-token-chip:hover {
+  background: #f8fafc;
+}
+
 

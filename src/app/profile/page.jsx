@@ -7,6 +7,7 @@ import { ArrowLeft, Camera, Trash2, Check } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { LANGUAGES } from '../../data/languages';
 import Avatar, { AVATARS } from '../../components/Avatar';
+import ThemeSwitcher from '../../components/ThemeSwitcher';
 import './profile.css';
 
 const EMPTY_FORM = {
@@ -257,6 +258,12 @@ export default function ProfilePage() {
                 <textarea rows={3} maxLength={200} value={form.bio} onChange={update('bio')} placeholder="Tell other learners about yourself" />
               </label>
             </div>
+          </section>
+
+          <section className="profile-card">
+            <h2>Appearance & Theme</h2>
+            <p className="profile-hint">Choose your preferred site appearance:</p>
+            <ThemeSwitcher variant="segmented" />
           </section>
 
           <section className="profile-card">

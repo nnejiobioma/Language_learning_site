@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 import { LANGUAGES } from '../data/languages';
 
 export const metadata = {
@@ -39,6 +40,7 @@ export default function LandingPage() {
             <a href="#how">How it works</a>
           </nav>
           <div className="lp-nav-actions">
+            <ThemeSwitcher />
             <Link href="/login" className="lp-nav-login" id="landing-nav-login">Log in</Link>
             <Link href="/signup" className="lp-btn lp-btn-primary lp-btn-sm" id="landing-nav-start">
               Sign up free
