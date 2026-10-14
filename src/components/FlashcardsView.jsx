@@ -145,7 +145,15 @@ export default function FlashcardsView() {
 
             <div className="card-main-word-area">
               <span className="card-word-native">{currentCard.front}</span>
-              <span className="card-phonetic">Phonetics: /{currentCard.phonetic}/</span>
+              
+              {/* Clear break and styled badge before pronouncing phonetics */}
+              <br className="phonetic-break" />
+              {currentCard.phonetic && (
+                <div className="card-phonetic-badge">
+                  <span className="phonetic-lead-label">Pronunciation:</span>
+                  <span className="card-phonetic">/{currentCard.phonetic}/</span>
+                </div>
+              )}
               
               <button 
                 className="card-audio-speaker-btn"
@@ -172,6 +180,16 @@ export default function FlashcardsView() {
 
             <div className="card-main-word-area">
               <span className="card-translation-text">{currentCard.back}</span>
+              
+              {/* Clear break and pronunciation on the back face */}
+              <br className="phonetic-break" />
+              {currentCard.phonetic && (
+                <div className="card-phonetic-badge back-phonetic-badge">
+                  <span className="phonetic-lead-label">Pronunciation:</span>
+                  <span className="card-phonetic">/{currentCard.phonetic}/</span>
+                </div>
+              )}
+
               {currentCard.example && (
                 <div className="card-example-box">
                   <span className="example-label">Example in sentence:</span>
