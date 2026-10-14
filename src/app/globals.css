@@ -6029,4 +6029,400 @@ html[data-theme="light"] .word-token-chip:hover {
   background: #f8fafc;
 }
 
+/* ==========================================================================
+   Hero Sections — Light Mode Enhancements
+   ========================================================================== */
+
+/* Course / Curriculum Hero Banner */
+html.light .course-hero-banner,
+html[data-theme="light"] .course-hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 40%, rgba(16, 185, 129, 0.08) 100%);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+}
+
+html.light .course-hero-banner::before,
+html[data-theme="light"] .course-hero-banner::before {
+  opacity: 0.25;
+  filter: blur(80px);
+}
+
+html.light .hero-badge-container,
+html[data-theme="light"] .hero-badge-container {
+  border-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
+html.light .hero-badge-pill,
+html[data-theme="light"] .hero-badge-pill {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: var(--accent, #059669);
+}
+
+html.light .hero-title,
+html[data-theme="light"] .hero-title {
+  color: #0f172a;
+}
+
+html.light .hero-motto,
+html[data-theme="light"] .hero-motto {
+  color: #334155;
+  font-weight: 500;
+}
+
+html.light .hero-audio-greeting,
+html[data-theme="light"] .hero-audio-greeting {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+html.light .hero-audio-greeting:hover,
+html[data-theme="light"] .hero-audio-greeting:hover {
+  background: #f8fafc;
+  border-color: var(--accent, #059669);
+}
+
+html.light .greeting-label,
+html[data-theme="light"] .greeting-label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+html.light .greeting-text,
+html[data-theme="light"] .greeting-text {
+  color: #0f172a;
+}
+
+html.light .listen-hint,
+html[data-theme="light"] .listen-hint {
+  color: #059669;
+  font-weight: 600;
+}
+
+html.light .summary-chip,
+html[data-theme="light"] .summary-chip {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+html.light .chip-label,
+html[data-theme="light"] .chip-label {
+  color: #64748b;
+}
+
+html.light .chip-val,
+html[data-theme="light"] .chip-val {
+  color: #0f172a;
+}
+
+/* Culture Vault Hero Card */
+html.light .vault-hero-card,
+html[data-theme="light"] .vault-hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 50%, #fef3c7 100%);
+  border-color: #fde68a;
+  box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.12), 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+html.light .vault-pill-badge,
+html[data-theme="light"] .vault-pill-badge {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+html.light .vault-title,
+html[data-theme="light"] .vault-title {
+  color: #0f172a;
+}
+
+html.light .vault-desc,
+html[data-theme="light"] .vault-desc {
+  color: #334155;
+  font-weight: 500;
+}
+
+html.light .proverb-spotlight-box,
+html[data-theme="light"] .proverb-spotlight-box {
+  background: #ffffff;
+  border-color: #fde68a;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.1);
+}
+
+html.light .proverb-tag,
+html[data-theme="light"] .proverb-tag {
+  color: #b45309;
+}
+
+html.light .proverb-highlight-text,
+html[data-theme="light"] .proverb-highlight-text {
+  color: #78350f;
+}
+
+html.light .proverb-trans,
+html[data-theme="light"] .proverb-trans {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+html.light .proverb-context,
+html[data-theme="light"] .proverb-context {
+  color: #475569;
+}
+
+html.light .speak-proverb-btn,
+html[data-theme="light"] .speak-proverb-btn {
+  background: #fef3c7;
+  border-color: #fcd34d;
+  color: #92400e;
+}
+
+html.light .speak-proverb-btn:hover,
+html[data-theme="light"] .speak-proverb-btn:hover {
+  background: #fde68a;
+}
+
+/* CBT Exams Hero Banner */
+html.light .cbt-hero-banner,
+html[data-theme="light"] .cbt-hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 60%, #e0f2fe 100%);
+  border-color: #bfdbfe;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+html.light .cbt-hero-badge,
+html[data-theme="light"] .cbt-hero-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+}
+
+html.light .cbt-hero-title,
+html[data-theme="light"] .cbt-hero-title {
+  color: #0f172a;
+}
+
+html.light .cbt-hero-subtitle,
+html[data-theme="light"] .cbt-hero-subtitle {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Unit Roadmap Header Boxes & Connectors */
+html.light .unit-header-box,
+html[data-theme="light"] .unit-header-box {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+html.light .unit-header-box:hover,
+html[data-theme="light"] .unit-header-box:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+html.light .unit-eyebrow,
+html[data-theme="light"] .unit-eyebrow {
+  color: #b45309;
+}
+
+html.light .unit-heading,
+html[data-theme="light"] .unit-heading {
+  color: #0f172a;
+}
+
+html.light .unit-desc,
+html[data-theme="light"] .unit-desc {
+  color: #475569;
+}
+
+html.light .unit-progress-pill,
+html[data-theme="light"] .unit-progress-pill {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+html.light .unit-chevron-btn,
+html[data-theme="light"] .unit-chevron-btn {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+html.light .lesson-nodes-grid::before,
+html[data-theme="light"] .lesson-nodes-grid::before {
+  background: #e2e8f0;
+}
+
+/* Sidebar Mascot Widget */
+html.light .mascot-widget,
+html[data-theme="light"] .mascot-widget {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: #e2e8f0;
+}
+
+html.light .mascot-speech-bubble,
+html[data-theme="light"] .mascot-speech-bubble {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+html.light .speech-text,
+html[data-theme="light"] .speech-text {
+  color: #0f172a;
+}
+
+html.light .quest-progress-bar,
+html[data-theme="light"] .quest-progress-bar {
+  background: #e2e8f0;
+}
+
+/* Media Query Support for System Light Preference */
+@media (prefers-color-scheme: light) {
+  html:not(.dark) .course-hero-banner {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 40%, rgba(16, 185, 129, 0.08) 100%);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  }
+  html:not(.dark) .course-hero-banner::before {
+    opacity: 0.25;
+    filter: blur(80px);
+  }
+  html:not(.dark) .hero-badge-container {
+    border-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  }
+  html:not(.dark) .hero-badge-pill {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: var(--accent, #059669);
+  }
+  html:not(.dark) .hero-title {
+    color: #0f172a;
+  }
+  html:not(.dark) .hero-motto {
+    color: #334155;
+    font-weight: 500;
+  }
+  html:not(.dark) .hero-audio-greeting {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  }
+  html:not(.dark) .hero-audio-greeting:hover {
+    background: #f8fafc;
+    border-color: var(--accent, #059669);
+  }
+  html:not(.dark) .greeting-label {
+    color: #64748b;
+    font-weight: 600;
+  }
+  html:not(.dark) .greeting-text {
+    color: #0f172a;
+  }
+  html:not(.dark) .listen-hint {
+    color: #059669;
+    font-weight: 600;
+  }
+  html:not(.dark) .summary-chip {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  }
+  html:not(.dark) .chip-label {
+    color: #64748b;
+  }
+  html:not(.dark) .chip-val {
+    color: #0f172a;
+  }
+
+  html:not(.dark) .vault-hero-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fffbeb 50%, #fef3c7 100%);
+    border-color: #fde68a;
+    box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.12), 0 4px 16px rgba(15, 23, 42, 0.06);
+  }
+  html:not(.dark) .vault-pill-badge {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+  }
+  html:not(.dark) .vault-title {
+    color: #0f172a;
+  }
+  html:not(.dark) .vault-desc {
+    color: #334155;
+    font-weight: 500;
+  }
+
+  html:not(.dark) .cbt-hero-banner {
+    background: linear-gradient(135deg, #ffffff 0%, #eff6ff 60%, #e0f2fe 100%);
+    border-color: #bfdbfe;
+    border-left: 5px solid #2563eb;
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(15, 23, 42, 0.05);
+  }
+  html:not(.dark) .cbt-hero-badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+  }
+  html:not(.dark) .cbt-hero-title {
+    color: #0f172a;
+  }
+  html:not(.dark) .cbt-hero-subtitle {
+    color: #334155;
+    font-weight: 500;
+  }
+
+  html:not(.dark) .unit-header-box {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  }
+  html:not(.dark) .unit-eyebrow {
+    color: #b45309;
+  }
+  html:not(.dark) .unit-heading {
+    color: #0f172a;
+  }
+  html:not(.dark) .unit-desc {
+    color: #475569;
+  }
+  html:not(.dark) .unit-progress-pill {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #475569;
+  }
+  html:not(.dark) .unit-chevron-btn {
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #0f172a;
+  }
+  html:not(.dark) .lesson-nodes-grid::before {
+    background: #e2e8f0;
+  }
+  html:not(.dark) .mascot-widget {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-color: #e2e8f0;
+  }
+  html:not(.dark) .mascot-speech-bubble {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  }
+  html:not(.dark) .speech-text {
+    color: #0f172a;
+  }
+  html:not(.dark) .quest-progress-bar {
+    background: #e2e8f0;
+  }
+}
+
+
 

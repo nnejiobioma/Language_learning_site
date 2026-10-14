@@ -180,8 +180,7 @@ export default function LessonPath() {
                     }
                   }}
                   style={{ 
-                    borderLeftColor: unit.color,
-                    background: `linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.07))` 
+                    borderLeftColor: unit.color 
                   }}
                 >
                   <div className="unit-icon-badge" style={{ backgroundColor: unit.color }}>

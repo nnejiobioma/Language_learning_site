@@ -216,8 +216,14 @@ html[data-theme="dark"] .lp-root {
 }
 
 .lp-highlight {
-  color: var(--lp-green-bright);
+  color: #047857;
   background: linear-gradient(transparent 62%, var(--lp-yellow) 62%);
+}
+
+html.dark .lp-highlight,
+html[data-theme="dark"] .lp-highlight {
+  color: #34d399;
+  background: linear-gradient(transparent 62%, rgba(245, 158, 11, 0.4) 62%);
 }
 
 .lp-lead {
