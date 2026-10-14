@@ -69,6 +69,11 @@ export default function QuizModal() {
   const [isFinished, setIsFinished] = useState(false);
   const [earnedLessonXp, setEarnedLessonXp] = useState(0);
 
+  // Review mode tracking: ensures learner masters every mistake before advancing
+  const [missedQuestionIds, setMissedQuestionIds] = useState([]);
+  const [isReviewPhase, setIsReviewPhase] = useState(false);
+  const [hadReview, setHadReview] = useState(false);
+
   const questions = shuffledQuestions.length > 0 ? shuffledQuestions : (activeLesson?.questions || []);
   const currentQ = questions[currentIndex];
 
@@ -83,6 +88,9 @@ export default function QuizModal() {
       setMatchedPairs([]);
       setSelectedNative(null);
       setSelectedEnglish(null);
+      setMissedQuestionIds([]);
+      setIsReviewPhase(false);
+      setHadReview(false);
       setShuffledQuestions(shuffleQuestions(activeLesson.questions));
     } else {
       setShuffledQuestions([]);
@@ -190,9 +198,15 @@ export default function QuizModal() {
       const gained = onAnswerCorrect(15);
       setEarnedLessonXp(prev => prev + gained);
       setFeedbackStatus('correct');
+      // If in review mode, mark this missed question as successfully mastered
+      if (isReviewPhase) {
+        setMissedQuestionIds(prev => prev.filter(id => id !== currentQ.id));
+      }
     } else {
       onAnswerWrong();
       setFeedbackStatus('wrong');
+      // Track this question to be reviewed at the end of the lesson
+      setMissedQuestionIds(prev => (prev.includes(currentQ.id) ? prev : [...prev, currentQ.id]));
     }
   };
 
@@ -200,7 +214,20 @@ export default function QuizModal() {
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // Completed lesson!
+      // Check if there are questions the learner didn't get right
+      if (missedQuestionIds.length > 0) {
+        const toReview = (activeLesson.questions || []).filter(q => missedQuestionIds.includes(q.id));
+        if (toReview.length > 0) {
+          setIsReviewPhase(true);
+          setHadReview(true);
+          setShuffledQuestions(shuffleQuestions(toReview));
+          setCurrentIndex(0);
+          soundEngine.playStreak();
+          return;
+        }
+      }
+
+      // All questions (and any missed reviews) completed!
       completeLesson(activeLesson.id, activeLesson.xp || 25);
       setIsFinished(true);
     }
@@ -255,6 +282,13 @@ export default function QuizModal() {
               You are mastering {LANGUAGES[currentLanguage]?.name || 'a new language'} like a champion!
             </p>
 
+            {hadReview && (
+              <div className="review-mastered-note">
+                <Sparkles size={16} />
+                <span>All missed questions reviewed & mastered!</span>
+              </div>
+            )}
+
             <div className="finish-metrics-grid">
               <div className="finish-metric-card">
                 <span className="metric-label">XP Gained</span>
@@ -284,6 +318,14 @@ export default function QuizModal() {
             {combo > 1 && (
               <div className="combo-floating-badge">
                 🔥 {combo} In a Row! Keep the flame alive!
+              </div>
+            )}
+
+            {/* Review mode indicator */}
+            {isReviewPhase && (
+              <div className="review-phase-badge">
+                <RotateCcw size={15} />
+                <span>Review Mode · Practice what you missed ({currentIndex + 1} of {questions.length})</span>
               </div>
             )}
 
@@ -442,7 +484,7 @@ export default function QuizModal() {
                 <div className="feedback-message correct">
                   <CheckCircle2 size={30} className="feedback-icon" />
                   <div className="feedback-text">
-                    <strong>Excellent! Correct answer!</strong>
+                    <strong>{isReviewPhase ? 'Great comeback! You mastered it!' : 'Excellent! Correct answer!'}</strong>
                     {currentQ.explanation && <p className="explanation-text">{currentQ.explanation}</p>}
                   </div>
                 </div>

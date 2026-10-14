@@ -1135,6 +1135,36 @@ button:active {
   animation: bounceMini 1s infinite alternate;
 }
 
+.review-phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.25));
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  color: #c4b5fd;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.review-mastered-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
 .question-prompt-header {
   margin-bottom: 2rem;
 }
