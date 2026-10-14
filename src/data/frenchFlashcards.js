@@ -5,7 +5,81 @@
 
 export const frenchFlashcards = [
   // =========================================================================
-  // Unit 1 (A1): First Contact & Salutations
+  // Unit 1 (A1): French Alphabet & Sounds (32 cards)
+  // =========================================================================
+  { id: "fr-fc-alpha-01", front: "A / a", phonetic: "AH", back: "A — pronounced 'ah'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "A comme Avion (Airplane)." },
+  { id: "fr-fc-alpha-02", front: "B / b", phonetic: "BEH", back: "B — pronounced 'beh'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "B comme Bonjour (Hello)." },
+  { id: "fr-fc-alpha-03", front: "C / c", phonetic: "SEH", back: "C — pronounced 'seh'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "C comme Café (Coffee)." },
+  { id: "fr-fc-alpha-04", front: "D / d", phonetic: "DEH", back: "D — pronounced 'deh'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "D comme Demain (Tomorrow)." },
+  { id: "fr-fc-alpha-05", front: "E / e", phonetic: "EUH", back: "E — pronounced 'euh'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "E comme Eau (Water)." },
+  { id: "fr-fc-alpha-06", front: "F / f", phonetic: "EFF", back: "F — pronounced 'eff'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "F comme France (France)." },
+  { id: "fr-fc-alpha-07", front: "G / g", phonetic: "ZHEH", back: "G — pronounced soft 'zheh'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "G comme Gare (Station)." },
+  { id: "fr-fc-alpha-08", front: "H / h", phonetic: "ASH", back: "H — silent in French (muet / aspiré)", category: "Unit 1 (A1): French Alphabet & Sounds", example: "H comme Hôtel (Hotel)." },
+  { id: "fr-fc-alpha-09", front: "I / i", phonetic: "EE", back: "I — pronounced 'ee'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "I comme Idée (Idea)." },
+  { id: "fr-fc-alpha-10", front: "J / j", phonetic: "ZHEE", back: "J — soft 'zh' like 's' in 'measure'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "J comme Jour (Day)." },
+  { id: "fr-fc-alpha-11", front: "K / k", phonetic: "KAH", back: "K — used mainly in loanwords", category: "Unit 1 (A1): French Alphabet & Sounds", example: "K comme Kilo (Kilo)." },
+  { id: "fr-fc-alpha-12", front: "L / l", phonetic: "ELL", back: "L — bright alveolar lateral", category: "Unit 1 (A1): French Alphabet & Sounds", example: "L comme Livre (Book)." },
+  { id: "fr-fc-alpha-13", front: "M / m", phonetic: "EMM", back: "M — voiced bilabial nasal", category: "Unit 1 (A1): French Alphabet & Sounds", example: "M comme Merci (Thank you)." },
+  { id: "fr-fc-alpha-14", front: "N / n", phonetic: "ENN", back: "N — voiced alveolar nasal", category: "Unit 1 (A1): French Alphabet & Sounds", example: "N comme Nuit (Night)." },
+  { id: "fr-fc-alpha-15", front: "O / o", phonetic: "OH", back: "O — round back vowel", category: "Unit 1 (A1): French Alphabet & Sounds", example: "O comme Oui (Yes)." },
+  { id: "fr-fc-alpha-16", front: "P / p", phonetic: "PEH", back: "P — crisp unaspirated stop", category: "Unit 1 (A1): French Alphabet & Sounds", example: "P comme Paris (Paris)." },
+  { id: "fr-fc-alpha-17", front: "Q / q", phonetic: "KEW", back: "Q — pronounced 'kew'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Q comme Quatre (Four)." },
+  { id: "fr-fc-alpha-18", front: "R / r", phonetic: "EHR", back: "R — voiced uvular fricative (French gutteral R)", category: "Unit 1 (A1): French Alphabet & Sounds", example: "R comme Rouge (Red)." },
+  { id: "fr-fc-alpha-19", front: "S / s", phonetic: "ESS", back: "S — voiceless sibilant", category: "Unit 1 (A1): French Alphabet & Sounds", example: "S comme Soleil (Sun)." },
+  { id: "fr-fc-alpha-20", front: "T / t", phonetic: "TEH", back: "T — crisp dental stop", category: "Unit 1 (A1): French Alphabet & Sounds", example: "T comme Train (Train)." },
+  { id: "fr-fc-alpha-21", front: "U / u", phonetic: "EW", back: "U — front rounded vowel (pucker lips, say 'ee')", category: "Unit 1 (A1): French Alphabet & Sounds", example: "U comme Un (One)." },
+  { id: "fr-fc-alpha-22", front: "V / v", phonetic: "VEH", back: "V — voiced labiodental fricative", category: "Unit 1 (A1): French Alphabet & Sounds", example: "V comme Vin (Wine)." },
+  { id: "fr-fc-alpha-23", front: "W / w", phonetic: "DOO-bluh VEH", back: "W — double V (used in loanwords)", category: "Unit 1 (A1): French Alphabet & Sounds", example: "W comme Week-end (Weekend)." },
+  { id: "fr-fc-alpha-24", front: "X / x", phonetic: "EEKS", back: "X — pronounced 'eeks'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "X comme Xylophone." },
+  { id: "fr-fc-alpha-25", front: "Y / y", phonetic: "EE-GREK", back: "Y — Greek I (i grec)", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Y comme Yeux (Eyes)." },
+  { id: "fr-fc-alpha-26", front: "Z / z", phonetic: "ZED", back: "Z — pronounced 'zed'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Z comme Zéro (Zero)." },
+  { id: "fr-fc-alpha-27", front: "É / é", phonetic: "Accent Aigu (AY)", back: "Closed 'e' like 'ay' in 'say'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Café, été, vérité." },
+  { id: "fr-fc-alpha-28", front: "È / è", phonetic: "Accent Grave (EH)", back: "Open 'e' like 'e' in 'bed'", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Père, mère, frère." },
+  { id: "fr-fc-alpha-29", front: "Ê / ê / Â / Î / Ô / Û", phonetic: "Accent Circonflexe", back: "Hat accent (historically marks a dropped 's')", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Fête (from feast), forêt (from forest)." },
+  { id: "fr-fc-alpha-30", front: "Ç / ç", phonetic: "Cédille (SEH)", back: "Softens 'c' to an 's' sound before a, o, u", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Français, garçon, leçon." },
+  { id: "fr-fc-alpha-31", front: "Ë / Ï / ë / ï", phonetic: "Tréma", back: "Two dots: pronounce vowel separately", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Noël, maïs, naïf." },
+  { id: "fr-fc-alpha-32", front: "Œ / œ", phonetic: "E dans l'O", back: "Ligature: combined o and e", category: "Unit 1 (A1): French Alphabet & Sounds", example: "Cœur (heart), sœur (sister), œuf (egg)." },
+
+  // =========================================================================
+  // Unit 1 (A1): French Numbers 0 to 100 (34 cards)
+  // =========================================================================
+  { id: "fr-fc-num-00", front: "0 — Zéro", phonetic: "zay-ROH", back: "0 — Zero", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Il fait zéro degré. (It is zero degrees.)" },
+  { id: "fr-fc-num-01", front: "1 — Un / Une", phonetic: "uhn / ewn", back: "1 — One (masculine / feminine)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Un café et une pomme. (One coffee and one apple.)" },
+  { id: "fr-fc-num-02", front: "2 — Deux", phonetic: "duh", back: "2 — Two", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Deux billets, s'il vous plaît. (Two tickets, please.)" },
+  { id: "fr-fc-num-03", front: "3 — Trois", phonetic: "trwah", back: "3 — Three", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Trois heures de l'après-midi. (Three in the afternoon.)" },
+  { id: "fr-fc-num-04", front: "4 — Quatre", phonetic: "KAT-ruh", back: "4 — Four", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Les quatre saisons de l'année. (The four seasons of the year.)" },
+  { id: "fr-fc-num-05", front: "5 — Cinq", phonetic: "sahnk", back: "5 — Five", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Cinq minutes d'attente. (Five minutes of waiting.)" },
+  { id: "fr-fc-num-06", front: "6 — Six", phonetic: "sees", back: "6 — Six", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Nous sommes six personnes. (We are six people.)" },
+  { id: "fr-fc-num-07", front: "7 — Sept", phonetic: "set (silent 'p')", back: "7 — Seven", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Sept jours dans une semaine. (Seven days in a week.)" },
+  { id: "fr-fc-num-08", front: "8 — Huit", phonetic: "weet", back: "8 — Eight", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Le cours commence à huit heures. (The class starts at eight.)" },
+  { id: "fr-fc-num-09", front: "9 — Neuf", phonetic: "nuhf", back: "9 — Nine", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Numéro neuf de la rue. (Number nine on the street.)" },
+  { id: "fr-fc-num-10", front: "10 — Dix", phonetic: "dees", back: "10 — Ten", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Dix sur dix à l'examen ! (Ten out of ten on the exam!)" },
+  { id: "fr-fc-num-11", front: "11 — Onze", phonetic: "ohnz", back: "11 — Eleven", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Il est onze heures du matin. (It is eleven in the morning.)" },
+  { id: "fr-fc-num-12", front: "12 — Douze", phonetic: "dooz", back: "12 — Twelve", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Douze mois dans l'année. (Twelve months in the year.)" },
+  { id: "fr-fc-num-13", front: "13 — Treize", phonetic: "trehz", back: "13 — Thirteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Le vendredi treize. (Friday the thirteenth.)" },
+  { id: "fr-fc-num-14", front: "14 — Quatorze", phonetic: "kah-TOHRZ", back: "14 — Fourteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Le 14 juillet est la fête nationale. (July 14 is Bastille Day.)" },
+  { id: "fr-fc-num-15", front: "15 — Quinze", phonetic: "kanz", back: "15 — Fifteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Dans quinze jours (In two weeks / a fortnight)." },
+  { id: "fr-fc-num-16", front: "16 — Seize", phonetic: "sehz", back: "16 — Sixteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Elle a seize ans. (She is sixteen years old.)" },
+  { id: "fr-fc-num-17", front: "17 — Dix-sept", phonetic: "dees-SET", back: "17 — Seventeen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Le train arrive à dix-sept heures. (The train arrives at 17:00 / 5 PM.)" },
+  { id: "fr-fc-num-18", front: "18 — Dix-huit", phonetic: "deez-WEET", back: "18 — Eighteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "La majorité civile est à dix-huit ans. (Voting age is at 18.)" },
+  { id: "fr-fc-num-19", front: "19 — Dix-neuf", phonetic: "deez-NUHF", back: "19 — Nineteen", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Le XIXe siècle (The 19th century)." },
+  { id: "fr-fc-num-20", front: "20 — Vingt", phonetic: "vahn (silent 'gt')", back: "20 — Twenty", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Cela coûte vingt euros. (That costs twenty euros.)" },
+  { id: "fr-fc-num-21", front: "21 — Vingt et un", phonetic: "vahn-tay-UHN", back: "21 — Twenty-one (uses 'et')", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Vingt et un jours de vacances. (Twenty-one days of vacation.)" },
+  { id: "fr-fc-num-30", front: "30 — Trente", phonetic: "trahnt", back: "30 — Thirty", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Il y a trente jours en avril. (There are thirty days in April.)" },
+  { id: "fr-fc-num-40", front: "40 — Quarante", phonetic: "kah-RAHNT", back: "40 — Forty", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Il roule à quarante kilomètres à l'heure. (He drives at 40 km/h.)" },
+  { id: "fr-fc-num-50", front: "50 — Cinquante", phonetic: "sahn-KAHNT", back: "50 — Fifty", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Cinquante pour cent de réduction. (Fifty percent discount.)" },
+  { id: "fr-fc-num-60", front: "60 — Soixante", phonetic: "swah-SAHNT", back: "60 — Sixty", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Soixante secondes dans une minute. (Sixty seconds in a minute.)" },
+  { id: "fr-fc-num-70", front: "70 — Soixante-dix", phonetic: "swah-SAHNT-dees", back: "70 — Seventy (literally: 60 + 10)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Mon grand-père a soixante-dix ans. (My grandfather is 70.)" },
+  { id: "fr-fc-num-71", front: "71 — Soixante et onze", phonetic: "swah-SAHNT ay OHNZ", back: "71 — Seventy-one (60 + 11)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Page soixante et onze du livre. (Page 71 of the book.)" },
+  { id: "fr-fc-num-80", front: "80 — Quatre-vingts", phonetic: "KAT-ruh-vahn", back: "80 — Eighty (literally: 4 × 20)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Quatre-vingts passagers à bord. (Eighty passengers on board.)" },
+  { id: "fr-fc-num-81", front: "81 — Quatre-vingt-un", phonetic: "KAT-ruh-vahn-UHN", back: "81 — Eighty-one (no 'et' used here)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Chambre quatre-vingt-un. (Room 81.)" },
+  { id: "fr-fc-num-90", front: "90 — Quatre-vingt-dix", phonetic: "KAT-ruh-vahn-dees", back: "90 — Ninety (literally: 4 × 20 + 10)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Vitesse limitée à quatre-vingt-dix km/h. (Speed limit 90 km/h.)" },
+  { id: "fr-fc-num-99", front: "99 — Quatre-vingt-dix-neuf", phonetic: "KAT-ruh-vahn-deez-NUHF", back: "99 — Ninety-nine ((4×20)+19)", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Quatre-vingt-dix-neuf pour cent des cas. (99% of cases.)" },
+  { id: "fr-fc-num-100", front: "100 — Cent", phonetic: "sahn (silent 't')", back: "100 — One hundred", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Un billet de cent euros. (A one hundred euro banknote.)" },
+  { id: "fr-fc-num-1000", front: "1000 — Mille", phonetic: "meel", back: "1,000 — One thousand", category: "Unit 1 (A1): French Numbers 0 to 100", example: "Mille mercis pour votre générosité ! (A thousand thanks!)" },
+
+  // =========================================================================
+  // Unit 1 (A1): First Contact & Salutations (8 cards)
   // =========================================================================
   { id: "fr-fc-01", front: "Bonjour", phonetic: "bohn-ZHOOR", back: "Hello / Good day", category: "Unit 1 (A1): First Contact", example: "Bonjour monsieur, comment allez-vous ?" },
   { id: "fr-fc-02", front: "Bonsoir", phonetic: "bohn-SWAHR", back: "Good evening", category: "Unit 1 (A1): First Contact", example: "Bonsoir madame, une table pour deux s'il vous plaît." },
@@ -15,11 +89,6 @@ export const frenchFlashcards = [
   { id: "fr-fc-06", front: "De rien", phonetic: "duh ree-EHN", back: "You're welcome", category: "Unit 1 (A1): First Contact", example: "— Merci ! — De rien !" },
   { id: "fr-fc-07", front: "Je m'appelle...", phonetic: "zhuh mah-PEL", back: "My name is...", category: "Unit 1 (A1): First Contact", example: "Je m'appelle Claire et je suis ravie d'être ici." },
   { id: "fr-fc-08", front: "Enchanté(e)", phonetic: "ahn-shahn-TAY", back: "Delighted to meet you", category: "Unit 1 (A1): First Contact", example: "C'est un honneur. Enchanté !" },
-  { id: "fr-fc-09", front: "Un / Deux / Trois", phonetic: "uhn / duh / trwah", back: "1 / 2 / 3", category: "Unit 1 (A1): First Contact", example: "Un, deux, trois, partez !" },
-  { id: "fr-fc-10", front: "Dix / Vingt / Cent", phonetic: "dees / vahn / sahn", back: "10 / 20 / 100", category: "Unit 1 (A1): First Contact", example: "Cela coûte vingt euros." },
-  { id: "fr-fc-11", front: "Soixante-dix", phonetic: "swah-SAHNT-dees", back: "70 (literally: 60 + 10)", category: "Unit 1 (A1): First Contact", example: "Il a soixante-dix ans." },
-  { id: "fr-fc-12", front: "Quatre-vingts", phonetic: "KAT-ruh-vahn", back: "80 (literally: 4 × 20)", category: "Unit 1 (A1): First Contact", example: "Le musée ouvre à quatre-vingts personnes." },
-  { id: "fr-fc-13", front: "Quatre-vingt-dix", phonetic: "KAT-ruh-vahn-dees", back: "90 (literally: 4 × 20 + 10)", category: "Unit 1 (A1): First Contact", example: "Numéro quatre-vingt-dix." },
 
   // =========================================================================
   // Unit 2 (A1): Personal Universe
