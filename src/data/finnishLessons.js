@@ -755,8 +755,191 @@ export const finnishUnit1Lessons = [
   },
 
   {
+    id: "fi-u1-l04b-colors",
+    title: "Lesson 5: Finnish Colors (Värit)",
+    description: "Learn primary and secondary colors in Finnish (punainen, sininen, keltainen, vihreä, valkoinen, musta...) and how to describe objects by color.",
+    xp: 25,
+    questions: [
+      {
+        id: "fi-colors-q1",
+        type: "multiple_choice",
+        prompt: "What does the Finnish color word 'punainen' mean?",
+        options: ["Red", "Blue", "Green", "Yellow"],
+        correctAnswer: "Red",
+        explanation: "'Punainen' means red in Finnish."
+      },
+      {
+        id: "fi-colors-q2",
+        type: "matching",
+        prompt: "Match the primary Finnish colors with English:",
+        pairs: [
+          { native: "Punainen", english: "Red" },
+          { native: "Sininen", english: "Blue" },
+          { native: "Keltainen", english: "Yellow" },
+          { native: "Vihreä", english: "Green" }
+        ]
+      },
+      {
+        id: "fi-colors-q3",
+        type: "audio_listen",
+        phrase: "Sininen",
+        prompt: "Listen to the word. What color did you hear?",
+        options: ["Blue", "Red", "Black", "White"],
+        correctAnswer: "Blue",
+        explanation: "'Sininen' means blue. Finland's flag has a blue cross (siniristilippu)."
+      },
+      {
+        id: "fi-colors-q4",
+        type: "fill_blank",
+        sentence: "Taivas on ___.",
+        missingWord: "sininen",
+        options: ["sininen", "punainen", "musta", "vihreä"],
+        correctAnswer: "sininen",
+        explanation: "'Taivas on sininen' means 'The sky is blue'."
+      },
+      {
+        id: "fi-colors-q5",
+        type: "matching",
+        prompt: "Match monochrome and neutral colors:",
+        pairs: [
+          { native: "Valkoinen", english: "White" },
+          { native: "Musta", english: "Black" },
+          { native: "Harmaa", english: "Gray" },
+          { native: "Ruskea", english: "Brown" }
+        ]
+      },
+      {
+        id: "fi-colors-q6",
+        type: "multiple_choice",
+        prompt: "How do you say 'black' in Finnish?",
+        options: ["Musta", "Valkoinen", "Oranssi", "Vihreä"],
+        correctAnswer: "Musta",
+        explanation: "'Musta' is black in Finnish (e.g. 'musta kissa' = black cat)."
+      },
+      {
+        id: "fi-colors-q7",
+        type: "audio_listen",
+        phrase: "Valkoinen",
+        prompt: "Listen to the audio. What color is 'Valkoinen'?",
+        options: ["White", "Yellow", "Gray", "Brown"],
+        correctAnswer: "White",
+        explanation: "'Valkoinen' means white. Lumi on valkoista (Snow is white)."
+      },
+      {
+        id: "fi-colors-q8",
+        type: "fill_blank",
+        sentence: "Aurinko on ___.",
+        missingWord: "keltainen",
+        options: ["keltainen", "ruskea", "musta", "sininen"],
+        correctAnswer: "keltainen",
+        explanation: "'Aurinko on keltainen' means 'The sun is yellow'."
+      },
+      {
+        id: "fi-colors-q9",
+        type: "matching",
+        prompt: "Match secondary colors and shades:",
+        pairs: [
+          { native: "Oranssi", english: "Orange" },
+          { native: "Violetti", english: "Purple / Violet" },
+          { native: "Vaaleanpunainen", english: "Pink" },
+          { native: "Kirjava", english: "Multicolored / Patterned" }
+        ]
+      },
+      {
+        id: "fi-colors-q10",
+        type: "multiple_choice",
+        prompt: "How is 'pink' constructed literally in Finnish ('vaaleanpunainen')?",
+        options: [
+          "Light red ('vaalea' + 'punainen')",
+          "Rose flower",
+          "Soft white",
+          "Baby red"
+        ],
+        correctAnswer: "Light red ('vaalea' + 'punainen')",
+        explanation: "'Vaaleanpunainen' is literally 'light-red'. In casual Finnish, people also use 'pinkki'."
+      },
+      {
+        id: "fi-colors-q11",
+        type: "audio_listen",
+        phrase: "Vihreä",
+        prompt: "Listen to the word. What color is 'Vihreä'?",
+        options: ["Green", "Yellow", "Orange", "Pink"],
+        correctAnswer: "Green",
+        explanation: "'Vihreä' means green. Metsä on vihreä (The forest is green)."
+      },
+      {
+        id: "fi-colors-q12",
+        type: "scramble",
+        prompt: "Arrange the words to ask: 'What color is the car?'",
+        tokens: ["Minkä", "värinen", "auto", "on"],
+        correctTokens: ["Minkä", "värinen", "auto", "on"],
+        explanation: "'Minkä värinen auto on?' means 'What color is the car?'."
+      },
+      {
+        id: "fi-colors-q13",
+        type: "fill_blank",
+        sentence: "Porkkana on ___.",
+        missingWord: "oranssi",
+        options: ["oranssi", "sininen", "valkoinen", "musta"],
+        correctAnswer: "oranssi",
+        explanation: "'Porkkana on oranssi' means 'The carrot is orange'."
+      },
+      {
+        id: "fi-colors-q14",
+        type: "matching",
+        prompt: "Match shades and color questions:",
+        pairs: [
+          { native: "Minkä värinen se on?", english: "What color is it?" },
+          { native: "Vaaleansininen", english: "Light blue" },
+          { native: "Tummansininen", english: "Dark blue" },
+          { native: "Kultainen ja hopeinen", english: "Golden and silver" }
+        ]
+      },
+      {
+        id: "fi-colors-q15",
+        type: "audio_listen",
+        phrase: "Punainen",
+        prompt: "Listen to the word. Which color is 'Punainen'?",
+        options: ["Red", "Purple", "Pink", "Orange"],
+        correctAnswer: "Red",
+        explanation: "'Punainen' means red."
+      },
+      {
+        id: "fi-colors-q16",
+        type: "multiple_choice",
+        prompt: "Which two colors make up the Finnish national flag (Suomen lippu)?",
+        options: [
+          "Sininen ja valkoinen (Blue and white)",
+          "Keltainen ja sininen (Yellow and blue)",
+          "Punainen ja valkoinen (Red and white)",
+          "Musta ja punainen (Black and red)"
+        ],
+        correctAnswer: "Sininen ja valkoinen (Blue and white)",
+        explanation: "The Finnish flag features a blue cross on a white field (sininen risti valkoisella pohjalla)."
+      },
+      {
+        id: "fi-colors-q17",
+        type: "fill_blank",
+        sentence: "Kissa on ___.",
+        missingWord: "musta",
+        options: ["musta", "kirjava", "oranssi", "keltainen"],
+        correctAnswer: "musta",
+        explanation: "'Kissa on musta' means 'The cat is black'."
+      },
+      {
+        id: "fi-colors-q18",
+        type: "scramble",
+        prompt: "Arrange the sentence: 'The house is white and red'",
+        tokens: ["Talo", "on", "valkoinen", "ja", "punainen"],
+        correctTokens: ["Talo", "on", "valkoinen", "ja", "punainen"],
+        explanation: "'Talo on valkoinen ja punainen' means 'The house is white and red'."
+      }
+    ]
+  },
+
+  {
     id: "fi-u1-l3",
-    title: "Lesson 5. Talk about people",
+    title: "Lesson 6. Talk about people",
     description: "Describe family members, relationships, pronouns, and introduce friends and companions.",
     xp: 25,
     questions: [
@@ -949,7 +1132,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l4",
-    title: "Lesson 6. Describe things",
+    title: "Lesson 7. Describe things",
     description: "Use descriptive adjectives: size, age, aesthetics, temperature, colors, and quality.",
     xp: 25,
     questions: [
@@ -1140,7 +1323,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l5",
-    title: "Lesson 7. House hold",
+    title: "Lesson 8. House hold",
     description: "Explore rooms, furniture, home appliances, household objects, and the Finnish sauna.",
     xp: 25,
     questions: [
@@ -1328,7 +1511,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l6",
-    title: "Lesson 8. Using verbs",
+    title: "Lesson 9. Using verbs",
     description: "Practice essential core action verbs: speaking, eating, drinking, moving, living, and desiring.",
     xp: 30,
     questions: [
@@ -1516,7 +1699,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l7",
-    title: "Lesson 9: Discussion about past tense",
+    title: "Lesson 10: Discussion about past tense",
     description: "Narrate past events, yesterday's activities, and master the Finnish imperfect/past tense.",
     xp: 30,
     questions: [
@@ -1704,7 +1887,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l9",
-    title: "Lesson 10: Present tense",
+    title: "Lesson 11: Present tense",
     description: "Master Finnish present tense verb endings across all pronouns, question forms, and negatives.",
     xp: 30,
     questions: [
@@ -1892,7 +2075,7 @@ export const finnishUnit1Lessons = [
 
   {
     id: "fi-u1-l10",
-    title: "Lesson 11: Talk about places",
+    title: "Lesson 12: Talk about places",
     description: "Explore cities, schools, nature, transit, and master Finnish location cases (-ssa, -lla, -lle, -on).",
     xp: 30,
     questions: [

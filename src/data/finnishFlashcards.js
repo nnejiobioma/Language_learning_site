@@ -51,6 +51,30 @@ export const finnishFlashcards = [
   { id: "fi-fc-num-100", front: "100 — Sata", phonetic: "SAH-tah", back: "100 — One hundred", category: "Unit 1 (A1.1): Alphabet & Numbers", example: "Sata metriä maaliin. (One hundred meters to the finish line.)" },
 
   // =========================================================================
+  // Unit 1 (A1.1): Colors (Värit) (20 cards)
+  // =========================================================================
+  { id: "fi-fc-color-01", front: "Punainen", phonetic: "POO-nigh-nen", back: "Red", category: "Unit 1 (A1.1): Colors (Värit)", example: "Omena on punainen. (The apple is red.)" },
+  { id: "fi-fc-color-02", front: "Sininen", phonetic: "SEE-nee-nen", back: "Blue", category: "Unit 1 (A1.1): Colors (Värit)", example: "Taivas on sininen. (The sky is blue.)" },
+  { id: "fi-fc-color-03", front: "Keltainen", phonetic: "KEL-tye-nen", back: "Yellow", category: "Unit 1 (A1.1): Colors (Värit)", example: "Aurinko on keltainen. (The sun is yellow.)" },
+  { id: "fi-fc-color-04", front: "Vihreä", phonetic: "VEEH-reh-ah", back: "Green", category: "Unit 1 (A1.1): Colors (Värit)", example: "Ruoho on vihreää. (The grass is green.)" },
+  { id: "fi-fc-color-05", front: "Musta", phonetic: "MOO-stah", back: "Black", category: "Unit 1 (A1.1): Colors (Värit)", example: "Kissa on musta. (The cat is black.)" },
+  { id: "fi-fc-color-06", front: "Valkoinen", phonetic: "VAHL-koy-nen", back: "White", category: "Unit 1 (A1.1): Colors (Värit)", example: "Lumi on valkoista. (Snow is white.)" },
+  { id: "fi-fc-color-07", front: "Oranssi", phonetic: "OH-rahn-see", back: "Orange", category: "Unit 1 (A1.1): Colors (Värit)", example: "Porkkana on oranssi. (The carrot is orange.)" },
+  { id: "fi-fc-color-08", front: "Ruskea", phonetic: "ROOS-keh-ah", back: "Brown", category: "Unit 1 (A1.1): Colors (Värit)", example: "Karhu on ruskea. (The bear is brown.)" },
+  { id: "fi-fc-color-09", front: "Harmaa", phonetic: "HAHR-mah", back: "Gray", category: "Unit 1 (A1.1): Colors (Värit)", example: "Pilvi on harmaa. (The cloud is gray.)" },
+  { id: "fi-fc-color-10", front: "Violetti", phonetic: "VEE-oh-let-tee", back: "Purple / Violet", category: "Unit 1 (A1.1): Colors (Värit)", example: "Kukka on violetti. (The flower is purple.)" },
+  { id: "fi-fc-color-11", front: "Vaaleanpunainen", phonetic: "VAH-leh-ahn-POO-nigh-nen", back: "Pink (Light red)", category: "Unit 1 (A1.1): Colors (Värit)", example: "Porsas on vaaleanpunainen. (The pig is pink.)" },
+  { id: "fi-fc-color-12", front: "Vaaleansininen", phonetic: "VAH-leh-ahn-SEE-nee-nen", back: "Light blue", category: "Unit 1 (A1.1): Colors (Värit)", example: "Meri on vaaleansininen. (The sea is light blue.)" },
+  { id: "fi-fc-color-13", front: "Tummansininen", phonetic: "TOOM-mahn-SEE-nee-nen", back: "Dark blue / Navy", category: "Unit 1 (A1.1): Colors (Värit)", example: "Yötaivas on tummansininen. (The night sky is dark blue.)" },
+  { id: "fi-fc-color-14", front: "Vaalea", phonetic: "VAH-leh-ah", back: "Light / Fair (in color)", category: "Unit 1 (A1.1): Colors (Värit)", example: "Hänellä on vaalea tukka. (She has blond/light hair.)" },
+  { id: "fi-fc-color-15", front: "Tumma", phonetic: "TOOM-mah", back: "Dark (in color)", category: "Unit 1 (A1.1): Colors (Värit)", example: "Ulkona on tumma ilta. (It is a dark evening outside.)" },
+  { id: "fi-fc-color-16", front: "Kultainen", phonetic: "KOOL-tye-nen", back: "Golden / Gold", category: "Unit 1 (A1.1): Colors (Värit)", example: "Kultainen sormus. (A golden ring.)" },
+  { id: "fi-fc-color-17", front: "Hopeinen", phonetic: "HOH-pay-nen", back: "Silver", category: "Unit 1 (A1.1): Colors (Värit)", example: "Hopeinen lusikka. (A silver spoon.)" },
+  { id: "fi-fc-color-18", front: "Kirjava", phonetic: "KEER-yah-vah", back: "Multicolored / Patterned", category: "Unit 1 (A1.1): Colors (Värit)", example: "Perhonen on kirjava. (The butterfly is multicolored.)" },
+  { id: "fi-fc-color-19", front: "Minkä värinen se on?", phonetic: "MIN-ka VA-ree-nen seh on?", back: "What color is it?", category: "Unit 1 (A1.1): Colors (Värit)", example: "Minkä värinen autosi on? (What color is your car?)" },
+  { id: "fi-fc-color-20", front: "Väri / Värit", phonetic: "VA-ree / VA-reet", back: "Color / Colors", category: "Unit 1 (A1.1): Colors (Värit)", example: "Pidän kirkkaista väreistä. (I like bright colors.)" },
+
+  // =========================================================================
   // Unit 1 (A1.1): Foundations & Daily Phrases (180 cards)
   // =========================================================================
   { id: "fi-fc-l1-01", front: "Vesi", phonetic: "VEH-see", back: "Water", category: "Unit 1 (A1.1): Foundations & Daily Phrases", example: "Juon lasillisen vettä." },
