@@ -15,7 +15,8 @@ import {
   doc,
   getDoc,
   setDoc,
-  updateDoc
+  updateDoc,
+  onSnapshot
 } from '../lib/firebase';
 
 const AuthContext = createContext(null);
@@ -45,7 +46,12 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (isFirebaseConfigured && auth) {
+      let unsubscribeProfile = null;
       const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+        if (unsubscribeProfile) {
+          unsubscribeProfile();
+          unsubscribeProfile = null;
+        }
         // Guest (anonymous) sessions are not allowed.
         if (fbUser && fbUser.isAnonymous) {
           await fbSignOut(auth);
@@ -55,13 +61,27 @@ export function AuthProvider({ children }) {
           setLoading(true);
           setUser(fbUser);
           await loadUserProfile(fbUser.uid, fbUser.displayName, fbUser.email);
+          // Keep the profile in sync with the cloud so changes made on another
+          // device (e.g. a new profile picture) appear everywhere.
+          if (db) {
+            unsubscribeProfile = onSnapshot(
+              doc(db, 'users', fbUser.uid),
+              (snap) => {
+                if (snap.exists()) setProfile({ ...DEFAULT_PROFILE, ...snap.data() });
+              },
+              (err) => console.warn('Profile sync error:', err)
+            );
+          }
         } else {
           setUser(null);
           setProfile(DEFAULT_PROFILE);
         }
         setLoading(false);
       });
-      return () => unsubscribe();
+      return () => {
+        if (unsubscribeProfile) unsubscribeProfile();
+        unsubscribe();
+      };
     }
 
     // Local demo mode (Firebase not configured): the account lives in this browser only.
@@ -105,18 +125,18 @@ export function AuthProvider({ children }) {
   };
 
   const saveProfileData = async (updatedFields) => {
-    const updated = { ...profile, ...updatedFields };
-    setProfile(updated);
+    let updated;
+    setProfile((prev) => {
+      updated = { ...prev, ...updatedFields };
+      return updated;
+    });
 
     if (isFirebaseConfigured && db && user?.uid) {
-      try {
-        await updateDoc(doc(db, 'users', user.uid), updatedFields);
-      } catch (err) {
-        console.warn("Firestore update error:", err);
-      }
+      // merge: true creates the document if it is missing instead of failing.
+      await setDoc(doc(db, 'users', user.uid), updatedFields, { merge: true });
     } else {
       try {
-        localStorage.setItem(DEMO_PROFILE_KEY, JSON.stringify(updated));
+        localStorage.setItem(DEMO_PROFILE_KEY, JSON.stringify(updated ?? { ...profile, ...updatedFields }));
       } catch (e) {
         console.warn("Local storage write error:", e);
       }

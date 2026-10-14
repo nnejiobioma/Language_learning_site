@@ -8,7 +8,10 @@ import confetti from 'canvas-confetti';
 const GameContext = createContext(null);
 
 export function GameProvider({ children }) {
-  const { profile, saveProfileData } = useAuth();
+  const { profile, saveProfileData: saveToCloud } = useAuth();
+  // Game progress saves happen in the background; log failures instead of throwing.
+  const saveProfileData = (fields) =>
+    saveToCloud(fields).catch((err) => console.warn('Progress save failed:', err));
 
   const [currentLanguage, setCurrentLanguage] = useState('spanish');
   const [activeLesson, setActiveLesson] = useState(null);

@@ -97,6 +97,25 @@ export default function ProfilePage() {
 
   const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
 
+  // Save the picture to the account right away so it follows the user to every device,
+  // even if they leave the page without pressing "Save changes".
+  const persistPhoto = async (nextPhoto) => {
+    const previous = photoURL;
+    setPhotoURL(nextPhoto);
+    setSaving(true);
+    setMessage(null);
+    try {
+      await saveProfileData({ photoURL: nextPhoto });
+      setMessage({ type: 'success', text: nextPhoto ? 'Profile picture saved to your account.' : 'Profile picture removed.' });
+    } catch (err) {
+      console.warn('Photo save failed:', err);
+      setPhotoURL(previous);
+      setMessage({ type: 'error', text: 'Could not save your picture. Check your connection and try again.' });
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handlePhoto = async (e) => {
     const file = e.target.files?.[0];
     e.target.value = '';
@@ -106,8 +125,7 @@ export default function ProfilePage() {
       return;
     }
     try {
-      setPhotoURL(await resizeImage(file));
-      setMessage(null);
+      await persistPhoto(await resizeImage(file));
     } catch (err) {
       setMessage({ type: 'error', text: err.message });
     }
@@ -139,7 +157,8 @@ export default function ProfilePage() {
         photoURL: photoURL || null
       });
       setMessage({ type: 'success', text: 'Profile saved!' });
-    } catch {
+    } catch (err) {
+      console.warn('Profile save failed:', err);
       setMessage({ type: 'error', text: 'Could not save your profile. Please try again.' });
     } finally {
       setSaving(false);
@@ -163,11 +182,11 @@ export default function ProfilePage() {
             <div className="profile-avatar-row">
               <Avatar profile={preview} size={96} />
               <div className="profile-avatar-actions">
-                <button type="button" className="profile-btn" onClick={() => fileRef.current?.click()}>
+                <button type="button" className="profile-btn" onClick={() => fileRef.current?.click()} disabled={saving}>
                   <Camera size={16} /> Upload photo
                 </button>
                 {photoURL && (
-                  <button type="button" className="profile-btn ghost" onClick={() => setPhotoURL(null)}>
+                  <button type="button" className="profile-btn ghost" onClick={() => persistPhoto(null)} disabled={saving}>
                     <Trash2 size={16} /> Remove photo
                   </button>
                 )}
