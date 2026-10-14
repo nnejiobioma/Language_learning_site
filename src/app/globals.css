@@ -134,6 +134,7 @@ button:active {
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #10b981 0%, #34d399 45%, #fbbf24 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

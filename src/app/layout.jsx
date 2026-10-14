@@ -1,4 +1,5 @@
 import './globals.css';
+import './landing.css';
 import { AuthProvider } from '../context/AuthContext';
 import { GameProvider } from '../context/GameContext';
 

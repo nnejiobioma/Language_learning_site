@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import './landing.css';
 import { LANGUAGES } from '../data/languages';
 
 export const metadata = {
