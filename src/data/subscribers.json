@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sub_1792008769750_oyap33",
+    "name": "Alex Rivera",
+    "email": "alex.rivera@example.com",
+    "source": "postman_validation",
+    "subscribedAt": "2026-10-14T20:12:49.750Z"
+  },
+  {
+    "id": "sub_demo_welcome",
+    "name": "FiksLingo Community",
+    "email": "community@fikslingo.com",
+    "source": "seed",
+    "subscribedAt": "2026-10-14T20:00:00.000Z"
+  }
+]

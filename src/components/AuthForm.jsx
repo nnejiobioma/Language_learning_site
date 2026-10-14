@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, User, AlertCircle, ShieldCheck, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, User, AlertCircle, ShieldCheck, CheckCircle2, ArrowLeft, BellRing } from 'lucide-react';
+import SubscribeModal from './SubscribeModal';
 
 const FRIENDLY_ERRORS = {
   'auth/email-already-in-use': 'An account with this email already exists. Try signing in instead.',
@@ -38,6 +39,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [subscribeModalOpen, setSubscribeModalOpen] = useState(false);
 
   // Already signed in: go straight to the app.
   useEffect(() => {
@@ -249,6 +251,34 @@ export default function AuthForm({ initialMode = 'signup' }) {
             </p>
           )}
         </div>
+
+        {/* Subscribe Section */}
+        <div className="auth-subscribe-card">
+          <div className="auth-subscribe-header">
+            <span className="auth-subscribe-badge">Weekly Digest</span>
+            <span className="auth-subscribe-free">Free Lessons</span>
+          </div>
+          <p className="auth-subscribe-desc">
+            Want language tips without an account? Subscribe to receive weekly vocabulary digests, grammar secrets, and culture vaults.
+          </p>
+          <button
+            type="button"
+            className="auth-subscribe-trigger"
+            onClick={() => setSubscribeModalOpen(true)}
+            id="auth-subscribe-btn"
+          >
+            <BellRing size={16} />
+            <span>Subscribe with Name & Email</span>
+          </button>
+        </div>
+
+        <SubscribeModal
+          isOpen={subscribeModalOpen}
+          onClose={() => setSubscribeModalOpen(false)}
+          source={isSignup ? 'signup_section' : 'login_section'}
+          title="Stay Inspired with Weekly Language Secrets"
+          subtitle="Get handpicked vocabulary, cultural etiquette guides, and streak reminders delivered straight to your inbox."
+        />
 
         <div className="auth-card-footer">
           <Link href="/terms" target="_blank" className="auth-footer-link">

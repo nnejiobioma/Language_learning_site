@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "a91f3c4e-5e20-410c-99c8-dfb9a5c829e1",
+		"name": "FiksLingo Newsletter & Subscription API",
+		"description": "Postman Collection to test and configure the FiksLingo Newsletter Subscription Service.\n\nEndpoints:\n- `POST /api/subscribe` (Subscribe with name and email)\n- `GET /api/subscribe` (Health check & list subscribers)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Subscribe New Learner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201 Created or 200 OK\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							"",
+							"pm.test(\"Response is successful with confirmation message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"    pm.expect(jsonData.subscriber).to.be.an('object');",
+							"    pm.expect(jsonData.subscriber.email).to.eql(\"learner.test@example.com\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Alex Rivera\",\n  \"email\": \"learner.test@example.com\",\n  \"source\": \"postman\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/subscribe",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Subscribes a new user to FiksLingo updates with their name and email."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Subscribe - Duplicate Email Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK for already subscribed email\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Recognizes user is already subscribed\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"    pm.expect(jsonData.alreadySubscribed).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Alex Rivera\",\n  \"email\": \"learner.test@example.com\",\n  \"source\": \"postman_duplicate\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/subscribe",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Verifies that submitting an existing email returns a friendly 'already subscribed' message without breaking or duplicating records."
+			},
+			"response": []
+		},
+		{
+			"name": "3. Validation - Missing Name (Expect 400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 Bad Request\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Returns error for missing name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"    pm.expect(jsonData.error).to.include(\"valid name\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"\",\n  \"email\": \"test@example.com\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/subscribe",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Verifies server-side validation when name is empty or missing."
+			},
+			"response": []
+		},
+		{
+			"name": "4. Validation - Invalid Email (Expect 400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 Bad Request\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Returns error for invalid email\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"    pm.expect(jsonData.error).to.include(\"valid email\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"David Test\",\n  \"email\": \"not-a-valid-email\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/subscribe",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Verifies server-side validation when an invalid email format is passed."
+			},
+			"response": []
+		},
+		{
+			"name": "5. Get All Subscribers & Service Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Service status is online and lists subscribers\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"online\");",
+							"    pm.expect(jsonData.totalSubscribers).to.be.at.least(1);",
+							"    pm.expect(jsonData.subscribers).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/subscribe",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Inspects subscriber count and checks service health status."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

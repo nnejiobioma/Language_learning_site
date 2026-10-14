@@ -11,6 +11,7 @@ import CBTExamView from '../../components/CBTExamView';
 import LeaderboardView from '../../components/LeaderboardView';
 import QuizModal from '../../components/QuizModal';
 import HeartModal from '../../components/HeartModal';
+import SubscribeButton from '../../components/SubscribeButton';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -50,6 +51,13 @@ export default function LearnPage() {
         <div className="app-footer-container">
           <p className="app-footer-copy">© {new Date().getFullYear()} FiksLingo · Master 12 World Languages.</p>
           <div className="app-footer-links">
+            <SubscribeButton
+              source="app_footer"
+              label="Weekly Newsletter"
+              icon="bell"
+              className="app-footer-sub-btn"
+              buttonId="learn-footer-subscribe-btn"
+            />
             <Link href="/terms" target="_blank" rel="noopener noreferrer" className="app-footer-link">
               Terms of Use
             </Link>

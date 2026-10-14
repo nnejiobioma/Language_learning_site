@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import SubscribeButton from '../components/SubscribeButton';
 import { LANGUAGES } from '../data/languages';
 
 export const metadata = {
@@ -151,12 +152,37 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+        <section className="lp-section lp-section-subscribe">
+          <div className="lp-container">
+            <div className="lp-subscribe-banner">
+              <div className="lp-subscribe-copy">
+                <span className="lp-sub-tag">Free Weekly Newsletter</span>
+                <h3 className="lp-sub-title">Learn faster with our weekly vocabulary drops</h3>
+                <p className="lp-sub-text">Join 25,000+ polyglots receiving handpicked phrases, cultural guides, and streak motivation.</p>
+              </div>
+              <SubscribeButton
+                source="landing_banner"
+                label="Subscribe with Name & Email"
+                icon="mail"
+                className="lp-subscribe-cta-btn"
+                buttonId="landing-newsletter-btn"
+              />
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="lp-footer">
         <div className="lp-container lp-footer-inner">
           <span>© {new Date().getFullYear()} FiksLingo. Master world languages.</span>
           <div className="lp-footer-links">
+            <SubscribeButton 
+              source="landing_footer" 
+              label="Subscribe to Newsletter" 
+              icon="bell" 
+              className="lp-footer-sub-btn" 
+              buttonId="footer-subscribe-btn"
+            />
             <Link href="/terms" id="footer-terms-link">Terms of Use</Link>
             <Link href="/login">Log in</Link>
             <Link href="/signup">Sign up</Link>

@@ -3,6 +3,7 @@ import './landing.css';
 import { AuthProvider } from '../context/AuthContext';
 import { GameProvider } from '../context/GameContext';
 import { ThemeProvider } from '../context/ThemeContext';
+import TimedSubscribePopup from '../components/TimedSubscribePopup';
 
 export const metadata = {
   title: 'FiksLingo — Master World Languages with Gamified Learning',
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <GameProvider>
               {children}
+              <TimedSubscribePopup />
             </GameProvider>
           </AuthProvider>
         </ThemeProvider>

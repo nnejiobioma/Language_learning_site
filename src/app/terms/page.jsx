@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
+import SubscribeButton from '../../components/SubscribeButton';
 import { 
   Shield, 
   BookOpen, 
@@ -281,6 +282,13 @@ export default function TermsPage() {
         <div className="terms-container terms-footer-inner">
           <p>© {new Date().getFullYear()} FiksLingo. All rights reserved. Master 12 World Languages.</p>
           <div className="terms-footer-links">
+            <SubscribeButton
+              source="terms_footer"
+              label="Subscribe"
+              icon="bell"
+              className="terms-footer-sub-btn"
+              buttonId="terms-footer-subscribe-btn"
+            />
             <Link href="/">Home</Link>
             <Link href="/terms">Terms of Use</Link>
             <Link href="/signup">Sign Up</Link>
