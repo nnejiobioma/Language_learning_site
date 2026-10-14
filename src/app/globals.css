@@ -181,24 +181,30 @@ button:active {
 .logo-badge {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 1.25rem;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .logo-badge:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .mascot-avatar-small {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 112px; /* 2x original 56px */
+  height: 112px; /* 2x original 56px */
+  border-radius: 28px;
   overflow: hidden;
-  border: 2.5px solid var(--gold);
-  box-shadow: 0 0 20px var(--gold-glow);
+  border: 3.5px solid var(--gold);
+  box-shadow: 0 0 25px var(--gold-glow);
   background: #1e293b;
   flex-shrink: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.logo-badge:hover .mascot-avatar-small {
+  transform: scale(1.03);
+  box-shadow: 0 0 32px var(--gold-glow);
 }
 
 .mascot-img {
@@ -210,26 +216,26 @@ button:active {
 .brand-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .brand-name {
   font-family: var(--font-primary);
-  font-size: 1.65rem;
+  font-size: 3.3rem; /* 2x original 1.65rem */
   font-weight: 850;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   background: linear-gradient(135deg, #10b981 0%, #34d399 45%, #fbbf24 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1.15;
+  line-height: 1.08;
 }
 
 .brand-tagline {
-  font-size: 0.76rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -3560,12 +3566,23 @@ html[data-theme="light"] .input-with-icon input {
 
 @media (max-width: 1180px) {
   .header-root {
-    min-height: 240px;
+    min-height: 250px;
     padding: 1.8rem 2rem 1.5rem;
   }
   .header-container {
     row-gap: 1.5rem;
     column-gap: 1.5rem;
+  }
+  .mascot-avatar-small {
+    width: 96px;
+    height: 96px;
+    border-radius: 24px;
+  }
+  .brand-name {
+    font-size: 2.75rem;
+  }
+  .brand-tagline {
+    font-size: 0.85rem;
   }
   .curriculum-layout {
     grid-template-columns: 1fr;
@@ -3603,15 +3620,15 @@ html[data-theme="light"] .input-with-icon input {
     gap: 0.75rem;
   }
   .logo-badge {
-    gap: 0.65rem;
+    gap: 0.85rem;
   }
   .mascot-avatar-small {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
   }
   .brand-name {
-    font-size: 1.35rem;
+    font-size: 2.2rem;
   }
   .brand-tagline {
     display: none;
@@ -3782,15 +3799,15 @@ html[data-theme="light"] .input-with-icon input {
     display: none;
   }
   .logo-badge {
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
   .mascot-avatar-small {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
   }
   .brand-name {
-    font-size: 1.2rem;
+    font-size: 1.85rem;
   }
   .lang-pill-btn {
     padding: 0.3rem 0.55rem;
