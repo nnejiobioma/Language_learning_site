@@ -3,6 +3,7 @@ import { finnishFlashcards } from './finnishFlashcards';
 import { finnishCultureVault } from './finnishCultureVault';
 import { frenchAllUnits } from './frenchCurriculum';
 import { frenchFlashcards } from './frenchFlashcards';
+import { frenchCultureVault } from './frenchCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -156,25 +157,7 @@ export const LANGUAGES = {
     secondaryColor: "#f43f5e", // chic rose
     greeting: "Bonjour ! Comment allez-vous ?",
     description: "Immerse yourself in French culture with Parisian elegance, café dialogue, and fluent pronunciation secrets.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Petit à petit, l'oiseau fait son nid.",
-        translation: "Little by little, the bird builds its nest.",
-        context: "A lovely French saying about patience, consistency, and steady progress in learning."
-      },
-      slangs: [
-        { term: "C'est la vie", meaning: "That's life / Such is life", example: "J'ai raté le bus, mais c'est la vie !" },
-        { term: "Coup de foudre", meaning: "Love at first sight (literally: thunderbolt)", example: "Dès que je l'ai vu, ce fut le coup de foudre." },
-        { term: "Bof", meaning: "Meh / I don't care / So-so", example: "Tu aimes ce film ? — Bof, pas vraiment." },
-        { term: "Nickel", meaning: "Spotless / Perfect / Awesome", example: "Le rapport est terminé ? — Oui, tout est nickel !" },
-        { term: "Avoir le cafard", meaning: "To feel down / blue (literally: to have the cockroach)", example: "Aujourd'hui il pleut, j'ai un peu le cafard." }
-      ],
-      cultureTips: [
-        { title: "The Sacred Greeting: Always Say 'Bonjour'", description: "In France, entering any bakery, shop, or elevator without saying 'Bonjour' is considered impolite. Always open every interaction with a warm 'Bonjour'!" },
-        { title: "The Difference: 'Tu' vs 'Vous'", description: "Use 'Vous' with anyone you don't know well, elders, and service staff. Reserve 'Tu' for friends, classmates, children, and close family." },
-        { title: "The Silent Letters", description: "French is famous for final consonants often being silent (e.g., 'Paris' is pronounced 'Pah-ree')." }
-      ]
-    },
+    cultureVault: frenchCultureVault,
     flashcards: frenchFlashcards,
     units: frenchAllUnits
   },

@@ -80,7 +80,7 @@ export default function CultureVault() {
           {vault.cultureTips.map((tip, idx) => (
             <div key={idx} className="tip-card">
               <div className="tip-header">
-                <span className="tip-number">0{idx + 1}</span>
+                <span className="tip-number">{(idx + 1).toString().padStart(2, '0')}</span>
                 <Lightbulb size={20} className="tip-bulb" />
               </div>
               <h4 className="tip-title">{tip.title}</h4>
