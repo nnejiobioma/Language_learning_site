@@ -8,6 +8,7 @@ import { pidginAllUnits } from './pidginCurriculum';
 import { pidginFlashcards } from './pidginFlashcards';
 import { pidginCultureVault } from './pidginCultureVault';
 import { hausaAllUnits } from './hausaCurriculum';
+import { igboAllUnits } from './igboCurriculum';
 
 export const LANGUAGES = {
   spanish: {
@@ -720,52 +721,7 @@ export const LANGUAGES = {
       { id: "ig-fc-4", front: "Aha m bụ...", phonetic: "AH-hah m BOO", back: "My name is...", category: "Identity", example: "Aha m bụ Chidi." },
       { id: "ig-fc-5", front: "Ka ọ dị", phonetic: "KAH oh DEE", back: "Goodbye / Until later", category: "Farewell", example: "Ka ọ dị, ka chi foo." }
     ],
-    units: [
-      {
-        id: "ig-unit-1",
-        title: "Unit 1: Warm Igbo Greetings (Ekele)",
-        subtitle: "Learn essential salutations, friendly check-ins, and polite respect.",
-        icon: "Sun",
-        color: "#16a34a",
-        lessons: [
-          {
-            id: "ig-u1-l1",
-            title: "Everyday Igbo Salutations",
-            description: "Learn Kedụ, Ndewoo, and Daalụ with heartfelt warmth.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the universal Igbo greeting for 'How are you?'",
-                options: ["Kedụ?", "Èló ni?", "Báwo ni?", "Sannu"],
-                correctAnswer: "Kedụ?",
-                explanation: "'Kedụ?' (or 'Kedụ kwanụ?') translates to 'How are you?' in Igbo."
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Assemble: 'Aha m bụ Emeka' (My name is Emeka)",
-                tokens: ["Aha", "m", "bụ", "Emeka", "nri"],
-                correctTokens: ["Aha", "m", "bụ", "Emeka"],
-                explanation: "'Aha m bụ...' means 'My name is...' in Igbo."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                prompt: "Match Igbo words with English:",
-                pairs: [
-                  { native: "Kedụ?", english: "How are you?" },
-                  { native: "Daalụ", english: "Thank you" },
-                  { native: "Ndewoo", english: "Greetings" },
-                  { native: "Ka ọ dị", english: "Goodbye" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    units: igboAllUnits
   },
 
   hausa: {
