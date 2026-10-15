@@ -9,6 +9,7 @@ import { pidginFlashcards } from './pidginFlashcards';
 import { pidginCultureVault } from './pidginCultureVault';
 import { hausaAllUnits } from './hausaCurriculum';
 import { igboAllUnits } from './igboCurriculum';
+import { yorubaAllUnits } from './yorubaCurriculum';
 
 export const LANGUAGES = {
   spanish: {
@@ -460,52 +461,7 @@ export const LANGUAGES = {
       { id: "y-fc-4", front: "Orúkọ mi ni...", phonetic: "Oh-roo-kaw-mee-nee", back: "My name is...", category: "Identity", example: "Orúkọ mi ni Fémi." },
       { id: "y-fc-5", front: "O dábọ̀", phonetic: "Oh-DAH-baw", back: "Goodbye / Until we meet again", category: "Farewell", example: "O dábọ̀, títí di ìgbà mìíràn." }
     ],
-    units: [
-      {
-        id: "y-unit-1",
-        title: "Unit 1: Respectful Greetings (Ìkíni)",
-        subtitle: "Unlock the polite, honorific salutations for morning, afternoon, and night.",
-        icon: "Sun",
-        color: "#3b82f6",
-        lessons: [
-          {
-            id: "y-u1-l1",
-            title: "Morning & Friendly Salutations",
-            description: "Learn 'Báwo ni' and 'Ẹ kú àárọ̀' with proper honorific etiquette.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "How do you ask 'How are you?' casually to a friend in Yoruba?",
-                options: ["Báwo ni?", "Èló ni?", "Ta ni?", "Nibo ni?"],
-                correctAnswer: "Báwo ni?",
-                explanation: "'Báwo ni?' literally means 'How is it?' and is the standard friendly greeting."
-              },
-              {
-                id: "q2",
-                type: "multiple_choice",
-                prompt: "What is the respectful greeting for 'Good morning' to an elder?",
-                options: ["Ẹ kú àárọ̀", "Ẹ kú ìrọ̀lẹ́", "O dábọ̀", "Káàsán"],
-                correctAnswer: "Ẹ kú àárọ̀",
-                explanation: "'Ẹ kú àárọ̀' is used in the morning, with 'Ẹ' showing honor and deference to elders."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                prompt: "Match the Yoruba greetings with English:",
-                pairs: [
-                  { native: "Báwo ni?", english: "How are you?" },
-                  { native: "Ẹ kú àárọ̀", english: "Good morning" },
-                  { native: "Ẹ ṣeé", english: "Thank you" },
-                  { native: "O dábọ̀", english: "Goodbye" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    units: yorubaAllUnits
   },
 
   portuguese: {
