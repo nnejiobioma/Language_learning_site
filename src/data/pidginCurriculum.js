@@ -940,7 +940,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-1",
+    "subtitle": "Foundational phonetic shifts: dental fricative substitution (/θ/ and /ð/ to /t/ and /d/), initial /h/ dropping, and pronoun grid.",
+    "icon": "Sun",
+    "color": "#10b981"
   },
   {
     "unitId": "p-unit-2",
@@ -1577,7 +1581,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-2",
+    "subtitle": "Deep dive into stative vs dynamic 'Dey', and completive aspect marker 'Don' vs negative 'Never'.",
+    "icon": "Flame",
+    "color": "#059669"
   },
   {
     "unitId": "p-unit-3",
@@ -2214,7 +2222,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-3",
+    "subtitle": "Post-nominal plural marker 'Dem', reduplication for variety (different-different), and possessive constructions.",
+    "icon": "ShoppingBag",
+    "color": "#047857"
   },
   {
     "unitId": "p-unit-4",
@@ -2841,7 +2853,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-4",
+    "subtitle": "Chain multiple verbs without conjunctions: directional (Take... Come/Go) and benefactive (Cook... Give).",
+    "icon": "Compass",
+    "color": "#0d9488"
   },
   {
     "unitId": "p-unit-5",
@@ -3478,7 +3494,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-5",
+    "subtitle": "Auxiliary timeline: Future marker 'Go', future perfect 'Go Don', remote past 'Bin', and past continuous 'Bin dey'.",
+    "icon": "Award",
+    "color": "#0891b2"
   },
   {
     "unitId": "p-unit-6",
@@ -4107,7 +4127,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-6",
+    "subtitle": "Comparative and superlative 'Pass', and modal auxiliaries 'Fit' (can), 'Gats' (must), and 'For' (should have).",
+    "icon": "Sparkles",
+    "color": "#2563eb"
   },
   {
     "unitId": "p-unit-7",
@@ -4757,7 +4781,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-7",
+    "subtitle": "Universal relative marker 'Wey', syntactic fronting with focus marker 'Na', and counterfactuals ('If to say... For').",
+    "icon": "Shield",
+    "color": "#7c3aed"
   },
   {
     "unitId": "p-unit-8",
@@ -5388,7 +5416,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-8",
+    "subtitle": "High-frequency urban slang register (fall hand, shine eye, japa) and classical philosophical proverbs.",
+    "icon": "Smile",
+    "color": "#db2777"
   },
   {
     "unitId": "p-unit-9",
@@ -6023,7 +6055,11 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-9",
+    "subtitle": "Code-switching continuum from Basilect to Acrolect media standard, active inversion, and enclitic '-am'.",
+    "icon": "BookOpen",
+    "color": "#d97706"
   },
   {
     "unitId": "p-unit-10",
@@ -6665,6 +6701,10 @@ export const pidginAllUnits = [
           }
         ]
       }
-    ]
+    ],
+    "id": "p-unit-10",
+    "subtitle": "Highest tier mastery: stand-up comedy rhetoric, satirical political critique, and BBC/JW broadcast translation.",
+    "icon": "GraduationCap",
+    "color": "#f59e0b"
   }
 ];

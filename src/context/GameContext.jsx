@@ -31,8 +31,31 @@ export function GameProvider({ children }) {
   const completedLessons = profile?.completedLessons ?? [];
 
   useEffect(() => {
+    // Check URL query parameter first (e.g. /learn?lang=pidgin)
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang');
+      if (urlLang) {
+        const clean = urlLang.toLowerCase().trim();
+        if (clean && clean !== currentLanguage) {
+          setCurrentLanguage(clean);
+          saveLanguagePreference(clean);
+          saveProfileData({ currentLanguage: clean });
+          return;
+        }
+      }
+    }
+
     if (profile?.currentLanguage) {
-      setCurrentLanguage(profile.currentLanguage);
+      const saved = typeof window !== 'undefined' ? getSavedLanguage(null) : null;
+      if (saved && saved !== profile.currentLanguage) {
+        // User explicitly picked a language stored in cookie/localStorage
+        setCurrentLanguage(saved);
+        saveProfileData({ currentLanguage: saved });
+      } else {
+        setCurrentLanguage(profile.currentLanguage);
+        saveLanguagePreference(profile.currentLanguage);
+      }
     }
   }, [profile?.currentLanguage]);
 

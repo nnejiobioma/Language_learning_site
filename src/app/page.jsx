@@ -98,7 +98,7 @@ export default function LandingPage() {
               {languages.map((lang) => (
                 <Link
                   key={lang.id}
-                  href="/signup"
+                  href={`/learn?lang=${lang.id}`}
                   className="lp-lang-card"
                   id={`landing-lang-${lang.id}`}
                 >

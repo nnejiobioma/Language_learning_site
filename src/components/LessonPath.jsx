@@ -51,12 +51,14 @@ export default function LessonPath() {
 
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
 
+  const getUnitKey = (u, idx) => u.id || u.unitId || `unit-${idx}`;
+
   // Track which units are open/expanded (all open by default)
-  const [openUnitIds, setOpenUnitIds] = useState(() => new Set((langData.units || []).map(u => u.id)));
+  const [openUnitIds, setOpenUnitIds] = useState(() => new Set((langData.units || []).map(getUnitKey)));
 
   // Sync open units when language changes
   useEffect(() => {
-    setOpenUnitIds(new Set((langData.units || []).map(u => u.id)));
+    setOpenUnitIds(new Set((langData.units || []).map(getUnitKey)));
   }, [currentLanguage, langData.units]);
 
   const toggleUnit = (unitId) => {
@@ -75,7 +77,7 @@ export default function LessonPath() {
     if (openUnitIds.size > 0) {
       setOpenUnitIds(new Set());
     } else {
-      setOpenUnitIds(new Set((langData.units || []).map(u => u.id)));
+      setOpenUnitIds(new Set((langData.units || []).map(getUnitKey)));
     }
   };
 
@@ -159,24 +161,25 @@ export default function LessonPath() {
           </div>
 
           {langData.units.map((unit, unitIdx) => {
+            const unitKey = getUnitKey(unit, unitIdx);
             const UnitIcon = iconMap[unit.icon] || BookOpen;
-            const isOpen = openUnitIds.has(unit.id);
+            const isOpen = openUnitIds.has(unitKey);
             const completedInUnit = unit.lessons.filter(l => completedLessons.includes(l.id)).length;
             const isUnitComplete = completedInUnit === unit.lessons.length && unit.lessons.length > 0;
 
             return (
-              <div key={unit.id} className="unit-card-wrapper">
+              <div key={unitKey} className="unit-card-wrapper">
                 {/* Collapsible Unit Header */}
                 <div 
                   className={`unit-header-box ${isOpen ? 'is-open' : 'is-collapsed'}`}
                   role="button"
                   tabIndex={0}
                   aria-expanded={isOpen}
-                  onClick={() => toggleUnit(unit.id)}
+                  onClick={() => toggleUnit(unitKey)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      toggleUnit(unit.id);
+                      toggleUnit(unitKey);
                     }
                   }}
                   style={{ 
