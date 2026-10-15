@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { generateDynamicExam, examPools } from '../data/cbtExamEngine';
 import { generateFrenchDynamicExam, frenchExamPools } from '../data/cbtFrenchExamEngine';
-import { getExamsForLanguage } from '../data/cbtExams';
+import { getExamsForLanguage, pidginExams } from '../data/cbtExams';
 import { LANGUAGES } from '../data/languages';
 import { soundEngine } from '../lib/audio';
 import confetti from 'canvas-confetti';
@@ -40,19 +40,27 @@ export default function CBTExamView() {
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
   const isFinnish = currentLanguage === 'finnish';
   const isFrench = currentLanguage === 'french';
+  const isPidgin = currentLanguage === 'pidgin';
 
-  // Level selector for Finnish YKI or French DELF/DALF/TCF/TEF/DCL
-  const [selectedLevelKey, setSelectedLevelKey] = useState(isFrench ? 'delfB1B2' : 'keskitaso');
-  const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
+  // Level selector for Finnish YKI, French DELF/DALF/TCF/TEF/DCL, or Nigerian Pidgin NERDC
+  const [selectedLevelKey, setSelectedLevelKey] = useState(
+    isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
+  );
+  const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | specific section name | 'reading' | 'writing' etc.
 
   // Synchronize tier default when language changes
   useEffect(() => {
     if (isFrench && !['delfA1A2', 'delfB1B2', 'dalfC1C2', 'tcfTefDcl'].includes(selectedLevelKey)) {
       setSelectedLevelKey('delfB1B2');
+      setSelectedSubtestFilter('all');
     } else if (isFinnish && !['perustaso', 'keskitaso', 'ylintaso'].includes(selectedLevelKey)) {
       setSelectedLevelKey('keskitaso');
+      setSelectedSubtestFilter('all');
+    } else if (isPidgin && !['p-cbt-foundational', 'p-cbt-advanced'].includes(selectedLevelKey)) {
+      setSelectedLevelKey('p-cbt-foundational');
+      setSelectedSubtestFilter('all');
     }
-  }, [currentLanguage, isFrench, isFinnish]);
+  }, [currentLanguage, isFrench, isFinnish, isPidgin]);
 
   // States: 'hub' | 'active' | 'results'
   const [viewState, setViewState] = useState('hub');
@@ -83,17 +91,41 @@ export default function CBTExamView() {
   // Filter for review in results
   const [resultFilter, setResultFilter] = useState('all'); // 'all' | 'incorrect' | 'flagged'
 
-  // Start an exam session with dynamically randomized pool
+  // Start an exam session with dynamically randomized pool or targeted section
   const handleStartExam = (levelKey = selectedLevelKey, subtestFilter = selectedSubtestFilter) => {
     let session;
     if (isFinnish) {
       session = generateDynamicExam(levelKey, subtestFilter);
     } else if (isFrench) {
       session = generateFrenchDynamicExam(levelKey, subtestFilter);
+    } else if (isPidgin) {
+      const targetExam = pidginExams.find(e => e.id === levelKey) || pidginExams[0];
+      let filteredQuestions = targetExam.questions || [];
+      let duration = targetExam.timeLimitMinutes || 60;
+      let subtestTitle = "Full Certification (All 3 Sections • 180 Questions)";
+
+      if (subtestFilter && subtestFilter !== 'all') {
+        const matching = (targetExam.questions || []).filter(q => q.section === subtestFilter);
+        if (matching.length > 0) {
+          filteredQuestions = matching;
+          duration = 35; // 35 minutes for exactly 60 questions!
+          subtestTitle = `${subtestFilter} (Exactly 60 Questions)`;
+        }
+      }
+
+      session = {
+        sessionId: `${targetExam.id}-${Date.now()}`,
+        title: targetExam.title,
+        badge: targetExam.badgeText || targetExam.level,
+        durationMinutes: duration,
+        totalQuestions: filteredQuestions.length,
+        questions: filteredQuestions,
+        subtestLabel: subtestTitle
+      };
     } else {
       // Fallback for other languages from static paper catalog
       const availableExams = getExamsForLanguage(currentLanguage);
-      const chosen = availableExams[0] || availableExams;
+      const chosen = availableExams.find(e => e.id === levelKey) || availableExams[0] || availableExams;
       session = {
         sessionId: `${chosen.id}-${Date.now()}`,
         title: chosen.title,
@@ -330,7 +362,9 @@ export default function CBTExamView() {
               ? "Simulateur Officiel de Tests & Diplômes de Français (DELF • DALF • TCF • TEF • DCL)"
               : isFinnish 
                 ? "Official Finnish YKI Examination Simulator" 
-                : `${langData.name} Standardized Language Examination Center`}
+                : isPidgin
+                  ? "NERDC Nigerian Pidgin Standardized CBT Examination Center"
+                  : `${langData.name} Standardized Language Examination Center`}
           </h1>
           <p className="cbt-hero-subtitle">
             {isFrench ? (
@@ -340,6 +374,10 @@ export default function CBTExamView() {
             ) : isFinnish ? (
               <>
                 Simulate real standardized language examinations (such as the official Finnish <strong>YKI (Yleinen kielitutkinto)</strong> National Certificate for citizenship and professional qualification). Dynamic random test generation ensures a brand new set of authentic questions on every attempt!
+              </>
+            ) : isPidgin ? (
+              <>
+                Standardized Computer-Based Testing (CBT) for Nigerian Pidgin aligned with the <strong>NERDC 4-Tier Language Framework</strong> and West African Pidgin literature standards (e.g. <strong>JW.org/wes-x-pgw</strong> and BBC News Pidgin). Practice <strong>Exactly 60 Questions in each distinct section</strong> (Phonetics & Sound Shifts, Aspect & Serial Verbs, Marketplace & Transit, Advanced Syntax & Passive Inversion, Conditionals, and Oral Literature / Proverbs), or undertake the comprehensive 180-Question Certification!
               </>
             ) : (
               <>
@@ -617,6 +655,171 @@ export default function CBTExamView() {
           </div>
         )}
 
+        {/* Level Switcher & Subtest Selection Panel for Nigerian Pidgin (Exactly 60 Questions Each Section) */}
+        {isPidgin && (() => {
+          const activePidginExam = pidginExams.find(e => e.id === selectedLevelKey) || pidginExams[0];
+          const availableSections = activePidginExam.sections || [];
+
+          return (
+            <div className="cbt-level-control-panel">
+              <div className="level-control-header">
+                <div className="control-title-box">
+                  <Sparkles size={20} className="sparkle-icon" />
+                  <h3>1. Select Examination Tier</h3>
+                </div>
+                <span className="control-badge">NERDC Nigerian Pidgin Curriculum Standard</span>
+              </div>
+
+              <div className="cbt-tier-selector-grid">
+                <button
+                  className={`cbt-tier-card ${selectedLevelKey === 'p-cbt-foundational' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedLevelKey('p-cbt-foundational');
+                    setSelectedSubtestFilter('all');
+                  }}
+                >
+                  <div className="tier-tag">NERDC Levels 1–2 • Foundational & Street Smart</div>
+                  <h4>Foundational Standard (Levels 1–2)</h4>
+                  <p className="tier-desc">Phonology & Sound Shifts (ting, dem, ouse), 7-Pronoun Grid (Una, Im, -am), and Serial Verb Aspect.</p>
+                  <span className="tier-pool-stat">3 Sections • Exactly 60 Questions Each (180 Total)</span>
+                </button>
+
+                <button
+                  className={`cbt-tier-card ${selectedLevelKey === 'p-cbt-advanced' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedLevelKey('p-cbt-advanced');
+                    setSelectedSubtestFilter('all');
+                  }}
+                >
+                  <div className="tier-tag badge-citizenship">NERDC Levels 3–4 • Senior Bro/Sis & Oracy</div>
+                  <h4>Advanced Standard (Levels 3–4)</h4>
+                  <p className="tier-desc">Front-Focus Clefting (Na dem...), Conditionals (Sote/Make), and Oral Literature, Proverbs & Satire.</p>
+                  <span className="tier-pool-stat">3 Sections • Exactly 60 Questions Each (180 Total)</span>
+                </button>
+              </div>
+
+              {/* Section Subtest Mode Selector (Exactly 60 Questions Per Section) */}
+              <div className="subtest-mode-selector-section">
+                <div className="control-title-box">
+                  <BookOpen size={20} className="sparkle-icon" />
+                  <h3>2. Select Exam Section (Exactly 60 Questions Each) or Full 180-Q Test</h3>
+                </div>
+
+                <div className="subtest-pills-row">
+                  <button
+                    className={`subtest-mode-pill ${selectedSubtestFilter === 'all' ? 'active' : ''}`}
+                    onClick={() => setSelectedSubtestFilter('all')}
+                  >
+                    <Sparkles size={16} />
+                    <span>🌟 Full Certification (All 3 Sections • 180 Questions • 60 Mins)</span>
+                  </button>
+
+                  {availableSections.map((secName, idx) => {
+                    const count = (activePidginExam.questions || []).filter(q => q.section === secName).length;
+                    const icons = ['🗣️', '⚡', '🛒', '🏛️', '⚖️', '🎭'];
+                    const icon = icons[idx % icons.length];
+                    return (
+                      <button
+                        key={secName}
+                        className={`subtest-mode-pill ${selectedSubtestFilter === secName ? 'active' : ''}`}
+                        onClick={() => setSelectedSubtestFilter(secName)}
+                      >
+                        <span>{icon} Section {idx + 1}: {secName} (Exactly {count} Questions • 35 Mins)</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Launch Banner Card */}
+              <div className="cbt-launch-card">
+                <div className="launch-left">
+                  <span className="launch-sub-tag">NERDC Standard CBT Exam Ready</span>
+                  <h3 className="launch-exam-title">
+                    {activePidginExam.title}
+                  </h3>
+                  <p className="launch-exam-summary">
+                    Selected Mode: <strong>{
+                      selectedSubtestFilter === 'all' 
+                        ? "Full 3-Section Examination (180 Questions across all sections • 60 min)" 
+                        : `Section: ${selectedSubtestFilter} (Exactly 60 Questions timed test • 35 min)`
+                    }</strong>
+                  </p>
+                  <div className="launch-pills-row">
+                    <span className="launch-info-chip"><ShieldCheck size={14} /> NERDC 4-Tier Language Standard</span>
+                    <span className="launch-info-chip"><BookOpen size={14} /> West African Pidgin Orthography (JW.org / BBC)</span>
+                    <span className="launch-info-chip"><Award size={14} /> 70% Pass Threshold for Certification</span>
+                  </div>
+                </div>
+
+                <div className="launch-right">
+                  <button
+                    className="cbt-start-hero-btn"
+                    onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
+                    id="launch-pidgin-cbt-exam-btn"
+                  >
+                    <Play size={20} fill="currentColor" />
+                    <span>Start CBT Exam ({selectedSubtestFilter === 'all' ? '180 Questions' : '60 Questions'})</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Generic Fallback Panel for other languages */}
+        {!isFrench && !isFinnish && !isPidgin && (() => {
+          const availableExams = getExamsForLanguage(currentLanguage);
+          const activeExam = availableExams.find(e => e.id === selectedLevelKey) || availableExams[0];
+          return (
+            <div className="cbt-level-control-panel">
+              <div className="level-control-header">
+                <div className="control-title-box">
+                  <Sparkles size={20} className="sparkle-icon" />
+                  <h3>Select Standardized Exam</h3>
+                </div>
+                <span className="control-badge">{langData.name} Assessment Bank</span>
+              </div>
+
+              <div className="cbt-tier-selector-grid">
+                {availableExams.map((exam) => (
+                  <button
+                    key={exam.id}
+                    className={`cbt-tier-card ${selectedLevelKey === exam.id ? 'active' : ''}`}
+                    onClick={() => setSelectedLevelKey(exam.id)}
+                  >
+                    <div className="tier-tag">{exam.level || 'Standard Level'}</div>
+                    <h4>{exam.title}</h4>
+                    <p className="tier-desc">{exam.description}</p>
+                    <span className="tier-pool-stat">{exam.questions.length} Questions • {exam.timeLimitMinutes || 25} Mins</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="cbt-launch-card">
+                <div className="launch-left">
+                  <span className="launch-sub-tag">Standardized Exam Ready</span>
+                  <h3 className="launch-exam-title">
+                    {activeExam?.title}
+                  </h3>
+                  <p className="launch-exam-summary">
+                    {activeExam?.subtitle || activeExam?.description}
+                  </p>
+                </div>
+                <div className="launch-right">
+                  <button
+                    className="cbt-start-hero-btn"
+                    onClick={() => handleStartExam(selectedLevelKey, 'all')}
+                  >
+                    <Play size={20} fill="currentColor" />
+                    <span>Start Exam</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Official Examination Structure & Subtests Overview */}
         <div className="cbt-subtests-overview-card">
           <div className="instructions-header">
@@ -624,13 +827,19 @@ export default function CBTExamView() {
             <h3>
               {isFrench 
                 ? "Structure Officielle des Épreuves et Normes CECR (France Éducation International & CCI)" 
-                : "Official YKI Examination Structure (Yleiset kielitutkinnot)"}
+                : isPidgin
+                  ? "NERDC Nigerian Pidgin 6-Section CBT Structure (Exactly 60 Questions Each)"
+                  : "Official YKI Examination Structure (Yleiset kielitutkinnot)"}
             </h3>
           </div>
           <p className="cbt-subtests-intro">
             {isFrench ? (
               <>
                 Les certifications officielles de langue française sont régies par le <strong>Ministère de l'Éducation Nationale</strong> et la <strong>Chambre de Commerce et d'Industrie de Paris</strong>. Les épreuves évaluent quatre compétences distinctes selon les normes rigoureuses du CECR :
+              </>
+            ) : isPidgin ? (
+              <>
+                The Nigerian Pidgin standardized examination is structured into <strong>6 rigorous sections of exactly 60 questions each (360 total questions)</strong> across foundational and advanced competency tiers, scaled according to national oracy standards and West African literature orthography:
               </>
             ) : (
               <>
@@ -642,53 +851,61 @@ export default function CBTExamView() {
           <div className="cbt-subtests-grid">
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
-                <span className="subtest-icon">📖</span>
-                <strong>{isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
-                <span className="subtest-time-tag">60 Mins</span>
+                <span className="subtest-icon">🗣️</span>
+                <strong>{isFrench ? "Compréhension des écrits" : isPidgin ? "Phonology & Sound Shifts" : "Reading Comprehension"}</strong>
+                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : "60 Mins"}</span>
               </div>
               <p>
                 {isFrench 
                   ? "Lecture critique et analyse de 6 documents authentiques (articles de presse, lois, arrêtés, annonces et notes de service). Questions à choix multiples et justifications textuelles."
-                  : "You read 6 distinct text packages within 60 minutes. Questions range from multiple-choice to true-or-false and open-ended text queries with roughly 10 minutes per text."}
+                  : isPidgin
+                    ? "Systematic dental fricative shifts (/θ/, /ð/ to /t/, /d/: thing -> ting, them -> dem), initial /h/ deletion (house -> ouse), 7-vowel orthography, and the core 7-pronoun paradigm (Una, Im, -am)."
+                    : "You read 6 distinct text packages within 60 minutes. Questions range from multiple-choice to true-or-false and open-ended text queries with roughly 10 minutes per text."}
               </p>
             </div>
 
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
-                <span className="subtest-icon">✍️</span>
-                <strong>{isFrench ? "Production écrite" : "Writing"}</strong>
-                <span className="subtest-time-tag">{isFrench ? "60 Mins" : "55 Mins"}</span>
+                <span className="subtest-icon">⚡</span>
+                <strong>{isFrench ? "Production écrite" : isPidgin ? "Grammatical Aspect & Verbs" : "Writing"}</strong>
+                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "60 Mins" : "55 Mins"}</span>
               </div>
               <p>
                 {isFrench
                   ? "Rédaction de documents épistolaires et argumentatifs : un courrier administratif officiel ou de réclamation formelle, et un essai argumenté défendant une position citoyenne nuancée."
-                  : "You complete exactly 3 practical prompts: two shorter informal/semi-formal messages (e.g. email to landlord, inquiry, note to neighbor) and one longer opinion essay."}
+                  : isPidgin
+                    ? "Pre-verbal tense and aspect particles (dey/de progressive, don perfective, never completive), serialization (carry-go, take-give), and copular distinctions (na equative vs dey locative)."
+                    : "You complete exactly 3 practical prompts: two shorter informal/semi-formal messages (e.g. email to landlord, inquiry, note to neighbor) and one longer opinion essay."}
               </p>
             </div>
 
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
-                <span className="subtest-icon">🎧</span>
-                <strong>{isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
-                <span className="subtest-time-tag">{isFrench ? "35 Mins" : "40 Mins"}</span>
+                <span className="subtest-icon">🛒</span>
+                <strong>{isFrench ? "Compréhension de l'oral" : isPidgin ? "Marketplace & Transit Oracy" : "Listening Comprehension"}</strong>
+                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "35 Mins" : "40 Mins"}</span>
               </div>
               <p>
                 {isFrench
                   ? "Écoute d'extraits radiophoniques (France Info, RFI), d'annonces publiques de sécurité et de débats de société. Questions sur le sens global et les intentions des locuteurs."
-                  : "You listen to 4 to 7 audio recordings (weather announcements, radio clips, voicemail messages, dialogues). Audio tracks are played twice at intermediate level."}
+                  : isPidgin
+                    ? "Authentic dialogue comprehension in open markets, Danfo bus conductor banter, fare negotiation, police checkpoints, and street navigation."
+                    : "You listen to 4 to 7 audio recordings (weather announcements, radio clips, voicemail messages, dialogues). Audio tracks are played twice at intermediate level."}
               </p>
             </div>
 
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
-                <span className="subtest-icon">🗣️</span>
-                <strong>{isFrench ? "Production orale" : "Speaking"}</strong>
-                <span className="subtest-time-tag">{isFrench ? "20 Mins" : "25 Mins"}</span>
+                <span className="subtest-icon">🎭</span>
+                <strong>{isFrench ? "Production orale" : isPidgin ? "Advanced Syntax & Satire" : "Speaking"}</strong>
+                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "20 Mins" : "25 Mins"}</span>
               </div>
               <p>
                 {isFrench
                   ? "Épreuve interactive en laboratoire de langue : entretien dirigé (présentation personnelle), jeu de rôle en situation réelle et monologue argumenté avec temps de préparation."
-                  : "Conducted in a language lab wearing headsets: 2–3 rapid simulated dialogues (20–45s replies) plus 1–2 timed monologues (1–2 minutes speech with preparation time)."}
+                  : isPidgin
+                    ? "Front-focus clefting (Na dem spoil am), complex conditional conjunctions (sote, make), deep cultural proverbs (Monkey dey work baboon dey chop), and literary register analysis."
+                    : "Conducted in a language lab wearing headsets: 2–3 rapid simulated dialogues (20–45s replies) plus 1–2 timed monologues (1–2 minutes speech with preparation time)."}
               </p>
             </div>
           </div>
@@ -698,7 +915,7 @@ export default function CBTExamView() {
         <div className="cbt-instructions-card">
           <div className="instructions-header">
             <ShieldCheck size={22} className="inst-icon" />
-            <h3>{isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
+            <h3>{isFrench ? "Règlement d'Examen & Consignes aux Candidats" : isPidgin ? "NERDC Candidate Examination Guidelines & Regulations" : "Candidate Exam Guidelines & Regulations"}</h3>
           </div>
           <ul className="instructions-list">
             {isFrench ? (
@@ -709,6 +926,14 @@ export default function CBTExamView() {
                 <li><strong>Seuil d'admissibilité du diplôme :</strong> Pour obtenir le diplôme officiel du DELF ou du DALF, le candidat doit impérativement totaliser au minimum <strong>50 points sur 100</strong> sans avoir obtenu de note éliminatoire.</li>
                 <li><strong>Exigences Légales de Nationalité Française & Titre de Séjour :</strong> Le Ministère de l'Intérieur exige l'attestation de réussite au <strong>DELF B1 / B2</strong> ou au <strong>TCF IRN (niveau B1 oral et écrit)</strong> pour toute demande de naturalisation française par décret ainsi que pour l'octroi d'une carte de résident de 10 ans.</li>
                 <li><strong>Diplômes Définitifs à Vie :</strong> Les diplômes DELF (A1 à B2) et DALF (C1 et C2) sont acquis définitivement et restent valables à vie sans limitation de durée, contrairement aux tests TCF et TEF qui ont une validité de deux ans.</li>
+              </>
+            ) : isPidgin ? (
+              <>
+                <li><strong>Standardized Literature Orthography:</strong> Examination questions adhere strictly to the standardized West African Pidgin literature spelling system as published by <strong>JW.org/wes-x-pgw</strong> and leading broadcasting institutions (BBC News Pidgin).</li>
+                <li><strong>Timed Structure & Section Flexibility:</strong> Candidates can choose to practice <strong>Exactly 60 Questions in any single section (35-minute timer)</strong>, or sit for the comprehensive 180-Question Certification Examination (60-minute timer).</li>
+                <li><strong>Question Flagging & Navigation:</strong> Use the "Flag Question" button to bookmark challenging queries. You may jump between questions freely using the question grid on the right panel.</li>
+                <li><strong>Instant Scoring & Deep Linguistic Rationale:</strong> Upon submitting, the system automatically grades your examination and provides thorough explanatory feedback breaking down the syntax, dialect, and phonology behind every question.</li>
+                <li><strong>Certification Threshold:</strong> Candidates achieving <strong>70% or higher</strong> earn the FiksLingo NERDC Nigerian Pidgin Certificate of Proficiency.</li>
               </>
             ) : (
               <>
