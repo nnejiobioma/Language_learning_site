@@ -167,7 +167,7 @@ button:active {
     "logo stats"
     "nav  nav";
   row-gap: 1.85rem;
-  column-gap: 2rem;
+  column-gap: 0.5rem;
   align-items: center;
 }
 
