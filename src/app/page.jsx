@@ -33,7 +33,10 @@ export default function LandingPage() {
         <div className="lp-container lp-nav-inner">
           <Link href="/" className="lp-brand" aria-label="FiksLingo home">
             <img src="/images/mascot.jpg" alt="" className="lp-brand-img" />
-            <span>FiksLingo</span>
+            <div className="lp-brand-text">
+              <span className="lp-brand-name">FiksLingo</span>
+              <span className="lp-brand-tagline">Master World Languages</span>
+            </div>
           </Link>
           <nav className="lp-nav-links" aria-label="Page sections">
             <a href="#languages">Languages</a>
