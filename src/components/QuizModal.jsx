@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { soundEngine } from '../lib/audio';
 import { LANGUAGES } from '../data/languages';
@@ -18,12 +18,18 @@ import {
 
 // Helper to safely get native/foreign term from a pair
 function getPairNative(p) {
-  return p?.native ?? p?.right ?? p?.left ?? '';
+  if (!p) return '';
+  if (typeof p === 'string') return p;
+  if (Array.isArray(p)) return p[0] || '';
+  return p.native ?? p.pidgin ?? p.term ?? p.word ?? p.right ?? p.left ?? '';
 }
 
 // Helper to safely get english/translation term from a pair
 function getPairEnglish(p) {
-  return p?.english ?? p?.left ?? p?.right ?? '';
+  if (!p) return '';
+  if (typeof p === 'string') return p;
+  if (Array.isArray(p)) return p[1] || p[0] || '';
+  return p.english ?? p.meaning ?? p.translation ?? p.definition ?? p.left ?? p.right ?? '';
 }
 
 // Creates a guaranteed derangement (a shuffle where no item is at the same row/index as the native word)
@@ -72,7 +78,6 @@ export default function QuizModal() {
   const [scrambleAnswer, setScrambleAnswer] = useState([]);
   const [availableTokens, setAvailableTokens] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
-  const [shuffledEnglishPairs, setShuffledEnglishPairs] = useState([]);
   const [selectedNative, setSelectedNative] = useState(null);
   const [selectedEnglish, setSelectedEnglish] = useState(null);
   const [feedbackStatus, setFeedbackStatus] = useState(null); // 'correct' | 'wrong' | null
@@ -86,6 +91,14 @@ export default function QuizModal() {
 
   const questions = shuffledQuestions.length > 0 ? shuffledQuestions : (activeLesson?.questions || []);
   const currentQ = questions[currentIndex];
+
+  // Guaranteed deranged shuffle of pairs for matching question
+  const shuffledEnglishPairs = useMemo(() => {
+    if (currentQ?.type === 'matching' && currentQ?.pairs) {
+      return derangePairs(currentQ.pairs);
+    }
+    return [];
+  }, [currentQ?.id, currentQ?.prompt]);
 
   // Randomize question order from the beginning every time a lesson is launched
   useEffect(() => {
@@ -122,7 +135,6 @@ export default function QuizModal() {
       setAvailableTokens(shuffled.map((word, i) => ({ id: `${word}-${i}`, word })));
     } else if (currentQ.type === 'matching') {
       setMatchedPairs([]);
-      setShuffledEnglishPairs(derangePairs(currentQ.pairs || []));
     } else if (currentQ.type === 'audio_listen') {
       // Auto-play audio on question load
       soundEngine.speak(currentQ.phrase, currentLanguage);
