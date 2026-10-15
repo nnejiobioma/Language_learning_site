@@ -893,40 +893,75 @@ Ce retard occasionne un préjudice financier journalier de 4 500 euros pour notr
 
   pidgin: [
     {
-      id: "p-cbt-fluency",
-      title: "West African Pidgin Standard Fluency Examination",
-      subtitle: "National Lingua Franca Proficiency & Everyday Cultural Code Examination",
-      badgeText: "WAEC / Naija Fluency Standard",
-      level: "Professional Fluency",
-      timeLimitMinutes: 15,
+      id: "p-cbt-foundational",
+      title: "NERDC Nigerian Pidgin Foundation & Intermediate Standard (Levels 1–2)",
+      subtitle: "Phonology, Sound Substitutions, Serial Verbs & Tense Aspect Markers",
+      badgeText: "NERDC Level 1–2 Standard",
+      level: "Foundational Pikin & Street Smart",
+      timeLimitMinutes: 20,
       passPercentage: 70,
-      description: "Interactive exam testing everyday street expressions, tense markers (dey, don, go), proverbs, and market negotiation dialogues.",
-      sections: ["Grammar & Tense Markers", "Street Slang & Expressive Idioms", "Cultural Dialogue & Etiquette"],
+      description: "Standardized evaluation of consonant/vowel substitutions (ting, dem, ouse), personal pronouns (Una, Im), Serial Verb Constructions, and market bargaining dialogues.",
+      sections: [
+        "Phonology & Sound Substitutions",
+        "Grammatical Aspect & Serial Verbs",
+        "Marketplace & Transit Comprehension"
+      ],
       questions: [
         {
           id: "p-cbt-1",
-          section: "Grammar & Tense Markers",
+          section: "Phonology & Sound Substitutions",
+          prompt: "In standard Nigerian Pidgin oracy, how is the English dental fricative /θ/ in 'think' or 'thing' pronounced?",
+          options: [
+            "A) Substituted with /t/ ('tink', 'ting')",
+            "B) Substituted with /s/ ('sink', 'sing')",
+            "C) Substituted with /f/ ('fink', 'fing')",
+            "D) Maintained identically to British Received Pronunciation"
+          ],
+          correctAnswer: "A) Substituted with /t/ ('tink', 'ting')",
+          explanation: "NPE phonology replaces the voiceless dental fricative /θ/ with the alveolar plosive /t/."
+        },
+        {
+          id: "p-cbt-2",
+          section: "Grammatical Aspect & Serial Verbs",
+          prompt: "Which sentence correctly demonstrates a Serial Verb Construction (SVC) meaning 'Bring the book here'?",
+          options: [
+            "A) 'Take the book come give me.'",
+            "B) 'Bring the book to my place.'",
+            "C) 'Make you carry book to here.'",
+            "D) 'Carry the book arriving.'"
+          ],
+          correctAnswer: "A) 'Take the book come give me.'",
+          explanation: "'Take... come... give' chains multiple verbs together into a single conceptual action without prepositions or conjunctions."
+        },
+        {
+          id: "p-cbt-3",
+          section: "Grammatical Aspect & Serial Verbs",
           prompt: "Which auxiliary aspect marker in Pidgin indicates that an action is currently ongoing right now?",
-          options: ["A) 'don' (completed)", "B) 'dey' (continuous / ongoing)", "C) 'go' (future)", "D) 'bin' (past)"],
+          options: [
+            "A) 'don' (completed)",
+            "B) 'dey' (continuous / ongoing)",
+            "C) 'go' (future)",
+            "D) 'bin' (past)"
+          ],
           correctAnswer: "B) 'dey' (continuous / ongoing)",
           explanation: "'Dey' indicates progressive/continuous aspect (e.g. 'I dey come' = I am coming right now)."
         },
         {
-          id: "p-cbt-2",
-          section: "Street Slang & Expressive Idioms",
-          prompt: "What does the popular expression 'No wahala' mean?",
+          id: "p-cbt-4",
+          section: "Grammatical Aspect & Serial Verbs",
+          prompt: "How does Nigerian Pidgin mark the plural form of the noun 'pikin' (child)?",
           options: [
-            "A) Plenty of dangerous trouble.",
-            "B) No problem at all / Everything is completely fine.",
-            "C) Hurry up immediately.",
-            "D) I do not have enough money."
+            "A) 'Pikin dem'",
+            "B) 'Pikins'",
+            "C) 'Pikines'",
+            "D) 'Pikin-pikin-pikin'"
           ],
-          correctAnswer: "B) No problem at all / Everything is completely fine.",
-          explanation: "'Wahala' means trouble or stress. 'No wahala' signifies zero worries or everything is good."
+          correctAnswer: "A) 'Pikin dem'",
+          explanation: "Post-nominal 'dem' is the universal plural marker in NPE: 'pikin dem' = children."
         },
         {
-          id: "p-cbt-3",
-          section: "Cultural Dialogue & Etiquette",
+          id: "p-cbt-5",
+          section: "Marketplace & Transit Comprehension",
           prompt: "In Nigerian commercial bus transport (Danfo), what is the universal call shouted to signal the conductor that you want to drop off at the next bus stop?",
           options: [
             "A) 'Owa o!'",
@@ -936,6 +971,114 @@ Ce retard occasionne un préjudice financier journalier de 4 500 euros pour notr
           ],
           correctAnswer: "A) 'Owa o!'",
           explanation: "'Owa o!' is the iconic transit alert indicating that someone wants to alight."
+        },
+        {
+          id: "p-cbt-6",
+          section: "Marketplace & Transit Comprehension",
+          prompt: "When haggling at Balogun Market, what does a customer ask to request the seller's final non-negotiable discount?",
+          options: [
+            "A) 'Customer, how much last?'",
+            "B) 'Give me your bank receipt.'",
+            "C) 'Why is the market noisy?'",
+            "D) 'Which day did you arrive from village?'"
+          ],
+          correctAnswer: "A) 'Customer, how much last?'",
+          explanation: "'How much last?' is the universal phrase to request the lowest possible discount price."
+        }
+      ]
+    },
+    {
+      id: "p-cbt-advanced",
+      title: "NERDC Advanced Fluency & Oracy Examination (Levels 3–4)",
+      subtitle: "Conditionals, Relative Wey, Focus Clefting, Media Translation & Oratory",
+      badgeText: "Yarn Specialist / BBC Pidgin Standard",
+      level: "Yarn Specialist (Professional Mastery)",
+      timeLimitMinutes: 25,
+      passPercentage: 75,
+      description: "Advanced assessment testing complex counterfactual conditionals ('If to say'), focus marker 'Na', idiomatic proverbs, and active voice inversion of English passive constructions.",
+      sections: [
+        "Advanced Syntax & Passive Inversion",
+        "Conditionals & Relative Structures",
+        "Oral Literature, Proverbs & Satire"
+      ],
+      questions: [
+        {
+          id: "p-cbt-adv-1",
+          section: "Advanced Syntax & Passive Inversion",
+          prompt: "According to the NERDC language mapping standards, how does Nigerian Pidgin naturally render the English passive voice: 'The bread was eaten by them'?",
+          options: [
+            "A) 'Dem don chop the bread.' (Active subject inversion with completed aspect)",
+            "B) 'The bread was chopped by dem.'",
+            "C) 'The bread eating was done by them.'",
+            "D) 'Bread chop finish by people.'"
+          ],
+          correctAnswer: "A) 'Dem don chop the bread.' (Active subject inversion with completed aspect)",
+          explanation: "NPE avoids formal passive inflections by using active subject inversion with the perfective marker 'don'."
+        },
+        {
+          id: "p-cbt-adv-2",
+          section: "Advanced Syntax & Passive Inversion",
+          prompt: "How is the English Future Perfect tense 'I will have eaten by 4 PM' constructed in advanced Nigerian Pidgin?",
+          options: [
+            "A) 'By 4 o'clock, I go don chop.' (Combination of future 'go' + perfective 'don')",
+            "B) 'By 4 o'clock, I go will eat.'",
+            "C) 'I go eating have finished by 4 o'clock.'",
+            "D) '4 o'clock shall meet my eating.'"
+          ],
+          correctAnswer: "A) 'By 4 o'clock, I go don chop.' (Combination of future 'go' + perfective 'don')",
+          explanation: "The combination of 'go' (future) and 'don' (completive) represents future perfect aspect."
+        },
+        {
+          id: "p-cbt-adv-3",
+          section: "Conditionals & Relative Structures",
+          prompt: "Which counterfactual conditional sentence correctly translates: 'Had I known, I would not have gone'?",
+          options: [
+            "A) 'If to say I know, I for no go.'",
+            "B) 'If I knowing before, I no go go.'",
+            "C) 'Had I known so, me no go went.'",
+            "D) 'Suppose I sabi, I will not went.'"
+          ],
+          correctAnswer: "A) 'If to say I know, I for no go.'",
+          explanation: "'If to say' introduces counterfactual premises, and modal 'for no' introduces the negative unrealized outcome."
+        },
+        {
+          id: "p-cbt-adv-4",
+          section: "Conditionals & Relative Structures",
+          prompt: "In the sentence 'Na me do am', what syntactic purpose does 'Na' serve?",
+          options: [
+            "A) Focus marker in a cleft sentence meaning 'It was I who did it'",
+            "B) A negative particle meaning 'No'",
+            "C) An adverb of place meaning 'Near'",
+            "D) A future conjunction"
+          ],
+          correctAnswer: "A) Focus marker in a cleft sentence meaning 'It was I who did it'",
+          explanation: "'Na' introduces focused constituents in cleft constructions to emphasize the subject or predicate."
+        },
+        {
+          id: "p-cbt-adv-5",
+          section: "Oral Literature, Proverbs & Satire",
+          prompt: "What is the sociopolitical meaning of the famous Nigerian proverb: 'Monkey dey work, baboon dey chop'?",
+          options: [
+            "A) One person toils and produces wealth while another unjustly exploits and consumes it",
+            "B) Wild animals should be protected in national reserves",
+            "C) Hard work is always rewarded immediately without delay",
+            "D) Monkeys and baboons belong to the same biological genus"
+          ],
+          correctAnswer: "A) One person toils and produces wealth while another unjustly exploits and consumes it",
+          explanation: "It is the master metaphor for systemic labor exploitation, cronyism, and uncredited toil."
+        },
+        {
+          id: "p-cbt-adv-6",
+          section: "Oral Literature, Proverbs & Satire",
+          prompt: "What does the expression 'Water don pass garri' indicate when discussing a community problem?",
+          options: [
+            "A) The crisis has escalated beyond repair or manageable control",
+            "B) Fresh clean drinking water has been supplied to the town",
+            "C) The price of cassava has fallen drastically",
+            "D) It is time to prepare evening dinner"
+          ],
+          correctAnswer: "A) The crisis has escalated beyond repair or manageable control",
+          explanation: "When water exceeds the optimal ratio for soaking garri, it is ruined; hence the situation is out of hand."
         }
       ]
     }

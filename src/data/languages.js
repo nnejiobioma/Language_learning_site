@@ -4,6 +4,9 @@ import { finnishCultureVault } from './finnishCultureVault';
 import { frenchAllUnits } from './frenchCurriculum';
 import { frenchFlashcards } from './frenchFlashcards';
 import { frenchCultureVault } from './frenchCultureVault';
+import { pidginAllUnits } from './pidginCurriculum';
+import { pidginFlashcards } from './pidginFlashcards';
+import { pidginCultureVault } from './pidginCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -414,91 +417,10 @@ export const LANGUAGES = {
     accentColor: "#10b981", // vibrant emerald
     secondaryColor: "#f59e0b", // warm yellow bus gold
     greeting: "How you dey!",
-    description: "Learn the vibrant language spoken by over 75 million people across Nigeria, West Africa, and global Afrobeat culture.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Monkey dey work, baboon dey chop.",
-        translation: "One person toils while someone else reaps the benefits unjustly.",
-        context: "Used in everyday conversations when highlighting unfair labour distribution or unfair credit."
-      },
-      slangs: [
-        { term: "Dey play!", meaning: "Keep wasting time or being careless (a viral playful warning).", example: "You never read for exam and you dey scroll TikTok? Dey play!" },
-        { term: "I dey kampe", meaning: "I am doing very well, strong and unaffected.", example: "No worry about me, my brother, I dey kampe." },
-        { term: "No wahala", meaning: "No problem, everything is cool.", example: "You wan borrow my pen? No wahala at all." },
-        { term: "Chop life", meaning: "Enjoy life to the fullest.", example: "Weekend don land, make we chop life small." },
-        { term: "Wetin dey?", meaning: "What's happening? / What's up?", example: "Bros, wetin dey happen for this area?" },
-        { term: "Oya", meaning: "Come on / Let's go / Hurry up.", example: "Oya now, make we leave before hold-up start!" }
-      ],
-      cultureTips: [
-        { title: "The Lagos 'Hold-Up' & Danfo Code", description: "Traffic in Lagos is called 'hold-up'. When riding the iconic yellow Danfo buses, always know the exact phrase 'Owa o!' to tell the conductor you want to disembark." },
-        { title: "Food Courtesy: 'Come and Chop'", description: "Whenever someone in Nigeria is eating in your presence, etiquette dictates they invite you warmly by saying 'Come and chop!' (Polite response: 'Thank you, I dey alright')." },
-        { title: "The Magic of 'Abeg'", description: "'Abeg' translates to 'I beg you' or 'Please'. Adding 'Abeg' instantly softens any request and displays high warmth." }
-      ]
-    },
-    flashcards: [
-      { id: "p-fc-1", front: "How you dey?", phonetic: "How-yoo-dey", back: "How are you? / How are things going?", category: "Greetings", example: "Bros, how you dey today?" },
-      { id: "p-fc-2", front: "I dey kampe", phonetic: "Eye-dey-kam-peh", back: "I am doing great / feeling strong", category: "Greetings", example: "I dey kampe, no shaking." },
-      { id: "p-fc-3", front: "Wetin be your name?", phonetic: "Weh-tin-bee-your-name", back: "What is your name?", category: "Basics", example: "Wetin be your name, my friend?" },
-      { id: "p-fc-4", front: "Abeg", phonetic: "Ah-beg", back: "Please / I beg you", category: "Courtesy", example: "Abeg pass me the bottle of water." },
-      { id: "p-fc-5", front: "No wahala", phonetic: "No-wah-hah-lah", back: "No problem / It's fine", category: "Expressions", example: "No wahala, see you tomorrow." },
-      { id: "p-fc-6", front: "Chop", phonetic: "Chawp", back: "To eat / Food", category: "Food & Dining", example: "You don chop this afternoon?" },
-      { id: "p-fc-7", front: "Hold-up", phonetic: "Hold-up", back: "Traffic jam", category: "Transit", example: "Hold-up too much for third mainland bridge." }
-    ],
-    units: [
-      {
-        id: "p-unit-1",
-        title: "Unit 1: Street Greetings & First Vibe",
-        subtitle: "Master the essential salutations, friendly check-ins, and polite warmth.",
-        icon: "Sun",
-        color: "#10b981",
-        lessons: [
-          {
-            id: "p-u1-l1",
-            title: "Everyday Greetings",
-            description: "Learn how to greet anyone from friends to elders in Pidgin.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the most popular way to say 'How are you?' in Pidgin?",
-                options: ["How you dey?", "Wetin you chop?", "Where you dey go?", "Which day you come?"],
-                correctAnswer: "How you dey?",
-                explanation: "'How you dey?' is the universal Pidgin greeting for 'How are you?' or 'How are you doing?'"
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Assemble the sentence: 'I am doing very well'",
-                tokens: ["I", "dey", "kampe", "too", "much"],
-                correctTokens: ["I", "dey", "kampe"],
-                explanation: "'I dey kampe' means 'I am strong, sound, and doing well.'"
-              },
-              {
-                id: "q3",
-                type: "audio_listen",
-                phrase: "No wahala",
-                prompt: "Listen to the phrase and choose its English meaning:",
-                options: ["No problem / Everything is good", "Where are you?", "Hurry up please", "I am very hungry"],
-                correctAnswer: "No problem / Everything is good",
-                explanation: "'Wahala' means trouble or stress. 'No wahala' means zero worries or no problem."
-              },
-              {
-                id: "q4",
-                type: "matching",
-                prompt: "Match the Pidgin words with their meanings:",
-                pairs: [
-                  { native: "Abeg", english: "Please" },
-                  { native: "Wetin", english: "What" },
-                  { native: "Chop", english: "Eat" },
-                  { native: "Wahala", english: "Trouble" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Learn the vibrant language spoken by over 75 million people across Nigeria, West Africa, and global Afrobeat culture — structured with the NERDC 4-Tier Oracy, Grammar, and Literature framework.",
+    cultureVault: pidginCultureVault,
+    flashcards: pidginFlashcards,
+    units: pidginAllUnits
   },
 
   yoruba: {
