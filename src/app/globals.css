@@ -392,8 +392,11 @@ button:active {
   grid-area: stats;
   justify-self: end;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.7rem;
+  min-width: 0;
 }
 
 .stat-chip {
@@ -3618,6 +3621,9 @@ html[data-theme="light"] .input-with-icon input {
   .stats-controls-group {
     gap: 0.45rem;
   }
+  .theme-btn-label {
+    display: none;
+  }
   .user-name-text {
     max-width: 70px;
     overflow: hidden;
@@ -3698,22 +3704,41 @@ html[data-theme="light"] .input-with-icon input {
   .lang-dropdown-menu {
     left: auto;
     right: 0;
-    min-width: 240px;
-    max-width: calc(100vw - 24px);
+    min-width: 0;
+    width: min(260px, calc(100vw - 1.5rem));
+    max-height: min(440px, 70vh);
   }
+  /* Wrap (never scroll) so absolutely-positioned dropdowns are not clipped */
   .stats-controls-group {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 0.35rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
     padding: 0.1rem 0;
   }
-  .stats-controls-group::-webkit-scrollbar {
+  /* Push sound / theme / account controls to the right edge */
+  .stats-controls-group .icon-circle-btn {
+    margin-left: auto;
+  }
+  .theme-switcher-wrapper {
+    flex-shrink: 0;
+  }
+  .theme-switcher-btn {
+    height: 34px;
+    padding: 0 0.55rem;
+    gap: 0.3rem;
+  }
+  .theme-btn-label {
     display: none;
+  }
+  .theme-dropdown-card {
+    right: 0;
+    left: auto;
+    min-width: 0;
+    width: min(250px, calc(100vw - 1.5rem));
   }
   .user-name-text {
     display: none;
@@ -3730,6 +3755,9 @@ html[data-theme="light"] .input-with-icon input {
     height: 34px;
     flex-shrink: 0;
   }
+  .user-profile-wrapper {
+    flex-shrink: 0;
+  }
   .user-profile-btn {
     padding: 0.2rem;
     flex-shrink: 0;
@@ -3737,7 +3765,8 @@ html[data-theme="light"] .input-with-icon input {
   .user-dropdown-card {
     right: 0;
     left: auto;
-    max-width: calc(100vw - 24px);
+    min-width: 0;
+    width: min(240px, calc(100vw - 1.5rem));
   }
   .nav-tabs {
     order: 3;
@@ -3907,6 +3936,10 @@ html[data-theme="light"] .input-with-icon input {
   .icon-circle-btn {
     width: 32px;
     height: 32px;
+  }
+  .theme-switcher-btn {
+    height: 32px;
+    padding: 0 0.5rem;
   }
   .user-profile-btn {
     padding: 0.15rem;

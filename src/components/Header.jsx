@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGame } from '../context/GameContext';
 import { useAuth } from '../context/AuthContext';
@@ -42,6 +42,37 @@ export default function Header() {
   const { user, profile, isFirebaseConfigured, logout } = useAuth();
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const langRef = useRef(null);
+  const userRef = useRef(null);
+
+  // Close the language / account menus on outside tap or Escape (mobile-friendly)
+  useEffect(() => {
+    if (!langDropdownOpen && !userDropdownOpen) return;
+
+    function handlePointerDown(e) {
+      if (langRef.current && !langRef.current.contains(e.target)) {
+        setLangDropdownOpen(false);
+      }
+      if (userRef.current && !userRef.current.contains(e.target)) {
+        setUserDropdownOpen(false);
+      }
+    }
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') {
+        setLangDropdownOpen(false);
+        setUserDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [langDropdownOpen, userDropdownOpen]);
 
   const activeLangData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
 
@@ -65,11 +96,15 @@ export default function Header() {
           </div>
 
           {/* Language Switcher Dropdown */}
-          <div className="lang-switcher-wrapper">
+          <div className="lang-switcher-wrapper" ref={langRef}>
             <button 
               className="lang-pill-btn"
-              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              onClick={() => {
+                setLangDropdownOpen(!langDropdownOpen);
+                setUserDropdownOpen(false);
+              }}
               aria-label="Select Learning Language"
+              aria-expanded={langDropdownOpen}
               id="lang-select-button"
             >
               <span className="lang-flag">{activeLangData.flag}</span>
@@ -192,12 +227,16 @@ export default function Header() {
           <ThemeSwitcher />
 
           {/* User Account / Profile */}
-          <div className="user-profile-wrapper">
+          <div className="user-profile-wrapper" ref={userRef}>
             <button 
               className="user-profile-btn"
-              onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+              onClick={() => {
+                setUserDropdownOpen(!userDropdownOpen);
+                setLangDropdownOpen(false);
+              }}
               aria-label="User Account"
               aria-expanded={userDropdownOpen}
+              id="user-account-button"
             >
               <Avatar profile={profile} size={30} />
               <span className="user-name-text">
