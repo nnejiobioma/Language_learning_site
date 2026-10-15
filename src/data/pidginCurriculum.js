@@ -66,7 +66,9 @@ export const pidginAllUnits = [
               "h-house"
             ],
             "correctAnswer": "ouse",
-            "explanation": "With the initial /h/ dropped, 'house' is rendered as 'ouse'."
+            "explanation": "With the initial /h/ dropped, 'house' is rendered as 'ouse'.",
+            "sentence": "I want go back to my ___ (house).",
+            "missingWord": "ouse"
           },
           {
             "id": "p-u1-l1-q5",
@@ -79,7 +81,9 @@ export const pidginAllUnits = [
               "tinng"
             ],
             "correctAnswer": "ting",
-            "explanation": "'Thing' becomes 'ting' through dental fricative replacement /θ/ -> /t/."
+            "explanation": "'Thing' becomes 'ting' through dental fricative replacement /θ/ -> /t/.",
+            "sentence": "No worry yourself, na small ___ (thing) dey happen.",
+            "missingWord": "ting"
           },
           {
             "id": "p-u1-l1-q6",
@@ -131,7 +135,9 @@ export const pidginAllUnits = [
               "dema"
             ],
             "correctAnswer": "dem",
-            "explanation": "The object pronoun 'them' is rendered as 'dem'."
+            "explanation": "The object pronoun 'them' is rendered as 'dem'.",
+            "sentence": "Give ___ (them) their books.",
+            "missingWord": "dem"
           },
           {
             "id": "p-u1-l1-q10",
@@ -170,7 +176,9 @@ export const pidginAllUnits = [
               "onger"
             ],
             "correctAnswer": "ungry",
-            "explanation": "'Hunger/hungry' drops initial /h/, frequently expressed as 'ungry dey catch me'."
+            "explanation": "'Hunger/hungry' drops initial /h/, frequently expressed as 'ungry dey catch me'.",
+            "sentence": "I dey feel heavy ___ (hunger) for belly.",
+            "missingWord": "ungry"
           },
           {
             "id": "p-u1-l1-q13",
@@ -250,18 +258,26 @@ export const pidginAllUnits = [
             "prompt": "Match the English word with its standard Nigerian Pidgin phonetic form:",
             "pairs": [
               {
+                "native": "Ting",
+                "english": "Thing",
                 "left": "Thing",
                 "right": "Ting"
               },
               {
+                "native": "Ouse",
+                "english": "House",
                 "left": "House",
                 "right": "Ouse"
               },
               {
+                "native": "Dem",
+                "english": "Them",
                 "left": "Them",
                 "right": "Dem"
               },
               {
+                "native": "Tree",
+                "english": "Three",
                 "left": "Three",
                 "right": "Tree"
               }
@@ -274,18 +290,26 @@ export const pidginAllUnits = [
             "prompt": "Match each English phrase to its authentic Pidgin equivalent:",
             "pairs": [
               {
+                "native": "Tank you",
+                "english": "Thank you",
                 "left": "Thank you",
                 "right": "Tank you"
               },
               {
+                "native": "Dat ouse",
+                "english": "That house",
                 "left": "That house",
                 "right": "Dat ouse"
               },
               {
+                "native": "Catch tief",
+                "english": "Catch thief",
                 "left": "Catch thief",
                 "right": "Catch tief"
               },
               {
+                "native": "Ungry dey catch me",
+                "english": "I am hungry",
                 "left": "I am hungry",
                 "right": "Ungry dey catch me"
               }
@@ -304,7 +328,8 @@ export const pidginAllUnits = [
               "The boy bought groceries"
             ],
             "correctAnswer": "The boy ran into the house",
-            "explanation": "'Dat' = That, 'don run enter' = has run into, 'ouse' = house."
+            "explanation": "'Dat' = That, 'don run enter' = has run into, 'ouse' = house.",
+            "phrase": "Dat boy don run enter ouse."
           },
           {
             "id": "p-u1-l1-q20",
@@ -318,7 +343,8 @@ export const pidginAllUnits = [
               "We have no matters to discuss"
             ],
             "correctAnswer": "We have three different matters to discuss",
-            "explanation": "'Tree' = three; 'different-different ting' = various distinct things/topics."
+            "explanation": "'Tree' = three; 'different-different ting' = various distinct things/topics.",
+            "phrase": "We get tree different-different ting to talk."
           }
         ]
       },
@@ -391,7 +417,9 @@ export const pidginAllUnits = [
               "gree"
             ],
             "correctAnswer": "sabi",
-            "explanation": "'I no sabi' means 'I do not know' or 'I do not understand'."
+            "explanation": "'I no sabi' means 'I do not know' or 'I do not understand'.",
+            "sentence": "I no ___ (know) wetin you dey talk.",
+            "missingWord": "sabi"
           },
           {
             "id": "p-u1-l2-q6",
@@ -417,7 +445,9 @@ export const pidginAllUnits = [
               "gree"
             ],
             "correctAnswer": "chop",
-            "explanation": "'Chop' is the verb for eating food."
+            "explanation": "'Chop' is the verb for eating food.",
+            "sentence": "Come make we ___ (eat) correct rice.",
+            "missingWord": "chop"
           },
           {
             "id": "p-u1-l2-q8",
@@ -456,7 +486,9 @@ export const pidginAllUnits = [
               "Wen"
             ],
             "correctAnswer": "Wetin",
-            "explanation": "'Wetin' is the interrogative pronoun for 'what'."
+            "explanation": "'Wetin' is the interrogative pronoun for 'what'.",
+            "sentence": "___ (What) you wan drink this afternoon?",
+            "missingWord": "Wetin"
           },
           {
             "id": "p-u1-l2-q11",
@@ -495,7 +527,9 @@ export const pidginAllUnits = [
               "pikin"
             ],
             "correctAnswer": "wahala",
-            "explanation": "'No wahala' is the universal response meaning 'No problem / No worries'."
+            "explanation": "'No wahala' is the universal response meaning 'No problem / No worries'.",
+            "sentence": "No ___ (trouble) at all, everything dey fine.",
+            "missingWord": "wahala"
           },
           {
             "id": "p-u1-l2-q14",
@@ -560,18 +594,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin vocabulary word with its English translation:",
             "pairs": [
               {
+                "native": "Eat / food",
+                "english": "Chop",
                 "left": "Chop",
                 "right": "Eat / food"
               },
               {
+                "native": "Know / understand",
+                "english": "Sabi",
                 "left": "Sabi",
                 "right": "Know / understand"
               },
               {
+                "native": "What",
+                "english": "Wetin",
                 "left": "Wetin",
                 "right": "What"
               },
               {
+                "native": "Trouble / stress",
+                "english": "Wahala",
                 "left": "Wahala",
                 "right": "Trouble / stress"
               }
@@ -584,18 +626,26 @@ export const pidginAllUnits = [
             "prompt": "Match each Pidgin phrase to its everyday meaning:",
             "pairs": [
               {
+                "native": "No problem",
+                "english": "No wahala",
                 "left": "No wahala",
                 "right": "No problem"
               },
               {
+                "native": "Get out of the way",
+                "english": "Commot for road",
                 "left": "Commot for road",
                 "right": "Get out of the way"
               },
               {
+                "native": "What is going on?",
+                "english": "Wetin dey?",
                 "left": "Wetin dey?",
                 "right": "What is going on?"
               },
               {
+                "native": "I am full of food",
+                "english": "I don bellefull",
                 "left": "I don bellefull",
                 "right": "I am full of food"
               }
@@ -614,7 +664,8 @@ export const pidginAllUnits = [
               "Can you sell these books for money?"
             ],
             "correctAnswer": "Do you know how to read these different books?",
-            "explanation": "'You sabi read...' = Do you know how to read; 'different-different book' = various books."
+            "explanation": "'You sabi read...' = Do you know how to read; 'different-different book' = various books.",
+            "phrase": "You sabi read this different-different book?"
           },
           {
             "id": "p-u1-l2-q20",
@@ -628,7 +679,8 @@ export const pidginAllUnits = [
               "They will not eat at all"
             ],
             "correctAnswer": "When they arrive at the house",
-            "explanation": "'We go chop when we reach ouse' = We will eat when we arrive home."
+            "explanation": "'We go chop when we reach ouse' = We will eat when we arrive home.",
+            "phrase": "No wahala, we go chop when we reach ouse."
           }
         ]
       },
@@ -688,7 +740,9 @@ export const pidginAllUnits = [
               "We"
             ],
             "correctAnswer": "Una",
-            "explanation": "'Una welcome' is the standard greeting to a group of people."
+            "explanation": "'Una welcome' is the standard greeting to a group of people.",
+            "sentence": "___ (You all) welcome to our class today.",
+            "missingWord": "Una"
           },
           {
             "id": "p-u1-l3-q5",
@@ -701,7 +755,9 @@ export const pidginAllUnits = [
               "dem"
             ],
             "correctAnswer": "am",
-            "explanation": "The object pronoun attached to transitive verbs is '-am' (read-am = read it)."
+            "explanation": "The object pronoun attached to transitive verbs is '-am' (read-am = read it).",
+            "sentence": "Take this book and read-___ (it) well.",
+            "missingWord": "am"
           },
           {
             "id": "p-u1-l3-q6",
@@ -740,7 +796,9 @@ export const pidginAllUnits = [
               "Me"
             ],
             "correctAnswer": "Im",
-            "explanation": "'Im' or 'E' is the gender-neutral third person singular subject pronoun."
+            "explanation": "'Im' or 'E' is the gender-neutral third person singular subject pronoun.",
+            "sentence": "___ (He/She) dey cook soup for kitchen.",
+            "missingWord": "Im"
           },
           {
             "id": "p-u1-l3-q9",
@@ -779,7 +837,9 @@ export const pidginAllUnits = [
               "me"
             ],
             "correctAnswer": "una",
-            "explanation": "'Una' addresses multiple people ('you all')."
+            "explanation": "'Una' addresses multiple people ('you all').",
+            "sentence": "Wetin ___ (you all) dey do here?",
+            "missingWord": "una"
           },
           {
             "id": "p-u1-l3-q12",
@@ -818,7 +878,9 @@ export const pidginAllUnits = [
               "una"
             ],
             "correctAnswer": "am",
-            "explanation": "'Ask-am' represents 'ask him/her/it'."
+            "explanation": "'Ask-am' represents 'ask him/her/it'.",
+            "sentence": "If you get question, ask-___ (him/her).",
+            "missingWord": "am"
           },
           {
             "id": "p-u1-l3-q15",
@@ -868,18 +930,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin pronoun to its English meaning:",
             "pairs": [
               {
+                "native": "You all (plural)",
+                "english": "Una",
                 "left": "Una",
                 "right": "You all (plural)"
               },
               {
+                "native": "He / She / It",
+                "english": "Im / E",
                 "left": "Im / E",
                 "right": "He / She / It"
               },
               {
+                "native": "Him / Her / It (object)",
+                "english": "-am",
                 "left": "-am",
                 "right": "Him / Her / It (object)"
               },
               {
+                "native": "They / Them",
+                "english": "Dem",
                 "left": "Dem",
                 "right": "They / Them"
               }
@@ -892,18 +962,26 @@ export const pidginAllUnits = [
             "prompt": "Match the verb with its object suffix to its translation:",
             "pairs": [
               {
+                "native": "Eat it",
+                "english": "Chop-am",
                 "left": "Chop-am",
                 "right": "Eat it"
               },
               {
+                "native": "Read it",
+                "english": "Read-am",
                 "left": "Read-am",
                 "right": "Read it"
               },
               {
+                "native": "Tell him/her",
+                "english": "Tell-am",
                 "left": "Tell-am",
                 "right": "Tell him/her"
               },
               {
+                "native": "Watch it",
+                "english": "Watch-am",
                 "left": "Watch-am",
                 "right": "Watch it"
               }
@@ -922,7 +1000,8 @@ export const pidginAllUnits = [
               "Nobody can understand the material"
             ],
             "correctAnswer": "You all can use it for studying",
-            "explanation": "Direct quote from JW.org Pidgin: 'Una fit use-am for study' = You all can use it for studying."
+            "explanation": "Direct quote from JW.org Pidgin: 'Una fit use-am for study' = You all can use it for studying.",
+            "phrase": "Una fit use-am for study."
           },
           {
             "id": "p-u1-l3-q20",
@@ -936,7 +1015,8 @@ export const pidginAllUnits = [
               "Nobody is allowed to come"
             ],
             "correctAnswer": "He/She told them that they should come",
-            "explanation": "'Im' = He/she; 'tell dem' = told them; 'make dem come' = to come."
+            "explanation": "'Im' = He/she; 'tell dem' = told them; 'make dem come' = to come.",
+            "phrase": "Im don tell dem say make dem come."
           }
         ]
       }
@@ -1009,7 +1089,9 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "dey",
-            "explanation": "Locative 'dey' indicates presence in a place ('dey for house')."
+            "explanation": "Locative 'dey' indicates presence in a place ('dey for house').",
+            "sentence": "My brother ___ (is) for house now.",
+            "missingWord": "dey"
           },
           {
             "id": "p-u2-l1-q5",
@@ -1022,7 +1104,9 @@ export const pidginAllUnits = [
               "bin read"
             ],
             "correctAnswer": "de read",
-            "explanation": "JW.org orthography uses 'de read' (or 'dey read') for the progressive action."
+            "explanation": "JW.org orthography uses 'de read' (or 'dey read') for the progressive action.",
+            "sentence": "We ___ (are reading) different-different book.",
+            "missingWord": "de read"
           },
           {
             "id": "p-u2-l1-q6",
@@ -1061,7 +1145,9 @@ export const pidginAllUnits = [
               "make"
             ],
             "correctAnswer": "dey",
-            "explanation": "'Dey sweet' expresses the present stative taste sensation."
+            "explanation": "'Dey sweet' expresses the present stative taste sensation.",
+            "sentence": "The food ___ (is) sweet well-well.",
+            "missingWord": "dey"
           },
           {
             "id": "p-u2-l1-q9",
@@ -1100,7 +1186,9 @@ export const pidginAllUnits = [
               "go not"
             ],
             "correctAnswer": "no dey",
-            "explanation": "'I no dey fear' = 'I am not afraid / I do not fear'."
+            "explanation": "'I no dey fear' = 'I am not afraid / I do not fear'.",
+            "sentence": "I ___ (am not) fear anything.",
+            "missingWord": "no dey"
           },
           {
             "id": "p-u2-l1-q12",
@@ -1139,7 +1227,9 @@ export const pidginAllUnits = [
               "happy-am"
             ],
             "correctAnswer": "de happy",
-            "explanation": "JW.org standard text: 'we de happy say we be Christian'."
+            "explanation": "JW.org standard text: 'we de happy say we be Christian'.",
+            "sentence": "We ___ (are happy) say we be Christian.",
+            "missingWord": "de happy"
           },
           {
             "id": "p-u2-l1-q15",
@@ -1197,18 +1287,26 @@ export const pidginAllUnits = [
             "prompt": "Match each sentence with the correct syntactic function of 'dey':",
             "pairs": [
               {
+                "native": "Locative (being in a place)",
+                "english": "I dey house",
                 "left": "I dey house",
                 "right": "Locative (being in a place)"
               },
               {
+                "native": "Progressive (action in progress)",
+                "english": "I dey chop rice",
                 "left": "I dey chop rice",
                 "right": "Progressive (action in progress)"
               },
               {
+                "native": "Stative (physical condition)",
+                "english": "E dey sick",
                 "left": "E dey sick",
                 "right": "Stative (physical condition)"
               },
               {
+                "native": "Habitual negative (general truth)",
+                "english": "I no dey lie",
                 "left": "I no dey lie",
                 "right": "Habitual negative (general truth)"
               }
@@ -1221,18 +1319,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin phrase with its English meaning:",
             "pairs": [
               {
+                "native": "What's happening?",
+                "english": "Wetin dey sup?",
                 "left": "Wetin dey sup?",
                 "right": "What's happening?"
               },
               {
+                "native": "I am strong and sound",
+                "english": "I dey kampe",
                 "left": "I dey kampe",
                 "right": "I am strong and sound"
               },
               {
+                "native": "It is functional / working",
+                "english": "E dey work",
                 "left": "E dey work",
                 "right": "It is functional / working"
               },
               {
+                "native": "The sun is shining",
+                "english": "Sun dey shine",
                 "left": "Sun dey shine",
                 "right": "The sun is shining"
               }
@@ -1251,7 +1357,8 @@ export const pidginAllUnits = [
               "Religion is a sport where people wrestle"
             ],
             "correctAnswer": "Religion that makes people fight cannot bring peace",
-            "explanation": "Direct quote from JW.org Pidgin: 'Religion wey de make people fight... no fit make peace dey this world.'"
+            "explanation": "Direct quote from JW.org Pidgin: 'Religion wey de make people fight... no fit make peace dey this world.'",
+            "phrase": "Religion wey de make people fight no fit bring peace."
           },
           {
             "id": "p-u2-l1-q20",
@@ -1265,7 +1372,8 @@ export const pidginAllUnits = [
               "The witnesses are harvesting cassava"
             ],
             "correctAnswer": "Two witnesses are preaching to a farmer",
-            "explanation": "JW.org image alt text: 'Two Jehovah Witness de preach to one man wey de for rice farm.'"
+            "explanation": "JW.org image alt text: 'Two Jehovah Witness de preach to one man wey de for rice farm.'",
+            "phrase": "Two witness de preach to one man wey de farm."
           }
         ]
       },
@@ -1325,7 +1433,9 @@ export const pidginAllUnits = [
               "never finish"
             ],
             "correctAnswer": "don finish",
-            "explanation": "'Don finish' indicates completed closure."
+            "explanation": "'Don finish' indicates completed closure.",
+            "sentence": "The meeting ___ (has finished) now.",
+            "missingWord": "don finish"
           },
           {
             "id": "p-u2-l2-q5",
@@ -1338,7 +1448,9 @@ export const pidginAllUnits = [
               "not"
             ],
             "correctAnswer": "never",
-            "explanation": "'Never' is the negative perfective marker ('have not yet')."
+            "explanation": "'Never' is the negative perfective marker ('have not yet').",
+            "sentence": "I ___ (have not yet) see the new video.",
+            "missingWord": "never"
           },
           {
             "id": "p-u2-l2-q6",
@@ -1377,7 +1489,9 @@ export const pidginAllUnits = [
               "never add"
             ],
             "correctAnswer": "don add",
-            "explanation": "JW.org Pidgin: 'news wey we don add' (news we have added)."
+            "explanation": "JW.org Pidgin: 'news wey we don add' (news we have added).",
+            "sentence": "Check the news wey we ___ (have added).",
+            "missingWord": "don add"
           },
           {
             "id": "p-u2-l2-q9",
@@ -1416,7 +1530,9 @@ export const pidginAllUnits = [
               "never commot"
             ],
             "correctAnswer": "don commot",
-            "explanation": "'Don commot' indicates completed departure."
+            "explanation": "'Don commot' indicates completed departure.",
+            "sentence": "The bus ___ (has left) the station.",
+            "missingWord": "don commot"
           },
           {
             "id": "p-u2-l2-q12",
@@ -1455,7 +1571,9 @@ export const pidginAllUnits = [
               "go finish"
             ],
             "correctAnswer": "don finish kpata-kpata",
-            "explanation": "'Don finish kpata-kpata' combines completive 'don' with the totalizing ideophone 'kpata-kpata'."
+            "explanation": "'Don finish kpata-kpata' combines completive 'don' with the totalizing ideophone 'kpata-kpata'.",
+            "sentence": "My money ___ (has completely finished).",
+            "missingWord": "don finish kpata-kpata"
           },
           {
             "id": "p-u2-l2-q15",
@@ -1509,18 +1627,26 @@ export const pidginAllUnits = [
             "prompt": "Match each sentence with its aspectual status:",
             "pairs": [
               {
+                "native": "Imperfective / Ongoing now",
+                "english": "I dey sleep",
                 "left": "I dey sleep",
                 "right": "Imperfective / Ongoing now"
               },
               {
+                "native": "Perfective / Completed",
+                "english": "I don wake",
                 "left": "I don wake",
                 "right": "Perfective / Completed"
               },
               {
+                "native": "Negative completive / Not yet",
+                "english": "I never wake",
                 "left": "I never wake",
                 "right": "Negative completive / Not yet"
               },
               {
+                "native": "Future / Anticipated",
+                "english": "I go sleep",
                 "left": "I go sleep",
                 "right": "Future / Anticipated"
               }
@@ -1533,18 +1659,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin phrase to its English translation:",
             "pairs": [
               {
+                "native": "Everything is prepared and ready",
+                "english": "E don set",
                 "left": "E don set",
                 "right": "Everything is prepared and ready"
               },
               {
+                "native": "The secret has leaked / trouble has started",
+                "english": "E don burst",
                 "left": "E don burst",
                 "right": "The secret has leaked / trouble has started"
               },
               {
+                "native": "It is enough",
+                "english": "E don do",
                 "left": "E don do",
                 "right": "It is enough"
               },
               {
+                "native": "It is not yet ready",
+                "english": "E never ready",
                 "left": "E never ready",
                 "right": "It is not yet ready"
               }
@@ -1563,7 +1697,8 @@ export const pidginAllUnits = [
               "Turn off the computer screen"
             ],
             "correctAnswer": "Look at the new items that have been added to the website",
-            "explanation": "JW.org Pidgin announcement: 'Check videos, music, things wey we don write, and news wey we don add.'"
+            "explanation": "JW.org Pidgin announcement: 'Check videos, music, things wey we don write, and news wey we don add.'",
+            "phrase": "Check the new things wey we don add for the website."
           },
           {
             "id": "p-u2-l2-q20",
@@ -1577,7 +1712,8 @@ export const pidginAllUnits = [
               "Do you know how to bake bread?"
             ],
             "correctAnswer": "Have you eaten lunch or have you not yet eaten?",
-            "explanation": "'You don chop... abi you never chop?' contrasts 'don' (completed) with 'never' (not yet)."
+            "explanation": "'You don chop... abi you never chop?' contrasts 'don' (completed) with 'never' (not yet).",
+            "phrase": "You don chop afternoon food abi you never chop?"
           }
         ]
       }
@@ -1650,7 +1786,9 @@ export const pidginAllUnits = [
               "many"
             ],
             "correctAnswer": "dem",
-            "explanation": "'Teacher dem' = the teachers."
+            "explanation": "'Teacher dem' = the teachers.",
+            "sentence": "Call all the teacher ___ (plural marker) make they come.",
+            "missingWord": "dem"
           },
           {
             "id": "p-u3-l1-q5",
@@ -1663,7 +1801,9 @@ export const pidginAllUnits = [
               "plenty"
             ],
             "correctAnswer": "different-different",
-            "explanation": "JW.org standard text: 'We dey for different-different country, we de talk different-different language'."
+            "explanation": "JW.org standard text: 'We dey for different-different country, we de talk different-different language'.",
+            "sentence": "We dey for ___ (different kinds of) country.",
+            "missingWord": "different-different"
           },
           {
             "id": "p-u3-l1-q6",
@@ -1702,7 +1842,9 @@ export const pidginAllUnits = [
               "all"
             ],
             "correctAnswer": "dem",
-            "explanation": "'Student dem' indicates the group of students."
+            "explanation": "'Student dem' indicates the group of students.",
+            "sentence": "The student ___ (plural) don pass their exam.",
+            "missingWord": "dem"
           },
           {
             "id": "p-u3-l1-q9",
@@ -1741,7 +1883,9 @@ export const pidginAllUnits = [
               "freshest"
             ],
             "correctAnswer": "fresh-fresh",
-            "explanation": "'Fresh-fresh orange' emphasizes freshness across the items."
+            "explanation": "'Fresh-fresh orange' emphasizes freshness across the items.",
+            "sentence": "Buy me two ___ (fresh) orange for road.",
+            "missingWord": "fresh-fresh"
           },
           {
             "id": "p-u3-l1-q12",
@@ -1780,7 +1924,9 @@ export const pidginAllUnits = [
               "group"
             ],
             "correctAnswer": "dem",
-            "explanation": "'Woman dem' is the plural form for women."
+            "explanation": "'Woman dem' is the plural form for women.",
+            "sentence": "The woman ___ (plural) dey cook for party.",
+            "missingWord": "dem"
           },
           {
             "id": "p-u3-l1-q15",
@@ -1836,18 +1982,26 @@ export const pidginAllUnits = [
             "prompt": "Match the singular Pidgin noun to its plural post-nominal form:",
             "pairs": [
               {
+                "native": "Pikin dem (children)",
+                "english": "Pikin (child)",
                 "left": "Pikin (child)",
                 "right": "Pikin dem (children)"
               },
               {
+                "native": "Motor dem (cars)",
+                "english": "Motor (car)",
                 "left": "Motor (car)",
                 "right": "Motor dem (cars)"
               },
               {
+                "native": "Book dem (books)",
+                "english": "Book (book)",
                 "left": "Book (book)",
                 "right": "Book dem (books)"
               },
               {
+                "native": "Friend dem (friends)",
+                "english": "Friend (friend)",
                 "left": "Friend (friend)",
                 "right": "Friend dem (friends)"
               }
@@ -1860,18 +2014,26 @@ export const pidginAllUnits = [
             "prompt": "Match the reduplicated Pidgin term with its communicative nuance:",
             "pairs": [
               {
+                "native": "Thoroughly / deeply",
+                "english": "Well-well",
                 "left": "Well-well",
                 "right": "Thoroughly / deeply"
               },
               {
+                "native": "Urgent / rapid speed",
+                "english": "Quick-quick",
                 "left": "Quick-quick",
                 "right": "Urgent / rapid speed"
               },
               {
+                "native": "Gradually / gently",
+                "english": "Small-small",
                 "left": "Small-small",
                 "right": "Gradually / gently"
               },
               {
+                "native": "Assorted variety",
+                "english": "Different-different",
                 "left": "Different-different",
                 "right": "Assorted variety"
               }
@@ -1890,7 +2052,8 @@ export const pidginAllUnits = [
               "The hall is completely empty"
             ],
             "correctAnswer": "All the elders have entered the hall",
-            "explanation": "'Elder dem' = the elders; 'don enter' = have entered."
+            "explanation": "'Elder dem' = the elders; 'don enter' = have entered.",
+            "phrase": "All the elder dem don enter hall."
           },
           {
             "id": "p-u3-l1-q20",
@@ -1904,7 +2067,8 @@ export const pidginAllUnits = [
               "Only one plastic bottle"
             ],
             "correctAnswer": "The sparkling clean cups",
-            "explanation": "'Clean-clean cup dem' = the clean cups (plural & intensive)."
+            "explanation": "'Clean-clean cup dem' = the clean cups (plural & intensive).",
+            "phrase": "Bring those clean-clean cup dem come."
           }
         ]
       },
@@ -1964,7 +2128,9 @@ export const pidginAllUnits = [
               "carry"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org Pidgin: 'we still get different-different book and you fit use-am for study'."
+            "explanation": "JW.org Pidgin: 'we still get different-different book and you fit use-am for study'.",
+            "sentence": "We still ___ (have) different-different book for study.",
+            "missingWord": "get"
           },
           {
             "id": "p-u3-l2-q5",
@@ -1977,7 +2143,9 @@ export const pidginAllUnits = [
               "dem-own"
             ],
             "correctAnswer": "im",
-            "explanation": "'Na for im' = It belongs to him/her."
+            "explanation": "'Na for im' = It belongs to him/her.",
+            "sentence": "Dat house na for ___ (him/her).",
+            "missingWord": "im"
           },
           {
             "id": "p-u3-l2-q6",
@@ -2016,7 +2184,9 @@ export const pidginAllUnits = [
               "which"
             ],
             "correctAnswer": "who",
-            "explanation": "'Na who get...' asks 'Who owns...'."
+            "explanation": "'Na who get...' asks 'Who owns...'.",
+            "sentence": "Na ___ (who) get this motor wey park here?",
+            "missingWord": "who"
           },
           {
             "id": "p-u3-l2-q9",
@@ -2055,7 +2225,9 @@ export const pidginAllUnits = [
               "am own"
             ],
             "correctAnswer": "im own",
-            "explanation": "'Im own' refers to an individual's personal possession."
+            "explanation": "'Im own' refers to an individual's personal possession.",
+            "sentence": "Every person get ___ (their own) talent.",
+            "missingWord": "im own"
           },
           {
             "id": "p-u3-l2-q12",
@@ -2094,7 +2266,9 @@ export const pidginAllUnits = [
               "sabi"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org Pidgin: 'Check the different parts wey the New World Translation get'."
+            "explanation": "JW.org Pidgin: 'Check the different parts wey the New World Translation get'.",
+            "sentence": "Check the different parts wey the Bible ___ (has).",
+            "missingWord": "get"
           },
           {
             "id": "p-u3-l2-q15",
@@ -2150,18 +2324,26 @@ export const pidginAllUnits = [
             "prompt": "Match the possessive construction with its meaning:",
             "pairs": [
               {
+                "native": "It is mine",
+                "english": "Na my own",
                 "left": "Na my own",
                 "right": "It is mine"
               },
               {
+                "native": "It is yours",
+                "english": "Na your own",
                 "left": "Na your own",
                 "right": "It is yours"
               },
               {
+                "native": "It is his / hers",
+                "english": "Na im own",
                 "left": "Na im own",
                 "right": "It is his / hers"
               },
               {
+                "native": "It is ours",
+                "english": "Na our own",
                 "left": "Na our own",
                 "right": "It is ours"
               }
@@ -2174,18 +2356,26 @@ export const pidginAllUnits = [
             "prompt": "Match the 'get' idiom to its English translation:",
             "pairs": [
               {
+                "native": "Be wise and prudent",
+                "english": "Get sense",
                 "left": "Get sense",
                 "right": "Be wise and prudent"
               },
               {
+                "native": "Be persuasive / talkative",
+                "english": "Get mouth",
                 "left": "Get mouth",
                 "right": "Be persuasive / talkative"
               },
               {
+                "native": "Be lucky / fortunate",
+                "english": "Get head",
                 "left": "Get head",
                 "right": "Be lucky / fortunate"
               },
               {
+                "native": "Have prestige / high status",
+                "english": "Get level",
                 "left": "Get level",
                 "right": "Have prestige / high status"
               }
@@ -2204,7 +2394,8 @@ export const pidginAllUnits = [
               "Nothing at all"
             ],
             "correctAnswer": "The Bible and different books",
-            "explanation": "JW.org statement: 'we de get Bible, we still get different-different book'."
+            "explanation": "JW.org statement: 'we de get Bible, we still get different-different book'.",
+            "phrase": "For this website, we get Bible and we still get different books."
           },
           {
             "id": "p-u3-l2-q20",
@@ -2218,7 +2409,8 @@ export const pidginAllUnits = [
               "It belongs to the village chief"
             ],
             "correctAnswer": "It belongs to the speaker's brother",
-            "explanation": "'Na my brother own' = It is my brother's property."
+            "explanation": "'Na my brother own' = It is my brother's property.",
+            "phrase": "That big motor na my brother own."
           }
         ]
       }
@@ -2291,7 +2483,9 @@ export const pidginAllUnits = [
               "Fling"
             ],
             "correctAnswer": "Take",
-            "explanation": "'Take [item] come' introduces the object in a directional SVC."
+            "explanation": "'Take [item] come' introduces the object in a directional SVC.",
+            "sentence": "___ (Take) the water come make I drink.",
+            "missingWord": "Take"
           },
           {
             "id": "p-u4-l1-q5",
@@ -2304,7 +2498,9 @@ export const pidginAllUnits = [
               "reach"
             ],
             "correctAnswer": "enter",
-            "explanation": "'Run enter' chains the manner of motion ('run') with entry ('enter')."
+            "explanation": "'Run enter' chains the manner of motion ('run') with entry ('enter').",
+            "sentence": "The boy run ___ (enter) inside the room.",
+            "missingWord": "enter"
           },
           {
             "id": "p-u4-l1-q6",
@@ -2343,7 +2539,9 @@ export const pidginAllUnits = [
               "reach"
             ],
             "correctAnswer": "go",
-            "explanation": "'Pack [items] go [place]' combines collecting with directional movement."
+            "explanation": "'Pack [items] go [place]' combines collecting with directional movement.",
+            "sentence": "Pack all these plate ___ (go) kitchen.",
+            "missingWord": "go"
           },
           {
             "id": "p-u4-l1-q9",
@@ -2382,7 +2580,9 @@ export const pidginAllUnits = [
               "at"
             ],
             "correctAnswer": "come",
-            "explanation": "'Carry [object] come' indicates transporting something toward the speaker."
+            "explanation": "'Carry [object] come' indicates transporting something toward the speaker.",
+            "sentence": "Carry the heavy load ___ (come) house.",
+            "missingWord": "come"
           },
           {
             "id": "p-u4-l1-q12",
@@ -2421,7 +2621,9 @@ export const pidginAllUnits = [
               "carry do"
             ],
             "correctAnswer": "take make",
-            "explanation": "'Take make' is the standard instrumental-causative SVC in West African Pidgin."
+            "explanation": "'Take make' is the standard instrumental-causative SVC in West African Pidgin.",
+            "sentence": "Na your word ___ (caused) me happy.",
+            "missingWord": "take make"
           },
           {
             "id": "p-u4-l1-q15",
@@ -2471,18 +2673,26 @@ export const pidginAllUnits = [
             "prompt": "Match the serial verb construction with its English meaning:",
             "pairs": [
               {
+                "native": "Bring it here",
+                "english": "Take am come",
                 "left": "Take am come",
                 "right": "Bring it here"
               },
               {
+                "native": "Take it away",
+                "english": "Carry am go",
                 "left": "Carry am go",
                 "right": "Take it away"
               },
               {
+                "native": "Dash inside",
+                "english": "Run enter",
                 "left": "Run enter",
                 "right": "Dash inside"
               },
               {
+                "native": "Leap across",
+                "english": "Jump cross",
                 "left": "Jump cross",
                 "right": "Leap across"
               }
@@ -2495,18 +2705,26 @@ export const pidginAllUnits = [
             "prompt": "Match the SVC sentence to its communicative goal:",
             "pairs": [
               {
+                "native": "Hand me the reading book",
+                "english": "Take book come give me",
                 "left": "Take book come give me",
                 "right": "Hand me the reading book"
               },
               {
+                "native": "Dispose of the trash",
+                "english": "Carry dirt throway",
                 "left": "Carry dirt throway",
                 "right": "Dispose of the trash"
               },
               {
+                "native": "Ascend to the ceiling",
+                "english": "Climb ladder reach roof",
                 "left": "Climb ladder reach roof",
                 "right": "Ascend to the ceiling"
               },
               {
+                "native": "Travel by vehicle to trade",
+                "english": "Drive motor go market",
                 "left": "Drive motor go market",
                 "right": "Travel by vehicle to trade"
               }
@@ -2525,7 +2743,8 @@ export const pidginAllUnits = [
               "Sell the cup at the market"
             ],
             "correctAnswer": "Bring that cup of water to your grandmother",
-            "explanation": "'Take... come give...' instructs transferring the item to grandmother."
+            "explanation": "'Take... come give...' instructs transferring the item to grandmother.",
+            "phrase": "Take that cup of water come give your grandmama."
           },
           {
             "id": "p-u4-l1-q20",
@@ -2539,7 +2758,8 @@ export const pidginAllUnits = [
               "Drove away in a private car"
             ],
             "correctAnswer": "Ran out, leaped, and boarded a bus",
-            "explanation": "Chained motion SVC: 'run commot' (ran out) + 'jump enter bus' (leaped into a bus)."
+            "explanation": "Chained motion SVC: 'run commot' (ran out) + 'jump enter bus' (leaped into a bus).",
+            "phrase": "The thief run commot jump enter bus."
           }
         ]
       },
@@ -2599,7 +2819,9 @@ export const pidginAllUnits = [
               "come"
             ],
             "correctAnswer": "clean",
-            "explanation": "'Wash [item] clean' expresses the resultant spotless state."
+            "explanation": "'Wash [item] clean' expresses the resultant spotless state.",
+            "sentence": "Wash the plates ___ (clean) well-well.",
+            "missingWord": "clean"
           },
           {
             "id": "p-u4-l2-q5",
@@ -2612,7 +2834,9 @@ export const pidginAllUnits = [
               "to"
             ],
             "correctAnswer": "give",
-            "explanation": "Benefactive 'give' introduces the recipients: 'Sing song give our visitors'."
+            "explanation": "Benefactive 'give' introduces the recipients: 'Sing song give our visitors'.",
+            "sentence": "Sing one sweet song ___ (for) our visitors.",
+            "missingWord": "give"
           },
           {
             "id": "p-u4-l2-q6",
@@ -2651,7 +2875,9 @@ export const pidginAllUnits = [
               "send"
             ],
             "correctAnswer": "give",
-            "explanation": "'Explain give me' = Explain to me / for my benefit."
+            "explanation": "'Explain give me' = Explain to me / for my benefit.",
+            "sentence": "Explain this lesson ___ (to/for) me.",
+            "missingWord": "give"
           },
           {
             "id": "p-u4-l2-q9",
@@ -2690,7 +2916,9 @@ export const pidginAllUnits = [
               "blessed-with"
             ],
             "correctAnswer": "give",
-            "explanation": "'Na God give us...' is the standard attribution of life."
+            "explanation": "'Na God give us...' is the standard attribution of life.",
+            "sentence": "Na God ___ (gave) us life and health.",
+            "missingWord": "give"
           },
           {
             "id": "p-u4-l2-q12",
@@ -2729,7 +2957,9 @@ export const pidginAllUnits = [
               "sweep"
             ],
             "correctAnswer": "clean",
-            "explanation": "Resultative state: 'Sweep... clean'."
+            "explanation": "Resultative state: 'Sweep... clean'.",
+            "sentence": "Sweep the whole parlor ___ (clean).",
+            "missingWord": "clean"
           },
           {
             "id": "p-u4-l2-q15",
@@ -2781,18 +3011,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin benefactive / resultative construction to its meaning:",
             "pairs": [
               {
+                "native": "Prepare a meal for him/her",
+                "english": "Cook give am",
                 "left": "Cook give am",
                 "right": "Prepare a meal for him/her"
               },
               {
+                "native": "Cleanse until spotless",
+                "english": "Wash clean",
                 "left": "Wash clean",
                 "right": "Cleanse until spotless"
               },
               {
+                "native": "Speak so I can understand",
+                "english": "Talk make I hear",
                 "left": "Talk make I hear",
                 "right": "Speak so I can understand"
               },
               {
+                "native": "Fasten securely",
+                "english": "Tie strong",
                 "left": "Tie strong",
                 "right": "Fasten securely"
               }
@@ -2805,18 +3043,26 @@ export const pidginAllUnits = [
             "prompt": "Match the idiom to its contextual meaning:",
             "pairs": [
               {
+                "native": "I am extremely famished",
+                "english": "Hunger wan kill me",
                 "left": "Hunger wan kill me",
                 "right": "I am extremely famished"
               },
               {
+                "native": "I am exhausted from labor",
+                "english": "Work wan break my back",
                 "left": "Work wan break my back",
                 "right": "I am exhausted from labor"
               },
               {
+                "native": "Assist with their burden",
+                "english": "Help am carry load",
                 "left": "Help am carry load",
                 "right": "Assist with their burden"
               },
               {
+                "native": "Disclose facts honestly",
+                "english": "Tell am the truth",
                 "left": "Tell am the truth",
                 "right": "Disclose facts honestly"
               }
@@ -2835,7 +3081,8 @@ export const pidginAllUnits = [
               "Leave the heavy bag in the street"
             ],
             "correctAnswer": "Help your sister transport the heavy bag to your mother",
-            "explanation": "Multi-verb sequence: 'Help... carry... give mama'."
+            "explanation": "Multi-verb sequence: 'Help... carry... give mama'.",
+            "phrase": "Help your sister carry that heavy bag give your mama."
           },
           {
             "id": "p-u4-l2-q20",
@@ -2849,7 +3096,8 @@ export const pidginAllUnits = [
               "The story was too difficult to understand"
             ],
             "correctAnswer": "The enjoyable story caused all of us to smile",
-            "explanation": "Causative SVC: 'make all of us de smile'."
+            "explanation": "Causative SVC: 'make all of us de smile'.",
+            "phrase": "The sweet story make all of us de smile."
           }
         ]
       }
@@ -2922,7 +3170,9 @@ export const pidginAllUnits = [
               "never go"
             ],
             "correctAnswer": "go go",
-            "explanation": "'We go go' combines auxiliary future 'go' with the lexical verb 'go' (we will go)."
+            "explanation": "'We go go' combines auxiliary future 'go' with the lexical verb 'go' (we will go).",
+            "sentence": "Tomorrow morning, we ___ (will go) to market.",
+            "missingWord": "go go"
           },
           {
             "id": "p-u5-l1-q5",
@@ -2935,7 +3185,9 @@ export const pidginAllUnits = [
               "for build"
             ],
             "correctAnswer": "go don build",
-            "explanation": "'Go don build' = will have built."
+            "explanation": "'Go don build' = will have built.",
+            "sentence": "By next year, I ___ (will have built) my house.",
+            "missingWord": "go don build"
           },
           {
             "id": "p-u5-l1-q6",
@@ -2974,7 +3226,9 @@ export const pidginAllUnits = [
               "never"
             ],
             "correctAnswer": "go",
-            "explanation": "'You go pass' expresses future consequence."
+            "explanation": "'You go pass' expresses future consequence.",
+            "sentence": "If you study hard, you ___ (will) pass your exam.",
+            "missingWord": "go"
           },
           {
             "id": "p-u5-l1-q9",
@@ -3013,7 +3267,9 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "go",
-            "explanation": "'God go bless...' expresses future benediction."
+            "explanation": "'God go bless...' expresses future benediction.",
+            "sentence": "God ___ (will) bless the work of your hands.",
+            "missingWord": "go"
           },
           {
             "id": "p-u5-l1-q12",
@@ -3052,7 +3308,9 @@ export const pidginAllUnits = [
               "never stop"
             ],
             "correctAnswer": "go don stop",
-            "explanation": "'Go don stop' = will have ceased."
+            "explanation": "'Go don stop' = will have ceased.",
+            "sentence": "By sunset, the rain ___ (will have stopped).",
+            "missingWord": "go don stop"
           },
           {
             "id": "p-u5-l1-q15",
@@ -3110,18 +3368,26 @@ export const pidginAllUnits = [
             "prompt": "Match the auxiliary combination with its temporal interpretation:",
             "pairs": [
               {
+                "native": "Simple Future (will eat)",
+                "english": "Go chop",
                 "left": "Go chop",
                 "right": "Simple Future (will eat)"
               },
               {
+                "native": "Future Continuous (will be eating)",
+                "english": "Go dey chop",
                 "left": "Go dey chop",
                 "right": "Future Continuous (will be eating)"
               },
               {
+                "native": "Future Perfect (will have eaten)",
+                "english": "Go don chop",
                 "left": "Go don chop",
                 "right": "Future Perfect (will have eaten)"
               },
               {
+                "native": "Future Negative (will not eat)",
+                "english": "No go chop",
                 "left": "No go chop",
                 "right": "Future Negative (will not eat)"
               }
@@ -3134,18 +3400,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin phrase to its English translation:",
             "pairs": [
               {
+                "native": "Things will improve",
+                "english": "E go better",
                 "left": "E go better",
                 "right": "Things will improve"
               },
               {
+                "native": "We shall meet another time",
+                "english": "We go meet again",
                 "left": "We go meet again",
                 "right": "We shall meet another time"
               },
               {
+                "native": "It will rain",
+                "english": "Rain go fall",
                 "left": "Rain go fall",
                 "right": "It will rain"
               },
               {
+                "native": "I will telephone you afterwards",
+                "english": "I go call you later",
                 "left": "I go call you later",
                 "right": "I will telephone you afterwards"
               }
@@ -3164,7 +3438,8 @@ export const pidginAllUnits = [
               "The bus is broken"
             ],
             "correctAnswer": "All the luggage will have been packed",
-            "explanation": "'We go don pack all our luggage' marks completion before the bus arrives."
+            "explanation": "'We go don pack all our luggage' marks completion before the bus arrives.",
+            "phrase": "By the time the bus go arrive, we go don pack all our luggage."
           },
           {
             "id": "p-u5-l1-q20",
@@ -3178,7 +3453,8 @@ export const pidginAllUnits = [
               "News broadcasts are turned off"
             ],
             "correctAnswer": "Do not fear, tomorrow will bring better tidings",
-            "explanation": "'Tomorrow go bring better news' asserts confident future hope."
+            "explanation": "'Tomorrow go bring better news' asserts confident future hope.",
+            "phrase": "No fear, tomorrow go bring better news."
           }
         ]
       },
@@ -3238,7 +3514,9 @@ export const pidginAllUnits = [
               "never"
             ],
             "correctAnswer": "bin",
-            "explanation": "'I bin see' marks past occurrence."
+            "explanation": "'I bin see' marks past occurrence.",
+            "sentence": "I ___ (had) see that movie last year.",
+            "missingWord": "bin"
           },
           {
             "id": "p-u5-l2-q5",
@@ -3251,7 +3529,9 @@ export const pidginAllUnits = [
               "never stay"
             ],
             "correctAnswer": "bin dey stay",
-            "explanation": "'Bin dey stay' marks a past continuous habitual state."
+            "explanation": "'Bin dey stay' marks a past continuous habitual state.",
+            "sentence": "We ___ (were living) for Warri before we move go Abuja.",
+            "missingWord": "bin dey stay"
           },
           {
             "id": "p-u5-l2-q6",
@@ -3290,7 +3570,9 @@ export const pidginAllUnits = [
               "never"
             ],
             "correctAnswer": "bin dey",
-            "explanation": "'Where you bin dey?' = Where were you located?"
+            "explanation": "'Where you bin dey?' = Where were you located?",
+            "sentence": "Where you ___ (were) when I call you?",
+            "missingWord": "bin dey"
           },
           {
             "id": "p-u5-l2-q9",
@@ -3329,7 +3611,9 @@ export const pidginAllUnits = [
               "go not"
             ],
             "correctAnswer": "no bin",
-            "explanation": "'No bin know' = did not know."
+            "explanation": "'No bin know' = did not know.",
+            "sentence": "She ___ (did not) know wetin happen.",
+            "missingWord": "no bin"
           },
           {
             "id": "p-u5-l2-q12",
@@ -3368,7 +3652,9 @@ export const pidginAllUnits = [
               "dey gather"
             ],
             "correctAnswer": "bin don gather",
-            "explanation": "Past perfect: 'bin don gather' = had gathered."
+            "explanation": "Past perfect: 'bin don gather' = had gathered.",
+            "sentence": "The elders ___ (had gathered) before the rain fall.",
+            "missingWord": "bin don gather"
           },
           {
             "id": "p-u5-l2-q15",
@@ -3422,18 +3708,26 @@ export const pidginAllUnits = [
             "prompt": "Match the temporal particle structure to its linguistic label:",
             "pairs": [
               {
+                "native": "Remote Past (came / had come)",
+                "english": "Bin come",
                 "left": "Bin come",
                 "right": "Remote Past (came / had come)"
               },
               {
+                "native": "Past Continuous (was coming)",
+                "english": "Bin dey come",
                 "left": "Bin dey come",
                 "right": "Past Continuous (was coming)"
               },
               {
+                "native": "Past Perfect (had arrived)",
+                "english": "Bin don come",
                 "left": "Bin don come",
                 "right": "Past Perfect (had arrived)"
               },
               {
+                "native": "Negative Past (did not come)",
+                "english": "No bin come",
                 "left": "No bin come",
                 "right": "Negative Past (did not come)"
               }
@@ -3446,18 +3740,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin phrase with its English equivalent:",
             "pairs": [
               {
+                "native": "I had told you earlier",
+                "english": "I bin tell you",
                 "left": "I bin tell you",
                 "right": "I had told you earlier"
               },
               {
+                "native": "Where were you all this while?",
+                "english": "Where you bin dey?",
                 "left": "Where you bin dey?",
                 "right": "Where were you all this while?"
               },
               {
+                "native": "We were working previously",
+                "english": "We bin dey work",
                 "left": "We bin dey work",
                 "right": "We were working previously"
               },
               {
+                "native": "He did not know then",
+                "english": "Im no bin sabi",
                 "left": "Im no bin sabi",
                 "right": "He did not know then"
               }
@@ -3476,7 +3778,8 @@ export const pidginAllUnits = [
               "The speaker never knew their father"
             ],
             "correctAnswer": "When we were young, our father used to take us to the farm",
-            "explanation": "'When we bin dey young...' describes a cherished childhood routine."
+            "explanation": "'When we bin dey young...' describes a cherished childhood routine.",
+            "phrase": "When we bin dey young, our papa bin dey carry us go farm."
           },
           {
             "id": "p-u5-l2-q20",
@@ -3490,7 +3793,8 @@ export const pidginAllUnits = [
               "The trip was short and easy"
             ],
             "correctAnswer": "I did not know the road would be this poor",
-            "explanation": "'I no bin know say...' = I didn't know that..."
+            "explanation": "'I no bin know say...' = I didn't know that...",
+            "phrase": "I no bin know say the road go bad like this."
           }
         ]
       }
@@ -3563,7 +3867,9 @@ export const pidginAllUnits = [
               "more"
             ],
             "correctAnswer": "pass",
-            "explanation": "Traditional Nigerian maxim: 'Sense big pass money' (Wisdom surpasses wealth)."
+            "explanation": "Traditional Nigerian maxim: 'Sense big pass money' (Wisdom surpasses wealth).",
+            "sentence": "Sense big ___ (more than) money.",
+            "missingWord": "pass"
           },
           {
             "id": "p-u6-l1-q5",
@@ -3576,7 +3882,9 @@ export const pidginAllUnits = [
               "over"
             ],
             "correctAnswer": "pass",
-            "explanation": "'Sweet pass' expresses comparative taste."
+            "explanation": "'Sweet pass' expresses comparative taste.",
+            "sentence": "This soup sweet ___ (more than) the one you cook yesterday.",
+            "missingWord": "pass"
           },
           {
             "id": "p-u6-l1-q6",
@@ -3615,7 +3923,9 @@ export const pidginAllUnits = [
               "for"
             ],
             "correctAnswer": "reach",
-            "explanation": "'No strong reach' denotes negative equative comparison."
+            "explanation": "'No strong reach' denotes negative equative comparison.",
+            "sentence": "He no strong ___ (as much as) his elder brother.",
+            "missingWord": "reach"
           },
           {
             "id": "p-u6-l1-q9",
@@ -3654,7 +3964,9 @@ export const pidginAllUnits = [
               "above"
             ],
             "correctAnswer": "pass",
-            "explanation": "'Heavy pass' expresses comparative weight or severity."
+            "explanation": "'Heavy pass' expresses comparative weight or severity.",
+            "sentence": "The problem heavy ___ (more than) wetin we think.",
+            "missingWord": "pass"
           },
           {
             "id": "p-u6-l1-q12",
@@ -3693,7 +4005,9 @@ export const pidginAllUnits = [
               "beat"
             ],
             "correctAnswer": "pass",
-            "explanation": "'Sweet pass all' = sweetest of all."
+            "explanation": "'Sweet pass all' = sweetest of all.",
+            "sentence": "That music sweet ___ (more than) all the others.",
+            "missingWord": "pass"
           },
           {
             "id": "p-u6-l1-q15",
@@ -3747,18 +4061,26 @@ export const pidginAllUnits = [
             "prompt": "Match each comparison structure to its English equivalent:",
             "pairs": [
               {
+                "native": "Bigger than I am",
+                "english": "Big pass me",
                 "left": "Big pass me",
                 "right": "Bigger than I am"
               },
               {
+                "native": "As tall as I am",
+                "english": "Tall reach me",
                 "left": "Tall reach me",
                 "right": "As tall as I am"
               },
               {
+                "native": "The most beautiful of all",
+                "english": "Fine pass all",
                 "left": "Fine pass all",
                 "right": "The most beautiful of all"
               },
               {
+                "native": "More expensive than before",
+                "english": "Cost pass before",
                 "left": "Cost pass before",
                 "right": "More expensive than before"
               }
@@ -3771,18 +4093,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin idiom to its comparative meaning:",
             "pairs": [
               {
+                "native": "Beyond ordinary expectation",
+                "english": "Pass mark",
                 "left": "Pass mark",
                 "right": "Beyond ordinary expectation"
               },
               {
+                "native": "God is greater than any crisis",
+                "english": "No condition pass God",
                 "left": "No condition pass God",
                 "right": "God is greater than any crisis"
               },
               {
+                "native": "An improvement over the past",
+                "english": "Better pass yesterday",
                 "left": "Better pass yesterday",
                 "right": "An improvement over the past"
               },
               {
+                "native": "Exceedingly delightful",
+                "english": "Sweet pass honey",
                 "left": "Sweet pass honey",
                 "right": "Exceedingly delightful"
               }
@@ -3801,7 +4131,8 @@ export const pidginAllUnits = [
               "Watching television dramas"
             ],
             "correctAnswer": "Helping people learn the Bible",
-            "explanation": "JW.org text: 'The thing wey we like pass na to de help people learn wetin dey for Bible'."
+            "explanation": "JW.org text: 'The thing wey we like pass na to de help people learn wetin dey for Bible'.",
+            "phrase": "The thing wey we like pass na to de help people learn Bible."
           },
           {
             "id": "p-u6-l1-q20",
@@ -3815,7 +4146,8 @@ export const pidginAllUnits = [
               "The speaker prefers the old car"
             ],
             "correctAnswer": "The new car is more attractive and superior to the old one",
-            "explanation": "'Fine pass' marks positive comparative evaluation."
+            "explanation": "'Fine pass' marks positive comparative evaluation.",
+            "phrase": "This your new motor fine pass the old one!"
           }
         ]
       },
@@ -3875,7 +4207,9 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "JW.org site description: 'You fit still learn about wetin we believe and about the organization'."
+            "explanation": "JW.org site description: 'You fit still learn about wetin we believe and about the organization'.",
+            "sentence": "You ___ (can) still learn about wetin we believe.",
+            "missingWord": "fit"
           },
           {
             "id": "p-u6-l2-q5",
@@ -3888,7 +4222,9 @@ export const pidginAllUnits = [
               "no"
             ],
             "correctAnswer": "gats",
-            "explanation": "'Gats' expresses urgent necessity to beat traffic."
+            "explanation": "'Gats' expresses urgent necessity to beat traffic.",
+            "sentence": "We ___ (must) leave early before traffic start.",
+            "missingWord": "gats"
           },
           {
             "id": "p-u6-l2-q6",
@@ -3927,7 +4263,9 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "'Nobody fit deceive God' = No one can deceive God."
+            "explanation": "'Nobody fit deceive God' = No one can deceive God.",
+            "sentence": "Nobody ___ (can) deceive God.",
+            "missingWord": "fit"
           },
           {
             "id": "p-u6-l2-q9",
@@ -3966,7 +4304,9 @@ export const pidginAllUnits = [
               "go"
             ],
             "correctAnswer": "for",
-            "explanation": "'We for help...' expresses an unfulfilled moral obligation."
+            "explanation": "'We for help...' expresses an unfulfilled moral obligation.",
+            "sentence": "We ___ (should have) help that poor man.",
+            "missingWord": "for"
           },
           {
             "id": "p-u6-l2-q12",
@@ -4005,7 +4345,9 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "JW.org text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'."
+            "explanation": "JW.org text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
+            "sentence": "We de do everything wey we ___ (can) do to follow Jesus.",
+            "missingWord": "fit"
           },
           {
             "id": "p-u6-l2-q15",
@@ -4055,18 +4397,26 @@ export const pidginAllUnits = [
             "prompt": "Match the modal auxiliary to its semantic function:",
             "pairs": [
               {
+                "native": "Ability / possibility (can)",
+                "english": "Fit",
                 "left": "Fit",
                 "right": "Ability / possibility (can)"
               },
               {
+                "native": "Compelling necessity (must / have to)",
+                "english": "Gats",
                 "left": "Gats",
                 "right": "Compelling necessity (must / have to)"
               },
               {
+                "native": "Unfulfilled past obligation (should have)",
+                "english": "For",
                 "left": "For",
                 "right": "Unfulfilled past obligation (should have)"
               },
               {
+                "native": "Inability / prohibition (cannot)",
+                "english": "No fit",
                 "left": "No fit",
                 "right": "Inability / prohibition (cannot)"
               }
@@ -4079,18 +4429,26 @@ export const pidginAllUnits = [
             "prompt": "Match the modal phrase to its situational context:",
             "pairs": [
               {
+                "native": "Enduring economic hardship",
+                "english": "Man gats survive",
                 "left": "Man gats survive",
                 "right": "Enduring economic hardship"
               },
               {
+                "native": "Granting permission for a visit",
+                "english": "You fit come tomorrow",
                 "left": "You fit come tomorrow",
                 "right": "Granting permission for a visit"
               },
               {
+                "native": "Regret over a missed purchase",
+                "english": "I for buy am",
                 "left": "I for buy am",
                 "right": "Regret over a missed purchase"
               },
               {
+                "native": "Declaring a plan unfeasible",
+                "english": "E no fit work",
                 "left": "E no fit work",
                 "right": "Declaring a plan unfeasible"
               }
@@ -4109,7 +4467,8 @@ export const pidginAllUnits = [
               "Nobody is allowed to learn our beliefs"
             ],
             "correctAnswer": "You can learn about what we believe on our website",
-            "explanation": "JW.org text: 'You fit still learn about wetin we believe and about the organization'."
+            "explanation": "JW.org text: 'You fit still learn about wetin we believe and about the organization'.",
+            "phrase": "You fit still learn about wetin we believe for our website."
           },
           {
             "id": "p-u6-l2-q20",
@@ -4123,7 +4482,8 @@ export const pidginAllUnits = [
               "To go jogging in the park"
             ],
             "correctAnswer": "So that we do not miss our flight",
-            "explanation": "'We gats wake up early make we no miss...' expresses strict necessity."
+            "explanation": "'We gats wake up early make we no miss...' expresses strict necessity.",
+            "phrase": "We gats wake up early make we no miss flight."
           }
         ]
       }
@@ -4196,7 +4556,9 @@ export const pidginAllUnits = [
               "dat"
             ],
             "correctAnswer": "wey",
-            "explanation": "'Wey' connects the head noun 'man' to the relative clause."
+            "explanation": "'Wey' connects the head noun 'man' to the relative clause.",
+            "sentence": "The man ___ (who) help us yesterday don travel.",
+            "missingWord": "wey"
           },
           {
             "id": "p-u7-l1-q5",
@@ -4209,7 +4571,9 @@ export const pidginAllUnits = [
               "Dey"
             ],
             "correctAnswer": "Na",
-            "explanation": "Focus fronting: 'Na my mother cook...' gives honor and emphasis to the mother."
+            "explanation": "Focus fronting: 'Na my mother cook...' gives honor and emphasis to the mother.",
+            "sentence": "___ (It was) my mother cook this delicious food.",
+            "missingWord": "Na"
           },
           {
             "id": "p-u7-l1-q6",
@@ -4248,7 +4612,9 @@ export const pidginAllUnits = [
               "dat"
             ],
             "correctAnswer": "wey",
-            "explanation": "JW.org Pidgin: 'Find the place wey we de do our meeting for your area'."
+            "explanation": "JW.org Pidgin: 'Find the place wey we de do our meeting for your area'.",
+            "sentence": "Find the place ___ (where) we de do our meeting.",
+            "missingWord": "wey"
           },
           {
             "id": "p-u7-l1-q9",
@@ -4287,7 +4653,9 @@ export const pidginAllUnits = [
               "what"
             ],
             "correctAnswer": "wey",
-            "explanation": "'Money wey you give me' uses 'wey' for inanimate relative clause."
+            "explanation": "'Money wey you give me' uses 'wey' for inanimate relative clause.",
+            "sentence": "The money ___ (that) you give me don finish.",
+            "missingWord": "wey"
           },
           {
             "id": "p-u7-l1-q12",
@@ -4326,7 +4694,9 @@ export const pidginAllUnits = [
               "Dey"
             ],
             "correctAnswer": "Na",
-            "explanation": "Topic fronting: 'Na peace we want...' prioritizes peace over other desires."
+            "explanation": "Topic fronting: 'Na peace we want...' prioritizes peace over other desires.",
+            "sentence": "___ (It is) peace we want for our country.",
+            "missingWord": "Na"
           },
           {
             "id": "p-u7-l1-q15",
@@ -4384,18 +4754,26 @@ export const pidginAllUnits = [
             "prompt": "Match the relative phrase to its English translation:",
             "pairs": [
               {
+                "native": "Things that we wrote",
+                "english": "Things wey we write",
                 "left": "Things wey we write",
                 "right": "Things that we wrote"
               },
               {
+                "native": "A person who knows the way",
+                "english": "Man wey sabi road",
                 "left": "Man wey sabi road",
                 "right": "A person who knows the way"
               },
               {
+                "native": "Food that is delicious",
+                "english": "Food wey sweet",
                 "left": "Food wey sweet",
                 "right": "Food that is delicious"
               },
               {
+                "native": "The place where we assemble",
+                "english": "Place wey we dey meet",
                 "left": "Place wey we dey meet",
                 "right": "The place where we assemble"
               }
@@ -4408,18 +4786,26 @@ export const pidginAllUnits = [
             "prompt": "Match the focus 'Na' expression to its conversational role:",
             "pairs": [
               {
+                "native": "Emphatic agreement / That's right",
+                "english": "Na so!",
                 "left": "Na so!",
                 "right": "Emphatic agreement / That's right"
               },
               {
+                "native": "Confirming factual truth",
+                "english": "Na true",
                 "left": "Na true",
                 "right": "Confirming factual truth"
               },
               {
+                "native": "Self-identification / Claiming agency",
+                "english": "Na me",
                 "left": "Na me",
                 "right": "Self-identification / Claiming agency"
               },
               {
+                "native": "Interrogative focus: What is it?",
+                "english": "Na wetin?",
                 "left": "Na wetin?",
                 "right": "Interrogative focus: What is it?"
               }
@@ -4438,7 +4824,8 @@ export const pidginAllUnits = [
               "A comedy show at the stadium"
             ],
             "correctAnswer": "The video produced about Jesus' life",
-            "explanation": "'The video wey them do about Jesus life' describes the biographical video."
+            "explanation": "'The video wey them do about Jesus life' describes the biographical video.",
+            "phrase": "Check the video wey them do about Jesus life."
           },
           {
             "id": "p-u7-l1-q20",
@@ -4452,7 +4839,8 @@ export const pidginAllUnits = [
               "The matter does not need solving"
             ],
             "correctAnswer": "Only the king can solve the matter",
-            "explanation": "'Na only one person... and na the king' applies dual focus clefting."
+            "explanation": "'Na only one person... and na the king' applies dual focus clefting.",
+            "phrase": "Na only one person wey fit solve this matter, and na the king."
           }
         ]
       },
@@ -4512,7 +4900,9 @@ export const pidginAllUnits = [
               "Whether"
             ],
             "correctAnswer": "If to say",
-            "explanation": "'If to say' introduces the unrealized antecedent condition."
+            "explanation": "'If to say' introduces the unrealized antecedent condition.",
+            "sentence": "___ (Had it been) you arrive early, you for meet the food.",
+            "missingWord": "If to say"
           },
           {
             "id": "p-u7-l2-q5",
@@ -4525,7 +4915,9 @@ export const pidginAllUnits = [
               "never"
             ],
             "correctAnswer": "for",
-            "explanation": "Modal 'for' marks the counterfactual consequent outcome."
+            "explanation": "Modal 'for' marks the counterfactual consequent outcome.",
+            "sentence": "If no be your help, water ___ (would have) carry me go.",
+            "missingWord": "for"
           },
           {
             "id": "p-u7-l2-q6",
@@ -4564,7 +4956,9 @@ export const pidginAllUnits = [
               "never"
             ],
             "correctAnswer": "go",
-            "explanation": "In a real conditional clause, future 'go' completes the consequent."
+            "explanation": "In a real conditional clause, future 'go' completes the consequent.",
+            "sentence": "If you listen well, you ___ (will) understand the speech.",
+            "missingWord": "go"
           },
           {
             "id": "p-u7-l2-q9",
@@ -4603,7 +4997,9 @@ export const pidginAllUnits = [
               "bin dey"
             ],
             "correctAnswer": "for",
-            "explanation": "'I for buy' = I would have purchased."
+            "explanation": "'I for buy' = I would have purchased.",
+            "sentence": "If to say money dey, I ___ (would have) buy that house.",
+            "missingWord": "for"
           },
           {
             "id": "p-u7-l2-q12",
@@ -4642,7 +5038,9 @@ export const pidginAllUnits = [
               "don"
             ],
             "correctAnswer": "for",
-            "explanation": "'The sick man for die' = The patient would have perished."
+            "explanation": "'The sick man for die' = The patient would have perished.",
+            "sentence": "If no be say doctor quick treat am, the sick man ___ (would have) die.",
+            "missingWord": "for"
           },
           {
             "id": "p-u7-l2-q15",
@@ -4709,18 +5107,26 @@ export const pidginAllUnits = [
             "prompt": "Match the conditional marker with its syntactic category:",
             "pairs": [
               {
+                "native": "Counterfactual premise (Had it been)",
+                "english": "If to say",
                 "left": "If to say",
                 "right": "Counterfactual premise (Had it been)"
               },
               {
+                "native": "Negative exception (Were it not that)",
+                "english": "If no be say",
                 "left": "If no be say",
                 "right": "Negative exception (Were it not that)"
               },
               {
+                "native": "Unrealized outcome marker (would have)",
+                "english": "For",
                 "left": "For",
                 "right": "Unrealized outcome marker (would have)"
               },
               {
+                "native": "Concessive condition (regardless whether)",
+                "english": "Even if",
                 "left": "Even if",
                 "right": "Concessive condition (regardless whether)"
               }
@@ -4733,18 +5139,26 @@ export const pidginAllUnits = [
             "prompt": "Match each conditional statement with its true implication:",
             "pairs": [
               {
+                "native": "I did not know, so I did not come",
+                "english": "If to say I know, I for come",
                 "left": "If to say I know, I for come",
                 "right": "I did not know, so I did not come"
               },
               {
+                "native": "If you arrive in the future, we will prepare food",
+                "english": "If you come, we go cook",
                 "left": "If you come, we go cook",
                 "right": "If you arrive in the future, we will prepare food"
               },
               {
+                "native": "God saved me from certain death",
+                "english": "If no be God, I for don die",
                 "left": "If no be God, I for don die",
                 "right": "God saved me from certain death"
               },
               {
+                "native": "You failed to inform me in advance",
+                "english": "You for tell me before",
                 "left": "You for tell me before",
                 "right": "You failed to inform me in advance"
               }
@@ -4763,7 +5177,8 @@ export const pidginAllUnits = [
               "Refusing to make any financial investment"
             ],
             "correctAnswer": "Failing to heed warnings, which resulted in a major loss",
-            "explanation": "'If to say we listen to warning, this big loss for no happen' conveys deep regret over ignored counsel."
+            "explanation": "'If to say we listen to warning, this big loss for no happen' conveys deep regret over ignored counsel.",
+            "phrase": "If to say we listen to warning, this big loss for no happen."
           },
           {
             "id": "p-u7-l2-q20",
@@ -4777,7 +5192,8 @@ export const pidginAllUnits = [
               "Stopping all study and work"
             ],
             "correctAnswer": "Studying the good news in the Bible to improve one's life",
-            "explanation": "JW.org encouragement: 'If you want make your life better, study the good news wey dey inside Bible.'"
+            "explanation": "JW.org encouragement: 'If you want make your life better, study the good news wey dey inside Bible.'",
+            "phrase": "If you want make your life better, study the good news wey dey inside Bible."
           }
         ]
       }
@@ -4850,7 +5266,9 @@ export const pidginAllUnits = [
               "dry garri"
             ],
             "correctAnswer": "soft work",
-            "explanation": "'Soft work' denotes tasks executed with ease, grace, and minimal stress."
+            "explanation": "'Soft work' denotes tasks executed with ease, grace, and minimal stress.",
+            "sentence": "Bro, no worry at all, this task na ___ (effortless/easy task).",
+            "missingWord": "soft work"
           },
           {
             "id": "p-u8-l1-q5",
@@ -4863,7 +5281,9 @@ export const pidginAllUnits = [
               "bend your knee"
             ],
             "correctAnswer": "shine your eye",
-            "explanation": "'Shine your eye' warns against impending trickery."
+            "explanation": "'Shine your eye' warns against impending trickery.",
+            "sentence": "My guy, ___ (be vigilant/alert), these boys dey find who dem go trick.",
+            "missingWord": "shine your eye"
           },
           {
             "id": "p-u8-l1-q6",
@@ -4902,7 +5322,9 @@ export const pidginAllUnits = [
               "commot"
             ],
             "correctAnswer": "shakara",
-            "explanation": "'Shakara' means flamboyant pretension, feigned disinterest, or showing off."
+            "explanation": "'Shakara' means flamboyant pretension, feigned disinterest, or showing off.",
+            "sentence": "Why you dey ___ (boast/show off) like say you be king?",
+            "missingWord": "shakara"
           },
           {
             "id": "p-u8-l1-q9",
@@ -4941,7 +5363,9 @@ export const pidginAllUnits = [
               "kick my back"
             ],
             "correctAnswer": "fall my hand",
-            "explanation": "'No fall my hand' = do not disappoint me."
+            "explanation": "'No fall my hand' = do not disappoint me.",
+            "sentence": "Please no ___ (disappoint) me for this contract.",
+            "missingWord": "fall my hand"
           },
           {
             "id": "p-u8-l1-q12",
@@ -4980,7 +5404,9 @@ export const pidginAllUnits = [
               "run enter"
             ],
             "correctAnswer": "japa",
-            "explanation": "'Japa' is the preeminent term for emigrating abroad."
+            "explanation": "'Japa' is the preeminent term for emigrating abroad.",
+            "sentence": "We go celebrate because my brother don ___ (emigrated/relocated) abroad.",
+            "missingWord": "japa"
           },
           {
             "id": "p-u8-l1-q15",
@@ -5038,18 +5464,26 @@ export const pidginAllUnits = [
             "prompt": "Match the urban Pidgin slang with its English translation:",
             "pairs": [
               {
+                "native": "Disappoint / let down",
+                "english": "Fall hand",
                 "left": "Fall hand",
                 "right": "Disappoint / let down"
               },
               {
+                "native": "Be vigilant and alert",
+                "english": "Shine eye",
                 "left": "Shine eye",
                 "right": "Be vigilant and alert"
               },
               {
+                "native": "Energize / motivate",
+                "english": "Ginger",
                 "left": "Ginger",
                 "right": "Energize / motivate"
               },
               {
+                "native": "Emigrate / flee abroad",
+                "english": "Japa",
                 "left": "Japa",
                 "right": "Emigrate / flee abroad"
               }
@@ -5062,18 +5496,26 @@ export const pidginAllUnits = [
             "prompt": "Match the social label to its behavioral definition:",
             "pairs": [
               {
+                "native": "Chronic gossip / busybody",
+                "english": "Aproko",
                 "left": "Aproko",
                 "right": "Chronic gossip / busybody"
               },
               {
+                "native": "Arrogant know-it-all",
+                "english": "Over-sabi",
                 "left": "Over-sabi",
                 "right": "Arrogant know-it-all"
               },
               {
+                "native": "Sheltered, pampered child",
+                "english": "Ajebutter",
                 "left": "Ajebutter",
                 "right": "Sheltered, pampered child"
               },
               {
+                "native": "Savvy in navigating urban realities",
+                "english": "Street-smart",
                 "left": "Street-smart",
                 "right": "Savvy in navigating urban realities"
               }
@@ -5092,7 +5534,8 @@ export const pidginAllUnits = [
               "An unpaid punishment"
             ],
             "correctAnswer": "An enjoyable, smooth, and easily accomplished assignment",
-            "explanation": "'Na pure soft work' describes effortless and rewarding execution."
+            "explanation": "'Na pure soft work' describes effortless and rewarding execution.",
+            "phrase": "My guy, this project sweet pass, na pure soft work."
           },
           {
             "id": "p-u8-l1-q20",
@@ -5106,7 +5549,8 @@ export const pidginAllUnits = [
               "The hoodlums called a lawyer"
             ],
             "correctAnswer": "All the hoodlums fled and scattered immediately",
-            "explanation": "'Just japa' indicates rapid, panicked flight from authority."
+            "explanation": "'Just japa' indicates rapid, panicked flight from authority.",
+            "phrase": "When police arrive, all the bad boys just japa."
           }
         ]
       },
@@ -5166,7 +5610,9 @@ export const pidginAllUnits = [
               "sky"
             ],
             "correctAnswer": "ground",
-            "explanation": "A maxim of humility reminding the arrogant that mortality and earth await everyone."
+            "explanation": "A maxim of humility reminding the arrogant that mortality and earth await everyone.",
+            "sentence": "No matter how lizard run, e must still lie down for ___ (ground).",
+            "missingWord": "ground"
           },
           {
             "id": "p-u8-l2-q5",
@@ -5179,7 +5625,9 @@ export const pidginAllUnits = [
               "house"
             ],
             "correctAnswer": "sleep",
-            "explanation": "Proverb on mutual consequence: a child preventing its mother from resting will also stay awake."
+            "explanation": "Proverb on mutual consequence: a child preventing its mother from resting will also stay awake.",
+            "sentence": "Pikin wey say im mama no go sleep, im sef no go see ___ (sleep).",
+            "missingWord": "sleep"
           },
           {
             "id": "p-u8-l2-q6",
@@ -5218,7 +5666,9 @@ export const pidginAllUnits = [
               "cup"
             ],
             "correctAnswer": "race",
-            "explanation": "A maxim praising consistency and patient persistence."
+            "explanation": "A maxim praising consistency and patient persistence.",
+            "sentence": "Slow and steady dey win ___ (race).",
+            "missingWord": "race"
           },
           {
             "id": "p-u8-l2-q9",
@@ -5257,7 +5707,9 @@ export const pidginAllUnits = [
               "mountain"
             ],
             "correctAnswer": "tree",
-            "explanation": "Honors the irreplaceable wisdom, foresight, and experience of age."
+            "explanation": "Honors the irreplaceable wisdom, foresight, and experience of age.",
+            "sentence": "Wetin elder see while sitting down, pikin no fit see am even if e climb ___ (tree).",
+            "missingWord": "tree"
           },
           {
             "id": "p-u8-l2-q12",
@@ -5296,7 +5748,9 @@ export const pidginAllUnits = [
               "run"
             ],
             "correctAnswer": "chop",
-            "explanation": "Iconic proverb of labor exploitation."
+            "explanation": "Iconic proverb of labor exploitation.",
+            "sentence": "Monkey dey work, baboon dey ___ (chop).",
+            "missingWord": "chop"
           },
           {
             "id": "p-u8-l2-q15",
@@ -5344,18 +5798,26 @@ export const pidginAllUnits = [
             "prompt": "Match the Pidgin proverb to its core philosophical lesson:",
             "pairs": [
               {
+                "native": "Labor exploitation and injustice",
+                "english": "Monkey dey work baboon dey chop",
                 "left": "Monkey dey work baboon dey chop",
                 "right": "Labor exploitation and injustice"
               },
               {
+                "native": "Crisis has exceeded manageable bounds",
+                "english": "Water don pass garri",
                 "left": "Water don pass garri",
                 "right": "Crisis has exceeded manageable bounds"
               },
               {
+                "native": "Value seasoned mentorship",
+                "english": "Follow who know road",
                 "left": "Follow who know road",
                 "right": "Value seasoned mentorship"
               },
               {
+                "native": "Appearance vs genuine substance",
+                "english": "Khaki no be leather",
                 "left": "Khaki no be leather",
                 "right": "Appearance vs genuine substance"
               }
@@ -5368,18 +5830,26 @@ export const pidginAllUnits = [
             "prompt": "Match the proverb to its English equivalent:",
             "pairs": [
               {
+                "native": "People in glass houses shouldn't throw stones",
+                "english": "Egg seller no dey fight",
                 "left": "Egg seller no dey fight",
                 "right": "People in glass houses shouldn't throw stones"
               },
               {
+                "native": "You get what you pay for",
+                "english": "Soup wey sweet na money kill am",
                 "left": "Soup wey sweet na money kill am",
                 "right": "You get what you pay for"
               },
               {
+                "native": "Crime does not pay in the long run",
+                "english": "Every day for thief, one day for owner",
                 "left": "Every day for thief, one day for owner",
                 "right": "Crime does not pay in the long run"
               },
               {
+                "native": "A desperate man has nothing to lose",
+                "english": "Dead body no dey fear grave",
                 "left": "Dead body no dey fear grave",
                 "right": "A desperate man has nothing to lose"
               }
@@ -5398,7 +5868,8 @@ export const pidginAllUnits = [
               "Travel only at night when roads are cool"
             ],
             "correctAnswer": "Follow knowledgeable mentors so you do not stumble into avoidable failure",
-            "explanation": "'Follow who know road make your leg no hit stone' counsels seeking wise guidance."
+            "explanation": "'Follow who know road make your leg no hit stone' counsels seeking wise guidance.",
+            "phrase": "My brother, follow who know road make your leg no hit stone."
           },
           {
             "id": "p-u8-l2-q20",
@@ -5412,7 +5883,8 @@ export const pidginAllUnits = [
               "Cloth is more durable than genuine leather"
             ],
             "correctAnswer": "Do not live beyond your means or pretend to have substance you lack",
-            "explanation": "Counsels humility and authenticity over fake lifestyle flexing."
+            "explanation": "Counsels humility and authenticity over fake lifestyle flexing.",
+            "phrase": "Remember say khaki no be leather, so no pretend pass your level."
           }
         ]
       }
@@ -5485,7 +5957,9 @@ export const pidginAllUnits = [
               "foreign tongue"
             ],
             "correctAnswer": "lingua franca",
-            "explanation": "NPE is Nigeria's most widely spoken inter-ethnic lingua franca."
+            "explanation": "NPE is Nigeria's most widely spoken inter-ethnic lingua franca.",
+            "sentence": "In formal broadcasting, NPE serves as a national ___ (bridge language) uniting diverse ethnic groups.",
+            "missingWord": "lingua franca"
           },
           {
             "id": "p-u9-l1-q5",
@@ -5498,7 +5972,9 @@ export const pidginAllUnits = [
               "dialect"
             ],
             "correctAnswer": "basilect",
-            "explanation": "Basilect denotes the most divergent, grassroots variety on the continuum."
+            "explanation": "Basilect denotes the most divergent, grassroots variety on the continuum.",
+            "sentence": "The deepest, broad street variety of Pidgin is known linguistically as the ___ (basilect).",
+            "missingWord": "basilect"
           },
           {
             "id": "p-u9-l1-q6",
@@ -5537,7 +6013,9 @@ export const pidginAllUnits = [
               "-dem"
             ],
             "correctAnswer": "-am",
-            "explanation": "Hyphenated enclitic '-am' is standard in JW.org and BBC orthography."
+            "explanation": "Hyphenated enclitic '-am' is standard in JW.org and BBC orthography.",
+            "sentence": "Standard media Pidgin uses the enclitic pronoun ___ (it/him/her) with hyphens as in use-am, read-am.",
+            "missingWord": "-am"
           },
           {
             "id": "p-u9-l1-q9",
@@ -5576,7 +6054,9 @@ export const pidginAllUnits = [
               "kwanu"
             ],
             "correctAnswer": "sha",
-            "explanation": "'Sha' serves as an assertive pragmatic concession marker ('anyway / all the same')."
+            "explanation": "'Sha' serves as an assertive pragmatic concession marker ('anyway / all the same').",
+            "sentence": "We agree with the plan, ___ (anyway/regardless) make we be careful.",
+            "missingWord": "sha"
           },
           {
             "id": "p-u9-l1-q12",
@@ -5615,7 +6095,9 @@ export const pidginAllUnits = [
               "sef"
             ],
             "correctAnswer": "abi",
-            "explanation": "'Abi?' functions as the universal tag question ('right? / isn't it?')."
+            "explanation": "'Abi?' functions as the universal tag question ('right? / isn't it?').",
+            "sentence": "You go attend the meeting today, ___ (right / isn't it)?",
+            "missingWord": "abi"
           },
           {
             "id": "p-u9-l1-q15",
@@ -5673,18 +6155,26 @@ export const pidginAllUnits = [
             "prompt": "Match the sociolinguistic term to its definition in Nigerian Pidgin:",
             "pairs": [
               {
+                "native": "Formal broadcast / written media standard",
+                "english": "Acrolect",
                 "left": "Acrolect",
                 "right": "Formal broadcast / written media standard"
               },
               {
+                "native": "Everyday urban conversational Pidgin",
+                "english": "Mesolect",
                 "left": "Mesolect",
                 "right": "Everyday urban conversational Pidgin"
               },
               {
+                "native": "Deep street / regional grassroots vernacular",
+                "english": "Basilect",
                 "left": "Basilect",
                 "right": "Deep street / regional grassroots vernacular"
               },
               {
+                "native": "Alternating between English and Pidgin in speech",
+                "english": "Code-Switching",
                 "left": "Code-Switching",
                 "right": "Alternating between English and Pidgin in speech"
               }
@@ -5697,18 +6187,26 @@ export const pidginAllUnits = [
             "prompt": "Match the pragmatic discourse particle to its communicative role:",
             "pairs": [
               {
+                "native": "Confirmation seeking / Tag question (Right?)",
+                "english": "Abi?",
                 "left": "Abi?",
                 "right": "Confirmation seeking / Tag question (Right?)"
               },
               {
+                "native": "Concessive marker (Anyway / In any case)",
+                "english": "Sha",
                 "left": "Sha",
                 "right": "Concessive marker (Anyway / In any case)"
               },
               {
+                "native": "Emphatic intensifier (Even / In fact)",
+                "english": "Sef",
                 "left": "Sef",
                 "right": "Emphatic intensifier (Even / In fact)"
               },
               {
+                "native": "Dismissive or endearing particle",
+                "english": "Jare",
                 "left": "Jare",
                 "right": "Dismissive or endearing particle"
               }
@@ -5727,7 +6225,8 @@ export const pidginAllUnits = [
               "It was invented yesterday"
             ],
             "correctAnswer": "It is accessible and comprehensible across all of West Africa",
-            "explanation": "Broadcast standard Pidgin bridges national and regional dialectal variations."
+            "explanation": "Broadcast standard Pidgin bridges national and regional dialectal variations.",
+            "phrase": "BBC and JW.org de use standard Pidgin wey everybody across West Africa fit understand."
           },
           {
             "id": "p-u9-l1-q20",
@@ -5741,7 +6240,8 @@ export const pidginAllUnits = [
               "Invite gossips to a party"
             ],
             "correctAnswer": "Dismiss idle gossip and concentrate resolutely on your personal duties",
-            "explanation": "Uses pragmatic particles 'jare' and 'sha' to counsel disciplined focus."
+            "explanation": "Uses pragmatic particles 'jare' and 'sha' to counsel disciplined focus.",
+            "phrase": "No mind wetin people de talk jare, face your work sha."
           }
         ]
       },
@@ -5801,7 +6301,9 @@ export const pidginAllUnits = [
               "Dem is stealing"
             ],
             "correctAnswer": "Dem don tief",
-            "explanation": "'Dem don tief my money' is the active voice equivalent of 'My money was stolen'."
+            "explanation": "'Dem don tief my money' is the active voice equivalent of 'My money was stolen'.",
+            "sentence": "My money ___ (was stolen) inside the bus.",
+            "missingWord": "Dem don tief"
           },
           {
             "id": "p-u9-l2-q5",
@@ -5814,7 +6316,9 @@ export const pidginAllUnits = [
               "dem"
             ],
             "correctAnswer": "am",
-            "explanation": "JW.org text: 'gain from-am' attaches '-am' as object of preposition."
+            "explanation": "JW.org text: 'gain from-am' attaches '-am' as object of preposition.",
+            "sentence": "You fit gain from-___ (it) if you study well.",
+            "missingWord": "am"
           },
           {
             "id": "p-u9-l2-q6",
@@ -5853,7 +6357,9 @@ export const pidginAllUnits = [
               "dem"
             ],
             "correctAnswer": "am",
-            "explanation": "'Take-am' represents transitive verb + direct object pronoun."
+            "explanation": "'Take-am' represents transitive verb + direct object pronoun.",
+            "sentence": "If you see the brochure, take-___ (it) home.",
+            "missingWord": "am"
           },
           {
             "id": "p-u9-l2-q9",
@@ -5892,7 +6398,9 @@ export const pidginAllUnits = [
               "you borned"
             ],
             "correctAnswer": "dem born you",
-            "explanation": "'Where dem born you?' = Where were you born?"
+            "explanation": "'Where dem born you?' = Where were you born?",
+            "sentence": "Where ___ (were you born)?",
+            "missingWord": "dem born you"
           },
           {
             "id": "p-u9-l2-q12",
@@ -5931,7 +6439,9 @@ export const pidginAllUnits = [
               "dem"
             ],
             "correctAnswer": "am",
-            "explanation": "'Follow-am' = followed it."
+            "explanation": "'Follow-am' = followed it.",
+            "sentence": "I hear the sound and I follow-___ (it).",
+            "missingWord": "am"
           },
           {
             "id": "p-u9-l2-q15",
@@ -5983,18 +6493,26 @@ export const pidginAllUnits = [
             "prompt": "Match the English passive clause to its natural Pidgin active inversion:",
             "pairs": [
               {
+                "native": "Dem arrest am",
+                "english": "He was arrested",
                 "left": "He was arrested",
                 "right": "Dem arrest am"
               },
               {
+                "native": "Dem born am here",
+                "english": "She was born here",
                 "left": "She was born here",
                 "right": "Dem born am here"
               },
               {
+                "native": "Dem tief the motor",
+                "english": "The car was stolen",
                 "left": "The car was stolen",
                 "right": "Dem tief the motor"
               },
               {
+                "native": "Dem construct the road",
+                "english": "The road was built",
                 "left": "The road was built",
                 "right": "Dem construct the road"
               }
@@ -6007,18 +6525,26 @@ export const pidginAllUnits = [
             "prompt": "Match the verb/preposition + enclitic '-am' to its meaning:",
             "pairs": [
               {
+                "native": "Benefit from it",
+                "english": "Gain from-am",
                 "left": "Gain from-am",
                 "right": "Benefit from it"
               },
               {
+                "native": "Learn using it",
+                "english": "Study with-am",
                 "left": "Study with-am",
                 "right": "Learn using it"
               },
               {
+                "native": "View it attentively",
+                "english": "Watch-am",
                 "left": "Watch-am",
                 "right": "View it attentively"
               },
               {
+                "native": "Grasp / retain it",
+                "english": "Hold-am",
                 "left": "Hold-am",
                 "right": "Grasp / retain it"
               }
@@ -6037,7 +6563,8 @@ export const pidginAllUnits = [
               "A new marketplace was opened"
             ],
             "correctAnswer": "A new hospital was constructed in our town",
-            "explanation": "'Dem don build new hospital...' represents the passive 'A new hospital has been built'."
+            "explanation": "'Dem don build new hospital...' represents the passive 'A new hospital has been built'.",
+            "phrase": "Dem don build new hospital for our town."
           },
           {
             "id": "p-u9-l2-q20",
@@ -6051,7 +6578,8 @@ export const pidginAllUnits = [
               "You must pay money for the publication"
             ],
             "correctAnswer": "You will gain much valuable benefit from it",
-            "explanation": "JW.org Pidgin: 'gain plenty things from-am' (gain much from it)."
+            "explanation": "JW.org Pidgin: 'gain plenty things from-am' (gain much from it).",
+            "phrase": "Read this publication and you go gain plenty things from-am."
           }
         ]
       }
@@ -6124,7 +6652,9 @@ export const pidginAllUnits = [
               "dash"
             ],
             "correctAnswer": "yab",
-            "explanation": "'Yab' means to roast or humorously satirize."
+            "explanation": "'Yab' means to roast or humorously satirize.",
+            "sentence": "The comedian ___ (roasted/satirized) all the corrupt politicians on stage.",
+            "missingWord": "yab"
           },
           {
             "id": "p-u10-l1-q5",
@@ -6137,7 +6667,9 @@ export const pidginAllUnits = [
               "burn"
             ],
             "correctAnswer": "kill",
-            "explanation": "'Laughter wan kill...' is the classic comedic hyperbole."
+            "explanation": "'Laughter wan kill...' is the classic comedic hyperbole.",
+            "sentence": "Laughter wan ___ (overpower/kill) the audience with joy.",
+            "missingWord": "kill"
           },
           {
             "id": "p-u10-l1-q6",
@@ -6176,7 +6708,9 @@ export const pidginAllUnits = [
               "tears"
             ],
             "correctAnswer": "laugh",
-            "explanation": "Comedic catharsis: using laughter as resilience."
+            "explanation": "Comedic catharsis: using laughter as resilience.",
+            "sentence": "Instead of make we cry, we decide to use ___ (humor/comedy) take comfort ourselves.",
+            "missingWord": "laugh"
           },
           {
             "id": "p-u10-l1-q9",
@@ -6215,7 +6749,9 @@ export const pidginAllUnits = [
               "fall hand"
             ],
             "correctAnswer": "crack joke",
-            "explanation": "'Sabi crack joke' = skilled at comedic delivery."
+            "explanation": "'Sabi crack joke' = skilled at comedic delivery.",
+            "sentence": "That MC sabi ___ (tell jokes) well-well.",
+            "missingWord": "crack joke"
           },
           {
             "id": "p-u10-l1-q12",
@@ -6254,7 +6790,9 @@ export const pidginAllUnits = [
               "cool our temper"
             ],
             "correctAnswer": "burst our brain",
-            "explanation": "'Burst our brain' = blew our minds."
+            "explanation": "'Burst our brain' = blew our minds.",
+            "sentence": "The comedian performance ___ (blew our minds) completely.",
+            "missingWord": "burst our brain"
           },
           {
             "id": "p-u10-l1-q15",
@@ -6315,18 +6853,26 @@ export const pidginAllUnits = [
             "prompt": "Match the comedic slang to its dramatic function:",
             "pairs": [
               {
+                "native": "Witty roasting / satirical teasing",
+                "english": "Yab",
                 "left": "Yab",
                 "right": "Witty roasting / satirical teasing"
               },
               {
+                "native": "Deliver humorous punchlines",
+                "english": "Crack joke",
                 "left": "Crack joke",
                 "right": "Deliver humorous punchlines"
               },
               {
+                "native": "Astound with brilliance",
+                "english": "Burst brain",
                 "left": "Burst brain",
                 "right": "Astound with brilliance"
               },
               {
+                "native": "Uncontrollable amusement",
+                "english": "Laughter wan kill me",
                 "left": "Laughter wan kill me",
                 "right": "Uncontrollable amusement"
               }
@@ -6339,18 +6885,26 @@ export const pidginAllUnits = [
             "prompt": "Match the satirical theme to its famous NPE expression:",
             "pairs": [
               {
+                "native": "Resilience in the face of hardship",
+                "english": "Suffering and smiling",
                 "left": "Suffering and smiling",
                 "right": "Resilience in the face of hardship"
               },
               {
+                "native": "Infrastructural paradox",
+                "english": "No light we buy fridge",
                 "left": "No light we buy fridge",
                 "right": "Infrastructural paradox"
               },
               {
+                "native": "Alternative energy self-reliance",
+                "english": "Generator country",
                 "left": "Generator country",
                 "right": "Alternative energy self-reliance"
               },
               {
+                "native": "Playful internet roast culture",
+                "english": "Vawulence everywhere",
                 "left": "Vawulence everywhere",
                 "right": "Playful internet roast culture"
               }
@@ -6369,7 +6923,8 @@ export const pidginAllUnits = [
               "Sing a church hymn quietly"
             ],
             "correctAnswer": "Roast a wealthy dignitary, making the whole audience roar with laughter",
-            "explanation": "Classic comedy dynamic: using 'yab' to speak truth to power."
+            "explanation": "Classic comedy dynamic: using 'yab' to speak truth to power.",
+            "phrase": "When the comedian yab the big man, the whole hall burst into sweet laughter."
           },
           {
             "id": "p-u10-l1-q20",
@@ -6383,7 +6938,8 @@ export const pidginAllUnits = [
               "A distraction that should be abolished"
             ],
             "correctAnswer": "A therapeutic balm used to conquer everyday anxiety and stress",
-            "explanation": "Laughter as psychological resistance and social healing."
+            "explanation": "Laughter as psychological resistance and social healing.",
+            "phrase": "Laughter na the medicine wey our people de use overcome daily stress."
           }
         ]
       },
@@ -6443,7 +6999,9 @@ export const pidginAllUnits = [
               "take"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org text: 'Check the different parts wey the New World Translation get'."
+            "explanation": "JW.org text: 'Check the different parts wey the New World Translation get'.",
+            "sentence": "Check the different-different parts wey the translation ___ (has).",
+            "missingWord": "get"
           },
           {
             "id": "p-u10-l2-q5",
@@ -6456,7 +7014,9 @@ export const pidginAllUnits = [
               "Look it"
             ],
             "correctAnswer": "Watch-am",
-            "explanation": "JW.org video button standard: 'Watch-am Now'."
+            "explanation": "JW.org video button standard: 'Watch-am Now'.",
+            "sentence": "Click here to ___ (watch it) now.",
+            "missingWord": "Watch-am"
           },
           {
             "id": "p-u10-l2-q6",
@@ -6495,7 +7055,9 @@ export const pidginAllUnits = [
               "village"
             ],
             "correctAnswer": "area",
-            "explanation": "JW.org text: 'Find the place wey we de do our meeting for your area'."
+            "explanation": "JW.org text: 'Find the place wey we de do our meeting for your area'.",
+            "sentence": "Find the place wey we de do our meeting for your ___ (local area).",
+            "missingWord": "area"
           },
           {
             "id": "p-u10-l2-q9",
@@ -6534,7 +7096,9 @@ export const pidginAllUnits = [
               "Bible reader"
             ],
             "correctAnswer": "Jehovah Witness",
-            "explanation": "JW.org official confession: 'As we de tell people about Jehovah God and e Kingdom, na e make we be Jehovah Witness'."
+            "explanation": "JW.org official confession: 'As we de tell people about Jehovah God and e Kingdom, na e make we be Jehovah Witness'.",
+            "sentence": "As we de tell people about God, na e make we be ___ (Jehovah's Witnesses).",
+            "missingWord": "Jehovah Witness"
           },
           {
             "id": "p-u10-l2-q12",
@@ -6573,7 +7137,9 @@ export const pidginAllUnits = [
               "near"
             ],
             "correctAnswer": "real",
-            "explanation": "JW.org text: 'make the story about Jesus Christ life dey real to us'."
+            "explanation": "JW.org text: 'make the story about Jesus Christ life dey real to us'.",
+            "sentence": "The story make the life of Jesus dey ___ (real) to us.",
+            "missingWord": "real"
           },
           {
             "id": "p-u10-l2-q15",
@@ -6629,18 +7195,26 @@ export const pidginAllUnits = [
             "prompt": "Match the formal media headline to its Standard English meaning:",
             "pairs": [
               {
+                "native": "News and current events",
+                "english": "Things wey don happen",
                 "left": "Things wey don happen",
                 "right": "News and current events"
               },
               {
+                "native": "Why we should study the scriptures",
+                "english": "Why e good make we study Bible?",
                 "left": "Why e good make we study Bible?",
                 "right": "Why we should study the scriptures"
               },
               {
+                "native": "The Gospel according to Jesus",
+                "english": "Good news as Jesus talk-am",
                 "left": "Good news as Jesus talk-am",
                 "right": "The Gospel according to Jesus"
               },
               {
+                "native": "Stream the video presentation",
+                "english": "Watch-am now",
                 "left": "Watch-am now",
                 "right": "Stream the video presentation"
               }
@@ -6653,18 +7227,26 @@ export const pidginAllUnits = [
             "prompt": "Match the news broadcast topic with its standard Pidgin phrasing:",
             "pairs": [
               {
+                "native": "Doctor dem advise make people wash hand",
+                "english": "Health announcement",
                 "left": "Health announcement",
                 "right": "Doctor dem advise make people wash hand"
               },
               {
+                "native": "Inflation don make food cost pass before",
+                "english": "Economic report",
                 "left": "Economic report",
                 "right": "Inflation don make food cost pass before"
               },
               {
+                "native": "INEC don release final list of candidates",
+                "english": "Election update",
                 "left": "Election update",
                 "right": "INEC don release final list of candidates"
               },
               {
+                "native": "Heavy rain go fall for coastal areas",
+                "english": "Weather advisory",
                 "left": "Weather advisory",
                 "right": "Heavy rain go fall for coastal areas"
               }
@@ -6683,7 +7265,8 @@ export const pidginAllUnits = [
               "No study tools are provided"
             ],
             "correctAnswer": "The Bible and study tools that you can use for personal learning",
-            "explanation": "JW.org description: 'For this website, we de get Bible... and you fit use-am for study'."
+            "explanation": "JW.org description: 'For this website, we de get Bible... and you fit use-am for study'.",
+            "phrase": "For this website, we get Bible and you fit use-am for study."
           },
           {
             "id": "p-u10-l2-q20",
@@ -6697,7 +7280,8 @@ export const pidginAllUnits = [
               "Building statues in the town center"
             ],
             "correctAnswer": "Doing everything possible to follow the example that Jesus Christ provided",
-            "explanation": "JW.org mission statement: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'."
+            "explanation": "JW.org mission statement: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
+            "phrase": "We de do everything wey we fit do to follow the example wey Jesus Christ give us."
           }
         ]
       }

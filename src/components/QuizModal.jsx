@@ -16,6 +16,16 @@ import {
   Award
 } from 'lucide-react';
 
+// Helper to safely get native/foreign term from a pair
+function getPairNative(p) {
+  return p?.native ?? p?.right ?? p?.left ?? '';
+}
+
+// Helper to safely get english/translation term from a pair
+function getPairEnglish(p) {
+  return p?.english ?? p?.left ?? p?.right ?? '';
+}
+
 // Creates a guaranteed derangement (a shuffle where no item is at the same row/index as the native word)
 function derangePairs(pairs) {
   if (!pairs || pairs.length <= 1) return pairs ? [...pairs] : [];
@@ -23,7 +33,7 @@ function derangePairs(pairs) {
   let shuffled = [...pairs];
   for (let attempt = 0; attempt < 100; attempt++) {
     shuffled = [...pairs].sort(() => Math.random() - 0.5);
-    const hasOverlap = shuffled.some((item, idx) => item.native === pairs[idx].native);
+    const hasOverlap = shuffled.some((item, idx) => getPairNative(item) === getPairNative(pairs[idx]));
     if (!hasOverlap) {
       return shuffled;
     }
@@ -158,15 +168,21 @@ export default function QuizModal() {
     }
   };
 
-  const checkPair = (native, eng) => {
-    const pairFound = currentQ.pairs.find(p => p.native === native && p.english === eng);
+  const checkPair = (nativeVal, engVal) => {
+    const pairs = currentQ.pairs || [];
+    const pairFound = pairs.find(p => {
+      const n = getPairNative(p);
+      const e = getPairEnglish(p);
+      return (n === nativeVal && e === engVal) || (n === engVal && e === nativeVal);
+    });
     if (pairFound) {
       soundEngine.playSuccess();
-      const newMatches = [...matchedPairs, native];
+      const matchedKey = getPairNative(pairFound);
+      const newMatches = [...matchedPairs, matchedKey];
       setMatchedPairs(newMatches);
       setSelectedNative(null);
       setSelectedEnglish(null);
-      if (newMatches.length === currentQ.pairs.length) {
+      if (newMatches.length === pairs.length) {
         // All pairs matched!
         handleCheckAnswer(true);
       }
@@ -406,17 +422,18 @@ export default function QuizModal() {
                 <div className="matching-columns-grid">
                   <div className="matching-col">
                     <span className="col-label">Native Phrase</span>
-                    {currentQ.pairs.map((p, i) => {
-                      const isMatched = matchedPairs.includes(p.native);
-                      const isSelected = selectedNative === p.native;
+                    {(currentQ.pairs || []).map((p, i) => {
+                      const nativeText = getPairNative(p);
+                      const isMatched = matchedPairs.includes(nativeText);
+                      const isSelected = selectedNative === nativeText;
                       return (
                         <button
                           key={i}
                           className={`match-tile-btn ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''}`}
-                          onClick={() => !isMatched && handleMatchSelect('native', p.native)}
+                          onClick={() => !isMatched && handleMatchSelect('native', nativeText)}
                           disabled={isMatched}
                         >
-                          {p.native}
+                          {nativeText}
                         </button>
                       );
                     })}
@@ -424,17 +441,19 @@ export default function QuizModal() {
 
                   <div className="matching-col">
                     <span className="col-label">English Translation</span>
-                    {(shuffledEnglishPairs.length > 0 ? shuffledEnglishPairs : currentQ.pairs).map((p, i) => {
-                      const isMatched = matchedPairs.includes(p.native);
-                      const isSelected = selectedEnglish === p.english;
+                    {(shuffledEnglishPairs.length > 0 ? shuffledEnglishPairs : (currentQ.pairs || [])).map((p, i) => {
+                      const nativeKey = getPairNative(p);
+                      const englishText = getPairEnglish(p);
+                      const isMatched = matchedPairs.includes(nativeKey);
+                      const isSelected = selectedEnglish === englishText;
                       return (
                         <button
-                          key={`${p.english}-${i}`}
+                          key={`${englishText}-${i}`}
                           className={`match-tile-btn ${isMatched ? 'matched' : ''} ${isSelected ? 'selected' : ''}`}
-                          onClick={() => !isMatched && handleMatchSelect('english', p.english)}
+                          onClick={() => !isMatched && handleMatchSelect('english', englishText)}
                           disabled={isMatched}
                         >
-                          {p.english}
+                          {englishText}
                         </button>
                       );
                     })}
@@ -443,35 +462,40 @@ export default function QuizModal() {
               )}
 
               {/* 4. Fill in the Blank */}
-              {currentQ.type === 'fill_blank' && (
-                <div className="fill-blank-area">
-                  <div className="sentence-with-blank">
-                    {currentQ.sentence.split('___').map((part, i, arr) => (
-                      <React.Fragment key={i}>
-                        <span>{part}</span>
-                        {i < arr.length - 1 && (
-                          <span className={`blank-slot ${selectedOption ? 'filled' : ''}`}>
-                            {selectedOption || '_____'}
-                          </span>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </div>
+              {currentQ.type === 'fill_blank' && (() => {
+                const raw = currentQ.sentence || currentQ.prompt || '';
+                const normalized = raw.includes('___') ? raw : raw.replace(/_{3,}/g, '___');
+                const parts = normalized.includes('___') ? normalized.split('___') : [normalized, ''];
+                return (
+                  <div className="fill-blank-area">
+                    <div className="sentence-with-blank">
+                      {parts.map((part, i, arr) => (
+                        <React.Fragment key={i}>
+                          <span>{part}</span>
+                          {i < arr.length - 1 && (
+                            <span className={`blank-slot ${selectedOption ? 'filled' : ''}`}>
+                              {selectedOption || '_____'}
+                            </span>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
 
-                  <div className="blank-options-row">
-                    {currentQ.options.map((opt, i) => (
-                      <button
-                        key={i}
-                        className={`blank-option-chip ${selectedOption === opt ? 'selected' : ''}`}
-                        onClick={() => !feedbackStatus && setSelectedOption(opt)}
-                        disabled={feedbackStatus !== null}
-                      >
-                        {opt}
-                      </button>
-                    ))}
+                    <div className="blank-options-row">
+                      {(currentQ.options || []).map((opt, i) => (
+                        <button
+                          key={i}
+                          className={`blank-option-chip ${selectedOption === opt ? 'selected' : ''}`}
+                          onClick={() => !feedbackStatus && setSelectedOption(opt)}
+                          disabled={feedbackStatus !== null}
+                        >
+                          {opt}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
             </div>
           </div>
         )}
