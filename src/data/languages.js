@@ -7,6 +7,7 @@ import { frenchCultureVault } from './frenchCultureVault';
 import { pidginAllUnits } from './pidginCurriculum';
 import { pidginFlashcards } from './pidginFlashcards';
 import { pidginCultureVault } from './pidginCultureVault';
+import { hausaAllUnits } from './hausaCurriculum';
 
 export const LANGUAGES = {
   spanish: {
@@ -803,44 +804,7 @@ export const LANGUAGES = {
       { id: "ha-fc-4", front: "Lafiya lau", phonetic: "lah-FEE-yah low", back: "Fine / Very well / Peace", category: "Basics", example: "Ina lafiya lau, alhamdulillah." },
       { id: "ha-fc-5", front: "Sai an jima", phonetic: "sigh ahn JEE-mah", back: "See you later / Goodbye", category: "Farewell", example: "To, sai an jima!" }
     ],
-    units: [
-      {
-        id: "ha-unit-1",
-        title: "Unit 1: First Greetings in Kano (Gaisuwar Farko)",
-        subtitle: "Learn essential Hausa salutations, courtesy responses, and friendly inquiries.",
-        icon: "Sun",
-        color: "#b45309",
-        lessons: [
-          {
-            id: "ha-u1-l1",
-            title: "Everyday Hausa Salutations",
-            description: "Master Sannu, Nagode, and Lafiya lau.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the universal Hausa greeting for 'Hello / Well done'?",
-                options: ["Sannu", "Nagode", "A'a", "Ee"],
-                correctAnswer: "Sannu",
-                explanation: "'Sannu' is the standard warm greeting in Hausa."
-              },
-              {
-                id: "q2",
-                type: "matching",
-                prompt: "Match Hausa words with English:",
-                pairs: [
-                  { native: "Sannu", english: "Hello" },
-                  { native: "Nagode", english: "Thank you" },
-                  { native: "Lafiya", english: "Peace / Health" },
-                  { native: "Sai an jima", english: "See you later" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    units: hausaAllUnits
   }
 };
 
