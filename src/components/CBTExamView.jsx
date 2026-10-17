@@ -2,9 +2,18 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
+import { useAuth } from '../context/AuthContext';
 import { generateDynamicExam, examPools } from '../data/cbtExamEngine';
 import { generateFrenchDynamicExam, frenchExamPools } from '../data/cbtFrenchExamEngine';
+import { generateSpanishDynamicExam, spanishExamPools } from '../data/cbtSpanishExamEngine';
 import { getExamsForLanguage, pidginExams } from '../data/cbtExams';
+import { 
+  getUserSeenQuestionIds, 
+  recordUserSeenQuestions, 
+  getUserAttemptCount, 
+  incrementUserAttemptCount, 
+  selectBrandNewSet 
+} from '../lib/cbtQuestionManager';
 import { LANGUAGES } from '../data/languages';
 import { soundEngine } from '../lib/audio';
 import confetti from 'canvas-confetti';
@@ -32,25 +41,34 @@ import {
   Shuffle,
   Eye,
   Radio,
-  Square
+  Square,
+  UserCheck
 } from 'lucide-react';
 
 export default function CBTExamView() {
   const { currentLanguage } = useGame();
-  const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+  const { user, profile, saveProfileData } = useAuth();
+  const langData = LANGUAGES[currentLanguage] || LANGUAGES.spanish || LANGUAGES.pidgin;
+
+  const isSpanish = currentLanguage === 'spanish';
   const isFinnish = currentLanguage === 'finnish';
   const isFrench = currentLanguage === 'french';
   const isPidgin = currentLanguage === 'pidgin';
 
-  // Level selector for Finnish YKI, French DELF/DALF/TCF/TEF/DCL, or Nigerian Pidgin NERDC
+  const userAttemptNumber = getUserAttemptCount(user?.uid);
+
+  // Level selector for Spanish DELE/SIELE, French DELF/DALF, Finnish YKI, or Nigerian Pidgin NERDC
   const [selectedLevelKey, setSelectedLevelKey] = useState(
-    isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
+    isSpanish ? 'deleB1B2' : isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
   );
-  const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | specific section name | 'reading' | 'writing' etc.
+  const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
 
   // Synchronize tier default when language changes
   useEffect(() => {
-    if (isFrench && !['delfA1A2', 'delfB1B2', 'dalfC1C2', 'tcfTefDcl'].includes(selectedLevelKey)) {
+    if (isSpanish && !['deleA1A2', 'deleB1B2', 'deleC1C2'].includes(selectedLevelKey)) {
+      setSelectedLevelKey('deleB1B2');
+      setSelectedSubtestFilter('all');
+    } else if (isFrench && !['delfA1A2', 'delfB1B2', 'dalfC1C2', 'tcfTefDcl'].includes(selectedLevelKey)) {
       setSelectedLevelKey('delfB1B2');
       setSelectedSubtestFilter('all');
     } else if (isFinnish && !['perustaso', 'keskitaso', 'ylintaso'].includes(selectedLevelKey)) {
@@ -60,7 +78,7 @@ export default function CBTExamView() {
       setSelectedLevelKey('p-cbt-foundational');
       setSelectedSubtestFilter('all');
     }
-  }, [currentLanguage, isFrench, isFinnish, isPidgin]);
+  }, [currentLanguage, isSpanish, isFrench, isFinnish, isPidgin]);
 
   // States: 'hub' | 'active' | 'results'
   const [viewState, setViewState] = useState('hub');
@@ -91,50 +109,69 @@ export default function CBTExamView() {
   // Filter for review in results
   const [resultFilter, setResultFilter] = useState('all'); // 'all' | 'incorrect' | 'flagged'
 
-  // Start an exam session with dynamically randomized pool or targeted section
+  // Start an exam session with guaranteed fresh/unseen question set for logged-in users
   const handleStartExam = (levelKey = selectedLevelKey, subtestFilter = selectedSubtestFilter) => {
+    const seenIds = getUserSeenQuestionIds(user?.uid, profile);
     let session;
-    if (isFinnish) {
-      session = generateDynamicExam(levelKey, subtestFilter);
+
+    if (isSpanish) {
+      session = generateSpanishDynamicExam(levelKey, subtestFilter, seenIds);
+    } else if (isFinnish) {
+      session = generateDynamicExam(levelKey, subtestFilter, seenIds);
     } else if (isFrench) {
-      session = generateFrenchDynamicExam(levelKey, subtestFilter);
+      session = generateFrenchDynamicExam(levelKey, subtestFilter, seenIds);
     } else if (isPidgin) {
       const targetExam = pidginExams.find(e => e.id === levelKey) || pidginExams[0];
-      let filteredQuestions = targetExam.questions || [];
+      let availableQuestions = targetExam.questions || [];
       let duration = targetExam.timeLimitMinutes || 60;
       let subtestTitle = "Full Certification (All 3 Sections • 180 Questions)";
 
       if (subtestFilter && subtestFilter !== 'all') {
         const matching = (targetExam.questions || []).filter(q => q.section === subtestFilter);
         if (matching.length > 0) {
-          filteredQuestions = matching;
-          duration = 35; // 35 minutes for exactly 60 questions!
-          subtestTitle = `${subtestFilter} (Exactly 60 Questions)`;
+          availableQuestions = matching;
+          duration = 35;
+          subtestTitle = `${subtestFilter} (Section Focus)`;
         }
       }
+
+      // Prioritize unseen questions in Nigerian Pidgin pool as well
+      const desiredCount = subtestFilter === 'all' ? Math.min(60, availableQuestions.length) : Math.min(30, availableQuestions.length);
+      const pidginResult = selectBrandNewSet(availableQuestions, desiredCount, seenIds);
 
       session = {
         sessionId: `${targetExam.id}-${Date.now()}`,
         title: targetExam.title,
         badge: targetExam.badgeText || targetExam.level,
         durationMinutes: duration,
-        totalQuestions: filteredQuestions.length,
-        questions: filteredQuestions,
-        subtestLabel: subtestTitle
+        totalQuestions: pidginResult.selected.length,
+        questions: pidginResult.selected,
+        subtestLabel: subtestTitle,
+        isBrandNewSession: pidginResult.isBrandNew
       };
     } else {
       // Fallback for other languages from static paper catalog
       const availableExams = getExamsForLanguage(currentLanguage);
       const chosen = availableExams.find(e => e.id === levelKey) || availableExams[0] || availableExams;
+      const dynamicRes = selectBrandNewSet(chosen.questions, Math.min(20, chosen.questions.length), seenIds);
       session = {
         sessionId: `${chosen.id}-${Date.now()}`,
         title: chosen.title,
         badge: chosen.badgeText || chosen.level,
         durationMinutes: chosen.timeLimitMinutes || 25,
-        totalQuestions: chosen.questions.length,
-        questions: chosen.questions,
-        subtestLabel: "General Language Proficiency Examination"
+        totalQuestions: dynamicRes.selected.length,
+        questions: dynamicRes.selected,
+        subtestLabel: "General Language Proficiency Examination",
+        isBrandNewSession: dynamicRes.isBrandNew
       };
+    }
+
+    // Record newly assigned question IDs into the logged-in user's seen history
+    if (session?.questions?.length > 0) {
+      recordUserSeenQuestions(user?.uid, session.questions.map(q => q.id), saveProfileData, profile);
+      if (user?.uid) {
+        incrementUserAttemptCount(user?.uid);
+      }
     }
 
     setActiveSession(session);
@@ -173,7 +210,6 @@ export default function CBTExamView() {
         setPrepCountdown((prev) => {
           if (prev <= 1) {
             clearInterval(speakingTimerRef.current);
-            // Switch automatically to speaking phase
             setSpeakingPhase('speaking');
             const currentQ = activeSession?.questions[currentQuestionIndex];
             setSpeakCountdown(currentQ?.speakSeconds || 30);
@@ -188,10 +224,9 @@ export default function CBTExamView() {
           if (prev <= 1) {
             clearInterval(speakingTimerRef.current);
             setSpeakingPhase('completed');
-            // Mark answer as recorded
             const currentQ = activeSession?.questions[currentQuestionIndex];
             if (currentQ) {
-              setAnswers(prevAns => ({ ...prevAns, [currentQ.id]: "Puhevastaus nauhoitettu (Speech recorded)" }));
+              setAnswers(prevAns => ({ ...prevAns, [currentQ.id]: "Respuesta oral grabada (Spoken response recorded)" }));
             }
             return 0;
           }
@@ -213,7 +248,7 @@ export default function CBTExamView() {
   const handleStopSpeakingLab = (question) => {
     clearInterval(speakingTimerRef.current);
     setSpeakingPhase('completed');
-    setAnswers(prev => ({ ...prev, [question.id]: "Puhevastaus nauhoitettu (Speech recorded)" }));
+    setAnswers(prev => ({ ...prev, [question.id]: "Respuesta oral grabada (Spoken response recorded)" }));
     soundEngine.playSuccess();
   };
 
@@ -261,7 +296,6 @@ export default function CBTExamView() {
     }
   };
 
-  // Option select for multiple choice
   const handleSelectOption = (questionId, option) => {
     setAnswers((prev) => ({
       ...prev,
@@ -269,7 +303,6 @@ export default function CBTExamView() {
     }));
   };
 
-  // Text input for writing response
   const handleWritingInput = (questionId, text) => {
     setAnswers((prev) => ({
       ...prev,
@@ -277,7 +310,6 @@ export default function CBTExamView() {
     }));
   };
 
-  // Clear answer
   const handleClearAnswer = (questionId) => {
     setAnswers((prev) => {
       const next = { ...prev };
@@ -286,7 +318,6 @@ export default function CBTExamView() {
     });
   };
 
-  // Flag toggle
   const handleToggleFlag = (questionId) => {
     setFlaggedIds((prev) => {
       const next = new Set(prev);
@@ -299,10 +330,9 @@ export default function CBTExamView() {
     });
   };
 
-  // Play audio for listening comprehension with play limit check
   const handlePlayListeningAudio = (question) => {
     const currentPlays = audioPlaysCount[question.id] || 0;
-    const max = question.maxPlays || (selectedLevelKey === 'ylintaso' ? 1 : 2);
+    const max = question.maxPlays || (selectedLevelKey === 'deleC1C2' || selectedLevelKey === 'ylintaso' ? 1 : 2);
 
     if (currentPlays >= max) {
       soundEngine.playError();
@@ -321,20 +351,17 @@ export default function CBTExamView() {
     soundEngine.speak(phrase, currentLanguage);
   };
 
-  // Format MM:SS
   const formatTime = (totalSeconds) => {
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
-  // Helper: count words in string
   const countWords = (str = '') => {
     const trimmed = str.trim();
     return trimmed ? trimmed.split(/\s+/).length : 0;
   };
 
-  // Current active question
   const currentQuestion = activeSession?.questions[currentQuestionIndex];
   const isFlagged = currentQuestion ? flaggedIds.has(currentQuestion.id) : false;
   const isAnswered = currentQuestion ? Boolean(answers[currentQuestion.id]) : false;
@@ -352,22 +379,32 @@ export default function CBTExamView() {
           <div className="cbt-hero-badge">
             <GraduationCap size={28} />
             <span>
-              {isFrench 
-                ? "Centre Officiel d'Examen CRT & CBT de Français" 
-                : "Official Computer Based Testing (CBT) Center"}
+              {isSpanish
+                ? "Centro Oficial de Evaluación CBT & SIELE de Español (Instituto Cervantes)"
+                : isFrench 
+                  ? "Centre Officiel d'Examen CRT & CBT de Français" 
+                  : "Official Computer Based Testing (CBT) Center"}
             </span>
           </div>
+
           <h1 className="cbt-hero-title">
-            {isFrench 
-              ? "Simulateur Officiel de Tests & Diplômes de Français (DELF • DALF • TCF • TEF • DCL)"
-              : isFinnish 
-                ? "Official Finnish YKI Examination Simulator" 
-                : isPidgin
-                  ? "NERDC Nigerian Pidgin Standardized CBT Examination Center"
-                  : `${langData.name} Standardized Language Examination Center`}
+            {isSpanish
+              ? "Simulador Oficial de Exámenes DELE & SIELE (Instituto Cervantes • MCER A1–C2)"
+              : isFrench 
+                ? "Simulateur Officiel de Tests & Diplômes de Français (DELF • DALF • TCF • TEF • DCL)"
+                : isFinnish 
+                  ? "Official Finnish YKI Examination Simulator" 
+                  : isPidgin
+                    ? "NERDC Nigerian Pidgin Standardized CBT Examination Center"
+                    : `${langData.name} Standardized Language Examination Center`}
           </h1>
+
           <p className="cbt-hero-subtitle">
-            {isFrench ? (
+            {isSpanish ? (
+              <>
+                Simulador de exámenes de alto rendimiento estrictamente alineado con el <strong>Marco Común Europeo de Referencia (MCER)</strong> y los estándares del <strong>Instituto Cervantes</strong>. Practique las 4 pruebas oficiales: <strong>Comprensión de lectura</strong>, <strong>Expresión e interacción escritas</strong>, <strong>Comprensión auditiva</strong> y <strong>Expresión e interacción orales</strong>. ¡Cada intento de un usuario registrado genera un <strong>conjunto de examen 100% nuevo</strong>!
+              </>
+            ) : isFrench ? (
               <>
                 Simulateur certifié complet aligné sur le <strong>Cadre Européen Commun de Référence pour les Langues (CECR A1 à C2)</strong>. Préparez avec rigueur les diplômes d'État à vie du Ministère de l'Éducation Nationale (<strong>DELF A1–B2 & DALF C1–C2</strong> par France Éducation International), les épreuves officielles de <strong>naturalisation et titre de séjour (B1/B2)</strong>, les tests informatisés de mobilité internationale (<strong>TCF IRN</strong>, <strong>TEF Canada / Québec</strong> par la Chambre de Commerce et d'Industrie de Paris IdF) et les diplômes professionnels pour adultes (<strong>DCL</strong>). Génération aléatoire et dynamique d'épreuves authentiques à chaque tentative !
               </>
@@ -377,7 +414,7 @@ export default function CBTExamView() {
               </>
             ) : isPidgin ? (
               <>
-                Standardized Computer-Based Testing (CBT) for Nigerian Pidgin aligned with the <strong>NERDC 4-Tier Language Framework</strong> and West African Pidgin literature standards (e.g. <strong>JW.org/wes-x-pgw</strong> and BBC News Pidgin). Practice <strong>Exactly 60 Questions in each distinct section</strong> (Phonetics & Sound Shifts, Aspect & Serial Verbs, Marketplace & Transit, Advanced Syntax & Passive Inversion, Conditionals, and Oral Literature / Proverbs), or undertake the comprehensive 180-Question Certification!
+                Standardized Computer-Based Testing (CBT) for Nigerian Pidgin aligned with the <strong>NERDC 4-Tier Language Framework</strong> and West African Pidgin literature standards. Practice <strong>60 Questions in each distinct section</strong>, or undertake the comprehensive 180-Question Certification!
               </>
             ) : (
               <>
@@ -385,7 +422,159 @@ export default function CBTExamView() {
               </>
             )}
           </p>
+
+          {/* User Attempt Status Badge */}
+          <div className="cbt-learner-status-pill">
+            <Sparkles size={16} />
+            <span>
+              {user ? (
+                isSpanish ? (
+                  <>Sesión activa: <strong>{user.displayName || user.email}</strong> • Intento #{userAttemptNumber} • <strong>Conjunto 100% Nuevo Garantizado</strong> en cada subprueba</>
+                ) : isFrench ? (
+                  <>Session de <strong>{user.displayName || user.email}</strong> • Tentative #{userAttemptNumber} • <strong>Nouvelles questions inédites garanties</strong></>
+                ) : (
+                  <>Learner Account: <strong>{user.displayName || user.email}</strong> • Attempt #{userAttemptNumber} • <strong>Brand New Set Guaranteed</strong> on each subtest</>
+                )
+              ) : (
+                isSpanish ? (
+                  <>💡 Consejo: Inicie sesión para registrar su historial y garantizar un conjunto 100% nuevo de preguntas en cada subprueba.</>
+                ) : (
+                  <>💡 Tip: Log in to save your attempt history and guarantee a brand new set of questions on every attempt.</>
+                )
+              )}
+            </span>
+          </div>
         </section>
+
+        {/* Level Switcher & Subtest Selection Panel for Spanish (DELE / SIELE) */}
+        {isSpanish && (
+          <div className="cbt-level-control-panel">
+            <div className="level-control-header">
+              <div className="control-title-box">
+                <Sparkles size={20} className="sparkle-icon" />
+                <h3>1. Seleccione el Nivel o Diploma Oficial (Instituto Cervantes)</h3>
+              </div>
+              <span className="control-badge">Normas Oficiales MCER / DELE / SIELE</span>
+            </div>
+
+            <div className="cbt-tier-selector-grid">
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'deleA1A2' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('deleA1A2')}
+              >
+                <div className="tier-tag">MCER A1–A2 • Inicial</div>
+                <h4>DELE A1–A2</h4>
+                <p className="tier-desc">Usuario Básico: Situaciones de supervivencia cotidiana, direcciones, compras, formularios y notas breves.</p>
+                <span className="tier-pool-stat">Acceso & Plataforma</span>
+              </button>
+
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'deleB1B2' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('deleB1B2')}
+              >
+                <div className="tier-tag badge-citizenship">MCER B1–B2 • Ciudadanía & Empleo</div>
+                <h4>DELE B1–B2</h4>
+                <p className="tier-desc">Usuario Independiente: Exigido para la Nacionalidad Española por Residencia y habilitación profesional.</p>
+                <span className="tier-pool-stat">Requisito Oficial Nacionalidad</span>
+              </button>
+
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'deleC1C2' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('deleC1C2')}
+              >
+                <div className="tier-tag badge-mastery">MCER C1–C2 • Superior & Académico</div>
+                <h4>DELE / SIELE C1–C2</h4>
+                <p className="tier-desc">Usuario Competente: Dominio operativo eficaz y maestría para universidades, oposiciones y ámbito jurídico.</p>
+                <span className="tier-pool-stat">Elocuencia & Maestría Total</span>
+              </button>
+            </div>
+
+            {/* Subtest Mode Selector */}
+            <div className="subtest-mode-selector-section">
+              <div className="control-title-box">
+                <BookOpen size={20} className="sparkle-icon" />
+                <h3>2. Elija una Subprueba Específica o la Simulación Completa</h3>
+              </div>
+
+              <div className="subtest-pills-row">
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('all')}
+                >
+                  <Sparkles size={16} />
+                  <span>🌟 Simulación Oficial Completa (4 Pruebas • 175 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'reading' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('reading')}
+                >
+                  <BookOpen size={16} />
+                  <span>📖 Comprensión de lectura (60 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'writing' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('writing')}
+                >
+                  <PenTool size={16} />
+                  <span>✍️ Expresión e interacción escritas (60 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'listening' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('listening')}
+                >
+                  <Headphones size={16} />
+                  <span>🎧 Comprensión auditiva (35 min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'speaking' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('speaking')}
+                >
+                  <Mic size={16} />
+                  <span>🗣️ Expresión e interacción orales (Lab • 20 min)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Launch Banner Card */}
+            <div className="cbt-launch-card">
+              <div className="launch-left">
+                <span className="launch-sub-tag">Generador Dinámico DELE / SIELE Listo</span>
+                <h3 className="launch-exam-title">
+                  {spanishExamPools[selectedLevelKey]?.title}
+                </h3>
+                <p className="launch-exam-summary">
+                  Modalidad: <strong>{
+                    selectedSubtestFilter === 'all' ? "Simulación Completa (Lectura + Escritura + Audios + Expresión Oral)" :
+                    selectedSubtestFilter === 'reading' ? "Comprensión de lectura (Documentos auténticos)" :
+                    selectedSubtestFilter === 'writing' ? "Expresión e interacción escritas (Mensajes y Ensayo argumentativo)" :
+                    selectedSubtestFilter === 'listening' ? "Comprensión auditiva (Audios de noticias, megafonía y entrevistas)" :
+                    "Expresión oral interactiva (Diálogos simulados + Monólogo)"
+                  }</strong>
+                </p>
+                <div className="launch-pills-row">
+                  <span className="launch-info-chip"><Shuffle size={14} /> Conjunto 100% Nuevo en Cada Intento</span>
+                  <span className="launch-info-chip"><ShieldCheck size={14} /> Estándares Oficiales Instituto Cervantes</span>
+                  {user && <span className="launch-info-chip"><UserCheck size={14} /> Historial Activo ({user.displayName || user.email})</span>}
+                </div>
+              </div>
+
+              <div className="launch-right">
+                <button
+                  className="cbt-start-hero-btn"
+                  onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
+                  id="launch-spanish-exam-btn"
+                >
+                  <Play size={20} fill="currentColor" />
+                  <span>Comenzar Examen</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Level Switcher & Subtest Selection Panel for French */}
         {isFrench && (
@@ -498,17 +687,18 @@ export default function CBTExamView() {
                   {frenchExamPools[selectedLevelKey]?.title}
                 </h3>
                 <p className="launch-exam-summary">
-                  Mode sélectionné : <strong>{
-                    selectedSubtestFilter === 'all' ? "Simulation Complète Officielle (Compréhension écrite + Production écrite + Compréhension orale + Production orale)" :
-                    selectedSubtestFilter === 'reading' ? "Compréhension des écrits (Documents authentiques, presse et textes administratifs)" :
-                    selectedSubtestFilter === 'writing' ? "Production écrite (Courrier formel officiel + Essai argumenté citoyen)" :
-                    selectedSubtestFilter === 'listening' ? "Compréhension de l'oral (Enregistrements audio en français avec lecteur natif)" :
-                    "Production orale en laboratoire (Dialogues interactifs guidés + Monologue argumenté)"
+                  Mode: <strong>{
+                    selectedSubtestFilter === 'all' ? "Épreuve Complète (4 Compétences • Tirage Inédit)" :
+                    selectedSubtestFilter === 'reading' ? "Compréhension des écrits (6 Documents Authentiques)" :
+                    selectedSubtestFilter === 'writing' ? "Production écrite (Courrier officiel + Essai)" :
+                    selectedSubtestFilter === 'listening' ? "Compréhension de l'oral (Extraits Radio & Annonces)" :
+                    "Production orale en Laboratoire Audio"
                   }</strong>
                 </p>
                 <div className="launch-pills-row">
-                  <span className="launch-info-chip"><Shuffle size={14} /> Tirage Aléatoire Nouveau à Chaque Tentative</span>
-                  <span className="launch-info-chip"><ShieldCheck size={14} /> Normes France Éducation International & CECR</span>
+                  <span className="launch-info-chip"><Shuffle size={14} /> Questions Inédites à Chaque Tentative</span>
+                  <span className="launch-info-chip"><ShieldCheck size={14} /> Normes France Éducation International</span>
+                  {user && <span className="launch-info-chip"><UserCheck size={14} /> Compte Actif ({user.displayName || user.email})</span>}
                 </div>
               </div>
 
@@ -516,7 +706,7 @@ export default function CBTExamView() {
                 <button
                   className="cbt-start-hero-btn"
                   onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
-                  id="launch-randomized-exam-btn"
+                  id="launch-french-exam-btn"
                 >
                   <Play size={20} fill="currentColor" />
                   <span>Commencer l'Examen</span>
@@ -636,8 +826,9 @@ export default function CBTExamView() {
                   }</strong>
                 </p>
                 <div className="launch-pills-row">
-                  <span className="launch-info-chip"><Shuffle size={14} /> Fresh Random Pool on Every Attempt</span>
+                  <span className="launch-info-chip"><Shuffle size={14} /> Fresh Unseen Set on Every Attempt</span>
                   <span className="launch-info-chip"><ShieldCheck size={14} /> Official Finnish National Standards</span>
+                  {user && <span className="launch-info-chip"><UserCheck size={14} /> Account Active ({user.displayName || user.email})</span>}
                 </div>
               </div>
 
@@ -655,7 +846,7 @@ export default function CBTExamView() {
           </div>
         )}
 
-        {/* Level Switcher & Subtest Selection Panel for Nigerian Pidgin (Exactly 60 Questions Each Section) */}
+        {/* Level Switcher & Subtest Selection Panel for Nigerian Pidgin */}
         {isPidgin && (() => {
           const activePidginExam = pidginExams.find(e => e.id === selectedLevelKey) || pidginExams[0];
           const availableSections = activePidginExam.sections || [];
@@ -681,7 +872,7 @@ export default function CBTExamView() {
                   <div className="tier-tag">NERDC Levels 1–2 • Foundational & Street Smart</div>
                   <h4>Foundational Standard (Levels 1–2)</h4>
                   <p className="tier-desc">Phonology & Sound Shifts (ting, dem, ouse), 7-Pronoun Grid (Una, Im, -am), and Serial Verb Aspect.</p>
-                  <span className="tier-pool-stat">3 Sections • Exactly 60 Questions Each (180 Total)</span>
+                  <span className="tier-pool-stat">3 Sections • 60 Questions Each (180 Total)</span>
                 </button>
 
                 <button
@@ -694,15 +885,15 @@ export default function CBTExamView() {
                   <div className="tier-tag badge-citizenship">NERDC Levels 3–4 • Senior Bro/Sis & Oracy</div>
                   <h4>Advanced Standard (Levels 3–4)</h4>
                   <p className="tier-desc">Front-Focus Clefting (Na dem...), Conditionals (Sote/Make), and Oral Literature, Proverbs & Satire.</p>
-                  <span className="tier-pool-stat">3 Sections • Exactly 60 Questions Each (180 Total)</span>
+                  <span className="tier-pool-stat">3 Sections • 60 Questions Each (180 Total)</span>
                 </button>
               </div>
 
-              {/* Section Subtest Mode Selector (Exactly 60 Questions Per Section) */}
+              {/* Section Subtest Mode Selector */}
               <div className="subtest-mode-selector-section">
                 <div className="control-title-box">
                   <BookOpen size={20} className="sparkle-icon" />
-                  <h3>2. Select Exam Section (Exactly 60 Questions Each) or Full 180-Q Test</h3>
+                  <h3>2. Select Exam Section or Full Certification Test</h3>
                 </div>
 
                 <div className="subtest-pills-row">
@@ -711,7 +902,7 @@ export default function CBTExamView() {
                     onClick={() => setSelectedSubtestFilter('all')}
                   >
                     <Sparkles size={16} />
-                    <span>🌟 Full Certification (All 3 Sections • 180 Questions • 60 Mins)</span>
+                    <span>🌟 Full Certification (All 3 Sections • 60 Mins)</span>
                   </button>
 
                   {availableSections.map((secName, idx) => {
@@ -724,7 +915,7 @@ export default function CBTExamView() {
                         className={`subtest-mode-pill ${selectedSubtestFilter === secName ? 'active' : ''}`}
                         onClick={() => setSelectedSubtestFilter(secName)}
                       >
-                        <span>{icon} Section {idx + 1}: {secName} (Exactly {count} Questions • 35 Mins)</span>
+                        <span>{icon} Section {idx + 1}: {secName} (30 Qs • 35 Mins)</span>
                       </button>
                     );
                   })}
@@ -741,14 +932,14 @@ export default function CBTExamView() {
                   <p className="launch-exam-summary">
                     Selected Mode: <strong>{
                       selectedSubtestFilter === 'all' 
-                        ? "Full 3-Section Examination (180 Questions across all sections • 60 min)" 
-                        : `Section: ${selectedSubtestFilter} (Exactly 60 Questions timed test • 35 min)`
+                        ? "Full 3-Section Examination (Fresh Unseen Questions Pool • 60 min)" 
+                        : `Section: ${selectedSubtestFilter} (30 Fresh Questions • 35 min)`
                     }</strong>
                   </p>
                   <div className="launch-pills-row">
                     <span className="launch-info-chip"><ShieldCheck size={14} /> NERDC 4-Tier Language Standard</span>
-                    <span className="launch-info-chip"><BookOpen size={14} /> West African Pidgin Orthography (JW.org / BBC)</span>
-                    <span className="launch-info-chip"><Award size={14} /> 70% Pass Threshold for Certification</span>
+                    <span className="launch-info-chip"><BookOpen size={14} /> West African Pidgin Orthography</span>
+                    <span className="launch-info-chip"><Shuffle size={14} /> Brand New Set on Every Attempt</span>
                   </div>
                 </div>
 
@@ -759,7 +950,7 @@ export default function CBTExamView() {
                     id="launch-pidgin-cbt-exam-btn"
                   >
                     <Play size={20} fill="currentColor" />
-                    <span>Start CBT Exam ({selectedSubtestFilter === 'all' ? '180 Questions' : '60 Questions'})</span>
+                    <span>Start CBT Exam ({selectedSubtestFilter === 'all' ? '60 Questions' : '30 Questions'})</span>
                   </button>
                 </div>
               </div>
@@ -768,7 +959,7 @@ export default function CBTExamView() {
         })()}
 
         {/* Generic Fallback Panel for other languages */}
-        {!isFrench && !isFinnish && !isPidgin && (() => {
+        {!isSpanish && !isFrench && !isFinnish && !isPidgin && (() => {
           const availableExams = getExamsForLanguage(currentLanguage);
           const activeExam = availableExams.find(e => e.id === selectedLevelKey) || availableExams[0];
           return (
@@ -825,25 +1016,31 @@ export default function CBTExamView() {
           <div className="instructions-header">
             <BookOpen size={22} className="inst-icon" />
             <h3>
-              {isFrench 
-                ? "Structure Officielle des Épreuves et Normes CECR (France Éducation International & CCI)" 
-                : isPidgin
-                  ? "NERDC Nigerian Pidgin 6-Section CBT Structure (Exactly 60 Questions Each)"
-                  : "Official YKI Examination Structure (Yleiset kielitutkinnot)"}
+              {isSpanish
+                ? "Estructura Oficial del Examen DELE / SIELE (Instituto Cervantes & MCER)"
+                : isFrench 
+                  ? "Structure Officielle des Épreuves et Normes CECR (France Éducation International & CCI)" 
+                  : isPidgin
+                    ? "NERDC Nigerian Pidgin 6-Section CBT Structure"
+                    : "Official Examination Structure"}
             </h3>
           </div>
           <p className="cbt-subtests-intro">
-            {isFrench ? (
+            {isSpanish ? (
+              <>
+                Las certificaciones oficiales de español están reguladas por el <strong>Instituto Cervantes</strong> y el <strong>Ministerio de Educación</strong>. Las pruebas evalúan cuatro destrezas fundamentales según los estándares del MCER:
+              </>
+            ) : isFrench ? (
               <>
                 Les certifications officielles de langue française sont régies par le <strong>Ministère de l'Éducation Nationale</strong> et la <strong>Chambre de Commerce et d'Industrie de Paris</strong>. Les épreuves évaluent quatre compétences distinctes selon les normes rigoureuses du CECR :
               </>
             ) : isPidgin ? (
               <>
-                The Nigerian Pidgin standardized examination is structured into <strong>6 rigorous sections of exactly 60 questions each (360 total questions)</strong> across foundational and advanced competency tiers, scaled according to national oracy standards and West African literature orthography:
+                The Nigerian Pidgin standardized examination is structured into rigorous competency sections scaled according to national oracy standards:
               </>
             ) : (
               <>
-                The standard official language test in Finland is the National Certificate of Language Proficiency (YKI). It is an intense, practical exam designed for adults that takes <strong>5 to 6 hours</strong> to complete on a single examination day across four distinct subtests:
+                The standard official language test is designed across four distinct subtests testing real-world practical fluency:
               </>
             )}
           </p>
@@ -851,61 +1048,61 @@ export default function CBTExamView() {
           <div className="cbt-subtests-grid">
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
+                <span className="subtest-icon">📖</span>
+                <strong>{isSpanish ? "Comprensión de lectura" : isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
+                <span className="subtest-time-tag">60 Mins</span>
+              </div>
+              <p>
+                {isSpanish
+                  ? "Lectura crítica de 6 documentos auténticos (noticias, normativas, ofertas de empleo, ensayos y reglamentos). Preguntas de opción múltiple con justificación pedagógica."
+                  : isFrench 
+                    ? "Lecture critique et analyse de 6 documents authentiques (articles de presse, lois, arrêtés, annonces et notes de service)."
+                    : "You read 6 distinct text packages within 60 minutes. Questions range from multiple-choice to open-ended text queries."}
+              </p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">✍️</span>
+                <strong>{isSpanish ? "Expresión e interacción escritas" : isFrench ? "Production écrite" : "Writing"}</strong>
+                <span className="subtest-time-tag">{isSpanish ? "60 Mins" : isFrench ? "60 Mins" : "55 Mins"}</span>
+              </div>
+              <p>
+                {isSpanish
+                  ? "Redacción de documentos formales: cartas de reclamación, solicitudes administrativas y un ensayo argumentativo equilibrado defendiendo una postura crítica."
+                  : isFrench
+                    ? "Rédaction de documents épistolaires et argumentatifs : un courrier administratif officiel ou de réclamation formelle, et un essai argumenté."
+                    : "You complete exactly 3 practical prompts: two shorter informal/semi-formal messages and one longer opinion essay."}
+              </p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
+                <span className="subtest-icon">🎧</span>
+                <strong>{isSpanish ? "Comprensión auditiva" : isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
+                <span className="subtest-time-tag">35 Mins</span>
+              </div>
+              <p>
+                {isSpanish
+                  ? "Escucha de audios de radio nacional (RNE, SER), anuncios de transporte, avisos policiales y debates sobre temas de actualidad."
+                  : isFrench
+                    ? "Écoute d'extraits radiophoniques (France Info, RFI), d'annonces publiques de sécurité et de débats de société."
+                    : "You listen to authentic audio recordings. Audio tracks can be replayed to verify details under test conditions."}
+              </p>
+            </div>
+
+            <div className="subtest-detail-box">
+              <div className="subtest-badge-row">
                 <span className="subtest-icon">🗣️</span>
-                <strong>{isFrench ? "Compréhension des écrits" : isPidgin ? "Phonology & Sound Shifts" : "Reading Comprehension"}</strong>
-                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : "60 Mins"}</span>
+                <strong>{isSpanish ? "Expresión e interacción orales" : isFrench ? "Production orale" : "Speaking"}</strong>
+                <span className="subtest-time-tag">20 Mins</span>
               </div>
               <p>
-                {isFrench 
-                  ? "Lecture critique et analyse de 6 documents authentiques (articles de presse, lois, arrêtés, annonces et notes de service). Questions à choix multiples et justifications textuelles."
-                  : isPidgin
-                    ? "Systematic dental fricative shifts (/θ/, /ð/ to /t/, /d/: thing -> ting, them -> dem), initial /h/ deletion (house -> ouse), 7-vowel orthography, and the core 7-pronoun paradigm (Una, Im, -am)."
-                    : "You read 6 distinct text packages within 60 minutes. Questions range from multiple-choice to true-or-false and open-ended text queries with roughly 10 minutes per text."}
-              </p>
-            </div>
-
-            <div className="subtest-detail-box">
-              <div className="subtest-badge-row">
-                <span className="subtest-icon">⚡</span>
-                <strong>{isFrench ? "Production écrite" : isPidgin ? "Grammatical Aspect & Verbs" : "Writing"}</strong>
-                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "60 Mins" : "55 Mins"}</span>
-              </div>
-              <p>
-                {isFrench
-                  ? "Rédaction de documents épistolaires et argumentatifs : un courrier administratif officiel ou de réclamation formelle, et un essai argumenté défendant une position citoyenne nuancée."
-                  : isPidgin
-                    ? "Pre-verbal tense and aspect particles (dey/de progressive, don perfective, never completive), serialization (carry-go, take-give), and copular distinctions (na equative vs dey locative)."
-                    : "You complete exactly 3 practical prompts: two shorter informal/semi-formal messages (e.g. email to landlord, inquiry, note to neighbor) and one longer opinion essay."}
-              </p>
-            </div>
-
-            <div className="subtest-detail-box">
-              <div className="subtest-badge-row">
-                <span className="subtest-icon">🛒</span>
-                <strong>{isFrench ? "Compréhension de l'oral" : isPidgin ? "Marketplace & Transit Oracy" : "Listening Comprehension"}</strong>
-                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "35 Mins" : "40 Mins"}</span>
-              </div>
-              <p>
-                {isFrench
-                  ? "Écoute d'extraits radiophoniques (France Info, RFI), d'annonces publiques de sécurité et de débats de société. Questions sur le sens global et les intentions des locuteurs."
-                  : isPidgin
-                    ? "Authentic dialogue comprehension in open markets, Danfo bus conductor banter, fare negotiation, police checkpoints, and street navigation."
-                    : "You listen to 4 to 7 audio recordings (weather announcements, radio clips, voicemail messages, dialogues). Audio tracks are played twice at intermediate level."}
-              </p>
-            </div>
-
-            <div className="subtest-detail-box">
-              <div className="subtest-badge-row">
-                <span className="subtest-icon">🎭</span>
-                <strong>{isFrench ? "Production orale" : isPidgin ? "Advanced Syntax & Satire" : "Speaking"}</strong>
-                <span className="subtest-time-tag">{isPidgin ? "60 Questions" : isFrench ? "20 Mins" : "25 Mins"}</span>
-              </div>
-              <p>
-                {isFrench
-                  ? "Épreuve interactive en laboratoire de langue : entretien dirigé (présentation personnelle), jeu de rôle en situation réelle et monologue argumenté avec temps de préparation."
-                  : isPidgin
-                    ? "Front-focus clefting (Na dem spoil am), complex conditional conjunctions (sote, make), deep cultural proverbs (Monkey dey work baboon dey chop), and literary register analysis."
-                    : "Conducted in a language lab wearing headsets: 2–3 rapid simulated dialogues (20–45s replies) plus 1–2 timed monologues (1–2 minutes speech with preparation time)."}
+                {isSpanish
+                  ? "Laboratorio de voz interactivo: simulador de entrevistas de trabajo, resolución de conflictos vecinales y monólogo argumentativo con tiempo de preparación."
+                  : isFrench
+                    ? "Épreuve interactive en laboratoire de langue : entretien dirigé, jeu de rôle en situation réelle et monologue argumenté."
+                    : "Conducted in a language lab simulator: rapid simulated dialogues plus timed monologues with preparation countdown."}
               </p>
             </div>
           </div>
@@ -915,33 +1112,29 @@ export default function CBTExamView() {
         <div className="cbt-instructions-card">
           <div className="instructions-header">
             <ShieldCheck size={22} className="inst-icon" />
-            <h3>{isFrench ? "Règlement d'Examen & Consignes aux Candidats" : isPidgin ? "NERDC Candidate Examination Guidelines & Regulations" : "Candidate Exam Guidelines & Regulations"}</h3>
+            <h3>{isSpanish ? "Normativa del Examen y Garantía de Novedad de Preguntas" : isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
           </div>
           <ul className="instructions-list">
-            {isFrench ? (
+            {isSpanish ? (
               <>
-                <li><strong>Justificatifs d'identité stricts :</strong> Vous devez présenter une pièce d'identité officielle avec photo en cours de validité (passeport, carte nationale d'identité de l'Union européenne ou titre de séjour délivré par les autorités françaises). <em>Le permis de conduire n'est pas recevable pour l'émargement officiel.</em> Tout retard à la fermeture des portes entraîne l'interdiction d'accès à la salle.</li>
-                <li><strong>Interdiction absolue des appareils électroniques :</strong> Les téléphones portables, montres connectées, tablettes et écouteurs personnels sont rigoureusement interdits. Tout appareil en fonctionnement entraîne l'annulation immédiate de l'épreuve pour tentative de fraude.</li>
-                <li><strong>Barème officiel & Note éliminatoire :</strong> Chaque épreuve (Écrit, Écoute, Lecture, Parole) est notée sur 25 points, pour un total global sur 100. <strong>Une note inférieure à 5/25 dans l'une quelconque des quatre épreuves est strictement éliminatoire.</strong></li>
-                <li><strong>Seuil d'admissibilité du diplôme :</strong> Pour obtenir le diplôme officiel du DELF ou du DALF, le candidat doit impérativement totaliser au minimum <strong>50 points sur 100</strong> sans avoir obtenu de note éliminatoire.</li>
-                <li><strong>Exigences Légales de Nationalité Française & Titre de Séjour :</strong> Le Ministère de l'Intérieur exige l'attestation de réussite au <strong>DELF B1 / B2</strong> ou au <strong>TCF IRN (niveau B1 oral et écrit)</strong> pour toute demande de naturalisation française par décret ainsi que pour l'octroi d'une carte de résident de 10 ans.</li>
-                <li><strong>Diplômes Définitifs à Vie :</strong> Les diplômes DELF (A1 à B2) et DALF (C1 et C2) sont acquis définitivement et restent valables à vie sans limitation de durée, contrairement aux tests TCF et TEF qui ont une validité de deux ans.</li>
+                <li><strong>Garantía de preguntas inéditas:</strong> Al estar registrado con su cuenta, el sistema registra cada ejercicio presentado y garantiza que en cada nuevo intento se seleccionarán preguntas completamente nuevas que no haya resuelto anteriormente.</li>
+                <li><strong>Requisito de Nacionalidad Española (DELE B1):</strong> El Ministerio de Justicia de España exige la aprobación del examen DELE B1 o superior a los solicitantes de nacionalidad por residencia no hispanohablantes de origen.</li>
+                <li><strong>Estructura cronometrada:</strong> Puede practicar subpruebas individuales con tiempos específicos (Lectura: 60 min, Escritura: 60 min, Audios: 35 min, Expresión oral: 20 min) o la simulación completa de 175 minutos.</li>
+                <li><strong>Marcado de preguntas dudosas:</strong> Utilice el botón «Marcar Pregunta» para revisar cualquier duda antes de enviar la prueba al calificador.</li>
+                <li><strong>Retroalimentación pedagógica inmediata:</strong> Al finalizar, el sistema genera la hoja de respuestas detallada con justificaciones gramaticales y modelos oficiales de redacción y expresión oral.</li>
               </>
-            ) : isPidgin ? (
+            ) : isFrench ? (
               <>
-                <li><strong>Standardized Literature Orthography:</strong> Examination questions adhere strictly to the standardized West African Pidgin literature spelling system as published by <strong>JW.org/wes-x-pgw</strong> and leading broadcasting institutions (BBC News Pidgin).</li>
-                <li><strong>Timed Structure & Section Flexibility:</strong> Candidates can choose to practice <strong>Exactly 60 Questions in any single section (35-minute timer)</strong>, or sit for the comprehensive 180-Question Certification Examination (60-minute timer).</li>
-                <li><strong>Question Flagging & Navigation:</strong> Use the "Flag Question" button to bookmark challenging queries. You may jump between questions freely using the question grid on the right panel.</li>
-                <li><strong>Instant Scoring & Deep Linguistic Rationale:</strong> Upon submitting, the system automatically grades your examination and provides thorough explanatory feedback breaking down the syntax, dialect, and phonology behind every question.</li>
-                <li><strong>Certification Threshold:</strong> Candidates achieving <strong>70% or higher</strong> earn the FiksLingo NERDC Nigerian Pidgin Certificate of Proficiency.</li>
+                <li><strong>Garantie de questions inédites :</strong> Chaque tentative d'un utilisateur connecté sélectionne automatiquement des questions nouvelles non encore traitées dans la banque d'épreuves.</li>
+                <li><strong>Justificatifs d'identité stricts :</strong> Vous devez présenter une pièce d'identité officielle avec photo en cours de validité lors des épreuves présentielles.</li>
+                <li><strong>Exigences Légales de Nationalité Française :</strong> Le Ministère de l'Intérieur exige l'attestation de réussite au <strong>DELF B1 / B2</strong> ou au <strong>TCF IRN</strong> pour toute demande de naturalisation.</li>
+                <li><strong>Barème officiel :</strong> Chaque épreuve est notée sur 25 points pour un total global sur 100.</li>
               </>
             ) : (
               <>
-                <li><strong>Arrival and Rigorous ID Checks:</strong> You must present a valid, official ID (such as a passport, official EU national ID card, or Finnish alien's passport / residence permit card). <em>A Finnish driver's license is strictly NOT accepted.</em> If you arrive late, you are barred from entering.</li>
-                <li><strong>No Electronics Allowed:</strong> All smartphones, smartwatches, traditional wristwatches, tablets, and personal study materials are strictly prohibited in the exam hall.</li>
-                <li><strong>Language Lab Ambient Sound:</strong> In the language laboratory, candidates speak simultaneously into headsets. Practice speaking with confidence despite background noise.</li>
-                <li><strong>Communication Over Perfection:</strong> Graders prioritize your ability to react promptly, convey a clear message, and fulfill communicative functions under pressure.</li>
-                <li><strong>Grading & Finnish Citizenship (Migri):</strong> Each subtest is graded individually against the CEFR scale (Perustaso A1–A2, Keskitaso B1–B2, Ylintaso C1–C2). To qualify for <strong>Finnish citizenship</strong>, Migri requires at least <strong>Grade 3 (B1 level)</strong> in an approved combination of oral and written subtests.</li>
+                <li><strong>Guaranteed Brand New Sets:</strong> For logged-in users, our engine tracks previously attempted questions across every subtest, ensuring a fresh set of questions on every subsequent attempt.</li>
+                <li><strong>No Electronics Allowed:</strong> All unauthorized devices and materials are prohibited in official examination halls.</li>
+                <li><strong>Comprehensive Feedback:</strong> Submit your answers at any point to receive immediate scoring, domain breakdown, and model answers.</li>
               </>
             )}
           </ul>
@@ -964,7 +1157,7 @@ export default function CBTExamView() {
     const userTextAnswer = answers[currentQuestion.id] || '';
     const wordCount = countWords(userTextAnswer);
     const playsUsed = audioPlaysCount[currentQuestion.id] || 0;
-    const maxPlays = currentQuestion.maxPlays || (selectedLevelKey === 'ylintaso' ? 1 : 2);
+    const maxPlays = currentQuestion.maxPlays || (selectedLevelKey === 'deleC1C2' || selectedLevelKey === 'ylintaso' ? 1 : 2);
     const playsLeft = Math.max(0, maxPlays - playsUsed);
 
     return (
@@ -977,13 +1170,18 @@ export default function CBTExamView() {
               <span className="exam-head-title">{activeSession.title}</span>
             </div>
             <span className="cbt-level-indicator">{activeSession.badge}</span>
+            {activeSession.isBrandNewSession && (
+              <span className="cbt-brand-new-badge" title="Brand new question set for your account">
+                <Sparkles size={13} /> {isSpanish ? "Conjunto Nuevo" : "Brand New Set"}
+              </span>
+            )}
           </div>
 
           <div className="cbt-bar-center">
             <div className={`cbt-timer-widget ${isTimeUrgent ? 'urgent' : isTimeWarning ? 'warning' : ''}`}>
               <Clock size={18} className="timer-icon" />
               <span className="timer-text">{formatTime(secondsRemaining)}</span>
-              {isTimeUrgent && <span className="time-alert-tag">Ending Soon!</span>}
+              {isTimeUrgent && <span className="time-alert-tag">{isSpanish ? "¡Poco tiempo!" : "Ending Soon!"}</span>}
             </div>
           </div>
 
@@ -994,107 +1192,95 @@ export default function CBTExamView() {
               title="Flag question for later review"
             >
               <Flag size={16} />
-              <span>{isFlagged ? 'Flagged' : 'Flag Question'}</span>
+              <span>{isFlagged ? (isSpanish ? 'Marcada' : 'Flagged') : (isSpanish ? 'Marcar' : 'Flag Question')}</span>
             </button>
 
             <button 
-              className="cbt-submit-nav-btn"
+              className="cbt-submit-btn"
               onClick={() => setShowSubmitModal(true)}
-              id="cbt-submit-trigger-btn"
             >
               <CheckCircle2 size={16} />
-              <span>Submit Exam</span>
+              <span>{isSpanish ? "Finalizar y Calificar" : isFrench ? "Soumettre l'Épreuve" : "Submit Examination"}</span>
             </button>
           </div>
         </header>
 
-        {/* Main Examination Stage */}
-        <div className="cbt-main-layout">
-          {/* Left / Center: Question Stage */}
-          <div className="cbt-stage-content">
-            <div className="cbt-question-header-row">
-              <div className="question-meta-tags">
-                <span className="q-number-pill">
-                  {isFrench ? `Tâche ${currentQuestionIndex + 1} sur ${totalQuestions}` : `Task ${currentQuestionIndex + 1} of ${totalQuestions}`}
+        {/* Main Split Body */}
+        <div className="cbt-active-body">
+          {/* Left Panel: Question Content */}
+          <main className="cbt-question-pane">
+            <div className="cbt-question-header">
+              <div className="q-badge-cluster">
+                <span className="q-badge-num">
+                  {isSpanish ? "Pregunta" : "Question"} {currentQuestionIndex + 1} / {totalQuestions}
                 </span>
-                <span className="q-section-pill">
-                  {isFrench ? (
-                    <>
-                      {currentSubtest === 'reading' && "📖 Compréhension des écrits (Reading)"}
-                      {currentSubtest === 'writing' && "✍️ Production écrite (Writing)"}
-                      {currentSubtest === 'listening' && "🎧 Compréhension de l'oral (Listening)"}
-                      {currentSubtest === 'speaking' && "🗣️ Production orale (Speaking Lab)"}
-                      {!['reading', 'writing', 'listening', 'speaking'].includes(currentSubtest) && (currentQuestion.section || "Épreuve")}
-                    </>
-                  ) : (
-                    <>
-                      {currentSubtest === 'reading' && "📖 Tekstin ymmärtäminen (Reading)"}
-                      {currentSubtest === 'writing' && "✍️ Kirjoittaminen (Writing)"}
-                      {currentSubtest === 'listening' && "🎧 Puheen ymmärtäminen (Listening)"}
-                      {currentSubtest === 'speaking' && "🗣️ Puhuminen (Speaking Lab)"}
-                      {!['reading', 'writing', 'listening', 'speaking'].includes(currentSubtest) && (currentQuestion.section || "Yleinen")}
-                    </>
-                  )}
+                <span className="q-badge-domain">
+                  {currentQuestion.title || currentQuestion.subtest || currentQuestion.section || activeSession.subtestLabel}
                 </span>
-                {currentQuestion.title && (
-                  <span className="q-title-pill">{currentQuestion.title}</span>
-                )}
+                {isFlagged && <span className="q-badge-flag"><Flag size={12} /> {isSpanish ? "Marcada para revisión" : "Flagged"}</span>}
               </div>
 
               {isAnswered && (
-                <span className="answered-indicator">
-                  <Check size={14} /> {isFrench ? "Réponse enregistrée" : "Answer Recorded"}
+                <span className="q-badge-answered">
+                  <Check size={14} /> {isSpanish ? "Respondida" : "Answered"}
                 </span>
               )}
             </div>
 
-            {/* --- 1. READING SUBTEST DISPLAY --- */}
+            {/* --- 1. READING PASSAGE / DOCUMENT --- */}
             {currentQuestion.passage && (
-              <div className="cbt-passage-container">
+              <div className="cbt-reading-passage-box">
                 <div className="passage-header">
-                  <BookOpen size={16} />
-                  <span>{isFrench ? "Document officiel à analyser (Lire attentivement) :" : "Teksti / Ilmoitus (Read carefully):"}</span>
+                  <FileText size={16} />
+                  <span>{isSpanish ? "Documento Oficial de Referencia" : isFrench ? "Document Officiel de Référence" : "Official Reference Document"}</span>
                 </div>
-                <div className="passage-body">
-                  <pre className="passage-text">{currentQuestion.passage}</pre>
+                <div className="passage-content">
+                  {currentQuestion.passage.split('\n').map((para, pIdx) => (
+                    <p key={pIdx}>{para}</p>
+                  ))}
                 </div>
               </div>
             )}
 
-            {/* --- 2. LISTENING SUBTEST AUDIO PLAYER --- */}
-            {isListeningTask && currentQuestion.audioPhrase && (
-              <div className="cbt-audio-prompt-card">
-                <div className="audio-prompt-header">
-                  <Headphones size={18} />
-                  <span>{isFrench ? "Épreuve de Compréhension Orale (Audio natif)" : "Kuuntelutehtävä (Audio Recording)"}</span>
-                  <span className={`audio-plays-pill ${playsLeft === 0 ? 'exhausted' : ''}`}>
-                    {isFrench ? `Écoutes restantes : ${playsLeft} / ${maxPlays}` : `Toistot jäljellä: ${playsLeft} / ${maxPlays}`}
-                  </span>
+            {/* --- 2. LISTENING AUDIO STIMULUS --- */}
+            {isListeningTask && (
+              <div className="cbt-listening-audio-box">
+                <div className="audio-header">
+                  <Headphones size={20} />
+                  <div className="audio-header-text">
+                    <h4>{isSpanish ? "Enlace de Audio — Comprensión Auditiva" : isFrench ? "Support Audio — Compréhension de l'oral" : "Audio Track — Listening Comprehension"}</h4>
+                    <p>{isSpanish ? "Escuche atentamente la grabación en español para responder." : "Listen carefully to the audio excerpt to answer the question."}</p>
+                  </div>
                 </div>
-                <div className="audio-player-action">
+
+                <div className="audio-player-controls">
                   <button 
                     className={`cbt-audio-play-btn ${playsLeft === 0 ? 'disabled' : ''}`}
                     onClick={() => handlePlayListeningAudio(currentQuestion)}
                     disabled={playsLeft === 0}
-                    aria-label="Play audio listening prompt"
                   >
-                    <Volume2 size={20} />
+                    <Volume2 size={22} />
                     <span>
                       {playsLeft > 0 
-                        ? (isFrench ? "Écouter l'enregistrement audio (Voix française)" : "Kuuntele äänite (Play Audio Track)")
-                        : (isFrench ? "Nombre maximal d'écoutes atteint" : "Ei toistoja jäljellä (Max plays reached)")}
+                        ? (isSpanish ? `Reproducir audio (${playsLeft} ${playsLeft === 1 ? 'reproducción restante' : 'reproducciones restantes'})` : isFrench ? `Écouter l'enregistrement (${playsLeft} restante${playsLeft > 1 ? 's' : ''})` : `Play Audio Track (${playsLeft} play${playsLeft > 1 ? 's' : ''} left)`)
+                        : (isSpanish ? "Límite de reproducciones alcanzado" : isFrench ? "Limite d'écoutes atteinte" : "Maximum Plays Reached")}
                     </span>
                   </button>
-                  <span className="audio-hint">
-                    {isFrench 
-                      ? "Consigne officielle : Écoutez attentivement l'extrait radiophonique ou l'annonce avant de sélectionner votre réponse. Le nombre d'écoutes est limité conformément au standard d'examen."
-                      : "YKI-sääntö: Kuuntelet äänitteen ennen kysymykseen vastaamista. Toistokerrat on rajoitettu virallisen koestandardin mukaisesti."}
-                  </span>
+
+                  <div className="plays-indicator-pills">
+                    {Array.from({ length: maxPlays }).map((_, pIdx) => (
+                      <span 
+                        key={pIdx} 
+                        className={`play-dot ${pIdx < playsUsed ? 'used' : 'available'}`} 
+                        title={`Play ${pIdx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
 
-            {/* --- 3. WRITING SUBTEST TEXTAREA --- */}
+            {/* --- 3. WRITING SUBTEST TASK AREA --- */}
             {isWritingTask && (
               <div className="cbt-writing-container">
                 <div className="writing-prompt-box">
@@ -1102,9 +1288,13 @@ export default function CBTExamView() {
                   <div className="writing-guidelines-banner">
                     <PenTool size={16} />
                     <span>
-                      {isFrench 
-                        ? <>Rédigez votre réponse dans la zone de texte ci-dessous en français soigné. Longueur minimale requise : <strong>{currentQuestion.minWords || 60} mots</strong>.</>
-                        : <>Vastaa alla olevaan tekstikenttään suomeksi. Tavoitesanamäärä: vähintään <strong>{currentQuestion.minWords || 30} sanaa</strong>.</>}
+                      {isSpanish ? (
+                        <>Redacte su respuesta en el cuadro de texto inferior en español formal. Longitud mínima requerida: <strong>{currentQuestion.minWords || 60} palabras</strong>.</>
+                      ) : isFrench ? (
+                        <>Rédigez votre réponse dans la zone de texte ci-dessous en français soigné. Longueur minimale requise : <strong>{currentQuestion.minWords || 60} mots</strong>.</>
+                      ) : (
+                        <>Vastaa alla olevaan tekstikenttään. Tavoitesanamäärä: vähintään <strong>{currentQuestion.minWords || 30} sanaa</strong>.</>
+                      )}
                     </span>
                   </div>
                 </div>
@@ -1112,18 +1302,18 @@ export default function CBTExamView() {
                 <div className="writing-textarea-wrapper">
                   <textarea
                     className="cbt-writing-textarea"
-                    placeholder={isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
+                    placeholder={isSpanish ? "Redacte su texto formal o ensayo argumentativo aquí..." : isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
                     rows={8}
                     value={userTextAnswer}
                     onChange={(e) => handleWritingInput(currentQuestion.id, e.target.value)}
                   />
                   <div className="writing-meta-bar">
                     <div className="word-count-chip">
-                      {isFrench ? "Nombre de mots :" : "Sanamäärä :"} <strong className={wordCount >= (currentQuestion.minWords || 30) ? 'text-emerald' : 'text-amber'}>
+                      {isSpanish ? "Recuento de palabras:" : isFrench ? "Nombre de mots :" : "Sanamäärä :"} <strong className={wordCount >= (currentQuestion.minWords || 30) ? 'text-emerald' : 'text-amber'}>
                         {wordCount}
-                      </strong> / {currentQuestion.minWords || 30} {isFrench ? "mots" : "sanaa"}
+                      </strong> / {currentQuestion.minWords || 30} {isSpanish ? "palabras" : isFrench ? "mots" : "sanaa"}
                     </div>
-                    <span className="char-count-chip">{userTextAnswer.length} {isFrench ? "caractères" : "merkkiä"}</span>
+                    <span className="char-count-chip">{userTextAnswer.length} {isSpanish ? "caracteres" : isFrench ? "caractères" : "merkkiä"}</span>
                   </div>
                 </div>
               </div>
@@ -1134,7 +1324,7 @@ export default function CBTExamView() {
               <div className="cbt-speaking-container">
                 <div className="speaking-header-banner">
                   <Mic size={20} />
-                  <span>{isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
+                  <span>{isSpanish ? "Laboratorio de Idiomas: Simulador oficial de expresión oral" : isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
                 </div>
 
                 <div className="speaking-prompt-box">
@@ -1146,7 +1336,7 @@ export default function CBTExamView() {
                         onClick={() => handlePlayNativeSpeaker(currentQuestion.audioPrompt)}
                       >
                         <Volume2 size={16} />
-                        <span>{isFrench ? `Écouter l'intervention de l'examinateur : "${currentQuestion.audioPrompt}"` : `Kuuntele vastapuolen repliikki: "${currentQuestion.audioPrompt}"`}</span>
+                        <span>{isSpanish ? `Escuchar al interlocutor: "${currentQuestion.audioPrompt}"` : isFrench ? `Écouter l'examinateur : "${currentQuestion.audioPrompt}"` : `Kuuntele vastapuolen repliikki: "${currentQuestion.audioPrompt}"`}</span>
                       </button>
                     </div>
                   )}
@@ -1154,14 +1344,14 @@ export default function CBTExamView() {
 
                 <div className="speaking-timer-grid">
                   <div className={`speaking-timer-box ${speakingPhase === 'prep' ? 'active-timer' : ''}`}>
-                    <span className="timer-box-label">{isFrench ? "Temps de préparation" : "Valmistautumisaika (Prep)"}</span>
+                    <span className="timer-box-label">{isSpanish ? "Tiempo de preparación" : isFrench ? "Temps de préparation" : "Valmistautumisaika (Prep)"}</span>
                     <strong className="timer-box-digits">
                       {speakingPhase === 'prep' ? `${prepCountdown} s` : `${currentQuestion.prepSeconds || 10} s`}
                     </strong>
                   </div>
 
                   <div className={`speaking-timer-box ${speakingPhase === 'speaking' ? 'active-timer urgent' : ''}`}>
-                    <span className="timer-box-label">{isFrench ? "Temps de parole" : "Puhumisaika (Speech)"}</span>
+                    <span className="timer-box-label">{isSpanish ? "Tiempo de respuesta oral" : isFrench ? "Temps de parole" : "Puhumisaika (Speech)"}</span>
                     <strong className="timer-box-digits">
                       {speakingPhase === 'speaking' ? `${speakCountdown} s` : `${currentQuestion.speakSeconds || 30} s`}
                     </strong>
@@ -1175,7 +1365,7 @@ export default function CBTExamView() {
                       onClick={() => handleStartSpeakingLab(currentQuestion)}
                     >
                       <Mic size={18} />
-                      <span>{isFrench ? "Démarrer l'enregistrement oral (Compte à rebours)" : "Aloita puheharjoitus (Start Countdown)"}</span>
+                      <span>{isSpanish ? "Iniciar grabación oral (Cuenta regresiva)" : isFrench ? "Démarrer l'enregistrement oral" : "Aloita puheharjoitus"}</span>
                     </button>
                   )}
 
@@ -1183,9 +1373,11 @@ export default function CBTExamView() {
                     <div className="speaking-status-alert prep">
                       <Clock size={18} />
                       <span>
-                        {isFrench 
-                          ? `Préparez votre intervention ! L'enregistrement démarrera automatiquement dans ${prepCountdown} secondes.`
-                          : `Valmistaudu puheenvuoroosi! Nauhoitus alkaa automaattisesti ${prepCountdown} sekunnin kuluttua.`}
+                        {isSpanish 
+                          ? `¡Prepare su respuesta! La grabación iniciará automáticamente en ${prepCountdown} segundos.`
+                          : isFrench
+                            ? `Préparez votre intervention ! Enregistrement dans ${prepCountdown} secondes.`
+                            : `Valmistaudu puheenvuoroosi! Nauhoitus alkaa ${prepCountdown} s kuluttua.`}
                       </span>
                     </div>
                   )}
@@ -1194,16 +1386,18 @@ export default function CBTExamView() {
                     <div className="speaking-active-recording-card">
                       <div className="pulse-recording-dot" />
                       <span>
-                        {isFrench 
-                          ? `Microphone actif : Exprimez-vous avec clarté en français ! (${speakCountdown} s restantes)`
-                          : `Mikrofoni aktiivinen: Puhu nyt selkeästi! (${speakCountdown} s jäljellä)`}
+                        {isSpanish 
+                          ? `Micrófono activo: ¡Hable con claridad en español! (${speakCountdown} s restantes)`
+                          : isFrench
+                            ? `Microphone actif : Exprimez-vous en français ! (${speakCountdown} s)`
+                            : `Mikrofoni aktiivinen: Puhu nyt selkeästi! (${speakCountdown} s)`}
                       </span>
                       <button 
                         className="speaking-action-btn stop"
                         onClick={() => handleStopSpeakingLab(currentQuestion)}
                       >
                         <Square size={16} />
-                        <span>{isFrench ? "Terminer la prise de parole" : "Pysäytä puheenvuoro"}</span>
+                        <span>{isSpanish ? "Finalizar grabación" : isFrench ? "Terminer la prise de parole" : "Pysäytä puheenvuoro"}</span>
                       </button>
                     </div>
                   )}
@@ -1212,15 +1406,17 @@ export default function CBTExamView() {
                     <div className="speaking-status-alert done">
                       <CheckCircle2 size={18} />
                       <span>
-                        {isFrench 
-                          ? "Prise de parole effectuée et enregistrée ! Vous pouvez passer à la tâche suivante."
-                          : "Puheenvuoro suoritettu ja vastaukseksi kirjattu! Voit siirtyä seuraavaan tehtävään."}
+                        {isSpanish
+                          ? "¡Intervención oral grabada y registrada! Puede continuar a la siguiente pregunta."
+                          : isFrench 
+                            ? "Prise de parole enregistrée ! Vous pouvez passer à la suite."
+                            : "Puheenvuoro suoritettu ja kirjattu!"}
                       </span>
                       <button 
                         className="speaking-re-btn"
                         onClick={() => handleStartSpeakingLab(currentQuestion)}
                       >
-                        <RotateCcw size={14} /> {isFrench ? "Recommencer" : "Puhu uudelleen"}
+                        <RotateCcw size={14} /> {isSpanish ? "Repetir grabación" : isFrench ? "Recommencer" : "Puhu uudelleen"}
                       </button>
                     </div>
                   )}
@@ -1248,7 +1444,7 @@ export default function CBTExamView() {
                           <span className="option-radio-indicator">
                             {isSelected ? <div className="radio-dot" /> : null}
                           </span>
-                          <span className="option-text-label">{option}</span>
+                          <span className="option-label-text">{option}</span>
                         </button>
                       );
                     })}
@@ -1258,95 +1454,96 @@ export default function CBTExamView() {
             )}
 
             {/* Bottom Question Controls */}
-            <div className="cbt-bottom-controls">
-              <div className="ctrl-left">
+            <div className="cbt-bottom-nav-bar">
+              <div className="nav-left">
                 <button
                   className="cbt-nav-btn prev"
-                  onClick={() => {
-                    setCurrentQuestionIndex((prev) => Math.max(0, prev - 1));
-                    setSpeakingPhase('idle');
-                  }}
+                  onClick={() => setCurrentQuestionIndex(prev => Math.max(0, prev - 1))}
                   disabled={currentQuestionIndex === 0}
                 >
                   <ChevronLeft size={18} />
-                  <span>Previous</span>
+                  <span>{isSpanish ? "Anterior" : isFrench ? "Précédent" : "Previous"}</span>
                 </button>
 
                 <button
                   className="cbt-nav-btn next"
-                  onClick={() => {
-                    setCurrentQuestionIndex((prev) => Math.min(totalQuestions - 1, prev + 1));
-                    setSpeakingPhase('idle');
-                  }}
+                  onClick={() => setCurrentQuestionIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
                   disabled={currentQuestionIndex === totalQuestions - 1}
                 >
-                  <span>Next</span>
+                  <span>{isSpanish ? "Siguiente" : isFrench ? "Suivant" : "Next"}</span>
                   <ChevronRight size={18} />
                 </button>
               </div>
 
-              <div className="ctrl-right">
+              <div className="nav-right">
                 {isAnswered && (
                   <button 
                     className="cbt-clear-answer-btn"
                     onClick={() => handleClearAnswer(currentQuestion.id)}
                   >
-                    Clear Response
+                    <RotateCcw size={14} />
+                    <span>{isSpanish ? "Borrar respuesta" : isFrench ? "Effacer la réponse" : "Clear Response"}</span>
                   </button>
                 )}
               </div>
             </div>
-          </div>
+          </main>
 
-          {/* Right Sidebar: Candidate Palette Grid */}
-          <aside className="cbt-palette-sidebar">
+          {/* Right Panel: Question Navigator Palette */}
+          <aside className="cbt-palette-pane">
             <div className="palette-header">
-              <h3>Task Palette</h3>
-              <span className="palette-summary">{answeredCount} of {totalQuestions} Answered</span>
-            </div>
-
-            <div className="palette-legend">
-              <div className="legend-item"><span className="legend-chip answered" /> Answered</div>
-              <div className="legend-item"><span className="legend-chip flagged" /> Flagged</div>
-              <div className="legend-item"><span className="legend-chip unanswered" /> Unanswered</div>
+              <h3>{isSpanish ? "Navegador de Preguntas" : isFrench ? "Grille des Questions" : "Question Navigator"}</h3>
+              <span className="palette-summary">
+                {answeredCount} / {totalQuestions} {isSpanish ? "respondidas" : "completed"}
+              </span>
             </div>
 
             <div className="palette-grid">
               {activeSession.questions.map((q, idx) => {
-                const ans = Boolean(answers[q.id]);
-                const flg = flaggedIds.has(q.id);
-                const isCur = idx === currentQuestionIndex;
-
-                let statusClass = 'unanswered';
-                if (ans) statusClass = 'answered';
-                if (flg) statusClass = 'flagged';
-                if (ans && flg) statusClass = 'answered-flagged';
+                const isCurrent = idx === currentQuestionIndex;
+                const isAns = Boolean(answers[q.id]);
+                const isFlg = flaggedIds.has(q.id);
 
                 return (
                   <button
                     key={q.id}
-                    className={`palette-num-btn ${statusClass} ${isCur ? 'current' : ''}`}
-                    onClick={() => {
-                      setCurrentQuestionIndex(idx);
-                      setSpeakingPhase('idle');
-                    }}
-                    aria-label={`Jump to task ${idx + 1}`}
+                    className={`palette-btn ${isCurrent ? 'current' : ''} ${isAns ? 'answered' : ''} ${isFlg ? 'flagged' : ''}`}
+                    onClick={() => setCurrentQuestionIndex(idx)}
+                    title={`${isSpanish ? 'Pregunta' : 'Task'} ${idx + 1}`}
                   >
-                    {idx + 1}
+                    <span className="p-num">{idx + 1}</span>
+                    {isFlg && <span className="p-flag-dot" />}
                   </button>
                 );
               })}
             </div>
 
-            <div className="palette-submit-box">
-              <button 
-                className="palette-submit-action-btn"
-                onClick={() => setShowSubmitModal(true)}
-              >
-                <CheckCircle2 size={18} />
-                <span>Submit My Examination</span>
-              </button>
+            <div className="palette-legend">
+              <div className="legend-item">
+                <span className="legend-box answered" />
+                <span>{isSpanish ? "Respondida" : "Answered"}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-box current" />
+                <span>{isSpanish ? "Actual" : "Current"}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-box flagged" />
+                <span>{isSpanish ? "Marcada" : "Flagged"}</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-box" />
+                <span>{isSpanish ? "Pendiente" : "Unanswered"}</span>
+              </div>
             </div>
+
+            <button 
+              className="cbt-submit-sidebar-btn"
+              onClick={() => setShowSubmitModal(true)}
+            >
+              <CheckCircle2 size={18} />
+              <span>{isSpanish ? "Finalizar y Calificar" : isFrench ? "Terminer et Noter" : "Finish & Submit Exam"}</span>
+            </button>
           </aside>
         </div>
 
@@ -1354,55 +1551,32 @@ export default function CBTExamView() {
         {showSubmitModal && (
           <div className="cbt-modal-overlay">
             <div className="cbt-modal-dialog">
-              <div className="modal-top">
-                <AlertCircle size={28} className="warn-icon" />
-                <h3>Ready to Submit Examination?</h3>
+              <div className="modal-icon-badge">
+                <AlertCircle size={32} />
               </div>
-
-              <p className="modal-desc">
-                Once submitted, your answers will be evaluated and compared against official CEFR / YKI grade benchmarks and model answers.
+              <h3 className="modal-title">{isSpanish ? "¿Finalizar y calificar el examen?" : isFrench ? "Soumettre l'examen officiel ?" : "Submit Your Examination?"}</h3>
+              <p className="modal-text">
+                {isSpanish ? (
+                  <>Ha respondido <strong>{answeredCount} de {totalQuestions}</strong> preguntas. {flaggedIds.size > 0 && <>Tiene <strong>{flaggedIds.size}</strong> preguntas marcadas para revisión.</>} ¿Está seguro de enviar su examen ahora para obtener su puntuación oficial?</>
+                ) : isFrench ? (
+                  <>Vous avez répondu à <strong>{answeredCount} sur {totalQuestions}</strong> tâches. {flaggedIds.size > 0 && <>Vous avez <strong>{flaggedIds.size}</strong> questions marquées.</>} Confirmez-vous la soumission officielle pour notation ?</>
+                ) : (
+                  <>You have answered <strong>{answeredCount} of {totalQuestions}</strong> questions. {flaggedIds.size > 0 && <>You have <strong>{flaggedIds.size}</strong> questions marked with flags.</>} Are you ready to submit your test for official evaluation?</>
+                )}
               </p>
 
-              <div className="modal-summary-box">
-                <div className="summary-row">
-                  <span>Total Tasks:</span>
-                  <strong>{totalQuestions}</strong>
-                </div>
-                <div className="summary-row">
-                  <span>Answered / Completed:</span>
-                  <strong className="text-emerald">{answeredCount}</strong>
-                </div>
-                <div className="summary-row">
-                  <span>Unanswered:</span>
-                  <strong className={totalQuestions - answeredCount > 0 ? "text-amber" : "text-muted"}>
-                    {totalQuestions - answeredCount}
-                  </strong>
-                </div>
-                <div className="summary-row">
-                  <span>Flagged for Review:</span>
-                  <strong className="text-gold">{flaggedIds.size}</strong>
-                </div>
-              </div>
-
-              {totalQuestions - answeredCount > 0 && (
-                <div className="modal-warning-alert">
-                  <AlertCircle size={16} />
-                  <span>You still have {totalQuestions - answeredCount} unfinished tasks! You can go back and complete them before submitting.</span>
-                </div>
-              )}
-
               <div className="modal-action-row">
-                <button 
-                  className="modal-btn-cancel"
+                <button
+                  className="modal-cancel-btn"
                   onClick={() => setShowSubmitModal(false)}
                 >
-                  Return to Test
+                  {isSpanish ? "Volver a la prueba" : isFrench ? "Reprendre l'épreuve" : "Return to Test"}
                 </button>
-                <button 
-                  className="modal-btn-confirm"
+                <button
+                  className="modal-confirm-btn"
                   onClick={handleManualSubmit}
                 >
-                  Yes, Finish & Grade Exam
+                  {isSpanish ? "Sí, Finalizar Ahora" : isFrench ? "Oui, Soumettre Définitivement" : "Yes, Submit Final Exam"}
                 </button>
               </div>
             </div>
@@ -1413,7 +1587,7 @@ export default function CBTExamView() {
   }
 
   // =========================================================================
-  // RENDER: RESULTS & PERFORMANCE REPORT
+  // RENDER: EXAM RESULTS & COMPREHENSIVE ANSWER KEY REVIEW
   // =========================================================================
   if (viewState === 'results' && activeSession) {
     let scoreableTotal = 0;
@@ -1421,86 +1595,103 @@ export default function CBTExamView() {
     const domainStats = {};
 
     activeSession.questions.forEach((q) => {
-      const sub = q.subtest || (q.passage ? 'reading' : q.audioPhrase ? 'listening' : q.taskType ? q.subtest : 'general');
-      const label = 
-        sub === 'reading' ? 'Reading (Tekstin ymmärtäminen)' :
-        sub === 'writing' ? 'Writing (Kirjoittaminen)' :
-        sub === 'listening' ? 'Listening (Puheen ymmärtäminen)' :
-        sub === 'speaking' ? 'Speaking (Puhuminen)' : 'General';
-
-      if (!domainStats[label]) domainStats[label] = { total: 0, completed: 0, correct: 0 };
-      domainStats[label].total++;
-
-      if (answers[q.id]) domainStats[label].completed++;
+      const domain = q.title || q.subtest || q.section || "General";
+      if (!domainStats[domain]) {
+        domainStats[domain] = { total: 0, correct: 0 };
+      }
+      domainStats[domain].total++;
 
       if (q.options && q.correctAnswer) {
         scoreableTotal++;
         if (answers[q.id] === q.correctAnswer) {
           scoreableCorrect++;
-          domainStats[label].correct++;
+          domainStats[domain].correct++;
         }
       } else {
-        // Qualitative tasks (writing/speaking) count as completed if answered
+        // Text / speech tasks treated as completed
         if (answers[q.id]) {
-          domainStats[label].correct++;
+          domainStats[domain].correct++;
         }
       }
     });
 
-    const scorePercentage = scoreableTotal > 0 
-      ? Math.round((scoreableCorrect / scoreableTotal) * 100) 
-      : 85;
-    const passed = scorePercentage >= 65;
+    const scorePercentage = scoreableTotal > 0 ? Math.round((scoreableCorrect / scoreableTotal) * 100) : 85;
+    const isPassing = scorePercentage >= 65;
 
-    // Filter questions for answer key review
+    // Filter questions for detailed answer key
     const displayedQuestions = activeSession.questions.filter((q) => {
-      const isCorrect = q.correctAnswer ? answers[q.id] === q.correctAnswer : Boolean(answers[q.id]);
-      const isFlagged = flaggedIds.has(q.id);
-
-      if (resultFilter === 'incorrect') return !isCorrect;
-      if (resultFilter === 'flagged') return isFlagged;
+      if (resultFilter === 'incorrect') {
+        if (q.options && q.correctAnswer) {
+          return answers[q.id] !== q.correctAnswer;
+        }
+        return !answers[q.id];
+      }
+      if (resultFilter === 'flagged') {
+        return flaggedIds.has(q.id);
+      }
       return true;
     });
 
     return (
       <div className="cbt-container cbt-results-screen">
-        {/* Results Hero Header */}
-        <section className={`cbt-results-card ${passed ? 'passed' : 'failed'}`}>
-          <div className="results-emblem">
-            {passed ? <Award size={56} className="award-icon" /> : <RotateCcw size={56} className="fail-icon" />}
-          </div>
-
-          <div className="results-header-text">
-            <span className="results-grade-pill">
-              {isFrench 
-                ? (passed ? "DIPLÔME VALIDÉ / ADMIS (SEUIL OFFICIEL ATTEINT)" : "SESSION TERMINÉE (PRÉPARATION À APPROFONDIR)")
-                : (passed ? "HYVÄKSYTTY (PASSED - OFFICIAL BENCHMARK MET)" : "HARJOITUS SUORITETTU (NEEDS PRACTICE)")}
-            </span>
-            <h1 className="results-title">
-              {isFrench 
-                ? (passed 
-                    ? `Félicitations ! Épreuve validée pour ${activeSession.title} !`
-                    : `Épreuve terminée : Poursuivez l'entraînement pour ${activeSession.title}`)
-                : (passed 
-                    ? `Congratulations! Examination Passed for ${activeSession.title}!`
-                    : `Exam Completed: Keep Practicing for ${activeSession.title}`)}
+        {/* Results Hero */}
+        <section className={`cbt-results-hero ${isPassing ? 'passed' : 'failed'}`}>
+          <div className="results-hero-left">
+            <div className="results-badge-tag">
+              <Award size={18} />
+              <span>{isSpanish ? "Calificación Oficial DELE / SIELE" : isFrench ? "Résultat Officiel CECR" : "Official Examination Score"}</span>
+            </div>
+            <h1 className="results-hero-title">
+              {isPassing 
+                ? (isSpanish ? "¡Enhorabuena! Has superado el examen" : isFrench ? "Félicitations ! Épreuve Réussie" : "Examination Successfully Passed!")
+                : (isSpanish ? "No apto en esta convocatoria" : isFrench ? "Résultat Insuffisant" : "Examination Not Passed")}
             </h1>
-            <p className="results-subtitle">
-              {isFrench 
-                ? (passed 
-                    ? `Vous obtenez un score global de ${scorePercentage}%, validant le seuil d'admissibilité officiel du CECR / Ministère de l'Éducation Nationale.`
-                    : `Vous obtenez un score de ${scorePercentage}%. Consultez les corrigés détaillés, les modèles de rédaction et les explications pédagogiques ci-dessous avant de retenter une session aléatoire !`)
-                : (passed 
-                    ? `You achieved an overall score rating of ${scorePercentage}%, successfully fulfilling the official proficiency standard.`
-                    : `You scored ${scorePercentage}%. Review the model answers, writing texts, and grammar explanations below and try another randomized session!`)}
+            <p className="results-hero-subtitle">
+              {isPassing ? (
+                isSpanish ? (
+                  <>Ha alcanzado una puntuación global del <strong>{scorePercentage}%</strong>, superando ampliamente el umbral del 65% exigido por los estándares del MCER.</>
+                ) : isFrench ? (
+                  <>Vous avez obtenu un score global de <strong>{scorePercentage}%</strong>, validant avec brio les compétences évaluées.</>
+                ) : (
+                  <>You achieved an overall score of <strong>{scorePercentage}%</strong>, surpassing the minimum passing benchmark.</>
+                )
+              ) : (
+                isSpanish ? (
+                  <>Ha obtenido un <strong>{scorePercentage}%</strong>. Le sugerimos revisar los errores pedagógicos y volver a intentarlo con un conjunto nuevo de preguntas.</>
+                ) : (
+                  <>You scored <strong>{scorePercentage}%</strong>. Review the pedagogical explanations below and practice with a brand new set.</>
+                )
+              )}
             </p>
+
+            {/* Fresh Set Notice */}
+            <div className="cbt-results-fresh-notice">
+              <Sparkles size={20} />
+              <span>
+                {user ? (
+                  isSpanish ? (
+                    <>¡Intento #{userAttemptNumber} registrado para <strong>{user.displayName || user.email}</strong>! Todas las preguntas de esta sesión han sido archivadas en su historial. En su próximo intento se seleccionará un <strong>conjunto 100% nuevo de preguntas inéditas</strong>.</>
+                  ) : isFrench ? (
+                    <>Tentative #{userAttemptNumber} enregistrée pour <strong>{user.displayName || user.email}</strong> ! Votre prochaine tentative comportera un <strong>lot de questions entièrement nouveau</strong>.</>
+                  ) : (
+                    <>Attempt #{userAttemptNumber} recorded for <strong>{user.displayName || user.email}</strong>! All questions from this session have been saved. Your next attempt will automatically pull a <strong>brand new set of questions</strong>.</>
+                  )
+                ) : (
+                  isSpanish ? (
+                    <>Sugerencia: Inicie sesión para guardar automáticamente su historial de subpruebas y garantizar preguntas 100% nuevas en cada intento.</>
+                  ) : (
+                    <>Tip: Log in to save your attempt history and guarantee a brand new set of questions on each attempt.</>
+                  )
+                )}
+              </span>
+            </div>
           </div>
 
-          <div className="results-score-badge">
+          <div className="results-hero-right">
             <div className="score-number-circle">
               <span className="score-pct">{scorePercentage}%</span>
               <span className="score-fraction">
-                {isFrench ? `${answeredCount} / ${totalQuestions} Tâches Traitées` : `${answeredCount} / ${totalQuestions} Tasks Attempted`}
+                {isSpanish ? `${answeredCount} / ${totalQuestions} Tareas Evaluadas` : isFrench ? `${answeredCount} / ${totalQuestions} Tâches Traitées` : `${answeredCount} / ${totalQuestions} Tasks Attempted`}
               </span>
             </div>
           </div>
@@ -1509,7 +1700,7 @@ export default function CBTExamView() {
         {/* Domain Performance Breakdown */}
         <div className="cbt-breakdown-section">
           <h2 className="breakdown-heading">
-            {isFrench ? "Bilan Officiel des Compétences Évaluées" : "Official Subtest Domain Performance"}
+            {isSpanish ? "Desglose Oficial de Rendimiento por Competencia" : isFrench ? "Bilan Officiel des Compétences Évaluées" : "Official Subtest Domain Performance"}
           </h2>
           <div className="breakdown-cards-grid">
             {Object.entries(domainStats).map(([domainName, stat]) => {
@@ -1540,9 +1731,11 @@ export default function CBTExamView() {
           >
             <Shuffle size={18} />
             <span>
-              {isFrench 
-                ? "Passer un autre examen avec un tirage aléatoire nouveau" 
-                : "Retake With New Random Question Pool (Uusi arvottu koesarja)"}
+              {isSpanish 
+                ? "Realizar otra prueba con un conjunto 100% nuevo de preguntas" 
+                : isFrench 
+                  ? "Passer un autre examen avec un tirage aléatoire nouveau" 
+                  : "Retake With Brand New Set of Questions (Uusi arvottu koesarja)"}
             </span>
           </button>
 
@@ -1552,9 +1745,11 @@ export default function CBTExamView() {
           >
             <BookOpen size={18} />
             <span>
-              {isFrench 
-                ? "Choisir un autre niveau ou une autre épreuve (DELF / DALF / TCF / TEF)" 
-                : "Choose Another Examination Level or Subtest"}
+              {isSpanish 
+                ? "Elegir otro nivel o subprueba (DELE / SIELE)" 
+                : isFrench 
+                  ? "Choisir un autre niveau ou une autre épreuve (DELF / DALF / TCF / TEF)" 
+                  : "Choose Another Examination Level or Subtest"}
             </span>
           </button>
         </div>
@@ -1563,8 +1758,8 @@ export default function CBTExamView() {
         <div className="cbt-answer-key-section">
           <div className="answer-key-header">
             <div className="ak-left">
-              <h2>Comprehensive Examination Review & Model Solutions</h2>
-              <p>Review your answers alongside official model texts, audio scripts, and pedagogical grammar explanations.</p>
+              <h2>{isSpanish ? "Revisión Detallada de Respuestas y Modelos de Solución" : "Comprehensive Examination Review & Model Solutions"}</h2>
+              <p>{isSpanish ? "Revise sus respuestas junto con textos de referencia, transcripciones de audio y explicaciones gramaticales." : "Review your answers alongside official model texts, audio scripts, and pedagogical grammar explanations."}</p>
             </div>
 
             {/* Filter Tabs */}
@@ -1573,19 +1768,19 @@ export default function CBTExamView() {
                 className={`ak-pill ${resultFilter === 'all' ? 'active' : ''}`}
                 onClick={() => setResultFilter('all')}
               >
-                All Tasks ({totalQuestions})
+                {isSpanish ? "Todas las tareas" : "All Tasks"} ({totalQuestions})
               </button>
               <button 
                 className={`ak-pill ${resultFilter === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setResultFilter('incorrect')}
               >
-                Review Items ({totalQuestions - scoreableCorrect})
+                {isSpanish ? "Para revisar" : "Review Items"} ({totalQuestions - scoreableCorrect})
               </button>
               <button 
                 className={`ak-pill ${resultFilter === 'flagged' ? 'active' : ''}`}
                 onClick={() => setResultFilter('flagged')}
               >
-                Flagged Items ({flaggedIds.size})
+                {isSpanish ? "Marcadas" : "Flagged Items"} ({flaggedIds.size})
               </button>
             </div>
           </div>
@@ -1604,16 +1799,16 @@ export default function CBTExamView() {
                 >
                   <div className="ak-card-top">
                     <div className="ak-tag-group">
-                      <span className="ak-num-badge">Task {originalIndex + 1}</span>
+                      <span className="ak-num-badge">{isSpanish ? "Tarea" : "Task"} {originalIndex + 1}</span>
                       <span className="ak-sec-tag">{q.title || q.subtest || q.section}</span>
-                      {flaggedIds.has(q.id) && <span className="ak-flag-tag"><Flag size={12} /> Flagged</span>}
+                      {flaggedIds.has(q.id) && <span className="ak-flag-tag"><Flag size={12} /> {isSpanish ? "Marcada" : "Flagged"}</span>}
                     </div>
 
                     <span className={`ak-verdict-pill ${isCorrect ? 'correct' : 'incorrect'}`}>
                       {isCorrect ? (
-                        <><CheckCircle2 size={16} /> Completed / Correct</>
+                        <><CheckCircle2 size={16} /> {isSpanish ? "Correcta / Completada" : "Completed / Correct"}</>
                       ) : (
-                        <><AlertCircle size={16} /> Needs Review</>
+                        <><AlertCircle size={16} /> {isSpanish ? "Requiere Revisión" : "Needs Review"}</>
                       )}
                     </span>
                   </div>
@@ -1622,7 +1817,7 @@ export default function CBTExamView() {
 
                   {q.passage && (
                     <div className="ak-passage-quote">
-                      <strong>Reference Text:</strong>
+                      <strong>{isSpanish ? "Texto de Referencia:" : "Reference Text:"}</strong>
                       <p>{q.passage}</p>
                     </div>
                   )}
@@ -1633,7 +1828,7 @@ export default function CBTExamView() {
                         className="ak-play-audio-btn"
                         onClick={() => handlePlayNativeSpeaker(q.audioPhrase)}
                       >
-                        <Volume2 size={16} /> Kuuntele äänite uudelleen
+                        <Volume2 size={16} /> {isSpanish ? "Escuchar audio de nuevo" : "Play audio again"}
                       </button>
                       <span className="ak-audio-text">"{q.audioPhrase}"</span>
                     </div>
@@ -1643,14 +1838,14 @@ export default function CBTExamView() {
                   {isScoreable && (
                     <div className="ak-options-review">
                       <div className="ak-chosen-row">
-                        <span className="ak-label">Your Response:</span>
+                        <span className="ak-label">{isSpanish ? "Su respuesta:" : "Your Response:"}</span>
                         <strong className={isCorrect ? 'text-emerald' : 'text-rose'}>
-                          {userAnswer || 'No answer selected (Skipped)'}
+                          {userAnswer || (isSpanish ? 'Sin responder (Omitida)' : 'No answer selected (Skipped)')}
                         </strong>
                       </div>
                       {!isCorrect && (
                         <div className="ak-correct-row">
-                          <span className="ak-label">Correct Answer:</span>
+                          <span className="ak-label">{isSpanish ? "Respuesta correcta:" : "Correct Answer:"}</span>
                           <strong className="text-emerald">{q.correctAnswer}</strong>
                         </div>
                       )}
@@ -1661,15 +1856,15 @@ export default function CBTExamView() {
                   {q.modelResponse && (
                     <div className="ak-writing-review-grid">
                       <div className="user-writing-box">
-                        <span className="ak-label">Your Submitted Text:</span>
+                        <span className="ak-label">{isSpanish ? "Su texto enviado:" : "Your Submitted Text:"}</span>
                         <div className="user-text-content">
-                          {userAnswer || <em>Ei kirjoitettua vastausta (No response submitted)</em>}
+                          {userAnswer || <em>{isSpanish ? "Sin respuesta escrita" : "No response submitted"}</em>}
                         </div>
-                        <span className="user-text-words">Sanamäärä: {countWords(userAnswer)} sanaa</span>
+                        <span className="user-text-words">{isSpanish ? "Palabras:" : "Word count:"} {countWords(userAnswer)}</span>
                       </div>
 
                       <div className="model-writing-box">
-                        <span className="ak-label">Official Model Answer (Mallivastaus):</span>
+                        <span className="ak-label">{isSpanish ? "Modelo de respuesta oficial (Apto):" : "Official Model Answer:"}</span>
                         <div className="model-text-content">{q.modelResponse}</div>
                       </div>
                     </div>
@@ -1678,13 +1873,13 @@ export default function CBTExamView() {
                   {/* Speaking Task Review with Model Answer */}
                   {q.modelAnswer && (
                     <div className="ak-speaking-review-box">
-                      <span className="ak-label">Official Model Spoken Answer (Esimerkkivastaus suulliseen tehtävään):</span>
+                      <span className="ak-label">{isSpanish ? "Modelo de respuesta oral oficial:" : "Official Model Spoken Answer:"}</span>
                       <div className="model-spoken-text">{q.modelAnswer}</div>
                       <button 
                         className="ak-play-model-btn"
                         onClick={() => handlePlayNativeSpeaker(q.modelAnswer)}
                       >
-                        <Volume2 size={16} /> Kuuntele mallivastaus ääneen puhuttuna
+                        <Volume2 size={16} /> {isSpanish ? "Escuchar modelo en voz alta" : "Listen to model spoken response"}
                       </button>
                     </div>
                   )}
@@ -1693,7 +1888,7 @@ export default function CBTExamView() {
                     <div className="ak-explanation-box">
                       <HelpCircle size={16} className="exp-icon" />
                       <div className="exp-content">
-                        <strong>Official Pedagogical Explanation:</strong>
+                        <strong>{isSpanish ? "Justificación pedagógica oficial:" : "Official Pedagogical Explanation:"}</strong>
                         <p>{q.explanation}</p>
                       </div>
                     </div>

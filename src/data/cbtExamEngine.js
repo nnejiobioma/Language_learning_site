@@ -4,20 +4,12 @@
 // - Writing: 3 tasks (2 practical messages + 1 opinion essay, 55 min)
 // - Listening: 6 audio recordings (40 min, tracks played twice at A1-A2 & B1-B2)
 // - Speaking: 4 tasks (2-3 simulated dialogues + 1-2 monologues, 25 min)
+// Supports user tracking to guarantee a BRAND NEW set on each subtest attempt!
 
 import { perustasoReading, perustasoWriting, perustasoListening, perustasoSpeaking } from "./cbtPoolPerustaso.js";
 import { keskitasoReading, keskitasoWriting, keskitasoListening, keskitasoSpeaking } from "./cbtPoolKeskitaso.js";
 import { ylintasoReading, ylintasoWriting, ylintasoListening, ylintasoSpeaking } from "./cbtPoolYlintaso.js";
-
-// Fisher-Yates non-mutating shuffle
-function shuffle(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+import { selectBrandNewSet } from "../lib/cbtQuestionManager.js";
 
 export const examPools = {
   perustaso: {
@@ -53,33 +45,32 @@ export const examPools = {
 };
 
 /**
- * Generates a randomized exam session from the 30-item pools.
+ * Generates an authentic, fresh exam session prioritizing unseen questions for the logged-in user.
  * @param {string} levelKey - 'perustaso' | 'keskitaso' | 'ylintaso'
  * @param {string} subtestFilter - 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
+ * @param {Set<string>} seenQuestionIds - IDs of questions previously attempted by the user
  * @returns {object} Randomized exam session object
  */
-export function generateDynamicExam(levelKey = "keskitaso", subtestFilter = "all") {
+export function generateDynamicExam(levelKey = "keskitaso", subtestFilter = "all", seenQuestionIds = new Set()) {
   const pool = examPools[levelKey] || examPools.keskitaso;
 
-  // 1. Reading: Exactly 6 distinct exercises selected from the 30-item pool
-  const selectedReading = shuffle(pool.reading).slice(0, 6);
+  // 1. Reading: Exactly 6 distinct exercises selected from the 30-item pool (prioritizing brand new items)
+  const readingResult = selectBrandNewSet(pool.reading, 6, seenQuestionIds);
+  const selectedReading = readingResult.selected;
 
-  // 2. Writing: Exactly 3 practical prompts: 2 messages + 1 opinion essay
-  const messages = pool.writing.filter(item => item.taskType === "message");
-  const essays = pool.writing.filter(item => item.taskType === "essay");
-  const selectedMessages = shuffle(messages).slice(0, 2);
-  const selectedEssays = shuffle(essays).slice(0, 1);
-  const selectedWriting = [...selectedMessages, ...selectedEssays];
+  // 2. Writing: Exactly 3 practical prompts: 2 messages + 1 opinion essay (prioritizing brand new items)
+  const messagesResult = selectBrandNewSet(pool.writing, 2, seenQuestionIds, item => item.taskType === "message");
+  const essaysResult = selectBrandNewSet(pool.writing, 1, seenQuestionIds, item => item.taskType === "essay");
+  const selectedWriting = [...messagesResult.selected, ...essaysResult.selected];
 
-  // 3. Listening: Exactly 6 audio recordings (tracks played twice at A1-A2 & B1-B2)
-  const selectedListening = shuffle(pool.listening).slice(0, 6);
+  // 3. Listening: Exactly 6 audio recordings (prioritizing brand new items)
+  const listeningResult = selectBrandNewSet(pool.listening, 6, seenQuestionIds);
+  const selectedListening = listeningResult.selected;
 
-  // 4. Speaking: Exactly 4 tasks: 3 simulated rapid dialogues (20-45s) + 1 monologue (90-120s speech)
-  const dialogues = pool.speaking.filter(item => item.taskType === "dialogue");
-  const monologues = pool.speaking.filter(item => item.taskType === "monologue");
-  const selectedDialogues = shuffle(dialogues).slice(0, 3);
-  const selectedMonologues = shuffle(monologues).slice(0, 1);
-  const selectedSpeaking = [...selectedDialogues, ...selectedMonologues];
+  // 4. Speaking: Exactly 4 tasks: 3 simulated dialogues + 1 monologue (prioritizing brand new items)
+  const dialoguesResult = selectBrandNewSet(pool.speaking, 3, seenQuestionIds, item => item.taskType === "dialogue");
+  const monologuesResult = selectBrandNewSet(pool.speaking, 1, seenQuestionIds, item => item.taskType === "monologue");
+  const selectedSpeaking = [...dialoguesResult.selected, ...monologuesResult.selected];
 
   // Assemble question stream based on chosen subtest
   let questions = [];
@@ -89,19 +80,19 @@ export function generateDynamicExam(levelKey = "keskitaso", subtestFilter = "all
   if (subtestFilter === "reading") {
     questions = selectedReading;
     durationMinutes = 60;
-    subtestLabel = "Tekstin ymmärtäminen (6 tekstiä)";
+    subtestLabel = "Tekstin ymmärtäminen (6 tekstiä • 60 min)";
   } else if (subtestFilter === "writing") {
     questions = selectedWriting;
     durationMinutes = 55;
-    subtestLabel = "Kirjoittaminen (3 tehtävää)";
+    subtestLabel = "Kirjoittaminen (3 tehtävää • 55 min)";
   } else if (subtestFilter === "listening") {
     questions = selectedListening;
     durationMinutes = 40;
-    subtestLabel = "Puheen ymmärtäminen (6 äänitettä)";
+    subtestLabel = "Puheen ymmärtäminen (6 äänitettä • 40 min)";
   } else if (subtestFilter === "speaking") {
     questions = selectedSpeaking;
     durationMinutes = 25;
-    subtestLabel = "Puhuminen (4 tehtävää: 3 vuoropuhelua + 1 puhe)";
+    subtestLabel = "Puhuminen (4 tehtävää: 3 vuoropuhelua + 1 puhe • 25 min)";
   } else {
     // "all" - Full official simulation
     questions = [
@@ -113,6 +104,13 @@ export function generateDynamicExam(levelKey = "keskitaso", subtestFilter = "all
     durationMinutes = 180; // 60 + 55 + 40 + 25 = 180 min
     subtestLabel = "Täysi YKI-koesimulaatio (Kaikki 4 osakoetta)";
   }
+
+  const isBrandNewSession = 
+    (subtestFilter === "reading" && readingResult.isBrandNew) ||
+    (subtestFilter === "writing" && messagesResult.isBrandNew && essaysResult.isBrandNew) ||
+    (subtestFilter === "listening" && listeningResult.isBrandNew) ||
+    (subtestFilter === "speaking" && dialoguesResult.isBrandNew && monologuesResult.isBrandNew) ||
+    (subtestFilter === "all" && readingResult.isBrandNew && messagesResult.isBrandNew && listeningResult.isBrandNew);
 
   const sessionId = `${levelKey}-${subtestFilter}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
 
@@ -126,6 +124,7 @@ export function generateDynamicExam(levelKey = "keskitaso", subtestFilter = "all
     subtestLabel,
     durationMinutes,
     totalQuestions: questions.length,
+    isBrandNewSession,
     counts: {
       reading: subtestFilter === "all" || subtestFilter === "reading" ? selectedReading.length : 0,
       writing: subtestFilter === "all" || subtestFilter === "writing" ? selectedWriting.length : 0,

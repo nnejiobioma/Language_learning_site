@@ -5,15 +5,7 @@
 // - TCF (Test de Connaissance du Français): Standardized placement & evaluation (TCF Tout Public, TCF IRN pour naturalisation)
 // - TEF (Test d'Évaluation de Français): CCI Paris Île-de-France (Immigration, Canada, Québec, profession)
 // - DCL (Diplôme de Compétence en Langue): National vocational diploma for adult workplace skills
-
-function shuffle(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+import { selectBrandNewSet } from "../lib/cbtQuestionManager.js";
 
 // ============================================================================
 // 1. POOL DELF A1–A2: UTILISATEUR ÉLÉMENTAIRE (SURVIVAL & EVERYDAY FRENCH)
@@ -419,6 +411,109 @@ Si l'impact sanitaire positif sur la baisse des affections respiratoires infanti
     correctAnswer: "B) Elles risquent de pénaliser financièrement et d'exclure les ménages modestes qui dépendent de leur voiture ancienne",
     explanation: "Le texte note que 'les associations de consommateurs alertent sur le risque d'exclusion sociale des ménages modestes résidant en grande couronne... qui n'ont pas les moyens'."
   }
+  ,
+  {
+    id: "fr-b1b2-r-7",
+    subtest: "reading",
+    title: "Santé Publique : La prévention du burn-out et la santé mentale au travail",
+    passage: `AGENCE NATIONALE POUR L'AMÉLIORATION DES CONDITIONS DE TRAVAIL (ANACT)
+Le syndrome d'épuisement professionnel touche aujourd'hui un nombre croissant de cadres et d'employés dans les secteurs tertiaires et hospitaliers. Caractérisé par un épuisement émotionnel profond, une dépersonnalisation de la relation aux usagers et un sentiment d'inefficacité, le burn-out ne résulte pas d'une fragilité individuelle mais d'une surcharge structurelle de travail combinée à un manque d'autonomie décisionnelle.
+L'ANACT préconise la mise en place d'audits organisationnels réguliers au sein des comités sociaux et économiques (CSE) et la formation obligatoire des managers de proximité à la détection précoce des signaux faibles d'anxiété. Des cellules d'écoute psychologique indépendantes doivent être garanties à chaque salarié avec anonymat complet.`,
+    prompt: "Selon l'ANACT, quelle est la cause principale de l'épuisement professionnel ?",
+    options: [
+      "A) Une faiblesse psychologique innée et personnelle de l'employé",
+      "B) Une surcharge de travail structurelle combinée à un manque d'autonomie",
+      "C) Le refus systématique de prendre des congés payés annuels",
+      "D) L'utilisation excessive des transports en commun"
+    ],
+    correctAnswer: "B) Une surcharge de travail structurelle combinée à un manque d'autonomie",
+    explanation: "Le texte affirme que le burn-out 'ne résulte pas d'une fragilité individuelle mais d'une surcharge structurelle de travail combinée à un manque d'autonomie décisionnelle'."
+  },
+  {
+    id: "fr-b1b2-r-8",
+    subtest: "reading",
+    title: "Consommation Responsable : L'essor du réemploi et des ressourceries de quartier",
+    passage: `ÉCONOMIE SOCIALE ET SOLIDAIRE — LE SUCCÈS DES RESSOURCERIES
+Dans le sillage de la loi anti-gaspillage pour une économie circulaire (AGEC), les ressourceries et recycleries citoyennes connaissent une fréquentation record dans toutes les régions de France. Ces structures associatives collectent chaque année des milliers de tonnes d'objets du quotidien (meubles, électroménager, vêtements, vaisselle) destinés à la déchetterie pour les réparer, les revaloriser et les revendre à prix solidaire.
+Au-delà de leur impact écologique mesurable par l'évitement de l'enfouissement de déchets, ces ateliers jouent un rôle crucial d'insertion sociale en formant des personnes éloignées de l'emploi aux métiers de la réparation et de l'artisanat du réemploi.`,
+    prompt: "Quel est le double impact des ressourceries décrit dans l'article ?",
+    options: [
+      "A) Augmenter la fabrication industrielle de biens neufs et fermer les marchés locaux",
+      "B) Éviter l'enfouissement des déchets et favoriser l'insertion professionnelle de personnes en difficulté",
+      "C) Supprimer totalement la taxe sur la valeur ajoutée pour les grandes enseignes",
+      "D) Remplacer tous les services municipaux de propreté urbaine"
+    ],
+    correctAnswer: "B) Éviter l'enfouissement des déchets et favoriser l'insertion professionnelle de personnes en difficulté",
+    explanation: "Le document souligne l'impact écologique (évitement de l'enfouissement de déchets) combiné au rôle d'insertion sociale en formant des personnes éloignées de l'emploi."
+  },
+  {
+    id: "fr-b1b2-r-9",
+    subtest: "reading",
+    title: "Patrimoine & Tourisme : La régulation des meublés touristiques dans les centres historiques",
+    passage: `TRIBUNAL ADMINISTRATIF — RÉGULATION LOCATIVE À SAINT-MALO ET PARIS
+Afin d'enrayer la crise du logement qui pénalise durement les résidents permanents et les travailleurs saisonniers, plusieurs municipalités touristiques ont voté des règlements stricts de compensation pour la location de meublés touristiques de courte durée.
+Tout propriétaire souhaitant louer une résidence secondaire sur des plateformes en ligne doit désormais acheter un local commercial d'une surface équivalente dans le même secteur pour le transformer en logement pérenne à bail classique. Par ailleurs, les quotas de résidences principales louées aux vacanciers sont plafonnés à 120 jours par an sous peine d'une amende civile pouvant atteindre 50 000 euros par infraction constatée par les agents de contrôle assermentés.`,
+    prompt: "Que doit faire un propriétaire pour louer une résidence secondaire en meublé touristique ?",
+    options: [
+      "A) Obtenir l'accord unanime de tous les hôteliers de la commune",
+      "B) Acheter et transformer un local commercial de surface équivalente en logement locatif classique (règle de compensation)",
+      "C) Payer une taxe forfaitaire de 10 euros par nuitée sans autre obligation",
+      "D) Faire construire une piscine municipale pour le quartier"
+    ],
+    correctAnswer: "B) Acheter et transformer un local commercial de surface équivalente en logement locatif classique (règle de compensation)",
+    explanation: "Le texte précise que le propriétaire doit 'acheter un local commercial d'une surface équivalente... pour le transformer en logement pérenne à bail classique'."
+  },
+  {
+    id: "fr-b1b2-r-10",
+    subtest: "reading",
+    title: "Innovation Technologique : L'intelligence artificielle dans le diagnostic médical hospitalier",
+    passage: `CENTRE HOSPITALIER UNIVERSITAIRE — MÉDECINE DE PRÉCISION
+Dans les services de radiologie et d'oncologie de plusieurs CHU français, des algorithmes d'apprentissage profond sont désormais déployés en appui des praticiens pour l'analyse des scanners thoraciques et des mammographies de dépistage.
+Les études cliniques démontrent que cette double lecture automatisée permet de réduire de 20 % les faux négatifs lors de la détection précoce de micro-tumeurs pulmonaires. Cependant, le Collège national des radiologues insiste fermement : l'intelligence artificielle n'a pas vocation à se substituer au médecin. La décision thérapeutique finale et l'annonce diagnostique au patient demeurent sous la responsabilité déontologique exclusive du praticien hospitalier.`,
+    prompt: "Quel est le rôle exact assigné aux algorithmes d'IA dans les hôpitaux selon cet extrait ?",
+    options: [
+      "A) Remplacer complètement les radiologues et décider seuls des traitements chirurgicaux",
+      "B) Assister les médecins dans le dépistage précoce, la décision finale restant la responsabilité exclusive du médecin",
+      "C) Interdire les examens de scanner pour des raisons de coût budgétaire",
+      "D) Prendre en charge uniquement les dossiers administratifs de la sécurité sociale"
+    ],
+    correctAnswer: "B) Assister les médecins dans le dépistage précoce, la décision finale restant la responsabilité exclusive du médecin",
+    explanation: "Le Collège insiste : 'l'intelligence artificielle n'a pas vocation à se substituer au médecin... La décision thérapeutique finale... demeure sous la responsabilité... du praticien'."
+  },
+  {
+    id: "fr-b1b2-r-11",
+    subtest: "reading",
+    title: "Biodiversité : Le plan national de protection des abeilles et insectes pollinisateurs",
+    passage: `MINISTÈRE DE L'AGRICULTURE ET DE LA SOUVERAINETÉ ALIMENTAIRE
+Face au déclin alarmant des colonies d'abeilles sauvages et domestiques, indispensables à la pollinisation de plus de 80 % des cultures vivrières et des plantes à fleurs, le gouvernement a renforcé les mesures du Plan National Pollinisateurs.
+Le texte interdit dorénavant l'épandage de tout produit phytosanitaire insecticide durant les périodes de floraison dans les deux heures précédant le lever du soleil et les trois heures suivant son coucher, moments où les butineuses sont les plus actives. De surcroît, les gestionnaires de voiries autoroutières et de voies ferrées ont l'obligation d'aménager des corridors écologiques et des bandes fleuries diversifiées sur leurs talus.`,
+    prompt: "Quelle restriction est imposée sur les insecticides pour protéger les insectes butineurs ?",
+    options: [
+      "A) L'interdiction d'épandage durant la floraison pendant les plages horaires d'activité maximale des abeilles",
+      "B) L'interdiction totale de l'agriculture biologique en milieu rural",
+      "C) L'obligation de détruire tous les essaims sauvages situés près des routes",
+      "D) L'interdiction de cultiver des plantes à fleurs dans les jardins privés"
+    ],
+    correctAnswer: "A) L'interdiction d'épandage durant la floraison pendant les plages horaires d'activité maximale des abeilles",
+    explanation: "Le texte énonce l'interdiction de 'l'épandage de tout produit phytosanitaire insecticide durant les périodes de floraison dans les plages horaires où les butineuses sont les plus actives'."
+  },
+  {
+    id: "fr-b1b2-r-12",
+    subtest: "reading",
+    title: "Démocratie Participative : Le budget participatif des arrondissements parisiens",
+    passage: `VILLE DE PARIS — BUDGET PARTICIPATIF CITOYEN
+Chaque année, la Ville consacre 5 % de son budget d'investissement communal, soit près de 100 millions d'euros, à des projets d'aménagement urbain imaginés et votés directement par les administrés.
+Tout habitant, sans condition de nationalité ni d'âge minimal, peut déposer en ligne une proposition répondant aux critères d'intérêt général : verdissement de cours d'écoles, sécurisation de carrefours piétons, installation de bancs publics solaires ou création d'ateliers de bricolage partagés. Après instruction de la faisabilité technique par les services municipaux, les projets sont soumis au vote des riverains lors d'un scrutin citoyen organisé en mairie et sur internet.`,
+    prompt: "Qui a le droit de voter pour les projets du budget participatif selon ce document ?",
+    options: [
+      "A) Seuls les propriétaires de logements âgés de plus de 30 ans",
+      "B) Tous les habitants sans condition de nationalité ni d'âge minimal",
+      "C) Uniquement les élus du Conseil de Paris",
+      "D) Exclusivement les touristes titulaires d'un passeport européen"
+    ],
+    correctAnswer: "B) Tous les habitants sans condition de nationalité ni d'âge minimal",
+    explanation: "Le texte précise sans équivoque : 'Tout habitant, sans condition de nationalité ni d'âge minimal, peut déposer... et voter lors d'un scrutin citoyen'."
+  }
 ];
 
 export const frenchB1B2Writing = [
@@ -448,6 +543,34 @@ export const frenchB1B2Writing = [
     prompt: "Vous participez à un débat public citoyen ou à un forum éducatif sur l'impact des écrans et des réseaux sociaux chez les adolescents en milieu scolaire.\n\nRédigez un texte argumenté et structuré (160–220 mots) dans lequel vous exposez votre point de vue :\n- Introduction introduisant la problématique contemporaine\n- Arguments en faveur de la restriction (concentration en classe, prévention du cyberharcèlement, sociabilité réelle)\n- Nuances ou alternatives (usage pédagogique encadré, éducation aux médias numériques plutôt que prohibition aveugle)\n- Conclusion résumant votre position pour concilier bien-être scolaire et modernité technologique.",
     minWords: 160,
     modelResponse: "L'omniprésence des téléphones portables chez les adolescents suscite de vifs débats quant à leur place au sein des établissements scolaires. Si certains prônent une interdiction totale et sans concession, la question mérite d'être examinée sous plusieurs angles.\n\nD'un côté, bannir le smartphone des salles de cours et des cours de récréation présente des bénéfices incontestables pour les élèves. D'une part, cela favorise une attention soutenue en éliminant les notifications incessantes qui fragmentent la concentration intellectuelle. D'autre part, cette mesure limite considérablement les dérives du cyberharcèlement instantané et encourage des interactions directes et spontanées entre camarades pendant les pauses.\n\nCependant, une interdiction purement répressive risque de méconnaître la réalité numérique de notre siècle. Les outils connectés offrent également d'immenses opportunités pédagogiques lorsqu'ils sont intégrés intelligemment dans des projets d'apprentissage guidés par les professeurs. De surcroît, le rôle primordial de l'école républicaine n'est pas d'ignorer la technologie, mais d'éduquer les futurs citoyens à un usage critique, raisonné et responsable des réseaux.\n\nEn conclusion, plutôt qu'une prohibition dogmatique et difficile à faire respecter, je préconise un cadre strict fondé sur le dépôt des téléphones dans des casiers sécurisés durant les cours, combiné à des modules d'éducation numérique citoyenne tout au long de la scolarité."
+  }
+  ,
+  {
+    id: "fr-b1b2-w-4",
+    subtest: "writing",
+    taskType: "message",
+    title: "Courriel officiel d'inscription : Demande de place en crèche municipale",
+    prompt: "Vous venez d'emménager dans une nouvelle commune avec votre enfant en bas âge. Vous écrivez au service de la Petite Enfance de la mairie pour solliciter une place en crèche municipale à temps plein dès la rentrée prochaine.\n\nRédigez votre demande formelle (120–160 mots) :\n- Présentez votre situation familiale et professionnelle (reprise d'activité professionnelle des deux parents)\n- Indiquez la date souhaitée d'entrée et le rythme d'accueil hebdomadaire\n- Joignez les pièces justificatives d'état civil et de domicile\n- Soulignez l'importance de ce mode d'accueil pour la socialisation de votre enfant.",
+    minWords: 120,
+    modelResponse: "Madame, Monsieur le Responsable du Service Petite Enfance,\n\nNouveaux résidents au sein de votre commune depuis le mois dernier, mon conjoint et moi-même sollicitons par la présente l'attribution d'une place en crèche municipale pour notre fille Léa, âgée de dix mois, à compter du 1er septembre prochain.\n\nNous reprenons tous les deux notre activité professionnelle à temps complet dès cette rentrée, ce qui nécessite un accueil régulier du lundi au vendredi de 8h00 à 18h00. Nous attachons une grande importance à la socialisation en collectivité et aux activités d'éveil coordonnées par votre équipe d'éducateurs qualifiés.\n\nVous trouverez en pièces jointes à ce courriel notre livret de famille, notre justificatif de domicile récent ainsi que nos contrats de travail respectifs.\n\nNous nous tenons à votre entière disposition pour tout renseignement complémentaire lors de la prochaine commission d'attribution.\n\nVeuillez agréer, Madame, Monsieur, l'expression de nos salutations distinguées.\n\nMarc et Sophie Dupuis"
+  },
+  {
+    id: "fr-b1b2-w-5",
+    subtest: "writing",
+    taskType: "message",
+    title: "Demande d'aménagement d'horaires : Lettre au directeur des ressources humaines",
+    prompt: "Pour préparer un concours administratif ou suivre une formation certifiante en cours du soir, vous demandez à votre DRH un aménagement de vos horaires hebdomadaires (décalage de 30 minutes et télétravail un jour fixe).\n\nRédigez votre demande professionnelle (130–170 mots) :\n- Rappelez votre poste, votre ancienneté et vos bons résultats récents\n- Détaillez la formation visée et son bénéfice pour votre évolution au sein de l'entreprise\n- Précisez l'aménagement d'horaires sollicité en assurant la continuité de service\n- Proposez un point d'étape d'évaluation après trois mois d'expérimentation.",
+    minWords: 130,
+    modelResponse: "Monsieur le Directeur des Ressources Humaines,\n\nEn poste depuis quatre ans au sein du service logistique de notre entreprise, je vous sollicite afin d'examiner la possibilité d'un aménagement ponctuel de mes horaires hebdomadaires à compter du mois d'octobre.\n\nJ'ai en effet été admis à une formation certifiante en management de la chaîne d'approvisionnement durable dispensée par le Conservatoire National des Arts et Métiers (CNAM). L'acquisition de ces compétences permettra d'optimiser directement nos processus d'expédition et de décarbonation du transport.\n\nAfin de pouvoir assister aux cours du soir, je souhaiterais avancer ma prise de poste quotidienne à 8h00 au lieu de 8h30 et bénéficier d'une journée de télétravail fixe le jeudi. Cet aménagement garantira l'intégralité de mon volume d'heures contractuel et la continuité sans faille de mes missions.\n\nJe vous propose d'expérimenter cette organisation pendant un trimestre et de faire un bilan d'évaluation ensemble.\n\nJe vous remercie par avance de l'attention que vous porterez à ma démarche et vous prie d'agréer mes salutations respectueuses.\n\nJulien Lefèvre"
+  },
+  {
+    id: "fr-b1b2-w-6",
+    subtest: "writing",
+    taskType: "essay",
+    title: "Essai argumenté : Faut-il instaurer la gratuité totale des transports en commun dans les métropoles ?",
+    prompt: "Dans le cadre d'une consultation citoyenne sur la transition écologique métropolitaine, vous rédigez un texte argumentatif (160–220 mots) pour exprimer votre point de vue sur la gratuité des bus, trams et métros pour tous les usagers.\n\n- Présentez les avantages socio-écologiques de la gratuité (report modal depuis la voiture individuelle, justice sociale, réduction des émissions polluantes)\n- Analysez les limites financières et opérationnelles (manque à gagner sur les investissements de modernisation, risque de saturation des lignes)\n- Proposez une solution équilibrée ou ciblée (tarification solidaire selon le quotient familial ou gratuité les week-ends).",
+    minWords: 160,
+    modelResponse: "La question de la gratuité universelle des transports collectifs urbains est au cœur des débats sur la ville durable. Si cette mesure séduit par sa portée sociale et écologique immédiate, son opportunité économique doit être mesurée avec discernement.\n\nIndéniablement, la gratuité des bus et tramways constitue un levier puissant d'équité sociale. Elle allège le budget des ménages précaires et encourage un report modal salutaire de l'automobile vers les transports décarbonés, contribuant directement à l'assainissement de l'air urbain. Des agglomérations pionnières comme Dunkerque ont prouvé l'efficacité de ce modèle pour dynamiser les centres-villes.\n\nNéanmoins, la suppression des recettes tarifaires représente un manque à gagner substantiel pour les collectivités. Privé de ces financements réguliers, le réseau risque de peiner à investir dans le renouvellement des rames, l'extension des lignes de banlieue et le maintien d'une fréquence élevée aux heures de pointe, conduisant paradoxalement à une dégradation du service perçu par les usagers.\n\nDès lors, une tarification progressive et solidaire calculée selon le quotient familial, combinée à une gratuité ciblée pour les jeunes de moins de 25 ans et durant les week-ends, apparaît comme un compromis équilibré entre justice sociale et pérennité des infrastructures publiques."
   }
 ];
 
@@ -542,6 +665,97 @@ export const frenchB1B2Listening = [
     correctAnswer: "B) Elle structure la pensée nuancée et permet le débat démocratique constructif",
     explanation: "L'auteur affirme que la langue est 'la structure même de la pensée nuancée et de la délibération démocratique'."
   }
+  ,
+  {
+    id: "fr-b1b2-l-7",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Chers auditeurs, bienvenue dans notre émission économique. Le gouvernement annonce aujourd'hui la prolongation du chèque énergie exceptionnel pour les ménages modestes jusqu'au printemps prochain. Cette aide, d'un montant moyen de cent cinquante euros, sera versée automatiquement sans aucune démarche administrative préalable aux foyers éligibles sur la base de leur dernière déclaration fiscale.",
+    prompt: "Comment les bénéficiaires recevront-ils le chèque énergie selon la chronique économique ?",
+    options: [
+      "A) En remplissant un formulaire papier complexe en mairie",
+      "B) Automatiquement et sans démarche préalable d'après leur déclaration fiscale",
+      "C) Uniquement s'ils souscrivent un contrat d'électricité payant",
+      "D) Par tirage au sort chaque premier lundi du mois"
+    ],
+    correctAnswer: "B) Automatiquement et sans démarche préalable d'après leur déclaration fiscale",
+    explanation: "La chronique précise expressément : 'versée automatiquement sans aucune démarche administrative préalable aux foyers éligibles'."
+  },
+  {
+    id: "fr-b1b2-l-8",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Avis à tous les usagers de l'aéroport Roissy-Charles de Gaulle. En raison d'un mouvement de grève interprofessionnel des contrôleurs aériens pour la journée de demain, la Direction générale de l'aviation civile demande aux compagnies de réduire leur programme de vols de trente pour cent. Les passagers sont invités à vérifier le statut de leur vol auprès de leur transporteur avant de se déplacer à l'aéroport.",
+    prompt: "Que doivent faire impérativement les passagers avant de se rendre à l'aéroport ?",
+    options: [
+      "A) Annuler définitivement leur voyage sans remboursement",
+      "B) Vérifier le maintien et le statut de leur vol auprès de leur compagnie aérienne",
+      "C) Se présenter quarante-huit heures à l'avance au terminal",
+      "D) Changer immédiatement de destination par téléphone"
+    ],
+    correctAnswer: "B) Vérifier le maintien et le statut de leur vol auprès de leur compagnie aérienne",
+    explanation: "L'annonce indique clairement : 'Les passagers sont invités à vérifier le statut de leur vol auprès de leur transporteur avant de se déplacer'."
+  },
+  {
+    id: "fr-b1b2-l-9",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Bonjour monsieur. Je suis le technicien mandaté par le distributeur Enedis pour le remplacement de votre ancien compteur électrique par un modèle communicant Linky. L'intervention dure environ trente minutes, durant lesquelles une brève coupure de courant sera nécessaire. Vos appareils électroménagers sensibles ne risquent rien, mais je vous conseille d'éteindre vos ordinateurs au préalable.",
+    prompt: "Quelle précaution le technicien conseille-t-il au résident avant la coupure ?",
+    options: [
+      "A) Quitter l'appartement pour toute la journée",
+      "B) Éteindre ses ordinateurs avant l'intervention d'environ trente minutes",
+      "C) Remplacer tous les fusibles du tableau électrique",
+      "D) Débrancher le réfrigérateur pendant quarante-huit heures"
+    ],
+    correctAnswer: "B) Éteindre ses ordinateurs avant l'intervention d'environ trente minutes",
+    explanation: "Le technicien recommande : 'je vous conseille d'éteindre vos ordinateurs au préalable'."
+  },
+  {
+    id: "fr-b1b2-l-10",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Flash info France Culture : l'UNESCO vient de classer la tradition de la baguette de pain artisanale et la culture du bistrot parisien au patrimoine culturel immatériel de l'humanité. Cette reconnaissance salue le savoir-faire des boulangers indépendants face à l'industrialisation alimentaire et consacre les bistrots comme des lieux irremplaçables de convivialité citoyenne.",
+    prompt: "Pourquoi l'UNESCO a-t-elle distingué la baguette et le bistrot d'après le flash info ?",
+    options: [
+      "A) Pour interdire l'ouverture de nouvelles boulangeries industrielles",
+      "B) Pour saluer le savoir-faire artisanal traditionnel et des lieux d'échange social citoyen",
+      "C) Pour subventionner le prix de la farine à l'échelle européenne",
+      "D) Pour créer une nouvelle taxe touristique sur la restauration"
+    ],
+    correctAnswer: "B) Pour saluer le savoir-faire artisanal traditionnel et des lieux d'échange social citoyen",
+    explanation: "Le bulletin explique que cela 'salue le savoir-faire des boulangers indépendants... et consacre les bistrots comme des lieux irremplaçables de convivialité citoyenne'."
+  },
+  {
+    id: "fr-b1b2-l-11",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Message de prévention de l'Assurance Maladie : la campagne de vaccination conjointe contre la grippe saisonnière et la Covid-19 est désormais ouverte pour toutes les personnes âgées de soixante-cinq ans et plus, ainsi que pour les personnes souffrant de maladies chroniques. L'injection peut être réalisée sans prescription médicale chez votre pharmacien, votre médecin traitant ou une infirmière libérale.",
+    prompt: "Où les personnes éligibles peuvent-elles se faire vacciner sans ordonnance médicale préalable ?",
+    options: [
+      "A) Uniquement au sein des urgences hospitalières de nuit",
+      "B) Chez leur pharmacien, médecin traitant ou infirmière libérale",
+      "C) Exclusivement auprès des services de police municipale",
+      "D) Dans les centres de recherche universitaire par tirage au sort"
+    ],
+    correctAnswer: "B) Chez leur pharmacien, médecin traitant ou infirmière libérale",
+    explanation: "Le message précise que l'injection peut être faite 'sans prescription médicale chez votre pharmacien, votre médecin traitant ou une infirmière libérale'."
+  },
+  {
+    id: "fr-b1b2-l-12",
+    subtest: "listening",
+    maxPlays: 2,
+    audioPhrase: "Bonjour madame, agence immobilière Century 21. Je vous rappelle au sujet de l'appartement trois pièces que vous avez visité hier rue Nationale. Le propriétaire a accepté votre dossier de candidature. Il conviendra de venir signer le bail en agence vendredi matin à dix heures en apportant un chèque de caution et votre première attestation d'assurance habitation multirisque.",
+    prompt: "Que doit fournir la future locataire lors de la signature du bail vendredi matin ?",
+    options: [
+      "A) Une photocopie de son casier judiciaire",
+      "B) Un chèque de caution et une attestation d'assurance habitation multirisque",
+      "C) Un certificat de scolarité délivré par la mairie",
+      "D) Les clés de son ancien logement de location"
+    ],
+    correctAnswer: "B) Un chèque de caution et une attestation d'assurance habitation multirisque",
+    explanation: "L'agent immobilier demande d'apporter 'un chèque de caution et votre première attestation d'assurance habitation multirisque'."
+  }
 ];
 
 export const frenchB1B2Speaking = [
@@ -588,9 +802,52 @@ export const frenchB1B2Speaking = [
     speakSeconds: 90,
     prompt: "Développez un discours oral structuré de 90 secondes avec introduction, arguments pour (écologie, pouvoir d'achat), arguments contre ou réserves (coût budgétaire, investissements matériels), et une proposition équilibrée.",
     modelAnswer: "La gratuité des transports publics est une initiative audacieuse qui suscite de vifs débats dans les métropoles européennes. D'un côté, ses partisans soulignent à juste titre des avantages majeurs : rendre le bus et le tramway gratuits incite les automobilistes à laisser leur véhicule au garage, ce qui réduit drastiquement les embouteillages et la pollution de l'air. De surcroît, c'est une mesure de justice sociale indéniable qui redonne du pouvoir d'achat aux familles modestes et aux étudiants. Néanmoins, les détracteurs soulignent un obstacle économique de taille : sans les recettes de billetterie qui représentent souvent 30 à 40 % du budget des régies de transport, comment financer l'extension des lignes, la sécurité et la maintenance des rames ? Ne risque-t-on pas une dégradation du service ? Pour ma part, je préconise une approche ciblée : une gratuité intégrale réservée aux jeunes, aux demandeurs d'emploi et aux retraités, combinée à une tarification solidaire indexée sur les revenus pour le reste des usagers, afin de préserver les capacités d'investissement indispensables au réseau."
+  },
+  {
+    id: "fr-b1b2-s-5",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Entretien d'embauche : Négociation de responsabilités professionnelles",
+    audioPrompt: "Nous avons retenu votre candidature car vos compétences techniques correspondent parfaitement. Cependant, ce poste implique la gestion d'une équipe de six personnes. Comment concevez-vous votre management au quotidien ?",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    prompt: "Répondez au responsable du recrutement. Expliquez votre style de management basé sur l'écoute active, la délégation et la fixation d'objectifs clairs.",
+    modelAnswer: "Pour moi, le management d'équipe repose avant tout sur la confiance mutuelle et la clarté des objectifs partagés. J'accorde une grande importance à l'autonomie de mes collaborateurs : plutôt que d'effectuer un contrôle systématique, je préfère définir des indicateurs de réussite précis et organiser des points d'étape réguliers. Mon rôle de manager consiste à faciliter le travail quotidien de chacun, à lever les blocages opérationnels et à valoriser les initiatives individuelles et collectives pour préserver une motivation durable."
+  },
+  {
+    id: "fr-b1b2-s-6",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Débat de copropriété : Rénovation thermique de l'immeuble",
+    audioPrompt: "Je m'oppose au vote de ces travaux d'isolation par l'extérieur. La dépense est exorbitante et nous impose un emprunt collectif sur quinze ans !",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    prompt: "Prenez la parole lors de l'assemblée générale des copropriétaires. Argumentez en faveur de la rénovation thermique en évoquant les aides de l'État (MaPrimeRénov') et la valorisation patrimoniale.",
+    modelAnswer: "Je comprends parfaitement votre inquiétude face au montant initial des devis. Toutefois, il convient de souligner que nous bénéficions d'aides publiques substantielles avec MaPrimeRénov' Copropriété qui couvrent jusqu'à 40 % du coût total des travaux. De plus, isoler la façade réduira immédiatement nos charges de chauffage collectif de 35 % chaque hiver et évitera que nos appartements ne soient classés en passoire thermique, ce qui déprécierait considérablement leur valeur à la revente."
+  },
+  {
+    id: "fr-b1b2-s-7",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Médiation de voisinage : Nuisances sonores récurrentes",
+    audioPrompt: "Bonjour voisin. J'ai vu votre mot dans l'ascenseur concernant le bruit de ma musique en soirée le week-end dernier.",
+    prepSeconds: 12,
+    speakSeconds: 50,
+    prompt: "Exprimez-vous calmement mais fermement auprès de votre voisin. Expliquez l'impact des nuisances nocturnes sur votre sommeil et convenez d'un horaire limite de tolérance.",
+    modelAnswer: "Bonjour. Je vous remercie de venir m'en parler directement. Effectivement, le week-end dernier la musique avec des basses très fortes a duré jusqu'à trois heures du matin. Nous habitons un vieil immeuble où l'isolation phonique est faible. J'ai des enfants en bas âge et je dois moi-même me lever tôt. Je ne vous demande pas de vivre dans un silence absolu, mais serait-il possible de baisser le volume à partir de 22 heures ou de prévenir les voisins si vous organisez une fête exceptionnelle ?"
+  },
+  {
+    id: "fr-b1b2-s-8",
+    subtest: "speaking",
+    taskType: "monologue",
+    title: "Exposé argumenté : L'impact de la surconsommation vestimentaire (Fast fashion)",
+    audioPrompt: "Présentez une réflexion argumentée sur les conséquences environnementales et sociales de la mode éphémère (fast fashion) et les alternatives éco-responsables à développer.",
+    prepSeconds: 30,
+    speakSeconds: 90,
+    prompt: "Exposez votre point de vue structuré (problématique, impacts écologiques et humains, solutions citoyennes et réglementaires).",
+    modelAnswer: "L'industrie textile de la mode éphémère s'est imposée à l'échelle mondiale en multipliant les collections hebdomadaires à très bas prix. Cependant, ce modèle économique repose sur un coût écologique et humain insoutenable : consommation astronomique d'eau douce, pollution des cours d'eau par les teintures toxiques et précarité extrême de millions de travailleurs du textile dans les pays du Sud. Pour contrer ce désastre, il est urgent de transformer nos modes de consommation. Nous devons privilégier la seconde main, réparer nos vêtements au lieu de les jeter et exiger une traçabilité rigoureuse ainsi qu'un affichage environnemental obligatoire de la part des marques afin de responsabiliser les consommateurs."
   }
 ];
-
 
 // ============================================================================
 // 3. POOL DALF C1–C2: UTILISATEUR EXPÉRIMENTÉ (ACADÉMIQUE, RECHERCHE & AUTONOMIE)
@@ -766,6 +1023,51 @@ export const frenchTcfTefListening = [
     correctAnswer: "B) L'exercice fiscal fait apparaître un crédit d'impôt recherche de 15 000 euros à valider avant vendredi",
     explanation: "Le message indique qu'il 'apparaît un crédit d'impôt recherche de 15 000 euros en faveur de votre société' à valider avant vendredi."
   }
+  ,
+  {
+    id: "fr-b1b2-s-5",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Entretien d'embauche : Négociation de responsabilités professionnelles",
+    audioPrompt: "Nous avons retenu votre candidature car vos compétences techniques correspondent parfaitement. Cependant, ce poste implique la gestion d'une équipe de six personnes. Comment concevez-vous votre management au quotidien ?",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    prompt: "Répondez au responsable du recrutement. Expliquez votre style de management basé sur l'écoute active, la délégation et la fixation d'objectifs clairs.",
+    modelAnswer: "Pour moi, le management d'équipe repose avant tout sur la confiance mutuelle et la clarté des objectifs partagés. J'accorde une grande importance à l'autonomie de mes collaborateurs : plutôt que d'effectuer un contrôle systématique, je préfère définir des indicateurs de réussite précis et organiser des points d'étape réguliers. Mon rôle de manager consiste à faciliter le travail quotidien de chacun, à lever les blocages opérationnels et à valoriser les initiatives individuelles et collectives pour préserver une motivation durable."
+  },
+  {
+    id: "fr-b1b2-s-6",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Débat de copropriété : Rénovation thermique de l'immeuble",
+    audioPrompt: "Je m'oppose au vote de ces travaux d'isolation par l'extérieur. La dépense est exorbitante et nous impose un emprunt collectif sur quinze ans !",
+    prepSeconds: 15,
+    speakSeconds: 60,
+    prompt: "Prenez la parole lors de l'assemblée générale des copropriétaires. Argumentez en faveur de la rénovation thermique en évoquant les aides de l'État (MaPrimeRénov') et la valorisation patrimoniale.",
+    modelAnswer: "Je comprends parfaitement votre inquiétude face au montant initial des devis. Toutefois, il convient de souligner que nous bénéficions d'aides publiques substantielles avec MaPrimeRénov' Copropriété qui couvrent jusqu'à 40 % du coût total des travaux. De plus, isoler la façade réduira immédiatement nos charges de chauffage collectif de 35 % chaque hiver et évitera que nos appartements ne soient classés en passoire thermique, ce qui déprécierait considérablement leur valeur à la revente."
+  },
+  {
+    id: "fr-b1b2-s-7",
+    subtest: "speaking",
+    taskType: "dialogue",
+    title: "Médiation de voisinage : Nuisances sonores récurrentes",
+    audioPrompt: "Bonjour voisin. J'ai vu votre mot dans l'ascenseur concernant le bruit de ma musique en soirée le week-end dernier.",
+    prepSeconds: 12,
+    speakSeconds: 50,
+    prompt: "Exprimez-vous calmement mais fermement auprès de votre voisin. Expliquez l'impact des nuisances nocturnes sur votre sommeil et convenez d'un horaire limite de tolérance.",
+    modelAnswer: "Bonjour. Je vous remercie de venir m'en parler directement. Effectivement, le week-end dernier la musique avec des basses très fortes a duré jusqu'à trois heures du matin. Nous habitons un vieil immeuble où l'isolation phonique est faible. J'ai des enfants en bas âge et je dois moi-même me lever tôt. Je ne vous demande pas de vivre dans un silence absolu, mais serait-il possible de baisser le volume à partir de 22 heures ou de prévenir les voisins si vous organisez une fête exceptionnelle ?"
+  },
+  {
+    id: "fr-b1b2-s-8",
+    subtest: "speaking",
+    taskType: "monologue",
+    title: "Exposé argumenté : L'impact de la surconsommation vestimentaire (Fast fashion)",
+    audioPrompt: "Présentez une réflexion argumentée sur les conséquences environnementales et sociales de la mode éphémère (fast fashion) et les alternatives éco-responsables à développer.",
+    prepSeconds: 30,
+    speakSeconds: 90,
+    prompt: "Exposez votre point de vue structuré (problématique, impacts écologiques et humains, solutions citoyennes et réglementaires).",
+    modelAnswer: "L'industrie textile de la mode éphémère s'est imposée à l'échelle mondiale en multipliant les collections hebdomadaires à très bas prix. Cependant, ce modèle économique repose sur un coût écologique et humain insoutenable : consommation astronomique d'eau douce, pollution des cours d'eau par les teintures toxiques et précarité extrême de millions de travailleurs du textile dans les pays du Sud. Pour contrer ce désastre, il est urgent de transformer nos modes de consommation. Nous devons privilégier la seconde main, réparer nos vêtements au lieu de les jeter et exiger une traçabilité rigoureuse ainsi qu'un affichage environnemental obligatoire de la part des marques afin de responsabiliser les consommateurs."
+  }
 ];
 
 // ============================================================================
@@ -815,33 +1117,32 @@ export const frenchExamPools = {
 };
 
 /**
- * Generates an authentic, randomized French CRT / CBT exam session.
+ * Generates an authentic, fresh French CRT / CBT exam session prioritizing unseen questions for the logged-in user.
  * @param {string} levelKey - 'delfA1A2' | 'delfB1B2' | 'dalfC1C2' | 'tcfTefDcl'
  * @param {string} subtestFilter - 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
+ * @param {Set<string>} seenQuestionIds - IDs of questions previously attempted by the user
  * @returns {object} Randomized French exam session object
  */
-export function generateFrenchDynamicExam(levelKey = "delfB1B2", subtestFilter = "all") {
+export function generateFrenchDynamicExam(levelKey = "delfB1B2", subtestFilter = "all", seenQuestionIds = new Set()) {
   const pool = frenchExamPools[levelKey] || frenchExamPools.delfB1B2;
 
   // 1. Reading exercises
-  const selectedReading = shuffle(pool.reading).slice(0, Math.min(6, pool.reading.length));
+  const readingResult = selectBrandNewSet(pool.reading, Math.min(6, pool.reading.length), seenQuestionIds);
+  const selectedReading = readingResult.selected;
 
   // 2. Writing tasks: message + essay
-  const messages = pool.writing.filter(item => item.taskType === "message");
-  const essays = pool.writing.filter(item => item.taskType === "essay");
-  const selectedMessages = shuffle(messages).slice(0, Math.min(2, messages.length));
-  const selectedEssays = shuffle(essays).slice(0, Math.min(1, essays.length));
-  const selectedWriting = [...selectedMessages, ...selectedEssays];
+  const messagesResult = selectBrandNewSet(pool.writing, Math.min(2, pool.writing.length), seenQuestionIds, item => item.taskType === "message");
+  const essaysResult = selectBrandNewSet(pool.writing, Math.min(1, pool.writing.length), seenQuestionIds, item => item.taskType === "essay");
+  const selectedWriting = [...messagesResult.selected, ...essaysResult.selected];
 
   // 3. Listening recordings
-  const selectedListening = shuffle(pool.listening).slice(0, Math.min(6, pool.listening.length));
+  const listeningResult = selectBrandNewSet(pool.listening, Math.min(6, pool.listening.length), seenQuestionIds);
+  const selectedListening = listeningResult.selected;
 
   // 4. Speaking tasks: dialogues + monologue
-  const dialogues = pool.speaking.filter(item => item.taskType === "dialogue");
-  const monologues = pool.speaking.filter(item => item.taskType === "monologue");
-  const selectedDialogues = shuffle(dialogues).slice(0, Math.min(3, dialogues.length));
-  const selectedMonologues = shuffle(monologues).slice(0, Math.min(1, monologues.length));
-  const selectedSpeaking = [...selectedDialogues, ...selectedMonologues];
+  const dialoguesResult = selectBrandNewSet(pool.speaking, Math.min(3, pool.speaking.length), seenQuestionIds, item => item.taskType === "dialogue");
+  const monologuesResult = selectBrandNewSet(pool.speaking, Math.min(1, pool.speaking.length), seenQuestionIds, item => item.taskType === "monologue");
+  const selectedSpeaking = [...dialoguesResult.selected, ...monologuesResult.selected];
 
   // Assemble question stream based on chosen subtest
   let questions = [];
