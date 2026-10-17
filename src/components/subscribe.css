@@ -24,12 +24,16 @@
 .sub-modal-card {
   width: 100%;
   max-width: 460px;
+  max-height: min(90vh, 700px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--bg-modal);
   border: 1px solid var(--border-hover);
   border-radius: 26px;
   padding: 2.2rem;
   position: relative;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
   animation: subScaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -478,5 +482,31 @@ html[data-theme="light"] .sub-input-box {
   .lp-subscribe-cta-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .sub-modal-backdrop {
+    padding: 0.75rem;
+  }
+  .sub-modal-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 20px;
+  }
+  .sub-modal-title {
+    font-size: 1.35rem;
+  }
+  .sub-modal-subtitle {
+    font-size: 0.85rem;
+  }
+  .sub-tier-card {
+    padding: 0.85rem 1rem;
+  }
+  .sub-benefits-list {
+    font-size: 0.82rem;
+  }
+  .sub-submit-btn {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.95rem;
   }
 }

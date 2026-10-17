@@ -1,3 +1,6 @@
+import { spanishAllUnits } from './spanishCurriculum';
+import { spanishFlashcards } from './spanishFlashcards';
+import { spanishCultureVault } from './spanishCultureVault';
 import { finnishAllUnits } from './finnishCurriculum';
 import { finnishFlashcards } from './finnishFlashcards';
 import { finnishCultureVault } from './finnishCultureVault';
@@ -22,134 +25,10 @@ export const LANGUAGES = {
     accentColor: "#ef4444", // vibrant crimson
     secondaryColor: "#f59e0b", // warm gold
     greeting: "¡Hola! ¿Cómo estás?",
-    description: "Discover Spanish with cheerful everyday greetings, tapas dining culture, flamenco rhythm, and practical travel phrases.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Dime con quién andas, y te diré quién eres.",
-        translation: "Tell me who you walk with, and I will tell you who you are.",
-        context: "A classic Hispanic proverb teaching that the company we keep shapes our character and reputation."
-      },
-      slangs: [
-        { term: "¡Qué chulo!", meaning: "How cool! / So lovely! (Widely used in Spain)", example: "Esa chaqueta está genial, ¡qué chulo!" },
-        { term: "Buena onda", meaning: "Good vibes / friendly person (Popular across Latin America)", example: "El nuevo profesor tiene muy buena onda." },
-        { term: "Vale", meaning: "Okay / Alright / Agreed (Spain's most frequent word)", example: "¿Nos vemos a las ocho? — ¡Vale!" },
-        { term: "Pura vida", meaning: "Pure life / Everything is great (Costa Rica's iconic philosophy)", example: "¿Cómo te va? — ¡Pura vida!" },
-        { term: "Estar en las nubes", meaning: "Daydreaming / Having one's head in the clouds", example: "Presta atención en clase, estás en las nubes." }
-      ],
-      cultureTips: [
-        { title: "The Art of 'La Sobremesa'", description: "In Spain and Latin America, meals don't end when the food is finished. 'La sobremesa' is the relaxed, cherished conversation with friends and family around the table for hours." },
-        { title: "Formal 'Usted' vs Casual 'Tú'", description: "Always use 'Usted' when speaking with elderly people, professors, or formal professionals to express respect, and 'Tú' with friends and peers." },
-        { title: "The Double Exclamation & Question Marks", description: "Spanish uniquely opens sentences with inverted punctuation: '¿' and '¡' so the reader knows the tone before speaking the sentence." }
-      ]
-    },
-    flashcards: [
-      { id: "es-fc-1", front: "¡Hola!", phonetic: "OH-lah", back: "Hello!", category: "Greetings", example: "¡Hola! Buenos días a todos." },
-      { id: "es-fc-2", front: "¿Cómo estás?", phonetic: "KOH-moh es-TAHS", back: "How are you?", category: "Greetings", example: "¿Cómo estás hoy, amigo?" },
-      { id: "es-fc-3", front: "Mucho gusto", phonetic: "MOO-choh GOOS-toh", back: "Nice to meet you", category: "Courtesy", example: "Me llamo Sofia, mucho gusto." },
-      { id: "es-fc-4", front: "Por favor", phonetic: "por fah-VOR", back: "Please", category: "Courtesy", example: "Un café con leche, por favor." },
-      { id: "es-fc-5", front: "Gracias", phonetic: "GRAH-syahs", back: "Thank you", category: "Courtesy", example: "Muchas gracias por tu ayuda." },
-      { id: "es-fc-6", front: "¿Cuánto cuesta?", phonetic: "KWAHN-toh KWEHS-tah", back: "How much does it cost?", category: "Market", example: "¿Cuánto cuesta esta camiseta?" },
-      { id: "es-fc-7", front: "La cuenta", phonetic: "lah KWEHN-tah", back: "The bill / check", category: "Dining", example: "Camarero, ¿nos trae la cuenta, por favor?" }
-    ],
-    units: [
-      {
-        id: "es-unit-1",
-        title: "Unit 1: Essential Salutations & First Steps",
-        subtitle: "Greet locals warmly, introduce yourself, and master polite social etiquette.",
-        icon: "Sun",
-        color: "#ef4444",
-        lessons: [
-          {
-            id: "es-u1-l1",
-            title: "Friendly Salutations",
-            description: "Learn how to say hello, good morning, and ask how someone is doing.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "How do you say 'Good morning' in Spanish?",
-                options: ["Buenos días", "Buenas noches", "Hasta luego", "Mucho gusto"],
-                correctAnswer: "Buenos días",
-                explanation: "'Buenos días' is the standard polite greeting used until the afternoon."
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Assemble: 'How are you?'",
-                tokens: ["¿Cómo", "estás", "tú?", "muy", "bien"],
-                correctTokens: ["¿Cómo", "estás", "tú?"],
-                explanation: "'¿Cómo estás tú?' (or simply '¿Cómo estás?') asks 'How are you?'"
-              },
-              {
-                id: "q3",
-                type: "audio_listen",
-                phrase: "Mucho gusto",
-                prompt: "Listen to the phrase and select what it means:",
-                options: ["Nice to meet you", "Where is the bathroom?", "Good evening", "I want dessert"],
-                correctAnswer: "Nice to meet you",
-                explanation: "'Mucho gusto' literally means 'Much pleasure' — expressing delight at meeting someone."
-              },
-              {
-                id: "q4",
-                type: "matching",
-                prompt: "Match the Spanish terms with their English meanings:",
-                pairs: [
-                  { native: "Por favor", english: "Please" },
-                  { native: "Gracias", english: "Thank you" },
-                  { native: "De nada", english: "You're welcome" },
-                  { native: "Adiós", english: "Goodbye" }
-                ]
-              },
-              {
-                id: "q5",
-                type: "fill_blank",
-                sentence: "Hola, me ___ Carlos.",
-                missingWord: "llamo",
-                options: ["llamo", "tengo", "soy", "estoy"],
-                correctAnswer: "llamo",
-                explanation: "'Me llamo' translates to 'My name is' (literally: 'I call myself')."
-              }
-            ]
-          },
-          {
-            id: "es-u1-l2",
-            title: "Tapas & Cafe Dining",
-            description: "Order coffee, delicious tapas, and ask for the check.",
-            xp: 25,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "How do you politely ask for the check at a restaurant?",
-                options: ["La cuenta, por favor", "El menú, por favor", "Quiero agua", "Dónde está el tren"],
-                correctAnswer: "La cuenta, por favor",
-                explanation: "'La cuenta, por favor' means 'The bill, please.'"
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Order: 'Un café solo, por favor'",
-                tokens: ["Un", "café", "solo,", "por", "favor", "rico"],
-                correctTokens: ["Un", "café", "solo,", "por", "favor"],
-                explanation: "'Un café solo' is an espresso in Spain."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                prompt: "Match these food items:",
-                pairs: [
-                  { native: "El agua", english: "Water" },
-                  { native: "El pan", english: "Bread" },
-                  { native: "El queso", english: "Cheese" },
-                  { native: "La fruta", english: "Fruit" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Master Spanish through the official LOMLOE (RD 217/2022) curriculum for 1º ESO: linguistic variety, narration, media literacy, poetry, and debate.",
+    cultureVault: spanishCultureVault,
+    flashcards: spanishFlashcards,
+    units: spanishAllUnits
   },
 
   french: {
