@@ -13,6 +13,9 @@ import { pidginCultureVault } from './pidginCultureVault';
 import { hausaAllUnits } from './hausaCurriculum';
 import { igboAllUnits } from './igboCurriculum';
 import { yorubaAllUnits } from './yorubaCurriculum';
+import { germanAllUnits } from './germanCurriculum';
+import { germanFlashcards } from './germanFlashcards';
+import { germanCultureVault } from './germanCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -57,77 +60,10 @@ export const LANGUAGES = {
     accentColor: "#f59e0b", // warm amber gold
     secondaryColor: "#1e293b", // slate black
     greeting: "Guten Tag! Wie geht es Ihnen?",
-    description: "Explore German with precision grammar, friendly Bavarian greetings, Berlin cafe culture, and travel mastery.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Übung macht den Meister.",
-        translation: "Practice makes the master (Practice makes perfect).",
-        context: "The quintessential German reminder that discipline, deliberate practice, and repetition yield true expertise."
-      },
-      slangs: [
-        { term: "Alles klar!", meaning: "All clear / Everything is good / Got it!", example: "¿Können wir losgehen? — Alles klar!" },
-        { term: "Feierabend", meaning: "The glorious end of the workday / time to relax", example: "Endlich 17 Uhr, Zeit für den Feierabend!" },
-        { term: "Na?", meaning: "The most versatile German greeting: 'How are you?' / 'Well?'", example: "Na, wie läuft die Arbeit heute?" },
-        { term: "Kummerspeck", meaning: "Weight gained from emotional overeating (literally: grief bacon)", example: "Nach den Prüfungen hatte ich etwas Kummerspeck." }
-      ],
-      cultureTips: [
-        { title: "Punctuality (Pünktlichkeit)", description: "In Germany, arriving 5 minutes early is considered on time. Arriving late without notice is seen as unprofessional." },
-        { title: "Capitalizing All Nouns", description: "In written German, EVERY noun begins with a capital letter (e.g., der Hund, das Haus, die Sprache)." }
-      ]
-    },
-    flashcards: [
-      { id: "de-fc-1", front: "Guten Morgen", phonetic: "GOO-ten MOR-gen", back: "Good morning", category: "Greetings", example: "Guten Morgen! Haben Sie gut geschlafen?" },
-      { id: "de-fc-2", front: "Danke schön", phonetic: "DAHN-kuh shurn", back: "Thank you very much", category: "Courtesy", example: "Vielen Dank für Ihre Unterstützung!" },
-      { id: "de-fc-3", front: "Bitte sehr", phonetic: "BIT-tuh zayr", back: "You're very welcome / Here you go", category: "Courtesy", example: "Bitte sehr, nehmen Sie Platz." },
-      { id: "de-fc-4", front: "Wie geht's?", phonetic: "vee gayts", back: "How's it going? (Casual)", category: "Greetings", example: "Hallo Peter, wie geht's dir?" },
-      { id: "de-fc-5", front: "Tschüss", phonetic: "chooss", back: "Bye / See you (Casual)", category: "Farewell", example: "Bis morgen, tschüss!" }
-    ],
-    units: [
-      {
-        id: "de-unit-1",
-        title: "Unit 1: Everyday German Greetings",
-        subtitle: "Learn essential phrases for meeting colleagues, neighbors, and friends in Germany.",
-        icon: "Sun",
-        color: "#f59e0b",
-        lessons: [
-          {
-            id: "de-u1-l1",
-            title: "First Encounters in German",
-            description: "Learn how to greet someone and introduce your name politely.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "How do you say 'Good morning' in German?",
-                options: ["Guten Morgen", "Gute Nacht", "Auf Wiedersehen", "Bitte"],
-                correctAnswer: "Guten Morgen",
-                explanation: "'Guten Morgen' is spoken in the early hours until noon."
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Assemble: 'Ich heiße Lukas' (My name is Lukas)",
-                tokens: ["Ich", "heiße", "Lukas", "bin", "sehr"],
-                correctTokens: ["Ich", "heiße", "Lukas"],
-                explanation: "'Ich heiße...' means 'My name is...' (literally 'I am called...')."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                pairs: [
-                  { native: "Danke", english: "Thanks" },
-                  { native: "Bitte", english: "Please / You're welcome" },
-                  { native: "Hallo", english: "Hello" },
-                  { native: "Tschüss", english: "Bye" }
-                ],
-                prompt: "Match the German words with English:"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Master German through the official BAMF Rahmencurriculum (Integrationskurs DaZ) and DeuFöV Berufssprachkurse spanning 10 leveled units across A1, A2, B1, B2, and C1/C2 (TestDaF/DSH).",
+    cultureVault: germanCultureVault,
+    flashcards: germanFlashcards,
+    units: germanAllUnits
   },
 
   japanese: {

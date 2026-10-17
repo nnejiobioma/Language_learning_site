@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { generateDynamicExam, examPools } from '../data/cbtExamEngine';
 import { generateFrenchDynamicExam, frenchExamPools } from '../data/cbtFrenchExamEngine';
 import { generateSpanishDynamicExam, spanishExamPools } from '../data/cbtSpanishExamEngine';
+import { generateGermanDynamicExam, germanExamPools } from '../data/cbtGermanExamEngine';
 import { getExamsForLanguage, pidginExams } from '../data/cbtExams';
 import { 
   getUserSeenQuestionIds, 
@@ -50,6 +51,7 @@ export default function CBTExamView() {
   const { user, profile, saveProfileData } = useAuth();
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.spanish || LANGUAGES.pidgin;
 
+  const isGerman = currentLanguage === 'german';
   const isSpanish = currentLanguage === 'spanish';
   const isFinnish = currentLanguage === 'finnish';
   const isFrench = currentLanguage === 'french';
@@ -59,13 +61,16 @@ export default function CBTExamView() {
 
   // Level selector for Spanish DELE/SIELE, French DELF/DALF, Finnish YKI, or Nigerian Pidgin NERDC
   const [selectedLevelKey, setSelectedLevelKey] = useState(
-    isSpanish ? 'deleB1B2' : isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
+    isGerman ? 'dtzA2B1' : isSpanish ? 'deleB1B2' : isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
   );
   const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
 
   // Synchronize tier default when language changes
   useEffect(() => {
-    if (isSpanish && !['deleA1A2', 'deleB1B2', 'deleC1C2'].includes(selectedLevelKey)) {
+    if (isGerman && !['dtzA2B1'].includes(selectedLevelKey)) {
+      setSelectedLevelKey('dtzA2B1');
+      setSelectedSubtestFilter('all');
+    } else if (isSpanish && !['deleA1A2', 'deleB1B2', 'deleC1C2'].includes(selectedLevelKey)) {
       setSelectedLevelKey('deleB1B2');
       setSelectedSubtestFilter('all');
     } else if (isFrench && !['delfA1A2', 'delfB1B2', 'dalfC1C2', 'tcfTefDcl'].includes(selectedLevelKey)) {
@@ -78,7 +83,7 @@ export default function CBTExamView() {
       setSelectedLevelKey('p-cbt-foundational');
       setSelectedSubtestFilter('all');
     }
-  }, [currentLanguage, isSpanish, isFrench, isFinnish, isPidgin]);
+  }, [currentLanguage, isGerman, isSpanish, isFrench, isFinnish, isPidgin]);
 
   // States: 'hub' | 'active' | 'results'
   const [viewState, setViewState] = useState('hub');
@@ -114,7 +119,9 @@ export default function CBTExamView() {
     const seenIds = getUserSeenQuestionIds(user?.uid, profile);
     let session;
 
-    if (isSpanish) {
+    if (isGerman) {
+      session = generateGermanDynamicExam(levelKey, subtestFilter, seenIds);
+    } else if (isSpanish) {
       session = generateSpanishDynamicExam(levelKey, subtestFilter, seenIds);
     } else if (isFinnish) {
       session = generateDynamicExam(levelKey, subtestFilter, seenIds);
@@ -379,7 +386,9 @@ export default function CBTExamView() {
           <div className="cbt-hero-badge">
             <GraduationCap size={28} />
             <span>
-              {isSpanish
+              {isGerman
+                ? "Offizielles CBT-Prüfungszentrum für Deutsch (BAMF & Goethe-Institut)"
+                : isSpanish
                 ? "Centro Oficial de Evaluación CBT & SIELE de Español (Instituto Cervantes)"
                 : isFrench 
                   ? "Centre Officiel d'Examen CRT & CBT de Français" 
@@ -388,7 +397,9 @@ export default function CBTExamView() {
           </div>
 
           <h1 className="cbt-hero-title">
-            {isSpanish
+            {isGerman
+              ? "Offizieller Prüfungssimulator: BAMF DTZ (A2–B1) & Goethe-Zertifikat"
+              : isSpanish
               ? "Simulador Oficial de Exámenes DELE & SIELE (Instituto Cervantes • MCER A1–C2)"
               : isFrench 
                 ? "Simulateur Officiel de Tests & Diplômes de Français (DELF • DALF • TCF • TEF • DCL)"
@@ -400,7 +411,11 @@ export default function CBTExamView() {
           </h1>
 
           <p className="cbt-hero-subtitle">
-            {isSpanish ? (
+            {isGerman ? (
+              <>
+                Offizieller computergestützter Prüfungssimulator, streng ausgerichtet nach dem <strong>BAMF-Rahmencurriculum für Integrationskurse (DaZ)</strong>, den Richtlinien des <strong>Goethe-Instituts</strong> und dem <strong>GER (Gemeinsamer Europäischer Referenzrahmen)</strong>. Trainieren Sie alle 4 Fertigkeiten: <strong>Leseverstehen</strong>, <strong>Schriftlicher Ausdruck</strong>, <strong>Hörverstehen</strong> und <strong>Mündliche Paarprüfung</strong>. Jeder angemeldete Durchgang liefert einen <strong>garantiert neuen Aufgabensatz</strong>!
+              </>
+            ) : isSpanish ? (
               <>
                 Simulador de exámenes de alto rendimiento estrictamente alineado con el <strong>Marco Común Europeo de Referencia (MCER)</strong> y los estándares del <strong>Instituto Cervantes</strong>. Practique las 4 pruebas oficiales: <strong>Comprensión de lectura</strong>, <strong>Expresión e interacción escritas</strong>, <strong>Comprensión auditiva</strong> y <strong>Expresión e interacción orales</strong>. ¡Cada intento de un usuario registrado genera un <strong>conjunto de examen 100% nuevo</strong>!
               </>
@@ -428,7 +443,9 @@ export default function CBTExamView() {
             <Sparkles size={16} />
             <span>
               {user ? (
-                isSpanish ? (
+                isGerman ? (
+                  <>Aktive Sitzung: <strong>{user.displayName || user.email}</strong> • Versuch #{userAttemptNumber} • <strong>Garantiert neue Prüfungsaufgaben</strong> in jedem Prüfungsteil</>
+                ) : isSpanish ? (
                   <>Sesión activa: <strong>{user.displayName || user.email}</strong> • Intento #{userAttemptNumber} • <strong>Conjunto 100% Nuevo Garantizado</strong> en cada subprueba</>
                 ) : isFrench ? (
                   <>Session de <strong>{user.displayName || user.email}</strong> • Tentative #{userAttemptNumber} • <strong>Nouvelles questions inédites garanties</strong></>
@@ -436,7 +453,9 @@ export default function CBTExamView() {
                   <>Learner Account: <strong>{user.displayName || user.email}</strong> • Attempt #{userAttemptNumber} • <strong>Brand New Set Guaranteed</strong> on each subtest</>
                 )
               ) : (
-                isSpanish ? (
+                isGerman ? (
+                  <>💡 Tipp: Melden Sie sich an, um Ihren Prüfungsverlauf zu sichern und bei jedem Versuch garantiert neue Aufgaben zu erhalten.</>
+                ) : isSpanish ? (
                   <>💡 Consejo: Inicie sesión para registrar su historial y garantizar un conjunto 100% nuevo de preguntas en cada subprueba.</>
                 ) : (
                   <>💡 Tip: Log in to save your attempt history and guarantee a brand new set of questions on every attempt.</>
@@ -445,6 +464,116 @@ export default function CBTExamView() {
             </span>
           </div>
         </section>
+
+                {/* Level Switcher & Subtest Selection Panel for German (BAMF DTZ & Goethe) */}
+        {isGerman && (
+          <div className="cbt-level-control-panel">
+            <div className="level-control-header">
+              <div className="control-title-box">
+                <Sparkles size={20} className="sparkle-icon" />
+                <h3>1. Offizielles Prüfungsformat auswählen (BAMF / Goethe-Institut)</h3>
+              </div>
+              <span className="control-badge">BAMF Rahmencurriculum • GER A2–B1</span>
+            </div>
+
+            <div className="cbt-tier-selector-grid">
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'dtzA2B1' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('dtzA2B1')}
+              >
+                <div className="tier-tag badge-citizenship">BAMF DTZ • Staatsbürgerschaft & Niederlassung</div>
+                <h4>Deutsch-Test für Zuwanderer (A2–B1)</h4>
+                <p className="tier-desc">Gesetzlich vorgeschriebene Abschlussprüfung für den Integrationskurs, Einbürgerung und unbefristete Niederlassungserlaubnis.</p>
+                <span className="tier-pool-stat">BAMF / telc / Goethe-Zertifikat Standard</span>
+              </button>
+            </div>
+
+            {/* Subtest Mode Selector */}
+            <div className="subtest-mode-selector-section">
+              <div className="control-title-box">
+                <BookOpen size={20} className="sparkle-icon" />
+                <h3>2. Prüfungsteil wählen oder Gesamtsimulation starten</h3>
+              </div>
+
+              <div className="subtest-pills-row">
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('all')}
+                >
+                  <Sparkles size={16} />
+                  <span>🌟 Offizielle Gesamtsimulation (4 Prüfungsteile • 116 Min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'reading' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('reading')}
+                >
+                  <BookOpen size={16} />
+                  <span>📖 Leseverstehen (Behörden, Anzeigen, Briefe • 45 Min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'writing' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('writing')}
+                >
+                  <PenTool size={16} />
+                  <span>✍️ Schriftlicher Ausdruck (Formelle Behördenbriefe • 30 Min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'listening' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('listening')}
+                >
+                  <Headphones size={16} />
+                  <span>🎧 Hörverstehen (Durchsagen & Telefonate • 25 Min)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'speaking' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('speaking')}
+                >
+                  <Mic size={16} />
+                  <span>🗣️ Mündliche Prüfung (Sprachlabor • 16 Min)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Launch Banner Card */}
+            <div className="cbt-launch-card">
+              <div className="launch-left">
+                <span className="launch-sub-tag">BAMF DTZ Prüfungsgenerator Bereit</span>
+                <h3 className="launch-exam-title">
+                  {germanExamPools[selectedLevelKey]?.title || "BAMF Deutsch-Test für Zuwanderer (DTZ A2–B1)"}
+                </h3>
+                <p className="launch-exam-summary">
+                  Modus: <strong>{
+                    selectedSubtestFilter === 'all' ? "Gesamtprüfung (Lesen + Schreiben + Hören + Mündliche Paarprüfung)" :
+                    selectedSubtestFilter === 'reading' ? "Leseverstehen (Authentische Aushänge, Formulare und Mietverträge)" :
+                    selectedSubtestFilter === 'writing' ? "Schriftlicher Ausdruck (Behördenreklamation, Kita-Mitteilung und Stellungnahme)" :
+                    selectedSubtestFilter === 'listening' ? "Hörverstehen (Originalgetreue Bahndurchsagen, Notrufe und Anrufbeantworter)" :
+                    "Mündliche Prüfung im Sprachlabor (Paardialog & Bildpräsentation)"
+                  }</strong>
+                </p>
+                <div className="launch-pills-row">
+                  <span className="launch-info-chip"><Shuffle size={14} /> 100% Neue Aufgaben bei jedem Versuch</span>
+                  <span className="launch-info-chip"><ShieldCheck size={14} /> BAMF & Goethe-Institut Standard</span>
+                  {user && <span className="launch-info-chip"><UserCheck size={14} /> Angemeldet ({user.displayName || user.email})</span>}
+                </div>
+              </div>
+
+              <div className="launch-right">
+                <button
+                  className="cbt-start-hero-btn"
+                  onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
+                  id="launch-german-exam-btn"
+                >
+                  <Play size={20} fill="currentColor" />
+                  <span>Prüfung Starten</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Level Switcher & Subtest Selection Panel for Spanish (DELE / SIELE) */}
         {isSpanish && (
@@ -959,7 +1088,7 @@ export default function CBTExamView() {
         })()}
 
         {/* Generic Fallback Panel for other languages */}
-        {!isSpanish && !isFrench && !isFinnish && !isPidgin && (() => {
+        {!isGerman && !isSpanish && !isFrench && !isFinnish && !isPidgin && (() => {
           const availableExams = getExamsForLanguage(currentLanguage);
           const activeExam = availableExams.find(e => e.id === selectedLevelKey) || availableExams[0];
           return (
@@ -1016,7 +1145,9 @@ export default function CBTExamView() {
           <div className="instructions-header">
             <BookOpen size={22} className="inst-icon" />
             <h3>
-              {isSpanish
+              {isGerman
+                ? "Offizielle Struktur des DTZ & Goethe-Zertifikats (BAMF & GER)"
+                : isSpanish
                 ? "Estructura Oficial del Examen DELE / SIELE (Instituto Cervantes & MCER)"
                 : isFrench 
                   ? "Structure Officielle des Épreuves et Normes CECR (France Éducation International & CCI)" 
@@ -1026,7 +1157,11 @@ export default function CBTExamView() {
             </h3>
           </div>
           <p className="cbt-subtests-intro">
-            {isSpanish ? (
+            {isGerman ? (
+              <>
+                Die offiziellen Prüfungen des <strong>Bundesamtes für Migration und Flüchtlinge (BAMF)</strong> und des <strong>Goethe-Instituts</strong> prüfen vier grundlegende Handlungskompetenzen für Einbürgerung, Beruf und Alltag:
+              </>
+            ) : isSpanish ? (
               <>
                 Las certificaciones oficiales de español están reguladas por el <strong>Instituto Cervantes</strong> y el <strong>Ministerio de Educación</strong>. Las pruebas evalúan cuatro destrezas fundamentales según los estándares del MCER:
               </>
@@ -1049,11 +1184,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">📖</span>
-                <strong>{isSpanish ? "Comprensión de lectura" : isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
+                <strong>{isGerman ? "Leseverstehen" : isSpanish ? "Comprensión de lectura" : isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
                 <span className="subtest-time-tag">60 Mins</span>
               </div>
               <p>
-                {isSpanish
+                {isGerman
+                  ? "Kritisches Lesen von authentischen Dokumenten (Behördenmitteilungen, Hausordnungen, Wohnungsanzeigen, Verträge und Stellenangebote) mit detaillierten Multiple-Choice-Fragen."
+                  : isSpanish
                   ? "Lectura crítica de 6 documentos auténticos (noticias, normativas, ofertas de empleo, ensayos y reglamentos). Preguntas de opción múltiple con justificación pedagógica."
                   : isFrench 
                     ? "Lecture critique et analyse de 6 documents authentiques (articles de presse, lois, arrêtés, annonces et notes de service)."
@@ -1064,11 +1201,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">✍️</span>
-                <strong>{isSpanish ? "Expresión e interacción escritas" : isFrench ? "Production écrite" : "Writing"}</strong>
-                <span className="subtest-time-tag">{isSpanish ? "60 Mins" : isFrench ? "60 Mins" : "55 Mins"}</span>
+                <strong>{isGerman ? "Schriftlicher Ausdruck" : isSpanish ? "Expresión e interacción escritas" : isFrench ? "Production écrite" : "Writing"}</strong>
+                <span className="subtest-time-tag">{isGerman ? "30 Mins" : isSpanish ? "60 Mins" : isFrench ? "60 Mins" : "55 Mins"}</span>
               </div>
               <p>
-                {isSpanish
+                {isGerman
+                  ? "Verfassen standardisierter formeller Behördenschreiben, Mietmängelrügen, Entschuldigungsschreiben an Schulen/Kitas und begründeter Stellungnahmen."
+                  : isSpanish
                   ? "Redacción de documentos formales: cartas de reclamación, solicitudes administrativas y un ensayo argumentativo equilibrado defendiendo una postura crítica."
                   : isFrench
                     ? "Rédaction de documents épistolaires et argumentatifs : un courrier administratif officiel ou de réclamation formelle, et un essai argumenté."
@@ -1079,11 +1218,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">🎧</span>
-                <strong>{isSpanish ? "Comprensión auditiva" : isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
+                <strong>{isGerman ? "Hörverstehen" : isSpanish ? "Comprensión auditiva" : isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
                 <span className="subtest-time-tag">35 Mins</span>
               </div>
               <p>
-                {isSpanish
+                {isGerman
+                  ? "Hören originalgetreuer Bahnhofsdurchsagen, telefonischer Terminansagen von Ämtern, Notrufdialoge und Radioberichte mit begrenzten Wiederholungen."
+                  : isSpanish
                   ? "Escucha de audios de radio nacional (RNE, SER), anuncios de transporte, avisos policiales y debates sobre temas de actualidad."
                   : isFrench
                     ? "Écoute d'extraits radiophoniques (France Info, RFI), d'annonces publiques de sécurité et de débats de société."
@@ -1094,11 +1235,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">🗣️</span>
-                <strong>{isSpanish ? "Expresión e interacción orales" : isFrench ? "Production orale" : "Speaking"}</strong>
+                <strong>{isGerman ? "Mündliche Prüfung" : isSpanish ? "Expresión e interacción orales" : isFrench ? "Production orale" : "Speaking"}</strong>
                 <span className="subtest-time-tag">20 Mins</span>
               </div>
               <p>
-                {isSpanish
+                {isGerman
+                  ? "Sprachlabor mit realistischem Prüfungsablauf: Sich vorstellen, dialogisches Planen mit dem Prüfungspartner, Bildbeschreibung und freie Argumentation."
+                  : isSpanish
                   ? "Laboratorio de voz interactivo: simulador de entrevistas de trabajo, resolución de conflictos vecinales y monólogo argumentativo con tiempo de preparación."
                   : isFrench
                     ? "Épreuve interactive en laboratoire de langue : entretien dirigé, jeu de rôle en situation réelle et monologue argumenté."
@@ -1112,10 +1255,17 @@ export default function CBTExamView() {
         <div className="cbt-instructions-card">
           <div className="instructions-header">
             <ShieldCheck size={22} className="inst-icon" />
-            <h3>{isSpanish ? "Normativa del Examen y Garantía de Novedad de Preguntas" : isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
+            <h3>{isGerman ? "Prüfungsordnung & Garantie für neue Aufgaben" : isSpanish ? "Normativa del Examen y Garantía de Novedad de Preguntas" : isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
           </div>
           <ul className="instructions-list">
-            {isSpanish ? (
+            {isGerman ? (
+              <>
+                <li><strong>Garantie für neue Aufgaben:</strong> Als angemeldeter Nutzer speichert das System Ihre bearbeiteten Fragen. Bei jedem erneuten Prüfungsversuch erhalten Sie automatisch Aufgaben, die Sie zuvor noch nie gelöst haben.</li>
+                <li><strong>Prüfungszeitraum & Automatischer Ablauf:</strong> Jeder Prüfungsteil verfügt über ein striktes Zeitlimit gemäß den Vorgaben des BAMF. Nach Ablauf der Zeit wird Ihre Prüfung automatisch gewertet.</li>
+                <li><strong>Hörverstehen & Audio-Wiedergabe:</strong> Im Hörverstehen dürfen Sie die Audiospuren gemäß Prüfungsstandard maximal zweimal abspielen.</li>
+                <li><strong>Mündliches Sprachlabor:</strong> Vor jedem Sprechteil erhalten Sie eine strukturierte Vorbereitungszeit (Countdown), gefolgt von der automatischen Audioaufzeichnung.</li>
+              </>
+            ) : isSpanish ? (
               <>
                 <li><strong>Garantía de preguntas inéditas:</strong> Al estar registrado con su cuenta, el sistema registra cada ejercicio presentado y garantiza que en cada nuevo intento se seleccionarán preguntas completamente nuevas que no haya resuelto anteriormente.</li>
                 <li><strong>Requisito de Nacionalidad Española (DELE B1):</strong> El Ministerio de Justicia de España exige la aprobación del examen DELE B1 o superior a los solicitantes de nacionalidad por residencia no hispanohablantes de origen.</li>
@@ -1232,7 +1382,7 @@ export default function CBTExamView() {
               <div className="cbt-reading-passage-box">
                 <div className="passage-header">
                   <FileText size={16} />
-                  <span>{isSpanish ? "Documento Oficial de Referencia" : isFrench ? "Document Officiel de Référence" : "Official Reference Document"}</span>
+                  <span>{isGerman ? "Offizielles Referenzdokument" : isSpanish ? "Documento Oficial de Referencia" : isFrench ? "Document Officiel de Référence" : "Official Reference Document"}</span>
                 </div>
                 <div className="passage-content">
                   {currentQuestion.passage.split('\n').map((para, pIdx) => (
@@ -1248,7 +1398,7 @@ export default function CBTExamView() {
                 <div className="audio-header">
                   <Headphones size={20} />
                   <div className="audio-header-text">
-                    <h4>{isSpanish ? "Enlace de Audio — Comprensión Auditiva" : isFrench ? "Support Audio — Compréhension de l'oral" : "Audio Track — Listening Comprehension"}</h4>
+                    <h4>{isGerman ? "Audiospur — Hörverstehen" : isSpanish ? "Enlace de Audio — Comprensión Auditiva" : isFrench ? "Support Audio — Compréhension de l'oral" : "Audio Track — Listening Comprehension"}</h4>
                     <p>{isSpanish ? "Escuche atentamente la grabación en español para responder." : "Listen carefully to the audio excerpt to answer the question."}</p>
                   </div>
                 </div>
@@ -1302,7 +1452,7 @@ export default function CBTExamView() {
                 <div className="writing-textarea-wrapper">
                   <textarea
                     className="cbt-writing-textarea"
-                    placeholder={isSpanish ? "Redacte su texto formal o ensayo argumentativo aquí..." : isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
+                    placeholder={isGerman ? "Verfassen Sie Ihr formelles Schreiben oder Ihre Stellungnahme hier..." : isSpanish ? "Redacte su texto formal o ensayo argumentativo aquí..." : isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
                     rows={8}
                     value={userTextAnswer}
                     onChange={(e) => handleWritingInput(currentQuestion.id, e.target.value)}
@@ -1324,7 +1474,7 @@ export default function CBTExamView() {
               <div className="cbt-speaking-container">
                 <div className="speaking-header-banner">
                   <Mic size={20} />
-                  <span>{isSpanish ? "Laboratorio de Idiomas: Simulador oficial de expresión oral" : isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
+                  <span>{isGerman ? "Sprachlabor: Offizielle mündliche Prüfungssimulation" : isSpanish ? "Laboratorio de Idiomas: Simulador oficial de expresión oral" : isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
                 </div>
 
                 <div className="speaking-prompt-box">
