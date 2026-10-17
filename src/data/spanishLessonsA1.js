@@ -1,7 +1,7 @@
 // =========================================================================
 // MCER / ELE Spanish Curriculum — Instituto Cervantes Aligned
 // Block 1: 🟢 Nivel A1: Inicial (Principiante) — Units 1 to 4
-// Exactly 20 Questions per Unit = 80 Questions Total
+// 2 Lessons per Unit • 10 Questions per Lesson = 80 Questions Total
 // =========================================================================
 
 export const spanishA1Units = [
@@ -20,13 +20,13 @@ export const spanishA1Units = [
     lessons: [
       {
         id: "es-u1-l1",
-        title: "Lección 1: Presentaciones Personales y Verbos Esenciales",
-        description: "Aprende a presentarte, deletrear, usar 'ser' y 'estar', y conjugar verbos regulares en presente.",
+        title: "Lección 1: Saludos, Alfabeto y Verbos Esenciales (Ser vs. Estar)",
+        description: "Aprende los saludos básicos, el alfabeto en español y la conjugación en presente de los verbos 'ser' y 'estar'.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u1-q1",
+            id: "es-u1-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma correcta del verbo 'ser' para 'Yo'?",
             options: ["Soy", "Eres", "Es", "Somos"],
@@ -34,7 +34,7 @@ export const spanishA1Units = [
             explanation: "'Yo soy' es la primera persona del singular del verbo irregular 'ser'."
           },
           {
-            id: "es-u1-q2",
+            id: "es-u1-l1-q2",
             type: "matching",
             prompt: "Empareja los pronombres personales con la forma correcta de 'ser':",
             pairs: [
@@ -45,7 +45,7 @@ export const spanishA1Units = [
             ]
           },
           {
-            id: "es-u1-q3",
+            id: "es-u1-l1-q3",
             type: "fill_blank",
             sentence: "Hola, me ___ Mateo y soy de España.",
             missingWord: "llamo",
@@ -54,177 +54,169 @@ export const spanishA1Units = [
             explanation: "Para decir el nombre usamos 'me llamo' (del verbo reflexivo llamarse)."
           },
           {
-            id: "es-u1-q4",
+            id: "es-u1-l1-q4",
             type: "scramble",
             prompt: "Ordena las palabras para formar una presentación básica:",
             tokens: ["Hola,", "yo", "soy", "estudiante", "de", "español."],
             correctTokens: ["Hola,", "yo", "soy", "estudiante", "de", "español."],
-            explanation: "Estructura correcta: Saludo + Sujeto + Verbo + Atributo."
+            explanation: "Estructura canónica: Saludo + sujeto + verbo ser + atributo + complemento."
           },
           {
-            id: "es-u1-q5",
+            id: "es-u1-l1-q5",
             type: "multiple_choice",
-            prompt: "¿Cuándo se utiliza el verbo 'estar' en lugar de 'ser'?",
+            prompt: "¿Cuál es la diferencia principal entre 'ser' y 'estar' en nivel inicial?",
             options: [
-              "Para ubicaciones geográficas y estados temporales o emocionales.",
-              "Para definir la profesión y nacionalidad permanente.",
-              "Para expresar la hora y el precio fijo.",
-              "Para señalar relaciones de parentesco inmutables."
+              "'Ser' describe identidad, origen y profesión; 'Estar' expresa ubicación y estados temporales",
+              "'Estar' solo se usa para el clima",
+              "'Ser' es un verbo regular en presente",
+              "Significan exactamente lo mismo sin distinción"
             ],
-            correctAnswer: "Para ubicaciones geográficas y estados temporales o emocionales.",
-            explanation: "'Estar' expresa localización ('Madrid está en España') y estados temporales ('Estoy cansado')."
+            correctAnswer: "'Ser' describe identidad, origen y profesión; 'Estar' expresa ubicación y estados temporales",
+            explanation: "'Ser' define características intrínsecas (origen, ocupación, identidad), mientras que 'estar' sitúa en el espacio o indica estados anímicos o físicos transitorios."
           },
           {
-            id: "es-u1-q6",
+            id: "es-u1-l1-q6",
+            type: "fill_blank",
+            sentence: "¿Cómo ___ tú hoy? —Muy bien, gracias.",
+            missingWord: "estás",
+            options: ["estás", "eres", "somos", "estoy"],
+            correctAnswer: "estás",
+            explanation: "Para preguntar por el estado de salud o ánimo se usa el verbo estar: '¿Cómo estás?'."
+          },
+          {
+            id: "es-u1-l1-q7",
+            type: "audio_listen",
+            prompt: "Escucha el saludo y elige el momento adecuado del día para usarlo:",
+            audioText: "¡Buenos días! ¿Cómo amaneció hoy?",
+            options: ["Por la mañana", "Por la noche antes de dormir", "A medianoche", "Durante la cena"],
+            correctAnswer: "Por la mañana",
+            explanation: "'¡Buenos días!' se emplea tradicionalmente desde el amanecer hasta el mediodía."
+          },
+          {
+            id: "es-u1-l1-q8",
             type: "matching",
-            prompt: "Empareja cada país con su nacionalidad correspondiente (masculina):",
+            prompt: "Empareja los saludos con su respuesta protocolaria habitual:",
             pairs: [
-              { native: "España", english: "Spain -> Spanish", left: "España", right: "Español" },
-              { native: "México", english: "Mexico -> Mexican", left: "México", right: "Mexicano" },
-              { native: "Francia", english: "France -> French", left: "Francia", right: "Francés" },
-              { native: "Alemania", english: "Germany -> German", left: "Alemania", right: "Alemán" }
+              { native: "Mucho gusto", english: "Encantado / El gusto es mío", left: "Mucho gusto", right: "Encantado / Igualmente" },
+              { native: "¿Qué tal?", english: "Bien, ¿y tú?", left: "¿Qué tal?", right: "Bien, ¿y tú?" },
+              { native: "Buenas noches", english: "Buenas noches / Que descanses", left: "Buenas noches", right: "Que descanses" },
+              { native: "Hasta luego", english: "Nos vemos / Adiós", left: "Hasta luego", right: "Nos vemos pronto" }
             ]
           },
           {
-            id: "es-u1-q7",
-            type: "audio_listen",
-            phrase: "¿Cómo te llamas y de dónde eres?",
-            prompt: "Escucha la frase de presentación y selecciona su traducción:",
-            options: [
-              "What is your name and where are you from?",
-              "Where do you work and how old are you?",
-              "What language do you speak at home?",
-              "How are you doing this morning?"
-            ],
-            correctAnswer: "What is your name and where are you from?",
-            explanation: "'¿Cómo te llamas y de dónde eres?' pregunta por el nombre y la procedencia de una persona."
-          },
-          {
-            id: "es-u1-q8",
-            type: "fill_blank",
-            sentence: "Carlos y Lucía ___ en la biblioteca de la universidad.",
-            missingWord: "están",
-            options: ["están", "son", "es", "está"],
-            correctAnswer: "están",
-            explanation: "Para indicar la localización de ellos (tercera persona del plural) usamos 'están'."
-          },
-          {
-            id: "es-u1-q9",
+            id: "es-u1-l1-q9",
             type: "multiple_choice",
-            prompt: "¿Cómo se conjuga el verbo regular 'hablar' para 'Nosotros' en presente?",
-            options: ["Hablamos", "Hablan", "Habláis", "Hablo"],
-            correctAnswer: "Hablamos",
-            explanation: "Los verbos terminados en -ar terminan en '-amos' para nosotros: hablamos."
+            prompt: "¿Cuál es la terminación regular de primera persona singular (yo) para el presente de indicativo en las tres conjugaciones (-ar, -er, -ir)?",
+            options: ["-o", "-as", "-e", "-en"],
+            correctAnswer: "-o",
+            explanation: "Prácticamente todos los verbos regulares en presente terminan en '-o' para 'yo': hablo, como, vivo."
           },
           {
-            id: "es-u1-q10",
+            id: "es-u1-l1-q10",
+            type: "fill_blank",
+            sentence: "Nosotros ___ en una empresa internacional.",
+            missingWord: "trabajamos",
+            options: ["trabajamos", "trabajan", "trabajas", "trabajo"],
+            correctAnswer: "trabajamos",
+            explanation: "Para 'nosotros' en los verbos terminados en -ar la terminación es '-amos': trabajamos."
+          }
+        ]
+      },
+      {
+        id: "es-u1-l2",
+        title: "Lección 2: Presentaciones, Países, Nacionalidades y Números",
+        description: "Aprende a indicar tu procedencia, expresar nacionalidades con concordancia de género y dominar los números del 0 al 100.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u1-l2-q1",
+            type: "scramble",
+            prompt: "Ordena las palabras para indicar país de origen:",
+            tokens: ["Mi", "profesor", "es", "de", "Colombia."],
+            correctTokens: ["Mi", "profesor", "es", "de", "Colombia."],
+            explanation: "Para expresar procedencia se usa 'ser + de + país': Mi profesor es de Colombia."
+          },
+          {
+            id: "es-u1-l2-q2",
             type: "matching",
-            prompt: "Empareja los números cardinales en español con sus dígitos:",
+            prompt: "Empareja cada país con la nacionalidad correspondiente (masculino):",
             pairs: [
+              { native: "España", english: "Spanish", left: "España", right: "español" },
+              { native: "Alemania", english: "German", left: "Alemania", right: "alemán" },
+              { native: "Francia", english: "French", left: "Francia", right: "francés" },
+              { native: "Japón", english: "Japanese", left: "Japón", right: "japonés" }
+            ]
+          },
+          {
+            id: "es-u1-l2-q3",
+            type: "multiple_choice",
+            prompt: "Si María nació en México, ¿cuál es su nacionalidad en femenino?",
+            options: ["Mexicana", "Mexicano", "Mexicanas", "México"],
+            correctAnswer: "Mexicana",
+            explanation: "Las nacionalidades concuerdan en género con el sujeto: María es mexicana."
+          },
+          {
+            id: "es-u1-l2-q4",
+            type: "fill_blank",
+            sentence: "Tengo ___ años y mi hermano tiene quince.",
+            missingWord: "veinte",
+            options: ["veinte", "veinti", "veintes", "vigésimo"],
+            correctAnswer: "veinte",
+            explanation: "El número cardinal para 20 es 'veinte'. La edad en español se expresa con el verbo 'tener'."
+          },
+          {
+            id: "es-u1-l2-q5",
+            type: "scramble",
+            prompt: "Ordena los números de menor a mayor:",
+            tokens: ["diez,", "veinte,", "treinta,", "cuarenta."],
+            correctTokens: ["diez,", "veinte,", "treinta,", "cuarenta."],
+            explanation: "Serie de decenas: 10, 20, 30, 40."
+          },
+          {
+            id: "es-u1-l2-q6",
+            type: "multiple_choice",
+            prompt: "¿Cuál es la letra característica del alfabeto español que no existe en el alfabeto inglés básico?",
+            options: ["Ñ / ñ", "W / w", "K / k", "H / h"],
+            correctAnswer: "Ñ / ñ",
+            explanation: "La 'eñe' (Ñ, ñ) con virgulilla es la letra distintiva del alfabeto español y representa el fonema nasal palatal /ɲ/."
+          },
+          {
+            id: "es-u1-l2-q7",
+            type: "fill_blank",
+            sentence: "Disculpe, ¿cómo se ___ su apellido? —G-A-R-C-Í-A.",
+            missingWord: "deletrea",
+            options: ["deletrea", "escribe", "pronuncia", "llama"],
+            correctAnswer: "deletrea",
+            explanation: "'Deletrear' significa decir una a una las letras de una palabra."
+          },
+          {
+            id: "es-u1-l2-q8",
+            type: "matching",
+            prompt: "Empareja los números escritos con sus cifras:",
+            pairs: [
+              { native: "Doce", english: "12", left: "Doce", right: "12" },
               { native: "Quince", english: "15", left: "Quince", right: "15" },
-              { native: "Veinte", english: "20", left: "Veinte", right: "20" },
               { native: "Cincuenta", english: "50", left: "Cincuenta", right: "50" },
               { native: "Cien", english: "100", left: "Cien", right: "100" }
             ]
           },
           {
-            id: "es-u1-q11",
-            type: "scramble",
-            prompt: "Construye la oración interrogativa sobre el origen:",
-            tokens: ["¿De", "dónde", "eres", "tú?", "bueno"],
-            correctTokens: ["¿De", "dónde", "eres", "tú?"],
-            explanation: "'¿De dónde eres tú?' pregunta por la procedencia o nacionalidad del interlocutor."
-          },
-          {
-            id: "es-u1-q12",
-            type: "multiple_choice",
-            prompt: "La letra 'ñ' en el alfabeto español se pronuncia de forma similar a:",
-            options: [
-              "La 'gn' en francés o la 'ny' en catalán (sonido nasal palatal).",
-              "La doble 'l' en inglés.",
-              "La 'r' fuerte al principio de palabra.",
-              "La 'ch' africada sorda."
-            ],
-            correctAnswer: "La 'gn' en francés o la 'ny' en catalán (sonido nasal palatal).",
-            explanation: "La 'ñ' representa el fonema nasal palatal /ɲ/, como en 'España', 'año' o 'niño'."
-          },
-          {
-            id: "es-u1-q13",
-            type: "fill_blank",
-            sentence: "Yo ___ en Madrid pero mis padres viven en Sevilla.",
-            missingWord: "vivo",
-            options: ["vivo", "vives", "vive", "vivimos"],
-            correctAnswer: "vivo",
-            explanation: "Primera persona del singular de 'vivir' en presente: yo vivo."
-          },
-          {
-            id: "es-u1-q14",
-            type: "matching",
-            prompt: "Empareja los saludos y despedidas habituales con su contexto:",
-            pairs: [
-              { native: "Buenos días", english: "Good morning (until lunch)", left: "Buenos días", right: "Hasta el mediodía" },
-              { native: "Buenas tardes", english: "Good afternoon (until dark)", left: "Buenas tardes", right: "Desde el almuerzo hasta la noche" },
-              { native: "Buenas noches", english: "Good evening / night", left: "Buenas noches", right: "Por la noche o al despedirse para dormir" },
-              { native: "Hasta luego", english: "See you later", left: "Hasta luego", right: "Despedida cotidiana" }
-            ]
-          },
-          {
-            id: "es-u1-q15",
-            type: "multiple_choice",
-            prompt: "En la frase 'Juan ___ médico en un hospital', ¿qué verbo corresponde?",
-            options: ["es", "está", "son", "hay"],
-            correctAnswer: "es",
-            explanation: "Las profesiones e identidades se expresan con el verbo 'ser': Juan es médico."
-          },
-          {
-            id: "es-u1-q16",
+            id: "es-u1-l2-q9",
             type: "audio_listen",
-            phrase: "Mucho gusto, encantado de conocerte.",
-            prompt: "Escucha la fórmula de cortesía e identifica cuándo se usa:",
-            options: [
-              "Al conocer a alguien por primera vez.",
-              "Al pedir la cuenta en un restaurante.",
-              "Al despedirse por teléfono a medianoche.",
-              "Al pedir indicaciones en el metro."
-            ],
-            correctAnswer: "Al conocer a alguien por primera vez.",
-            explanation: "'Mucho gusto / Encantado' es la respuesta cordial estándar al ser presentado a alguien."
+            prompt: "Escucha el diálogo y selecciona la profesión correcta:",
+            audioText: "Soy Laura, soy médica y trabajo en el hospital central de Madrid.",
+            options: ["Médica en un hospital", "Profesora en una escuela", "Abogada en un bufete", "Ingeniera de sistemas"],
+            correctAnswer: "Médica en un hospital",
+            explanation: "Laura indica con claridad su profesión: 'soy médica y trabajo en el hospital central'."
           },
           {
-            id: "es-u1-q17",
-            type: "fill_blank",
-            sentence: "¿Cuántos años ___ tú?",
-            missingWord: "tienes",
-            options: ["tienes", "eres", "estás", "tienen"],
-            correctAnswer: "tienes",
-            explanation: "En español, la edad se expresa con el verbo 'tener', no con ser: 'tener X años'."
-          },
-          {
-            id: "es-u1-q18",
-            type: "scramble",
-            prompt: "Ordena los elementos para indicar la edad:",
-            tokens: ["Tengo", "veinticinco", "años", "de", "edad."],
-            correctTokens: ["Tengo", "veinticinco", "años", "de", "edad."],
-            explanation: "Formulación completa: Tengo + número + años + de edad."
-          },
-          {
-            id: "es-u1-q19",
+            id: "es-u1-l2-q10",
             type: "multiple_choice",
-            prompt: "¿Cuál de estos sustantivos femeninos termina de forma irregular en '-o'?",
-            options: ["La mano", "La casa", "La ventana", "La puerta"],
-            correctAnswer: "La mano",
-            explanation: "'La mano' es un sustantivo femenino que termina en '-o', una excepción clásica en español."
-          },
-          {
-            id: "es-u1-q20",
-            type: "matching",
-            prompt: "Empareja los pronombres de cortesía con su tratamiento:",
-            pairs: [
-              { native: "Tú", english: "Informal singular", left: "Tú", right: "Familiar / Amigos" },
-              { native: "Usted", english: "Formal singular", left: "Usted", right: "Respeto / Desconocidos" },
-              { native: "Vosotros", english: "Informal plural (Spain)", left: "Vosotros", right: "Grupo de amigos en España" },
-              { native: "Ustedes", english: "Formal plural (All Hispanic world)", left: "Ustedes", right: "Plural universal en América" }
-            ]
+            prompt: "¿Cuál es la forma correcta de preguntar la procedencia de alguien de manera formal (usted)?",
+            options: ["¿De dónde es usted?", "¿De dónde eres tú?", "¿Dónde estás?", "¿Cómo te llamas?"],
+            correctAnswer: "¿De dónde es usted?",
+            explanation: "Para dirigirse a alguien con respeto formal se utiliza 'usted' con el verbo en tercera persona: '¿De dónde es usted?'."
           }
         ]
       }
@@ -232,225 +224,211 @@ export const spanishA1Units = [
   },
 
   // =========================================================================
-  // Unit 2: Mi Día a Día (My Day-to-Day)
+  // Unit 2: Mi Día a Día (My Day-to-Day Life)
   // =========================================================================
   {
     id: "es-unit-2",
     unitId: "es-unit-2",
     unitNumber: 2,
     level: "Nivel A1: Inicial (Principiante)",
-    title: "Unidad 2: Mi Día a Día (My Day-to-Day)",
-    subtitle: "Verbos reflexivos, verbos con diptongación (e➔ie, o➔ue), decir la hora, rutinas y días de la semana.",
-    icon: "Clock",
-    color: "#059669",
+    title: "Unidad 2: Mi Día a Día (My Day-to-Day Life)",
+    subtitle: "Verbos reflexivos, verbos con cambio de raíz (e➔ie, o➔ue), la hora y rutinas cotidianas.",
+    icon: "Sun",
+    color: "#10b981",
     lessons: [
       {
         id: "es-u2-l1",
-        title: "Lección 1: Rutinas Diarias, Horarios y Cambios Vocálicos",
-        description: "Domina los verbos reflexivos de aseo personal, los verbos con cambio de raíz y cómo expresar horarios.",
+        title: "Lección 1: La Hora, Días de la Semana y Verbos Reflexivos",
+        description: "Aprende a decir la hora, los días de la semana y a conjugar verbos reflexivos como levantarse, ducharse y vestirse.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u2-q1",
+            id: "es-u2-l1-q1",
             type: "multiple_choice",
-            prompt: "¿Cómo se conjuga el verbo reflexivo 'levantarse' para la primera persona singular (yo)?",
-            options: ["Me levanto", "Te levantas", "Se levanta", "Nos levantamos"],
-            correctAnswer: "Me levanto",
-            explanation: "Los verbos reflexivos requieren el pronombre reflexivo átono correspondiente: yo me levanto."
+            prompt: "¿Cuáles son los pronombres reflexivos correspondientes a 'yo', 'tú', 'él/ella' y 'nosotros'?",
+            options: ["Me, te, se, nos", "Mi, tu, su, nuestro", "Lo, la, le, les", "Yo, tú, él, nosotros"],
+            correctAnswer: "Me, te, se, nos",
+            explanation: "Los pronombres reflexivos para las personas gramaticales son: me, te, se, nos, os, se."
           },
           {
-            id: "es-u2-q2",
+            id: "es-u2-l1-q2",
+            type: "fill_blank",
+            sentence: "Todas las mañanas yo ___ levanto a las siete.",
+            missingWord: "me",
+            options: ["me", "te", "se", "nos"],
+            correctAnswer: "me",
+            explanation: "Con el pronombre sujeto 'yo' el pronombre reflexivo obligatorio es 'me': 'yo me levanto'."
+          },
+          {
+            id: "es-u2-l1-q3",
             type: "matching",
-            prompt: "Empareja los pronombres reflexivos con sus sujetos:",
+            prompt: "Empareja la rutina diaria con el verbo reflexivo:",
             pairs: [
-              { native: "Yo", english: "me", left: "Yo", right: "me" },
-              { native: "Tú", english: "te", left: "Tú", right: "te" },
-              { native: "Él / Ella / Usted", english: "se", left: "Él / Ella / Usted", right: "se" },
-              { native: "Nosotros", english: "nos", left: "Nosotros", right: "nos" }
+              { native: "Ducharse", english: "To shower", left: "Ducharse", right: "Lavar el cuerpo con agua" },
+              { native: "Peinarse", english: "To comb one's hair", left: "Peinarse", right: "Arreglar el cabello" },
+              { native: "Cepillarse los dientes", english: "To brush teeth", left: "Cepillarse", right: "Limpiar los dientes con cepillo" },
+              { native: "Acostarse", english: "To go to bed", left: "Acostarse", right: "Ir a la cama a dormir" }
             ]
           },
           {
-            id: "es-u2-q3",
-            type: "fill_blank",
-            sentence: "Los fines de semana yo ___ (dormir, o➔ue) ocho horas seguidas.",
-            missingWord: "duermo",
-            options: ["duermo", "dormo", "duermes", "dormimos"],
-            correctAnswer: "duermo",
-            explanation: "El verbo 'dormir' tiene diptongación o➔ue en presente: yo duermo."
-          },
-          {
-            id: "es-u2-q4",
+            id: "es-u2-l1-q4",
             type: "scramble",
-            prompt: "Ordena las palabras para decir la hora:",
+            prompt: "Ordena las palabras para decir la hora en español:",
             tokens: ["Son", "las", "ocho", "y", "media", "de", "la", "mañana."],
             correctTokens: ["Son", "las", "ocho", "y", "media", "de", "la", "mañana."],
-            explanation: "Para decir las horas en plural usamos 'Son las' seguido de los minutos y la franja horaria."
+            explanation: "Fórmula de la hora: Son las + hora + y + minutos + momento del día (de la mañana)."
           },
           {
-            id: "es-u2-q5",
+            id: "es-u2-l1-q5",
             type: "multiple_choice",
-            prompt: "¿Cuál es la única hora del día que se introduce con 'Es la' en singular?",
-            options: ["La una (1:00)", "Las dos (2:00)", "Las doce (12:00)", "Las seis (6:00)"],
-            correctAnswer: "La una (1:00)",
-            explanation: "La una es singular, por eso se dice: 'Es la una en punto / Es la una y cuarto'."
+            prompt: "¿Cómo se dice la 1:00 en punto?",
+            options: ["Es la una en punto", "Son las una en punto", "Son los una en punto", "Está la una"],
+            correctAnswer: "Es la una en punto",
+            explanation: "Para la 1:00 se usa singular: 'Es la una'. Para las demás horas se usa plural: 'Son las dos, son las tres...'."
           },
           {
-            id: "es-u2-q6",
+            id: "es-u2-l1-q6",
+            type: "fill_blank",
+            sentence: "¿A qué hora ___ acuestas habitualmente?",
+            missingWord: "te",
+            options: ["te", "se", "me", "le"],
+            correctAnswer: "te",
+            explanation: "La segunda persona informal ('tú') usa el pronombre reflexivo 'te': '¿A qué hora te acuestas?'."
+          },
+          {
+            id: "es-u2-l1-q7",
             type: "matching",
-            prompt: "Empareja los días de la semana con su significado:",
+            prompt: "Empareja los días de la semana con su orden cronológico:",
             pairs: [
-              { native: "Lunes", english: "Monday", left: "Lunes", right: "Monday" },
-              { native: "Miércoles", english: "Wednesday", left: "Miércoles", right: "Wednesday" },
-              { native: "Viernes", english: "Friday", left: "Viernes", right: "Friday" },
-              { native: "Domingo", english: "Sunday", left: "Domingo", right: "Sunday" }
+              { native: "Lunes", english: "Monday (1st day)", left: "Lunes", right: "Primer día laboral" },
+              { native: "Miércoles", english: "Wednesday (midweek)", left: "Miércoles", right: "Mitad de semana" },
+              { native: "Viernes", english: "Friday (end of work week)", left: "Viernes", right: "Último día laboral" },
+              { native: "Domingo", english: "Sunday (rest day)", left: "Domingo", right: "Día de descanso" }
             ]
           },
           {
-            id: "es-u2-q7",
+            id: "es-u2-l1-q8",
+            type: "scramble",
+            prompt: "Ordena los elementos para estructurar una rutina matutina:",
+            tokens: ["Primero", "me", "ducho", "y", "luego", "desayuno."],
+            correctTokens: ["Primero", "me", "ducho", "y", "luego", "desayuno."],
+            explanation: "Conectores de secuencia temporal: Primero... luego..."
+          },
+          {
+            id: "es-u2-l1-q9",
+            type: "multiple_choice",
+            prompt: "¿Cuál es el artículo correcto antes de los días de la semana en español?",
+            options: ["El / Los (El lunes tengo reunión)", "En (En lunes tengo reunión)", "A (A lunes tengo reunión)", "De (De lunes tengo reunión)"],
+            correctAnswer: "El / Los (El lunes tengo reunión)",
+            explanation: "En español se usa el artículo determinado masculino 'el' para un día específico y 'los' para hábitos: 'El lunes voy al médico; los sábados descanso'."
+          },
+          {
+            id: "es-u2-l1-q10",
+            type: "audio_listen",
+            prompt: "Escucha la hora mencionada en el anuncio y elígela:",
+            audioText: "El tren de cercanías con destino a Toledo saldrá a las cuatro menos cuarto.",
+            options: ["3:45 (cuatro menos cuarto)", "4:15 (cuatro y cuarto)", "4:00 en punto", "3:30 (tres y media)"],
+            correctAnswer: "3:45 (cuatro menos cuarto)",
+            explanation: "'Las cuatro menos cuarto' equivale a las 3:45 (faltan quince minutos para las cuatro)."
+          }
+        ]
+      },
+      {
+        id: "es-u2-l2",
+        title: "Lección 2: Hábitos Cotidianos y Verbos con Cambio de Raíz (e➔ie, o➔ue)",
+        description: "Domina las irregularidades vocálicas del presente indicativo (empezar, volver, poder, dormir) y describe tus hábitos con marcadores de frecuencia.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u2-l2-q1",
+            type: "multiple_choice",
+            prompt: "En el verbo con cambio de raíz 'empezar' (e ➔ ie), ¿cuál es la conjugación de 'Él'?",
+            options: ["Empieza", "Empeza", "Empezará", "Empiezo"],
+            correctAnswer: "Empieza",
+            explanation: "El verbo empezar diptonga en presente en todas las personas excepto nosotros y vosotros: él empieza."
+          },
+          {
+            id: "es-u2-l2-q2",
             type: "fill_blank",
-            sentence: "La clase de español ___ (empezar, e➔ie) a las nueve en punto.",
+            sentence: "La clase de español ___ a las nueve en punto.",
             missingWord: "empieza",
-            options: ["empieza", "empeza", "empezamos", "empiezan"],
+            options: ["empieza", "empeza", "empezamos", "empezar"],
             correctAnswer: "empieza",
-            explanation: "'Empezar' diptonga e➔ie en las tres personas del singular y la tercera del plural: la clase empieza."
+            explanation: "Tercera persona singular con cambio vocálico e ➔ ie: 'empieza'."
           },
           {
-            id: "es-u2-q8",
-            type: "audio_listen",
-            phrase: "Normalmente me ducho, desayuno tostadas y salgo de casa a las ocho.",
-            prompt: "Escucha la rutina matinal y determina a qué hora sale el hablante:",
-            options: [
-              "A las ocho de la mañana.",
-              "A las siete y cuarto.",
-              "A las nueve y media.",
-              "A las diez en punto."
-            ],
-            correctAnswer: "A las ocho de la mañana.",
-            explanation: "La frase especifica con precisión: 'salgo de casa a las ocho'."
-          },
-          {
-            id: "es-u2-q9",
-            type: "multiple_choice",
-            prompt: "¿En qué personas NO cambia la raíz en los verbos diptongados en presente (e➔ie, o➔ue)?",
-            options: [
-              "Nosotros y vosotros (mantienen la vocal original sin diptongar).",
-              "Yo y tú.",
-              "Él y ellos.",
-              "En ninguna, cambian en todas las personas."
-            ],
-            correctAnswer: "Nosotros y vosotros (mantienen la vocal original sin diptongar).",
-            explanation: "'Nosotros' y 'vosotros' son formas llanas acentuadas en la desinencia: entendemos, dormimos."
-          },
-          {
-            id: "es-u2-q10",
+            id: "es-u2-l2-q3",
             type: "matching",
-            prompt: "Empareja el verbo en infinitivo con su correspondiente cambio de raíz:",
+            prompt: "Empareja los verbos diptongados con su cambio de raíz característico:",
             pairs: [
-              { native: "Querer", english: "e ➔ ie (quiero)", left: "Querer", right: "e ➔ ie" },
-              { native: "Poder", english: "o ➔ ue (puedo)", left: "Poder", right: "o ➔ ue" },
-              { native: "Pedir", english: "e ➔ i (pido)", left: "Pedir", right: "e ➔ i" },
-              { native: "Jugar", english: "u ➔ ue (juego)", left: "Jugar", right: "u ➔ ue" }
+              { native: "Querer (yo quiero)", english: "e ➔ ie", left: "Querer", right: "e ➔ ie" },
+              { native: "Dormir (yo duermo)", english: "o ➔ ue", left: "Dormir", right: "o ➔ ue" },
+              { native: "Poder (yo puedo)", english: "o ➔ ue", left: "Poder", right: "o ➔ ue" },
+              { native: "Pedir (yo pido)", english: "e ➔ i", left: "Pedir", right: "e ➔ i" }
             ]
           },
           {
-            id: "es-u2-q11",
-            type: "scramble",
-            prompt: "Ordena las partes de la rutina de noche:",
-            tokens: ["Por", "la", "noche", "me", "acuesto", "a", "las", "once."],
-            correctTokens: ["Por", "la", "noche", "me", "acuesto", "a", "las", "once."],
-            explanation: "El orden habitual sitúa el complemento temporal seguido del verbo reflexivo y la hora."
-          },
-          {
-            id: "es-u2-q12",
+            id: "es-u2-l2-q4",
             type: "multiple_choice",
-            prompt: "Para expresar una acción habitual repetida los sábados se dice:",
-            options: ["Los sábados voy al gimnasio.", "En sábado voy al gimnasio.", "Por el sábado voy al gimnasio.", "A sábado voy al gimnasio."],
-            correctAnswer: "Los sábados voy al gimnasio.",
-            explanation: "Los días de la semana en español usan el artículo determinado plural para indicar hábito: 'los sábados'."
+            prompt: "¿Qué personas gramaticales NUNCA cambian la raíz en los verbos con diptongación en presente de indicativo?",
+            options: ["Nosotros y vosotros", "Yo y tú", "Él y ellos", "Solo ellos"],
+            correctAnswer: "Nosotros y vosotros",
+            explanation: "En 'nosotros' y 'vosotros' el acento prosódico recae sobre la desinencia, por lo que se mantiene la raíz regular (ej. queremos, queréis; dormimos, dormís)."
           },
           {
-            id: "es-u2-q13",
+            id: "es-u2-l2-q5",
             type: "fill_blank",
-            sentence: "¿A qué hora ___ (despertarse, e➔ie) tú por las mañanas?",
-            missingWord: "te despiertas",
-            options: ["te despiertas", "despiertas", "te despiertes", "se despierta"],
-            correctAnswer: "te despiertas",
-            explanation: "Segunda persona de despertarse con pronombre y diptongación: tú te despiertas."
+            sentence: "Nosotros ___ ocho horas cada noche.",
+            missingWord: "dormimos",
+            options: ["dormimos", "duermimos", "duermen", "duermo"],
+            correctAnswer: "dormimos",
+            explanation: "'Nosotros' mantiene la vocal original sin diptongar: 'dormimos'."
           },
           {
-            id: "es-u2-q14",
-            type: "matching",
-            prompt: "Empareja las fracciones horarias en español con su equivalente:",
-            pairs: [
-              { native: "Y cuarto", english: "Quarter past (:15)", left: "Y cuarto", right: "15 minutos pasados" },
-              { native: "Y media", english: "Half past (:30)", left: "Y media", right: "30 minutos pasados" },
-              { native: "Menos cuarto", english: "Quarter to (:45)", left: "Menos cuarto", right: "Faltan 15 minutos" },
-              { native: "En punto", english: "On the dot (:00)", left: "En punto", right: "Hora exacta" }
-            ]
-          },
-          {
-            id: "es-u2-q15",
-            type: "multiple_choice",
-            prompt: "¿Cuál es la diferencia entre 'despertarse' y 'levantarse'?",
-            options: [
-              "'Despertarse' es abrir los ojos y dejar de dormir; 'levantarse' es salir físicamente de la cama.",
-              "Son sinónimos exactos intercambiables en cualquier contexto.",
-              "'Levantarse' se usa solo para objetos pesados.",
-              "'Despertarse' ocurre únicamente al atardecer."
-            ],
-            correctAnswer: "'Despertarse' es abrir los ojos y dejar de dormir; 'levantarse' es salir físicamente de la cama.",
-            explanation: "Despertarse refiere a la vigilia cognitiva, mientras que levantarse implica ponerse de pie."
-          },
-          {
-            id: "es-u2-q16",
-            type: "audio_listen",
-            phrase: "¿A qué hora almuerzas en el trabajo?",
-            prompt: "Escucha la pregunta y señala de qué comida del día habla:",
-            options: [
-              "El almuerzo o comida del mediodía.",
-              "El desayuno matutino.",
-              "La merienda de la tarde.",
-              "La cena nocturna."
-            ],
-            correctAnswer: "El almuerzo o comida del mediodía.",
-            explanation: "'Almorzar' refiere a la comida principal que se toma al mediodía."
-          },
-          {
-            id: "es-u2-q17",
-            type: "fill_blank",
-            sentence: "Nosotros ___ (volver, o➔ue) a casa a las siete de la tarde.",
-            missingWord: "volvemos",
-            options: ["volvemos", "vuelvemos", "vuelven", "volvéis"],
-            correctAnswer: "volvemos",
-            explanation: "La forma 'nosotros' de volver no diptonga: volvemos."
-          },
-          {
-            id: "es-u2-q18",
+            id: "es-u2-l2-q6",
             type: "scramble",
-            prompt: "Construye la oración sobre la frecuencia de una acción:",
-            tokens: ["Siempre", "desayuno", "café", "con", "leche.", "nunca"],
-            correctTokens: ["Siempre", "desayuno", "café", "con", "leche."],
-            explanation: "El adverbio de frecuencia 'siempre' precede o sigue naturalmente al verbo."
+            prompt: "Ordena las palabras para expresar frecuencia de una actividad:",
+            tokens: ["Siempre", "desayuno", "café", "con", "tostadas."],
+            correctTokens: ["Siempre", "desayuno", "café", "con", "tostadas."],
+            explanation: "El adverbio de frecuencia 'siempre' suele situarse al inicio o tras el verbo."
           },
           {
-            id: "es-u2-q19",
-            type: "multiple_choice",
-            prompt: "¿Cuál de estos adverbios indica una frecuencia del 0%?",
-            options: ["Nunca", "A veces", "A menudo", "Casi siempre"],
-            correctAnswer: "Nunca",
-            explanation: "'Nunca' o 'jamás' expresan la ausencia total de ocurrencia de un suceso."
-          },
-          {
-            id: "es-u2-q20",
+            id: "es-u2-l2-q7",
             type: "matching",
-            prompt: "Empareja los adverbios de frecuencia de mayor a menor regularidad:",
+            prompt: "Empareja los marcadores de frecuencia de mayor a menor intensidad:",
             pairs: [
-              { native: "Siempre", english: "100% of the time", left: "Siempre", right: "100%" },
-              { native: "A menudo / Frecuentemente", english: "Frequently (~75%)", left: "A menudo", right: "75%" },
-              { native: "A veces", english: "Sometimes (~50%)", left: "A veces", right: "50%" },
-              { native: "Raras veces / Casi nunca", english: "Rarely (~10%)", left: "Raras veces", right: "10%" }
+              { native: "Siempre", english: "100% of the time", left: "Siempre", right: "Todos los días sin excepción" },
+              { native: "A menudo / Frecuentemente", english: "Frequently / Often", left: "A menudo", right: "Con bastante regularidad" },
+              { native: "A veces", english: "Sometimes", left: "A veces", right: "En algunas ocasiones" },
+              { native: "Nunca", english: "Never (0%)", left: "Nunca", right: "En ninguna ocasión" }
             ]
+          },
+          {
+            id: "es-u2-l2-q8",
+            type: "fill_blank",
+            sentence: "¿A qué hora ___ tú del trabajo a casa?",
+            missingWord: "vuelves",
+            options: ["vuelves", "volves", "volver", "vuelve"],
+            correctAnswer: "vuelves",
+            explanation: "El verbo 'volver' cambia o ➔ ue en segunda persona singular: 'tú vuelves'."
+          },
+          {
+            id: "es-u2-l2-q9",
+            type: "multiple_choice",
+            prompt: "¿Cuál es la forma correcta para decir: 'I cannot go tonight'?",
+            options: ["No puedo ir esta noche", "No podo ir esta noche", "No pudir esta noche", "No poder ir esta noche"],
+            correctAnswer: "No puedo ir esta noche",
+            explanation: "Poder es irregular (o ➔ ue) en primera persona: 'yo puedo'."
+          },
+          {
+            id: "es-u2-l2-q10",
+            type: "scramble",
+            prompt: "Ordena las palabras para describir un hábito vespertino:",
+            tokens: ["Por", "las", "tardes", "hago", "deporte", "en", "el", "parque."],
+            correctTokens: ["Por", "las", "tardes", "hago", "deporte", "en", "el", "parque."],
+            explanation: "Expresión temporal habitual: 'Por las tardes + verbo conjugado + complemento'."
           }
         ]
       }
@@ -458,230 +436,216 @@ export const spanishA1Units = [
   },
 
   // =========================================================================
-  // Unit 3: El Entorno Próximo (The Immediate Environment)
+  // Unit 3: El Entorno Próximo (My Immediate Environment)
   // =========================================================================
   {
     id: "es-unit-3",
     unitId: "es-unit-3",
     unitNumber: 3,
     level: "Nivel A1: Inicial (Principiante)",
-    title: "Unidad 3: El Entorno Próximo (The Immediate Environment)",
-    subtitle: "Preposiciones de lugar, artículos determinados e indeterminados, la casa, compras y direcciones.",
+    title: "Unidad 3: El Entorno Próximo (My Immediate Environment)",
+    subtitle: "Preposiciones de lugar, artículos, descripción de la vivienda y pedir/dar direcciones.",
     icon: "Home",
-    color: "#0d9488",
+    color: "#10b981",
     lessons: [
       {
         id: "es-u3-l1",
-        title: "Lección 1: La Vivienda, la Ciudad y Localizaciones Espaciales",
-        description: "Describe las habitaciones del hogar, pide indicaciones para moverte por la ciudad y utiliza preposiciones de lugar.",
+        title: "Lección 1: La Casa, el Barrio y Preposiciones de Lugar",
+        description: "Aprende el vocabulario de las estancias de una vivienda, el mobiliario y las preposiciones espaciales (encima, debajo, al lado).",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u3-q1",
+            id: "es-u3-l1-q1",
             type: "multiple_choice",
-            prompt: "Para indicar que el gato está en la parte inferior de la mesa decimos:",
-            options: [
-              "El gato está debajo de la mesa.",
-              "El gato está encima de la mesa.",
-              "El gato está lejos de la mesa.",
-              "El gato está enfrente de la mesa."
-            ],
-            correctAnswer: "El gato está debajo de la mesa.",
-            explanation: "'Debajo de' sitúa un objeto en un plano inferior respecto a otro punto de referencia."
+            prompt: "¿Qué preposición compuesta significa 'on top of'?",
+            options: ["Encima de", "Debajo de", "Al lado de", "Detrás de"],
+            correctAnswer: "Encima de",
+            explanation: "'Encima de' indica contacto o posición superior sobre una superficie."
           },
           {
-            id: "es-u3-q2",
+            id: "es-u3-l1-q2",
+            type: "fill_blank",
+            sentence: "Las llaves están ___ de la mesa del comedor.",
+            missingWord: "encima",
+            options: ["encima", "sobre de", "arriba", "dentro"],
+            correctAnswer: "encima",
+            explanation: "La locución correcta es 'encima de'."
+          },
+          {
+            id: "es-u3-l1-q3",
             type: "matching",
-            prompt: "Empareja las preposiciones y locuciones de lugar con su antónimo:",
+            prompt: "Empareja los opuestos espaciales:",
             pairs: [
-              { native: "Cerca de", english: "Close to <-> Far from", left: "Cerca de", right: "Lejos de" },
-              { native: "Encima de", english: "On top of <-> Under", left: "Encima de", right: "Debajo de" },
-              { native: "Delante de", english: "In front of <-> Behind", left: "Delante de", right: "Detrás de" },
-              { native: "Dentro de", english: "Inside <-> Outside", left: "Dentro de", right: "Fuera de" }
+              { native: "Encima de", english: "Above / on top of", left: "Encima de", right: "Debajo de" },
+              { native: "Delante de", english: "In front of", left: "Delante de", right: "Detrás de" },
+              { native: "Cerca de", english: "Near", left: "Cerca de", right: "Lejos de" },
+              { native: "Dentro de", english: "Inside of", left: "Dentro de", right: "Fuera de" }
             ]
           },
           {
-            id: "es-u3-q3",
-            type: "fill_blank",
-            sentence: "La farmacia está al ___ del supermercado.",
-            missingWord: "lado",
-            options: ["lado", "fondo", "lejos", "arriba"],
-            correctAnswer: "lado",
-            explanation: "La locución preposicional 'al lado de' indica contigüidad física o proximidad inmediata."
-          },
-          {
-            id: "es-u3-q4",
+            id: "es-u3-l1-q4",
             type: "scramble",
-            prompt: "Ordena las palabras para pedir una indicación en la calle:",
-            tokens: ["¿Dónde", "está", "la", "estación", "de", "metro?", "tren"],
-            correctTokens: ["¿Dónde", "está", "la", "estación", "de", "metro?"],
-            explanation: "Fórmula cortés para preguntar por un punto de interés urbano."
+            prompt: "Ordena las palabras para ubicar un objeto en la habitación:",
+            tokens: ["La", "cama", "está", "al", "lado", "de", "la", "ventana."],
+            correctTokens: ["La", "cama", "está", "al", "lado", "de", "la", "ventana."],
+            explanation: "Estructura de ubicación espacial: Sujeto + está + locución preposicional (al lado de) + referencia."
           },
           {
-            id: "es-u3-q5",
+            id: "es-u3-l1-q5",
             type: "multiple_choice",
-            prompt: "¿Cuál es el artículo indeterminado femenino plural?",
-            options: ["Unas", "Unos", "Las", "Una"],
-            correctAnswer: "Unas",
+            prompt: "¿Cuáles son las formas del artículo indeterminado (indefinido) en español?",
+            options: ["Un, una, unos, unas", "El, la, los, las", "Lo, los, las", "Este, esta, estos, estas"],
+            correctAnswer: "Un, una, unos, unas",
             explanation: "Los artículos indeterminados son: un (masc. sing.), una (fem. sing.), unos (masc. pl.), unas (fem. pl.)."
           },
           {
-            id: "es-u3-q6",
-            type: "matching",
-            prompt: "Empareja las dependencias de una vivienda con su actividad principal:",
-            pairs: [
-              { native: "La cocina", english: "Cooking meals", left: "La cocina", right: "Preparar alimentos" },
-              { native: "El dormitorio", english: "Sleeping and resting", left: "El dormitorio", right: "Dormir y descansar" },
-              { native: "El cuarto de baño", english: "Personal hygiene", left: "El cuarto de baño", right: "Higiene personal" },
-              { native: "El salón", english: "Socializing and relaxing", left: "El salón", right: "Ver la televisión y recibir visitas" }
-            ]
-          },
-          {
-            id: "es-u3-q7",
+            id: "es-u3-l1-q6",
             type: "fill_blank",
-            sentence: "Mi piso tiene ___ balcón muy luminoso hacia la calle.",
+            sentence: "Mi piso tiene ___ salón muy luminoso y tres dormitorios.",
             missingWord: "un",
-            options: ["un", "una", "unos", "el"],
+            options: ["un", "una", "el", "unos"],
             correctAnswer: "un",
-            explanation: "'Balcón' es sustantivo masculino singular; por primera mención usamos el artículo indeterminado 'un'."
+            explanation: "'Salón' es un sustantivo masculino singular, por lo que requiere el artículo indeterminado 'un'."
           },
           {
-            id: "es-u3-q8",
-            type: "audio_listen",
-            phrase: "Siga todo recto y gire a la derecha en la segunda calle.",
-            prompt: "Escucha la instrucción de dirección urbana y señala qué giro indica:",
-            options: [
-              "Girar a la derecha en la segunda calle.",
-              "Girar a la izquierda en el semáforo.",
-              "Cruzar el puente hacia el norte.",
-              "Retroceder hasta la plaza principal."
-            ],
-            correctAnswer: "Girar a la derecha en la segunda calle.",
-            explanation: "La grabación indica con precisión: 'gire a la derecha en la segunda calle'."
-          },
-          {
-            id: "es-u3-q9",
-            type: "multiple_choice",
-            prompt: "En español, la contracción 'al' resulta de la unión obligatoria de:",
-            options: ["a + el", "de + el", "en + el", "por + el"],
-            correctAnswer: "a + el",
-            explanation: "La preposición 'a' más el artículo determinado masculino 'el' forman siempre la contracción 'al'."
-          },
-          {
-            id: "es-u3-q10",
+            id: "es-u3-l1-q7",
             type: "matching",
-            prompt: "Empareja los comercios de barrio con el producto que venden:",
+            prompt: "Empareja las habitaciones de la casa con su función habitual:",
             pairs: [
-              { native: "La panadería", english: "Bread and pastries", left: "La panadería", right: "Pan y bollos" },
-              { native: "La carnicería", english: "Fresh meat", left: "La carnicería", right: "Carne fresca" },
-              { native: "La frutería", english: "Fruit and vegetables", left: "La frutería", right: "Frutas y verduras" },
-              { native: "La pescadería", english: "Fish and seafood", left: "La pescadería", right: "Pescados y mariscos" }
+              { native: "La cocina", english: "Kitchen", left: "La cocina", right: "Preparar alimentos y cocinar" },
+              { native: "El dormitorio", english: "Bedroom", left: "El dormitorio", right: "Dormir y descansar" },
+              { native: "El cuarto de baño", english: "Bathroom", left: "El cuarto de baño", right: "Aseo personal e higiene" },
+              { native: "El salón", english: "Living room", left: "El salón", right: "Reunirse y ver televisión" }
             ]
           },
           {
-            id: "es-u3-q11",
+            id: "es-u3-l1-q8",
+            type: "multiple_choice",
+            prompt: "¿Cuándo se usa 'Hay' frente a 'Está / Están'?",
+            options: [
+              "'Hay' expresa existencia de elementos indeterminados o cantidades; 'Está/Están' localiza elementos específicos conocidos",
+              "'Hay' solo se usa para personas",
+              "'Está' solo se usa para el pasado",
+              "Son completamente intercambiables"
+            ],
+            correctAnswer: "'Hay' expresa existencia de elementos indeterminados o cantidades; 'Está/Están' localiza elementos específicos conocidos",
+            explanation: "Regla fundamental: 'Hay un hospital cerca' (existencia de elemento no concreto) vs. 'El hospital está en la calle Mayor' (ubicación de elemento concreto)."
+          },
+          {
+            id: "es-u3-l1-q9",
             type: "scramble",
-            prompt: "Organiza una frase para comprar comida en el mercado:",
-            tokens: ["Quisiera", "un", "kilo", "de", "manzanas,", "por", "favor."],
-            correctTokens: ["Quisiera", "un", "kilo", "de", "manzanas,", "por", "favor."],
-            explanation: "Estructura educada para pedir peso o cantidad de un alimento en una tienda."
+            prompt: "Ordena los elementos para describir un piso céntrico:",
+            tokens: ["En", "mi", "barrio", "hay", "muchas", "tiendas", "antiguas."],
+            correctTokens: ["En", "mi", "barrio", "hay", "muchas", "tiendas", "antiguas."],
+            explanation: "Uso de 'hay' para existencia indeterminada con cuantificador ('muchas tiendas')."
           },
           {
-            id: "es-u3-q12",
-            type: "multiple_choice",
-            prompt: "¿Cuál es la contracción obligatoria formada por 'de + el'?",
-            options: ["Del", "Al", "Dele", "D'el"],
-            correctAnswer: "Del",
-            explanation: "Ejemplo: 'Vengo del supermercado' (de + el supermercado = del supermercado)."
-          },
-          {
-            id: "es-u3-q13",
-            type: "fill_blank",
-            sentence: "El hospital está situado ___ del parque central.",
-            missingWord: "enfrente",
-            options: ["enfrente", "arriba", "dentro", "lado"],
-            correctAnswer: "enfrente",
-            explanation: "'Enfrente de' significa en la parte opuesta o de cara a un punto de referencia."
-          },
-          {
-            id: "es-u3-q14",
-            type: "matching",
-            prompt: "Empareja las indicaciones de orientación con su significado en inglés:",
-            pairs: [
-              { native: "Todo recto", english: "Straight ahead", left: "Todo recto", right: "Straight ahead" },
-              { native: "A la izquierda", english: "To the left", left: "A la izquierda", right: "To the left" },
-              { native: "A la derecha", english: "To the right", left: "A la derecha", right: "To the right" },
-              { native: "En la esquina", english: "On the corner", left: "En la esquina", right: "On the corner" }
-            ]
-          },
-          {
-            id: "es-u3-q15",
-            type: "multiple_choice",
-            prompt: "¿Cómo se pregunta de forma educada el precio de varios productos?",
-            options: [
-              "¿Cuánto cuestan estos tomates?",
-              "¿Cuánto cuesta estos tomates?",
-              "¿Qué precio tienen este tomate?",
-              "¿Dónde vale estos tomates?"
-            ],
-            correctAnswer: "¿Cuánto cuestan estos tomates?",
-            explanation: "Al concordar con un sujeto en plural ('estos tomates'), el verbo debe ir en plural: 'cuestan'."
-          },
-          {
-            id: "es-u3-q16",
+            id: "es-u3-l1-q10",
             type: "audio_listen",
-            phrase: "¿Hay una parada de autobús cerca de aquí?",
-            prompt: "Escucha la pregunta y determina qué servicio de transporte busca el usuario:",
-            options: [
-              "Una parada de autobús.",
-              "Una estación de tren de cercanías.",
-              "Un aparcamiento de bicicletas.",
-              "Una parada de taxis nocturnos."
-            ],
-            correctAnswer: "Una parada de autobús.",
-            explanation: "La locución pregunta específicamente por 'una parada de autobús'."
-          },
+            prompt: "Escucha la descripción del piso y selecciona el número de habitaciones:",
+            audioText: "Es un apartamento moderno en la tercera planta con dos dormitorios y un balcón soleado.",
+            options: ["Dos dormitorios", "Cuatro dormitorios", "Un solo dormitorio", "Cinco dormitorios"],
+            correctAnswer: "Dos dormitorios",
+            explanation: "El audio menciona con nitidez: 'dos dormitorios y un balcón soleado'."
+          }
+        ]
+      },
+      {
+        id: "es-u3-l2",
+        title: "Lección 2: Tiendas de Barrio, Comestibles y Direcciones Urbanas",
+        description: "Aprende a pedir productos en tiendas de comestibles, consultar precios y pedir y dar indicaciones para moverte por la ciudad.",
+        xp: 20,
+        completed: false,
+        questions: [
           {
-            id: "es-u3-q17",
-            type: "fill_blank",
-            sentence: "¿___ leche queda en la nevera?",
-            missingWord: "Cuánta",
-            options: ["Cuánta", "Cuánto", "Cuántos", "Cuántas"],
-            correctAnswer: "Cuánta",
-            explanation: "'Leche' es un sustantivo femenino incontable; concuerda con 'cuánta'."
-          },
-          {
-            id: "es-u3-q18",
-            type: "scramble",
-            prompt: "Ordena la respuesta sobre la ubicación de una tienda:",
-            tokens: ["La", "librería", "está", "entre", "el", "banco", "y", "el", "cine."],
-            correctTokens: ["La", "librería", "está", "entre", "el", "banco", "y", "el", "cine."],
-            explanation: "'Entre X e Y' describe una localización intermedia entre dos puntos."
-          },
-          {
-            id: "es-u3-q19",
+            id: "es-u3-l2-q1",
             type: "multiple_choice",
-            prompt: "¿Cuál es la diferencia de uso entre 'hay' y 'está'?",
-            options: [
-              "'Hay' expresa existencia con elementos indeterminados; 'está' sitúa elementos específicos y determinados.",
-              "'Hay' solo se usa para personas y 'está' solo para cosas.",
-              "Son completamente idénticos y se pueden intercambiar siempre.",
-              "'Está' se usa solo en pasado y 'hay' solo en futuro."
-            ],
-            correctAnswer: "'Hay' expresa existencia con elementos indeterminados; 'está' sitúa elementos específicos y determinados.",
-            explanation: "Decimos 'Hay un banco cerca' (existencia indefinida) vs. 'El banco está al final de la calle' (ubicación determinada)."
+            prompt: "¿Dónde compras pan fresco cada mañana en el barrio?",
+            options: ["En la panadería", "En la farmacia", "En la librería", "En la zapatería"],
+            correctAnswer: "En la panadería",
+            explanation: "El sufijo '-ería' en español indica frecuentemente el establecimiento de venta: panadería, carnicería, pescadería, frutería."
           },
           {
-            id: "es-u3-q20",
+            id: "es-u3-l2-q2",
+            type: "fill_blank",
+            sentence: "¿Cuánto ___ este kilo de manzanas? —Cuesta dos euros.",
+            missingWord: "cuesta",
+            options: ["cuesta", "cuestan", "vale", "precio"],
+            correctAnswer: "cuesta",
+            explanation: "'Este kilo de manzanas' es singular, por tanto el verbo concuerda en singular: 'cuesta'."
+          },
+          {
+            id: "es-u3-l2-q3",
             type: "matching",
-            prompt: "Empareja los adjetivos de descripción de vivienda con su cualidad opuesta:",
+            prompt: "Empareja las tiendas con los productos que venden:",
             pairs: [
-              { native: "Luminoso", english: "Bright <-> Dark", left: "Luminoso", right: "Oscuro" },
-              { native: "Amplio / Espacioso", english: "Spacious <-> Small / Narrow", left: "Amplio", right: "Estrecho / Pequeño" },
-              { native: "Ruidoso", english: "Noisy <-> Quiet", left: "Ruidoso", right: "Tranquilo / Silencioso" },
-              { native: "Amueblado", english: "Furnished <-> Unfurnished", left: "Amueblado", right: "Vacío / Sin muebles" }
+              { native: "Carnicería", english: "Butcher shop", left: "Carnicería", right: "Filetes de ternera y pollo" },
+              { native: "Pescadería", english: "Fish market", left: "Pescadería", right: "Merluza, salmón y marisco" },
+              { native: "Frutería", english: "Greengrocer", left: "Frutería", right: "Naranjas, plátanos y lechugas" },
+              { native: "Farmacia", english: "Pharmacy", left: "Farmacia", right: "Medicamentos y tiritas" }
             ]
+          },
+          {
+            id: "es-u3-l2-q4",
+            type: "scramble",
+            prompt: "Ordena las palabras para pedir un alimento con cortesía:",
+            tokens: ["Quisiera", "un", "kilo", "de", "tomates,", "por", "favor."],
+            correctTokens: ["Quisiera", "un", "kilo", "de", "tomates,", "por", "favor."],
+            explanation: "La fórmula 'quisiera + sustantivo' es la forma habitual y educada de pedir algo en comercios."
+          },
+          {
+            id: "es-u3-l2-q5",
+            type: "fill_blank",
+            sentence: "Disculpe, ¿para ir a la estación de tren se sigue todo ___?",
+            missingWord: "recto",
+            options: ["recto", "derecho", "enfrente", "izquierda"],
+            correctAnswer: "recto",
+            explanation: "Para indicar que no se doble ni se gire, se dice 'todo recto' (o 'todo derecho' en Hispanoamérica)."
+          },
+          {
+            id: "es-u3-l2-q6",
+            type: "matching",
+            prompt: "Empareja las instrucciones de orientación en la calle:",
+            pairs: [
+              { native: "Gira a la derecha", english: "Turn right", left: "A la derecha", right: "Girar hacia la mano derecha" },
+              { native: "Gira a la izquierda", english: "Turn left", left: "A la izquierda", right: "Girar hacia la mano izquierda" },
+              { native: "Sigue todo recto", english: "Go straight on", left: "Todo recto", right: "Continuar hacia adelante sin desviarse" },
+              { native: "Cruza la calle", english: "Cross the street", left: "Cruzar", right: "Pasar de una acera a otra" }
+            ]
+          },
+          {
+            id: "es-u3-l2-q7",
+            type: "scramble",
+            prompt: "Ordena las palabras para pedir una dirección a un transeúnte:",
+            tokens: ["¿Dónde", "está", "la", "boca", "de", "metro", "más", "cercana?"],
+            correctTokens: ["¿Dónde", "está", "la", "boca", "de", "metro", "más", "cercana?"],
+            explanation: "Estructura interrogativa de localización: ¿Dónde está + el lugar?"
+          },
+          {
+            id: "es-u3-l2-q8",
+            type: "multiple_choice",
+            prompt: "En la contracción gramatical obligatoria en español: 'a + el' y 'de + el', ¿cuáles son los resultados?",
+            options: ["Al y del", "Ael y deel", "A el y de el", "Ál y dél"],
+            correctAnswer: "Al y del",
+            explanation: "En español es preceptivo contraer la preposición y el artículo masculino: a + el = al; de + el = del ('Voy al supermercado')."
+          },
+          {
+            id: "es-u3-l2-q9",
+            type: "fill_blank",
+            sentence: "Por las mañanas voy ___ mercado a comprar pescado fresco.",
+            missingWord: "al",
+            options: ["al", "a el", "del", "en el"],
+            correctAnswer: "al",
+            explanation: "Contracción de 'a' + 'el' = 'al mercado'."
+          },
+          {
+            id: "es-u3-l2-q10",
+            type: "multiple_choice",
+            prompt: "¿Cuál es la respuesta idónea cuando el dependiente pregunta: '¿Desea alguna cosa más?'?",
+            options: ["Nada más, gracias; ¿cuánto es?", "Buenos días, soy María", "Tengo dos hermanos", "Vivo en el segundo piso"],
+            correctAnswer: "Nada más, gracias; ¿cuánto es?",
+            explanation: "Fórmula habitual para cerrar la compra y solicitar el importe total."
           }
         ]
       }
@@ -689,209 +653,192 @@ export const spanishA1Units = [
   },
 
   // =========================================================================
-  // Unit 4: Tiempo Libre (Free Time)
+  // Unit 4: Tiempo Libre (Leisure Time)
   // =========================================================================
   {
     id: "es-unit-4",
     unitId: "es-unit-4",
     unitNumber: 4,
     level: "Nivel A1: Inicial (Principiante)",
-    title: "Unidad 4: Tiempo Libre (Free Time)",
-    subtitle: "Estructura de verbos tipo gustar (encantar, interesar, doler), aficiones, deportes y hacer planes.",
-    icon: "Heart",
-    color: "#0284c7",
+    title: "Unidad 4: Tiempo Libre (Leisure Time)",
+    subtitle: "Estructuración de verbos como gustar, encantar, interesar, deportes, hobbies y planes con amigos.",
+    icon: "Smile",
+    color: "#10b981",
     lessons: [
       {
         id: "es-u4-l1",
-        title: "Lección 1: Gustos, Preferencias, Hobbies y Quedadas",
-        description: "Expresa preferencias personales con 'gustar' y 'encantar', habla de deportes y propón planes a tus amigos.",
+        title: "Lección 1: Aficiones, Deportes y la Estructura de 'Gustar'",
+        description: "Comprende la sintaxis especial del verbo gustar (me/te/le gusta/gustan), encantar, interesar y describe tus pasatiempos favoritos.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u4-q1",
+            id: "es-u4-l1-q1",
             type: "multiple_choice",
-            prompt: "En la frase 'A mí me ___ los libros de aventuras', ¿qué forma de 'gustar' es la correcta?",
-            options: ["gustan", "gusta", "gusto", "gustamos"],
-            correctAnswer: "gustan",
-            explanation: "El sujeto gramatical es 'los libros de aventuras' (plural), por lo que el verbo debe concordar en plural: gustan."
-          },
-          {
-            id: "es-u4-q2",
-            type: "matching",
-            prompt: "Empareja los pronombres indirectos con el pronombre enfático de gustar:",
-            pairs: [
-              { native: "A mí", english: "me", left: "A mí", right: "me gusta" },
-              { native: "A ti", english: "te", left: "A ti", right: "te gusta" },
-              { native: "A él / A ella", english: "le", left: "A él / A ella", right: "le gusta" },
-              { native: "A nosotros", english: "nos", left: "A nosotros", right: "nos gusta" }
-            ]
-          },
-          {
-            id: "es-u4-q3",
-            type: "fill_blank",
-            sentence: "A mis hermanos les ___ (encantar) viajar en tren.",
-            missingWord: "encanta",
-            options: ["encanta", "encantan", "encanto", "encantamos"],
-            correctAnswer: "encanta",
-            explanation: "Cuando lo que gusta es una acción en infinitivo ('viajar en tren'), el verbo va en singular: encanta."
-          },
-          {
-            id: "es-u4-q4",
-            type: "scramble",
-            prompt: "Ordena las palabras para proponer un plan a un compañero:",
-            tokens: ["¿Te", "apetece", "ir", "al", "cine", "esta", "tarde?"],
-            correctTokens: ["¿Te", "apetece", "ir", "al", "cine", "esta", "tarde?"],
-            explanation: "Fórmula coloquial y cortés para invitar a alguien a realizar una actividad de ocio."
-          },
-          {
-            id: "es-u4-q5",
-            type: "multiple_choice",
-            prompt: "¿Cuál es la respuesta correcta para manifestar coincidencia afirmativa con 'A mí me encanta la música clásica'?",
-            options: ["A mí también.", "A mí tampoco.", "Yo también.", "Yo tampoco."],
-            correctAnswer: "A mí también.",
-            explanation: "Con verbos de afecto psíquico como 'gustar' o 'encantar' la concordancia afirmativa se hace con 'A mí también'."
-          },
-          {
-            id: "es-u4-q6",
-            type: "matching",
-            prompt: "Empareja cada deporte con el verbo habitual que le acompaña:",
-            pairs: [
-              { native: "Fútbol / Baloncesto", english: "Jugar al", left: "Fútbol / Baloncesto", right: "Jugar al" },
-              { native: "Natación / Ciclismo", english: "Hacer / Practicar", left: "Natación / Ciclismo", right: "Practicar / Hacer" },
-              { native: "Senderismo", english: "Ir de / Hacer", left: "Senderismo", right: "Ir de excursión / Hacer" },
-              { native: "Yoga", english: "Hacer", left: "Yoga", right: "Hacer" }
-            ]
-          },
-          {
-            id: "es-u4-q7",
-            type: "fill_blank",
-            sentence: "A Laura no le gusta el café y a mí ___.",
-            missingWord: "tampoco",
-            options: ["tampoco", "también", "no", "nada"],
-            correctAnswer: "tampoco",
-            explanation: "Para coincidir con una opinión o gusto expresado en negativo usamos 'a mí tampoco'."
-          },
-          {
-            id: "es-u4-q8",
-            type: "audio_listen",
-            phrase: "¿Quedamos el sábado a las seis en la plaza mayor?",
-            prompt: "Escucha la propuesta de encuentro y elige qué sugiere el hablante:",
+            prompt: "¿Por qué se dice 'Me gustan los deportes' y no 'Me gusta los deportes'?",
             options: [
-              "Quedar el sábado a las seis en la plaza mayor.",
-              "Comprar entradas para el teatro el domingo.",
-              "Cenar en un restaurante el viernes noche.",
-              "Ir de compras el lunes por la mañana."
+              "Porque el verbo concuerda con el sujeto pospuesto ('los deportes' es plural)",
+              "Porque 'me' es plural",
+              "Porque es una excepción sin regla",
+              "Porque es una orden"
             ],
-            correctAnswer: "Quedar el sábado a las seis en la plaza mayor.",
-            explanation: "El hablante propone día (sábado), hora (las seis) y lugar (plaza mayor)."
+            correctAnswer: "Porque el verbo concuerda con el sujeto pospuesto ('los deportes' es plural)",
+            explanation: "En la construcción con el verbo gustar, lo que agrada es el sujeto gramatical. Al ser plural ('los deportes'), el verbo adopta forma plural: 'gustan'."
           },
           {
-            id: "es-u4-q9",
-            type: "multiple_choice",
-            prompt: "El verbo 'interesar' funciona igual que 'gustar'. ¿Cuál de estas oraciones es gramaticalmente correcta?",
-            options: [
-              "A los estudiantes les interesa la historia del arte.",
-              "Los estudiantes interesan la historia del arte.",
-              "A los estudiantes interesan de la historia.",
-              "Les interesa los historias del arte."
-            ],
-            correctAnswer: "A los estudiantes les interesa la historia del arte.",
-            explanation: "'La historia del arte' es el sujeto singular, por eso el verbo va en singular: les interesa."
-          },
-          {
-            id: "es-u4-q10",
-            type: "matching",
-            prompt: "Empareja los instrumentos musicales con la acción verbal precisa:",
-            pairs: [
-              { native: "Tocar la guitarra", english: "Play the guitar", left: "La guitarra", right: "Tocar" },
-              { native: "Cantar en un coro", english: "Sing in a choir", left: "En un coro", right: "Cantar" },
-              { native: "Bailar salsa", english: "Dance salsa", left: "Salsa y bachata", right: "Bailar" },
-              { native: "Pintar acuarelas", english: "Paint watercolors", left: "Acuarelas", right: "Pintar" }
-            ]
-          },
-          {
-            id: "es-u4-q11",
-            type: "scramble",
-            prompt: "Ordena los elementos para expresar un rechazo amable de invitación:",
-            tokens: ["Lo", "siento,", "no", "puedo,", "tengo", "que", "estudiar."],
-            correctTokens: ["Lo", "siento,", "no", "puedo,", "tengo", "que", "estudiar."],
-            explanation: "Estructura de declinación cortés: Disculpa + Imposibilidad + Justificación."
-          },
-          {
-            id: "es-u4-q12",
-            type: "multiple_choice",
-            prompt: "¿Cuál es el significado del verbo 'quedar con amigos' en España?",
-            options: [
-              "Encontrarse o citarse con amigos para pasar tiempo juntos.",
-              "Pelearse o discutir fuertemente.",
-              "Olvidarse de las llaves en casa.",
-              "Mudarse a otra ciudad lejana."
-            ],
-            correctAnswer: "Encontrarse o citarse con amigos para pasar tiempo juntos.",
-            explanation: "'Quedar con alguien' es el verbo fundamental para concertar citas sociales o de ocio."
-          },
-          {
-            id: "es-u4-q13",
+            id: "es-u4-l1-q2",
             type: "fill_blank",
-            sentence: "¿A vosotros os ___ el cine de ciencia ficción?",
+            sentence: "A mí me ___ mucho leer novelas históricas.",
             missingWord: "gusta",
-            options: ["gusta", "gustan", "gustáis", "gusto"],
+            options: ["gusta", "gustan", "gusto", "gustas"],
             correctAnswer: "gusta",
-            explanation: "El sujeto es 'el cine de ciencia ficción' (singular), por lo que corresponde 'gusta'."
+            explanation: "Cuando lo que gusta es una acción en infinitivo ('leer novelas'), el verbo gustar siempre permanece en singular: 'gusta'."
           },
           {
-            id: "es-u4-q14",
+            id: "es-u4-l1-q3",
             type: "matching",
-            prompt: "Empareja las fórmulas de aceptación o rechazo de planes:",
+            prompt: "Empareja los pronombres de objeto indirecto con las personas a las que corresponden:",
             pairs: [
-              { native: "¡Genial, me apunto!", english: "Great, count me in!", left: "¡Genial, me apunto!", right: "Aceptar con entusiasmo" },
-              { native: "Me encantaría, pero tengo planes", english: "I'd love to, but I have plans", left: "Me encantaría, pero...", right: "Rechazar amablemente" },
-              { native: "De acuerdo, ¿a qué hora?", english: "Agreed, what time?", left: "De acuerdo, ¿a qué hora?", right: "Aceptar y concretar detalles" },
-              { native: "No me apetece mucho hoy", english: "I don't really feel like it today", left: "No me apetece hoy", right: "Rechazar por falta de ganas" }
+              { native: "A mí", english: "Me gusta", left: "A mí", right: "me" },
+              { native: "A ti", english: "Te gusta", left: "A ti", right: "te" },
+              { native: "A él / ella / usted", english: "Le gusta", left: "A él / ella", right: "le" },
+              { native: "A nosotros / nosotras", english: "Nos gusta", left: "A nosotros", right: "nos" }
             ]
           },
           {
-            id: "es-u4-q15",
-            type: "multiple_choice",
-            prompt: "Para expresar un grado máximo de gusto por encima de 'gustar mucho' utilizamos:",
-            options: ["Encantar (Me encanta)", "Odiar", "Detestar", "Doler"],
-            correctAnswer: "Encantar (Me encanta)",
-            explanation: "'Encantar' expresa entusiasmo o pasión extrema (equivalente a 'love' en inglés)."
-          },
-          {
-            id: "es-u4-q16",
-            type: "audio_listen",
-            phrase: "Los domingos me gusta descansar, leer una novela y pasear por el parque.",
-            prompt: "Escucha las aficiones dominicales y selecciona la que NO menciona:",
-            options: [
-              "Cocinar para una fiesta de cumpleaños.",
-              "Leer una novela.",
-              "Descansar plácidamente.",
-              "Pasear por el parque."
-            ],
-            correctAnswer: "Cocinar para una fiesta de cumpleaños.",
-            explanation: "Menciona descansar, leer y pasear, pero en ningún momento cocinar para una fiesta."
-          },
-          {
-            id: "es-u4-q17",
-            type: "fill_blank",
-            sentence: "A ella le fascinan los animales; a mí, en cambio, no me gustan ___.",
-            missingWord: "nada",
-            options: ["nada", "mucho", "bien", "también"],
-            correctAnswer: "nada",
-            explanation: "'No me gusta / gustan nada' es la forma habitual de enfatizar el desagrado completo."
-          },
-          {
-            id: "es-u4-q18",
+            id: "es-u4-l1-q4",
             type: "scramble",
-            prompt: "Ordena las palabras para manifestar un interés intelectual:",
+            prompt: "Ordena las palabras para expresar un gran entusiasmo por el arte:",
+            tokens: ["A", "mi", "hermana", "le", "encanta", "la", "música", "clásica."],
+            correctTokens: ["A", "mi", "hermana", "le", "encanta", "la", "música", "clásica."],
+            explanation: "Estructura completa de énfasis: A + persona ('A mi hermana') + pronombre ('le') + verbo ('encanta') + sujeto ('la música clásica')."
+          },
+          {
+            id: "es-u4-l1-q5",
+            type: "multiple_choice",
+            prompt: "¿Qué verbo funciona exactamente con la misma estructura que 'gustar'?",
+            options: ["Encantar / Interesar", "Comer / Beber", "Hacer / Salir", "Escribir / Leer"],
+            correctAnswer: "Encantar / Interesar",
+            explanation: "Verbos afectivos y de interés como encantar, interesar, fascinar o molestar se construyen idénticamente a gustar."
+          },
+          {
+            id: "es-u4-l1-q6",
+            type: "fill_blank",
+            sentence: "A mis amigos no les ___ los videojuegos de acción.",
+            missingWord: "interesan",
+            options: ["interesan", "interesa", "intereso", "interesar"],
+            correctAnswer: "interesan",
+            explanation: "'Los videojuegos' es sujeto plural, por lo que exige 'interesan'."
+          },
+          {
+            id: "es-u4-l1-q7",
+            type: "matching",
+            prompt: "Empareja los deportes con el verbo adecuado ('jugar a' vs. 'hacer'):",
+            pairs: [
+              { native: "Fútbol / Baloncesto / Tenis", english: "Play a sport with ball", left: "Deportes de pelota / equipo", right: "Jugar al (fútbol, tenis...)" },
+              { native: "Natación / Atletismo / Senderismo", english: "Do an exercise", left: "Actividades físicas individuales", right: "Hacer (natación, yoga...)" },
+              { native: "Montar en bicicleta", english: "Ride a bicycle", left: "Ciclismo", right: "Montar en bici" },
+              { native: "Tocar la guitarra", english: "Play an instrument", left: "Instrumentos musicales", right: "Tocar (el piano, la guitarra...)" }
+            ]
+          },
+          {
+            id: "es-u4-l1-q8",
+            type: "multiple_choice",
+            prompt: "En español, para los instrumentos musicales, ¿qué verbo se utiliza?",
+            options: ["Tocar (Toco la guitarra)", "Jugar (Juego la guitarra)", "Hacer (Hago la guitarra)", "Dar (Doy la guitarra)"],
+            correctAnswer: "Tocar (Toco la guitarra)",
+            explanation: "En español nunca se dice 'jugar' para instrumentos musicales; se usa el verbo 'tocar'."
+          },
+          {
+            id: "es-u4-l1-q9",
+            type: "fill_blank",
+            sentence: "¿A ti te gusta ___ al tenis los fines de semana?",
+            missingWord: "jugar",
+            options: ["jugar", "tocar", "hacer", "correr"],
+            correctAnswer: "jugar",
+            explanation: "Con deportes de pelota como el tenis se usa 'jugar al tenis'."
+          },
+          {
+            id: "es-u4-l1-q10",
+            type: "audio_listen",
+            prompt: "Escucha el pasatiempo favorito de Javier y selecciónalo:",
+            audioText: "En mi tiempo libre me encanta salir a la montaña y hacer senderismo con mis amigos.",
+            options: ["Hacer senderismo en la montaña", "Jugar a videojuegos en el salón", "Ver partidos de fútbol en televisión", "Ir de compras al centro comercial"],
+            correctAnswer: "Hacer senderismo en la montaña",
+            explanation: "Javier declara: 'me encanta salir a la montaña y hacer senderismo'."
+          }
+        ]
+      },
+      {
+        id: "es-u4-l2",
+        title: "Lección 2: Hacer Planes, Acordar Encuentros y Grados de Preferencia",
+        description: "Aprende a invitar, proponer planes de ocio, acordar fechas y expresar acuerdo o desacuerdo en gustos (a mí también, a mí tampoco).",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u4-l2-q1",
+            type: "scramble",
+            prompt: "Ordena las palabras para proponer un plan de cine a un amigo:",
+            tokens: ["¿Quieres", "venir", "al", "cine", "este", "viernes?"],
+            correctTokens: ["¿Quieres", "venir", "al", "cine", "este", "viernes?"],
+            explanation: "Fórmula de invitación: '¿Quieres + infinitivo + momento?'."
+          },
+          {
+            id: "es-u4-l2-q2",
+            type: "fill_blank",
+            sentence: "¿Qué te ___ si quedamos mañana a las cinco?",
+            missingWord: "parece",
+            options: ["parece", "gusta", "piensas", "haces"],
+            correctAnswer: "parece",
+            explanation: "'¿Qué te parece si...?' es la fórmula conversacional por excelencia para sugerir un plan."
+          },
+          {
+            id: "es-u4-l2-q3",
+            type: "matching",
+            prompt: "Empareja las propuestas de planes con su respuesta de aceptación:",
+            pairs: [
+              { native: "¿Vamos a cenar unas tapas?", english: "Great idea!", left: "¿Vamos a tomar algo?", right: "¡Vale, me parece genial!" },
+              { native: "¿Te apetece ver una película?", english: "I'd love to!", left: "¿Te apetece una peli?", right: "¡Me encantaría, de acuerdo!" },
+              { native: "¿Nos vemos a las ocho en la plaza?", english: "Perfect, see you there", left: "¿A las ocho en la plaza?", right: "Perfecto, allí nos vemos." },
+              { native: "¿Vienes al concierto de rock?", english: "I can't, I have to work", left: "¿Vienes al concierto?", right: "Lo siento, tengo que trabajar." }
+            ]
+          },
+          {
+            id: "es-u4-l2-q4",
+            type: "multiple_choice",
+            prompt: "Si alguien dice 'Me encanta el cine español' y tú compartes el mismo gusto afirmativo, ¿qué respondes?",
+            options: ["A mí también", "A mí tampoco", "A mí no", "Yo no"],
+            correctAnswer: "A mí también",
+            explanation: "Para coincidir con una afirmación sobre gustos se dice 'A mí también'."
+          },
+          {
+            id: "es-u4-l2-q5",
+            type: "multiple_choice",
+            prompt: "Si alguien dice 'No me gusta nada el frío' y tú estás de acuerdo con esa frase negativa, ¿qué respondes?",
+            options: ["A mí tampoco", "A mí también", "A mí sí", "Yo tampoco no"],
+            correctAnswer: "A mí tampoco",
+            explanation: "Para coincidir con una negación sobre gustos se dice 'A mí tampoco'."
+          },
+          {
+            id: "es-u4-l2-q6",
+            type: "fill_blank",
+            sentence: "A mí no me gusta el té. —A mí ___, prefiero el café.",
+            missingWord: "tampoco",
+            options: ["tampoco", "también", "sí", "no"],
+            correctAnswer: "tampoco",
+            explanation: "Coincidencia negativa: 'A mí tampoco'."
+          },
+          {
+            id: "es-u4-l2-q7",
+            type: "scramble",
+            prompt: "Ordena las palabras para expresar un gran interés por aprender lenguas:",
             tokens: ["Nos", "interesa", "mucho", "aprender", "nuevas", "lenguas."],
             correctTokens: ["Nos", "interesa", "mucho", "aprender", "nuevas", "lenguas."],
             explanation: "Sujeto de infinitivo ('aprender nuevas lenguas') concuerda en singular con 'interesa'."
           },
           {
-            id: "es-u4-q19",
+            id: "es-u4-l2-q8",
             type: "multiple_choice",
             prompt: "Si alguien dice 'No me gusta nada madrugar', ¿cuál es la respuesta que indica desacuerdo (a ti sí te gusta)?",
             options: ["A mí sí.", "A mí también.", "A mí tampoco.", "A mí no."],
@@ -899,7 +846,7 @@ export const spanishA1Units = [
             explanation: "Para mostrar discrepancia con una frase negativa se utiliza 'A mí sí'."
           },
           {
-            id: "es-u4-q20",
+            id: "es-u4-l2-q9",
             type: "matching",
             prompt: "Empareja las matrices de acuerdo y desacuerdo en gustos:",
             pairs: [
@@ -908,6 +855,15 @@ export const spanishA1Units = [
               { native: "No me gusta el fútbol -> A mí tampoco", english: "Agreement with negative", left: "Negativo + Negativo", right: "A mí tampoco" },
               { native: "No me gusta el fútbol -> A mí sí", english: "Disagreement with negative", left: "Negativo + Afirmativo", right: "A mí sí" }
             ]
+          },
+          {
+            id: "es-u4-l2-q10",
+            type: "fill_blank",
+            sentence: "¿A vosotros ___ gusta viajar al extranjero durante las vacaciones?",
+            missingWord: "os",
+            options: ["os", "les", "nos", "te"],
+            correctAnswer: "os",
+            explanation: "El pronombre correspondiente a 'vosotros' es 'os': '¿A vosotros os gusta...?'."
           }
         ]
       }

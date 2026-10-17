@@ -1,7 +1,7 @@
 // =========================================================================
 // MCER / ELE Spanish Curriculum — Instituto Cervantes Aligned
 // Block 3: 🟠 Nivel B1: Umbral (Intermedio) — Units 9 to 12
-// Exactly 20 Questions per Unit = 80 Questions Total
+// 2 Lessons per Unit • 10 Questions per Lesson = 80 Questions Total
 // =========================================================================
 
 export const spanishB1Units = [
@@ -20,13 +20,13 @@ export const spanishB1Units = [
     lessons: [
       {
         id: "es-u9-l1",
-        title: "Lección 1: El Pasado del Pasado y Biografías Complejas",
-        description: "Aprende a estructurar anécdotas complejas con el Pretérito Pluscuamperfecto (había + participio) y conectar cronologías.",
+        title: "Lección 1: Pretérito Pluscuamperfecto (Había + Participio)",
+        description: "Aprende a estructurar acciones anteriores a otro hecho pasado con el Pretérito Pluscuamperfecto y domina los participios irregulares.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u9-q1",
+            id: "es-u9-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cómo se compone el Pretérito Pluscuamperfecto de indicativo?",
             options: [
@@ -39,7 +39,7 @@ export const spanishB1Units = [
             explanation: "El pluscuamperfecto se forma con el auxiliar 'haber' en pretérito imperfecto más el participio pasado (-ado/-ido)."
           },
           {
-            id: "es-u9-q2",
+            id: "es-u9-l1-q2",
             type: "fill_blank",
             sentence: "Cuando llegamos a la estación, el tren ya ___ salido.",
             missingWord: "había",
@@ -48,7 +48,7 @@ export const spanishB1Units = [
             explanation: "Acción anterior a otra acción pasada ('llegamos'): pluscuamperfecto 'había salido'."
           },
           {
-            id: "es-u9-q3",
+            id: "es-u9-l1-q3",
             type: "scramble",
             prompt: "Ordena las palabras para expresar una acción anterior a un hecho pasado:",
             tokens: ["Nunca", "había", "visto", "un", "paisaje", "tan", "hermoso."],
@@ -56,7 +56,7 @@ export const spanishB1Units = [
             explanation: "Estructura correcta: 'Nunca había visto...' indicando experiencia previa inédita."
           },
           {
-            id: "es-u9-q4",
+            id: "es-u9-l1-q4",
             type: "matching",
             prompt: "Empareja los tiempos verbales del pasado con su función narrativa:",
             pairs: [
@@ -67,7 +67,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u9-q5",
+            id: "es-u9-l1-q5",
             type: "multiple_choice",
             prompt: "¿Cuál es el participio irregular del verbo 'escribir'?",
             options: ["Escrito", "Escribido", "Escribiente", "Escriturado"],
@@ -75,7 +75,7 @@ export const spanishB1Units = [
             explanation: "'Escribir' tiene participio irregular: 'escrito'."
           },
           {
-            id: "es-u9-q6",
+            id: "es-u9-l1-q6",
             type: "matching",
             prompt: "Empareja los participios irregulares con su infinitivo:",
             pairs: [
@@ -86,7 +86,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u9-q7",
+            id: "es-u9-l1-q7",
             type: "fill_blank",
             sentence: "Antes de mudarse a Madrid, Laura ya ___ vivido tres años en Bogotá.",
             missingWord: "había",
@@ -95,32 +95,7 @@ export const spanishB1Units = [
             explanation: "Experiencia anterior a la mudanza: 'había vivido'."
           },
           {
-            id: "es-u9-q8",
-            type: "multiple_choice",
-            prompt: "En un relato autobiográfico, ¿qué conector temporal marca un cambio de rumbo?",
-            options: ["A partir de aquel momento", "Mientras tanto", "Todos los días", "Al principio de todo"],
-            correctAnswer: "A partir de aquel momento",
-            explanation: "'A partir de aquel momento' introduce un punto de inflexión en la cronología biográfica."
-          },
-          {
-            id: "es-u9-q9",
-            type: "scramble",
-            prompt: "Ordena las palabras para relatar una anécdota imprevista:",
-            tokens: ["Cuando", "abrí", "la", "maleta,", "me", "di", "cuenta", "del", "error."],
-            correctTokens: ["Cuando", "abrí", "la", "maleta,", "me", "di", "cuenta", "del", "error."],
-            explanation: "Locución verbal 'darse cuenta de': percatarse de algo."
-          },
-          {
-            id: "es-u9-q10",
-            type: "audio_listen",
-            prompt: "Escucha el testimonio del autor y selecciona su profesión en el pasado:",
-            audioText: "Antes de publicar mi primera novela, yo ya había trabajado durante una década como periodista de investigación.",
-            options: ["Periodista de investigación", "Piloto de aviación", "Profesor de música", "Médico cirujano"],
-            correctAnswer: "Periodista de investigación",
-            explanation: "El autor declara: 'yo ya había trabajado durante una década como periodista de investigación'."
-          },
-          {
-            id: "es-u9-q11",
+            id: "es-u9-l1-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma del pluscuamperfecto de 'decir' para 'Nosotros'?",
             options: ["Habíamos dicho", "Hemos dicho", "Hubiéramos dicho", "Habríamos dicho"],
@@ -128,7 +103,7 @@ export const spanishB1Units = [
             explanation: "Conjunción: 'habíamos' + participio irregular 'dicho'."
           },
           {
-            id: "es-u9-q12",
+            id: "es-u9-l1-q9",
             type: "fill_blank",
             sentence: "No pude comprar la entrada porque ya se ___ agotado.",
             missingWord: "habían",
@@ -137,7 +112,54 @@ export const spanishB1Units = [
             explanation: "El sujeto 'las entradas' es plural, por lo que el verbo auxiliar concuerda: 'se habían agotado'."
           },
           {
-            id: "es-u9-q13",
+            id: "es-u9-l1-q10",
+            type: "multiple_choice",
+            prompt: "¿Por qué es erróneo decir: 'Cuando llegué, ellos habían salidos'?",
+            options: [
+              "Porque el participio en los tiempos compuestos en español es invariable (termina en -o)",
+              "Porque falta la 'a'",
+              "Porque se debe usar gerundio",
+              "Porque 'llegué' debe ser futuro"
+            ],
+            correctAnswer: "Porque el participio en los tiempos compuestos en español es invariable (termina en -o)",
+            explanation: "En español, a diferencia de otras lenguas romances, el participio compuesto nunca concuerda en género ni número con el sujeto u objeto."
+          }
+        ]
+      },
+      {
+        id: "es-u9-l2",
+        title: "Lección 2: Relatos Autobiográficos y Combinación Avanzada del Pasado",
+        description: "Aprende a narrar memorias complejas, marcar hitos biográficos y alternar con precisión los cuatro tiempos del pasado.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u9-l2-q1",
+            type: "multiple_choice",
+            prompt: "En un relato autobiográfico, ¿qué conector temporal marca un cambio de rumbo?",
+            options: ["A partir de aquel momento", "Mientras tanto", "Todos los días", "Al principio de todo"],
+            correctAnswer: "A partir de aquel momento",
+            explanation: "'A partir de aquel momento' introduce un punto de inflexión en la cronología biográfica."
+          },
+          {
+            id: "es-u9-l2-q2",
+            type: "scramble",
+            prompt: "Ordena las palabras para relatar una anécdota imprevista:",
+            tokens: ["Cuando", "abrí", "la", "maleta,", "me", "di", "cuenta", "del", "error."],
+            correctTokens: ["Cuando", "abrí", "la", "maleta,", "me", "di", "cuenta", "del", "error."],
+            explanation: "Locución verbal 'darse cuenta de': percatarse de algo."
+          },
+          {
+            id: "es-u9-l2-q3",
+            type: "audio_listen",
+            prompt: "Escucha el testimonio del autor y selecciona su profesión en el pasado:",
+            audioText: "Antes de publicar mi primera novela, yo ya había trabajado durante una década como periodista de investigación.",
+            options: ["Periodista de investigación", "Piloto de aviación", "Profesor de música", "Médico cirujano"],
+            correctAnswer: "Periodista de investigación",
+            explanation: "El autor declara: 'yo ya había trabajado durante una década como periodista de investigación'."
+          },
+          {
+            id: "es-u9-l2-q4",
             type: "matching",
             prompt: "Empareja los marcadores de correlación temporal:",
             pairs: [
@@ -148,7 +170,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u9-q14",
+            id: "es-u9-l2-q5",
             type: "multiple_choice",
             prompt: "¿Qué matiz aporta 'Ya lo sabía' frente a 'Lo supe ayer'?",
             options: [
@@ -161,7 +183,7 @@ export const spanishB1Units = [
             explanation: "Saber en imperfecto denota estado mental mantenido; en indefinido significa 'enterarse' o adquirir la información."
           },
           {
-            id: "es-u9-q15",
+            id: "es-u9-l2-q6",
             type: "scramble",
             prompt: "Ordena las palabras para estructurar un relato autobiográfico:",
             tokens: ["A", "los", "veinte", "años", "decidió", "emigrar", "a", "Canadá."],
@@ -169,7 +191,7 @@ export const spanishB1Units = [
             explanation: "Estructura canónica de biografía: 'A los [edad] + verbo en indefinido'."
           },
           {
-            id: "es-u9-q16",
+            id: "es-u9-l2-q7",
             type: "fill_blank",
             sentence: "¿Ustedes ya ___ leído esta novela de realismo mágico?",
             missingWord: "habían",
@@ -178,7 +200,7 @@ export const spanishB1Units = [
             explanation: "Sujeto formal plural 'ustedes habían leído'."
           },
           {
-            id: "es-u9-q17",
+            id: "es-u9-l2-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es el participio irregular de 'resolver'?",
             options: ["Resuelto", "Resolvido", "Resoluto", "Resolvente"],
@@ -186,7 +208,7 @@ export const spanishB1Units = [
             explanation: "El participio irregular de resolver es 'resuelto'."
           },
           {
-            id: "es-u9-q18",
+            id: "es-u9-l2-q9",
             type: "matching",
             prompt: "Empareja los hitos biográficos con el vocabulario correspondiente:",
             pairs: [
@@ -197,25 +219,12 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u9-q19",
+            id: "es-u9-l2-q10",
             type: "scramble",
-            prompt: "Ordena las palabras para expresar una condición previa incumplida:",
+            prompt: "Ordena las palabras para expresar una preparación completada antes de viajar:",
             tokens: ["Nosotros", "ya", "habíamos", "preparado", "todo", "el", "equipaje."],
             correctTokens: ["Nosotros", "ya", "habíamos", "preparado", "todo", "el", "equipaje."],
             explanation: "Uso del adverbio 'ya' intercalado o previo al pluscuamperfecto."
-          },
-          {
-            id: "es-u9-q20",
-            type: "multiple_choice",
-            prompt: "¿Por qué es erróneo decir: 'Cuando llegué, ellos habían salidos'?",
-            options: [
-              "Porque el participio en los tiempos compuestos en español es invariable (termina en -o)",
-              "Porque falta la 'a'",
-              "Porque se debe usar gerundio",
-              "Porque 'llegué' debe ser futuro"
-            ],
-            correctAnswer: "Porque el participio en los tiempos compuestos en español es invariable (termina en -o)",
-            explanation: "En español, a diferencia de otras lenguas romances, el participio compuesto nunca concuerda en género ni número con el sujeto u objeto."
           }
         ]
       }
@@ -237,13 +246,13 @@ export const spanishB1Units = [
     lessons: [
       {
         id: "es-u10-l1",
-        title: "Lección 1: Opinión, Certeza y el Presente de Subjuntivo",
-        description: "Aprende cuándo usar indicativo (creo que...) y cuándo activar el subjuntivo (no creo que..., dudo que...) en debates.",
+        title: "Lección 1: Presente de Subjuntivo para Opinión y Certeza",
+        description: "Aprende cuándo usar indicativo (creo que, pienso que) y cuándo se activa el subjuntivo (no creo que, dudo que) en la expresión de opiniones.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u10-q1",
+            id: "es-u10-l1-q1",
             type: "multiple_choice",
             prompt: "¿Qué modo verbal exige la matriz afirmativa 'Creo que...'?",
             options: ["Indicativo", "Subjuntivo", "Imperativo", "Condicional obligatorio"],
@@ -251,7 +260,7 @@ export const spanishB1Units = [
             explanation: "Las matrices de pensamiento o afirmación en afirmativo (creo que, pienso que, opino que) rigen indicativo."
           },
           {
-            id: "es-u10-q2",
+            id: "es-u10-l1-q2",
             type: "multiple_choice",
             prompt: "¿Qué modo verbal exige la matriz negativa 'No creo que...'?",
             options: ["Subjuntivo", "Indicativo", "Infinitivo solo", "Futuro de indicativo"],
@@ -259,7 +268,7 @@ export const spanishB1Units = [
             explanation: "La negación de verbos de entendimiento u opinión (no creo que, no pienso que) introduce duda sobre la realidad y exige subjuntivo."
           },
           {
-            id: "es-u10-q3",
+            id: "es-u10-l1-q3",
             type: "fill_blank",
             sentence: "No creo que Juan ___ razón en esta discusión.",
             missingWord: "tenga",
@@ -268,7 +277,7 @@ export const spanishB1Units = [
             explanation: "Con 'No creo que' se usa el presente de subjuntivo: 'tenga'."
           },
           {
-            id: "es-u10-q4",
+            id: "es-u10-l1-q4",
             type: "matching",
             prompt: "Empareja las matrices con el modo que seleccionan:",
             pairs: [
@@ -279,15 +288,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u10-q5",
-            type: "scramble",
-            prompt: "Ordena las palabras para manifestar un desacuerdo cortés en un debate:",
-            tokens: ["Entiendo", "tu", "postura,", "pero", "no", "la", "comparto."],
-            correctTokens: ["Entiendo", "tu", "postura,", "pero", "no", "la", "comparto."],
-            explanation: "Fórmula de cortesía dialéctica: reconocer el punto del interlocutor y formular la discrepancia."
-          },
-          {
-            id: "es-u10-q6",
+            id: "es-u10-l1-q5",
             type: "multiple_choice",
             prompt: "¿Cómo se conjuga el presente de subjuntivo de los verbos en -AR (ej. hablar)?",
             options: [
@@ -300,7 +301,7 @@ export const spanishB1Units = [
             explanation: "En subjuntivo los verbos en -ar adoptan la vocal temática contraria (-e-), y los verbos en -er/-ir adoptan (-a-)."
           },
           {
-            id: "es-u10-q7",
+            id: "es-u10-l1-q6",
             type: "fill_blank",
             sentence: "Dudo mucho que el proyecto se ___ a tiempo.",
             missingWord: "termine",
@@ -309,7 +310,7 @@ export const spanishB1Units = [
             explanation: "El verbo 'dudar que' expresa incertidumbre y siempre rige subjuntivo ('termine')."
           },
           {
-            id: "es-u10-q8",
+            id: "es-u10-l1-q7",
             type: "matching",
             prompt: "Empareja los verbos irregulares con su primera persona de presente de subjuntivo:",
             pairs: [
@@ -320,7 +321,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u10-q9",
+            id: "es-u10-l1-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es el presente de subjuntivo de 'tener' para 'nosotros'?",
             options: ["Tengamos", "Tenemos", "Teniéramos", "Tengáis"],
@@ -328,24 +329,7 @@ export const spanishB1Units = [
             explanation: "A partir de la 1ª persona del presente (yo tengo) se forma el subjuntivo: teng- + amos = 'tengamos'."
           },
           {
-            id: "es-u10-q10",
-            type: "scramble",
-            prompt: "Ordena las palabras para defender una opinión fundamentada:",
-            tokens: ["Desde", "mi", "punto", "de", "vista,", "debemos", "proteger", "el", "empleo."],
-            correctTokens: ["Desde", "mi", "punto", "de", "vista,", "debemos", "proteger", "el", "empleo."],
-            explanation: "Conector de punto de vista: 'Desde mi punto de vista' + proposición principal."
-          },
-          {
-            id: "es-u10-q11",
-            type: "audio_listen",
-            prompt: "Escucha el fragmento del debate y determina la postura del ponente:",
-            audioText: "Es innegable que las nuevas tecnologías han transformado positivamente la educación moderna.",
-            options: ["Está totalmente a favor del impacto positivo", "Rechaza el uso de pantallas en clase", "Niega que la tecnología exista", "Prefiere no opinar"],
-            correctAnswer: "Está totalmente a favor del impacto positivo",
-            explanation: "La expresión 'Es innegable que...' (con indicativo) constata un hecho favorable sin ninguna duda."
-          },
-          {
-            id: "es-u10-q12",
+            id: "es-u10-l1-q9",
             type: "fill_blank",
             sentence: "No está claro que esa política económica ___ eficaz.",
             missingWord: "sea",
@@ -354,7 +338,50 @@ export const spanishB1Units = [
             explanation: "'No está claro que' niega la evidencia y por tanto rige subjuntivo ('sea')."
           },
           {
-            id: "es-u10-q13",
+            id: "es-u10-l1-q10",
+            type: "fill_blank",
+            sentence: "A mí me parece que la medida ___ justa para todos.",
+            missingWord: "es",
+            options: ["es", "sea", "fuera", "sería"],
+            correctAnswer: "es",
+            explanation: "'Me parece que...' es afirmativo y rige indicativo ('es')."
+          }
+        ]
+      },
+      {
+        id: "es-u10-l2",
+        title: "Lección 2: Conectores Dialécticos, Duda y Argumentación en Debates",
+        description: "Domina el arte de debatir con elegancia: matizar posturas, usar conectores adversativos (sin embargo, no obstante) y expresar duda (quizás).",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u10-l2-q1",
+            type: "scramble",
+            prompt: "Ordena las palabras para manifestar un desacuerdo cortés en un debate:",
+            tokens: ["Entiendo", "tu", "postura,", "pero", "no", "la", "comparto."],
+            correctTokens: ["Entiendo", "tu", "postura,", "pero", "no", "la", "comparto."],
+            explanation: "Fórmula de cortesía dialéctica: reconocer el punto del interlocutor y formular la discrepancia."
+          },
+          {
+            id: "es-u10-l2-q2",
+            type: "scramble",
+            prompt: "Ordena las palabras para defender una opinión fundamentada:",
+            tokens: ["Desde", "mi", "punto", "de", "vista,", "debemos", "proteger", "el", "empleo."],
+            correctTokens: ["Desde", "mi", "punto", "de", "vista,", "debemos", "proteger", "el", "empleo."],
+            explanation: "Conector de punto de vista: 'Desde mi punto de vista' + proposición principal."
+          },
+          {
+            id: "es-u10-l2-q3",
+            type: "audio_listen",
+            prompt: "Escucha el fragmento del debate y determina la postura del ponente:",
+            audioText: "Es innegable que las nuevas tecnologías han transformado positivamente la educación moderna.",
+            options: ["Está totalmente a favor del impacto positivo", "Rechaza el uso de pantallas en clase", "Niega que la tecnología exista", "Prefiere no opinar"],
+            correctAnswer: "Está totalmente a favor del impacto positivo",
+            explanation: "La expresión 'Es innegable que...' (con indicativo) constata un hecho favorable sin ninguna duda."
+          },
+          {
+            id: "es-u10-l2-q4",
             type: "multiple_choice",
             prompt: "¿Qué conector argumentativo se utiliza para refutar una objeción?",
             options: ["Sin embargo / No obstante", "Además", "En primer lugar", "Por ejemplo"],
@@ -362,7 +389,7 @@ export const spanishB1Units = [
             explanation: "'Sin embargo' y 'no obstante' son conectores contraargumentativos o adversativos."
           },
           {
-            id: "es-u10-q14",
+            id: "es-u10-l2-q5",
             type: "matching",
             prompt: "Empareja los conectores con su función en el discurso argumentativo:",
             pairs: [
@@ -373,7 +400,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u10-q15",
+            id: "es-u10-l2-q6",
             type: "scramble",
             prompt: "Ordena las palabras para formular una duda con 'quizás':",
             tokens: ["Quizás", "haya", "otra", "solución", "para", "este", "problema."],
@@ -381,16 +408,7 @@ export const spanishB1Units = [
             explanation: "Los adverbios de duda (quizás, tal vez) admiten subjuntivo cuando el hablante siente incertidumbre."
           },
           {
-            id: "es-u10-q16",
-            type: "fill_blank",
-            sentence: "A mí me parece que la medida ___ justa para todos.",
-            missingWord: "es",
-            options: ["es", "sea", "fuera", "sería"],
-            correctAnswer: "es",
-            explanation: "'Me parece que...' es afirmativo y rige indicativo ('es')."
-          },
-          {
-            id: "es-u10-q17",
+            id: "es-u10-l2-q7",
             type: "multiple_choice",
             prompt: "¿Cuál es el presente de subjuntivo de 'poner' para 'él'?",
             options: ["Ponga", "Pone", "Pondrá", "Pusiera"],
@@ -398,7 +416,7 @@ export const spanishB1Units = [
             explanation: "La raíz de 1ª persona 'pong-' produce 'él ponga'."
           },
           {
-            id: "es-u10-q18",
+            id: "es-u10-l2-q8",
             type: "multiple_choice",
             prompt: "Si en una pregunta te dicen: '¿Crees que lloverá mañana?', ¿cuál es una respuesta que utiliza correctamente el subjuntivo?",
             options: [
@@ -411,7 +429,7 @@ export const spanishB1Units = [
             explanation: "Solo la negación de 'creer' activa el subjuntivo: 'No creo que llueva'."
           },
           {
-            id: "es-u10-q19",
+            id: "es-u10-l2-q9",
             type: "scramble",
             prompt: "Ordena los elementos para expresar acuerdo parcial:",
             tokens: ["Estoy", "de", "acuerdo", "en", "parte", "con", "tu", "argumento."],
@@ -419,7 +437,7 @@ export const spanishB1Units = [
             explanation: "Fórmula de matiz: 'Estar de acuerdo en parte con...'."
           },
           {
-            id: "es-u10-q20",
+            id: "es-u10-l2-q10",
             type: "matching",
             prompt: "Empareja las frases de debate con su grado de certidumbre:",
             pairs: [
@@ -449,13 +467,13 @@ export const spanishB1Units = [
     lessons: [
       {
         id: "es-u11-l1",
-        title: "Lección 1: Voluntad, Emociones y Fórmulas Sociales",
-        description: "Aprende a expresar deseos (quiero que...), emociones (me alegro de que...), recomendaciones y redactar felicitaciones prototípicas.",
+        title: "Lección 1: Verbos de Voluntad, Influencia y Subjuntivo",
+        description: "Aprende la regla de cambio de sujeto con verbos de influencia y deseo (quiero que estudies vs quiero estudiar; te pido que escuches).",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u11-q1",
+            id: "es-u11-l1-q1",
             type: "multiple_choice",
             prompt: "Cuando el sujeto de la oración principal y el de la subordinada son DIFERENTES con verbos de deseo (ej. querer), ¿qué estructura se usa?",
             options: [
@@ -468,7 +486,7 @@ export const spanishB1Units = [
             explanation: "Cuando hay cambio de sujeto (Yo quiero / Tú vienes), se conecta obligatoriamente con 'que + subjuntivo'."
           },
           {
-            id: "es-u11-q2",
+            id: "es-u11-l1-q2",
             type: "fill_blank",
             sentence: "Mis padres quieren que yo ___ medicina.",
             missingWord: "estudie",
@@ -477,43 +495,7 @@ export const spanishB1Units = [
             explanation: "Sujetos distintos (mis padres / yo) rige presente de subjuntivo: 'estudie'."
           },
           {
-            id: "es-u11-q3",
-            type: "scramble",
-            prompt: "Ordena las palabras para felicitar a alguien por un nuevo empleo:",
-            tokens: ["¡Te", "deseo", "mucho", "éxito", "en", "tu", "nuevo", "trabajo!"],
-            correctTokens: ["¡Te", "deseo", "mucho", "éxito", "en", "tu", "nuevo", "trabajo!"],
-            explanation: "Fórmula de felicitación y buenos augurios: 'Te deseo + sustantivo'."
-          },
-          {
-            id: "es-u11-q4",
-            type: "multiple_choice",
-            prompt: "¿Qué fórmula se utiliza en español para brindar en celebraciones?",
-            options: ["¡Salud! / ¡Por nosotros!", "¡Buen provecho!", "¡Buen viaje!", "¡Enhorabuena!"],
-            correctAnswer: "¡Salud! / ¡Por nosotros!",
-            explanation: "'¡Salud!' es el brindis tradicional en todos los países de habla hispana."
-          },
-          {
-            id: "es-u11-q5",
-            type: "fill_blank",
-            sentence: "Me alegro mucho de que te ___ bien en el examen.",
-            missingWord: "vaya",
-            options: ["vaya", "va", "fue", "yendo"],
-            correctAnswer: "vaya",
-            explanation: "Verbo de sentimiento ('alegrarse de que') con dos sujetos diferentes rige subjuntivo ('vaya')."
-          },
-          {
-            id: "es-u11-q6",
-            type: "matching",
-            prompt: "Empareja los desencadenantes de emoción con su traducción y régimen:",
-            pairs: [
-              { native: "Me alegro de que...", english: "I am glad that... (+ subjuntivo)", left: "Me alegro de que", right: "Alegría (+ subjuntivo)" },
-              { native: "Siento mucho que...", english: "I am very sorry that... (+ subjuntivo)", left: "Siento mucho que", right: "Lamento / Tristeza (+ subjuntivo)" },
-              { native: "Me da miedo que...", english: "It scares me that... (+ subjuntivo)", left: "Me da miedo que", right: "Temor (+ subjuntivo)" },
-              { native: "Me molesta que...", english: "It bothers me that... (+ subjuntivo)", left: "Me molesta que", right: "Enfado / Irritación (+ subjuntivo)" }
-            ]
-          },
-          {
-            id: "es-u11-q7",
+            id: "es-u11-l1-q3",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma correcta si los dos sujetos son IDÉNTICOS: 'Yo quiero (yo) ir al concierto'?",
             options: [
@@ -526,7 +508,110 @@ export const spanishB1Units = [
             explanation: "Con correferencia de sujetos (el mismo sujeto realiza ambas acciones), se emplea infinitivo directamente sin 'que'."
           },
           {
-            id: "es-u11-q8",
+            id: "es-u11-l1-q4",
+            type: "multiple_choice",
+            prompt: "¿Cuál es el presente de subjuntivo de 'pedir' para 'tú'?",
+            options: ["Pidas", "Pedes", "Pides", "Pidiéres"],
+            correctAnswer: "Pidas",
+            explanation: "El verbo de cambio vocálico pedir (e -> i) mantiene el cambio en subjuntivo: 'pidas'."
+          },
+          {
+            id: "es-u11-l1-q5",
+            type: "fill_blank",
+            sentence: "Te aconsejo que ___ con calma antes de tomar una decisión.",
+            missingWord: "pienses",
+            options: ["pienses", "piensas", "pensar", "pensaste"],
+            correctAnswer: "pienses",
+            explanation: "Verbo de influencia ('aconsejar que') rige subjuntivo: 'pienses'."
+          },
+          {
+            id: "es-u11-l1-q6",
+            type: "fill_blank",
+            sentence: "El profesor nos exige que ___ puntuales a clase.",
+            missingWord: "seamos",
+            options: ["seamos", "somos", "seremos", "siendo"],
+            correctAnswer: "seamos",
+            explanation: "Verbo de mandato/exigencia ('exigir que') + subjuntivo de ser para nosotros: 'seamos'."
+          },
+          {
+            id: "es-u11-l1-q7",
+            type: "matching",
+            prompt: "Empareja los verbos de influencia con su significado:",
+            pairs: [
+              { native: "Prohibir que...", english: "To forbid that... (+ subj)", left: "Prohibir que", right: "Impedir una acción por norma" },
+              { native: "Recomendar que...", english: "To recommend that... (+ subj)", left: "Recomendar que", right: "Sugerir una opción favorable" },
+              { native: "Permitir que...", english: "To allow that... (+ subj)", left: "Permitir que", right: "Autorizar una acción" },
+              { native: "Rogar que...", english: "To plead that... (+ subj)", left: "Rogar que", right: "Pedir con vehemencia o súplica" }
+            ]
+          },
+          {
+            id: "es-u11-l1-q8",
+            type: "multiple_choice",
+            prompt: "¿Cuál es el presente de subjuntivo de 'dormir' para 'nosotros'?",
+            options: ["Durmamos", "Dormamos", "Duermamos", "Durmemos"],
+            correctAnswer: "Durmamos",
+            explanation: "Los verbos en -ir con diptongación (o -> ue) hacen cambio a 'u' en la 1ª persona plural de subjuntivo: 'durmamos'."
+          },
+          {
+            id: "es-u11-l1-q9",
+            type: "multiple_choice",
+            prompt: "Identifica la opción gramaticalmente correcta:",
+            options: [
+              "Te pido que me escuches atentamente.",
+              "Te pido que me escuchas atentamente.",
+              "Te pido me escuchar atentamente.",
+              "Te pido que me escucharás atentamente."
+            ],
+            correctAnswer: "Te pido que me escuches atentamente.",
+            explanation: "Petición a otro interlocutor: 'pedir que + presente de subjuntivo (escuches)'."
+          },
+          {
+            id: "es-u11-l1-q10",
+            type: "matching",
+            prompt: "Empareja los desencadenantes de emoción con su régimen:",
+            pairs: [
+              { native: "Me alegro de que...", english: "I am glad that... (+ subjuntivo)", left: "Me alegro de que", right: "Alegría (+ subjuntivo)" },
+              { native: "Siento mucho que...", english: "I am very sorry that... (+ subjuntivo)", left: "Siento mucho que", right: "Lamento / Tristeza (+ subjuntivo)" },
+              { native: "Me da miedo que...", english: "It scares me that... (+ subjuntivo)", left: "Me da miedo que", right: "Temor (+ subjuntivo)" },
+              { native: "Me molesta que...", english: "It bothers me that... (+ subjuntivo)", left: "Me molesta que", right: "Enfado / Irritación (+ subjuntivo)" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "es-u11-l2",
+        title: "Lección 2: Reacciones Emocionales, Ojalá y Fórmulas Sociales de Felicitación",
+        description: "Aprende a desear buenos augurios, redactar tarjetas de felicitación y usar 'ojalá' y las estructuras elípticas de deseo ('¡Que te mejores!').",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u11-l2-q1",
+            type: "scramble",
+            prompt: "Ordena las palabras para felicitar a alguien por un nuevo empleo:",
+            tokens: ["¡Te", "deseo", "mucho", "éxito", "en", "tu", "nuevo", "trabajo!"],
+            correctTokens: ["¡Te", "deseo", "mucho", "éxito", "en", "tu", "nuevo", "trabajo!"],
+            explanation: "Fórmula de felicitación y buenos augurios: 'Te deseo + sustantivo'."
+          },
+          {
+            id: "es-u11-l2-q2",
+            type: "multiple_choice",
+            prompt: "¿Qué fórmula se utiliza en español para brindar en celebraciones?",
+            options: ["¡Salud! / ¡Por nosotros!", "¡Buen provecho!", "¡Buen viaje!", "¡Enhorabuena!"],
+            correctAnswer: "¡Salud! / ¡Por nosotros!",
+            explanation: "'¡Salud!' es el brindis tradicional en todos los países de habla hispana."
+          },
+          {
+            id: "es-u11-l2-q3",
+            type: "fill_blank",
+            sentence: "Me alegro mucho de que te ___ bien en el examen.",
+            missingWord: "vaya",
+            options: ["vaya", "va", "fue", "yendo"],
+            correctAnswer: "vaya",
+            explanation: "Verbo de sentimiento ('alegrarse de que') con dos sujetos diferentes rige subjuntivo ('vaya')."
+          },
+          {
+            id: "es-u11-l2-q4",
             type: "scramble",
             prompt: "Ordena los elementos para desear una pronta recuperación:",
             tokens: ["¡Espero", "que", "te", "mejores", "muy", "pronto!"],
@@ -534,7 +619,7 @@ export const spanishB1Units = [
             explanation: "Fórmula de empatía y salud: 'Espero que te mejores pronto'."
           },
           {
-            id: "es-u11-q9",
+            id: "es-u11-l2-q5",
             type: "audio_listen",
             prompt: "Escucha el mensaje de la tarjeta de felicitación e identifica la ocasión:",
             audioText: "¡Feliz cumpleaños, amiga querida! Que todos tus sueños se cumplan en este nuevo año de vida.",
@@ -543,7 +628,7 @@ export const spanishB1Units = [
             explanation: "El mensaje dice explícitamente: '¡Feliz cumpleaños, amiga querida!'."
           },
           {
-            id: "es-u11-q10",
+            id: "es-u11-l2-q6",
             type: "fill_blank",
             sentence: "¡Ojalá ___ mañana para ir a esquiar a la sierra!",
             missingWord: "nieve",
@@ -552,7 +637,7 @@ export const spanishB1Units = [
             explanation: "'Ojalá' (del árabe law sha' Allah) siempre va seguido de subjuntivo para expresar un deseo."
           },
           {
-            id: "es-u11-q11",
+            id: "es-u11-l2-q7",
             type: "matching",
             prompt: "Empareja las fórmulas sociales de cortesía con su contexto:",
             pairs: [
@@ -563,24 +648,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u11-q12",
-            type: "multiple_choice",
-            prompt: "¿Cuál es el presente de subjuntivo de 'pedir' para 'tú'?",
-            options: ["Pidas", "Pedes", "Pides", "Pidiéres"],
-            correctAnswer: "Pidas",
-            explanation: "El verbo de cambio vocálico pedir (e -> i) mantiene el cambio en subjuntivo: 'pidas'."
-          },
-          {
-            id: "es-u11-q13",
-            type: "fill_blank",
-            sentence: "Te aconsejo que ___ con calma antes de tomar una decisión.",
-            missingWord: "pienses",
-            options: ["pienses", "piensas", "pensar", "pensaste"],
-            correctAnswer: "pienses",
-            explanation: "Verbo de influencia ('aconsejar que') rige subjuntivo: 'pienses'."
-          },
-          {
-            id: "es-u11-q14",
+            id: "es-u11-l2-q8",
             type: "scramble",
             prompt: "Ordena las palabras para redactar un deseo elíptico con 'Que':",
             tokens: ["¡Que", "pases", "un", "estupendo", "fin", "de", "semana!"],
@@ -588,7 +656,7 @@ export const spanishB1Units = [
             explanation: "Estructura elíptica independiente de deseo: 'Que + subjuntivo' (omite 'deseo que')."
           },
           {
-            id: "es-u11-q15",
+            id: "es-u11-l2-q9",
             type: "multiple_choice",
             prompt: "¿Qué expresa la frase: 'Me sorprende que todavía no haya llegado el paquete'?",
             options: [
@@ -601,53 +669,12 @@ export const spanishB1Units = [
             explanation: "'Me sorprende que...' es una matriz de reacción emocional y asombro que rige subjuntivo."
           },
           {
-            id: "es-u11-q16",
-            type: "fill_blank",
-            sentence: "El profesor nos exige que ___ puntuales a clase.",
-            missingWord: "seamos",
-            options: ["seamos", "somos", "seremos", "siendo"],
-            correctAnswer: "seamos",
-            explanation: "Verbo de mandato/exigencia ('exigir que') + subjuntivo de ser para nosotros: 'seamos'."
-          },
-          {
-            id: "es-u11-q17",
-            type: "matching",
-            prompt: "Empareja los verbos de influencia con su significado:",
-            pairs: [
-              { native: "Prohibir que...", english: "To forbid that... (+ subj)", left: "Prohibir que", right: "Impedir una acción por norma" },
-              { native: "Recomendar que...", english: "To recommend that... (+ subj)", left: "Recomendar que", right: "Sugerir una opción favorable" },
-              { native: "Permitir que...", english: "To allow that... (+ subj)", left: "Permitir que", right: "Autorizar una acción" },
-              { native: "Rogar que...", english: "To plead that... (+ subj)", left: "Rogar que", right: "Pedir con vehemencia o súplica" }
-            ]
-          },
-          {
-            id: "es-u11-q18",
+            id: "es-u11-l2-q10",
             type: "scramble",
             prompt: "Ordena las palabras para expresar alivio emocional:",
             tokens: ["Me", "tranquiliza", "que", "todo", "haya", "salido", "bien."],
             correctTokens: ["Me", "tranquiliza", "que", "todo", "haya", "salido", "bien."],
             explanation: "Emoción de serenidad: 'Me tranquiliza que...' + pretérito perfecto de subjuntivo."
-          },
-          {
-            id: "es-u11-q19",
-            type: "multiple_choice",
-            prompt: "¿Cuál es el presente de subjuntivo de 'dormir' para 'nosotros'?",
-            options: ["Durmamos", "Dormamos", "Duermamos", "Durmemos"],
-            correctAnswer: "Durmamos",
-            explanation: "Los verbos en -ir con diptongación (o -> ue) hacen cambio a 'u' en la 1ª persona plural de subjuntivo: 'durmamos'."
-          },
-          {
-            id: "es-u11-q20",
-            type: "multiple_choice",
-            prompt: "Identifica la opción gramaticalmente correcta:",
-            options: [
-              "Te pido que me escuches atentamente.",
-              "Te pido que me escuchas atentamente.",
-              "Te pido me escuchar atentamente.",
-              "Te pido que me escucharás atentamente."
-            ],
-            correctAnswer: "Te pido que me escuches atentamente.",
-            explanation: "Petición a otro interlocutor: 'pedir que + presente de subjuntivo (escuches)'."
           }
         ]
       }
@@ -669,13 +696,13 @@ export const spanishB1Units = [
     lessons: [
       {
         id: "es-u12-l1",
-        title: "Lección 1: El Condicional Simple y Escenarios Hipotéticos",
-        description: "Aprende las desinencias del condicional (-ía, -ías...), las oraciones de causa-consecuencia con 'si + presente' y proyecciones de futuro.",
+        title: "Lección 1: El Condicional Simple (Cortesía y Consejos)",
+        description: "Aprende las desinencias regulares e irregulares del condicional simple y utilízalo para suavizar peticiones y dar consejos ('yo en tu lugar...').",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u12-q1",
+            id: "es-u12-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cuáles son las terminaciones del Condicional Simple para todas las conjugaciones (-ar, -er, -ir)?",
             options: [
@@ -688,16 +715,7 @@ export const spanishB1Units = [
             explanation: "El condicional regular se forma añadiendo -ía, -ías, -ía, -íamos, -íais, -ían directamente al infinitivo completo."
           },
           {
-            id: "es-u12-q2",
-            type: "fill_blank",
-            sentence: "Si mañana hace buen tiempo, nosotros ___ a la playa.",
-            missingWord: "iremos",
-            options: ["iremos", "iríamos", "fuimos", "vayamos"],
-            correctAnswer: "iremos",
-            explanation: "En la condicional real (tipo 1): Si + presente de indicativo ('hace') -> futuro de indicativo ('iremos') o presente."
-          },
-          {
-            id: "es-u12-q3",
+            id: "es-u12-l1-q2",
             type: "scramble",
             prompt: "Ordena las palabras para pedir un favor con cortesía en condicional:",
             tokens: ["¿Podría", "usted", "ayudarme", "con", "esta", "maleta?"],
@@ -705,7 +723,7 @@ export const spanishB1Units = [
             explanation: "El condicional de cortesía suaviza las peticiones formales: '¿Podría usted...?'."
           },
           {
-            id: "es-u12-q4",
+            id: "es-u12-l1-q3",
             type: "matching",
             prompt: "Empareja los verbos irregulares con su raíz en futuro y condicional:",
             pairs: [
@@ -716,7 +734,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u12-q5",
+            id: "es-u12-l1-q4",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma del condicional simple de 'querer' para 'Yo'?",
             options: ["Querría", "Quería", "Querré", "Queriendo"],
@@ -724,7 +742,7 @@ export const spanishB1Units = [
             explanation: "El verbo 'querer' tiene raíz irregular con doble 'r': 'querría'."
           },
           {
-            id: "es-u12-q6",
+            id: "es-u12-l1-q5",
             type: "fill_blank",
             sentence: "Yo en tu lugar ___ con el director inmediatamente.",
             missingWord: "hablaría",
@@ -733,7 +751,7 @@ export const spanishB1Units = [
             explanation: "Para dar consejos con la estructura 'Yo que tú...' o 'Yo en tu lugar...' se utiliza el condicional simple: 'hablaría'."
           },
           {
-            id: "es-u12-q7",
+            id: "es-u12-l1-q6",
             type: "scramble",
             prompt: "Ordena las palabras para estructurar un consejo en condicional:",
             tokens: ["Yo", "en", "tu", "lugar", "descansaría", "este", "fin", "de", "semana."],
@@ -741,7 +759,7 @@ export const spanishB1Units = [
             explanation: "Estructura de recomendación empática: 'Yo en tu lugar + condicional'."
           },
           {
-            id: "es-u12-q8",
+            id: "es-u12-l1-q7",
             type: "multiple_choice",
             prompt: "¿Qué valor tiene el condicional en la frase: 'Serían las tres de la tarde cuando ocurrió'?",
             options: [
@@ -754,7 +772,7 @@ export const spanishB1Units = [
             explanation: "El condicional simple se usa también para formular hipótesis o estimaciones sobre acontecimientos pasados."
           },
           {
-            id: "es-u12-q9",
+            id: "es-u12-l1-q8",
             type: "matching",
             prompt: "Empareja los usos del Condicional Simple con su ejemplo representativo:",
             pairs: [
@@ -765,16 +783,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u12-q10",
-            type: "audio_listen",
-            prompt: "Escucha el pronóstico meteorológico y selecciona la previsión climática:",
-            audioText: "Si continúa bajando la temperatura esta noche, es muy probable que se produzcan heladas en la meseta central.",
-            options: ["Heladas por el descenso de temperatura", "Ola de calor sofocante", "Cielos despejados y 35 grados", "Inundaciones tropicales"],
-            correctAnswer: "Heladas por el descenso de temperatura",
-            explanation: "El boletín advierte expresamente sobre la probabilidad de 'heladas en la meseta central'."
-          },
-          {
-            id: "es-u12-q11",
+            id: "es-u12-l1-q9",
             type: "fill_blank",
             sentence: "¿Usted ___ tan amable de explicarme este procedimiento?",
             missingWord: "sería",
@@ -783,15 +792,42 @@ export const spanishB1Units = [
             explanation: "Fórmula de máxima cortesía formal: '¿Sería tan amable de...?'."
           },
           {
-            id: "es-u12-q12",
+            id: "es-u12-l1-q10",
             type: "multiple_choice",
             prompt: "¿Cuál es el condicional simple de 'saber' para 'Nosotros'?",
             options: ["Sabríamos", "Saberíamos", "Supiéramos", "Sabemos"],
             correctAnswer: "Sabríamos",
             explanation: "La raíz irregular es 'sabr-' + -íamos: 'sabríamos'."
+          }
+        ]
+      },
+      {
+        id: "es-u12-l2",
+        title: "Lección 2: Oraciones Condicionales Reales (Si + Presente) y Pronósticos",
+        description: "Domina las estructuras de causa-efecto real ('Si estudias, aprobarás'), los pronósticos meteorológicos e hipótesis futuras.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u12-l2-q1",
+            type: "fill_blank",
+            sentence: "Si mañana hace buen tiempo, nosotros ___ a la playa.",
+            missingWord: "iremos",
+            options: ["iremos", "iríamos", "fuimos", "vayamos"],
+            correctAnswer: "iremos",
+            explanation: "En la condicional real (tipo 1): Si + presente de indicativo ('hace') -> futuro de indicativo ('iremos') o presente."
           },
           {
-            id: "es-u12-q13",
+            id: "es-u12-l2-q2",
+            type: "audio_listen",
+            prompt: "Escucha el pronóstico meteorológico y selecciona la previsión climática:",
+            audioText: "Si continúa bajando la temperatura esta noche, es muy probable que se produzcan heladas en la meseta central.",
+            options: ["Heladas por el descenso de temperatura", "Ola de calor sofocante", "Cielos despejados y 35 grados", "Inundaciones tropicales"],
+            correctAnswer: "Heladas por el descenso de temperatura",
+            explanation: "El boletín advierte expresamente sobre la probabilidad de 'heladas en la meseta central'."
+          },
+          {
+            id: "es-u12-l2-q3",
             type: "scramble",
             prompt: "Ordena las palabras para formar una oración condicional real:",
             tokens: ["Si", "estudias", "con", "constancia,", "aprobarás", "el", "examen."],
@@ -799,7 +835,7 @@ export const spanishB1Units = [
             explanation: "Estructura de condición real: Si + presente de indicativo ('estudias') + futuro ('aprobarás')."
           },
           {
-            id: "es-u12-q14",
+            id: "es-u12-l2-q4",
             type: "multiple_choice",
             prompt: "En español, ¿se puede poner el presente de subjuntivo inmediatamente después de 'Si' condicional ('Si tengas tiempo...')?",
             options: [
@@ -812,7 +848,7 @@ export const spanishB1Units = [
             explanation: "En la norma culta del español, 'si' condicional NUNCA rige presente de subjuntivo; exige presente de indicativo o imperfecto de subjuntivo."
           },
           {
-            id: "es-u12-q15",
+            id: "es-u12-l2-q5",
             type: "fill_blank",
             sentence: "Nosotros ___ encantados de colaborar en vuestro proyecto benéfico.",
             missingWord: "estaríamos",
@@ -821,7 +857,7 @@ export const spanishB1Units = [
             explanation: "Condicional simple de 'estar' para nosotros: 'estaríamos'."
           },
           {
-            id: "es-u12-q16",
+            id: "es-u12-l2-q6",
             type: "matching",
             prompt: "Empareja los verbos irregulares de futuro y condicional con su infinitivo:",
             pairs: [
@@ -832,7 +868,7 @@ export const spanishB1Units = [
             ]
           },
           {
-            id: "es-u12-q17",
+            id: "es-u12-l2-q7",
             type: "scramble",
             prompt: "Ordena las palabras para plantear una conjetura sobre la hora:",
             tokens: ["¿Qué", "hora", "sería", "cuando", "empezó", "la", "película?"],
@@ -840,7 +876,7 @@ export const spanishB1Units = [
             explanation: "Pregunta conjetural sobre el pasado usando el condicional simple."
           },
           {
-            id: "es-u12-q18",
+            id: "es-u12-l2-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es la respuesta adecuada para expresar una preferencia con condicional?",
             options: [
@@ -853,7 +889,7 @@ export const spanishB1Units = [
             explanation: "'Preferiría...' formula una inclinación o deseo atenuado de forma educada."
           },
           {
-            id: "es-u12-q19",
+            id: "es-u12-l2-q9",
             type: "fill_blank",
             sentence: "¿Qué ___ tú si ganaras la lotería?",
             missingWord: "harías",
@@ -862,7 +898,7 @@ export const spanishB1Units = [
             explanation: "En la prótasis hipotética con imperfecto de subjuntivo ('ganaras'), la apódosis se construye con condicional simple ('harías')."
           },
           {
-            id: "es-u12-q20",
+            id: "es-u12-l2-q10",
             type: "multiple_choice",
             prompt: "Completa la regla: 'El condicional simple de los verbos regulares conserva el infinitivo entero como raíz y añade las desinencias de...'",
             options: [

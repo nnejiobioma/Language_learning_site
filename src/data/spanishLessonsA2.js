@@ -1,7 +1,7 @@
 // =========================================================================
 // MCER / ELE Spanish Curriculum — Instituto Cervantes Aligned
 // Block 2: 🟡 Nivel A2: Plataforma (Elemental) — Units 5 to 8
-// Exactly 20 Questions per Unit = 80 Questions Total
+// 2 Lessons per Unit • 10 Questions per Lesson = 80 Questions Total
 // =========================================================================
 
 export const spanishA2Units = [
@@ -20,13 +20,13 @@ export const spanishA2Units = [
     lessons: [
       {
         id: "es-u5-l1",
-        title: "Lección 1: Narración en Pasado: Indefinido vs Imperfecto",
-        description: "Domina la distinción entre acciones puntuales concluidas (indefinido) y descripciones o hábitos pasados (imperfecto).",
+        title: "Lección 1: Pretérito Indefinido vs. Pretérito Imperfecto",
+        description: "Domina la distinción entre acciones puntuales concluidas (indefinido) y descripciones, estados o hábitos pasados (imperfecto).",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u5-q1",
+            id: "es-u5-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma del pretérito indefinido de 'hablar' para 'Yo'?",
             options: ["Hablé", "Hablaba", "Hablo", "Hablaré"],
@@ -34,7 +34,7 @@ export const spanishA2Units = [
             explanation: "El pretérito indefinido regular de la 1ª persona singular para verbos en -ar termina en -é: 'yo hablé'."
           },
           {
-            id: "es-u5-q2",
+            id: "es-u5-l1-q2",
             type: "multiple_choice",
             prompt: "¿Qué tiempo verbal describe acciones habituales o repetitivas en el pasado ('Cuando era niño, siempre...')?",
             options: ["Pretérito Imperfecto", "Pretérito Indefinido", "Presente de Subjuntivo", "Futuro Simple"],
@@ -42,7 +42,7 @@ export const spanishA2Units = [
             explanation: "El pretérito imperfecto expresa acciones habituales, descripciones de personas, lugares o estados continuos en el pasado."
           },
           {
-            id: "es-u5-q3",
+            id: "es-u5-l1-q3",
             type: "fill_blank",
             sentence: "Ayer a las siete de la tarde ___ una fuerte tormenta.",
             missingWord: "empezó",
@@ -51,7 +51,7 @@ export const spanishA2Units = [
             explanation: "Acción puntual completada en un momento determinado del pasado ('ayer a las siete') requiere indefinido."
           },
           {
-            id: "es-u5-q4",
+            id: "es-u5-l1-q4",
             type: "matching",
             prompt: "Empareja los marcadores temporales con el tiempo verbal correspondiente:",
             pairs: [
@@ -62,7 +62,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u5-q5",
+            id: "es-u5-l1-q5",
             type: "multiple_choice",
             prompt: "¿Cuáles son los únicos tres verbos irregulares en el pretérito imperfecto?",
             options: ["Ser, ir, ver", "Tener, estar, hacer", "Poder, poner, saber", "Decir, querer, venir"],
@@ -70,7 +70,7 @@ export const spanishA2Units = [
             explanation: "En imperfecto solo son irregulares 'ser' (era), 'ir' (iba) y 'ver' (veía)."
           },
           {
-            id: "es-u5-q6",
+            id: "es-u5-l1-q6",
             type: "scramble",
             prompt: "Ordena las palabras para formar una frase que combina acción e interrupción en el pasado:",
             tokens: ["Yo", "dormía", "cuando", "sonó", "el", "teléfono."],
@@ -78,7 +78,7 @@ export const spanishA2Units = [
             explanation: "La acción en desarrollo va en imperfecto ('dormía') y la acción repentina que interrumpe en indefinido ('sonó')."
           },
           {
-            id: "es-u5-q7",
+            id: "es-u5-l1-q7",
             type: "fill_blank",
             sentence: "Cuando nosotros éramos jóvenes, ___ mucho en bicicleta.",
             missingWord: "montábamos",
@@ -87,7 +87,7 @@ export const spanishA2Units = [
             explanation: "Hábito reiterado en el pasado en una etapa vital ('cuando éramos jóvenes') pide imperfecto."
           },
           {
-            id: "es-u5-q8",
+            id: "es-u5-l1-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es el pretérito indefinido irregular de 'hacer' para 'Él / Ella / Usted'?",
             options: ["Hizo", "Hizó", "Hacia", "Hicieron"],
@@ -95,7 +95,7 @@ export const spanishA2Units = [
             explanation: "El verbo 'hacer' en 3ª persona del singular cambia 'c' por 'z' para mantener el sonido /θ/ o /s/: 'él hizo'."
           },
           {
-            id: "es-u5-q9",
+            id: "es-u5-l1-q9",
             type: "matching",
             prompt: "Empareja los verbos irregulares en indefinido con su raíz:",
             pairs: [
@@ -106,7 +106,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u5-q10",
+            id: "es-u5-l1-q10",
             type: "multiple_choice",
             prompt: "En la frase: 'La casa era blanca y tenía dos pisos', ¿por qué se utiliza el imperfecto?",
             options: [
@@ -117,9 +117,18 @@ export const spanishA2Units = [
             ],
             correctAnswer: "Porque es una descripción estática del pasado",
             explanation: "Las descripciones físicas, psicológicas y del entorno en el pasado siempre van en pretérito imperfecto."
-          },
+          }
+        ]
+      },
+      {
+        id: "es-u5-l2",
+        title: "Lección 2: Anécdotas del Pasado, Hechos Históricos y Biografías",
+        description: "Aprende a hilvanar anécdotas autobiográficas, narrar hitos históricos cronológicos y contrastar acciones en progreso.",
+        xp: 20,
+        completed: false,
+        questions: [
           {
-            id: "es-u5-q11",
+            id: "es-u5-l2-q1",
             type: "fill_blank",
             sentence: "En 1492, Cristóbal Colón ___ a América.",
             missingWord: "llegó",
@@ -128,7 +137,7 @@ export const spanishA2Units = [
             explanation: "Hecho histórico fijado en un año exacto concluido: pretérito indefinido ('llegó')."
           },
           {
-            id: "es-u5-q12",
+            id: "es-u5-l2-q2",
             type: "scramble",
             prompt: "Ordena las palabras para formar una oración biográfica:",
             tokens: ["Frida", "Kahlo", "nació", "en", "México", "en", "1907."],
@@ -136,7 +145,7 @@ export const spanishA2Units = [
             explanation: "Estructura canónica de fechas biográficas con pretérito indefinido."
           },
           {
-            id: "es-u5-q13",
+            id: "es-u5-l2-q3",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma del pretérito imperfecto de 'ir' para 'Nosotros'?",
             options: ["Íbamos", "Fuimos", "Ibamos", "Vamos"],
@@ -144,7 +153,7 @@ export const spanishA2Units = [
             explanation: "'Íbamos' lleva tilde en la 'í' por ser palabra esdrújula."
           },
           {
-            id: "es-u5-q14",
+            id: "es-u5-l2-q4",
             type: "audio_listen",
             prompt: "Escucha la narración histórica y selecciona el verbo correcto:",
             audioText: "El año pasado viajé por primera vez a los Andes peruanos.",
@@ -153,7 +162,7 @@ export const spanishA2Units = [
             explanation: "'El año pasado viajé' señala un evento completado de viaje."
           },
           {
-            id: "es-u5-q15",
+            id: "es-u5-l2-q5",
             type: "multiple_choice",
             prompt: "Completa el contraste: 'Mientras mi madre ___ la cena, mi padre ___ del trabajo.'",
             options: [
@@ -166,7 +175,7 @@ export const spanishA2Units = [
             explanation: "La acción continua de fondo se expresa en imperfecto ('cocinaba') y el suceso puntual en indefinido ('llegó')."
           },
           {
-            id: "es-u5-q16",
+            id: "es-u5-l2-q6",
             type: "fill_blank",
             sentence: "El sábado pasado mis amigos y yo ___ al cine.",
             missingWord: "fuimos",
@@ -175,7 +184,7 @@ export const spanishA2Units = [
             explanation: "'Mis amigos y yo' (nosotros) en pretérito indefinido del verbo ir es 'fuimos'."
           },
           {
-            id: "es-u5-q17",
+            id: "es-u5-l2-q7",
             type: "matching",
             prompt: "Empareja las formas del verbo 'ser' en pretérito imperfecto:",
             pairs: [
@@ -186,7 +195,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u5-q18",
+            id: "es-u5-l2-q8",
             type: "multiple_choice",
             prompt: "¿Cuál es la forma del pretérito indefinido de 'decir' para 'Ellos'?",
             options: ["Dijeron", "Dijieron", "Decían", "Dirán"],
@@ -194,7 +203,7 @@ export const spanishA2Units = [
             explanation: "En los verbos con raíz en -j (como decir -> dij-), la terminación de 3ª persona plural es -eron (no -ieron): 'dijeron'."
           },
           {
-            id: "es-u5-q19",
+            id: "es-u5-l2-q9",
             type: "scramble",
             prompt: "Ordena los elementos para describir el clima de ayer:",
             tokens: ["Ayer", "hacía", "mucho", "frío", "por", "la", "mañana."],
@@ -202,7 +211,7 @@ export const spanishA2Units = [
             explanation: "El estado atmosférico continuo o descriptivo en el pasado se formula con imperfecto ('hacía frío')."
           },
           {
-            id: "es-u5-q20",
+            id: "es-u5-l2-q10",
             type: "multiple_choice",
             prompt: "¿Qué significa 'conocí a Pedro en Madrid en 2020'?",
             options: [
@@ -234,13 +243,13 @@ export const spanishA2Units = [
     lessons: [
       {
         id: "es-u6-l1",
-        title: "Lección 1: Futuro Próximo, Horarios y Planes",
-        description: "Aprende a formular intenciones con 'ir a + infinitivo', organizar agendas, viajes y usar marcadores temporales de futuro.",
+        title: "Lección 1: El Futuro Inmediato (Ir a + Infinitivo) y Marcadores Temporales",
+        description: "Aprende a formular intenciones y planes firmes usando 'ir a + infinitivo' junto a conectores de tiempo futuro.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u6-q1",
+            id: "es-u6-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cuál es la estructura gramatical de la perífrasis de futuro inmediato?",
             options: ["Ir (en presente) + a + infinitivo", "Ir + gerundio", "Tener + que + infinitivo", "Estar + participio"],
@@ -248,7 +257,7 @@ export const spanishA2Units = [
             explanation: "El futuro perifrástico o inmediato se forma con el presente del verbo ir + preposición 'a' + infinitivo."
           },
           {
-            id: "es-u6-q2",
+            id: "es-u6-l1-q2",
             type: "fill_blank",
             sentence: "Este fin de semana nosotros ___ a descansar en el campo.",
             missingWord: "vamos",
@@ -257,7 +266,7 @@ export const spanishA2Units = [
             explanation: "Con el sujeto 'nosotros' se conjuga: 'vamos a descansar'."
           },
           {
-            id: "es-u6-q3",
+            id: "es-u6-l1-q3",
             type: "scramble",
             prompt: "Ordena las palabras para formular una intención de estudio:",
             tokens: ["Mañana", "voy", "a", "estudiar", "para", "el", "examen."],
@@ -265,7 +274,7 @@ export const spanishA2Units = [
             explanation: "Estructura correcta: Temporal + verbo auxiliar (voy) + a + verbo principal en infinitivo (estudiar) + complemento."
           },
           {
-            id: "es-u6-q4",
+            id: "es-u6-l1-q4",
             type: "matching",
             prompt: "Empareja los marcadores temporales de futuro con su traducción:",
             pairs: [
@@ -276,7 +285,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u6-q5",
+            id: "es-u6-l1-q5",
             type: "multiple_choice",
             prompt: "¿Qué opción expresa un plan seguro o intención programada?",
             options: ["El próximo viernes voy a viajar a Sevilla.", "Ayer viajé a Sevilla.", "Viajaba a Sevilla frecuentemente.", "Ojalá viaje a Sevilla."],
@@ -284,7 +293,7 @@ export const spanishA2Units = [
             explanation: "'El próximo viernes voy a viajar...' expresa un plan futuro ya organizado o decidido."
           },
           {
-            id: "es-u6-q6",
+            id: "es-u6-l1-q6",
             type: "fill_blank",
             sentence: "¿Qué vas a ___ después de clase?",
             missingWord: "hacer",
@@ -293,7 +302,49 @@ export const spanishA2Units = [
             explanation: "Tras la preposición 'a' en la perífrasis obligatoriamente se utiliza infinitivo ('hacer')."
           },
           {
-            id: "es-u6-q7",
+            id: "es-u6-l1-q7",
+            type: "multiple_choice",
+            prompt: "¿Cuál de estos verbos expresa la intención de comenzar un hábito futuro?",
+            options: ["Voy a empezar a", "Dejé de", "Suelo", "Acabo de"],
+            correctAnswer: "Voy a empezar a",
+            explanation: "'Empezar a + infinitivo' es la perífrasis incoativa para iniciar una acción."
+          },
+          {
+            id: "es-u6-l1-q8",
+            type: "fill_blank",
+            sentence: "El año que viene mi hermana va a ___ en la universidad.",
+            missingWord: "ingresar",
+            options: ["ingresar", "ingreso", "ingresó", "ingresaba"],
+            correctAnswer: "ingresar",
+            explanation: "Infinitivo tras perífrasis de futuro."
+          },
+          {
+            id: "es-u6-l1-q9",
+            type: "scramble",
+            prompt: "Ordena los elementos para expresar un plan en negativo:",
+            tokens: ["Nosotros", "no", "vamos", "a", "trabajar", "el", "domingo."],
+            correctTokens: ["Nosotros", "no", "vamos", "a", "trabajar", "el", "domingo."],
+            explanation: "La partícula negativa 'no' precede al verbo auxiliar conjugado ('no vamos a trabajar')."
+          },
+          {
+            id: "es-u6-l1-q10",
+            type: "multiple_choice",
+            prompt: "¿Qué significa 'dentro de poco'?",
+            options: ["En un breve espacio de tiempo futuro", "Hace mucho tiempo", "Nunca", "En este preciso segundo"],
+            correctAnswer: "En un breve espacio de tiempo futuro",
+            explanation: "'Dentro de poco' es sinónimo de 'pronto' o 'en breve'."
+          }
+        ]
+      },
+      {
+        id: "es-u6-l2",
+        title: "Lección 2: Organización de Viajes, Billetes y Agenda Laboral",
+        description: "Aprende el vocabulario técnico de estaciones, aeropuertos, compra de billetes y confirmación de citas profesionales.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u6-l2-q1",
             type: "multiple_choice",
             prompt: "Si vas a viajar en tren, ¿dónde compras el billete si no lo haces por internet?",
             options: ["En la taquilla o ventanilla de la estación", "En la farmacia", "En la biblioteca", "En la panadería"],
@@ -301,7 +352,7 @@ export const spanishA2Units = [
             explanation: "Los billetes físicos se compran en la taquilla (o ventanilla) de la estación de tren o autobús."
           },
           {
-            id: "es-u6-q8",
+            id: "es-u6-l2-q2",
             type: "matching",
             prompt: "Empareja el vocabulario de viajes con su definición:",
             pairs: [
@@ -312,7 +363,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u6-q9",
+            id: "es-u6-l2-q3",
             type: "scramble",
             prompt: "Ordena las palabras para preguntar por un horario de salida:",
             tokens: ["¿A", "qué", "hora", "sale", "el", "primer", "tren?"],
@@ -320,7 +371,7 @@ export const spanishA2Units = [
             explanation: "Fórmula interrogativa: ¿A qué hora sale + sujeto?"
           },
           {
-            id: "es-u6-q10",
+            id: "es-u6-l2-q4",
             type: "fill_blank",
             sentence: "Ellos van a ___ un hotel cerca de la playa.",
             missingWord: "reservar",
@@ -329,7 +380,7 @@ export const spanishA2Units = [
             explanation: "Forma infinitiva tras 'van a'."
           },
           {
-            id: "es-u6-q11",
+            id: "es-u6-l2-q5",
             type: "multiple_choice",
             prompt: "¿Cuál es la respuesta adecuada para confirmar una cita profesional: '¿Nos vemos el martes a las 10:00?'?",
             options: [
@@ -342,15 +393,7 @@ export const spanishA2Units = [
             explanation: "Fórmula estándar de confirmación de acuerdos de calendario."
           },
           {
-            id: "es-u6-q12",
-            type: "multiple_choice",
-            prompt: "¿Cuál de estos verbos expresa la intención de comenzar un hábito futuro?",
-            options: ["Voy a empezar a", "Dejé de", "Suelo", "Acabo de"],
-            correctAnswer: "Voy a empezar a",
-            explanation: "'Empezar a + infinitivo' es la perífrasis incoativa para iniciar una acción."
-          },
-          {
-            id: "es-u6-q13",
+            id: "es-u6-l2-q6",
             type: "audio_listen",
             prompt: "Escucha el anuncio de viaje y elige el destino mencionado:",
             audioText: "Atención señores pasajeros: el vuelo con destino a Valencia va a despegar por la puerta cuatro.",
@@ -359,16 +402,7 @@ export const spanishA2Units = [
             explanation: "El anuncio especifica claramente 'destino a Valencia'."
           },
           {
-            id: "es-u6-q14",
-            type: "fill_blank",
-            sentence: "El año que viene mi hermana va a ___ en la universidad.",
-            missingWord: "ingresar",
-            options: ["ingresar", "ingreso", "ingresó", "ingresaba"],
-            correctAnswer: "ingresar",
-            explanation: "Infinitivo tras perífrasis de futuro."
-          },
-          {
-            id: "es-u6-q15",
+            id: "es-u6-l2-q7",
             type: "matching",
             prompt: "Empareja las preguntas con sus respuestas lógicas de agenda:",
             pairs: [
@@ -379,23 +413,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u6-q16",
-            type: "scramble",
-            prompt: "Ordena los elementos para expresar un plan en negativo:",
-            tokens: ["Nosotros", "no", "vamos", "a", "trabajar", "el", "domingo."],
-            correctTokens: ["Nosotros", "no", "vamos", "a", "trabajar", "el", "domingo."],
-            explanation: "La partícula negativa 'no' precede al verbo auxiliar conjugado ('no vamos a trabajar')."
-          },
-          {
-            id: "es-u6-q17",
-            type: "multiple_choice",
-            prompt: "¿Qué significa 'dentro de poco'?",
-            options: ["En un breve espacio de tiempo futuro", "Hace mucho tiempo", "Nunca", "En este preciso segundo"],
-            correctAnswer: "En un breve espacio de tiempo futuro",
-            explanation: "'Dentro de poco' es sinónimo de 'pronto' o 'en breve'."
-          },
-          {
-            id: "es-u6-q18",
+            id: "es-u6-l2-q8",
             type: "fill_blank",
             sentence: "¿Tú ___ a venir a la fiesta de graduación?",
             missingWord: "vas",
@@ -404,7 +422,7 @@ export const spanishA2Units = [
             explanation: "Conjunción de 2ª persona singular 'tú vas'."
           },
           {
-            id: "es-u6-q19",
+            id: "es-u6-l2-q9",
             type: "multiple_choice",
             prompt: "Al hablar de horarios públicos (trenes, aviones, comercios), ¿qué tiempo del presente se usa a menudo con valor de futuro?",
             options: [
@@ -417,7 +435,7 @@ export const spanishA2Units = [
             explanation: "El presente de indicativo con marcador temporal se usa habitualmente para horarios fijados o eventos programados."
           },
           {
-            id: "es-u6-q20",
+            id: "es-u6-l2-q10",
             type: "matching",
             prompt: "Empareja los documentos necesarios para viajar con su uso:",
             pairs: [
@@ -447,21 +465,13 @@ export const spanishA2Units = [
     lessons: [
       {
         id: "es-u7-l1",
-        title: "Lección 1: Salud, Partes del Cuerpo e Imperativo",
-        description: "Aprende a describir dolores y síntomas médicos ('me duele/duelen'), dar consejos saludables y utilizar el imperativo afirmativo.",
+        title: "Lección 1: Partes del Cuerpo, Síntomas y el Verbo 'Doler'",
+        description: "Aprende el vocabulario anatómico y expresa dolores y malestares con las estructuras 'me duele / me duelen' y 'sentirse'.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u7-q1",
-            type: "multiple_choice",
-            prompt: "¿Cuál es la forma del imperativo afirmativo del verbo 'beber' para 'tú'?",
-            options: ["Bebe", "Bebas", "Bebes", "Beba"],
-            correctAnswer: "Bebe",
-            explanation: "El imperativo afirmativo regular de 'tú' coincide con la 3ª persona del singular del presente de indicativo: 'tú bebe'."
-          },
-          {
-            id: "es-u7-q2",
+            id: "es-u7-l1-q1",
             type: "fill_blank",
             sentence: "Me ___ mucho la cabeza hoy.",
             missingWord: "duele",
@@ -470,7 +480,7 @@ export const spanishA2Units = [
             explanation: "'La cabeza' es singular, por tanto el verbo doler concuerda en 3ª persona del singular: 'me duele'."
           },
           {
-            id: "es-u7-q3",
+            id: "es-u7-l1-q2",
             type: "fill_blank",
             sentence: "Después de correr me ___ las piernas.",
             missingWord: "duelen",
@@ -479,7 +489,7 @@ export const spanishA2Units = [
             explanation: "'Las piernas' es un sujeto plural, requiriendo 'me duelen'."
           },
           {
-            id: "es-u7-q4",
+            id: "es-u7-l1-q3",
             type: "matching",
             prompt: "Empareja las partes del cuerpo con su traducción:",
             pairs: [
@@ -490,7 +500,90 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u7-q5",
+            id: "es-u7-l1-q4",
+            type: "multiple_choice",
+            prompt: "¿Qué síntoma describe 'tengo tos y fiebre alta de 39 grados'?",
+            options: ["Gripe o infección respiratoria", "Una quemadura de sol", "Una fractura en el pie", "Hambre"],
+            correctAnswer: "Gripe o infección respiratoria",
+            explanation: "La combinación de fiebre elevada y tos es el cuadro típico de un estado gripal."
+          },
+          {
+            id: "es-u7-l1-q5",
+            type: "scramble",
+            prompt: "Ordena las palabras para expresar un malestar físico:",
+            tokens: ["Me", "siento", "mareado", "y", "tengo", "náuseas."],
+            correctTokens: ["Me", "siento", "mareado", "y", "tengo", "náuseas."],
+            explanation: "Construcción habitual: sentirse + adjetivo + y + tener + síntoma."
+          },
+          {
+            id: "es-u7-l1-q6",
+            type: "matching",
+            prompt: "Empareja los remedios con las dolencias correspondientes:",
+            pairs: [
+              { native: "Dolor de cabeza", english: "Headache", left: "Cefalea / Jaqueca", right: "Tomar un analgésico" },
+              { native: "Corte en el dedo", english: "Cut on finger", left: "Herida leve", right: "Poner una tirita" },
+              { native: "Quemadura solar", english: "Sunburn", left: "Piel enrojecida", right: "Aplicar crema hidratante" },
+              { native: "Esguince de tobillo", english: "Sprained ankle", left: "Hinchazón articular", right: "Poner hielo y vendar" }
+            ]
+          },
+          {
+            id: "es-u7-l1-q7",
+            type: "scramble",
+            prompt: "Ordena las palabras para pedir cita médica en recepción:",
+            tokens: ["Quisiera", "pedir", "cita", "con", "el", "médico", "de", "cabecera."],
+            correctTokens: ["Quisiera", "pedir", "cita", "con", "el", "médico", "de", "cabecera."],
+            explanation: "Fórmula de cortesía educada con 'quisiera'."
+          },
+          {
+            id: "es-u7-l1-q8",
+            type: "fill_blank",
+            sentence: "Por favor, doctor, ¿me puede dar una ___ para la farmacia?",
+            missingWord: "receta",
+            options: ["receta", "factura", "carta", "cuenta"],
+            correctAnswer: "receta",
+            explanation: "El documento médico que prescribe fármacos es la 'receta médica'."
+          },
+          {
+            id: "es-u7-l1-q9",
+            type: "multiple_choice",
+            prompt: "¿Qué estructura se usa para dar recomendaciones generales impersonales sobre hábitos saludables?",
+            options: [
+              "Hay que + infinitivo ('Hay que dormir 8 horas')",
+              "Yo tuve que + infinitivo",
+              "Nosotros quisimos",
+              "Había una vez"
+            ],
+            correctAnswer: "Hay que + infinitivo ('Hay que dormir 8 horas')",
+            explanation: "'Hay que + infinitivo' es la perífrasis impersonal por excelencia para pautas y consejos generales."
+          },
+          {
+            id: "es-u7-l1-q10",
+            type: "audio_listen",
+            prompt: "Escucha la recomendación del doctor y elige la acción indicada:",
+            audioText: "Guarda reposo en cama durante tres días y bebe mucha agua.",
+            options: ["Guardar reposo y beber agua", "Ir al gimnasio inmediatamente", "Comer comida chatarra", "Caminar 20 kilómetros"],
+            correctAnswer: "Guardar reposo y beber agua",
+            explanation: "La recomendación prescribe expresamente reposo y abundante hidratación."
+          }
+        ]
+      },
+      {
+        id: "es-u7-l2",
+        title: "Lección 2: Consejos Saludables y el Imperativo Afirmativo (Tú y Vosotros)",
+        description: "Domina las formas regulares e irregulares del imperativo afirmativo (habla, come, haz, pon, sal) y la colocación de pronombres enclíticos.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u7-l2-q1",
+            type: "multiple_choice",
+            prompt: "¿Cuál es la forma del imperativo afirmativo del verbo 'beber' para 'tú'?",
+            options: ["Bebe", "Bebas", "Bebes", "Beba"],
+            correctAnswer: "Bebe",
+            explanation: "El imperativo afirmativo regular de 'tú' coincide con la 3ª persona del singular del presente de indicativo: 'tú bebe'."
+          },
+          {
+            id: "es-u7-l2-q2",
             type: "multiple_choice",
             prompt: "¿Cómo se forma el imperativo afirmativo regular para 'vosotros'?",
             options: [
@@ -503,7 +596,7 @@ export const spanishA2Units = [
             explanation: "La regla de oro del imperativo de 'vosotros' es sustituir la -r del infinitivo por -d: comer -> comed; vivir -> vivid."
           },
           {
-            id: "es-u7-q6",
+            id: "es-u7-l2-q3",
             type: "scramble",
             prompt: "Ordena las palabras para dar un consejo médico con imperativo:",
             tokens: ["Toma", "este", "medicamento", "cada", "ocho", "horas."],
@@ -511,7 +604,7 @@ export const spanishA2Units = [
             explanation: "Imperativo 'Toma' + objeto directo + pauta temporal."
           },
           {
-            id: "es-u7-q7",
+            id: "es-u7-l2-q4",
             type: "multiple_choice",
             prompt: "¿Cuál es el imperativo afirmativo irregular de 'hacer' para 'tú'?",
             options: ["Haz", "Hace", "Hagas", "Haga"],
@@ -519,7 +612,7 @@ export const spanishA2Units = [
             explanation: "El imperativo de 'tú' para el verbo hacer es irregular monosílabo: 'haz'."
           },
           {
-            id: "es-u7-q8",
+            id: "es-u7-l2-q5",
             type: "matching",
             prompt: "Empareja los imperativos irregulares para 'tú':",
             pairs: [
@@ -530,7 +623,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u7-q9",
+            id: "es-u7-l2-q6",
             type: "fill_blank",
             sentence: "Para estar en forma, ___ deporte regularmente.",
             missingWord: "haz",
@@ -539,32 +632,7 @@ export const spanishA2Units = [
             explanation: "Imperativo afirmativo informal 'haz'."
           },
           {
-            id: "es-u7-q10",
-            type: "multiple_choice",
-            prompt: "¿Qué síntoma describe 'tengo tos y fiebre alta de 39 grados'?",
-            options: ["Gripe o infección respiratoria", "Una quemadura de sol", "Una fractura en el pie", "Hambre"],
-            correctAnswer: "Gripe o infección respiratoria",
-            explanation: "La combinación de fiebre elevada y tos es el cuadro típico de un estado gripal."
-          },
-          {
-            id: "es-u7-q11",
-            type: "scramble",
-            prompt: "Ordena las palabras para expresar un malestar físico:",
-            tokens: ["Me", "siento", "mareado", "y", "tengo", "náuseas."],
-            correctTokens: ["Me", "siento", "mareado", "y", "tengo", "náuseas."],
-            explanation: "Construcción habitual: sentirse + adjetivo + y + tener + síntoma."
-          },
-          {
-            id: "es-u7-q12",
-            type: "audio_listen",
-            prompt: "Escucha la recomendación del doctor y elige la acción indicada:",
-            audioText: "Guarda reposo en cama durante tres días y bebe mucha agua.",
-            options: ["Guardar reposo y beber agua", "Ir al gimnasio inmediatamente", "Comer comida chatarra", "Caminar 20 kilómetros"],
-            correctAnswer: "Guardar reposo y beber agua",
-            explanation: "La recomendación prescribe expresamente reposo y abundante hidratación."
-          },
-          {
-            id: "es-u7-q13",
+            id: "es-u7-l2-q7",
             type: "multiple_choice",
             prompt: "En el imperativo con pronombres reflexivos o de objeto, ¿dónde se colocan los pronombres?",
             options: [
@@ -577,7 +645,7 @@ export const spanishA2Units = [
             explanation: "En imperativo afirmativo los pronombres se posponen obligatoriamente unidos al verbo: lávate, cómetelo, escúchame."
           },
           {
-            id: "es-u7-q14",
+            id: "es-u7-l2-q8",
             type: "fill_blank",
             sentence: "Hijos, ___ las manos antes de comer.",
             missingWord: "lavaos",
@@ -586,18 +654,7 @@ export const spanishA2Units = [
             explanation: "Al añadir 'os' a la forma 'lavad' de vosotros, se elide la 'd': lavad + os = 'lavaos'."
           },
           {
-            id: "es-u7-q15",
-            type: "matching",
-            prompt: "Empareja los remedios con las dolencias correspondientes:",
-            pairs: [
-              { native: "Dolor de cabeza", english: "Headache", left: "Cefalea / Jaqueca", right: "Tomar un analgésico" },
-              { native: "Corte en el dedo", english: "Cut on finger", left: "Herida leve", right: "Poner una tirita" },
-              { native: "Quemadura solar", english: "Sunburn", left: "Piel enrojecida", right: "Aplicar crema hidratante" },
-              { native: "Esguince de tobillo", english: "Sprained ankle", left: "Hinchazón articular", right: "Poner hielo y vendar" }
-            ]
-          },
-          {
-            id: "es-u7-q16",
+            id: "es-u7-l2-q9",
             type: "multiple_choice",
             prompt: "¿Cuál es el imperativo de 'ir' para 'tú'?",
             options: ["Ve", "Va", "Vaya", "Vete"],
@@ -605,42 +662,12 @@ export const spanishA2Units = [
             explanation: "El imperativo afirmativo simple del verbo 'ir' para tú es 've' (o 'vete' en su forma reflexiva irse)."
           },
           {
-            id: "es-u7-q17",
-            type: "scramble",
-            prompt: "Ordena las palabras para pedir cita médica en recepción:",
-            tokens: ["Quisiera", "pedir", "cita", "con", "el", "médico", "de", "cabecera."],
-            correctTokens: ["Quisiera", "pedir", "cita", "con", "el", "médico", "de", "cabecera."],
-            explanation: "Fórmula de cortesía educada con 'quisiera'."
-          },
-          {
-            id: "es-u7-q18",
-            type: "fill_blank",
-            sentence: "Por favor, doctor, ¿me puede dar una ___ para la farmacia?",
-            missingWord: "receta",
-            options: ["receta", "factura", "carta", "cuenta"],
-            correctAnswer: "receta",
-            explanation: "El documento médico que prescribe fármacos es la 'receta médica'."
-          },
-          {
-            id: "es-u7-q19",
+            id: "es-u7-l2-q10",
             type: "multiple_choice",
             prompt: "¿Cuál es el imperativo de 'decir' para 'tú'?",
             options: ["Di", "Dice", "Diga", "Dices"],
             correctAnswer: "Di",
             explanation: "El imperativo irregular de 'decir' para 'tú' es 'di' ('Dime la verdad')."
-          },
-          {
-            id: "es-u7-q20",
-            type: "multiple_choice",
-            prompt: "¿Qué estructura se usa para dar recomendaciones generales impersonales sobre hábitos saludables?",
-            options: [
-              "Hay que + infinitivo ('Hay que dormir 8 horas')",
-              "Yo tuve que + infinitivo",
-              "Nosotros quisimos",
-              "Había una vez"
-            ],
-            correctAnswer: "Hay que + infinitivo ('Hay que dormir 8 horas')",
-            explanation: "'Hay que + infinitivo' es la perífrasis impersonal por excelencia para pautas y consejos generales."
           }
         ]
       }
@@ -662,13 +689,13 @@ export const spanishA2Units = [
     lessons: [
       {
         id: "es-u8-l1",
-        title: "Lección 1: Pronombres de Objeto, Tiendas y Hoteles",
-        description: "Domina el uso de los pronombres de complemento directo (OD) e indirecto (OI), la sustitución combinada y el lenguaje de compras y hostelería.",
+        title: "Lección 1: Pronombres de Objeto Directo e Indirecto (OD / OI / Se lo)",
+        description: "Domina el sistema pronominal de 3ª persona (lo, la, le, les) y la regla de transformación de le/les a 'se' al combinarse con objeto directo.",
         xp: 20,
         completed: false,
         questions: [
           {
-            id: "es-u8-q1",
+            id: "es-u8-l1-q1",
             type: "multiple_choice",
             prompt: "¿Cuáles son los pronombres de Objeto Directo (OD) de tercera persona?",
             options: ["Lo, la, los, las", "Le, les", "Me, te, nos, os", "Se, sí, consigo"],
@@ -676,7 +703,7 @@ export const spanishA2Units = [
             explanation: "Los pronombres de complemento directo en 3ª persona concuerdan en género y número: lo (masc. sing.), la (fem. sing.), los (masc. pl.), las (fem. pl.)."
           },
           {
-            id: "es-u8-q2",
+            id: "es-u8-l1-q2",
             type: "fill_blank",
             sentence: "¿Has comprado la camisa nueva? Sí, ya ___ he comprado.",
             missingWord: "la",
@@ -685,7 +712,7 @@ export const spanishA2Units = [
             explanation: "'La camisa' es femenino singular, sustituido por el pronombre 'la'."
           },
           {
-            id: "es-u8-q3",
+            id: "es-u8-l1-q3",
             type: "multiple_choice",
             prompt: "¿Cuáles son los pronombres de Objeto Indirecto (OI) de tercera persona?",
             options: ["Le, les", "Lo, la, los, las", "Mío, tuyo, suyo", "Este, ese, aquel"],
@@ -693,7 +720,7 @@ export const spanishA2Units = [
             explanation: "El objeto indirecto de tercera persona es 'le' (singular) y 'les' (plural), invariables en cuanto al género."
           },
           {
-            id: "es-u8-q4",
+            id: "es-u8-l1-q4",
             type: "fill_blank",
             sentence: "¿Escribiste a tus abuelos? Sí, ___ escribí una carta ayer.",
             missingWord: "les",
@@ -702,7 +729,7 @@ export const spanishA2Units = [
             explanation: "'A tus abuelos' es destinatario (objeto indirecto plural) -> 'les'."
           },
           {
-            id: "es-u8-q5",
+            id: "es-u8-l1-q5",
             type: "matching",
             prompt: "Empareja la frase con su equivalente con pronombre de OD:",
             pairs: [
@@ -713,7 +740,7 @@ export const spanishA2Units = [
             ]
           },
           {
-            id: "es-u8-q6",
+            id: "es-u8-l1-q6",
             type: "multiple_choice",
             prompt: "Cuando coinciden dos pronombres de 3ª persona (le/les + lo/la/los/las), ¿en qué se transforma 'le/les'?",
             options: ["Se", "Me", "Te", "Nos"],
@@ -721,7 +748,7 @@ export const spanishA2Units = [
             explanation: "Por eufonía, 'le lo' o 'les la' se transforman en 'se lo' o 'se la' ('Se lo dije')."
           },
           {
-            id: "es-u8-q7",
+            id: "es-u8-l1-q7",
             type: "scramble",
             prompt: "Ordena los pronombres y el verbo para decir 'I give it to him':",
             tokens: ["Yo", "se", "lo", "doy", "ahora", "mismo."],
@@ -729,52 +756,7 @@ export const spanishA2Units = [
             explanation: "Orden de pronombres: OI transformado ('se') + OD ('lo') + verbo ('doy')."
           },
           {
-            id: "es-u8-q8",
-            type: "multiple_choice",
-            prompt: "En una tienda de ropa, ¿cómo preguntas al dependiente por tu tamaño adecuado?",
-            options: ["¿Tiene este pantalón en la talla 40?", "¿Cuánto pesa este abrigo?", "¿A qué hora cierra el tren?", "¿Dónde está la autopista?"],
-            correctAnswer: "¿Tiene este pantalón en la talla 40?",
-            explanation: "Para la ropa se pregunta por la 'talla' (para calzado, 'número')."
-          },
-          {
-            id: "es-u8-q9",
-            type: "fill_blank",
-            sentence: "¿Dónde están los ___ para probarme esta chaqueta?",
-            missingWord: "probadores",
-            options: ["probadores", "mostradores", "cajeros", "escaparates"],
-            correctAnswer: "probadores",
-            explanation: "El espacio para probarse prendas en una tienda de ropa son los 'probadores'."
-          },
-          {
-            id: "es-u8-q10",
-            type: "matching",
-            prompt: "Empareja el vocabulario de hostelería con su descripción:",
-            pairs: [
-              { native: "Habitación individual", english: "Single room", left: "Habitación individual", right: "Para un solo huésped" },
-              { native: "Media pensión", english: "Half board", left: "Media pensión", right: "Alojamiento, desayuno y una comida" },
-              { native: "Pensión completa", english: "Full board", left: "Pensión completa", right: "Desayuno, almuerzo y cena incluidos" },
-              { native: "Hacer el check-out", english: "Check out", left: "Dejar la habitación", right: "Salida formal del hotel" }
-            ]
-          },
-          {
-            id: "es-u8-q11",
-            type: "scramble",
-            prompt: "Ordena las palabras para solicitar la cuenta en un restaurante:",
-            tokens: ["Camarero,", "¿nos", "trae", "la", "cuenta,", "por", "favor?"],
-            correctTokens: ["Camarero,", "¿nos", "trae", "la", "cuenta,", "por", "favor?"],
-            explanation: "Fórmula cortés estándar en restaurantes hispanohablantes."
-          },
-          {
-            id: "es-u8-q12",
-            type: "audio_listen",
-            prompt: "Escucha el diálogo en la recepción del hotel y selecciona el tipo de habitación solicitada:",
-            audioText: "Buenas tardes, tenemos una reserva para una habitación doble con vistas al mar.",
-            options: ["Habitación doble con vistas al mar", "Habitación individual interior", "Suite presidencial con jardín", "Cama supletoria en el pasillo"],
-            correctAnswer: "Habitación doble con vistas al mar",
-            explanation: "El cliente especifica claramente 'habitación doble con vistas al mar'."
-          },
-          {
-            id: "es-u8-q13",
+            id: "es-u8-l1-q8",
             type: "multiple_choice",
             prompt: "Con verbos conjugados que llevan un infinitivo (perífrasis como 'querer comprar'), ¿dónde se pueden colocar los pronombres?",
             options: [
@@ -787,7 +769,7 @@ export const spanishA2Units = [
             explanation: "Hay doble posibilidad: 'Lo quiero comprar' o 'Quiero comprarlo'. Ambas son 100% correctas."
           },
           {
-            id: "es-u8-q14",
+            id: "es-u8-l1-q9",
             type: "fill_blank",
             sentence: "¿Le diste el regalo a María? Sí, ___ lo di esta mañana.",
             missingWord: "se",
@@ -796,56 +778,7 @@ export const spanishA2Units = [
             explanation: "Al confluir con 'lo', el pronombre de indirecto 'le' se convierte en 'se'."
           },
           {
-            id: "es-u8-q15",
-            type: "multiple_choice",
-            prompt: "¿Cómo se llama el período comercial en el que las tiendas ofrecen descuentos de precio significativos?",
-            options: ["Las rebajas", "Las propinas", "Las fianzas", "Las subastas"],
-            correctAnswer: "Las rebajas",
-            explanation: "'Las rebajas' (sales / discounts) ocurren habitualmente en enero e invierno o en verano."
-          },
-          {
-            id: "es-u8-q16",
-            type: "matching",
-            prompt: "Empareja las formas de pago con su expresión cotidiana:",
-            pairs: [
-              { native: "Pagar en efectivo / en metálico", english: "Pay in cash", left: "Con billetes y monedas", right: "Pagar en efectivo" },
-              { native: "Pagar con tarjeta de crédito", english: "Pay by credit card", left: "Con plástico / TPV", right: "Pagar con tarjeta" },
-              { native: "Pagar a plazos", english: "Pay in installments", left: "En cuotas mensuales", right: "Pagar a plazos" },
-              { native: "Dejar propina", english: "Leave a tip", left: "Dinero extra al camarero", right: "Dejar propina" }
-            ]
-          },
-          {
-            id: "es-u8-q17",
-            type: "scramble",
-            prompt: "Ordena las palabras para preguntar por el precio de una prenda:",
-            tokens: ["¿Cuánto", "cuestan", "estos", "zapatos", "negros?"],
-            correctTokens: ["¿Cuánto", "cuestan", "estos", "zapatos", "negros?"],
-            explanation: "Fórmula de precio con sujeto plural: ¿Cuánto cuestan + sustantivo plural?"
-          },
-          {
-            id: "es-u8-q18",
-            type: "fill_blank",
-            sentence: "Esta falda me queda muy estrecha; necesito una talla más ___.",
-            missingWord: "grande",
-            options: ["grande", "pequeña", "cara", "vieja"],
-            correctAnswer: "grande",
-            explanation: "Si queda estrecha, se necesita una talla mayor o 'más grande'."
-          },
-          {
-            id: "es-u8-q19",
-            type: "multiple_choice",
-            prompt: "¿Cuál es la respuesta del camarero al preguntar '¿Qué nos recomienda de primero?'?",
-            options: [
-              "Les recomiendo la sopa de marisco de la casa.",
-              "Cobramos con datáfono.",
-              "La habitación tiene llave.",
-              "Son las tres de la tarde."
-            ],
-            correctAnswer: "Les recomiendo la sopa de marisco de la casa.",
-            explanation: "Respuesta culinaria adecuada recomendando un plato del menú."
-          },
-          {
-            id: "es-u8-q20",
+            id: "es-u8-l1-q10",
             type: "multiple_choice",
             prompt: "Identifica la frase gramaticalmente INCORRECTA:",
             options: [
@@ -856,6 +789,109 @@ export const spanishA2Units = [
             ],
             correctAnswer: "Le lo dije ayer",
             explanation: "'Le lo' es agramatical en español; la cacofonía exige 'se lo'."
+          }
+        ]
+      },
+      {
+        id: "es-u8-l2",
+        title: "Lección 2: Tiendas de Ropa, Restaurantes y Reservas Hoteleras",
+        description: "Aprende el lenguaje de probadores, tallas, pagos en efectivo/tarjeta, pedidos en restaurantes y reservas de alojamiento.",
+        xp: 20,
+        completed: false,
+        questions: [
+          {
+            id: "es-u8-l2-q1",
+            type: "multiple_choice",
+            prompt: "En una tienda de ropa, ¿cómo preguntas al dependiente por tu tamaño adecuado?",
+            options: ["¿Tiene este pantalón en la talla 40?", "¿Cuánto pesa este abrigo?", "¿A qué hora cierra el tren?", "¿Dónde está la autopista?"],
+            correctAnswer: "¿Tiene este pantalón en la talla 40?",
+            explanation: "Para la ropa se pregunta por la 'talla' (para calzado, 'número')."
+          },
+          {
+            id: "es-u8-l2-q2",
+            type: "fill_blank",
+            sentence: "¿Dónde están los ___ para probarme esta chaqueta?",
+            missingWord: "probadores",
+            options: ["probadores", "mostradores", "cajeros", "escaparates"],
+            correctAnswer: "probadores",
+            explanation: "El espacio para probarse prendas en una tienda de ropa son los 'probadores'."
+          },
+          {
+            id: "es-u8-l2-q3",
+            type: "matching",
+            prompt: "Empareja el vocabulario de hostelería con su descripción:",
+            pairs: [
+              { native: "Habitación individual", english: "Single room", left: "Habitación individual", right: "Para un solo huésped" },
+              { native: "Media pensión", english: "Half board", left: "Media pensión", right: "Alojamiento, desayuno y una comida" },
+              { native: "Pensión completa", english: "Full board", left: "Pensión completa", right: "Desayuno, almuerzo y cena incluidos" },
+              { native: "Hacer el check-out", english: "Check out", left: "Dejar la habitación", right: "Salida formal del hotel" }
+            ]
+          },
+          {
+            id: "es-u8-l2-q4",
+            type: "scramble",
+            prompt: "Ordena las palabras para solicitar la cuenta en un restaurante:",
+            tokens: ["Camarero,", "¿nos", "trae", "la", "cuenta,", "por", "favor?"],
+            correctTokens: ["Camarero,", "¿nos", "trae", "la", "cuenta,", "por", "favor?"],
+            explanation: "Fórmula cortés estándar en restaurantes hispanohablantes."
+          },
+          {
+            id: "es-u8-l2-q5",
+            type: "audio_listen",
+            prompt: "Escucha el diálogo en la recepción del hotel y selecciona el tipo de habitación solicitada:",
+            audioText: "Buenas tardes, tenemos una reserva para una habitación doble con vistas al mar.",
+            options: ["Habitación doble con vistas al mar", "Habitación individual interior", "Suite presidencial con jardín", "Cama supletoria en el pasillo"],
+            correctAnswer: "Habitación doble con vistas al mar",
+            explanation: "El cliente especifica claramente 'habitación doble con vistas al mar'."
+          },
+          {
+            id: "es-u8-l2-q6",
+            type: "multiple_choice",
+            prompt: "¿Cómo se llama el período comercial en el que las tiendas ofrecen descuentos de precio significativos?",
+            options: ["Las rebajas", "Las propinas", "Las fianzas", "Las subastas"],
+            correctAnswer: "Las rebajas",
+            explanation: "'Las rebajas' (sales / discounts) ocurren habitualmente en enero e invierno o en verano."
+          },
+          {
+            id: "es-u8-l2-q7",
+            type: "matching",
+            prompt: "Empareja las formas de pago con su expresión cotidiana:",
+            pairs: [
+              { native: "Pagar en efectivo / en metálico", english: "Pay in cash", left: "Con billetes y monedas", right: "Pagar en efectivo" },
+              { native: "Pagar con tarjeta de crédito", english: "Pay by credit card", left: "Con plástico / TPV", right: "Pagar con tarjeta" },
+              { native: "Pagar a plazos", english: "Pay in installments", left: "En cuotas mensuales", right: "Pagar a plazos" },
+              { native: "Dejar propina", english: "Leave a tip", left: "Dinero extra al camarero", right: "Dejar propina" }
+            ]
+          },
+          {
+            id: "es-u8-l2-q8",
+            type: "scramble",
+            prompt: "Ordena las palabras para preguntar por el precio de una prenda:",
+            tokens: ["¿Cuánto", "cuestan", "estos", "zapatos", "negros?"],
+            correctTokens: ["¿Cuánto", "cuestan", "estos", "zapatos", "negros?"],
+            explanation: "Fórmula de precio con sujeto plural: ¿Cuánto cuestan + sustantivo plural?"
+          },
+          {
+            id: "es-u8-l2-q9",
+            type: "fill_blank",
+            sentence: "Esta falda me queda muy estrecha; necesito una talla más ___.",
+            missingWord: "grande",
+            options: ["grande", "pequeña", "cara", "vieja"],
+            correctAnswer: "grande",
+            explanation: "Si queda estrecha, se necesita una talla mayor o 'más grande'."
+          },
+          {
+            id: "es-u8-l2-q10",
+            type: "multiple_choice",
+            prompt: "¿Cuál es la respuesta del camarero al preguntar '¿Qué nos recomienda de primero?'?",
+            options: [
+              "Les recomiendo la sopa de marisco de la casa.",
+              "Cobramos con datáfono.",
+              "La habitación tiene llave.",
+              "Son las tres de la tarde."
+            ],
+            correctAnswer: "Les recomiendo la sopa de marisco de la casa.",
+            explanation: "Respuesta culinaria adecuada recomendando un plato del menú."
           }
         ]
       }
