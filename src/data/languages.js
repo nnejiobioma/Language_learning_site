@@ -25,7 +25,7 @@ export const LANGUAGES = {
     accentColor: "#ef4444", // vibrant crimson
     secondaryColor: "#f59e0b", // warm gold
     greeting: "¡Hola! ¿Cómo estás?",
-    description: "Master Spanish through the official LOMLOE (RD 217/2022) curriculum for 1º ESO: linguistic variety, narration, media literacy, poetry, and debate.",
+    description: "Master Spanish through the official MCER / Instituto Cervantes curriculum spanning 20 leveled units across A1 (Beginner), A2 (Elementary), B1 (Intermediate), B2 (Upper-Intermediate), and C1/C2 (Mastery).",
     cultureVault: spanishCultureVault,
     flashcards: spanishFlashcards,
     units: spanishAllUnits
