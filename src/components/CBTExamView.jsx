@@ -8,6 +8,7 @@ import { generateFrenchDynamicExam, frenchExamPools } from '../data/cbtFrenchExa
 import { generateSpanishDynamicExam, spanishExamPools } from '../data/cbtSpanishExamEngine';
 import { generateGermanDynamicExam, germanExamPools } from '../data/cbtGermanExamEngine';
 import { generatePortugueseDynamicExam, portugueseExamPools } from '../data/cbtPortugueseExamEngine';
+import { generateSwedishDynamicExam, swedishExamPools } from '../data/cbtSwedishExamEngine';
 import { getExamsForLanguage, pidginExams } from '../data/cbtExams';
 import { 
   getUserSeenQuestionIds, 
@@ -52,6 +53,7 @@ export default function CBTExamView() {
   const { user, profile, saveProfileData } = useAuth();
   const langData = LANGUAGES[currentLanguage] || LANGUAGES.spanish || LANGUAGES.pidgin;
 
+  const isSwedish = currentLanguage === 'swedish';
   const isPortuguese = currentLanguage === 'portuguese';
   const isGerman = currentLanguage === 'german';
   const isSpanish = currentLanguage === 'spanish';
@@ -61,15 +63,18 @@ export default function CBTExamView() {
 
   const userAttemptNumber = getUserAttemptCount(user?.uid);
 
-  // Level selector for Spanish DELE/SIELE, French DELF/DALF, Finnish YKI, or Nigerian Pidgin NERDC
+  // Level selector for Swedish SFI/Tisus, Portuguese CAPLE, German DTZ, Spanish DELE, French DELF, Finnish YKI, Pidgin
   const [selectedLevelKey, setSelectedLevelKey] = useState(
-    isPortuguese ? 'cipleA2' : isGerman ? 'dtzA2B1' : isSpanish ? 'deleB1B2' : isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
+    isSwedish ? 'sfiKursD' : isPortuguese ? 'cipleA2' : isGerman ? 'dtzA2B1' : isSpanish ? 'deleB1B2' : isFrench ? 'delfB1B2' : isPidgin ? 'p-cbt-foundational' : 'keskitaso'
   );
   const [selectedSubtestFilter, setSelectedSubtestFilter] = useState('all'); // 'all' | 'reading' | 'writing' | 'listening' | 'speaking'
 
   // Synchronize tier default when language changes
   useEffect(() => {
-    if (isPortuguese && !['cipleA2'].includes(selectedLevelKey)) {
+    if (isSwedish && !['sfiKursD', 'tisusC1'].includes(selectedLevelKey)) {
+      setSelectedLevelKey('sfiKursD');
+      setSelectedSubtestFilter('all');
+    } else if (isPortuguese && !['cipleA2'].includes(selectedLevelKey)) {
       setSelectedLevelKey('cipleA2');
       setSelectedSubtestFilter('all');
     } else if (isGerman && !['dtzA2B1'].includes(selectedLevelKey)) {
@@ -88,7 +93,7 @@ export default function CBTExamView() {
       setSelectedLevelKey('p-cbt-foundational');
       setSelectedSubtestFilter('all');
     }
-  }, [currentLanguage, isPortuguese, isGerman, isSpanish, isFrench, isFinnish, isPidgin]);
+  }, [currentLanguage, isSwedish, isPortuguese, isGerman, isSpanish, isFrench, isFinnish, isPidgin]);
 
   // States: 'hub' | 'active' | 'results'
   const [viewState, setViewState] = useState('hub');
@@ -124,7 +129,9 @@ export default function CBTExamView() {
     const seenIds = getUserSeenQuestionIds(user?.uid, profile);
     let session;
 
-    if (isPortuguese) {
+    if (isSwedish) {
+      session = generateSwedishDynamicExam(levelKey, subtestFilter, seenIds);
+    } else if (isPortuguese) {
       session = generatePortugueseDynamicExam(levelKey, subtestFilter, seenIds);
     } else if (isGerman) {
       session = generateGermanDynamicExam(levelKey, subtestFilter, seenIds);
@@ -406,7 +413,9 @@ export default function CBTExamView() {
           </div>
 
           <h1 className="cbt-hero-title">
-            {isPortuguese
+            {isSwedish
+              ? "Officiell Svensk Provsimulator: Skolverket SFI Kurs D (B1) & Tisus (C1)"
+              : isPortuguese
               ? "Simulador Oficial de Exames CAPLE CIPLE (A2) & Português Língua de Acolhimento"
               : isGerman
               ? "Offizieller Prüfungssimulator: BAMF DTZ (A2–B1) & Goethe-Zertifikat"
@@ -422,7 +431,11 @@ export default function CBTExamView() {
           </h1>
 
           <p className="cbt-hero-subtitle">
-            {isPortuguese ? (
+            {isSwedish ? (
+              <>
+                Officiell digital provsimulator kalibrerad mot <strong>Skolverkets nationella prov i SFI (Kurs D / SeQF 3 / B1)</strong> för uppehållstillstånd, medborgarskap och arbetsliv, samt <strong>Tisus (Test i svenska för universitets- och högskolestudier / SeQF 6 / C1)</strong> administrerat av Stockholms universitet för högskolebehörighet och Socialstyrelsens legitimation. Träna alla fyra officiella delprov: <strong>Läsa</strong>, <strong>Skriva</strong>, <strong>Höra</strong> och <strong>Tala</strong> i språklaboratoriet. Varje provomgång för inloggade kandidater genererar en <strong>garanterat helt ny och unik uppsättning</strong>!
+              </>
+            ) : isPortuguese ? (
               <>
                 Simulador oficial de exames de proficiência estritamente alinhado com o <strong>Quadro Europeu Comum de Referência (QECR)</strong>, as matrizes oficiais do <strong>CAPLE (Universidade de Lisboa)</strong> e as normas do <strong>IEFP / DGE (Português Língua de Acolhimento PLA)</strong>. Prepare a certificação exigida para a <strong>Nacionalidade Portuguesa</strong> e <strong>Autorização de Residência Permanente</strong> através das quatro provas oficiais: <strong>Compreensão da Leitura</strong>, <strong>Produção Escrita</strong>, <strong>Compreensão do Oral</strong> e <strong>Expressão Oral</strong> no laboratório interativo. Cada tentativa de utilizador autenticado gera um <strong>conjunto de exame 100% novo e inédito</strong>!
               </>
@@ -458,7 +471,9 @@ export default function CBTExamView() {
             <Sparkles size={16} />
             <span>
               {user ? (
-                isPortuguese ? (
+                isSwedish ? (
+                  <>Inloggad kandidat: <strong>{user.displayName || user.email}</strong> • Provförsök #{userAttemptNumber} • <strong>100% Unika uppgifter garanterade</strong> i varje delprov</>
+                ) : isPortuguese ? (
                   <>Sessão ativa: <strong>{user.displayName || user.email}</strong> • Tentativa #{userAttemptNumber} • <strong>Conjunto 100% Novo Garantido</strong> em cada componente</>
                 ) : isGerman ? (
                   <>Aktive Sitzung: <strong>{user.displayName || user.email}</strong> • Versuch #{userAttemptNumber} • <strong>Garantiert neue Prüfungsaufgaben</strong> in jedem Prüfungsteil</>
@@ -470,7 +485,9 @@ export default function CBTExamView() {
                   <>Learner Account: <strong>{user.displayName || user.email}</strong> • Attempt #{userAttemptNumber} • <strong>Brand New Set Guaranteed</strong> on each subtest</>
                 )
               ) : (
-                isPortuguese ? (
+                isSwedish ? (
+                  <>💡 Tips: Logga in för att spara din provhistorik och garanteras en helt ny uppsättning uppgifter vid varje försök.</>
+                ) : isPortuguese ? (
                   <>💡 Dica: Inicie sessão para guardar o seu histórico e garantir um conjunto 100% novo de perguntas em cada tentativa.</>
                 ) : isGerman ? (
                   <>💡 Tipp: Melden Sie sich an, um Ihren Prüfungsverlauf zu sichern und bei jedem Versuch garantiert neue Aufgaben zu erhalten.</>
@@ -484,7 +501,127 @@ export default function CBTExamView() {
           </div>
         </section>
 
-                        {/* Level Switcher & Subtest Selection Panel for Portuguese (CAPLE CIPLE / PLA / IEFP) */}
+        {/* Level Switcher & Subtest Selection Panel for Swedish (Skolverket SFI & Tisus) */}
+        {isSwedish && (
+          <div className="cbt-level-control-panel">
+            <div className="level-control-header">
+              <div className="control-title-box">
+                <Sparkles size={20} className="sparkle-icon" />
+                <h3>1. Välj officiell svensk examensnivå (Skolverket / UHR)</h3>
+              </div>
+              <span className="control-badge">SeQF / Skolverket & Stockholms Universitet</span>
+            </div>
+
+            <div className="cbt-tier-selector-grid">
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'sfiKursD' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('sfiKursD')}
+              >
+                <div className="tier-tag badge-citizenship">SeQF 3 / CEFR B1 • Uppehållstillstånd & Arbete</div>
+                <h4>SFI Kurs D (Nationellt prov)</h4>
+                <p className="tier-desc">Nationellt prov i Svenska för invandrare. Standardkrav för permanent uppehållstillstånd, medborgarskap och yrkesutbildningar.</p>
+                <span className="tier-pool-stat">Skolverket Standard • 4 Delprov</span>
+              </button>
+
+              <button
+                className={`cbt-tier-card ${selectedLevelKey === 'tisusC1' ? 'active' : ''}`}
+                onClick={() => setSelectedLevelKey('tisusC1')}
+              >
+                <div className="tier-tag badge-mastery">SeQF 6 / CEFR C1 • Högskola & Legitimation</div>
+                <h4>Tisus (Test i svenska för universitetsstudier)</h4>
+                <p className="tier-desc">Akademisk behörighetsexamen administrerad av Stockholms universitet för universitetsantagning och Socialstyrelsens legitimation.</p>
+                <span className="tier-pool-stat">Stockholms Universitet & Socialstyrelsen</span>
+              </button>
+            </div>
+
+            {/* Subtest Mode Selector */}
+            <div className="subtest-mode-selector-section">
+              <div className="control-title-box">
+                <BookOpen size={20} className="sparkle-icon" />
+                <h3>2. Välj delprov eller fullständig provsimulering</h3>
+              </div>
+
+              <div className="subtest-pills-row">
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('all')}
+                >
+                  <Sparkles size={16} />
+                  <span>🌟 Fullständig provsimulering (4 delprov)</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'reading' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('reading')}
+                >
+                  <BookOpen size={16} />
+                  <span>📖 Delprov Läsa / Läsförståelse ({selectedLevelKey === 'tisusC1' ? '75 min' : '45 min'})</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'writing' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('writing')}
+                >
+                  <PenTool size={16} />
+                  <span>✍️ Delprov Skriva ({selectedLevelKey === 'tisusC1' ? '150 min' : '50 min'})</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'listening' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('listening')}
+                >
+                  <Headphones size={16} />
+                  <span>🎧 Delprov Höra / Hörförståelse ({selectedLevelKey === 'tisusC1' ? '40 min' : '30 min'})</span>
+                </button>
+
+                <button
+                  className={`subtest-mode-pill ${selectedSubtestFilter === 'speaking' ? 'active' : ''}`}
+                  onClick={() => setSelectedSubtestFilter('speaking')}
+                >
+                  <Mic size={16} />
+                  <span>🗣️ Delprov Tala / Språklaboratorium ({selectedLevelKey === 'tisusC1' ? '30 min' : '15 min'})</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Launch Banner Card */}
+            <div className="cbt-launch-card">
+              <div className="launch-left">
+                <span className="launch-sub-tag">Digital provplattform redo</span>
+                <h3 className="launch-exam-title">
+                  {swedishExamPools[selectedLevelKey]?.title || "Skolverket SFI Kurs D"}
+                </h3>
+                <p className="launch-exam-summary">
+                  Läge: <strong>{
+                    selectedSubtestFilter === 'all' ? "Fullständig examination (Läsa + Skriva + Höra + Muntlig interaktion)" :
+                    selectedSubtestFilter === 'reading' ? "Delprov Läsa (Autentiska samhälls- och myndighetstexter)" :
+                    selectedSubtestFilter === 'writing' ? "Delprov Skriva (Formell skriftlig produktion och argumentation)" :
+                    selectedSubtestFilter === 'listening' ? "Delprov Höra (Nyhetsinslag, radio och vardagskommunikation)" :
+                    "Delprov Tala i språklaboratoriet (Muntlig interaktion & anförande)"
+                  }</strong>
+                </p>
+                <div className="launch-pills-row">
+                  <span className="launch-info-chip"><Shuffle size={14} /> 100% Unika uppgifter vid varje försök</span>
+                  <span className="launch-info-chip"><ShieldCheck size={14} /> Skolverket & Tisus Standard</span>
+                  {user && <span className="launch-info-chip"><UserCheck size={14} /> Inloggad som ({user.displayName || user.email})</span>}
+                </div>
+              </div>
+
+              <div className="launch-right">
+                <button
+                  className="cbt-start-hero-btn"
+                  onClick={() => handleStartExam(selectedLevelKey, selectedSubtestFilter)}
+                  id="launch-swedish-exam-btn"
+                >
+                  <Play size={20} fill="currentColor" />
+                  <span>Starta Provet</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Level Switcher & Subtest Selection Panel for Portuguese (CAPLE CIPLE / PLA / IEFP) */}
         {isPortuguese && (
           <div className="cbt-level-control-panel">
             <div className="level-control-header">
@@ -1217,7 +1354,7 @@ export default function CBTExamView() {
         })()}
 
         {/* Generic Fallback Panel for other languages */}
-        {!isPortuguese && !isGerman && !isSpanish && !isFrench && !isFinnish && !isPidgin && (() => {
+        {!isSwedish && !isPortuguese && !isGerman && !isSpanish && !isFrench && !isFinnish && !isPidgin && (() => {
           const availableExams = getExamsForLanguage(currentLanguage);
           const activeExam = availableExams.find(e => e.id === selectedLevelKey) || availableExams[0];
           return (
@@ -1274,7 +1411,9 @@ export default function CBTExamView() {
           <div className="instructions-header">
             <BookOpen size={22} className="inst-icon" />
             <h3>
-              {isPortuguese
+              {isSwedish
+                ? "Officiell Struktur för SFI Kurs D & Tisus (Skolverket & UHR)"
+                : isPortuguese
                 ? "Estrutura Oficial do Exame CAPLE CIPLE (Universidade de Lisboa & QECR)"
                 : isGerman
                 ? "Offizielle Struktur des DTZ & Goethe-Zertifikats (BAMF & GER)"
@@ -1288,7 +1427,11 @@ export default function CBTExamView() {
             </h3>
           </div>
           <p className="cbt-subtests-intro">
-            {isPortuguese ? (
+            {isSwedish ? (
+              <>
+                Det nationella svenska provsystemet vilar på två officiella standarder: <strong>Skolverkets nationella prov i SFI (Kurs D / SeQF 3 / B1)</strong> för integration, permanent uppehållstillstånd och arbetsliv, samt <strong>Tisus (Stockholms universitet / UHR / SeQF 6 / C1)</strong> för universitetsstudier och Socialstyrelsens yrkeslegitimation:
+              </>
+            ) : isPortuguese ? (
               <>
                 O exame oficial <strong>CIPLE (Certificado Inicial de Português Língua Estrangeira)</strong> é concebido pelo <strong>CAPLE</strong> (Centro de Avaliação de Português Língua Estrangeira da Universidade de Lisboa) e regula o acesso à cidadania e integração laboral:
               </>
@@ -1319,11 +1462,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">📖</span>
-                <strong>{isPortuguese ? "Compreensão da Leitura" : isGerman ? "Leseverstehen" : isSpanish ? "Comprensión de lectura" : isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
-                <span className="subtest-time-tag">60 Mins</span>
+                <strong>{isSwedish ? "Delprov Läsa (Läsförståelse)" : isPortuguese ? "Compreensão da Leitura" : isGerman ? "Leseverstehen" : isSpanish ? "Comprensión de lectura" : isFrench ? "Compréhension des écrits" : "Reading Comprehension"}</strong>
+                <span className="subtest-time-tag">{isSwedish ? (selectedLevelKey === 'tisusC1' ? "75 Mins" : "45 Mins") : "60 Mins"}</span>
               </div>
               <p>
-                {isPortuguese
+                {isSwedish
+                  ? "Kritisk läsning av autentiska texter ur svenskt samhällsliv (hyresvärdsmeddelanden, skyddsombud, Försäkringskassan, SL-resevillkor och akademiska forskningsrapporter)."
+                  : isPortuguese
                   ? "Leitura crítica de documentos autênticos do quotidiano português (comunicados de condomínio, avisos da Junta de Freguesia, ofertas de emprego do IEFP e e-Fatura)."
                   : isGerman
                   ? "Kritisches Lesen von authentischen Dokumenten (Behördenmitteilungen, Hausordnungen, Wohnungsanzeigen, Verträge und Stellenangebote) mit detaillierten Multiple-Choice-Fragen."
@@ -1338,11 +1483,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">✍️</span>
-                <strong>{isPortuguese ? "Produção Escrita" : isGerman ? "Schriftlicher Ausdruck" : isSpanish ? "Expresión e interação escritas" : isFrench ? "Production écrite" : "Writing"}</strong>
-                <span className="subtest-time-tag">{isPortuguese ? "45 Mins" : isGerman ? "30 Mins" : isSpanish ? "60 Mins" : isFrench ? "60 Mins" : "55 Mins"}</span>
+                <strong>{isSwedish ? "Delprov Skriva (Skriftlig produktion)" : isPortuguese ? "Produção Escrita" : isGerman ? "Schriftlicher Ausdruck" : isSpanish ? "Expresión e interação escritas" : isFrench ? "Production écrite" : "Writing"}</strong>
+                <span className="subtest-time-tag">{isSwedish ? (selectedLevelKey === 'tisusC1' ? "150 Mins" : "50 Mins") : isPortuguese ? "45 Mins" : isGerman ? "30 Mins" : isSpanish ? "60 Mins" : isFrench ? "60 Mins" : "55 Mins"}</span>
               </div>
               <p>
-                {isPortuguese
+                {isSwedish
+                  ? "Författa formella skrivelser: sjukanmälan till arbetsgivare, formella reklamationer till hyresvärd eller akademisk argumenterande uppsats (ca 400 ord) med källsyntes."
+                  : isPortuguese
                   ? "Redação de textos utilitários e formais: requerimentos administrativos dirigidos à Junta de Freguesia, justificação de ausências laborais e reclamações no Livro de Reclamações."
                   : isGerman
                   ? "Verfassen standardisierter formeller Behördenschreiben, Mietmängelrügen, Entschuldigungsschreiben an Schulen/Kitas und begründeter Stellungnahmen."
@@ -1357,11 +1504,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">🎧</span>
-                <strong>{isPortuguese ? "Compreensão do Oral" : isGerman ? "Hörverstehen" : isSpanish ? "Comprensión auditiva" : isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
-                <span className="subtest-time-tag">35 Mins</span>
+                <strong>{isSwedish ? "Delprov Höra (Hörförståelse)" : isPortuguese ? "Compreensão do Oral" : isGerman ? "Hörverstehen" : isSpanish ? "Comprensión auditiva" : isFrench ? "Compréhension de l'oral" : "Listening Comprehension"}</strong>
+                <span className="subtest-time-tag">{isSwedish ? (selectedLevelKey === 'tisusC1' ? "40 Mins" : "30 Mins") : "35 Mins"}</span>
               </div>
               <p>
-                {isPortuguese
+                {isSwedish
+                  ? "Lyssna på autentiska talsituationer: 1177 Vårdguiden, trafikmeddelanden från P4, SMHI-varningar, anställningsintervjuer och P1 Morgon-debatter (max 2 uppspelningar)."
+                  : isPortuguese
                   ? "Audição de avisos sonoros autênticos (Metropolitano de Lisboa, estações da CP), chamadas do hospital e notícias da rádio pública Antena 1."
                   : isGerman
                   ? "Hören originalgetreuer Bahnhofsdurchsagen, telefonischer Terminansagen von Ämtern, Notrufdialoge und Radioberichte mit begrenzten Wiederholungen."
@@ -1376,11 +1525,13 @@ export default function CBTExamView() {
             <div className="subtest-detail-box">
               <div className="subtest-badge-row">
                 <span className="subtest-icon">🗣️</span>
-                <strong>{isPortuguese ? "Expressão Oral" : isGerman ? "Mündliche Prüfung" : isSpanish ? "Expresión e interacción orales" : isFrench ? "Production orale" : "Speaking"}</strong>
-                <span className="subtest-time-tag">20 Mins</span>
+                <strong>{isSwedish ? "Delprov Tala (Muntlig interaktion)" : isPortuguese ? "Expressão Oral" : isGerman ? "Mündliche Prüfung" : isSpanish ? "Expresión e interacción orales" : isFrench ? "Production orale" : "Speaking"}</strong>
+                <span className="subtest-time-tag">{isSwedish ? (selectedLevelKey === 'tisusC1' ? "30 Mins" : "15 Mins") : "20 Mins"}</span>
               </div>
               <p>
-                {isPortuguese
+                {isSwedish
+                  ? "Språklaboratorium med förberedelsetid: dialog med kollega/provledare om semesterplanering, presentation av yrkesbakgrund eller akademiskt seminariesamtal."
+                  : isPortuguese
                   ? "Laboratório de voz interativo: simulação de diálogo com o examinador do CAPLE, resolução de situações imprevistas e monólogo cronometrado de integração social."
                   : isGerman
                   ? "Sprachlabor mit realistischem Prüfungsablauf: Sich vorstellen, dialogisches Planen mit dem Prüfungspartner, Bildbeschreibung und freie Argumentation."
@@ -1398,10 +1549,17 @@ export default function CBTExamView() {
         <div className="cbt-instructions-card">
           <div className="instructions-header">
             <ShieldCheck size={22} className="inst-icon" />
-            <h3>{isPortuguese ? "Regulamento do Exame CAPLE e Garantia de Perguntas Inéditas" : isGerman ? "Prüfungsordnung & Garantie für neue Aufgaben" : isSpanish ? "Normativa del Examen y Garantía de Novedad de Preguntas" : isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
+            <h3>{isSwedish ? "Regelverk för Nationella Prov i SFI & Tisus (Garanterat Nya Uppgifter)" : isPortuguese ? "Regulamento do Exame CAPLE e Garantia de Perguntas Inéditas" : isGerman ? "Prüfungsordnung & Garantie für neue Aufgaben" : isSpanish ? "Normativa del Examen y Garantía de Novedad de Preguntas" : isFrench ? "Règlement d'Examen & Consignes aux Candidats" : "Candidate Exam Guidelines & Regulations"}</h3>
           </div>
           <ul className="instructions-list">
-            {isPortuguese ? (
+            {isSwedish ? (
+              <>
+                <li><strong>Garanti för unika provuppgifter:</strong> Som inloggad användare registrerar systemet dina genomförda uppgifter, vilket säkerställer att varje nytt provförsök genererar helt nya uppgifter som du inte tidigare besvarat.</li>
+                <li><strong>Officiella tidsramar:</strong> Provklockan följer Skolverkets och Stockholms universitets officiella tidsramar (t.ex. 45/75 min för läsning, 50/150 min för skrivning). Vid tidens slut lämnas provet in automatiskt för utvärdering.</li>
+                <li><strong>Hörförståelse & ljuduppspelning:</strong> Enligt de nationella provreglerna får varje ljudspår spelas upp högst två gånger.</li>
+                <li><strong>Muntligt språklaboratorium:</strong> Inför varje muntligt delmoment ges strukturerad förberedelsetid följd av inspelning och självreflektion mot Skolverkets bedömningsmatris.</li>
+              </>
+            ) : isPortuguese ? (
               <>
                 <li><strong>Garantia de perguntas inéditas:</strong> O nosso sistema guarda o histórico de todas as questões resolvidas pelo utilizador autenticado, assegurando que em cada nova tentativa de exame são sorteadas tarefas totalmente novas e nunca antes respondidas.</li>
                 <li><strong>Gestão rigorosa do tempo:</strong> O cronómetro respeita a duração estipulada pelas matrizes oficiais do CAPLE. No término do tempo limite, a prova é submetida automaticamente para avaliação.</li>
@@ -1472,7 +1630,7 @@ export default function CBTExamView() {
             <span className="cbt-level-indicator">{activeSession.badge}</span>
             {activeSession.isBrandNewSession && (
               <span className="cbt-brand-new-badge" title="Brand new question set for your account">
-                <Sparkles size={13} /> {isSpanish ? "Conjunto Nuevo" : "Brand New Set"}
+                <Sparkles size={13} /> {isSwedish ? "Helt nytt provset" : isSpanish ? "Conjunto Nuevo" : "Brand New Set"}
               </span>
             )}
           </div>
@@ -1481,7 +1639,7 @@ export default function CBTExamView() {
             <div className={`cbt-timer-widget ${isTimeUrgent ? 'urgent' : isTimeWarning ? 'warning' : ''}`}>
               <Clock size={18} className="timer-icon" />
               <span className="timer-text">{formatTime(secondsRemaining)}</span>
-              {isTimeUrgent && <span className="time-alert-tag">{isSpanish ? "¡Poco tiempo!" : "Ending Soon!"}</span>}
+              {isTimeUrgent && <span className="time-alert-tag">{isSwedish ? "Snart slut!" : isSpanish ? "¡Poco tiempo!" : "Ending Soon!"}</span>}
             </div>
           </div>
 
@@ -1492,7 +1650,7 @@ export default function CBTExamView() {
               title="Flag question for later review"
             >
               <Flag size={16} />
-              <span>{isFlagged ? (isSpanish ? 'Marcada' : 'Flagged') : (isSpanish ? 'Marcar' : 'Flag Question')}</span>
+              <span>{isFlagged ? (isSwedish ? 'Flaggad' : isSpanish ? 'Marcada' : 'Flagged') : (isSwedish ? 'Flagga uppgift' : isSpanish ? 'Marcar' : 'Flag Question')}</span>
             </button>
 
             <button 
@@ -1500,7 +1658,7 @@ export default function CBTExamView() {
               onClick={() => setShowSubmitModal(true)}
             >
               <CheckCircle2 size={16} />
-              <span>{isPortuguese ? "Submeter Exame" : isSpanish ? "Finalizar y Calificar" : isFrench ? "Soumettre l'Épreuve" : "Submit Examination"}</span>
+              <span>{isSwedish ? "Lämna in provet" : isPortuguese ? "Submeter Exame" : isSpanish ? "Finalizar y Calificar" : isFrench ? "Soumettre l'Épreuve" : "Submit Examination"}</span>
             </button>
           </div>
         </header>
@@ -1512,17 +1670,17 @@ export default function CBTExamView() {
             <div className="cbt-question-header">
               <div className="q-badge-cluster">
                 <span className="q-badge-num">
-                  {isSpanish ? "Pregunta" : "Question"} {currentQuestionIndex + 1} / {totalQuestions}
+                  {isSwedish ? "Uppgift" : isSpanish ? "Pregunta" : "Question"} {currentQuestionIndex + 1} / {totalQuestions}
                 </span>
                 <span className="q-badge-domain">
                   {currentQuestion.title || currentQuestion.subtest || currentQuestion.section || activeSession.subtestLabel}
                 </span>
-                {isFlagged && <span className="q-badge-flag"><Flag size={12} /> {isSpanish ? "Marcada para revisión" : "Flagged"}</span>}
+                {isFlagged && <span className="q-badge-flag"><Flag size={12} /> {isSwedish ? "Flaggad för granskning" : isSpanish ? "Marcada para revisión" : "Flagged"}</span>}
               </div>
 
               {isAnswered && (
                 <span className="q-badge-answered">
-                  <Check size={14} /> {isSpanish ? "Respondida" : "Answered"}
+                  <Check size={14} /> {isSwedish ? "Besvarad" : isSpanish ? "Respondida" : "Answered"}
                 </span>
               )}
             </div>
@@ -1532,7 +1690,7 @@ export default function CBTExamView() {
               <div className="cbt-reading-passage-box">
                 <div className="passage-header">
                   <FileText size={16} />
-                  <span>{isPortuguese ? "Documento Oficial de Referência" : isGerman ? "Offizielles Referenzdokument" : isSpanish ? "Documento Oficial de Referencia" : isFrench ? "Document Officiel de Référence" : "Official Reference Document"}</span>
+                  <span>{isSwedish ? "Officiellt referensdokument" : isPortuguese ? "Documento Oficial de Referência" : isGerman ? "Offizielles Referenzdokument" : isSpanish ? "Documento Oficial de Referencia" : isFrench ? "Document Officiel de Référence" : "Official Reference Document"}</span>
                 </div>
                 <div className="passage-content">
                   {currentQuestion.passage.split('\n').map((para, pIdx) => (
@@ -1548,8 +1706,8 @@ export default function CBTExamView() {
                 <div className="audio-header">
                   <Headphones size={20} />
                   <div className="audio-header-text">
-                    <h4>{isPortuguese ? "Faixa Áudio — Compreensão do Oral" : isGerman ? "Audiospur — Hörverstehen" : isSpanish ? "Enlace de Audio — Comprensión Auditiva" : isFrench ? "Support Audio — Compréhension de l'oral" : "Audio Track — Listening Comprehension"}</h4>
-                    <p>{isSpanish ? "Escuche atentamente la grabación en español para responder." : "Listen carefully to the audio excerpt to answer the question."}</p>
+                    <h4>{isSwedish ? "Ljudspår — Hörförståelse" : isPortuguese ? "Faixa Áudio — Compreensão do Oral" : isGerman ? "Audiospur — Hörverstehen" : isSpanish ? "Enlace de Audio — Comprensión Auditiva" : isFrench ? "Support Audio — Compréhension de l'oral" : "Audio Track — Listening Comprehension"}</h4>
+                    <p>{isSwedish ? "Lyssna noggrant på den svenska inspelningen för att besvara frågan." : isSpanish ? "Escuche atentamente la grabación en español para responder." : "Listen carefully to the audio excerpt to answer the question."}</p>
                   </div>
                 </div>
 
@@ -1562,8 +1720,8 @@ export default function CBTExamView() {
                     <Volume2 size={22} />
                     <span>
                       {playsLeft > 0 
-                        ? (isSpanish ? `Reproducir audio (${playsLeft} ${playsLeft === 1 ? 'reproducción restante' : 'reproducciones restantes'})` : isFrench ? `Écouter l'enregistrement (${playsLeft} restante${playsLeft > 1 ? 's' : ''})` : `Play Audio Track (${playsLeft} play${playsLeft > 1 ? 's' : ''} left)`)
-                        : (isSpanish ? "Límite de reproducciones alcanzado" : isFrench ? "Limite d'écoutes atteinte" : "Maximum Plays Reached")}
+                        ? (isSwedish ? `Spela upp ljudspår (${playsLeft} ${playsLeft === 1 ? 'uppspelning kvar' : 'uppspelningar kvar'})` : isSpanish ? `Reproducir audio (${playsLeft} ${playsLeft === 1 ? 'reproducción restante' : 'reproducciones restantes'})` : isFrench ? `Écouter l'enregistrement (${playsLeft} restante${playsLeft > 1 ? 's' : ''})` : `Play Audio Track (${playsLeft} play${playsLeft > 1 ? 's' : ''} left)`)
+                        : (isSwedish ? "Maximalt antal uppspelningar uppnått" : isSpanish ? "Límite de reproducciones alcanzado" : isFrench ? "Limite d'écoutes atteinte" : "Maximum Plays Reached")}
                     </span>
                   </button>
 
@@ -1588,7 +1746,9 @@ export default function CBTExamView() {
                   <div className="writing-guidelines-banner">
                     <PenTool size={16} />
                     <span>
-                      {isSpanish ? (
+                      {isSwedish ? (
+                        <>Skriv ditt svar i textrutan nedan på saklig svenska. Minsta ordantal: <strong>{currentQuestion.minWords || 50} ord</strong>.</>
+                      ) : isSpanish ? (
                         <>Redacte su respuesta en el cuadro de texto inferior en español formal. Longitud mínima requerida: <strong>{currentQuestion.minWords || 60} palabras</strong>.</>
                       ) : isFrench ? (
                         <>Rédigez votre réponse dans la zone de texte ci-dessous en français soigné. Longueur minimale requise : <strong>{currentQuestion.minWords || 60} mots</strong>.</>
@@ -1602,18 +1762,18 @@ export default function CBTExamView() {
                 <div className="writing-textarea-wrapper">
                   <textarea
                     className="cbt-writing-textarea"
-                    placeholder={isPortuguese ? "Redija o seu texto formal, requerimento ou reclamação aqui..." : isGerman ? "Verfassen Sie Ihr formelles Schreiben oder Ihre Stellungnahme hier..." : isSpanish ? "Redacte su texto formal o ensayo argumentativo aquí..." : isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
+                    placeholder={isSwedish ? "Skriv din formella text, meddelande eller uppsats här..." : isPortuguese ? "Redija o seu texto formal, requerimento ou reclamação aqui..." : isGerman ? "Verfassen Sie Ihr formelles Schreiben oder Ihre Stellungnahme hier..." : isSpanish ? "Redacte su texto formal o ensayo argumentativo aquí..." : isFrench ? "Rédigez votre texte formel ou argumenté ici..." : "Kirjoita vastauksesi tähän..."}
                     rows={8}
                     value={userTextAnswer}
                     onChange={(e) => handleWritingInput(currentQuestion.id, e.target.value)}
                   />
                   <div className="writing-meta-bar">
                     <div className="word-count-chip">
-                      {isSpanish ? "Recuento de palabras:" : isFrench ? "Nombre de mots :" : "Sanamäärä :"} <strong className={wordCount >= (currentQuestion.minWords || 30) ? 'text-emerald' : 'text-amber'}>
+                      {isSwedish ? "Antal ord:" : isSpanish ? "Recuento de palabras:" : isFrench ? "Nombre de mots :" : "Sanamäärä :"} <strong className={wordCount >= (currentQuestion.minWords || 30) ? 'text-emerald' : 'text-amber'}>
                         {wordCount}
-                      </strong> / {currentQuestion.minWords || 30} {isSpanish ? "palabras" : isFrench ? "mots" : "sanaa"}
+                      </strong> / {currentQuestion.minWords || 30} {isSwedish ? "ord" : isSpanish ? "palabras" : isFrench ? "mots" : "sanaa"}
                     </div>
-                    <span className="char-count-chip">{userTextAnswer.length} {isSpanish ? "caracteres" : isFrench ? "caractères" : "merkkiä"}</span>
+                    <span className="char-count-chip">{userTextAnswer.length} {isSwedish ? "tecken" : isSpanish ? "caracteres" : isFrench ? "caractères" : "merkkiä"}</span>
                   </div>
                 </div>
               </div>
@@ -1624,7 +1784,7 @@ export default function CBTExamView() {
               <div className="cbt-speaking-container">
                 <div className="speaking-header-banner">
                   <Mic size={20} />
-                  <span>{isPortuguese ? "Laboratório de Língua: Simulador oficial de expressão oral" : isGerman ? "Sprachlabor: Offizielle mündliche Prüfungssimulation" : isSpanish ? "Laboratorio de Idiomas: Simulador oficial de expresión oral" : isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
+                  <span>{isSwedish ? "Språklaboratorium: Officiell muntlig provsimulering" : isPortuguese ? "Laboratório de Língua: Simulador oficial de expressão oral" : isGerman ? "Sprachlabor: Offizielle mündliche Prüfungssimulation" : isSpanish ? "Laboratorio de Idiomas: Simulador oficial de expresión oral" : isFrench ? "Laboratoire de langue : Simulateur officiel d'expression orale" : "Kielistudion puhesimulaattori (Speaking Lab Simulator)"}</span>
                 </div>
 
                 <div className="speaking-prompt-box">
@@ -1636,7 +1796,7 @@ export default function CBTExamView() {
                         onClick={() => handlePlayNativeSpeaker(currentQuestion.audioPrompt)}
                       >
                         <Volume2 size={16} />
-                        <span>{isSpanish ? `Escuchar al interlocutor: "${currentQuestion.audioPrompt}"` : isFrench ? `Écouter l'examinateur : "${currentQuestion.audioPrompt}"` : `Kuuntele vastapuolen repliikki: "${currentQuestion.audioPrompt}"`}</span>
+                        <span>{isSwedish ? `Lyssna på samtalsledaren: "${currentQuestion.audioPrompt}"` : isSpanish ? `Escuchar al interlocutor: "${currentQuestion.audioPrompt}"` : isFrench ? `Écouter l'examinateur : "${currentQuestion.audioPrompt}"` : `Kuuntele vastapuolen repliikki: "${currentQuestion.audioPrompt}"`}</span>
                       </button>
                     </div>
                   )}
@@ -1644,14 +1804,14 @@ export default function CBTExamView() {
 
                 <div className="speaking-timer-grid">
                   <div className={`speaking-timer-box ${speakingPhase === 'prep' ? 'active-timer' : ''}`}>
-                    <span className="timer-box-label">{isSpanish ? "Tiempo de preparación" : isFrench ? "Temps de préparation" : "Valmistautumisaika (Prep)"}</span>
+                    <span className="timer-box-label">{isSwedish ? "Förberedelsetid" : isSpanish ? "Tiempo de preparación" : isFrench ? "Temps de préparation" : "Valmistautumisaika (Prep)"}</span>
                     <strong className="timer-box-digits">
                       {speakingPhase === 'prep' ? `${prepCountdown} s` : `${currentQuestion.prepSeconds || 10} s`}
                     </strong>
                   </div>
 
                   <div className={`speaking-timer-box ${speakingPhase === 'speaking' ? 'active-timer urgent' : ''}`}>
-                    <span className="timer-box-label">{isSpanish ? "Tiempo de respuesta oral" : isFrench ? "Temps de parole" : "Puhumisaika (Speech)"}</span>
+                    <span className="timer-box-label">{isSwedish ? "Taltid" : isSpanish ? "Tiempo de respuesta oral" : isFrench ? "Temps de parole" : "Puhumisaika (Speech)"}</span>
                     <strong className="timer-box-digits">
                       {speakingPhase === 'speaking' ? `${speakCountdown} s` : `${currentQuestion.speakSeconds || 30} s`}
                     </strong>
@@ -1665,7 +1825,7 @@ export default function CBTExamView() {
                       onClick={() => handleStartSpeakingLab(currentQuestion)}
                     >
                       <Mic size={18} />
-                      <span>{isSpanish ? "Iniciar grabación oral (Cuenta regresiva)" : isFrench ? "Démarrer l'enregistrement oral" : "Aloita puheharjoitus"}</span>
+                      <span>{isSwedish ? "Starta muntlig inspelning" : isSpanish ? "Iniciar grabación oral (Cuenta regresiva)" : isFrench ? "Démarrer l'enregistrement oral" : "Aloita puheharjoitus"}</span>
                     </button>
                   )}
 
@@ -1673,7 +1833,9 @@ export default function CBTExamView() {
                     <div className="speaking-status-alert prep">
                       <Clock size={18} />
                       <span>
-                        {isSpanish 
+                        {isSwedish
+                          ? `Förbered ditt svar! Inspelningen startar automatiskt om ${prepCountdown} sekunder.`
+                          : isSpanish 
                           ? `¡Prepare su respuesta! La grabación iniciará automáticamente en ${prepCountdown} segundos.`
                           : isFrench
                             ? `Préparez votre intervention ! Enregistrement dans ${prepCountdown} secondes.`
@@ -1686,7 +1848,9 @@ export default function CBTExamView() {
                     <div className="speaking-active-recording-card">
                       <div className="pulse-recording-dot" />
                       <span>
-                        {isSpanish 
+                        {isSwedish
+                          ? `Aktiv mikrofon: Tala tydligt på svenska! (${speakCountdown} s kvar)`
+                          : isSpanish 
                           ? `Micrófono activo: ¡Hable con claridad en español! (${speakCountdown} s restantes)`
                           : isFrench
                             ? `Microphone actif : Exprimez-vous en français ! (${speakCountdown} s)`
@@ -1697,7 +1861,7 @@ export default function CBTExamView() {
                         onClick={() => handleStopSpeakingLab(currentQuestion)}
                       >
                         <Square size={16} />
-                        <span>{isSpanish ? "Finalizar grabación" : isFrench ? "Terminer la prise de parole" : "Pysäytä puheenvuoro"}</span>
+                        <span>{isSwedish ? "Avsluta inspelning" : isSpanish ? "Finalizar grabación" : isFrench ? "Terminer la prise de parole" : "Pysäytä puheenvuoro"}</span>
                       </button>
                     </div>
                   )}
@@ -1706,7 +1870,9 @@ export default function CBTExamView() {
                     <div className="speaking-status-alert done">
                       <CheckCircle2 size={18} />
                       <span>
-                        {isSpanish
+                        {isSwedish
+                          ? "Muntligt svar inspelat och registrerat! Du kan gå vidare till nästa uppgift."
+                          : isSpanish
                           ? "¡Intervención oral grabada y registrada! Puede continuar a la siguiente pregunta."
                           : isFrench 
                             ? "Prise de parole enregistrée ! Vous pouvez passer à la suite."
@@ -1716,7 +1882,7 @@ export default function CBTExamView() {
                         className="speaking-re-btn"
                         onClick={() => handleStartSpeakingLab(currentQuestion)}
                       >
-                        <RotateCcw size={14} /> {isSpanish ? "Repetir grabación" : isFrench ? "Recommencer" : "Puhu uudelleen"}
+                        <RotateCcw size={14} /> {isSwedish ? "Gör om inspelning" : isSpanish ? "Repetir grabación" : isFrench ? "Recommencer" : "Puhu uudelleen"}
                       </button>
                     </div>
                   )}
@@ -1762,7 +1928,7 @@ export default function CBTExamView() {
                   disabled={currentQuestionIndex === 0}
                 >
                   <ChevronLeft size={18} />
-                  <span>{isPortuguese ? "Anterior" : isSpanish ? "Anterior" : isFrench ? "Précédent" : "Previous"}</span>
+                  <span>{isSwedish ? "Föregående" : isPortuguese ? "Anterior" : isSpanish ? "Anterior" : isFrench ? "Précédent" : "Previous"}</span>
                 </button>
 
                 <button
@@ -1770,7 +1936,7 @@ export default function CBTExamView() {
                   onClick={() => setCurrentQuestionIndex(prev => Math.min(totalQuestions - 1, prev + 1))}
                   disabled={currentQuestionIndex === totalQuestions - 1}
                 >
-                  <span>{isPortuguese ? "Seguinte" : isSpanish ? "Siguiente" : isFrench ? "Suivant" : "Next"}</span>
+                  <span>{isSwedish ? "Nästa" : isPortuguese ? "Seguinte" : isSpanish ? "Siguiente" : isFrench ? "Suivant" : "Next"}</span>
                   <ChevronRight size={18} />
                 </button>
               </div>
@@ -1782,7 +1948,7 @@ export default function CBTExamView() {
                     onClick={() => handleClearAnswer(currentQuestion.id)}
                   >
                     <RotateCcw size={14} />
-                    <span>{isSpanish ? "Borrar respuesta" : isFrench ? "Effacer la réponse" : "Clear Response"}</span>
+                    <span>{isSwedish ? "Rensa svar" : isSpanish ? "Borrar respuesta" : isFrench ? "Effacer la réponse" : "Clear Response"}</span>
                   </button>
                 )}
               </div>
@@ -1792,9 +1958,9 @@ export default function CBTExamView() {
           {/* Right Panel: Question Navigator Palette */}
           <aside className="cbt-palette-pane">
             <div className="palette-header">
-              <h3>{isPortuguese ? "Navegador de Questões" : isSpanish ? "Navegador de Preguntas" : isFrench ? "Grille des Questions" : "Question Navigator"}</h3>
+              <h3>{isSwedish ? "Uppgiftsöversikt" : isPortuguese ? "Navegador de Questões" : isSpanish ? "Navegador de Preguntas" : isFrench ? "Grille des Questions" : "Question Navigator"}</h3>
               <span className="palette-summary">
-                {answeredCount} / {totalQuestions} {isSpanish ? "respondidas" : "completed"}
+                {answeredCount} / {totalQuestions} {isSwedish ? "besvarade" : isSpanish ? "respondidas" : "completed"}
               </span>
             </div>
 
@@ -1809,7 +1975,7 @@ export default function CBTExamView() {
                     key={q.id}
                     className={`palette-btn ${isCurrent ? 'current' : ''} ${isAns ? 'answered' : ''} ${isFlg ? 'flagged' : ''}`}
                     onClick={() => setCurrentQuestionIndex(idx)}
-                    title={`${isSpanish ? 'Pregunta' : 'Task'} ${idx + 1}`}
+                    title={`${isSwedish ? 'Uppgift' : isSpanish ? 'Pregunta' : 'Task'} ${idx + 1}`}
                   >
                     <span className="p-num">{idx + 1}</span>
                     {isFlg && <span className="p-flag-dot" />}
@@ -1821,19 +1987,19 @@ export default function CBTExamView() {
             <div className="palette-legend">
               <div className="legend-item">
                 <span className="legend-box answered" />
-                <span>{isSpanish ? "Respondida" : "Answered"}</span>
+                <span>{isSwedish ? "Besvarad" : isSpanish ? "Respondida" : "Answered"}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-box current" />
-                <span>{isSpanish ? "Actual" : "Current"}</span>
+                <span>{isSwedish ? "Aktuell" : isSpanish ? "Actual" : "Current"}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-box flagged" />
-                <span>{isSpanish ? "Marcada" : "Flagged"}</span>
+                <span>{isSwedish ? "Flaggad" : isSpanish ? "Marcada" : "Flagged"}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-box" />
-                <span>{isSpanish ? "Pendiente" : "Unanswered"}</span>
+                <span>{isSwedish ? "Obesvarad" : isSpanish ? "Pendiente" : "Unanswered"}</span>
               </div>
             </div>
 
@@ -1842,7 +2008,7 @@ export default function CBTExamView() {
               onClick={() => setShowSubmitModal(true)}
             >
               <CheckCircle2 size={18} />
-              <span>{isSpanish ? "Finalizar y Calificar" : isFrench ? "Terminer et Noter" : "Finish & Submit Exam"}</span>
+              <span>{isSwedish ? "Lämna in och betygsätt" : isSpanish ? "Finalizar y Calificar" : isFrench ? "Terminer et Noter" : "Finish & Submit Exam"}</span>
             </button>
           </aside>
         </div>
@@ -1854,9 +2020,11 @@ export default function CBTExamView() {
               <div className="modal-icon-badge">
                 <AlertCircle size={32} />
               </div>
-              <h3 className="modal-title">{isSpanish ? "¿Finalizar y calificar el examen?" : isFrench ? "Soumettre l'examen officiel ?" : "Submit Your Examination?"}</h3>
+              <h3 className="modal-title">{isSwedish ? "Vill du lämna in och avsluta provet?" : isSpanish ? "¿Finalizar y calificar el examen?" : isFrench ? "Soumettre l'examen officiel ?" : "Submit Your Examination?"}</h3>
               <p className="modal-text">
-                {isSpanish ? (
+                {isSwedish ? (
+                  <>Du har besvarat <strong>{answeredCount} av {totalQuestions}</strong> uppgifter. {flaggedIds.size > 0 && <>Du har <strong>{flaggedIds.size}</strong> flaggade uppgifter för granskning.</>} Är du säker på att du vill lämna in provet nu för officiell bedömning?</>
+                ) : isSpanish ? (
                   <>Ha respondido <strong>{answeredCount} de {totalQuestions}</strong> preguntas. {flaggedIds.size > 0 && <>Tiene <strong>{flaggedIds.size}</strong> preguntas marcadas para revisión.</>} ¿Está seguro de enviar su examen ahora para obtener su puntuación oficial?</>
                 ) : isFrench ? (
                   <>Vous avez répondu à <strong>{answeredCount} sur {totalQuestions}</strong> tâches. {flaggedIds.size > 0 && <>Vous avez <strong>{flaggedIds.size}</strong> questions marquées.</>} Confirmez-vous la soumission officielle pour notation ?</>
@@ -1870,13 +2038,13 @@ export default function CBTExamView() {
                   className="modal-cancel-btn"
                   onClick={() => setShowSubmitModal(false)}
                 >
-                  {isSpanish ? "Volver a la prueba" : isFrench ? "Reprendre l'épreuve" : "Return to Test"}
+                  {isSwedish ? "Återgå till provet" : isSpanish ? "Volver a la prueba" : isFrench ? "Reprendre l'épreuve" : "Return to Test"}
                 </button>
                 <button
                   className="modal-confirm-btn"
                   onClick={handleManualSubmit}
                 >
-                  {isSpanish ? "Sí, Finalizar Ahora" : isFrench ? "Oui, Soumettre Définitivement" : "Yes, Submit Final Exam"}
+                  {isSwedish ? "Ja, lämna in nu" : isSpanish ? "Sí, Finalizar Ahora" : isFrench ? "Oui, Soumettre Définitivement" : "Yes, Submit Final Exam"}
                 </button>
               </div>
             </div>
@@ -1939,16 +2107,18 @@ export default function CBTExamView() {
           <div className="results-hero-left">
             <div className="results-badge-tag">
               <Award size={18} />
-              <span>{isPortuguese ? "Classificação Oficial CAPLE CIPLE" : isSpanish ? "Calificación Oficial DELE / SIELE" : isFrench ? "Résultat Officiel CECR" : "Official Examination Score"}</span>
+              <span>{isSwedish ? "Officiellt provresultat SFI / Tisus" : isPortuguese ? "Classificação Oficial CAPLE CIPLE" : isSpanish ? "Calificación Oficial DELE / SIELE" : isFrench ? "Résultat Officiel CECR" : "Official Examination Score"}</span>
             </div>
             <h1 className="results-hero-title">
               {isPassing 
-                ? (isSpanish ? "¡Enhorabuena! Has superado el examen" : isFrench ? "Félicitations ! Épreuve Réussie" : "Examination Successfully Passed!")
-                : (isSpanish ? "No apto en esta convocatoria" : isFrench ? "Résultat Insuffisant" : "Examination Not Passed")}
+                ? (isSwedish ? "Grattis! Du har klarat provet (Godkänd)" : isSpanish ? "¡Enhorabuena! Has superado el examen" : isFrench ? "Félicitations ! Épreuve Réussie" : "Examination Successfully Passed!")
+                : (isSwedish ? "Underkänd vid denna provomgång" : isSpanish ? "No apto en esta convocatoria" : isFrench ? "Résultat Insuffisant" : "Examination Not Passed")}
             </h1>
             <p className="results-hero-subtitle">
               {isPassing ? (
-                isSpanish ? (
+                isSwedish ? (
+                  <>Du uppnådde ett sammanlagt resultat på <strong>{scorePercentage}%</strong> och har därmed uppfyllt godkäntgränsen för {selectedLevelKey === 'tisusC1' ? 'Tisus (behörighetsgivande nivå C1)' : 'SFI Kurs D (Nationellt prov B1)'}.</>
+                ) : isSpanish ? (
                   <>Ha alcanzado una puntuación global del <strong>{scorePercentage}%</strong>, superando ampliamente el umbral del 65% exigido por los estándares del MCER.</>
                 ) : isFrench ? (
                   <>Vous avez obtenu un score global de <strong>{scorePercentage}%</strong>, validant avec brio les compétences évaluées.</>
@@ -1956,7 +2126,9 @@ export default function CBTExamView() {
                   <>You achieved an overall score of <strong>{scorePercentage}%</strong>, surpassing the minimum passing benchmark.</>
                 )
               ) : (
-                isSpanish ? (
+                isSwedish ? (
+                  <>Du uppnådde <strong>{scorePercentage}%</strong>. Vi rekommenderar att du granskar de pedagogiska förklaringarna nedan och provar igen med en helt ny uppgiftsuppsättning.</>
+                ) : isSpanish ? (
                   <>Ha obtenido un <strong>{scorePercentage}%</strong>. Le sugerimos revisar los errores pedagógicos y volver a intentarlo con un conjunto nuevo de preguntas.</>
                 ) : (
                   <>You scored <strong>{scorePercentage}%</strong>. Review the pedagogical explanations below and practice with a brand new set.</>
@@ -1969,7 +2141,9 @@ export default function CBTExamView() {
               <Sparkles size={20} />
               <span>
                 {user ? (
-                  isSpanish ? (
+                  isSwedish ? (
+                    <>Provförsök #{userAttemptNumber} sparat för <strong>{user.displayName || user.email}</strong>! Alla provuppgifter från detta tillfälle har arkiverats. Ditt nästa försök kommer automatiskt att generera ett <strong>100% nytt provset med oanvända uppgifter</strong>.</>
+                  ) : isSpanish ? (
                     <>¡Intento #{userAttemptNumber} registrado para <strong>{user.displayName || user.email}</strong>! Todas las preguntas de esta sesión han sido archivadas en su historial. En su próximo intento se seleccionará un <strong>conjunto 100% nuevo de preguntas inéditas</strong>.</>
                   ) : isFrench ? (
                     <>Tentative #{userAttemptNumber} enregistrée pour <strong>{user.displayName || user.email}</strong> ! Votre prochaine tentative comportera un <strong>lot de questions entièrement nouveau</strong>.</>
@@ -1977,7 +2151,9 @@ export default function CBTExamView() {
                     <>Attempt #{userAttemptNumber} recorded for <strong>{user.displayName || user.email}</strong>! All questions from this session have been saved. Your next attempt will automatically pull a <strong>brand new set of questions</strong>.</>
                   )
                 ) : (
-                  isSpanish ? (
+                  isSwedish ? (
+                    <>Tips: Logga in för att spara din provhistorik och garantera helt nya uppgifter vid varje nytt försök.</>
+                  ) : isSpanish ? (
                     <>Sugerencia: Inicie sesión para guardar automáticamente su historial de subpruebas y garantizar preguntas 100% nuevas en cada intento.</>
                   ) : (
                     <>Tip: Log in to save your attempt history and guarantee a brand new set of questions on each attempt.</>
@@ -1991,7 +2167,7 @@ export default function CBTExamView() {
             <div className="score-number-circle">
               <span className="score-pct">{scorePercentage}%</span>
               <span className="score-fraction">
-                {isSpanish ? `${answeredCount} / ${totalQuestions} Tareas Evaluadas` : isFrench ? `${answeredCount} / ${totalQuestions} Tâches Traitées` : `${answeredCount} / ${totalQuestions} Tasks Attempted`}
+                {isSwedish ? `${answeredCount} / ${totalQuestions} Bedömda uppgifter` : isSpanish ? `${answeredCount} / ${totalQuestions} Tareas Evaluadas` : isFrench ? `${answeredCount} / ${totalQuestions} Tâches Traitées` : `${answeredCount} / ${totalQuestions} Tasks Attempted`}
               </span>
             </div>
           </div>
@@ -2000,7 +2176,7 @@ export default function CBTExamView() {
         {/* Domain Performance Breakdown */}
         <div className="cbt-breakdown-section">
           <h2 className="breakdown-heading">
-            {isSpanish ? "Desglose Oficial de Rendimiento por Competencia" : isFrench ? "Bilan Officiel des Compétences Évaluées" : "Official Subtest Domain Performance"}
+            {isSwedish ? "Officiell resultatöversikt per delprov och färdighet" : isSpanish ? "Desglose Oficial de Rendimiento por Competencia" : isFrench ? "Bilan Officiel des Compétences Évaluées" : "Official Subtest Domain Performance"}
           </h2>
           <div className="breakdown-cards-grid">
             {Object.entries(domainStats).map(([domainName, stat]) => {
@@ -2031,7 +2207,9 @@ export default function CBTExamView() {
           >
             <Shuffle size={18} />
             <span>
-              {isSpanish 
+              {isSwedish
+                ? "Gör ett nytt prov med 100% nya, oanvända uppgifter"
+                : isSpanish 
                 ? "Realizar otra prueba con un conjunto 100% nuevo de preguntas" 
                 : isFrench 
                   ? "Passer un autre examen avec un tirage aléatoire nouveau" 
@@ -2045,7 +2223,9 @@ export default function CBTExamView() {
           >
             <BookOpen size={18} />
             <span>
-              {isSpanish 
+              {isSwedish
+                ? "Välj ett annat delprov eller provnivå (SFI / Tisus)"
+                : isSpanish 
                 ? "Elegir otro nivel o subprueba (DELE / SIELE)" 
                 : isFrench 
                   ? "Choisir un autre niveau ou une autre épreuve (DELF / DALF / TCF / TEF)" 

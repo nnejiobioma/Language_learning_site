@@ -19,6 +19,9 @@ import { germanCultureVault } from './germanCultureVault';
 import { portugueseAllUnits } from './portugueseCurriculum';
 import { portugueseFlashcards } from './portugueseFlashcards';
 import { portugueseCultureVault } from './portugueseCultureVault';
+import { swedishAllUnits } from './swedishCurriculum';
+import { swedishFlashcards } from './swedishFlashcards';
+import { swedishCultureVault } from './swedishCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -308,70 +311,10 @@ export const LANGUAGES = {
     accentColor: "#0284c7",
     secondaryColor: "#eab308",
     greeting: "Hej! Hur mår du?",
-    description: "Explore Swedish with Stockholm cafe fika, balanced lifestyle phrases, and melodic pitch accent.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Finns det hjärterum så finns det stjärterum.",
-        translation: "If there is room in the heart, there is room to sit.",
-        context: "A heartwarming Swedish hospitality saying: you can always welcome one more friend to your home."
-      },
-      slangs: [
-        { term: "Fika", meaning: "A cherished social coffee and pastry break with friends or colleagues", example: "Ska vi ta en fika tillsammans?" },
-        { term: "Lagom", meaning: "Not too little, not too much — just the perfect right amount", example: "Det här kaffet är helt lagom varmt." },
-        { term: "Tack så mycket", meaning: "Thank you very much", example: "Tack så mycket för hjälpen!" },
-        { term: "Skål!", meaning: "Cheers! (Always maintain eye contact while toasting in Sweden)", example: "Trevlig helg, skål!" },
-        { term: "Tjena!", meaning: "Hey! / Hi there! (Casual friendly greeting)", example: "Tjena Erik! Hur är läget?" }
-      ],
-      cultureTips: [
-        { title: "The Sacred Ritual of 'Fika'", description: "In Sweden, 'Fika' is an essential cultural institution. It is a dedicated pause to relax, drink coffee, enjoy a fresh cinnamon bun (kanelbulle), and connect." },
-        { title: "The Concept of 'Lagom'", description: "Lagom is the Swedish life philosophy of moderation, equilibrium, and harmony without excess." }
-      ]
-    },
-    flashcards: [
-      { id: "sv-fc-1", front: "Hej!", phonetic: "hay", back: "Hello / Hi!", category: "Greetings", example: "Hej och välkommen!" },
-      { id: "sv-fc-2", front: "Hur mår du?", phonetic: "hoor mohr doo", back: "How are you?", category: "Greetings", example: "Hej Sara, hur mår du idag?" },
-      { id: "sv-fc-3", front: "Tack så mycket", phonetic: "tahk soh MEW-keh", back: "Thank you very much", category: "Courtesy", example: "Tack så mycket för maten!" },
-      { id: "sv-fc-4", front: "Varsågod", phonetic: "VAHR-shoh-good", back: "You're welcome / Here you go", category: "Courtesy", example: "Här är ditt kaffe, varsågod!" },
-      { id: "sv-fc-5", front: "Hejdå!", phonetic: "hay-DOH", back: "Goodbye!", category: "Farewell", example: "Vi ses imorgon, hejdå!" }
-    ],
-    units: [
-      {
-        id: "sv-unit-1",
-        title: "Unit 1: Welcome to Sweden (Välkommen till Sverige)",
-        subtitle: "Learn essential greetings, cafe ordering, and friendly conversational phrases.",
-        icon: "Sun",
-        color: "#0284c7",
-        lessons: [
-          {
-            id: "sv-u1-l1",
-            title: "Everyday Swedish Greetings",
-            description: "Master Hej, Hur mår du, and Tack så mycket.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the universal friendly greeting for 'Hello' in Swedish?",
-                options: ["Hej", "Hejdå", "Nej", "Ja"],
-                correctAnswer: "Hej",
-                explanation: "'Hej' is the classic, universally used Swedish greeting."
-              },
-              {
-                id: "q2",
-                type: "matching",
-                prompt: "Match Swedish words with English:",
-                pairs: [
-                  { native: "Hej", english: "Hello" },
-                  { native: "Tack", english: "Thank you" },
-                  { native: "Ja", english: "Yes" },
-                  { native: "Hejdå", english: "Goodbye" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Master Swedish through official Skolverket and UHR curricula: Track A (SFI Kurs B–D, SVA & Tisus Standard) and Track B (Grundskolan Lgr22 & Gymnasiet SVA 3) across 6 units (24 lessons), 240 flashcards, culture vault, and CBT exam simulations.",
+    cultureVault: swedishCultureVault,
+    flashcards: swedishFlashcards,
+    units: swedishAllUnits
   },
 
   finnish: {
