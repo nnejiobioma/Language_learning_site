@@ -146,7 +146,7 @@ class SoundEngine {
         german: ['de-DE', 'de-AT', 'de'],
         japanese: ['ja-JP', 'ja'],
         mandarin: ['zh-CN', 'zh-TW', 'zh'],
-        portuguese: ['pt-BR', 'pt-PT', 'pt'],
+        portuguese: ['pt-PT', 'pt-BR', 'pt'],
         swedish: ['sv-SE', 'sv'],
         finnish: ['fi-FI', 'fi'],
         igbo: ['ig-NG', 'en-NG', 'en'],

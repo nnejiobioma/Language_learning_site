@@ -16,6 +16,9 @@ import { yorubaAllUnits } from './yorubaCurriculum';
 import { germanAllUnits } from './germanCurriculum';
 import { germanFlashcards } from './germanFlashcards';
 import { germanCultureVault } from './germanCultureVault';
+import { portugueseAllUnits } from './portugueseCurriculum';
+import { portugueseFlashcards } from './portugueseFlashcards';
+import { portugueseCultureVault } from './portugueseCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -288,80 +291,11 @@ export const LANGUAGES = {
     badge: "/images/portuguese_badge.jpg",
     accentColor: "#059669",
     secondaryColor: "#dc2626",
-    greeting: "Olá! Como vai você?",
-    description: "Learn Portuguese with sunny Lisbon cafe culture, Brazilian warmth, and practical travel dialogues.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "Quem não arrisca, não petisca.",
-        translation: "Those who do not take risks do not snack (Fortune favors the bold).",
-        context: "A classic Portuguese proverb encouraging learners to speak up courageously without fear of mistakes."
-      },
-      slangs: [
-        { term: "Legal!", meaning: "Cool! / Great! / Nice! (Universal across Brazil)", example: "Esse curso é muito legal!" },
-        { term: "Beleza", meaning: "Awesome / All good (literally: beauty)", example: "E aí, tudo beleza?" },
-        { term: "Saudade", meaning: "A profound longing for someone or somewhere deeply missed", example: "Tenho muita saudade do Brasil." },
-        { term: "Tudo bem?", meaning: "Is everything good? (The default friendly check-in)", example: "Oi amigos, tudo bem com vocês?" },
-        { term: "Valeu!", meaning: "Thanks a lot! / Cheers! (Casual)", example: "Valeu pela ajuda hoje!" }
-      ],
-      cultureTips: [
-        { title: "The Untranslatable 'Saudade'", description: "Portuguese possesses the poetic word 'Saudade', expressing a mixture of affection, nostalgia, and yearning for a person, memory, or home far away." },
-        { title: "Brazilian vs European Portuguese", description: "While mutually intelligible, Brazilian Portuguese tends to be melodically open with vowels, whereas European Portuguese clips certain unstressed vowels." }
-      ]
-    },
-    flashcards: [
-      { id: "pt-fc-1", front: "Olá!", phonetic: "oh-LAH", back: "Hello / Hi!", category: "Greetings", example: "Olá, bom dia!" },
-      { id: "pt-fc-2", front: "Tudo bem?", phonetic: "TOO-doo bayng", back: "How are you? / Everything good?", category: "Greetings", example: "Oi Maria, tudo bem?" },
-      { id: "pt-fc-3", front: "Muito obrigado(a)", phonetic: "MOO-ee-toh oh-bree-GAH-doo", back: "Thank you very much", category: "Courtesy", example: "Muito obrigado por sua ajuda!" },
-      { id: "pt-fc-4", front: "Por favor", phonetic: "poor fah-VOR", back: "Please", category: "Courtesy", example: "Um café, por favor." },
-      { id: "pt-fc-5", front: "A conta", phonetic: "ah KOHN-tah", back: "The bill / check", category: "Dining", example: "Garçom, a conta, por favor." },
-      { id: "pt-fc-6", front: "Tchau!", phonetic: "CHOW", back: "Bye! / See you!", category: "Farewell", example: "Até logo, tchau!" }
-    ],
-    units: [
-      {
-        id: "pt-unit-1",
-        title: "Unit 1: First Steps in Lisbon & Rio (Primeiros Passos)",
-        subtitle: "Master essential greetings, café courtesies, and friendly introductions.",
-        icon: "Sun",
-        color: "#059669",
-        lessons: [
-          {
-            id: "pt-u1-l1",
-            title: "Friendly Portuguese Greetings",
-            description: "Learn how to say Olá, Tudo bem, and Obrigado with native warmth.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the most popular way to ask 'How are you?' in Portuguese?",
-                options: ["Tudo bem?", "Onde fica?", "Quanto custa?", "Até amanhã"],
-                correctAnswer: "Tudo bem?",
-                explanation: "'Tudo bem?' literally means 'Everything well?' and is spoken millions of times daily."
-              },
-              {
-                id: "q2",
-                type: "scramble",
-                prompt: "Assemble: 'Meu nome é Lucas' (My name is Lucas)",
-                tokens: ["Meu", "nome", "é", "Lucas", "muito"],
-                correctTokens: ["Meu", "nome", "é", "Lucas"],
-                explanation: "'Meu nome é...' is the standard way to introduce your name."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                prompt: "Match Portuguese phrases with English:",
-                pairs: [
-                  { native: "Olá", english: "Hello" },
-                  { native: "Obrigado", english: "Thank you" },
-                  { native: "Por favor", english: "Please" },
-                  { native: "Tchau", english: "Bye" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    greeting: "Olá! Como está?",
+    description: "Master Portuguese through the official Adult Vocational Syllabus (PLA / IEFP Standard) and Primary/Secondary School Syllabus (DGE Standard) across 6 units (30 lessons), 240 flashcards, and CAPLE CIPLE/DIPLE CBT exam simulations.",
+    cultureVault: portugueseCultureVault,
+    flashcards: portugueseFlashcards,
+    units: portugueseAllUnits
   },
 
   swedish: {
