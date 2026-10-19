@@ -25,6 +25,9 @@ import { swedishCultureVault } from './swedishCultureVault';
 import { japaneseAllUnits } from './japaneseCurriculum';
 import { japaneseFlashcards } from './japaneseFlashcards';
 import { japaneseCultureVault } from './japaneseCultureVault';
+import { mandarinAllUnits } from './mandarinCurriculum';
+import { mandarinFlashcards } from './mandarinFlashcards';
+import { mandarinCultureVault } from './mandarinCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -101,68 +104,10 @@ export const LANGUAGES = {
     accentColor: "#dc2626", // imperial red
     secondaryColor: "#eab308", // dragon gold
     greeting: "你好！你吃了吗？(Nǐ hǎo!)",
-    description: "Learn Mandarin with tonal pronunciation mastery (Pinyin), tea ceremony etiquette, and friendly daily greetings.",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "千里之行，始于足下 (Qiān lǐ zhī xíng, shǐ yú zú xià)",
-        translation: "A journey of a thousand miles begins with a single step.",
-        context: "Laozi's timeless Daoist wisdom reminding learners that every great accomplishment starts with humble daily practice."
-      },
-      slangs: [
-        { term: "加筋 (Jiāyóu!)", meaning: "Keep going! / Add oil! / You can do it!", example: "考试要加油哦！(Keep pushing for the exam!)" },
-        { term: "给力 (Gěilì)", meaning: "Awesome / Impactful / Cool (literally: giving power)", example: "这个功能太给力了！" },
-        { term: "牛 (Niú)", meaning: "Brilliant / Badass / Super capable (literally: ox)", example: "你真牛！(You are truly impressive!)" }
-      ],
-      cultureTips: [
-        { title: "The Warmest Greeting: 'Have you eaten?' (你吃了吗？)", description: "In Chinese culture, asking 'Nǐ chī le ma?' (Have you eaten?) is an affectionate way of saying 'How are you?' showing that you care about the person's wellbeing." },
-        { title: "The Four Tones of Pinyin", description: "Mandarin is tonal: 1st tone (flat high - mā), 2nd tone (rising - má), 3rd tone (dip & rise - mǎ), 4th tone (sharp drop - mà). Tones define the word completely: 'mā' (mother) vs 'mǎ' (horse)!" }
-      ]
-    },
-    flashcards: [
-      { id: "zh-fc-1", front: "你好 (Nǐ hǎo)", phonetic: "nee-HOW", back: "Hello!", category: "Greetings", example: "你好！很高兴认识你。" },
-      { id: "zh-fc-2", front: "谢谢 (Xièxie)", phonetic: "shyeh-shyeh", back: "Thank you", category: "Courtesy", example: "非常感谢你的帮助。" },
-      { id: "zh-fc-3", front: "不客气 (Bú kèqi)", phonetic: "boo kuh-chee", back: "You're welcome", category: "Courtesy", example: "不客气，随时为你服务。" },
-      { id: "zh-fc-4", front: "对不起 (Duìbuqǐ)", phonetic: "dway-boo-chee", back: "I am sorry", category: "Courtesy", example: "对不起，我迟到了。" },
-      { id: "zh-fc-5", front: "再见 (Zàijiàn)", phonetic: "zeye-jyen", back: "Goodbye / See you again", category: "Farewell", example: "明天见，再见！" }
-    ],
-    units: [
-      {
-        id: "zh-unit-1",
-        title: "Unit 1: Essential Mandarin Greetings (问候)",
-        subtitle: "Learn Nǐ hǎo, polite acknowledgments, and basic conversational tone.",
-        icon: "Sun",
-        color: "#dc2626",
-        lessons: [
-          {
-            id: "zh-u1-l1",
-            title: "First Words in Mandarin",
-            description: "Master 'Nǐ hǎo', 'Xièxie', and respectful tones.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "How do you say 'Hello' in Mandarin Chinese?",
-                options: ["你好 (Nǐ hǎo)", "谢谢 (Xièxie)", "再见 (Zàijiàn)", "请 (Qǐng)"],
-                correctAnswer: "你好 (Nǐ hǎo)",
-                explanation: "'你好' (Nǐ hǎo) is the universal greeting meaning 'You are good / Hello'."
-              },
-              {
-                id: "q2",
-                type: "matching",
-                prompt: "Match Chinese words with their meanings:",
-                pairs: [
-                  { native: "Nǐ hǎo", english: "Hello" },
-                  { native: "Xièxie", english: "Thank you" },
-                  { native: "Zàijiàn", english: "Goodbye" },
-                  { native: "Duìbuqǐ", english: "Sorry" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Learn Mandarin Chinese structured with the official GF 0025-2021 standards (HSK 1-9 & HSKK oral exam) governed by the Ministry of Education (PRC) & CLEC, covering Syllables, Characters, Vocabulary, Grammar, and Cultural Pragmatics.",
+    cultureVault: mandarinCultureVault,
+    flashcards: mandarinFlashcards,
+    units: mandarinAllUnits
   },
 
   pidgin: {
