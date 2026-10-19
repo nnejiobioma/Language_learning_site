@@ -22,6 +22,9 @@ import { portugueseCultureVault } from './portugueseCultureVault';
 import { swedishAllUnits } from './swedishCurriculum';
 import { swedishFlashcards } from './swedishFlashcards';
 import { swedishCultureVault } from './swedishCultureVault';
+import { japaneseAllUnits } from './japaneseCurriculum';
+import { japaneseFlashcards } from './japaneseFlashcards';
+import { japaneseCultureVault } from './japaneseCultureVault';
 
 export const LANGUAGES = {
   spanish: {
@@ -82,79 +85,10 @@ export const LANGUAGES = {
     accentColor: "#ec4899", // sakura pink
     secondaryColor: "#dc2626", // torii crimson
     greeting: "こんにちは！お元気ですか？",
-    description: "Learn Japanese greetings, polite honorifics, essential travel phrases, and cultural nuances of respect (Reigi).",
-    cultureVault: {
-      proverbOfDay: {
-        proverb: "七転び八起き (Nana korobi ya oki)",
-        translation: "Fall seven times, stand up eight.",
-        context: "The revered Japanese principle of resilience, perseverance, and indomitable spirit through adversity."
-      },
-      slangs: [
-        { term: "すごい (Sugoi!)", meaning: "Amazing! / Incredible! / Wow!", example: "日本語がとても上手ですね、すごい！" },
-        { term: "いただきます (Itadakimasu)", meaning: "Grateful phrase spoken before eating (Humbly receiving this food)", example: "テーブルに座って、『いただきます！』と言いました。" },
-        { term: "お疲れ様です (Otsukaresama desu)", meaning: "Thank you for your hard work / great effort today", example: "今日の会議、お疲れ様でした！" },
-        { term: "やばい (Yabai)", meaning: "Crazy / Insane / Incredibly cool (or terribly dangerous, depending on context)", example: "このラーメン、美味しすぎてやばい！" }
-      ],
-      cultureTips: [
-        { title: "The Art of the Bow (お辞儀 - Ojigi)", description: "In Japan, bowing replaces shaking hands. A 15-degree bow serves for casual greetings, while a 30-degree bow conveys polite deference to elders or customers." },
-        { title: "Honorific Suffixes (-san, -sensei)", description: "Never refer to someone by their bare last name without adding '-san' (e.g. Tanaka-san). Never use honorifics on yourself!" }
-      ]
-    },
-    flashcards: [
-      { id: "ja-fc-1", front: "こんにちは (Konnichiwa)", phonetic: "kohn-nee-chee-wah", back: "Hello / Good afternoon", category: "Greetings", example: "皆さん、こんにちは！" },
-      { id: "ja-fc-2", front: "ありがとう (Arigatou)", phonetic: "ah-ree-gah-toh", back: "Thank you", category: "Courtesy", example: "手伝ってくれてありがとう。" },
-      { id: "ja-fc-3", front: "すみません (Sumimasen)", phonetic: "soo-mee-mah-sen", back: "Excuse me / I'm sorry", category: "Courtesy", example: "すみません、駅はどこですか？" },
-      { id: "ja-fc-4", front: "はい (Hai)", phonetic: "high", back: "Yes", category: "Basics", example: "はい、分かりました。" },
-      { id: "ja-fc-5", front: "いいえ (Iie)", phonetic: "ee-eh", back: "No", category: "Basics", example: "いいえ、大丈夫です。" },
-      { id: "ja-fc-6", front: "さようなら (Sayounara)", phonetic: "sah-yoh-nah-rah", back: "Goodbye", category: "Farewell", example: "また明日、さようなら。" }
-    ],
-    units: [
-      {
-        id: "ja-unit-1",
-        title: "Unit 1: First Steps in Tokyo (最初の挨拶)",
-        subtitle: "Essential Japanese greetings, polite responses, and meeting new people.",
-        icon: "Sun",
-        color: "#ec4899",
-        lessons: [
-          {
-            id: "ja-u1-l1",
-            title: "Everyday Japanese Salutations",
-            description: "Learn Konnichiwa, Arigatou, and Sumimasen with proper bowing etiquette.",
-            xp: 20,
-            questions: [
-              {
-                id: "q1",
-                type: "multiple_choice",
-                prompt: "What is the universal Japanese greeting for 'Hello / Good afternoon'?",
-                options: ["こんにちは (Konnichiwa)", "さようなら (Sayounara)", "ありがとう (Arigatou)", "いただきます (Itadakimasu)"],
-                correctAnswer: "こんにちは (Konnichiwa)",
-                explanation: "'Konnichiwa' is the standard polite daytime greeting."
-              },
-              {
-                id: "q2",
-                type: "audio_listen",
-                phrase: "ありがとう",
-                prompt: "Listen to the word and select what it expresses:",
-                options: ["Thank you", "Goodbye", "Where is the train?", "Please wait"],
-                correctAnswer: "Thank you",
-                explanation: "'Arigatou' is the expression of heartfelt thanks in Japanese."
-              },
-              {
-                id: "q3",
-                type: "matching",
-                prompt: "Match the Japanese expressions:",
-                pairs: [
-                  { native: "Konnichiwa", english: "Hello" },
-                  { native: "Sumimasen", english: "Excuse me / Sorry" },
-                  { native: "Arigatou", english: "Thank you" },
-                  { native: "Sayounara", english: "Goodbye" }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    description: "Master Japanese through the official JF Standard (Japan Foundation) and JLPT (N5 to N2) / MEXT national framework, featuring 6 leveled units, 24 lessons, 240 leveled flashcards, and official CBT examination simulation.",
+    cultureVault: japaneseCultureVault,
+    flashcards: japaneseFlashcards,
+    units: japaneseAllUnits
   },
 
   mandarin: {
