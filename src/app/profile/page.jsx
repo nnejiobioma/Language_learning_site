@@ -323,8 +323,16 @@ export default function ProfilePage() {
         </form>
 
         <div className="profile-legal-footer">
+          <Link href="/contact" id="profile-footer-contact-link">
+            Contact Us
+          </Link>
+          <span className="dot-sep">·</span>
           <Link href="/terms" target="_blank" rel="noopener noreferrer">
             Terms of Use
+          </Link>
+          <span className="dot-sep">·</span>
+          <Link href="/privacy" target="_blank" rel="noopener noreferrer">
+            Privacy Policy
           </Link>
           <span className="dot-sep">·</span>
           <span>© {new Date().getFullYear()} FiksLingo</span>

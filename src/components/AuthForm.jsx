@@ -317,6 +317,10 @@ export default function AuthForm({ initialMode = 'signup' }) {
         />
 
         <div className="auth-card-footer">
+          <Link href="/contact" className="auth-footer-link" id="auth-footer-contact-link">
+            Contact Us
+          </Link>
+          <span className="auth-footer-dot">·</span>
           <Link href="/terms" target="_blank" className="auth-footer-link">
             Terms of Use
           </Link>
