@@ -573,20 +573,18 @@ export const pidginAllUnits = [
             "tokens": [
               "chop",
               "food",
-              "we",
-              "make",
+              "us",
               "Come",
               "with"
             ],
             "correctTokens": [
               "Come",
-              "make",
-              "we",
               "chop",
               "food",
-              "with"
+              "with",
+              "us"
             ],
-            "explanation": "'Come make we chop food...' is the standard invitation."
+            "explanation": "'Come chop food with us' is the natural invitation meaning 'Come and eat food with us' in Nigerian Pidgin ('chop' = eat)."
           },
           {
             "id": "p-u1-l2-q17",
@@ -887,9 +885,9 @@ export const pidginAllUnits = [
             "type": "scramble",
             "prompt": "Arrange the words to say: 'You all should welcome them nicely.'",
             "tokens": [
-              "Una",
+              "una",
               "well-well",
-              "make",
+              "Make",
               "welcome",
               "dem"
             ],
@@ -5056,7 +5054,8 @@ export const pidginAllUnits = [
               "with",
               "for",
               "say",
-              "to"
+              "to",
+              "I"
             ],
             "correctTokens": [
               "If",
@@ -6801,7 +6800,6 @@ export const pidginAllUnits = [
             "tokens": [
               "laugh",
               "we",
-              "we",
               "crying,",
               "survive",
               "take",
@@ -7146,7 +7144,7 @@ export const pidginAllUnits = [
             "type": "scramble",
             "prompt": "Arrange the words to say: 'Why is it good for us to study the Bible?'",
             "tokens": [
-              "study",
+              "Study",
               "E",
               "Bible?",
               "Make",
