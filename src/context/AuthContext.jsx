@@ -305,11 +305,9 @@ export function AuthProvider({ children }) {
         message: 'Password reset link sent (Demo Mode). In production, an email is sent with a secure reset link.' 
       };
     }
-    const actionCodeSettings = typeof window !== 'undefined' ? {
-      url: `${window.location.origin}/login`,
-      handleCodeInApp: false
-    } : undefined;
-    return sendPasswordResetEmail(auth, cleanEmail, actionCodeSettings);
+    // Calling sendPasswordResetEmail without actionCodeSettings uses Firebase's default allowlisted
+    // action handler (firebaseapp.com), preventing any auth/unauthorized-continue-uri domain errors.
+    return sendPasswordResetEmail(auth, cleanEmail);
   };
 
   return (
