@@ -44,7 +44,7 @@ export async function GET() {
 
   return NextResponse.json({
     status: 'online',
-    service: 'FiksLingo Contact & Inquiries Service',
+    service: 'FliksLingo Contact & Inquiries Service',
     endpoint: '/api/contact',
     recipients: RECIPIENT_EMAILS,
     totalMessagesLogged: messages.length,

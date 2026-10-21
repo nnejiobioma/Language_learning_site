@@ -27,19 +27,19 @@ const PILLARS = [
     icon: <Sparkles size={26} />,
     colorClass: '',
     title: 'Gamified Habit Building',
-    desc: 'Learning should never feel like a chore. With daily streaks, XP gains, dynamic quizzes, and interactive feedback, FiksLingo turns 10 minutes a day into lasting fluency.'
+    desc: 'Learning should never feel like a chore. With daily streaks, XP gains, dynamic quizzes, and interactive feedback, FliksLingo turns 10 minutes a day into lasting fluency.'
   },
   {
     icon: <Globe2 size={26} />,
     colorClass: 'blue',
     title: 'Authentic Culture Vaults',
-    desc: 'Languages are more than grammar. Every language on FiksLingo includes street slang, cultural proverbs, social etiquette, and regional idioms that bring each culture to life.'
+    desc: 'Languages are more than grammar. Every language on FliksLingo includes street slang, cultural proverbs, social etiquette, and regional idioms that bring each culture to life.'
   },
   {
     icon: <Compass size={26} />,
     colorClass: 'gold',
     title: 'Global & African Inclusivity',
-    desc: 'While most apps stop at European languages, FiksLingo gives African heritage languages—Yoruba, Igbo, Hausa, and Nigerian Pidgin—the same first-class gamified treatment as Spanish or Japanese.'
+    desc: 'While most apps stop at European languages, FliksLingo gives African heritage languages—Yoruba, Igbo, Hausa, and Nigerian Pidgin—the same first-class gamified treatment as Spanish or Japanese.'
   },
   {
     icon: <GraduationCap size={26} />,
@@ -57,13 +57,13 @@ export default function AboutUsPage() {
       {/* Top Navbar */}
       <header className="about-nav">
         <div className="about-nav-container">
-          <Link href="/" className="about-brand" aria-label="FiksLingo Home">
+          <Link href="/" className="about-brand" aria-label="FliksLingo Home">
             <img 
               src="/images/mascot.jpg" 
-              alt="FiksLingo Mascot" 
+              alt="FliksLingo Mascot" 
               className="about-brand-img" 
             />
-            <span className="about-brand-text">FiksLingo</span>
+            <span className="about-brand-text">FliksLingo</span>
           </Link>
 
           <div className="about-nav-right">
@@ -93,7 +93,7 @@ export default function AboutUsPage() {
             <span className="about-hero-highlight">One Language at a Time.</span>
           </h1>
           <p className="about-hero-sub">
-            FiksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. 
+            FliksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. 
             We empower learners across the globe to speak authentically, appreciate rich traditions, and build lifelong fluency.
           </p>
 
@@ -124,7 +124,7 @@ export default function AboutUsPage() {
         <div className="about-container">
           <div className="about-story-grid">
             <div className="story-copy">
-              <h2>Why We Built FiksLingo</h2>
+              <h2>Why We Built FliksLingo</h2>
               <p className="story-lead">
                 We believe that learning a new language is the most powerful way to build empathy, expand horizons, and discover new cultures.
               </p>
@@ -132,7 +132,7 @@ export default function AboutUsPage() {
                 Most traditional language apps have two major flaws: they force you through tedious mechanical grammar drills that don’t reflect real everyday speech, and they routinely ignore African and regional heritage languages that millions of people want and need to learn.
               </p>
               <p className="story-p">
-                FiksLingo was created to break those boundaries. We paired modern gamification—streaks, XP, and multi-format quizzes—with native pronunciation audio, cultural proverbs, street slang, and Computer-Based Testing. Whether you are learning Spanish for travel, Mandarin for business, Japanese for anime, or Yoruba to connect with ancestral heritage, FiksLingo gives you the tools to succeed.
+                FliksLingo was created to break those boundaries. We paired modern gamification—streaks, XP, and multi-format quizzes—with native pronunciation audio, cultural proverbs, street slang, and Computer-Based Testing. Whether you are learning Spanish for travel, Mandarin for business, Japanese for anime, or Yoruba to connect with ancestral heritage, FliksLingo gives you the tools to succeed.
               </p>
             </div>
 
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
               <div className="mascot-feature-box">
                 <img 
                   src="/images/mascot.jpg" 
-                  alt="FiksLingo mascot" 
+                  alt="FliksLingo mascot" 
                   className="mascot-feature-img" 
                 />
                 <blockquote className="mascot-feature-quote">
@@ -157,7 +157,7 @@ export default function AboutUsPage() {
       <section className="about-section tint">
         <div className="about-container">
           <div className="section-header-centered">
-            <h2>The FiksLingo Difference</h2>
+            <h2>The FliksLingo Difference</h2>
             <p>Built from the ground up for modern polyglots, students, and culture enthusiasts.</p>
           </div>
 
@@ -221,7 +221,7 @@ export default function AboutUsPage() {
                   <h3>Obioma Nneji</h3>
                   <span className="team-lead-role">Founder &amp; Lead Architect</span>
                   <p className="team-lead-bio">
-                    Obioma founded FiksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Leading platform architecture and curriculum systems, Obioma oversees the interactive CBT assessment engines and multi-language learning tracks.
+                    Obioma founded FliksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Leading platform architecture and curriculum systems, Obioma oversees the interactive CBT assessment engines and multi-language learning tracks.
                   </p>
                   <div className="team-contact-actions">
                     <a href="mailto:nneji.obioma@gmail.com" className="team-email-pill" title="Email Obioma Nneji">
@@ -245,7 +245,7 @@ export default function AboutUsPage() {
                   <h3>Ebere Nneji</h3>
                   <span className="team-lead-role gold">Co-Founder &amp; Lead Instructor</span>
                   <p className="team-lead-bio">
-                    Ebere serves as Co-Founder and Lead Instructor, driving pedagogy, instructional design, and speech pronunciation frameworks across FiksLingo's courses. With a passion for communicative teaching and cultural immersion, Ebere shapes the interactive lesson journeys and Culture Vault insights.
+                    Ebere serves as Co-Founder and Lead Instructor, driving pedagogy, instructional design, and speech pronunciation frameworks across FliksLingo's courses. With a passion for communicative teaching and cultural immersion, Ebere shapes the interactive lesson journeys and Culture Vault insights.
                   </p>
                   <div className="team-contact-actions">
                     <a href="mailto:nnejieb@gmail.com" className="team-email-pill" title="Email Ebere Nneji">
@@ -286,7 +286,7 @@ export default function AboutUsPage() {
       {/* Footer */}
       <footer className="about-footer">
         <div className="about-container about-footer-inner">
-          <p>© {new Date().getFullYear()} FiksLingo. Master 12 World Languages. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} FliksLingo. Master 12 World Languages. All rights reserved.</p>
           <div className="about-footer-links">
             <SubscribeButton
               source="about_footer"

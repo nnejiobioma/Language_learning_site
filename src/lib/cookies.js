@@ -1,22 +1,22 @@
 /**
- * Persistent Cookies Utility for FiksLingo
+ * Persistent Cookies Utility for FliksLingo
  * 
  * Persistent cookies are files with an explicit expiration date and max-age that stay
  * saved on the user's hard drive across browser sessions, reboots, and tabs.
  * 
  * Used for long-term settings:
- *  - Saved language preference (fikslingo_lang, 365 days)
- *  - "Remember me" login option (fikslingo_remember_me & fikslingo_saved_email, 30 days)
- *  - Theme setting (fikslingo_theme, 365 days)
- *  - Cookie consent preference (fikslingo_cookie_consent, 365 days)
+ *  - Saved language preference (flikslingo_lang, 365 days)
+ *  - "Remember me" login option (flikslingo_remember_me & flikslingo_saved_email, 30 days)
+ *  - Theme setting (flikslingo_theme, 365 days)
+ *  - Cookie consent preference (flikslingo_cookie_consent, 365 days)
  */
 
 export const COOKIE_KEYS = {
-  LANGUAGE: 'fikslingo_lang',
-  REMEMBER_ME: 'fikslingo_remember_me',
-  SAVED_EMAIL: 'fikslingo_saved_email',
-  THEME: 'fikslingo_theme',
-  CONSENT: 'fikslingo_cookie_consent'
+  LANGUAGE: 'flikslingo_lang',
+  REMEMBER_ME: 'flikslingo_remember_me',
+  SAVED_EMAIL: 'flikslingo_saved_email',
+  THEME: 'flikslingo_theme',
+  CONSENT: 'flikslingo_cookie_consent'
 };
 
 /**

@@ -49,7 +49,7 @@ export default function LearnPage() {
 
       <footer className="app-main-footer">
         <div className="app-footer-container">
-          <p className="app-footer-copy">© {new Date().getFullYear()} FiksLingo · Master 12 World Languages.</p>
+          <p className="app-footer-copy">© {new Date().getFullYear()} FliksLingo · Master 12 World Languages.</p>
           <div className="app-footer-links">
             <SubscribeButton
               source="app_footer"

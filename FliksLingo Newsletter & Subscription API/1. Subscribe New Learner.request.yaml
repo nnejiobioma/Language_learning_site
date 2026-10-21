@@ -1,5 +1,5 @@
 $kind: http-request
-description: Subscribes a new user to FiksLingo updates with their name and email.
+description: Subscribes a new user to FliksLingo updates with their name and email.
 url: "{{baseUrl}}/api/subscribe"
 method: POST
 headers:

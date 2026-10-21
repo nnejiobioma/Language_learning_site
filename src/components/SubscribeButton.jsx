@@ -15,7 +15,7 @@ export default function SubscribeButton({
   icon = 'bell', // 'bell' | 'mail' | 'none'
   className = '',
   buttonId = undefined,
-  title = 'Join the FiksLingo Weekly Digest',
+  title = 'Join the FliksLingo Weekly Digest',
   subtitle = 'Get handpicked vocabulary lists, cultural trivia, and study tips delivered to your inbox every Sunday.'
 }) {
   const [modalOpen, setModalOpen] = useState(false);

@@ -12,11 +12,11 @@ export default function TimedSubscribePopup() {
   useEffect(() => {
     // Check if already subscribed
     try {
-      const alreadySubscribed = localStorage.getItem('fikslingo_subscribed') === 'true';
+      const alreadySubscribed = localStorage.getItem('flikslingo_subscribed') === 'true';
       if (alreadySubscribed) return;
 
       // Check if user dismissed the popup recently (within 24 hours)
-      const dismissedUntil = localStorage.getItem('fikslingo_popup_dismissed_until');
+      const dismissedUntil = localStorage.getItem('flikslingo_popup_dismissed_until');
       if (dismissedUntil && Date.now() < parseInt(dismissedUntil, 10)) {
         return;
       }
@@ -36,7 +36,7 @@ export default function TimedSubscribePopup() {
     setIsOpen(false);
     try {
       // Store 24-hour dismissal timestamp so it doesn't immediately prompt again
-      localStorage.setItem('fikslingo_popup_dismissed_until', String(Date.now() + DISMISS_PERIOD_MS));
+      localStorage.setItem('flikslingo_popup_dismissed_until', String(Date.now() + DISMISS_PERIOD_MS));
     } catch {
       // Ignore storage errors
     }
@@ -48,7 +48,7 @@ export default function TimedSubscribePopup() {
       onClose={handleClose} 
       source="timed_popup_1min"
       title="Level Up Your Language Habit"
-      subtitle="You've been exploring FiksLingo! Join 25,000+ passionate learners receiving our curated weekly vocabulary digests, grammar hacks, and cultural proverbs."
+      subtitle="You've been exploring FliksLingo! Join 25,000+ passionate learners receiving our curated weekly vocabulary digests, grammar hacks, and cultural proverbs."
     />
   );
 }

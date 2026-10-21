@@ -339,7 +339,7 @@ export default function ProfilePage() {
             Privacy Policy
           </Link>
           <span className="dot-sep">·</span>
-          <span>© {new Date().getFullYear()} FiksLingo</span>
+          <span>© {new Date().getFullYear()} FliksLingo</span>
         </div>
       </div>
     </div>

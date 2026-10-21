@@ -21,7 +21,7 @@ export default function TutoringSideBanner() {
   useEffect(() => {
     setMounted(true);
     try {
-      const stored = sessionStorage.getItem('fikslingo_tutoring_banner_collapsed');
+      const stored = sessionStorage.getItem('flikslingo_tutoring_banner_collapsed');
       if (stored === 'true') {
         setExpanded(false);
       } else {
@@ -40,14 +40,14 @@ export default function TutoringSideBanner() {
     e?.stopPropagation();
     setExpanded(false);
     try {
-      sessionStorage.setItem('fikslingo_tutoring_banner_collapsed', 'true');
+      sessionStorage.setItem('flikslingo_tutoring_banner_collapsed', 'true');
     } catch {}
   };
 
   const handleExpand = () => {
     setExpanded(true);
     try {
-      sessionStorage.setItem('fikslingo_tutoring_banner_collapsed', 'false');
+      sessionStorage.setItem('flikslingo_tutoring_banner_collapsed', 'false');
     } catch {}
   };
 

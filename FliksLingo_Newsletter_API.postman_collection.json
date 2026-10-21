@@ -1,8 +1,8 @@
 {
 	"info": {
 		"_postman_id": "a91f3c4e-5e20-410c-99c8-dfb9a5c829e1",
-		"name": "FiksLingo Newsletter & Subscription API",
-		"description": "Postman Collection to test and configure the FiksLingo Newsletter Subscription Service.\n\nEndpoints:\n- `POST /api/subscribe` (Subscribe with name and email)\n- `GET /api/subscribe` (Health check & list subscribers)",
+		"name": "FliksLingo Newsletter & Subscription API",
+		"description": "Postman Collection to test and configure the FliksLingo Newsletter Subscription Service.\n\nEndpoints:\n- `POST /api/subscribe` (Subscribe with name and email)\n- `GET /api/subscribe` (Health check & list subscribers)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -50,7 +50,7 @@
 						"subscribe"
 					]
 				},
-				"description": "Subscribes a new user to FiksLingo updates with their name and email."
+				"description": "Subscribes a new user to FliksLingo updates with their name and email."
 			},
 			"response": []
 		},

@@ -54,14 +54,14 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Can I suggest a new world language or local dialect?',
-    answer: 'Absolutely! FiksLingo is committed to promoting both widely spoken international languages (Spanish, French, Mandarin, German, Japanese) and culturally rich African languages (Yoruba, Igbo, Hausa, Nigerian Pidgin). If you want a specific language added, select "Request a New Language" in the form.'
+    answer: 'Absolutely! FliksLingo is committed to promoting both widely spoken international languages (Spanish, French, Mandarin, German, Japanese) and culturally rich African languages (Yoruba, Igbo, Hausa, Nigerian Pidgin). If you want a specific language added, select "Request a New Language" in the form.'
   },
   {
-    question: 'Can schools or universities integrate FiksLingo for students?',
+    question: 'Can schools or universities integrate FliksLingo for students?',
     answer: 'Yes! We support classroom use, customized language modules, and group leaderboards. Contact us via the form or email us directly at nnejieb@gmail.com and nneji.obioma@gmail.com for institutional setup.'
   },
   {
-    question: 'Is FiksLingo free for learners?',
+    question: 'Is FliksLingo free for learners?',
     answer: 'Yes, all 12 languages, quizzes, culture vaults, audio pronunciation, and daily practice streaks are completely free to start!'
   }
 ];
@@ -184,9 +184,9 @@ export default function ContactPage() {
 
   // Generate pre-filled mailto URL for desktop/phone mail client
   const mailtoHref = `mailto:nnejieb@gmail.com,nneji.obioma@gmail.com?subject=${encodeURIComponent(
-    formData.subject || 'FiksLingo Inquiry'
+    formData.subject || 'FliksLingo Inquiry'
   )}&body=${encodeURIComponent(
-    `Hello FiksLingo Team,\n\nName: ${formData.name || ''}\nCategory: ${formData.category}\nLanguage: ${formData.language}\n\nMessage:\n${formData.message || ''}`
+    `Hello FliksLingo Team,\n\nName: ${formData.name || ''}\nCategory: ${formData.category}\nLanguage: ${formData.language}\n\nMessage:\n${formData.message || ''}`
   )}`;
 
   return (
@@ -194,13 +194,13 @@ export default function ContactPage() {
       {/* Top Navbar */}
       <header className="contact-nav">
         <div className="contact-nav-container">
-          <Link href="/" className="contact-brand" aria-label="FiksLingo Home">
+          <Link href="/" className="contact-brand" aria-label="FliksLingo Home">
             <img 
               src="/images/mascot.jpg" 
-              alt="FiksLingo Mascot" 
+              alt="FliksLingo Mascot" 
               className="contact-brand-img" 
             />
-            <span className="contact-brand-text">FiksLingo</span>
+            <span className="contact-brand-text">FliksLingo</span>
           </Link>
 
           <div className="contact-nav-right">
@@ -222,7 +222,7 @@ export default function ContactPage() {
             <Mail size={16} />
             <span>We are here to support your learning journey</span>
           </div>
-          <h1 className="contact-hero-title">Get in Touch with FiksLingo</h1>
+          <h1 className="contact-hero-title">Get in Touch with FliksLingo</h1>
           <p className="contact-hero-sub">
             Have questions about our 12 world languages, feedback on quizzes, suggestions for new dialects, 
             or want to partner with us? Reach our dedicated team directly below.
@@ -309,7 +309,7 @@ export default function ContactPage() {
                 </li>
                 <li className="topic-item">
                   <span className="topic-icon">✦</span>
-                  <span><strong>Schools & Organizations:</strong> Bring FiksLingo gamified learning to your classroom.</span>
+                  <span><strong>Schools & Organizations:</strong> Bring FliksLingo gamified learning to your classroom.</span>
                 </li>
               </ul>
             </div>
@@ -640,7 +640,7 @@ export default function ContactPage() {
       {/* Footer */}
       <footer className="contact-footer">
         <div className="contact-container contact-footer-inner">
-          <p>© {new Date().getFullYear()} FiksLingo. Master 12 World Languages. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} FliksLingo. Master 12 World Languages. All rights reserved.</p>
           <div className="contact-footer-links">
             <SubscribeButton
               source="contact_footer"

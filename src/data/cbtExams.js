@@ -1,4 +1,4 @@
-// Standard Computer Based Testing (CBT) Examination Bank for FiksLingo
+// Standard Computer Based Testing (CBT) Examination Bank for FliksLingo
 // Grounded in official examination standards (e.g. YKI - Yleinen kielitutkinto in Finland, CEFR standards)
 
 import { generateDynamicExam, examPools } from "./cbtExamEngine.js";

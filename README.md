@@ -1,6 +1,6 @@
-# FiksLingo — Master World Languages with Gamified Learning
+# FliksLingo — Master World Languages with Gamified Learning
 
-**FiksLingo** is an interactive, gamified multi-language learning web platform built with **Next.js (App Router)** and **Firebase** (Authentication & Cloud Firestore).
+**FliksLingo** is an interactive, gamified multi-language learning web platform built with **Next.js (App Router)** and **Firebase** (Authentication & Cloud Firestore).
 
 ---
 
@@ -51,4 +51,4 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) (or `http://localhost:3001`) in your browser to start learning with **FiksLingo**!
+Open [http://localhost:3000](http://localhost:3000) (or `http://localhost:3001`) in your browser to start learning with **FliksLingo**!

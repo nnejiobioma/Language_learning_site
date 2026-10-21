@@ -117,10 +117,10 @@ export default function AuthForm({ initialMode = 'signup' }) {
 
         <div className="auth-header">
           <div className="auth-mascot-icon">
-            <img src="/images/mascot.jpg" alt="FiksLingo Mascot" className="auth-mascot-img" />
+            <img src="/images/mascot.jpg" alt="FliksLingo Mascot" className="auth-mascot-img" />
           </div>
           <h1 className="auth-title">
-            {isSignup ? 'Create your FiksLingo account' : 'Welcome back, learner!'}
+            {isSignup ? 'Create your FliksLingo account' : 'Welcome back, learner!'}
           </h1>
           <p className="auth-sub">
             {isSignup
@@ -282,7 +282,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
             </p>
           ) : (
             <p>
-              New to FiksLingo?{' '}
+              New to FliksLingo?{' '}
               <Link href="/signup" className="link-switch-btn">Create an account</Link>
             </p>
           )}
@@ -333,7 +333,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
             Privacy Policy
           </Link>
           <span className="auth-footer-dot">·</span>
-          <span>© {new Date().getFullYear()} FiksLingo</span>
+          <span>© {new Date().getFullYear()} FliksLingo</span>
         </div>
       </div>
     </div>

@@ -27,9 +27,9 @@ export default function PrivacyPolicyPage() {
       {/* Top Navbar */}
       <header className="terms-nav">
         <div className="terms-nav-container">
-          <Link href="/" className="terms-brand" aria-label="FiksLingo Home">
-            <img src="/images/mascot.jpg" alt="FiksLingo Mascot" className="terms-brand-img" />
-            <span className="terms-brand-text">FiksLingo</span>
+          <Link href="/" className="terms-brand" aria-label="FliksLingo Home">
+            <img src="/images/mascot.jpg" alt="FliksLingo Mascot" className="terms-brand-img" />
+            <span className="terms-brand-text">FliksLingo</span>
           </Link>
 
           <div className="terms-nav-right">
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
           </div>
           <h1 className="terms-hero-title">Privacy Policy</h1>
           <p className="terms-hero-sub">
-            At FiksLingo, we believe learning a world language should be fun, safe, and private. This policy outlines how we collect, protect, and respect your personal information across all 12 languages.
+            At FliksLingo, we believe learning a world language should be fun, safe, and private. This policy outlines how we collect, protect, and respect your personal information across all 12 languages.
           </p>
         </div>
       </section>
@@ -89,12 +89,12 @@ export default function PrivacyPolicyPage() {
                 <h2>Overview & Privacy Commitment</h2>
               </div>
               <p>
-                Welcome to <strong>FiksLingo</strong> (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;the Platform&rdquo;). We are committed to protecting the privacy and personal data of our learners worldwide. We practice <strong>data minimization</strong>: we only request and process information that is strictly necessary to save your language learning progress, maintain your daily streaks, provide accurate audio pronunciation, and keep your account secure.
+                Welcome to <strong>FliksLingo</strong> (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;the Platform&rdquo;). We are committed to protecting the privacy and personal data of our learners worldwide. We practice <strong>data minimization</strong>: we only request and process information that is strictly necessary to save your language learning progress, maintain your daily streaks, provide accurate audio pronunciation, and keep your account secure.
               </p>
               <div className="terms-callout info">
                 <CheckCircle2 size={20} className="callout-icon" />
                 <p>
-                  <strong>We Never Sell Your Data:</strong> FiksLingo does not sell, rent, or trade your personal information, email address, or study records to third-party advertisers or commercial data brokers.
+                  <strong>We Never Sell Your Data:</strong> FliksLingo does not sell, rent, or trade your personal information, email address, or study records to third-party advertisers or commercial data brokers.
                 </p>
               </div>
             </section>
@@ -107,7 +107,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <p>We collect information in three ways: information you provide directly, data generated through lesson study, and device storage technologies:</p>
               <ul>
-                <li><strong>Account Registration Information:</strong> When you register for FiksLingo, we collect your display name, email address, password hash, and acceptance timestamps for our Terms of Use and Privacy Policy. When signing in with Google, we receive your public profile name and verified email.</li>
+                <li><strong>Account Registration Information:</strong> When you register for FliksLingo, we collect your display name, email address, password hash, and acceptance timestamps for our Terms of Use and Privacy Policy. When signing in with Google, we receive your public profile name and verified email.</li>
                 <li><strong>Learning & Gamification Records:</strong> Your active learning language (Spanish, French, German, Japanese, Mandarin, etc.), completed lessons, XP, current streak count, heart count, flashcard mastery status, and CBT exam scores.</li>
                 <li><strong>Newsletter Subscriptions:</strong> If you subscribe to our weekly vocabulary digest, we collect your name, email, and subscription source.</li>
                 <li><strong>Technical & Log Information:</strong> Basic browser metadata, IP address, device type, and operating system used solely for network troubleshooting and cloud security.</li>
@@ -137,7 +137,7 @@ export default function PrivacyPolicyPage() {
                 <h2>Persistent Cookies & Local Storage</h2>
               </div>
               <p>
-                FiksLingo uses <strong>persistent cookies</strong> — files featuring an expiration date that stay saved on your hard drive even after you close your browser. They are used for long-term settings like saved language preferences, dark/light theme, and &ldquo;remember me&rdquo; sign-in options.
+                FliksLingo uses <strong>persistent cookies</strong> — files featuring an expiration date that stay saved on your hard drive even after you close your browser. They are used for long-term settings like saved language preferences, dark/light theme, and &ldquo;remember me&rdquo; sign-in options.
               </p>
               <div className="terms-callout info">
                 <Cookie size={20} className="callout-icon" />
@@ -146,11 +146,11 @@ export default function PrivacyPolicyPage() {
                 </p>
               </div>
               <ul>
-                <li><code>fikslingo_lang</code> (Duration: 365 days): Saves your chosen target language across visits.</li>
-                <li><code>fikslingo_remember_me</code> (Duration: 30 days): Maintains persistent sign-in on your device when checked during login.</li>
-                <li><code>fikslingo_saved_email</code> (Duration: 30 days): Pre-fills your email on the login screen for rapid sign-in.</li>
-                <li><code>fikslingo_theme</code> (Duration: 365 days): Preserves your selected Light, Dark, or System visual theme.</li>
-                <li><code>fikslingo_cookie_consent</code> (Duration: 365 days): Records your cookie preferences so you are not prompted repeatedly.</li>
+                <li><code>flikslingo_lang</code> (Duration: 365 days): Saves your chosen target language across visits.</li>
+                <li><code>flikslingo_remember_me</code> (Duration: 30 days): Maintains persistent sign-in on your device when checked during login.</li>
+                <li><code>flikslingo_saved_email</code> (Duration: 30 days): Pre-fills your email on the login screen for rapid sign-in.</li>
+                <li><code>flikslingo_theme</code> (Duration: 365 days): Preserves your selected Light, Dark, or System visual theme.</li>
+                <li><code>flikslingo_cookie_consent</code> (Duration: 365 days): Records your cookie preferences so you are not prompted repeatedly.</li>
               </ul>
               <p>
                 You can view, block, or delete cookies at any time via your browser&apos;s privacy settings. Note that disabling persistent cookies may require you to select your language and re-authenticate each time you launch the browser.
@@ -164,7 +164,7 @@ export default function PrivacyPolicyPage() {
                 <h2>Speech, Audio Pronunciation & Microphone Data</h2>
               </div>
               <p>
-                FiksLingo utilizes standard Web Speech APIs and native voice audio files to provide authentic pronunciation examples across 12 world languages.
+                FliksLingo utilizes standard Web Speech APIs and native voice audio files to provide authentic pronunciation examples across 12 world languages.
               </p>
               <ul>
                 <li><strong>No Voice Recording Storage:</strong> We do not record, store, or sell voice biometrics. Microphone input used for listening quizzes is processed client-side in your browser in real time.</li>
@@ -213,12 +213,12 @@ export default function PrivacyPolicyPage() {
                 <h2>Your Rights & Data Control (GDPR & CCPA)</h2>
               </div>
               <p>
-                Regardless of where you reside, FiksLingo empowers you with full autonomy over your data:
+                Regardless of where you reside, FliksLingo empowers you with full autonomy over your data:
               </p>
               <ul>
                 <li><strong>Right to Access & Portability:</strong> You can view your complete study metrics, XP, and profile details anytime in your Profile & Settings tab.</li>
                 <li><strong>Right to Rectification:</strong> You can update your display name, email, or language preference at any moment.</li>
-                <li><strong>Right to Erasure (&ldquo;Right to be Forgotten&rdquo;):</strong> You may request full account and data deletion by contacting our privacy team at <a href="mailto:privacy@fikslingo.com">privacy@fikslingo.com</a>.</li>
+                <li><strong>Right to Erasure (&ldquo;Right to be Forgotten&rdquo;):</strong> You may request full account and data deletion by contacting our privacy team at <a href="mailto:privacy@flikslingo.com">privacy@flikslingo.com</a>.</li>
                 <li><strong>Right to Opt-Out:</strong> You can unsubscribe from newsletter emails at any time using the unsubscribe link included in every email.</li>
               </ul>
             </section>
@@ -230,10 +230,10 @@ export default function PrivacyPolicyPage() {
                 <h2>Children&apos;s Privacy (COPPA Compliance)</h2>
               </div>
               <p>
-                FiksLingo is committed to protecting children&apos;s privacy. We do not knowingly collect personal identifiable information from children under 13 without verifiable parental consent.
+                FliksLingo is committed to protecting children&apos;s privacy. We do not knowingly collect personal identifiable information from children under 13 without verifiable parental consent.
               </p>
               <p>
-                If we discover that a child under 13 has registered without parental authorization, we will promptly delete their account and associated data. Parents or guardians who believe their child has created an account may contact us at <a href="mailto:privacy@fikslingo.com">privacy@fikslingo.com</a>.
+                If we discover that a child under 13 has registered without parental authorization, we will promptly delete their account and associated data. Parents or guardians who believe their child has created an account may contact us at <a href="mailto:privacy@flikslingo.com">privacy@flikslingo.com</a>.
               </p>
             </section>
 
@@ -247,9 +247,9 @@ export default function PrivacyPolicyPage() {
                 We may update this Privacy Policy from time to time to reflect improvements to our learning tools or legal requirements. Material changes will be highlighted on the Platform with an updated effective date.
               </p>
               <div className="terms-contact-card">
-                <p><strong>FiksLingo Data Protection & Support Team</strong></p>
+                <p><strong>FliksLingo Data Protection & Support Team</strong></p>
                 <p>Direct Inboxes: <a href="mailto:nnejieb@gmail.com">nnejieb@gmail.com</a> &amp; <a href="mailto:nneji.obioma@gmail.com">nneji.obioma@gmail.com</a></p>
-                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>fikslingo.com/contact</Link></p>
+                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>flikslingo.com/contact</Link></p>
               </div>
             </section>
 
@@ -275,7 +275,7 @@ export default function PrivacyPolicyPage() {
       {/* Footer */}
       <footer className="terms-footer">
         <div className="terms-container terms-footer-inner">
-          <p>© {new Date().getFullYear()} FiksLingo. All rights reserved. Master 12 World Languages.</p>
+          <p>© {new Date().getFullYear()} FliksLingo. All rights reserved. Master 12 World Languages.</p>
           <div className="terms-footer-links">
             <SubscribeButton
               source="privacy_footer"

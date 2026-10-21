@@ -1,6 +1,6 @@
 $kind: collection
 description: |-
-  Postman Collection to test and configure the FiksLingo Newsletter Subscription Service.
+  Postman Collection to test and configure the FliksLingo Newsletter Subscription Service.
 
   Endpoints:
   - `POST /api/subscribe` (Subscribe with name and email)

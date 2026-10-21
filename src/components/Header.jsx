@@ -87,12 +87,12 @@ export default function Header() {
             <div className="mascot-avatar-small">
               <img 
                 src="/images/mascot.jpg" 
-                alt="FiksLingo Mascot" 
+                alt="FliksLingo Mascot" 
                 className="mascot-img"
               />
             </div>
             <div className="brand-text">
-              <span className="brand-name">FiksLingo</span>
+              <span className="brand-name">FliksLingo</span>
               <span className="brand-tagline">Master World Languages</span>
             </div>
           </div>
@@ -280,7 +280,7 @@ export default function Header() {
                   id="header-about-btn"
                 >
                   <Info size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-                  About FiksLingo
+                  About FliksLingo
                 </button>
                 <button 
                   className="dropdown-signout-btn"

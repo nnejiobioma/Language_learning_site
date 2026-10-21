@@ -75,8 +75,8 @@ export default function SubscribeModal({
 
       // Mark user as subscribed in localStorage
       try {
-        localStorage.setItem('fikslingo_subscribed', 'true');
-        localStorage.setItem('fikslingo_subscriber_email', email.trim());
+        localStorage.setItem('flikslingo_subscribed', 'true');
+        localStorage.setItem('flikslingo_subscriber_email', email.trim());
       } catch (e) {
         console.warn('Could not save subscription flag in local storage:', e);
       }
@@ -107,7 +107,7 @@ export default function SubscribeModal({
         {/* Mascot & Badge */}
         <div className="sub-modal-header">
           <div className="sub-mascot-pill">
-            <img src="/images/mascot.jpg" alt="FiksLingo" className="sub-mascot-img" />
+            <img src="/images/mascot.jpg" alt="FliksLingo" className="sub-mascot-img" />
             <span className="sub-pill-badge">
               <Sparkles size={13} className="sparkle-icon" />
               WEEKLY NEWSLETTER

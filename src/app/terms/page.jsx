@@ -27,9 +27,9 @@ export default function TermsPage() {
       {/* Top Navbar */}
       <header className="terms-nav">
         <div className="terms-nav-container">
-          <Link href="/" className="terms-brand" aria-label="FiksLingo Home">
-            <img src="/images/mascot.jpg" alt="FiksLingo Mascot" className="terms-brand-img" />
-            <span className="terms-brand-text">FiksLingo</span>
+          <Link href="/" className="terms-brand" aria-label="FliksLingo Home">
+            <img src="/images/mascot.jpg" alt="FliksLingo Mascot" className="terms-brand-img" />
+            <span className="terms-brand-text">FliksLingo</span>
           </Link>
 
           <div className="terms-nav-right">
@@ -53,7 +53,7 @@ export default function TermsPage() {
           </div>
           <h1 className="terms-hero-title">Terms of Use</h1>
           <p className="terms-hero-sub">
-            Please read these Terms of Use carefully before using FiksLingo. By registering for an account or using our platform, you agree to be legally bound by these terms.
+            Please read these Terms of Use carefully before using FliksLingo. By registering for an account or using our platform, you agree to be legally bound by these terms.
           </p>
         </div>
       </section>
@@ -90,12 +90,12 @@ export default function TermsPage() {
                 <h2>Acceptance of Terms & Eligibility</h2>
               </div>
               <p>
-                Welcome to <strong>FiksLingo</strong> ("we," "our," or "the Platform"). By accessing, browsing, registering for, or using the FiksLingo website, mobile applications, interactive curriculum, flashcards, Computer-Based Testing (CBT) modules, or related language learning services, you agree to comply with and be bound by these Terms of Use ("Terms").
+                Welcome to <strong>FliksLingo</strong> ("we," "our," or "the Platform"). By accessing, browsing, registering for, or using the FliksLingo website, mobile applications, interactive curriculum, flashcards, Computer-Based Testing (CBT) modules, or related language learning services, you agree to comply with and be bound by these Terms of Use ("Terms").
               </p>
               <div className="terms-callout info">
                 <CheckCircle2 size={20} className="callout-icon" />
                 <p>
-                  <strong>Mandatory Agreement:</strong> You must check and accept these Terms during the account creation process. If you do not agree to these Terms, you may not register, access, or use FiksLingo.
+                  <strong>Mandatory Agreement:</strong> You must check and accept these Terms during the account creation process. If you do not agree to these Terms, you may not register, access, or use FliksLingo.
                 </p>
               </div>
               <p>
@@ -110,10 +110,10 @@ export default function TermsPage() {
                 <h2>Educational Services & Methodology</h2>
               </div>
               <p>
-                FiksLingo provides gamified language learning software designed to help users learn world languages (including Spanish, French, German, Japanese, Mandarin, Portuguese, Swedish, Finnish, Igbo, Hausa, Nigerian Pidgin, and Yoruba) through bite-sized interactive units, spaced-repetition flashcards, listening assessments, and cultural insights.
+                FliksLingo provides gamified language learning software designed to help users learn world languages (including Spanish, French, German, Japanese, Mandarin, Portuguese, Swedish, Finnish, Igbo, Hausa, Nigerian Pidgin, and Yoruba) through bite-sized interactive units, spaced-repetition flashcards, listening assessments, and cultural insights.
               </p>
               <p>
-                While our curriculum is designed in alignment with standard frameworks such as the Common European Framework of Reference for Languages (CEFR A1–C2), FiksLingo is an educational aid. Completion of lessons, quizzes, or CBT exams does not constitute an accredited academic degree or official government certification unless explicitly certified in writing by an authorized exam administrator.
+                While our curriculum is designed in alignment with standard frameworks such as the Common European Framework of Reference for Languages (CEFR A1–C2), FliksLingo is an educational aid. Completion of lessons, quizzes, or CBT exams does not constitute an accredited academic degree or official government certification unless explicitly certified in writing by an authorized exam administrator.
               </p>
             </section>
 
@@ -129,14 +129,14 @@ export default function TermsPage() {
               <ul>
                 <li><strong>Accurate Information:</strong> You agree to provide true, current, and complete registration information and to maintain its accuracy.</li>
                 <li><strong>Credential Confidentiality:</strong> You are responsible for safeguarding your login credentials and for any activity that occurs under your account.</li>
-                <li><strong>Notification:</strong> You must immediately notify FiksLingo of any unauthorized access or breach of security concerning your account.</li>
+                <li><strong>Notification:</strong> You must immediately notify FliksLingo of any unauthorized access or breach of security concerning your account.</li>
                 <li><strong>One Account Per User:</strong> You may not create multiple accounts for the purpose of manipulating leaderboards, streaks, or gamified challenges.</li>
                 <li><strong>Persistent Cookies:</strong> Files that feature an expiration date and stay saved on your hard drive even after you close the browser. They are used for long-term settings like saved language preferences, "remember me" login options, and theme settings.</li>
               </ul>
               <div className="terms-callout info">
                 <CheckCircle2 size={20} className="callout-icon" />
                 <p>
-                  <strong>Persistent Cookies Notice:</strong> When you select "Remember me on this device", FiksLingo writes a persistent cookie (with a 30-day expiration date) to your hard drive so you do not have to re-enter your credentials on every visit. Your chosen language (365 days) and theme preferences (365 days) are likewise saved via persistent cookies. You can remove these at any time in your browser settings.
+                  <strong>Persistent Cookies Notice:</strong> When you select "Remember me on this device", FliksLingo writes a persistent cookie (with a 30-day expiration date) to your hard drive so you do not have to re-enter your credentials on every visit. Your chosen language (365 days) and theme preferences (365 days) are likewise saved via persistent cookies. You can remove these at any time in your browser settings.
                 </p>
               </div>
             </section>
@@ -148,7 +148,7 @@ export default function TermsPage() {
                 <h2>Gamification, Hearts, Streaks & Virtual XP</h2>
               </div>
               <p>
-                FiksLingo incorporates gamification elements, including Hearts, Experience Points (XP), Daily Streaks, Achievement Badges, and Weekly Leaderboards:
+                FliksLingo incorporates gamification elements, including Hearts, Experience Points (XP), Daily Streaks, Achievement Badges, and Weekly Leaderboards:
               </p>
               <ul>
                 <li><strong>No Real-World Monetary Value:</strong> Hearts, XP, streaks, and virtual badges are virtual units of educational measurement. They have no cash value, cannot be redeemed for real currency, and cannot be transferred, sold, or assigned.</li>
@@ -169,7 +169,7 @@ export default function TermsPage() {
               <div className="terms-callout warning">
                 <AlertTriangle size={20} className="callout-icon" />
                 <p>
-                  <strong>Practice & Simulation Disclaimer:</strong> FiksLingo CBT test simulations are practice assessment tools. We do not guarantee identical results on official government, consular, university, or immigration language examinations.
+                  <strong>Practice & Simulation Disclaimer:</strong> FliksLingo CBT test simulations are practice assessment tools. We do not guarantee identical results on official government, consular, university, or immigration language examinations.
                 </p>
               </div>
               <p>
@@ -184,7 +184,7 @@ export default function TermsPage() {
                 <h2>Audio Synthesizers, Native Audio & Cultural Vault</h2>
               </div>
               <p>
-                FiksLingo features audio pronunciations, International Phonetic Alphabet (IPA) transcriptions, cultural proverbs, etiquette guides, and street slang in our Cultural Vault.
+                FliksLingo features audio pronunciations, International Phonetic Alphabet (IPA) transcriptions, cultural proverbs, etiquette guides, and street slang in our Cultural Vault.
               </p>
               <p>
                 Speech audio is generated through native voice recordings and advanced browser/cloud speech synthesis engines. Audio is provided strictly for educational comprehension. You may not record, scrape, repurpose, or redistribute our audio libraries or cultural collections for commercial purposes without explicit prior written authorization.
@@ -197,13 +197,13 @@ export default function TermsPage() {
                 <span className="section-num-pill">Section 7</span>
                 <h2>User Conduct & Acceptable Community Rules</h2>
               </div>
-              <p>When using FiksLingo, you agree that you will NOT:</p>
+              <p>When using FliksLingo, you agree that you will NOT:</p>
               <ul>
                 <li>Use vulgar, harassing, defamatory, or hateful language in your profile display name, bio, or public community responses.</li>
                 <li>Impersonate any person, entity, or fellow learner.</li>
                 <li>Deploy automated spiders, scrapers, crawlers, or bots to harvest questions, audio samples, or vocabulary databases.</li>
                 <li>Attempt to probe, scan, or breach the security or authentication measures of the platform.</li>
-                <li>Reverse engineer, decompile, or disassemble any portion of the FiksLingo code or database schemas.</li>
+                <li>Reverse engineer, decompile, or disassemble any portion of the FliksLingo code or database schemas.</li>
               </ul>
             </section>
 
@@ -214,10 +214,10 @@ export default function TermsPage() {
                 <h2>Intellectual Property & Limited License</h2>
               </div>
               <p>
-                All content on FiksLingo—including but not limited to lesson structures, flashcard text, custom artwork, mascot designs, CSS styling, software code, audio assets, and the FiksLingo name and trademarks—is the exclusive intellectual property of FiksLingo and its licensors.
+                All content on FliksLingo—including but not limited to lesson structures, flashcard text, custom artwork, mascot designs, CSS styling, software code, audio assets, and the FliksLingo name and trademarks—is the exclusive intellectual property of FliksLingo and its licensors.
               </p>
               <p>
-                Subject to your compliance with these Terms, FiksLingo grants you a personal, non-exclusive, non-transferable, revocable limited license to access and use the Platform solely for your personal, non-commercial language learning activities.
+                Subject to your compliance with these Terms, FliksLingo grants you a personal, non-exclusive, non-transferable, revocable limited license to access and use the Platform solely for your personal, non-commercial language learning activities.
               </p>
             </section>
 
@@ -231,7 +231,7 @@ export default function TermsPage() {
                 THE PLATFORM AND ALL LESSONS, TESTS, AUDIO, AND CONTENT ARE PROVIDED ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DISCLAIM ALL WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT.
               </p>
               <p>
-                TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL FIKSLINGO, ITS FOUNDERS, EMPLOYEES, OR PARTNERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR ACCESS TO OR USE OF (OR INABILITY TO USE) THE PLATFORM.
+                TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL FLIKSLINGO, ITS FOUNDERS, EMPLOYEES, OR PARTNERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR ACCESS TO OR USE OF (OR INABILITY TO USE) THE PLATFORM.
               </p>
             </section>
 
@@ -259,9 +259,9 @@ export default function TermsPage() {
                 If you have questions, feedback, or legal inquiries concerning these Terms of Use, please reach out to our team:
               </p>
               <div className="terms-contact-card">
-                <p><strong>FiksLingo Inquiries & Academic Team</strong></p>
+                <p><strong>FliksLingo Inquiries & Academic Team</strong></p>
                 <p>Direct Inboxes: <a href="mailto:nnejieb@gmail.com">nnejieb@gmail.com</a> &amp; <a href="mailto:nneji.obioma@gmail.com">nneji.obioma@gmail.com</a></p>
-                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>fikslingo.com/contact</Link></p>
+                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>flikslingo.com/contact</Link></p>
               </div>
             </section>
 
@@ -287,7 +287,7 @@ export default function TermsPage() {
       {/* Footer */}
       <footer className="terms-footer">
         <div className="terms-container terms-footer-inner">
-          <p>© {new Date().getFullYear()} FiksLingo. All rights reserved. Master 12 World Languages.</p>
+          <p>© {new Date().getFullYear()} FliksLingo. All rights reserved. Master 12 World Languages.</p>
           <div className="terms-footer-links">
             <SubscribeButton
               source="terms_footer"

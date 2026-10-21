@@ -65,27 +65,27 @@ export default function CookieBanner() {
                     <span>Purpose</span>
                   </div>
                   <div className="cookie-row">
-                    <code>fikslingo_lang</code>
+                    <code>flikslingo_lang</code>
                     <span>365 days</span>
                     <span>Saves your selected learning language across browser sessions</span>
                   </div>
                   <div className="cookie-row">
-                    <code>fikslingo_remember_me</code>
+                    <code>flikslingo_remember_me</code>
                     <span>30 days</span>
                     <span>Maintains persistent sign-in on this device when checked</span>
                   </div>
                   <div className="cookie-row">
-                    <code>fikslingo_saved_email</code>
+                    <code>flikslingo_saved_email</code>
                     <span>30 days</span>
                     <span>Pre-fills your email on the login screen for easy access</span>
                   </div>
                   <div className="cookie-row">
-                    <code>fikslingo_theme</code>
+                    <code>flikslingo_theme</code>
                     <span>365 days</span>
                     <span>Preserves your Light, Dark, or System theme preference</span>
                   </div>
                   <div className="cookie-row">
-                    <code>fikslingo_cookie_consent</code>
+                    <code>flikslingo_cookie_consent</code>
                     <span>365 days</span>
                     <span>Remembers your persistent cookie agreement</span>
                   </div>

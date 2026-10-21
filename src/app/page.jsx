@@ -4,7 +4,7 @@ import SubscribeButton from '../components/SubscribeButton';
 import { LANGUAGES } from '../data/languages';
 
 export const metadata = {
-  title: 'FiksLingo — Learn 12 World Languages the Fun Way',
+  title: 'FliksLingo — Learn 12 World Languages the Fun Way',
   description:
     'Learn Spanish, French, German, Japanese, Mandarin, Portuguese, Swedish, Finnish, Igbo, Hausa, Nigerian Pidgin and Yoruba with gamified lessons, audio pronunciation and culture insights.',
 };
@@ -31,10 +31,10 @@ export default function LandingPage() {
     <div className="lp-root">
       <header className="lp-nav">
         <div className="lp-container lp-nav-inner">
-          <Link href="/" className="lp-brand" aria-label="FiksLingo home">
+          <Link href="/" className="lp-brand" aria-label="FliksLingo home">
             <img src="/images/mascot.jpg" alt="" className="lp-brand-img" />
             <div className="lp-brand-text">
-              <span className="lp-brand-name">FiksLingo</span>
+              <span className="lp-brand-name">FliksLingo</span>
               <span className="lp-brand-tagline">Master World Languages</span>
             </div>
           </Link>
@@ -64,7 +64,7 @@ export default function LandingPage() {
                 Learn a new language, <span className="lp-highlight">the fun way.</span>
               </h1>
               <p className="lp-lead">
-                FiksLingo turns language learning into a daily habit with short gamified lessons,
+                FliksLingo turns language learning into a daily habit with short gamified lessons,
                 spoken audio and real cultural context.
               </p>
               <div className="lp-cta-row">
@@ -75,7 +75,7 @@ export default function LandingPage() {
                   I already have an account
                 </Link>
               </div>
-              <ul className="lp-stats" aria-label="FiksLingo at a glance">
+              <ul className="lp-stats" aria-label="FliksLingo at a glance">
                 <li><strong>12</strong><span>languages</span></li>
                 <li><strong>5</strong><span>quiz types</span></li>
                 <li><strong>Free</strong><span>to sign up</span></li>
@@ -179,7 +179,7 @@ export default function LandingPage() {
 
       <footer className="lp-footer">
         <div className="lp-container lp-footer-inner">
-          <span>© {new Date().getFullYear()} FiksLingo. Master world languages.</span>
+          <span>© {new Date().getFullYear()} FliksLingo. Master world languages.</span>
           <div className="lp-footer-links">
             <SubscribeButton 
               source="landing_footer" 

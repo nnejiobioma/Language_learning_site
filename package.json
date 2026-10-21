@@ -1,7 +1,7 @@
 {
-  "name": "fikslingo",
+  "name": "flikslingo",
   "version": "1.0.0",
-  "description": "FiksLingo — Master World Languages with Gamified Learning.",
+  "description": "FliksLingo — Master World Languages with Gamified Learning.",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

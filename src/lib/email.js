@@ -57,7 +57,7 @@ export async function sendContactEmail({
 
   if (!transporter) {
     console.info(
-      `[FiksLingo Email] SMTP credentials not detected in environment variables. ` +
+      `[FliksLingo Email] SMTP credentials not detected in environment variables. ` +
       `Contact message stored safely; to enable direct SMTP dispatch to ${RECIPIENT_EMAILS.join(', ')}, ` +
       `provide SMTP_USER & SMTP_PASS in .env.local.`
     );
@@ -70,14 +70,14 @@ export async function sendContactEmail({
   }
 
   const senderUser = process.env.SMTP_USER || process.env.GMAIL_USER || process.env.CONTACT_EMAIL_USER;
-  const fromAddress = process.env.SMTP_FROM || `"FiksLingo Inquiries" <${senderUser}>`;
+  const fromAddress = process.env.SMTP_FROM || `"FliksLingo Inquiries" <${senderUser}>`;
   const sanitizedMessageHtml = (message || '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/\n/g, '<br/>');
 
-  const emailSubject = `[FiksLingo Contact] ${subject} - from ${name}`;
+  const emailSubject = `[FliksLingo Contact] ${subject} - from ${name}`;
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -106,7 +106,7 @@ export async function sendContactEmail({
       <div class="card">
         <div class="header">
           <div class="badge">New Contact Submission</div>
-          <h1 class="title">FiksLingo Learner Request</h1>
+          <h1 class="title">FliksLingo Learner Request</h1>
         </div>
         <div class="content">
           <table class="meta-table">
@@ -143,13 +143,13 @@ export async function sendContactEmail({
           </div>
 
           <div class="actions">
-            <a href="mailto:${email}?subject=Re:%20${encodeURIComponent(subject)}%20-%20FiksLingo" class="btn">
+            <a href="mailto:${email}?subject=Re:%20${encodeURIComponent(subject)}%20-%20FliksLingo" class="btn">
               Reply to ${name}
             </a>
           </div>
         </div>
         <div class="footer">
-          Delivered automatically to <strong>${RECIPIENT_EMAILS.join(', ')}</strong> by FiksLingo Contact Service.
+          Delivered automatically to <strong>${RECIPIENT_EMAILS.join(', ')}</strong> by FliksLingo Contact Service.
         </div>
       </div>
     </body>
@@ -157,7 +157,7 @@ export async function sendContactEmail({
   `;
 
   const textContent = `
-New FiksLingo Contact Request:
+New FliksLingo Contact Request:
 ----------------------------------------
 From: ${name}
 Email: ${email}
@@ -191,7 +191,7 @@ Reply directly to: ${email}
       recipients: RECIPIENT_EMAILS
     };
   } catch (err) {
-    console.error('[FiksLingo Email] Error delivering mail via nodemailer:', err);
+    console.error('[FliksLingo Email] Error delivering mail via nodemailer:', err);
     return {
       sent: false,
       error: err.message,

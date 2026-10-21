@@ -2,7 +2,7 @@
   {
     "id": "sub_1792011215531_5x0gwg",
     "name": "Verification Bot",
-    "email": "audit.test@fikslingo.com",
+    "email": "audit.test@flikslingo.com",
     "source": "audit",
     "subscribedAt": "2026-10-14T20:53:35.531Z"
   },
@@ -15,8 +15,8 @@
   },
   {
     "id": "sub_demo_welcome",
-    "name": "FiksLingo Community",
-    "email": "community@fikslingo.com",
+    "name": "FliksLingo Community",
+    "email": "community@flikslingo.com",
     "source": "seed",
     "subscribedAt": "2026-10-14T20:00:00.000Z"
   }

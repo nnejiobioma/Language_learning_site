@@ -55,7 +55,7 @@ export async function GET() {
 
   return NextResponse.json({
     status: 'online',
-    service: 'FiksLingo Newsletter & Updates Service',
+    service: 'FliksLingo Newsletter & Updates Service',
     endpoint: '/api/subscribe',
     totalSubscribers: subscribers.length,
     subscribers: subscribers.map(s => ({
@@ -131,7 +131,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: true,
-          message: `Great news, ${cleanName}! You are already subscribed to FiksLingo updates.`,
+          message: `Great news, ${cleanName}! You are already subscribed to FliksLingo updates.`,
           alreadySubscribed: true,
           subscriber: existing
         },
@@ -164,7 +164,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: true,
-        message: `Welcome aboard, ${cleanName}! You've successfully subscribed to FiksLingo weekly vocabulary and cultural secrets.`,
+        message: `Welcome aboard, ${cleanName}! You've successfully subscribed to FliksLingo weekly vocabulary and cultural secrets.`,
         subscriber: newSubscriber
       },
       { status: 201 }

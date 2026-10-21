@@ -1513,6 +1513,6 @@ export const perustasoSpeaking = [
     prepSeconds: 45,
     speakSeconds: 90,
     prompt: "Kerro miten opiskelet ja harjoittelet suomen kieltä:\n- Mitä tapoja käytät (kielikurssi, kirjat, mobiilisovellukset)\n- Miten harjoittelet puhumista arkielämässä\n- Mikä suomen kielessä on mielestäsi vaikeinta ja mikä hauskinta.",
-    modelAnswer: "Opiskelen suomen kieltä monella eri tavalla. Käyn suomen kurssilla kaksi kertaa viikossa ja teen kotitehtäviä huolellisesti. Lisäksi käytän FiksLingo-sovellusta päivittäin uusien sanojen oppimiseen. Yritän myös puhua suomea aina rohkeasti kaupassa, kirjastossa ja naapureiden kanssa. Suomen kielen taivutusmuodot ja sijamuodot ovat välillä haastavia, mutta on tosi palkitsevaa ja hauskaa huomata, kun ymmärtää uusia asioita ja pystyy kommunikoimaan paikallisten kanssa."
+    modelAnswer: "Opiskelen suomen kieltä monella eri tavalla. Käyn suomen kurssilla kaksi kertaa viikossa ja teen kotitehtäviä huolellisesti. Lisäksi käytän FliksLingo-sovellusta päivittäin uusien sanojen oppimiseen. Yritän myös puhua suomea aina rohkeasti kaupassa, kirjastossa ja naapureiden kanssa. Suomen kielen taivutusmuodot ja sijamuodot ovat välillä haastavia, mutta on tosi palkitsevaa ja hauskaa huomata, kun ymmärtää uusia asioita ja pystyy kommunikoimaan paikallisten kanssa."
   }
 ];

@@ -8,7 +8,7 @@ import CookieBanner from '../components/CookieBanner';
 import TutoringSideBanner from '../components/TutoringSideBanner';
 
 export const metadata = {
-  title: 'FiksLingo — Master World Languages with Gamified Learning',
+  title: 'FliksLingo — Master World Languages with Gamified Learning',
   description: 'Learn Spanish, French, German, Japanese, Mandarin Chinese, Nigerian Pidgin, and Yoruba with interactive gamified quizzes, speech pronunciation, streak tracking, and cultural insights.',
   keywords: 'Spanish, French, German, Japanese, Mandarin Chinese, Nigerian Pidgin, Yoruba, Multi-language learning app, Next.js, Firebase',
 };
@@ -21,7 +21,7 @@ const themeInitScript = `
         var m = document.cookie.match(new RegExp('(^|; )' + name + '=([^;]+)'));
         return m ? decodeURIComponent(m[2]) : null;
       }
-      var cookiePref = getCookie('fikslingo_theme');
+      var cookiePref = getCookie('flikslingo_theme');
       var pref = cookiePref || localStorage.getItem('theme-preference') || 'system';
       var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       var isDark = pref === 'dark' || (pref === 'system' && sysDark);
