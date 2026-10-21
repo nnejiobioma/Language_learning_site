@@ -40,6 +40,11 @@ export default function AdminFloatingToolbar() {
           <p className="admin-logged-user">
             Logged in: <strong>{user?.email}</strong>
           </p>
+          {adminEditMode && (
+            <p style={{ fontSize: '0.72rem', color: '#38bdf8', margin: '4px 0 8px', fontWeight: 600, lineHeight: 1.3 }}>
+              ✨ Direct edit active: click any text on page to edit & save in-place!
+            </p>
+          )}
 
           <div className="admin-dock-actions">
             <button

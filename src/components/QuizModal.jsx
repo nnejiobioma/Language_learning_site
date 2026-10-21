@@ -17,6 +17,7 @@ import {
   Edit3
 } from 'lucide-react';
 import { useAdminContent } from '../context/AdminContentContext';
+import InlineEditableText from './InlineEditableText';
 
 // Helper to safely get native/foreign term from a pair
 function getPairNative(p) {
@@ -74,7 +75,7 @@ export default function QuizModal() {
     currentLanguage
   } = useGame();
 
-  const { isAdmin, openQuickEdit, overrides } = useAdminContent();
+  const { isAdmin, openQuickEdit, overrides, updateQuestion } = useAdminContent();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
@@ -381,7 +382,14 @@ export default function QuizModal() {
 
             {/* Question prompt header */}
             <div className="question-prompt-header">
-              <h2 className="q-prompt-text">{currentQ.prompt}</h2>
+              <InlineEditableText
+                value={currentQ.prompt}
+                tagName="h2"
+                className="q-prompt-text"
+                multiline={true}
+                fieldLabel="Question Prompt"
+                onSave={(newPrompt) => updateQuestion(currentQ.id, { prompt: newPrompt })}
+              />
 
               {currentQ.type === 'audio_listen' && (
                 <div className="audio-prompt-box">
@@ -410,7 +418,21 @@ export default function QuizModal() {
                       disabled={feedbackStatus !== null}
                     >
                       <span className="option-index">{idx + 1}</span>
-                      <span className="option-text">{opt}</span>
+                      <InlineEditableText
+                        value={opt}
+                        tagName="span"
+                        className="option-text"
+                        fieldLabel={`Option ${idx + 1}`}
+                        onSave={(newOpt) => {
+                          const newOptions = [...currentQ.options];
+                          newOptions[idx] = newOpt;
+                          const wasCorrect = currentQ.correctAnswer === opt;
+                          updateQuestion(currentQ.id, {
+                            options: newOptions,
+                            ...(wasCorrect ? { correctAnswer: newOpt } : {})
+                          });
+                        }}
+                      />
                     </button>
                   ))}
                 </div>
@@ -543,7 +565,16 @@ export default function QuizModal() {
                   <CheckCircle2 size={30} className="feedback-icon" />
                   <div className="feedback-text">
                     <strong>{isReviewPhase ? 'Great comeback! You mastered it!' : 'Excellent! Correct answer!'}</strong>
-                    {currentQ.explanation && <p className="explanation-text">{currentQ.explanation}</p>}
+                    {currentQ.explanation && (
+                      <InlineEditableText
+                        value={currentQ.explanation}
+                        tagName="p"
+                        className="explanation-text"
+                        multiline={true}
+                        fieldLabel="Explanation"
+                        onSave={(newExp) => updateQuestion(currentQ.id, { explanation: newExp })}
+                      />
+                    )}
                   </div>
                 </div>
               )}
@@ -558,7 +589,16 @@ export default function QuizModal() {
                         Correct answer: <strong>{currentQ.correctAnswer}</strong>
                       </p>
                     )}
-                    {currentQ.explanation && <p className="explanation-text">{currentQ.explanation}</p>}
+                    {currentQ.explanation && (
+                      <InlineEditableText
+                        value={currentQ.explanation}
+                        tagName="p"
+                        className="explanation-text"
+                        multiline={true}
+                        fieldLabel="Explanation"
+                        onSave={(newExp) => updateQuestion(currentQ.id, { explanation: newExp })}
+                      />
+                    )}
                   </div>
                 </div>
               )}

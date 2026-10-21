@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
 import { useAdminContent } from '../context/AdminContentContext';
+import InlineEditableText from './InlineEditableText';
 import { 
   Check, 
   Lock, 
@@ -51,7 +52,14 @@ export default function LessonPath() {
     setActiveTab 
   } = useGame();
 
-  const { getLanguageData, isAdmin, adminEditMode, openQuickEdit } = useAdminContent();
+  const { 
+    getLanguageData, 
+    isAdmin, 
+    adminEditMode, 
+    openQuickEdit, 
+    updateUnit, 
+    updateLesson 
+  } = useAdminContent();
   const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
 
   const getUnitKey = (u, idx) => u.id || u.unitId || `unit-${idx}`;
@@ -194,8 +202,21 @@ export default function LessonPath() {
                   </div>
                   <div className="unit-header-text">
                     <span className="unit-eyebrow">UNIT {unitIdx + 1}</span>
-                    <h2 className="unit-heading">{unit.title}</h2>
-                    <p className="unit-desc">{unit.subtitle}</p>
+                    <InlineEditableText
+                      value={unit.title}
+                      tagName="h2"
+                      className="unit-heading"
+                      fieldLabel="Unit Title"
+                      onSave={(newVal) => updateUnit(unit.id, { title: newVal })}
+                    />
+                    <InlineEditableText
+                      value={unit.subtitle}
+                      tagName="p"
+                      className="unit-desc"
+                      multiline={true}
+                      fieldLabel="Unit Subtitle"
+                      onSave={(newVal) => updateUnit(unit.id, { subtitle: newVal })}
+                    />
                   </div>
 
                   <div className="unit-header-right">
@@ -277,8 +298,21 @@ export default function LessonPath() {
                               ) : (
                                 <span className="lesson-step-tag">Lesson {lessonIdx + 1}</span>
                               )}
-                              <h3 className="lesson-node-title">{lesson.title}</h3>
-                              <p className="lesson-node-desc">{lesson.description}</p>
+                              <InlineEditableText
+                                value={lesson.title}
+                                tagName="h3"
+                                className="lesson-node-title"
+                                fieldLabel="Lesson Title"
+                                onSave={(newVal) => updateLesson(lesson.id, { title: newVal })}
+                              />
+                              <InlineEditableText
+                                value={lesson.description}
+                                tagName="p"
+                                className="lesson-node-desc"
+                                multiline={true}
+                                fieldLabel="Lesson Description"
+                                onSave={(newVal) => updateLesson(lesson.id, { description: newVal })}
+                              />
                               
                               <div className="lesson-action-row">
                                 <span className={`lesson-xp-tag ${isReview ? 'review-xp-tag' : ''}`}>

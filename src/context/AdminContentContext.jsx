@@ -23,7 +23,14 @@ export function AdminContentProvider({ children }) {
     site: {}         // { heroTitle, heroSubtitle, announcements, ... }
   });
 
-  const [adminEditMode, setAdminEditMode] = useState(false);
+  const [adminEditMode, setAdminEditMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        return localStorage.getItem('flikslingo_admin_edit_mode') === 'true';
+      } catch {}
+    }
+    return false;
+  });
   const [activeEditItem, setActiveEditItem] = useState(null); // { type, id, data, langId, parentId }
   const [syncStatus, setSyncStatus] = useState('idle'); // 'idle' | 'saving' | 'synced' | 'error'
 
@@ -362,8 +369,29 @@ export function AdminContentProvider({ children }) {
     setActiveEditItem(null);
   };
 
+  const updateSite = useCallback((fieldKey, value) => {
+    setOverrides(prev => {
+      const next = {
+        ...prev,
+        site: {
+          ...prev.site,
+          [fieldKey]: value,
+          _updatedAt: new Date().toISOString()
+        }
+      };
+      persistOverrides(next);
+      return next;
+    });
+  }, [persistOverrides]);
+
   const toggleAdminEditMode = () => {
-    setAdminEditMode(prev => !prev);
+    setAdminEditMode(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem('flikslingo_admin_edit_mode', String(next));
+      } catch {}
+      return next;
+    });
   };
 
   return (
@@ -383,6 +411,7 @@ export function AdminContentProvider({ children }) {
       updateFlashcard,
       updateCulture,
       updateCbt,
+      updateSite,
       resetItem,
       resetAllOverrides,
       getLanguageData

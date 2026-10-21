@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
 import { useAdminContent } from '../context/AdminContentContext';
+import InlineEditableText from './InlineEditableText';
 import { soundEngine } from '../lib/audio';
 import { 
   Volume2, 
@@ -19,7 +20,7 @@ import {
 
 export default function FlashcardsView() {
   const { currentLanguage } = useGame();
-  const { getLanguageData, isAdmin, openQuickEdit } = useAdminContent();
+  const { getLanguageData, isAdmin, openQuickEdit, updateFlashcard } = useAdminContent();
   const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
   const cards = langData.flashcards || [];
 
@@ -162,16 +163,30 @@ export default function FlashcardsView() {
             </div>
 
             <div className="card-main-word-area">
-              <span className="card-word-native">{currentCard.front}</span>
+              <InlineEditableText
+                value={currentCard.front}
+                tagName="span"
+                className="card-word-native"
+                fieldLabel="Native Word"
+                onSave={(newVal) => updateFlashcard(currentCard.id, { front: newVal })}
+              />
               
               {/* Clear break and styled badge before pronouncing phonetics */}
               <br className="phonetic-break" />
-              {currentCard.phonetic && (
-                <div className="card-phonetic-badge">
-                  <span className="phonetic-lead-label">Pronunciation:</span>
-                  <span className="card-phonetic">/{currentCard.phonetic}/</span>
-                </div>
-              )}
+              <div className="card-phonetic-badge">
+                <span className="phonetic-lead-label">Pronunciation:</span>
+                <span className="card-phonetic">
+                  /
+                  <InlineEditableText
+                    value={currentCard.phonetic || ''}
+                    tagName="span"
+                    fieldLabel="Phonetic"
+                    placeholder="add phonetic"
+                    onSave={(newVal) => updateFlashcard(currentCard.id, { phonetic: newVal })}
+                  />
+                  /
+                </span>
+              </div>
               
               <button 
                 className="card-audio-speaker-btn"
@@ -197,23 +212,43 @@ export default function FlashcardsView() {
             </div>
 
             <div className="card-main-word-area">
-              <span className="card-translation-text">{currentCard.back}</span>
+              <InlineEditableText
+                value={currentCard.back}
+                tagName="span"
+                className="card-translation-text"
+                fieldLabel="Translation"
+                onSave={(newVal) => updateFlashcard(currentCard.id, { back: newVal })}
+              />
               
               {/* Clear break and pronunciation on the back face */}
               <br className="phonetic-break" />
-              {currentCard.phonetic && (
-                <div className="card-phonetic-badge back-phonetic-badge">
-                  <span className="phonetic-lead-label">Pronunciation:</span>
-                  <span className="card-phonetic">/{currentCard.phonetic}/</span>
-                </div>
-              )}
+              <div className="card-phonetic-badge back-phonetic-badge">
+                <span className="phonetic-lead-label">Pronunciation:</span>
+                <span className="card-phonetic">
+                  /
+                  <InlineEditableText
+                    value={currentCard.phonetic || ''}
+                    tagName="span"
+                    fieldLabel="Phonetic"
+                    placeholder="add phonetic"
+                    onSave={(newVal) => updateFlashcard(currentCard.id, { phonetic: newVal })}
+                  />
+                  /
+                </span>
+              </div>
 
-              {currentCard.example && (
-                <div className="card-example-box">
-                  <span className="example-label">Example in sentence:</span>
-                  <p className="example-quote">"{currentCard.example}"</p>
-                </div>
-              )}
+              <div className="card-example-box">
+                <span className="example-label">Example in sentence:</span>
+                <InlineEditableText
+                  value={currentCard.example || ''}
+                  tagName="p"
+                  className="example-quote"
+                  multiline={true}
+                  fieldLabel="Example Sentence"
+                  placeholder="add example sentence"
+                  onSave={(newVal) => updateFlashcard(currentCard.id, { example: newVal })}
+                />
+              </div>
             </div>
 
             <div className="card-bottom-hint">

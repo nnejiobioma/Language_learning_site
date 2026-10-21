@@ -7964,3 +7964,157 @@ html:not(.dark) .admin-quiz-edit-btn:hover {
   background: #0284c7;
   color: #ffffff;
 }
+
+/* ==========================================================================
+   True Direct In-Place Frontend Editing Styles
+   ========================================================================== */
+.inline-editable-target {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+  position: relative;
+  outline: none;
+}
+
+.inline-editable-target:hover {
+  background: rgba(14, 165, 233, 0.12) !important;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.45);
+}
+
+.inline-editable-target .inline-edit-indicator {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #0284c7;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  align-items: center;
+  gap: 3px;
+  z-index: 10;
+}
+
+.inline-editable-target:hover .inline-edit-indicator {
+  display: inline-flex;
+}
+
+.inline-edit-saved-badge {
+  position: absolute;
+  top: -12px;
+  right: 0;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+  animation: savedPop 0.3s ease-out;
+  z-index: 20;
+}
+
+@keyframes savedPop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.inline-edit-active-container {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 15;
+}
+
+.inline-edit-input {
+  width: 100%;
+  background: var(--bg-card, #0f172a);
+  color: var(--text-primary, #ffffff);
+  border: 2px solid #0284c7;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  outline: none;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.35);
+}
+
+.inline-edit-textarea {
+  width: 100%;
+  background: var(--bg-card, #0f172a);
+  color: var(--text-primary, #ffffff);
+  border: 2px solid #0284c7;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  outline: none;
+  resize: vertical;
+  line-height: 1.5;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.35);
+}
+
+.inline-edit-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.inline-edit-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.inline-edit-save-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.inline-edit-cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.inline-edit-cancel-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.inline-edit-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted, #94a3b8);
+  margin-left: 6px;
+}
+
+html:not(.dark) .inline-edit-input,
+html:not(.dark) .inline-edit-textarea {
+  background: #ffffff;
+  color: #0f172a;
+}
+
