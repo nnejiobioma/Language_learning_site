@@ -1,5 +1,5 @@
 // Nigerian Pidgin Standard Computer Based Testing (CBT) Bank
-// Grounded in the NERDC Curriculum and West African Pidgin literature standards (e.g. JW.org / BBC News Pidgin)
+// Grounded in the NERDC Curriculum and West African Pidgin literature standards (e.g. BBC News Pidgin, Wazobia FM, and broadcast media)
 // Exactly 60 questions per section across all foundational and advanced testing tiers (360 questions total)
 
 export const pidginExams = [
@@ -1017,7 +1017,7 @@ export const pidginExams = [
           "D) We never read Bible"
         ],
         "correctAnswer": "A) We de read Bible everyday",
-        "explanation": "JW.org orthography: 'we de read' marks continuous habit."
+        "explanation": "Standard Pidgin orthography: 'we de read' marks continuous habit."
       },
       {
         "id": "p-cbt-found-s2-18",
@@ -1030,7 +1030,7 @@ export const pidginExams = [
           "D) Studying fits it"
         ],
         "correctAnswer": "A) You fit use-am for study",
-        "explanation": "JW.org phrase: 'you fit use-am for study'."
+        "explanation": "Standard media phrase: 'you fit use-am for study'."
       },
       {
         "id": "p-cbt-found-s2-19",
@@ -1043,7 +1043,7 @@ export const pidginExams = [
           "D) Video watching do"
         ],
         "correctAnswer": "A) Watch-am now",
-        "explanation": "JW.org action button: 'Watch-am now'."
+        "explanation": "Standard media action button: 'Watch-am now'."
       },
       {
         "id": "p-cbt-found-s2-20",
@@ -1056,7 +1056,7 @@ export const pidginExams = [
           "D) Moses was in fire"
         ],
         "correctAnswer": "A) Moses dey the bush wey fire dey",
-        "explanation": "JW.org title: 'Moses dey the bush wey fire dey'."
+        "explanation": "Literary title: 'Moses dey the bush wey fire dey'."
       },
       {
         "id": "p-cbt-found-s2-21",
@@ -1069,7 +1069,7 @@ export const pidginExams = [
           "D) Religion which makes war"
         ],
         "correctAnswer": "A) Religion wey de make people fight no fit bring peace",
-        "explanation": "JW.org text: 'Religion wey de make people fight no fit make peace dey this world'."
+        "explanation": "Standard literary text: 'Religion wey de make people fight no fit make peace dey this world'."
       },
       {
         "id": "p-cbt-found-s2-22",
@@ -1082,7 +1082,7 @@ export const pidginExams = [
           "D) We are talking many speech"
         ],
         "correctAnswer": "A) We de talk different-different language",
-        "explanation": "JW.org text: 'we de talk different-different language' (reduplication)."
+        "explanation": "Standard literary text: 'we de talk different-different language' (reduplication)."
       },
       {
         "id": "p-cbt-found-s2-23",
@@ -1420,7 +1420,7 @@ export const pidginExams = [
           "D) We never read Bible"
         ],
         "correctAnswer": "A) We de read Bible everyday",
-        "explanation": "JW.org orthography: 'we de read' marks continuous habit."
+        "explanation": "Standard Pidgin orthography: 'we de read' marks continuous habit."
       },
       {
         "id": "p-cbt-found-s2-49",
@@ -1433,7 +1433,7 @@ export const pidginExams = [
           "D) Studying fits it"
         ],
         "correctAnswer": "A) You fit use-am for study",
-        "explanation": "JW.org phrase: 'you fit use-am for study'."
+        "explanation": "Standard media phrase: 'you fit use-am for study'."
       },
       {
         "id": "p-cbt-found-s2-50",
@@ -1446,7 +1446,7 @@ export const pidginExams = [
           "D) Video watching do"
         ],
         "correctAnswer": "A) Watch-am now",
-        "explanation": "JW.org action button: 'Watch-am now'."
+        "explanation": "Standard media action button: 'Watch-am now'."
       },
       {
         "id": "p-cbt-found-s2-51",
@@ -1459,7 +1459,7 @@ export const pidginExams = [
           "D) Moses was in fire"
         ],
         "correctAnswer": "A) Moses dey the bush wey fire dey",
-        "explanation": "JW.org title: 'Moses dey the bush wey fire dey'."
+        "explanation": "Literary title: 'Moses dey the bush wey fire dey'."
       },
       {
         "id": "p-cbt-found-s2-52",
@@ -1472,7 +1472,7 @@ export const pidginExams = [
           "D) Religion which makes war"
         ],
         "correctAnswer": "A) Religion wey de make people fight no fit bring peace",
-        "explanation": "JW.org text: 'Religion wey de make people fight no fit make peace dey this world'."
+        "explanation": "Standard literary text: 'Religion wey de make people fight no fit make peace dey this world'."
       },
       {
         "id": "p-cbt-found-s2-53",
@@ -1485,7 +1485,7 @@ export const pidginExams = [
           "D) We are talking many speech"
         ],
         "correctAnswer": "A) We de talk different-different language",
-        "explanation": "JW.org text: 'we de talk different-different language' (reduplication)."
+        "explanation": "Standard literary text: 'we de talk different-different language' (reduplication)."
       },
       {
         "id": "p-cbt-found-s2-54",
@@ -2438,7 +2438,7 @@ export const pidginExams = [
           "D) Read daily to its gain"
         ],
         "correctAnswer": "A) Gain from-am by de read everyday",
-        "explanation": "JW.org orthography: preposition + enclitic '-am' ('from-am')."
+        "explanation": "Standard media orthography: preposition + enclitic '-am' ('from-am')."
       },
       {
         "id": "p-cbt-adv-s1-6",
@@ -2698,7 +2698,7 @@ export const pidginExams = [
           "D) Read daily to its gain"
         ],
         "correctAnswer": "A) Gain from-am by de read everyday",
-        "explanation": "JW.org orthography: preposition + enclitic '-am' ('from-am')."
+        "explanation": "Standard media orthography: preposition + enclitic '-am' ('from-am')."
       },
       {
         "id": "p-cbt-adv-s1-26",
@@ -2958,7 +2958,7 @@ export const pidginExams = [
           "D) Read daily to its gain"
         ],
         "correctAnswer": "A) Gain from-am by de read everyday",
-        "explanation": "JW.org orthography: preposition + enclitic '-am' ('from-am')."
+        "explanation": "Standard media orthography: preposition + enclitic '-am' ('from-am')."
       },
       {
         "id": "p-cbt-adv-s1-46",
@@ -3231,7 +3231,7 @@ export const pidginExams = [
           "D) Place that we meet weekly"
         ],
         "correctAnswer": "A) The place wey we de do our meeting every week",
-        "explanation": "JW.org Pidgin: 'place wey we de do our meeting'."
+        "explanation": "Standard broadcast Pidgin: 'place wey we de do our meeting'."
       },
       {
         "id": "p-cbt-adv-s2-7",
@@ -3387,7 +3387,7 @@ export const pidginExams = [
           "D) Guidance books of life"
         ],
         "correctAnswer": "A) The book dem wey get correct advice for life",
-        "explanation": "JW.org style: 'book dem wey get correct advice'."
+        "explanation": "Standard literary style: 'book dem wey get correct advice'."
       },
       {
         "id": "p-cbt-adv-s2-19",
@@ -3491,7 +3491,7 @@ export const pidginExams = [
           "D) Place that we meet weekly"
         ],
         "correctAnswer": "A) The place wey we de do our meeting every week",
-        "explanation": "JW.org Pidgin: 'place wey we de do our meeting'."
+        "explanation": "Standard broadcast Pidgin: 'place wey we de do our meeting'."
       },
       {
         "id": "p-cbt-adv-s2-27",
@@ -3647,7 +3647,7 @@ export const pidginExams = [
           "D) Guidance books of life"
         ],
         "correctAnswer": "A) The book dem wey get correct advice for life",
-        "explanation": "JW.org style: 'book dem wey get correct advice'."
+        "explanation": "Standard literary style: 'book dem wey get correct advice'."
       },
       {
         "id": "p-cbt-adv-s2-39",
@@ -3751,7 +3751,7 @@ export const pidginExams = [
           "D) Place that we meet weekly"
         ],
         "correctAnswer": "A) The place wey we de do our meeting every week",
-        "explanation": "JW.org Pidgin: 'place wey we de do our meeting'."
+        "explanation": "Standard broadcast Pidgin: 'place wey we de do our meeting'."
       },
       {
         "id": "p-cbt-adv-s2-47",
@@ -3907,7 +3907,7 @@ export const pidginExams = [
           "D) Guidance books of life"
         ],
         "correctAnswer": "A) The book dem wey get correct advice for life",
-        "explanation": "JW.org style: 'book dem wey get correct advice'."
+        "explanation": "Standard literary style: 'book dem wey get correct advice'."
       },
       {
         "id": "p-cbt-adv-s2-59",
@@ -4172,7 +4172,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-adv-s3-19",
         "section": "Oral Literature, Proverbs & Satire",
-        "prompt": "Question 19: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC & JW.org), how is editorial dignity maintained?",
+        "prompt": "Question 19: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC News Pidgin & Wazobia FM), how is editorial dignity maintained?",
         "options": [
           "A) By utilizing standardized grammatical markers ('don', 'dey', 'wey', '-am') and avoiding vulgar street obscenities",
           "B) By translating every English idiom literally word for word",
@@ -4432,7 +4432,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-adv-s3-39",
         "section": "Oral Literature, Proverbs & Satire",
-        "prompt": "Question 39: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC & JW.org), how is editorial dignity maintained?",
+        "prompt": "Question 39: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC News Pidgin & Wazobia FM), how is editorial dignity maintained?",
         "options": [
           "A) By utilizing standardized grammatical markers ('don', 'dey', 'wey', '-am') and avoiding vulgar street obscenities",
           "B) By translating every English idiom literally word for word",
@@ -4692,7 +4692,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-adv-s3-59",
         "section": "Oral Literature, Proverbs & Satire",
-        "prompt": "Question 59: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC & JW.org), how is editorial dignity maintained?",
+        "prompt": "Question 59: In Nigerian Pidgin literature, cultural philosophy, and satirical discourse: In standard broadcast media Pidgin (e.g. BBC News Pidgin & Wazobia FM), how is editorial dignity maintained?",
         "options": [
           "A) By utilizing standardized grammatical markers ('don', 'dey', 'wey', '-am') and avoiding vulgar street obscenities",
           "B) By translating every English idiom literally word for word",

@@ -1,5 +1,5 @@
 // Nigerian Pidgin (West African Pidgin) Complete NERDC Standard Curriculum Bank
-// Standardized according to the West African Pidgin literature standard (e.g. JW.org/wes-x-pgw, BBC News Pidgin)
+// Standardized according to West African Pidgin literature standards (NERDC, BBC News Pidgin, and broadcast media)
 // 10 Units, 21 Lessons, 20 Questions per Lesson (420 Questions Total)
 
 export const pidginAllUnits = [
@@ -534,7 +534,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l2-q14",
             "type": "multiple_choice",
-            "prompt": "In JW.org West African Pidgin, how is 'different kinds of books' translated with authentic reduplication?",
+            "prompt": "In standard West African Pidgin literature, how is 'different kinds of books' translated with authentic reduplication?",
             "options": [
               "'Different-different book'",
               "'Many kind of book'",
@@ -717,7 +717,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l3-q3",
             "type": "multiple_choice",
-            "prompt": "In standard West African Pidgin (e.g. JW.org standard), what does the hyphenated suffix '-am' signify in 'use-am' or 'read-am'?",
+            "prompt": "In standard West African Pidgin (e.g. broadcast standard), what does the hyphenated suffix '-am' signify in 'use-am' or 'read-am'?",
             "options": [
               "The 3rd person singular object pronoun ('it' or 'him/her')",
               "A past tense suffix like English '-ed'",
@@ -855,7 +855,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l3-q13",
             "type": "multiple_choice",
-            "prompt": "In JW.org publications, which construction is used for 'Watch it now'?",
+            "prompt": "In standard media Pidgin, which construction is used for 'Watch it now'?",
             "options": [
               "'Watch-am Now'",
               "'Watch it this time'",
@@ -863,7 +863,7 @@ export const pidginAllUnits = [
               "'Look it quick'"
             ],
             "correctAnswer": "'Watch-am Now'",
-            "explanation": "JW.org West African Pidgin prominently uses 'Watch-am Now' on video action buttons."
+            "explanation": "Standard media Pidgin uses the enclitic pronoun: 'Watch-am Now' on video action buttons."
           },
           {
             "id": "p-u1-l3-q14",
@@ -998,7 +998,7 @@ export const pidginAllUnits = [
               "Nobody can understand the material"
             ],
             "correctAnswer": "You all can use it for studying",
-            "explanation": "Direct quote from JW.org Pidgin: 'Una fit use-am for study' = You all can use it for studying.",
+            "explanation": "Standard media Pidgin: 'Una fit use-am for study' = You all can use it for studying.",
             "phrase": "Una fit use-am for study."
           },
           {
@@ -1061,12 +1061,12 @@ export const pidginAllUnits = [
               "Negative imperative"
             ],
             "correctAnswer": "Dynamic auxiliary marking continuous/progressive action ('I am reading the Bible')",
-            "explanation": "When placed before an active verb, 'dey' (or 'de' in JW.org orthography) marks ongoing continuous aspect."
+            "explanation": "When placed before an active verb, 'dey' (or 'de' in standard literary orthography) marks ongoing continuous aspect."
           },
           {
             "id": "p-u2-l1-q3",
             "type": "multiple_choice",
-            "prompt": "How is 'Moses is at the burning bush' expressed in JW.org Pidgin?",
+            "prompt": "How is 'Moses is at the bush that has fire' expressed in literary Nigerian Pidgin?",
             "options": [
               "'Moses dey the bush wey fire dey'",
               "'Moses was inside bush of fire'",
@@ -1074,7 +1074,7 @@ export const pidginAllUnits = [
               "'Fire catch Moses inside forest'"
             ],
             "correctAnswer": "'Moses dey the bush wey fire dey'",
-            "explanation": "Authentic JW.org title: 'Moses dey the bush wey fire dey' demonstrates both locative 'dey' and relative 'wey'."
+            "explanation": "Literary Pidgin title: 'Moses dey the bush wey fire dey' demonstrates both locative 'dey' and relative 'wey'."
           },
           {
             "id": "p-u2-l1-q4",
@@ -1102,7 +1102,7 @@ export const pidginAllUnits = [
               "bin read"
             ],
             "correctAnswer": "de read",
-            "explanation": "JW.org orthography uses 'de read' (or 'dey read') for the progressive action.",
+            "explanation": "Standard orthography uses 'de read' (or 'dey read') for the progressive action.",
             "sentence": "We ___ (are reading) different-different book.",
             "missingWord": "de read"
           },
@@ -1199,7 +1199,7 @@ export const pidginAllUnits = [
               "Sleeping soundly"
             ],
             "correctAnswer": "Exists / is available ('What new thing is there?')",
-            "explanation": "'Dey' here asserts existence (JW.org section: 'Which New Thing Dey?')."
+            "explanation": "'Dey' here asserts existence (broadcast news section: 'Which New Thing Dey?')."
           },
           {
             "id": "p-u2-l1-q13",
@@ -1225,7 +1225,7 @@ export const pidginAllUnits = [
               "happy-am"
             ],
             "correctAnswer": "de happy",
-            "explanation": "JW.org standard text: 'we de happy say we be Christian'.",
+            "explanation": "Standard literary text: 'we de happy say we be Christian'.",
             "sentence": "We ___ (are happy) say we be Christian.",
             "missingWord": "de happy"
           },
@@ -1253,7 +1253,7 @@ export const pidginAllUnits = [
               "read",
               "Bible"
             ],
-            "explanation": "JW.org photo caption: 'One man dey inside bus de read Bible.'"
+            "explanation": "Media photo caption: 'One man dey inside bus de read Bible.'"
           },
           {
             "id": "p-u2-l1-q16",
@@ -1355,23 +1355,23 @@ export const pidginAllUnits = [
               "Religion is a sport where people wrestle"
             ],
             "correctAnswer": "Religion that makes people fight cannot bring peace",
-            "explanation": "Direct quote from JW.org Pidgin: 'Religion wey de make people fight... no fit make peace dey this world.'",
+            "explanation": "Standard literary text: 'Religion wey de make people fight... no fit make peace dey this world.'",
             "phrase": "Religion wey de make people fight no fit bring peace."
           },
           {
             "id": "p-u2-l1-q20",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'Two witness de preach to one man wey de farm.' What is taking place?",
-            "audioText": "Two witness de preach to one man wey de farm.",
+            "prompt": "Listen to the audio text: 'Two teachers de speak to one man wey de farm.' What is taking place?",
+            "audioText": "Two teachers de speak to one man wey de farm.",
             "options": [
-              "Two witnesses are preaching to a farmer",
+              "Two teachers are speaking to a farmer",
               "Two men are buying farm produce",
               "A man is planting rice alone in the night",
-              "The witnesses are harvesting cassava"
+              "The workers are harvesting cassava"
             ],
-            "correctAnswer": "Two witnesses are preaching to a farmer",
-            "explanation": "JW.org image alt text: 'Two Jehovah Witness de preach to one man wey de for rice farm.'",
-            "phrase": "Two witness de preach to one man wey de farm."
+            "correctAnswer": "Two teachers are speaking to a farmer",
+            "explanation": "Standard progressive aspect: 'Two teachers de speak to one man wey de farm'.",
+            "phrase": "Two teachers de speak to one man wey de farm."
           }
         ]
       },
@@ -1453,7 +1453,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u2-l2-q6",
             "type": "multiple_choice",
-            "prompt": "In JW.org navigation, what does 'Things Wey Don Happen' mean?",
+            "prompt": "In digital news navigation, what does 'Things Wey Don Happen' mean?",
             "options": [
               "Current events / news of things that have occurred",
               "Things that will never occur",
@@ -1461,7 +1461,7 @@ export const pidginAllUnits = [
               "Fictional stories"
             ],
             "correctAnswer": "Current events / news of things that have occurred",
-            "explanation": "JW.org standard section: 'Things Wey Don Happen' translates 'News / Events that have taken place'."
+            "explanation": "Standard news media section: 'Things Wey Don Happen' translates 'News / Events that have taken place'."
           },
           {
             "id": "p-u2-l2-q7",
@@ -1487,7 +1487,7 @@ export const pidginAllUnits = [
               "never add"
             ],
             "correctAnswer": "don add",
-            "explanation": "JW.org Pidgin: 'news wey we don add' (news we have added).",
+            "explanation": "Standard media Pidgin: 'news wey we don add' (news we have added).",
             "sentence": "Check the news wey we ___ (have added).",
             "missingWord": "don add"
           },
@@ -1597,7 +1597,7 @@ export const pidginAllUnits = [
               "this",
               "book"
             ],
-            "explanation": "JW.org phrasing: 'Things wey we don write inside this book'."
+            "explanation": "Standard literary phrasing: 'Things wey we don write inside this book'."
           },
           {
             "id": "p-u2-l2-q16",
@@ -1695,7 +1695,7 @@ export const pidginAllUnits = [
               "Turn off the computer screen"
             ],
             "correctAnswer": "Look at the new items that have been added to the website",
-            "explanation": "JW.org Pidgin announcement: 'Check videos, music, things wey we don write, and news wey we don add.'",
+            "explanation": "Broadcast media announcement: 'Check videos, music, things wey we don write, and news wey we don add.'",
             "phrase": "Check the new things wey we don add for the website."
           },
           {
@@ -1750,15 +1750,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u3-l1-q2",
             "type": "multiple_choice",
-            "prompt": "In JW.org publications, how are the members called collectively in Pidgin?",
+            "prompt": "In standard Nigerian Pidgin, how are collective groups or communities referred to when describing people?",
             "options": [
-              "'Jehovah Witness people'",
-              "'Witnesses of Jehovah'",
-              "'Jehovah Witness dem'",
-              "'The Witnessers'"
+              "'Our people' or 'Village people'",
+              "'People of ours'",
+              "'Our peoples'",
+              "'We folk dem'"
             ],
-            "correctAnswer": "'Jehovah Witness people'",
-            "explanation": "JW.org uses 'Jehovah Witness people' (e.g. 'Official Website for Jehovah Witness People'). 'Witness dem' is also standard in colloquial speech."
+            "correctAnswer": "'Our people' or 'Village people'",
+            "explanation": "In standard Nigerian Pidgin, collective categories and community groups are formed using 'people' (e.g. 'our people', 'village people') or 'dem' (e.g. 'teacher dem')."
           },
           {
             "id": "p-u3-l1-q3",
@@ -1799,7 +1799,7 @@ export const pidginAllUnits = [
               "plenty"
             ],
             "correctAnswer": "different-different",
-            "explanation": "JW.org standard text: 'We dey for different-different country, we de talk different-different language'.",
+            "explanation": "Standard literary text: 'We dey for different-different country, we de talk different-different language'.",
             "sentence": "We dey for ___ (different kinds of) country.",
             "missingWord": "different-different"
           },
@@ -1950,7 +1950,7 @@ export const pidginAllUnits = [
               "one",
               "people"
             ],
-            "explanation": "JW.org statement: 'We de talk different-different language, even so, we de do all our thing as one people.'"
+            "explanation": "Standard literary statement: 'We de talk different-different language, even so, we de do all our thing as one people.'"
           },
           {
             "id": "p-u3-l1-q16",
@@ -2087,7 +2087,7 @@ export const pidginAllUnits = [
               "Using 'is with'"
             ],
             "correctAnswer": "Using the verb 'get' ('I get money', 'We get Bible')",
-            "explanation": "'Get' is the standard verb of possession (e.g. JW.org: 'For this website, we de get Bible, we still get different-different book')."
+            "explanation": "'Get' is the standard verb of possession (e.g. standard media: 'For this website, we de get Bible, we still get different-different book')."
           },
           {
             "id": "p-u3-l2-q2",
@@ -2126,7 +2126,7 @@ export const pidginAllUnits = [
               "carry"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org Pidgin: 'we still get different-different book and you fit use-am for study'.",
+            "explanation": "Standard media Pidgin: 'we still get different-different book and you fit use-am for study'.",
             "sentence": "We still ___ (have) different-different book for study.",
             "missingWord": "get"
           },
@@ -2197,7 +2197,7 @@ export const pidginAllUnits = [
               "'Meeting of us'"
             ],
             "correctAnswer": "'Our meeting' or 'Our meeting dem'",
-            "explanation": "JW.org Pidgin: 'Learn about wetin we de do for our meetings'."
+            "explanation": "Standard community Pidgin: 'Learn about wetin we de do for our meetings'."
           },
           {
             "id": "p-u3-l2-q10",
@@ -2264,7 +2264,7 @@ export const pidginAllUnits = [
               "sabi"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org Pidgin: 'Check the different parts wey the New World Translation get'.",
+            "explanation": "Standard literary Pidgin: 'Check the different parts wey the translation get'.",
             "sentence": "Check the different parts wey the Bible ___ (has).",
             "missingWord": "get"
           },
@@ -2392,7 +2392,7 @@ export const pidginAllUnits = [
               "Nothing at all"
             ],
             "correctAnswer": "The Bible and different books",
-            "explanation": "JW.org statement: 'we de get Bible, we still get different-different book'.",
+            "explanation": "Standard media statement: 'we de get Bible, we still get different-different book'.",
             "phrase": "For this website, we get Bible and we still get different books."
           },
           {
@@ -2503,7 +2503,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u4-l1-q6",
             "type": "multiple_choice",
-            "prompt": "How does JW.org translate 'See how this video makes the story of Jesus real to us'?",
+            "prompt": "How does standard media Pidgin translate 'See how this video makes the story of Jesus real to us'?",
             "options": [
               "'See how this video take make the story about Jesus life dey real to us'",
               "'Look as video make Jesus real'",
@@ -2511,7 +2511,7 @@ export const pidginAllUnits = [
               "'See the television story of Jesus'"
             ],
             "correctAnswer": "'See how this video take make the story about Jesus life dey real to us'",
-            "explanation": "JW.org Pidgin: 'See how this sweet videos take make the story about Jesus Christ life dey real to us' ('take make' = instrumental causation)."
+            "explanation": "Standard media Pidgin: 'See how this sweet video take make the story about Jesus Christ life dey real to us' ('take make' = instrumental causation)."
           },
           {
             "id": "p-u4-l1-q7",
@@ -2893,7 +2893,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u4-l2-q10",
             "type": "multiple_choice",
-            "prompt": "How does JW.org Pidgin phrase: 'Follow the example that Jesus gave us'?",
+            "prompt": "How does standard literary Pidgin phrase: 'Follow the example that Jesus gave us'?",
             "options": [
               "'Follow the example wey Jesus Christ give us'",
               "'Follow Jesus Christ's gave'",
@@ -2901,7 +2901,7 @@ export const pidginAllUnits = [
               "'Copy Jesus by force'"
             ],
             "correctAnswer": "'Follow the example wey Jesus Christ give us'",
-            "explanation": "JW.org text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'."
+            "explanation": "Standard literary text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'."
           },
           {
             "id": "p-u4-l2-q11",
@@ -3134,7 +3134,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u5-l1-q2",
             "type": "multiple_choice",
-            "prompt": "In JW.org video titles, what does 'Dey give and you go happy' promise?",
+            "prompt": "In West African Pidgin proverbial media, what does 'Dey give and you go happy' express?",
             "options": [
               "'Keep giving and you will be happy'",
               "'Go away and never return'",
@@ -3142,7 +3142,7 @@ export const pidginAllUnits = [
               "'Happiness is difficult to find'"
             ],
             "correctAnswer": "'Keep giving and you will be happy'",
-            "explanation": "JW.org title: 'Dey Give and You Go Happy' pairs continuous giving ('dey give') with future happiness ('you go happy')."
+            "explanation": "Proverbial media: 'Dey Give and You Go Happy' pairs continuous giving ('dey give') with future happiness ('you go happy')."
           },
           {
             "id": "p-u5-l1-q3",
@@ -3330,7 +3330,7 @@ export const pidginAllUnits = [
               "go",
               "happy"
             ],
-            "explanation": "JW.org standard theme: 'Dey give and you go happy'."
+            "explanation": "Proverbial theme: 'Dey give and you go happy'."
           },
           {
             "id": "p-u5-l1-q16",
@@ -3831,15 +3831,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u6-l1-q2",
             "type": "multiple_choice",
-            "prompt": "In JW.org official Pidgin, how is 'The thing we cherish the most is honoring God' translated?",
+            "prompt": "In standard literary Pidgin, how is 'The thing we cherish the most is honoring God' translated using superlative 'pass'?",
             "options": [
-              "'The thing wey we like pass na to de honor Jehovah'",
-              "'We like to honor Jehovah most'",
-              "'Honoring Jehovah passes all things'",
-              "'Jehovah is the most pass'"
+              "'The thing wey we like pass na to honor God'",
+              "'We like to honor God most'",
+              "'Honoring God passes all things'",
+              "'God honor is the most pass'"
             ],
-            "correctAnswer": "'The thing wey we like pass na to de honor Jehovah'",
-            "explanation": "JW.org Pidgin: 'The thing wey we like pass na to de honor Jehovah' ('like pass' = superlative preference)."
+            "correctAnswer": "'The thing wey we like pass na to honor God'",
+            "explanation": "Standard Nigerian Pidgin uses serial verb superlative 'like pass' ('The thing wey we like pass na to honor God')."
           },
           {
             "id": "p-u6-l1-q3",
@@ -4129,7 +4129,7 @@ export const pidginAllUnits = [
               "Watching television dramas"
             ],
             "correctAnswer": "Helping people learn the Bible",
-            "explanation": "JW.org text: 'The thing wey we like pass na to de help people learn wetin dey for Bible'.",
+            "explanation": "Literary text: 'The thing wey we like pass na to de help people learn wetin dey for Bible'.",
             "phrase": "The thing wey we like pass na to de help people learn Bible."
           },
           {
@@ -4184,7 +4184,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u6-l2-q3",
             "type": "multiple_choice",
-            "prompt": "In JW.org navigation, what does 'Things Wey We Fit Use Study Bible' translate?",
+            "prompt": "In educational media navigation, what does 'Things Wey We Fit Use Study Bible' translate?",
             "options": [
               "'Tools / Materials That We Can Use to Study the Bible'",
               "'Things that are forbidden to read'",
@@ -4192,7 +4192,7 @@ export const pidginAllUnits = [
               "'History of printing presses'"
             ],
             "correctAnswer": "'Tools / Materials That We Can Use to Study the Bible'",
-            "explanation": "JW.org Pidgin: 'Things Wey We Fit Use Study Bible' ('fit use' = can use)."
+            "explanation": "Standard media Pidgin: 'Things Wey We Fit Use Study Bible' ('fit use' = can use)."
           },
           {
             "id": "p-u6-l2-q4",
@@ -4205,7 +4205,7 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "JW.org site description: 'You fit still learn about wetin we believe and about the organization'.",
+            "explanation": "Media site description: 'You fit still learn about wetin we believe and about the organization'.",
             "sentence": "You ___ (can) still learn about wetin we believe.",
             "missingWord": "fit"
           },
@@ -4322,7 +4322,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u6-l2-q13",
             "type": "multiple_choice",
-            "prompt": "In JW.org video buttons, what does 'Different things wey you fit read' translate?",
+            "prompt": "In media portal buttons, what does 'Different things wey you fit read' translate?",
             "options": [
               "'Various publications that you can read'",
               "'Books that you must not read'",
@@ -4330,7 +4330,7 @@ export const pidginAllUnits = [
               "'Read only one article'"
             ],
             "correctAnswer": "'Various publications that you can read'",
-            "explanation": "JW.org header: 'Different-Things Wey You Fit Read' ('fit read' = can read)."
+            "explanation": "Standard media header: 'Different-Things Wey You Fit Read' ('fit read' = can read)."
           },
           {
             "id": "p-u6-l2-q14",
@@ -4343,7 +4343,7 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "JW.org text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
+            "explanation": "Literary text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
             "sentence": "We de do everything wey we ___ (can) do to follow Jesus.",
             "missingWord": "fit"
           },
@@ -4365,7 +4365,7 @@ export const pidginAllUnits = [
               "for",
               "study"
             ],
-            "explanation": "JW.org Pidgin: 'You fit use-am for study'."
+            "explanation": "Standard educational Pidgin: 'You fit use-am for study'."
           },
           {
             "id": "p-u6-l2-q16",
@@ -4465,7 +4465,7 @@ export const pidginAllUnits = [
               "Nobody is allowed to learn our beliefs"
             ],
             "correctAnswer": "You can learn about what we believe on our website",
-            "explanation": "JW.org text: 'You fit still learn about wetin we believe and about the organization'.",
+            "explanation": "Media text: 'You fit still learn about wetin we believe and about the organization'.",
             "phrase": "You fit still learn about wetin we believe for our website."
           },
           {
@@ -4520,7 +4520,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u7-l1-q2",
             "type": "multiple_choice",
-            "prompt": "In JW.org official descriptions, how is 'A Bible that is accurate and easy to read' translated?",
+            "prompt": "In literary translation descriptions, how is 'A Bible that is accurate and easy to read' translated?",
             "options": [
               "'Bible wey dey correct and easy to read'",
               "'Bible that is corrected easily'",
@@ -4528,7 +4528,7 @@ export const pidginAllUnits = [
               "'The correctest Bible'"
             ],
             "correctAnswer": "'Bible wey dey correct and easy to read'",
-            "explanation": "JW.org Pidgin: 'Check the different parts wey the New World Translation get, Bible wey dey correct and easy to read'."
+            "explanation": "Standard literary Pidgin: 'Check the different parts wey the translation get, Bible wey dey correct and easy to read'."
           },
           {
             "id": "p-u7-l1-q3",
@@ -4576,7 +4576,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u7-l1-q6",
             "type": "multiple_choice",
-            "prompt": "In JW.org Pidgin, what does 'Bible wey them read like drama' refer to?",
+            "prompt": "In broadcast audio media Pidgin, what does 'Bible wey them read like drama' refer to?",
             "options": [
               "Dramatic audio Bible recordings",
               "A fictional theatrical play",
@@ -4584,7 +4584,7 @@ export const pidginAllUnits = [
               "A debate between actors"
             ],
             "correctAnswer": "Dramatic audio Bible recordings",
-            "explanation": "JW.org audio section: 'Bible Wey Them Read Like Drama' = Audio drama Bible productions."
+            "explanation": "Audio media section: 'Bible Wey Them Read Like Drama' = Audio drama Bible productions."
           },
           {
             "id": "p-u7-l1-q7",
@@ -4610,7 +4610,7 @@ export const pidginAllUnits = [
               "dat"
             ],
             "correctAnswer": "wey",
-            "explanation": "JW.org Pidgin: 'Find the place wey we de do our meeting for your area'.",
+            "explanation": "Standard media Pidgin: 'Find the place wey we de do our meeting for your area'.",
             "sentence": "Find the place ___ (where) we de do our meeting.",
             "missingWord": "wey"
           },
@@ -4638,7 +4638,7 @@ export const pidginAllUnits = [
               "Past tense inflections"
             ],
             "correctAnswer": "Double focus cleft attributing all creation and scripture definitively to God",
-            "explanation": "JW.org text: '...because na e make everything and na e give us Bible' ('na' focuses divine attribution)."
+            "explanation": "Standard literary text: '...because na e make everything and na e give us Bible' ('na' focuses divine attribution)."
           },
           {
             "id": "p-u7-l1-q11",
@@ -4720,7 +4720,7 @@ export const pidginAllUnits = [
               "to",
               "read"
             ],
-            "explanation": "JW.org description: 'Bible wey dey correct and easy to read'."
+            "explanation": "Standard literary description: 'Bible wey dey correct and easy to read'."
           },
           {
             "id": "p-u7-l1-q16",
@@ -5191,7 +5191,7 @@ export const pidginAllUnits = [
               "Stopping all study and work"
             ],
             "correctAnswer": "Studying the good news in the Bible to improve one's life",
-            "explanation": "JW.org encouragement: 'If you want make your life better, study the good news wey dey inside Bible.'",
+            "explanation": "Literary guidance: 'If you want make your life better, study the good news wey dey inside Bible.'",
             "phrase": "If you want make your life better, study the good news wey dey inside Bible."
           }
         ]
@@ -5922,7 +5922,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l1-q2",
             "type": "multiple_choice",
-            "prompt": "How does the Acrolect standard used by BBC News Pidgin and JW.org West African Pidgin differ from street Basilect?",
+            "prompt": "How does the Acrolect standard used by BBC News Pidgin and West African broadcast media differ from street Basilect?",
             "options": [
               "It uses standardized orthography, consistent syntax, and professional vocabulary accessible across West Africa",
               "It eliminates all African vocabulary and copies British English",
@@ -5991,7 +5991,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l1-q7",
             "type": "multiple_choice",
-            "prompt": "Which register would you expect in a formal JW.org or BBC Pidgin health announcement?",
+            "prompt": "Which register would you expect in a formal BBC Pidgin or broadcast health announcement?",
             "options": [
               "Clear, standardized Pidgin using terms like 'doctor dem', 'take care of your body', and 'things wey you fit do'",
               "Heavy Warri street slangs with profanity",
@@ -6012,7 +6012,7 @@ export const pidginAllUnits = [
               "-dem"
             ],
             "correctAnswer": "-am",
-            "explanation": "Hyphenated enclitic '-am' is standard in JW.org and BBC orthography.",
+            "explanation": "Hyphenated enclitic '-am' is standard in broadcast and literary orthography.",
             "sentence": "Standard media Pidgin uses the enclitic pronoun ___ (it/him/her) with hyphens as in use-am, read-am.",
             "missingWord": "-am"
           },
@@ -6215,8 +6215,8 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l1-q19",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'BBC and JW.org de use standard Pidgin wey everybody across West Africa fit understand.' What is highlighted about standard Pidgin?",
-            "audioText": "BBC and JW.org de use standard Pidgin wey everybody across West Africa fit understand.",
+            "prompt": "Listen to the audio text: 'BBC News Pidgin de use standard Pidgin wey everybody across West Africa fit understand.' What is highlighted about standard Pidgin?",
+            "audioText": "BBC News Pidgin de use standard Pidgin wey everybody across West Africa fit understand.",
             "options": [
               "It is accessible and comprehensible across all of West Africa",
               "It is only understood by people living in one village",
@@ -6225,7 +6225,7 @@ export const pidginAllUnits = [
             ],
             "correctAnswer": "It is accessible and comprehensible across all of West Africa",
             "explanation": "Broadcast standard Pidgin bridges national and regional dialectal variations.",
-            "phrase": "BBC and JW.org de use standard Pidgin wey everybody across West Africa fit understand."
+            "phrase": "BBC News Pidgin de use standard Pidgin wey everybody across West Africa fit understand."
           },
           {
             "id": "p-u9-l1-q20",
@@ -6279,7 +6279,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l2-q3",
             "type": "multiple_choice",
-            "prompt": "In JW.org official translations, how is 'As it was said by Jesus' rendered?",
+            "prompt": "In literary translation, how is 'As it was said by Jesus' rendered?",
             "options": [
               "'As Jesus talk-am'",
               "'As it was spoken by Christ'",
@@ -6287,7 +6287,7 @@ export const pidginAllUnits = [
               "'Talked by Jesus'"
             ],
             "correctAnswer": "'As Jesus talk-am'",
-            "explanation": "JW.org video series title: 'Good News As Jesus Talk-Am' (The Good News as Jesus spoke it)."
+            "explanation": "Literary series title: 'Good News As Jesus Talk-Am' (The Good News as Jesus spoke it)."
           },
           {
             "id": "p-u9-l2-q4",
@@ -6315,7 +6315,7 @@ export const pidginAllUnits = [
               "dem"
             ],
             "correctAnswer": "am",
-            "explanation": "JW.org text: 'gain from-am' attaches '-am' as object of preposition.",
+            "explanation": "Standard media text: 'gain from-am' attaches '-am' as object of preposition.",
             "sentence": "You fit gain from-___ (it) if you study well.",
             "missingWord": "am"
           },
@@ -6343,7 +6343,7 @@ export const pidginAllUnits = [
               "Only on Sundays"
             ],
             "correctAnswer": "Yes! As in 'from-am' (from it/him), 'with-am' (with it), 'give-am' (give it)",
-            "explanation": "JW.org Pidgin demonstrates enclitic attachment to prepositions ('gain from-am', 'study with-am')."
+            "explanation": "Standard Pidgin demonstrates enclitic attachment to prepositions ('gain from-am', 'study with-am')."
           },
           {
             "id": "p-u9-l2-q8",
@@ -6484,7 +6484,7 @@ export const pidginAllUnits = [
               "Jesus",
               "talk-am"
             ],
-            "explanation": "JW.org series title: 'Good news as Jesus talk-am'."
+            "explanation": "Literary series title: 'Good news as Jesus talk-am'."
           },
           {
             "id": "p-u9-l2-q17",
@@ -6577,7 +6577,7 @@ export const pidginAllUnits = [
               "You must pay money for the publication"
             ],
             "correctAnswer": "You will gain much valuable benefit from it",
-            "explanation": "JW.org Pidgin: 'gain plenty things from-am' (gain much from it).",
+            "explanation": "Standard media Pidgin: 'gain plenty things from-am' (gain much from it).",
             "phrase": "Read this publication and you go gain plenty things from-am."
           }
         ]
@@ -6943,14 +6943,14 @@ export const pidginAllUnits = [
       },
       {
         "id": "p-u10-l2",
-        "title": "Lesson 2: Media Pidgin & Translation (BBC & JW Standard)",
+        "title": "Lesson 2: Media Pidgin & Translation (BBC & Broadcast Standards)",
         "description": "Master the art of translating complex socio-political news, legal documents, and theological literature into West African Standard Pidgin.",
         "completed": false,
         "questions": [
           {
             "id": "p-u10-l2-q1",
             "type": "multiple_choice",
-            "prompt": "How does JW.org official West African Pidgin translate 'The Good News According to Jesus Christ'?",
+            "prompt": "How does standard literary West African Pidgin translate 'The Good News According to Jesus Christ'?",
             "options": [
               "'Good News as Jesus Talk-am'",
               "'The Jesus Christ News Story'",
@@ -6958,12 +6958,12 @@ export const pidginAllUnits = [
               "'Book of Christian Drama'"
             ],
             "correctAnswer": "'Good News as Jesus Talk-am'",
-            "explanation": "Official JW.org video and publication series title: 'Good News As Jesus Talk-Am'."
+            "explanation": "Standard literary publication series title: 'Good News As Jesus Talk-Am'."
           },
           {
             "id": "p-u10-l2-q2",
             "type": "multiple_choice",
-            "prompt": "How is 'Why is it good for us to study the Bible?' officially rendered on JW.org?",
+            "prompt": "How is 'Why is it good for us to study the Bible?' rendered in formal literary Pidgin?",
             "options": [
               "'Why E Good Make We Study Bible?'",
               "'The Reasons of Bible Reading'",
@@ -6971,7 +6971,7 @@ export const pidginAllUnits = [
               "'Make We Know Bible Book'"
             ],
             "correctAnswer": "'Why E Good Make We Study Bible?'",
-            "explanation": "Official JW.org article headline: 'Why E Good Make We Study Bible?' (uses hortative 'make we' + stative 'good')."
+            "explanation": "Formal literary article headline: 'Why E Good Make We Study Bible?' (uses hortative 'make we' + stative 'good')."
           },
           {
             "id": "p-u10-l2-q3",
@@ -6997,7 +6997,7 @@ export const pidginAllUnits = [
               "take"
             ],
             "correctAnswer": "get",
-            "explanation": "JW.org text: 'Check the different parts wey the New World Translation get'.",
+            "explanation": "Literary text: 'Check the different parts wey the translation get'.",
             "sentence": "Check the different-different parts wey the translation ___ (has).",
             "missingWord": "get"
           },
@@ -7012,7 +7012,7 @@ export const pidginAllUnits = [
               "Look it"
             ],
             "correctAnswer": "Watch-am",
-            "explanation": "JW.org video button standard: 'Watch-am Now'.",
+            "explanation": "Standard media video button: 'Watch-am Now'.",
             "sentence": "Click here to ___ (watch it) now.",
             "missingWord": "Watch-am"
           },
@@ -7040,7 +7040,7 @@ export const pidginAllUnits = [
               "Personal diary entries"
             ],
             "correctAnswer": "News, current events, and historic milestones",
-            "explanation": "JW.org and broadcast news section header for current events and reporting."
+            "explanation": "Standard broadcast news section header for current events and reporting."
           },
           {
             "id": "p-u10-l2-q8",
@@ -7053,7 +7053,7 @@ export const pidginAllUnits = [
               "village"
             ],
             "correctAnswer": "area",
-            "explanation": "JW.org text: 'Find the place wey we de do our meeting for your area'.",
+            "explanation": "Standard community text: 'Find the place wey we de do our meeting for your area'.",
             "sentence": "Find the place wey we de do our meeting for your ___ (local area).",
             "missingWord": "area"
           },
@@ -7081,22 +7081,22 @@ export const pidginAllUnits = [
               "Use emojis instead of nouns"
             ],
             "correctAnswer": "Avoid derogatory vulgarisms, maintain consistent orthography, and use established respectful vocabulary",
-            "explanation": "JW.org and BBC establish high literary standards of respect, clarity, and grammatical precision."
+            "explanation": "Standard broadcast and literature establish high standards of respect, clarity, and grammatical precision."
           },
           {
             "id": "p-u10-l2-q11",
             "type": "fill_blank",
-            "prompt": "Fill in the blank: 'As we de tell people about God, na e make we be _____ (Jehovah's Witnesses).' ",
+            "prompt": "Fill in the blank: 'As we de report news give people, na e make we be _____ (journalists / news reporters).' ",
             "options": [
-              "Jehovah Witness",
-              "Church people",
-              "Christian group",
-              "Bible reader"
+              "news people",
+              "market women",
+              "office workers",
+              "taxi drivers"
             ],
-            "correctAnswer": "Jehovah Witness",
-            "explanation": "JW.org official confession: 'As we de tell people about Jehovah God and e Kingdom, na e make we be Jehovah Witness'.",
-            "sentence": "As we de tell people about God, na e make we be ___ (Jehovah's Witnesses).",
-            "missingWord": "Jehovah Witness"
+            "correctAnswer": "news people",
+            "explanation": "In broadcast media Pidgin: 'As we de report news give people, na e make we be news people'.",
+            "sentence": "As we de report news give people, na e make we be ___ (news reporters).",
+            "missingWord": "news people"
           },
           {
             "id": "p-u10-l2-q12",
@@ -7109,7 +7109,7 @@ export const pidginAllUnits = [
               "'One person does the work'"
             ],
             "correctAnswer": "'We de do all our thing as one people'",
-            "explanation": "JW.org standard text: 'even so, we de do all our thing as one people'."
+            "explanation": "Standard literary text: 'even so, we de do all our thing as one people'."
           },
           {
             "id": "p-u10-l2-q13",
@@ -7135,7 +7135,7 @@ export const pidginAllUnits = [
               "near"
             ],
             "correctAnswer": "real",
-            "explanation": "JW.org text: 'make the story about Jesus Christ life dey real to us'.",
+            "explanation": "Standard media text: 'make the story about Jesus Christ life dey real to us'.",
             "sentence": "The story make the life of Jesus dey ___ (real) to us.",
             "missingWord": "real"
           },
@@ -7161,7 +7161,7 @@ export const pidginAllUnits = [
               "Study",
               "Bible?"
             ],
-            "explanation": "JW.org article title: 'Why E Good Make We Study Bible?'."
+            "explanation": "Literary article title: 'Why E Good Make We Study Bible?'."
           },
           {
             "id": "p-u10-l2-q16",
@@ -7185,7 +7185,7 @@ export const pidginAllUnits = [
               "Study",
               "Bible"
             ],
-            "explanation": "JW.org publication category: 'Things Wey We Fit Use Study Bible'."
+            "explanation": "Educational media category: 'Things Wey We Fit Use Study Bible'."
           },
           {
             "id": "p-u10-l2-q17",
@@ -7263,7 +7263,7 @@ export const pidginAllUnits = [
               "No study tools are provided"
             ],
             "correctAnswer": "The Bible and study tools that you can use for personal learning",
-            "explanation": "JW.org description: 'For this website, we de get Bible... and you fit use-am for study'.",
+            "explanation": "Educational website description: 'For this website, we de get Bible... and you fit use-am for study'.",
             "phrase": "For this website, we get Bible and you fit use-am for study."
           },
           {
@@ -7278,14 +7278,14 @@ export const pidginAllUnits = [
               "Building statues in the town center"
             ],
             "correctAnswer": "Doing everything possible to follow the example that Jesus Christ provided",
-            "explanation": "JW.org mission statement: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
+            "explanation": "Literary statement: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
             "phrase": "We de do everything wey we fit do to follow the example wey Jesus Christ give us."
           }
         ]
       }
     ],
     "id": "p-unit-10",
-    "subtitle": "Highest tier mastery: stand-up comedy rhetoric, satirical political critique, and BBC/JW broadcast translation.",
+    "subtitle": "Highest tier mastery: stand-up comedy rhetoric, satirical political critique, and BBC/broadcast media translation.",
     "icon": "GraduationCap",
     "color": "#f59e0b"
   }

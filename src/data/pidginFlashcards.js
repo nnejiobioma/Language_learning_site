@@ -1,7 +1,7 @@
 // =========================================================================
 // Nigerian Pidgin English (NPE) - Master Flashcard Deck
 // 40 Cards for EACH of the 10 Corresponding Curriculum Unit Sections (400 Cards Total)
-// Standardized according to West African Pidgin literature (JW.org/wes-x-pgw, BBC News Pidgin)
+// Standardized according to West African Pidgin literature (NERDC, BBC News Pidgin, broadcast media)
 // =========================================================================
 
 export const pidginFlashcards = [
@@ -464,9 +464,9 @@ export const pidginFlashcards = [
     id: "p-u2-fc-17",
     front: "Still de read",
     phonetic: "STEEL deh REED",
-    back: "Continuative progressive (JW.org orthography standard)",
+    back: "Continuative progressive (Standard Nigerian Pidgin orthography)",
     category: "Unit 2: The Core Aspect Markers",
-    example: "The pikin still de read Bible chapter."
+    example: "The pikin still de read book chapter."
   },
   {
     id: "p-u2-fc-18",
@@ -632,7 +632,7 @@ export const pidginFlashcards = [
     id: "p-u2-fc-38",
     front: "De grow",
     phonetic: "deh GROH",
-    back: "Progressive expansion (JW.org progressive orthography)",
+    back: "Progressive expansion (Standard literary Pidgin orthography)",
     category: "Unit 2: The Core Aspect Markers",
     example: "The congregation de grow well well."
   },
@@ -1556,9 +1556,9 @@ export const pidginFlashcards = [
     id: "p-u5-fc-32",
     front: "De work day and night",
     phonetic: "deh wohrk day...",
-    back: "JW.org habitual progressive orthography standard",
+    back: "Standard habitual progressive orthography",
     category: "Unit 5: Advanced Tense & Aspect Structuring",
-    example: "The faithful de work day and night to serve."
+    example: "The workers de work day and night to serve."
   },
   {
     id: "p-u5-fc-33",
@@ -1578,11 +1578,11 @@ export const pidginFlashcards = [
   },
   {
     id: "p-u5-fc-35",
-    front: "De preach",
-    phonetic: "deh preech",
-    back: "Progressive ministry (JW.org orthography standard)",
+    front: "De teach",
+    phonetic: "deh teech",
+    back: "Progressive teaching (Standard Nigerian Pidgin orthography)",
     category: "Unit 5: Advanced Tense & Aspect Structuring",
-    example: "The ministers de preach good news from door to door."
+    example: "The teachers de teach lessons from morning till evening."
   },
   {
     id: "p-u5-fc-36",
@@ -1620,7 +1620,7 @@ export const pidginFlashcards = [
     id: "p-u5-fc-40",
     front: "De shine",
     phonetic: "deh shyn",
-    back: "Progressive radiance / thriving state (JW.org style)",
+    back: "Progressive radiance / thriving state (Standard literary Pidgin)",
     category: "Unit 5: Advanced Tense & Aspect Structuring",
     example: "Your light de shine make everybody see God work."
   },
@@ -2268,9 +2268,9 @@ export const pidginFlashcards = [
     id: "p-u7-fc-40",
     front: "Di person wey sabi",
     phonetic: "Dee pehr-suhn way...",
-    back: "JW.org standardized relative orthography construction",
+    back: "Standardized relative clause orthography construction",
     category: "Unit 7: Conditionals, Relatives & Linkers",
-    example: "Di person wey sabi God word de get real peace."
+    example: "Di person wey sabi work well de get real peace."
   },
 
   // -------------------------------------------------------------------------
@@ -2914,11 +2914,11 @@ export const pidginFlashcards = [
   },
   {
     id: "p-u9-fc-40",
-    front: "De preach for street",
-    phonetic: "deh preech fohr...",
-    back: "JW.org broadcast register describing public ministry work",
+    front: "De report for street",
+    phonetic: "deh reh-pohrt fohr street",
+    back: "Broadcast register describing public journalistic field work",
     category: "Unit 9: Sociolinguistic Code-Switching & Registers",
-    example: "Ministers de preach for street to share message of hope."
+    example: "Reporters de report for street to share news give people."
   },
 
   // -------------------------------------------------------------------------
@@ -3240,7 +3240,7 @@ export const pidginFlashcards = [
     id: "p-u10-fc-40",
     front: "De praise God",
     phonetic: "deh prayz GOHD",
-    back: "JW.org liturgical orthography expressing profound theological adoration",
+    back: "Liturgical orthography expressing community thanksgiving",
     category: "Unit 10: Rhetoric, Satire & Advanced Creative Arts",
     example: "The congregation de praise God for His loving-kindness and mercy."
   },
