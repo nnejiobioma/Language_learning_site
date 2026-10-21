@@ -247,10 +247,9 @@ export default function PrivacyPolicyPage() {
                 We may update this Privacy Policy from time to time to reflect improvements to our learning tools or legal requirements. Material changes will be highlighted on the Platform with an updated effective date.
               </p>
               <div className="terms-contact-card">
-                <p><strong>FiksLingo Data Protection & Privacy Team</strong></p>
-                <p>Email: <a href="mailto:privacy@fikslingo.com">privacy@fikslingo.com</a></p>
-                <p>Support: <a href="mailto:support@fikslingo.com">support@fikslingo.com</a></p>
-                <p>Website: <a href="https://fikslingo.com">fikslingo.com</a></p>
+                <p><strong>FiksLingo Data Protection & Support Team</strong></p>
+                <p>Direct Inboxes: <a href="mailto:nnejieb@gmail.com">nnejieb@gmail.com</a> &amp; <a href="mailto:nneji.obioma@gmail.com">nneji.obioma@gmail.com</a></p>
+                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>fikslingo.com/contact</Link></p>
               </div>
             </section>
 
@@ -286,6 +285,7 @@ export default function PrivacyPolicyPage() {
               buttonId="privacy-footer-subscribe-btn"
             />
             <Link href="/">Home</Link>
+            <Link href="/contact">Contact Us</Link>
             <Link href="/terms">Terms of Use</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/signup">Sign Up</Link>

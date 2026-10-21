@@ -21,7 +21,8 @@ import {
   GraduationCap,
   ChevronDown,
   CloudCheck,
-  CloudOff
+  CloudOff,
+  Mail
 } from 'lucide-react';
 
 export default function Header() {
@@ -267,6 +268,18 @@ export default function Header() {
                 >
                   <User size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
                   My Profile
+                </button>
+                <button 
+                  className="dropdown-signout-btn"
+                  style={{ marginBottom: 8 }}
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    router.push('/contact');
+                  }}
+                  id="header-contact-btn"
+                >
+                  <Mail size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
+                  Contact Support
                 </button>
                 <button 
                   className="dropdown-signout-btn"

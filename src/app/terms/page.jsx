@@ -259,9 +259,9 @@ export default function TermsPage() {
                 If you have questions, feedback, or legal inquiries concerning these Terms of Use, please reach out to our team:
               </p>
               <div className="terms-contact-card">
-                <p><strong>FiksLingo Legal & Support</strong></p>
-                <p>Email: <a href="mailto:support@fikslingo.com">support@fikslingo.com</a></p>
-                <p>Website: <a href="https://fikslingo.com">fikslingo.com</a></p>
+                <p><strong>FiksLingo Inquiries & Academic Team</strong></p>
+                <p>Direct Inboxes: <a href="mailto:nnejieb@gmail.com">nnejieb@gmail.com</a> &amp; <a href="mailto:nneji.obioma@gmail.com">nneji.obioma@gmail.com</a></p>
+                <p>Online Contact Form: <Link href="/contact" style={{ color: '#10b981', fontWeight: 600 }}>fikslingo.com/contact</Link></p>
               </div>
             </section>
 
@@ -297,6 +297,7 @@ export default function TermsPage() {
               buttonId="terms-footer-subscribe-btn"
             />
             <Link href="/">Home</Link>
+            <Link href="/contact">Contact Us</Link>
             <Link href="/terms">Terms of Use</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/signup">Sign Up</Link>
