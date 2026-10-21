@@ -13,8 +13,10 @@ import {
   Sparkles, 
   ArrowRight, 
   RotateCcw,
-  Award
+  Award,
+  Edit3
 } from 'lucide-react';
+import { useAdminContent } from '../context/AdminContentContext';
 
 // Helper to safely get native/foreign term from a pair
 function getPairNative(p) {
@@ -72,6 +74,8 @@ export default function QuizModal() {
     currentLanguage
   } = useGame();
 
+  const { isAdmin, openQuickEdit, overrides } = useAdminContent();
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -90,7 +94,12 @@ export default function QuizModal() {
   const [hadReview, setHadReview] = useState(false);
 
   const questions = shuffledQuestions.length > 0 ? shuffledQuestions : (activeLesson?.questions || []);
-  const currentQ = questions[currentIndex];
+  const rawQ = questions[currentIndex];
+  const currentQ = useMemo(() => {
+    if (!rawQ) return null;
+    const qOverride = overrides?.questions?.[rawQ.id] || {};
+    return { ...rawQ, ...qOverride };
+  }, [rawQ, overrides?.questions]);
 
   // Guaranteed deranged shuffle of pairs for matching question
   const shuffledEnglishPairs = useMemo(() => {
@@ -289,6 +298,19 @@ export default function QuizModal() {
             <Heart size={20} className="heart-fill-icon" />
             <span>{hearts}</span>
           </div>
+
+          {/* Admin Edit Current Question Button */}
+          {isAdmin && currentQ && !isFinished && (
+            <button
+              className="admin-quiz-edit-btn"
+              onClick={() => openQuickEdit(currentQ, 'question', { langId: currentLanguage, lessonId: activeLesson?.id })}
+              title="Admin: Edit this question on the fly"
+              id="admin-quiz-edit-btn"
+            >
+              <Edit3 size={14} />
+              <span>Edit Question</span>
+            </button>
+          )}
         </div>
 
         {/* Finished Screen */}

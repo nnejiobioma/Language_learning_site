@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
+import { useAdminContent } from '../context/AdminContentContext';
 import { soundEngine } from '../lib/audio';
 import { 
   Volume2, 
@@ -12,12 +13,14 @@ import {
   Check, 
   Shuffle, 
   Sparkles,
-  BookOpen
+  BookOpen,
+  Edit3
 } from 'lucide-react';
 
 export default function FlashcardsView() {
   const { currentLanguage } = useGame();
-  const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+  const { getLanguageData, isAdmin, openQuickEdit } = useAdminContent();
+  const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
   const cards = langData.flashcards || [];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -141,6 +144,21 @@ export default function FlashcardsView() {
                 <Check size={18} />
                 <span>{isCurrentMastered ? 'Mastered' : 'Mark Learned'}</span>
               </button>
+
+              {isAdmin && (
+                <button
+                  className="admin-inline-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openQuickEdit(currentCard, 'flashcard', { id: currentCard.id, langId: currentLanguage });
+                  }}
+                  title="Admin: Edit this flashcard word and translations"
+                  id="admin-edit-flashcard-btn"
+                >
+                  <Edit3 size={13} />
+                  <span>Edit Card</span>
+                </button>
+              )}
             </div>
 
             <div className="card-main-word-area">

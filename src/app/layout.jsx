@@ -1,11 +1,14 @@
 import './globals.css';
 import './landing.css';
 import { AuthProvider } from '../context/AuthContext';
+import { AdminContentProvider } from '../context/AdminContentContext';
 import { GameProvider } from '../context/GameContext';
 import { ThemeProvider } from '../context/ThemeContext';
 import TimedSubscribePopup from '../components/TimedSubscribePopup';
 import CookieBanner from '../components/CookieBanner';
 import TutoringSideBanner from '../components/TutoringSideBanner';
+import AdminFloatingToolbar from '../components/AdminFloatingToolbar';
+import AdminQuickEditModal from '../components/AdminQuickEditModal';
 
 export const metadata = {
   title: 'FliksLingo — Master World Languages with Gamified Learning',
@@ -59,12 +62,16 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           <AuthProvider>
-            <GameProvider>
-              {children}
-              <TimedSubscribePopup />
-              <CookieBanner />
-              <TutoringSideBanner />
-            </GameProvider>
+            <AdminContentProvider>
+              <GameProvider>
+                {children}
+                <TimedSubscribePopup />
+                <CookieBanner />
+                <TutoringSideBanner />
+                <AdminFloatingToolbar />
+                <AdminQuickEditModal />
+              </GameProvider>
+            </AdminContentProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>

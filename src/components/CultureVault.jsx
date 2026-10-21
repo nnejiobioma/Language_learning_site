@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
+import { useAdminContent } from '../context/AdminContentContext';
 import { soundEngine } from '../lib/audio';
 import { 
   Sparkles, 
@@ -20,7 +21,8 @@ import {
   Coffee,
   Building,
   Check,
-  FolderOpen
+  FolderOpen,
+  Edit3
 } from 'lucide-react';
 
 // Helper icon selector based on subsection name
@@ -58,7 +60,8 @@ function getSubSectionIcon(categoryName) {
 
 export default function CultureVault() {
   const { currentLanguage } = useGame();
-  const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+  const { getLanguageData, isAdmin, openQuickEdit } = useAdminContent();
+  const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
   const vault = langData.cultureVault;
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -191,6 +194,18 @@ export default function CultureVault() {
             <Volume2 size={18} />
             <span>Hear Native Tone</span>
           </button>
+
+          {isAdmin && (
+            <button
+              className="admin-inline-btn"
+              style={{ marginTop: 8 }}
+              onClick={() => openQuickEdit({ ...vault.proverbOfDay, id: 'proverbOfDay' }, 'culture', { langId: currentLanguage, section: 'proverbOfDay' })}
+              title="Admin: Edit Proverb of the Day"
+            >
+              <Edit3 size={13} />
+              <span>Edit Proverb</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -262,7 +277,22 @@ export default function CultureVault() {
                       <div key={tip.originalIndex} className="tip-card">
                         <div className="tip-header">
                           <span className="tip-number">{(tip.originalIndex + 1).toString().padStart(2, '0')}</span>
-                          <Lightbulb size={20} className="tip-bulb" />
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            {isAdmin && (
+                              <button
+                                className="admin-inline-btn"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  openQuickEdit({ ...tip, id: tip.title || `tip-${tip.originalIndex}` }, 'culture', { langId: currentLanguage, type: 'tip' });
+                                }}
+                                title="Admin: Edit this cultural guideline"
+                              >
+                                <Edit3 size={11} />
+                                <span>Edit</span>
+                              </button>
+                            )}
+                            <Lightbulb size={20} className="tip-bulb" />
+                          </div>
                         </div>
                         <h5 className="tip-title">{tip.title}</h5>
                         <p className="tip-desc">{tip.description}</p>
@@ -373,6 +403,19 @@ export default function CultureVault() {
                                 <Volume2 size={16} />
                               </button>
                             </div>
+                            {isAdmin && (
+                              <button
+                                className="admin-inline-btn"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  openQuickEdit({ ...slang, id: slang.term || `slang-${slang.originalIndex}` }, 'culture', { langId: currentLanguage, type: 'slang' });
+                                }}
+                                title="Admin: Edit this slang phrase"
+                              >
+                                <Edit3 size={11} />
+                                <span>Edit</span>
+                              </button>
+                            )}
                           </div>
 
                           <p className="slang-meaning">{slang.meaning}</p>

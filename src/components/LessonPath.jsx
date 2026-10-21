@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
+import { useAdminContent } from '../context/AdminContentContext';
 import { 
   Check, 
   Lock, 
@@ -20,7 +21,8 @@ import {
   Shield,
   Compass,
   Smile,
-  GraduationCap
+  GraduationCap,
+  Edit2
 } from 'lucide-react';
 import { soundEngine } from '../lib/audio';
 
@@ -49,7 +51,8 @@ export default function LessonPath() {
     setActiveTab 
   } = useGame();
 
-  const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+  const { getLanguageData, isAdmin, adminEditMode, openQuickEdit } = useAdminContent();
+  const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
 
   const getUnitKey = (u, idx) => u.id || u.unitId || `unit-${idx}`;
 
@@ -196,6 +199,19 @@ export default function LessonPath() {
                   </div>
 
                   <div className="unit-header-right">
+                    {isAdmin && adminEditMode && (
+                      <button
+                        className="admin-inline-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openQuickEdit(unit, 'unit', { unitId: unit.id, langId: currentLanguage });
+                        }}
+                        title="Edit Unit details"
+                      >
+                        <Edit2 size={13} />
+                        <span>Edit Unit</span>
+                      </button>
+                    )}
                     <span className={`unit-progress-pill ${isUnitComplete ? 'completed' : ''}`}>
                       {isUnitComplete ? '✓ Completed' : `${completedInUnit}/${unit.lessons.length} Lessons`}
                     </span>
@@ -268,6 +284,19 @@ export default function LessonPath() {
                                 <span className={`lesson-xp-tag ${isReview ? 'review-xp-tag' : ''}`}>
                                   +{lesson.xp} XP
                                 </span>
+                                {isAdmin && adminEditMode && (
+                                  <button
+                                    className="admin-inline-btn lesson-edit-btn"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      openQuickEdit(lesson, 'lesson', { lessonId: lesson.id, unitId: unit.id, langId: currentLanguage });
+                                    }}
+                                    title="Edit Lesson details"
+                                  >
+                                    <Edit2 size={12} />
+                                    <span>Edit Lesson</span>
+                                  </button>
+                                )}
                                 {isUnlocked && (
                                   <button 
                                     className={`node-start-label-btn ${isReview ? 'review-start-btn' : ''}`}

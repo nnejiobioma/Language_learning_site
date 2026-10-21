@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, User, AlertCircle, ShieldCheck, CheckCircle2, ArrowLeft, BellRing } from 'lucide-react';
+import { Mail, Lock, User, AlertCircle, ShieldCheck, CheckCircle2, ArrowLeft, BellRing, KeyRound } from 'lucide-react';
 import SubscribeModal from './SubscribeModal';
 import { getRememberedLogin } from '../lib/cookies';
 
@@ -14,11 +14,12 @@ const FRIENDLY_ERRORS = {
   'auth/weak-password': 'Choose a stronger password (at least 6 characters).',
   'auth/invalid-credential': 'Incorrect email or password.',
   'auth/wrong-password': 'Incorrect email or password.',
-  'auth/user-not-found': 'No account found for that email. Create one instead.',
+  'auth/user-not-found': 'No account found for that email address.',
   'auth/too-many-requests': 'Too many attempts. Please wait a moment and try again.',
   'auth/popup-closed-by-user': 'The Google sign-in window was closed before finishing.',
   'auth/network-request-failed': 'Network error. Check your connection and try again.',
   'auth/operation-not-allowed': 'This sign-in method is not enabled in Firebase yet.',
+  'auth/missing-email': 'Please enter your email address.',
 };
 
 function friendlyError(err) {
@@ -26,12 +27,20 @@ function friendlyError(err) {
 }
 
 /**
- * Full-page account form. Every learner must sign up or log in before using the app.
- * `initialMode` is 'login' or 'signup'.
+ * Full-page account form supporting signup, login, and password reset.
+ * `initialMode` is 'signup' | 'login' | 'forgot'.
  */
 export default function AuthForm({ initialMode = 'signup' }) {
   const router = useRouter();
-  const { user, loading: authLoading, loginWithEmail, signupWithEmail, loginWithGoogle, isFirebaseConfigured } = useAuth();
+  const { 
+    user, 
+    loading: authLoading, 
+    loginWithEmail, 
+    signupWithEmail, 
+    loginWithGoogle, 
+    resetPassword,
+    isFirebaseConfigured 
+  } = useAuth();
 
   const [mode, setMode] = useState(initialMode);
   const [email, setEmail] = useState('');
@@ -39,9 +48,17 @@ export default function AuthForm({ initialMode = 'signup' }) {
   const [displayName, setDisplayName] = useState('');
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [error, setError] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [subscribeModalOpen, setSubscribeModalOpen] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
+
+  // Sync mode if initialMode prop changes
+  useEffect(() => {
+    setMode(initialMode);
+    setError('');
+    setSuccessMsg('');
+  }, [initialMode]);
 
   // Auto-fill remembered email from persistent cookie on mount
   useEffect(() => {
@@ -66,9 +83,18 @@ export default function AuthForm({ initialMode = 'signup' }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccessMsg('');
     setSubmitting(true);
     try {
-      if (mode === 'login') {
+      if (mode === 'forgot') {
+        if (!email.trim()) {
+          setError('Please enter your email address.');
+          setSubmitting(false);
+          return;
+        }
+        await resetPassword(email.trim());
+        setSuccessMsg(`Password reset instructions sent to ${email.trim()}. Please check your email inbox and spam folder.`);
+      } else if (mode === 'login') {
         await loginWithEmail(email, password, rememberMe);
       } else {
         if (!displayName.trim()) {
@@ -96,6 +122,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
       return;
     }
     setError('');
+    setSuccessMsg('');
     setSubmitting(true);
     try {
       await loginWithGoogle(rememberMe);
@@ -107,6 +134,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
   };
 
   const isSignup = mode === 'signup';
+  const isForgot = mode === 'forgot';
 
   return (
     <div className="auth-modal-overlay" role="main">
@@ -120,12 +148,18 @@ export default function AuthForm({ initialMode = 'signup' }) {
             <img src="/images/mascot.jpg" alt="FliksLingo Mascot" className="auth-mascot-img" />
           </div>
           <h1 className="auth-title">
-            {isSignup ? 'Create your FliksLingo account' : 'Welcome back, learner!'}
+            {isForgot
+              ? 'Reset your password'
+              : isSignup
+                ? 'Create your FliksLingo account'
+                : 'Welcome back, learner!'}
           </h1>
           <p className="auth-sub">
-            {isSignup
-              ? 'An account is required to start learning. It saves your progress, streaks and XP across devices.'
-              : 'Sign in to continue your lessons and keep your streak alive.'}
+            {isForgot
+              ? 'Enter your registered email address and we will send you a secure link to reset your password.'
+              : isSignup
+                ? 'An account is required to start learning. It saves your progress, streaks and XP across devices.'
+                : 'Sign in to continue your lessons and keep your streak alive.'}
           </p>
         </div>
 
@@ -152,28 +186,43 @@ export default function AuthForm({ initialMode = 'signup' }) {
           </div>
         )}
 
-        <button
-          type="button"
-          className="google-signin-btn"
-          onClick={handleGoogle}
-          disabled={submitting}
-          id="auth-google-button"
-        >
-          <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.9c2.28-2.1 3.645-5.2 3.645-9.15z" />
-            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.9-3.05c-1.08.72-2.45 1.16-4.03 1.16-3.1 0-5.74-2.1-6.68-4.92H1.21v3.13C3.26 21.43 7.34 24 12 24z" />
-            <path fill="#FBBC05" d="M5.32 14.28c-.24-.72-.38-1.5-.38-2.28s.14-1.56.38-2.28V6.59H1.21C.44 8.12 0 9.99 0 12s.44 3.88 1.21 5.41l4.11-3.13z" />
-            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.57 1.21 6.59l4.11 3.13c.94-2.82 3.58-4.97 6.68-4.97z" />
-          </svg>
-          <span>{isSignup ? 'Sign up with Google' : 'Continue with Google'}</span>
-        </button>
+        {successMsg && (
+          <div className="auth-success-banner" role="status">
+            <CheckCircle2 size={18} className="success-icon" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div>
+              <strong style={{ display: 'block', marginBottom: '0.2rem' }}>Reset Link Sent</strong>
+              <span>{successMsg}</span>
+            </div>
+          </div>
+        )}
 
-        <div className="auth-divider-line">
-          <span>or use email</span>
-        </div>
+        {/* Google sign-in is only shown for Login and Signup */}
+        {!isForgot && (
+          <>
+            <button
+              type="button"
+              className="google-signin-btn"
+              onClick={handleGoogle}
+              disabled={submitting}
+              id="auth-google-button"
+            >
+              <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.9c2.28-2.1 3.645-5.2 3.645-9.15z" />
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.9-3.05c-1.08.72-2.45 1.16-4.03 1.16-3.1 0-5.74-2.1-6.68-4.92H1.21v3.13C3.26 21.43 7.34 24 12 24z" />
+                <path fill="#FBBC05" d="M5.32 14.28c-.24-.72-.38-1.5-.38-2.28s.14-1.56.38-2.28V6.59H1.21C.44 8.12 0 9.99 0 12s.44 3.88 1.21 5.41l4.11-3.13z" />
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.57 1.21 6.59l4.11 3.13c.94-2.82 3.58-4.97 6.68-4.97z" />
+              </svg>
+              <span>{isSignup ? 'Sign up with Google' : 'Continue with Google'}</span>
+            </button>
+
+            <div className="auth-divider-line">
+              <span>or use email</span>
+            </div>
+          </>
+        )}
 
         <form onSubmit={handleSubmit} className="auth-form-fields">
-          {isSignup && (
+          {isSignup && !isForgot && (
             <div className="form-input-group">
               <label htmlFor="auth-name">Your name</label>
               <div className="input-with-icon">
@@ -207,41 +256,61 @@ export default function AuthForm({ initialMode = 'signup' }) {
             </div>
           </div>
 
-          <div className="form-input-group">
-            <label htmlFor="auth-password">Password</label>
-            <div className="input-with-icon">
-              <Lock size={18} className="input-icon" />
-              <input
-                id="auth-password"
-                type="password"
-                autoComplete={isSignup ? 'new-password' : 'current-password'}
-                placeholder="At least 6 characters"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                minLength={6}
-              />
+          {!isForgot && (
+            <div className="form-input-group">
+              <div className="password-label-row">
+                <label htmlFor="auth-password">Password</label>
+                {!isSignup && (
+                  <button
+                    type="button"
+                    className="forgot-password-trigger"
+                    onClick={() => {
+                      setMode('forgot');
+                      setError('');
+                      setSuccessMsg('');
+                    }}
+                    id="auth-forgot-password-btn"
+                  >
+                    Forgot password?
+                  </button>
+                )}
+              </div>
+              <div className="input-with-icon">
+                <Lock size={18} className="input-icon" />
+                <input
+                  id="auth-password"
+                  type="password"
+                  autoComplete={isSignup ? 'new-password' : 'current-password'}
+                  placeholder="At least 6 characters"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Remember Me Persistent Cookie Option */}
-          <div className="remember-me-row">
-            <label className="remember-checkbox-label" htmlFor="auth-remember-checkbox">
-              <input
-                id="auth-remember-checkbox"
-                type="checkbox"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="remember-checkbox-input"
-              />
-              <span className="remember-checkbox-text">
-                <strong>Remember me on this device</strong>
-                <span className="remember-subtext"> (Uses 30-day persistent cookie)</span>
-              </span>
-            </label>
-          </div>
+          {/* Remember Me Persistent Cookie Option for login/signup */}
+          {!isForgot && (
+            <div className="remember-me-row">
+              <label className="remember-checkbox-label" htmlFor="auth-remember-checkbox">
+                <input
+                  id="auth-remember-checkbox"
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  className="remember-checkbox-input"
+                />
+                <span className="remember-checkbox-text">
+                  <strong>Remember me on this device</strong>
+                  <span className="remember-subtext"> (Uses 30-day persistent cookie)</span>
+                </span>
+              </label>
+            </div>
+          )}
 
-          {isSignup && (
+          {isSignup && !isForgot && (
             <div className="terms-agreement-row">
               <label className="terms-checkbox-label" htmlFor="auth-terms-checkbox">
                 <input
@@ -270,20 +339,68 @@ export default function AuthForm({ initialMode = 'signup' }) {
           )}
 
           <button type="submit" className="auth-submit-btn" disabled={submitting} id="auth-submit-button">
-            {submitting ? 'Please wait...' : isSignup ? 'Create free account' : 'Sign in'}
+            {submitting
+              ? 'Please wait...'
+              : isForgot
+                ? 'Send reset link'
+                : isSignup
+                  ? 'Create free account'
+                  : 'Sign in'}
           </button>
+
+          {isForgot && (
+            <button
+              type="button"
+              className="auth-secondary-btn"
+              onClick={() => {
+                setMode('login');
+                setError('');
+                setSuccessMsg('');
+              }}
+              id="auth-return-login-btn"
+            >
+              Return to Sign In
+            </button>
+          )}
         </form>
 
         <div className="auth-toggle-mode">
-          {isSignup ? (
+          {isForgot ? (
+            <p>
+              Remember your password?{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('login');
+                  setError('');
+                  setSuccessMsg('');
+                }}
+                className="link-switch-btn btn-as-link"
+              >
+                Sign in
+              </button>
+            </p>
+          ) : isSignup ? (
             <p>
               Already have an account?{' '}
-              <Link href="/login" className="link-switch-btn">Sign in</Link>
+              <Link 
+                href="/login" 
+                className="link-switch-btn" 
+                onClick={() => { setMode('login'); setError(''); setSuccessMsg(''); }}
+              >
+                Sign in
+              </Link>
             </p>
           ) : (
             <p>
               New to FliksLingo?{' '}
-              <Link href="/signup" className="link-switch-btn">Create an account</Link>
+              <Link 
+                href="/signup" 
+                className="link-switch-btn" 
+                onClick={() => { setMode('signup'); setError(''); setSuccessMsg(''); }}
+              >
+                Create an account
+              </Link>
             </p>
           )}
         </div>
@@ -311,7 +428,7 @@ export default function AuthForm({ initialMode = 'signup' }) {
         <SubscribeModal
           isOpen={subscribeModalOpen}
           onClose={() => setSubscribeModalOpen(false)}
-          source={isSignup ? 'signup_section' : 'login_section'}
+          source={isForgot ? 'forgot_password_section' : isSignup ? 'signup_section' : 'login_section'}
           title="Stay Inspired with Weekly Language Secrets"
           subtitle="Get handpicked vocabulary, cultural etiquette guides, and streak reminders delivered straight to your inbox."
         />

@@ -3219,6 +3219,69 @@ html[data-theme="light"] .theme-segment-btn:hover {
   color: var(--text-secondary);
 }
 
+.password-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forgot-password-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #60a5fa;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.forgot-password-trigger:hover {
+  color: #93c5fd;
+}
+
+.auth-success-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.auth-secondary-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.auth-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.btn-as-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
 .input-with-icon {
   display: flex;
   align-items: center;
@@ -7775,4 +7838,129 @@ html:not(.dark) .cbt-results-fresh-notice {
 
 html:not(.dark) .cbt-results-fresh-notice strong {
   color: #059669 !important;
+}
+
+/* ==========================================================================
+   Admin Frontend Content Management & Inline Edit Styles
+   ========================================================================== */
+.admin-header-chip {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(14, 165, 233, 0.25)) !important;
+  border: 1px solid rgba(14, 165, 233, 0.45) !important;
+  color: #38bdf8 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.admin-header-chip:hover {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.25), rgba(14, 165, 233, 0.4)) !important;
+  border-color: #38bdf8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+}
+
+.admin-header-chip.active {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9) !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.5);
+}
+
+.admin-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.admin-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  color: #38bdf8;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-inline-btn:hover {
+  background: rgba(14, 165, 233, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.admin-quiz-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(14, 165, 233, 0.3));
+  border: 1px solid rgba(14, 165, 233, 0.5);
+  color: #38bdf8;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-quiz-edit-btn:hover {
+  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+}
+
+html:not(.dark) .admin-header-chip {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+  border-color: #7dd3fc !important;
+}
+
+html:not(.dark) .admin-header-chip.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .admin-inline-btn {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+  color: #0284c7;
+}
+
+html:not(.dark) .admin-inline-btn:hover {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+html:not(.dark) .admin-quiz-edit-btn {
+  background: #f0f9ff;
+  border-color: #7dd3fc;
+  color: #0284c7;
+}
+
+html:not(.dark) .admin-quiz-edit-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
 }
