@@ -323,6 +323,10 @@ export default function ProfilePage() {
         </form>
 
         <div className="profile-legal-footer">
+          <Link href="/about" id="profile-footer-about-link">
+            About Us
+          </Link>
+          <span className="dot-sep">·</span>
           <Link href="/contact" id="profile-footer-contact-link">
             Contact Us
           </Link>

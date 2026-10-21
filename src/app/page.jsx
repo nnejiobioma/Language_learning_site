@@ -42,6 +42,7 @@ export default function LandingPage() {
             <a href="#languages">Languages</a>
             <a href="#features">Features</a>
             <a href="#how">How it works</a>
+            <Link href="/about" id="landing-nav-about">About Us</Link>
             <Link href="/contact" id="landing-nav-contact">Contact</Link>
           </nav>
           <div className="lp-nav-actions">
@@ -187,6 +188,7 @@ export default function LandingPage() {
               className="lp-footer-sub-btn" 
               buttonId="footer-subscribe-btn"
             />
+            <Link href="/about" id="footer-about-link">About Us</Link>
             <Link href="/contact" id="footer-contact-link">Contact Us</Link>
             <Link href="/terms" id="footer-terms-link">Terms of Use</Link>
             <Link href="/privacy" id="footer-privacy-link">Privacy Policy</Link>

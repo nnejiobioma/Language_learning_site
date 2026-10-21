@@ -635,6 +635,7 @@ export default function ContactPage() {
             />
             <Link href="/" id="contact-footer-home-link">Home</Link>
             <Link href="/learn" id="contact-footer-curriculum-link">Curriculum</Link>
+            <Link href="/about" id="contact-footer-about-link">About Us</Link>
             <Link href="/contact" id="contact-footer-contact-link">Contact Us</Link>
             <Link href="/terms" id="contact-footer-terms-link">Terms of Use</Link>
             <Link href="/privacy" id="contact-footer-privacy-link">Privacy Policy</Link>

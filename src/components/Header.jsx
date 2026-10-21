@@ -22,7 +22,8 @@ import {
   ChevronDown,
   CloudCheck,
   CloudOff,
-  Mail
+  Mail,
+  Info
 } from 'lucide-react';
 
 export default function Header() {
@@ -268,6 +269,18 @@ export default function Header() {
                 >
                   <User size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
                   My Profile
+                </button>
+                <button 
+                  className="dropdown-signout-btn"
+                  style={{ marginBottom: 8 }}
+                  onClick={() => {
+                    setUserDropdownOpen(false);
+                    router.push('/about');
+                  }}
+                  id="header-about-btn"
+                >
+                  <Info size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
+                  About FiksLingo
                 </button>
                 <button 
                   className="dropdown-signout-btn"

@@ -58,6 +58,9 @@ export default function LearnPage() {
               className="app-footer-sub-btn"
               buttonId="learn-footer-subscribe-btn"
             />
+            <Link href="/about" className="app-footer-link" id="learn-footer-about-link">
+              About Us
+            </Link>
             <Link href="/contact" className="app-footer-link" id="learn-footer-contact-link">
               Contact Us
             </Link>

@@ -285,6 +285,7 @@ export default function PrivacyPolicyPage() {
               buttonId="privacy-footer-subscribe-btn"
             />
             <Link href="/">Home</Link>
+            <Link href="/about">About Us</Link>
             <Link href="/contact">Contact Us</Link>
             <Link href="/terms">Terms of Use</Link>
             <Link href="/privacy">Privacy Policy</Link>
