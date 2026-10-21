@@ -1,5 +1,5 @@
-// Nigerian Pidgin (West African Pidgin) Complete NERDC Standard Curriculum Bank
-// Standardized according to West African Pidgin literature standards (NERDC, BBC News Pidgin, and broadcast media)
+// Nigerian Pidgin (West Africa) Complete NERDC Standard Curriculum Bank
+// Standardized according to Nigerian Pidgin (West Africa) literature standards (NERDC, BBC News Pidgin, and broadcast media)
 // 10 Units, 21 Lessons, 20 Questions per Lesson (420 Questions Total)
 
 export const pidginAllUnits = [
@@ -27,7 +27,7 @@ export const pidginAllUnits = [
               "It remains identical to British English 'thing'"
             ],
             "correctAnswer": "'Ting' (the dental fricative /θ/ systematically becomes /t/)",
-            "explanation": "West African Pidgin systematically replaces the voiceless dental fricative /θ/ with the alveolar plosive /t/ (thing -> ting, thank -> tank, three -> tree)."
+            "explanation": "Nigerian Pidgin (West Africa) systematically replaces the voiceless dental fricative /θ/ with the alveolar plosive /t/ (thing -> ting, thank -> tank, three -> tree)."
           },
           {
             "id": "p-u1-l1-q2",
@@ -183,7 +183,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l1-q13",
             "type": "multiple_choice",
-            "prompt": "How is 'that' pronounced and spelled in standard West African Pidgin?",
+            "prompt": "How is 'that' pronounced and spelled in standard Nigerian Pidgin (West Africa)?",
             "options": [
               "'Dat'",
               "'Zat'",
@@ -196,7 +196,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l1-q14",
             "type": "multiple_choice",
-            "prompt": "How is 'this' rendered in standard West African Pidgin?",
+            "prompt": "How is 'this' rendered in standard Nigerian Pidgin (West Africa)?",
             "options": [
               "'Dis'",
               "'Zis'",
@@ -465,7 +465,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l2-q9",
             "type": "multiple_choice",
-            "prompt": "What does the word 'pikin' mean in West African Pidgin?",
+            "prompt": "What does the word 'pikin' mean in Nigerian Pidgin (West Africa)?",
             "options": [
               "Child / offspring",
               "Small fowl",
@@ -534,7 +534,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l2-q14",
             "type": "multiple_choice",
-            "prompt": "In standard West African Pidgin literature, how is 'different kinds of books' translated with authentic reduplication?",
+            "prompt": "In standard Nigerian Pidgin (West Africa) literature, how is 'different kinds of books' translated with authentic reduplication?",
             "options": [
               "'Different-different book'",
               "'Many kind of book'",
@@ -542,7 +542,7 @@ export const pidginAllUnits = [
               "'Book wey get types'"
             ],
             "correctAnswer": "'Different-different book'",
-            "explanation": "West African Pidgin uses reduplication ('different-different book') to denote variety and distribution."
+            "explanation": "Nigerian Pidgin (West Africa) uses reduplication ('different-different book') to denote variety and distribution."
           },
           {
             "id": "p-u1-l2-q15",
@@ -717,7 +717,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u1-l3-q3",
             "type": "multiple_choice",
-            "prompt": "In standard West African Pidgin (e.g. broadcast standard), what does the hyphenated suffix '-am' signify in 'use-am' or 'read-am'?",
+            "prompt": "In standard Nigerian Pidgin (West Africa) (e.g. broadcast standard), what does the hyphenated suffix '-am' signify in 'use-am' or 'read-am'?",
             "options": [
               "The 3rd person singular object pronoun ('it' or 'him/her')",
               "A past tense suffix like English '-ed'",
@@ -952,7 +952,7 @@ export const pidginAllUnits = [
                 "right": "They / Them"
               }
             ],
-            "explanation": "Fundamental pronominal mapping of West African Pidgin."
+            "explanation": "Fundamental pronominal mapping of Nigerian Pidgin (West Africa)."
           },
           {
             "id": "p-u1-l3-q18",
@@ -2619,7 +2619,7 @@ export const pidginAllUnits = [
               "carry do"
             ],
             "correctAnswer": "take make",
-            "explanation": "'Take make' is the standard instrumental-causative SVC in West African Pidgin.",
+            "explanation": "'Take make' is the standard instrumental-causative SVC in Nigerian Pidgin (West Africa).",
             "sentence": "Na your word ___ (caused) me happy.",
             "missingWord": "take make"
           },
@@ -3134,7 +3134,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u5-l1-q2",
             "type": "multiple_choice",
-            "prompt": "In West African Pidgin proverbial media, what does 'Dey give and you go happy' express?",
+            "prompt": "In Nigerian Pidgin (West Africa) proverbial media, what does 'Dey give and you go happy' express?",
             "options": [
               "'Keep giving and you will be happy'",
               "'Go away and never return'",
@@ -4679,7 +4679,7 @@ export const pidginAllUnits = [
               "Only on formal occasions"
             ],
             "correctAnswer": "Yes, 'wey' is completely invariant across all noun classes",
-            "explanation": "'Wey' is the invariant relative marker in West African Pidgin."
+            "explanation": "'Wey' is the invariant relative marker in Nigerian Pidgin (West Africa)."
           },
           {
             "id": "p-u7-l1-q14",
@@ -6548,7 +6548,7 @@ export const pidginAllUnits = [
                 "right": "Grasp / retain it"
               }
             ],
-            "explanation": "Enclitic pronominal suffix patterns in West African Pidgin literature."
+            "explanation": "Enclitic pronominal suffix patterns in Nigerian Pidgin (West Africa) literature."
           },
           {
             "id": "p-u9-l2-q19",
@@ -6944,13 +6944,13 @@ export const pidginAllUnits = [
       {
         "id": "p-u10-l2",
         "title": "Lesson 2: Media Pidgin & Translation (BBC & Broadcast Standards)",
-        "description": "Master the art of translating complex socio-political news, legal documents, and theological literature into West African Standard Pidgin.",
+        "description": "Master the art of translating complex socio-political news, legal documents, and theological literature into Nigerian Pidgin (West Africa) Standard.",
         "completed": false,
         "questions": [
           {
             "id": "p-u10-l2-q1",
             "type": "multiple_choice",
-            "prompt": "How does standard literary West African Pidgin translate 'The Good News According to Jesus Christ'?",
+            "prompt": "How does standard literary Nigerian Pidgin (West Africa) translate 'The Good News According to Jesus Christ'?",
             "options": [
               "'Good News as Jesus Talk-am'",
               "'The Jesus Christ News Story'",

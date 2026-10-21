@@ -1,5 +1,5 @@
 // Nigerian Pidgin Standard Computer Based Testing (CBT) Bank
-// Grounded in the NERDC Curriculum and West African Pidgin literature standards (e.g. BBC News Pidgin, Wazobia FM, and broadcast media)
+// Grounded in the NERDC Curriculum and Nigerian Pidgin (West Africa) literature standards (e.g. BBC News Pidgin, Wazobia FM, and broadcast media)
 // Exactly 60 questions per section across all foundational and advanced testing tiers (360 questions total)
 
 export const pidginExams = [
@@ -21,7 +21,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-1",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'think' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'think' pronounced?",
         "options": [
           "A) tink",
           "B) sink",
@@ -34,7 +34,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-2",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thing' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thing' pronounced?",
         "options": [
           "A) ting",
           "B) sing",
@@ -47,7 +47,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-3",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'three' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'three' pronounced?",
         "options": [
           "A) tree",
           "B) free",
@@ -60,7 +60,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-4",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thank' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thank' pronounced?",
         "options": [
           "A) tank",
           "B) sank",
@@ -73,7 +73,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-5",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thief' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thief' pronounced?",
         "options": [
           "A) tief",
           "B) fief",
@@ -86,7 +86,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-6",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'through' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'through' pronounced?",
         "options": [
           "A) tru",
           "B) fru",
@@ -99,7 +99,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-7",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thirsty' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thirsty' pronounced?",
         "options": [
           "A) tosti",
           "B) fosti",
@@ -112,7 +112,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-8",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'throat' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'throat' pronounced?",
         "options": [
           "A) trot",
           "B) frot",
@@ -125,7 +125,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-9",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'throw' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'throw' pronounced?",
         "options": [
           "A) troway",
           "B) froway",
@@ -138,7 +138,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-10",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thunder' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thunder' pronounced?",
         "options": [
           "A) tanda",
           "B) sanda",
@@ -151,7 +151,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-11",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'thousand' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'thousand' pronounced?",
         "options": [
           "A) tauzan",
           "B) sauzan",
@@ -164,7 +164,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-12",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'tooth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'tooth' pronounced?",
         "options": [
           "A) tit",
           "B) fit",
@@ -177,7 +177,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-13",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'mouth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'mouth' pronounced?",
         "options": [
           "A) mout",
           "B) mous",
@@ -190,7 +190,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-14",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'cloth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'cloth' pronounced?",
         "options": [
           "A) klot",
           "B) kloz",
@@ -203,7 +203,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-15",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'earth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'earth' pronounced?",
         "options": [
           "A) ert",
           "B) erf",
@@ -216,7 +216,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-16",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'bath' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'bath' pronounced?",
         "options": [
           "A) bat",
           "B) bas",
@@ -229,7 +229,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-17",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'path' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'path' pronounced?",
         "options": [
           "A) pat",
           "B) pas",
@@ -242,7 +242,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-18",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'birth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'birth' pronounced?",
         "options": [
           "A) bet",
           "B) bef",
@@ -255,7 +255,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-19",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'death' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'death' pronounced?",
         "options": [
           "A) det",
           "B) def",
@@ -268,7 +268,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-20",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "In standard West African Pidgin phonetics, how is the English word 'truth' pronounced?",
+        "prompt": "In standard Nigerian Pidgin (West Africa) phonetics, how is the English word 'truth' pronounced?",
         "options": [
           "A) trut",
           "B) truf",
@@ -541,7 +541,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-41",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'house' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'house' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ouse",
           "B) hous",
@@ -554,7 +554,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-42",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hospital' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hospital' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ospital",
           "B) hospita",
@@ -567,7 +567,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-43",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hungry' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hungry' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ungry",
           "B) hungri",
@@ -580,7 +580,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-44",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'heart' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'heart' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) art",
           "B) hart",
@@ -593,7 +593,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-45",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'heavy' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'heavy' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) eavy",
           "B) hevi",
@@ -606,7 +606,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-46",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hold' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hold' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) old",
           "B) howld",
@@ -619,7 +619,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-47",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hand' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hand' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) an / hand",
           "B) haz",
@@ -632,7 +632,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-48",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'head' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'head' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ed",
           "B) hedi",
@@ -645,7 +645,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-49",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hear' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hear' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ear",
           "B) hiyare",
@@ -658,7 +658,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-50",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'help' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'help' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) elp",
           "B) halp",
@@ -671,7 +671,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-51",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'high' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'high' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ai",
           "B) hai",
@@ -684,7 +684,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-52",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hot' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hot' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ot",
           "B) hat",
@@ -697,7 +697,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-53",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'home' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'home' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ome",
           "B) howm",
@@ -710,7 +710,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-54",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hope' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hope' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ope",
           "B) howp",
@@ -723,7 +723,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-55",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hate' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hate' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ate",
           "B) heyte",
@@ -736,7 +736,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-56",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hard' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hard' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ard",
           "B) hardu",
@@ -749,7 +749,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-57",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'honest' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'honest' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) onest",
           "B) honesti",
@@ -762,7 +762,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-58",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hour' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hour' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) awa / our",
           "B) hawa",
@@ -775,7 +775,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-59",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'habit' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'habit' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) abit",
           "B) habiti",
@@ -788,7 +788,7 @@ export const pidginExams = [
       {
         "id": "p-cbt-found-s1-60",
         "section": "Phonology & Sound Substitutions",
-        "prompt": "How is the word 'hammer' pronounced when initial /h/ dropping occurs in West African Pidgin?",
+        "prompt": "How is the word 'hammer' pronounced when initial /h/ dropping occurs in Nigerian Pidgin (West Africa)?",
         "options": [
           "A) ama",
           "B) hama",

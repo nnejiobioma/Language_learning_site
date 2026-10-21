@@ -1,7 +1,7 @@
 // =========================================================================
 // Nigerian Pidgin English (NPE) - Master Flashcard Deck
 // 40 Cards for EACH of the 10 Corresponding Curriculum Unit Sections (400 Cards Total)
-// Standardized according to West African Pidgin literature (NERDC, BBC News Pidgin, broadcast media)
+// Standardized according to Nigerian Pidgin (West Africa) literature (NERDC, BBC News Pidgin, broadcast media)
 // =========================================================================
 
 export const pidginFlashcards = [

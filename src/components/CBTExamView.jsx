@@ -489,7 +489,7 @@ export default function CBTExamView() {
               </>
             ) : isPidgin ? (
               <>
-                Standardized Computer-Based Testing (CBT) for Nigerian Pidgin aligned with the <strong>NERDC 4-Tier Language Framework</strong> and West African Pidgin literature standards. Practice <strong>60 Questions in each distinct section</strong>, or undertake the comprehensive 180-Question Certification!
+                Standardized Computer-Based Testing (CBT) for Nigerian Pidgin aligned with the <strong>NERDC 4-Tier Language Framework</strong> and Nigerian Pidgin (West Africa) literature standards. Practice <strong>60 Questions in each distinct section</strong>, or undertake the comprehensive 180-Question Certification!
               </>
             ) : (
               <>
@@ -1633,7 +1633,7 @@ export default function CBTExamView() {
                   </p>
                   <div className="launch-pills-row">
                     <span className="launch-info-chip"><ShieldCheck size={14} /> NERDC 4-Tier Language Standard</span>
-                    <span className="launch-info-chip"><BookOpen size={14} /> West African Pidgin Orthography</span>
+                    <span className="launch-info-chip"><BookOpen size={14} /> Nigerian Pidgin (West Africa) Orthography</span>
                     <span className="launch-info-chip"><Shuffle size={14} /> Brand New Set on Every Attempt</span>
                   </div>
                 </div>

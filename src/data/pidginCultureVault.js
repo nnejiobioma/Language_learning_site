@@ -497,7 +497,7 @@ export const pidginCultureVault = {
     {
       title: "Reduplication for Emotional Depth",
       category: "Grammar & Style",
-      description: "Repeating adjectives or adverbs intensifies meaning in standard West African Pidgin: 'Quick-quick' (urgently), 'Soft-soft' (tenderly), 'Different-different' (diverse array), 'Well-well' (thoroughly)."
+      description: "Repeating adjectives or adverbs intensifies meaning in standard Nigerian Pidgin (West Africa): 'Quick-quick' (urgently), 'Soft-soft' (tenderly), 'Different-different' (diverse array), 'Well-well' (thoroughly)."
     },
     {
       title: "The Danfo Conductor Call: Bus Stop Recitations",
