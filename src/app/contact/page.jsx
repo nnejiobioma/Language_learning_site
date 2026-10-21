@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
@@ -32,6 +32,7 @@ const RECIPIENT_EMAILS = [
 ];
 
 const CATEGORIES = [
+  { id: 'tutoring', label: 'One-on-One Tutoring / Private Coaching' },
   { id: 'general', label: 'General Inquiry' },
   { id: 'feedback', label: 'Feedback & Feature Suggestions' },
   { id: 'language_request', label: 'Request a New Language / Dialect' },
@@ -84,6 +85,20 @@ export default function ContactPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   const languagesList = Object.values(LANGUAGES);
+
+  // Check URL query parameters for tutoring intent
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('category') === 'tutoring' || params.get('topic') === 'tutoring') {
+        setFormData((prev) => ({
+          ...prev,
+          category: 'One-on-One Tutoring / Private Coaching',
+          subject: prev.subject || 'Request for One-on-One Tutoring'
+        }));
+      }
+    }
+  }, []);
 
   // Field change handler
   const handleChange = (e) => {

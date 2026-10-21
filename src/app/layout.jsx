@@ -5,6 +5,7 @@ import { GameProvider } from '../context/GameContext';
 import { ThemeProvider } from '../context/ThemeContext';
 import TimedSubscribePopup from '../components/TimedSubscribePopup';
 import CookieBanner from '../components/CookieBanner';
+import TutoringSideBanner from '../components/TutoringSideBanner';
 
 export const metadata = {
   title: 'FiksLingo — Master World Languages with Gamified Learning',
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
               {children}
               <TimedSubscribePopup />
               <CookieBanner />
+              <TutoringSideBanner />
             </GameProvider>
           </AuthProvider>
         </ThemeProvider>
