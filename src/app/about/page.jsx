@@ -210,27 +210,51 @@ export default function AboutUsPage() {
             <p>Driven by passionate polyglots, educators, and software engineers.</p>
           </div>
 
-          <div className="team-showcase-card">
-            <div className="team-lead-grid">
-              <div className="team-avatar-lead">
-                <span>ON</span>
+          <div className="team-cards-grid">
+            {/* Obioma Nneji */}
+            <div className="team-showcase-card">
+              <div className="team-lead-grid">
+                <div className="team-avatar-lead obioma">
+                  <span>ON</span>
+                </div>
+                <div className="team-lead-copy">
+                  <h3>Obioma Nneji</h3>
+                  <span className="team-lead-role">Founder &amp; Lead Architect</span>
+                  <p className="team-lead-bio">
+                    Obioma founded FiksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Leading platform architecture and curriculum systems, Obioma oversees the interactive CBT assessment engines and multi-language learning tracks.
+                  </p>
+                  <div className="team-contact-actions">
+                    <a href="mailto:nneji.obioma@gmail.com" className="team-email-pill" title="Email Obioma Nneji">
+                      <Mail size={14} /> nneji.obioma@gmail.com
+                    </a>
+                    <Link href="/contact" className="team-email-pill" style={{ color: '#10b981' }}>
+                      <ArrowRight size={14} /> Contact Team
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="team-lead-copy">
-                <h3>Obioma Nneji</h3>
-                <span className="team-lead-role">Founder &amp; Lead Architect</span>
-                <p className="team-lead-bio">
-                  Obioma founded FiksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Working with native linguists across Nigeria, Spain, France, Germany, Japan, and China, Obioma leads the development of FiksLingo’s gamified curriculum and adaptive assessment engines.
-                </p>
-                <div className="team-contact-actions">
-                  <a href="mailto:nneji.obioma@gmail.com" className="team-email-pill">
-                    <Mail size={14} /> nneji.obioma@gmail.com
-                  </a>
-                  <a href="mailto:nnejieb@gmail.com" className="team-email-pill">
-                    <Mail size={14} /> nnejieb@gmail.com
-                  </a>
-                  <Link href="/contact" className="team-email-pill" style={{ color: '#10b981' }}>
-                    <ArrowRight size={14} /> Contact Team
-                  </Link>
+            </div>
+
+            {/* Ebere Nneji */}
+            <div className="team-showcase-card">
+              <div className="team-lead-grid">
+                <div className="team-avatar-lead ebere">
+                  <span>EN</span>
+                </div>
+                <div className="team-lead-copy">
+                  <h3>Ebere Nneji</h3>
+                  <span className="team-lead-role gold">Co-Founder &amp; Lead Instructor</span>
+                  <p className="team-lead-bio">
+                    Ebere serves as Co-Founder and Lead Instructor, driving pedagogy, instructional design, and speech pronunciation frameworks across FiksLingo's courses. With a passion for communicative teaching and cultural immersion, Ebere shapes the interactive lesson journeys and Culture Vault insights.
+                  </p>
+                  <div className="team-contact-actions">
+                    <a href="mailto:nnejieb@gmail.com" className="team-email-pill" title="Email Ebere Nneji">
+                      <Mail size={14} /> nnejieb@gmail.com
+                    </a>
+                    <Link href="/contact" className="team-email-pill" style={{ color: '#f59e0b' }}>
+                      <ArrowRight size={14} /> Contact Team
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
