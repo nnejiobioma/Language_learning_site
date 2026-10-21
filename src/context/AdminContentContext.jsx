@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { LANGUAGES as BASE_LANGUAGES } from '../data/languages';
 import { useAuth } from './AuthContext';
-import { db, isFirebaseConfigured, doc, getDoc, setDoc } from '../lib/firebase';
+import { db, isFirebaseConfigured, doc, getDoc, setDoc, onSnapshot } from '../lib/firebase';
 
 const AdminContentContext = createContext(null);
 
@@ -47,31 +47,44 @@ export function AdminContentProvider({ children }) {
       console.warn('Could not load local content overrides:', e);
     }
 
-    // Also attempt to load cloud overrides from Firestore if configured
+    // Also listen to cloud overrides from Firestore in real-time so all users get live updates
+    let unsubscribeFirestore = null;
     if (isFirebaseConfigured && db) {
-      getDoc(doc(db, 'system', 'content_overrides')).then(snap => {
-        if (snap.exists()) {
-          const cloudData = snap.data();
-          setOverrides(prev => {
-            const merged = {
-              questions: { ...prev.questions, ...(cloudData.questions || {}) },
-              lessons: { ...prev.lessons, ...(cloudData.lessons || {}) },
-              units: { ...prev.units, ...(cloudData.units || {}) },
-              flashcards: { ...prev.flashcards, ...(cloudData.flashcards || {}) },
-              culture: { ...prev.culture, ...(cloudData.culture || {}) },
-              cbt: { ...prev.cbt, ...(cloudData.cbt || {}) },
-              site: { ...prev.site, ...(cloudData.site || {}) }
-            };
-            try {
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-            } catch {}
-            return merged;
-          });
-        }
-      }).catch(err => {
-        console.warn('Cloud content overrides fetch skipped:', err.message);
-      });
+      try {
+        unsubscribeFirestore = onSnapshot(
+          doc(db, 'system', 'content_overrides'),
+          (snap) => {
+            if (snap.exists()) {
+              const cloudData = snap.data();
+              setOverrides(prev => {
+                const merged = {
+                  questions: { ...prev.questions, ...(cloudData.questions || {}) },
+                  lessons: { ...prev.lessons, ...(cloudData.lessons || {}) },
+                  units: { ...prev.units, ...(cloudData.units || {}) },
+                  flashcards: { ...prev.flashcards, ...(cloudData.flashcards || {}) },
+                  culture: { ...prev.culture, ...(cloudData.culture || {}) },
+                  cbt: { ...prev.cbt, ...(cloudData.cbt || {}) },
+                  site: { ...prev.site, ...(cloudData.site || {}) }
+                };
+                try {
+                  localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+                } catch {}
+                return merged;
+              });
+            }
+          },
+          (err) => {
+            console.warn('Cloud content overrides listener error:', err.message);
+          }
+        );
+      } catch (err) {
+        console.warn('Firestore snapshot setup skipped:', err.message);
+      }
     }
+
+    return () => {
+      if (unsubscribeFirestore) unsubscribeFirestore();
+    };
   }, []);
 
   // Save changes to localStorage and optionally to Firestore / API
