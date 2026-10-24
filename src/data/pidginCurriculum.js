@@ -2041,17 +2041,17 @@ export const pidginAllUnits = [
           {
             "id": "p-u3-l1-q19",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'All the elder dem don enter hall.' Who entered the hall?",
-            "audioText": "All the elder dem don enter hall.",
+            "prompt": "Listen to the audio text: 'All the elder dem don enter palace.' Who entered the palace?",
+            "audioText": "All the elder dem don enter palace.",
             "options": [
-              "All the elders have entered the hall",
+              "All the elders have entered the palace",
               "Only one elderly person entered",
-              "A small child entered the hall",
-              "The hall is completely empty"
+              "A small child entered the palace",
+              "The palace is completely empty"
             ],
-            "correctAnswer": "All the elders have entered the hall",
+            "correctAnswer": "All the elders have entered the palace",
             "explanation": "'Elder dem' = the elders; 'don enter' = have entered.",
-            "phrase": "All the elder dem don enter hall."
+            "phrase": "All the elder dem don enter palace."
           },
           {
             "id": "p-u3-l1-q20",
@@ -2893,15 +2893,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u4-l2-q10",
             "type": "multiple_choice",
-            "prompt": "How does standard literary Pidgin phrase: 'Follow the example that Jesus gave us'?",
+            "prompt": "How does standard literary Pidgin phrase: 'Follow the good example that our leader gave us'?",
             "options": [
-              "'Follow the example wey Jesus Christ give us'",
-              "'Follow Jesus Christ's gave'",
-              "'Walk like Jesus was'",
-              "'Copy Jesus by force'"
+              "'Follow the good example wey our leader give us'",
+              "'Follow leader gave'",
+              "'Walk like leader was'",
+              "'Copy leader by force'"
             ],
-            "correctAnswer": "'Follow the example wey Jesus Christ give us'",
-            "explanation": "Standard literary text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'."
+            "correctAnswer": "'Follow the good example wey our leader give us'",
+            "explanation": "Standard relative clause: 'Follow the good example wey our leader give us'."
           },
           {
             "id": "p-u4-l2-q11",
@@ -4184,15 +4184,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u6-l2-q3",
             "type": "multiple_choice",
-            "prompt": "In educational media navigation, what does 'Things Wey We Fit Use Study Bible' translate?",
+            "prompt": "In educational media navigation, what does 'Things Wey We Fit Use Study Course' translate?",
             "options": [
-              "'Tools / Materials That We Can Use to Study the Bible'",
+              "'Tools / Materials That We Can Use to Study the Course'",
               "'Things that are forbidden to read'",
               "'Books that we already finished reading'",
               "'History of printing presses'"
             ],
-            "correctAnswer": "'Tools / Materials That We Can Use to Study the Bible'",
-            "explanation": "Standard media Pidgin: 'Things Wey We Fit Use Study Bible' ('fit use' = can use)."
+            "correctAnswer": "'Tools / Materials That We Can Use to Study the Course'",
+            "explanation": "Standard media Pidgin: 'Things Wey We Fit Use Study Course' ('fit use' = can use)."
           },
           {
             "id": "p-u6-l2-q4",
@@ -4322,20 +4322,20 @@ export const pidginAllUnits = [
           {
             "id": "p-u6-l2-q13",
             "type": "multiple_choice",
-            "prompt": "In media portal buttons, what does 'Different things wey you fit read' translate?",
+            "prompt": "In media portal buttons, what does 'Different news wey you fit read' translate?",
             "options": [
-              "'Various publications that you can read'",
+              "'Various articles that you can read'",
               "'Books that you must not read'",
               "'Things that cannot be written'",
               "'Read only one article'"
             ],
-            "correctAnswer": "'Various publications that you can read'",
-            "explanation": "Standard media header: 'Different-Things Wey You Fit Read' ('fit read' = can read)."
+            "correctAnswer": "'Various articles that you can read'",
+            "explanation": "Standard media header: 'Different news wey you fit read' ('fit read' = can read)."
           },
           {
             "id": "p-u6-l2-q14",
             "type": "fill_blank",
-            "prompt": "Fill in the blank: 'We de do everything wey we _____ (can) do to follow Jesus.'",
+            "prompt": "Fill in the blank: 'We de do everything wey we _____ (can) do to pass our exam.'",
             "options": [
               "fit",
               "gats",
@@ -4343,8 +4343,8 @@ export const pidginAllUnits = [
               "bin"
             ],
             "correctAnswer": "fit",
-            "explanation": "Literary text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
-            "sentence": "We de do everything wey we ___ (can) do to follow Jesus.",
+            "explanation": "Modal usage: 'We de do everything wey we fit do to pass our exam'.",
+            "sentence": "We de do everything wey we ___ (can) do to pass our exam.",
             "missingWord": "fit"
           },
           {
@@ -4602,7 +4602,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u7-l1-q8",
             "type": "fill_blank",
-            "prompt": "Fill in the blank: 'Find the place _____ (where) we de do our meeting.'",
+            "prompt": "Fill in the blank: 'Find the place _____ (where) we de do our training.'",
             "options": [
               "wey",
               "wia",
@@ -4610,8 +4610,8 @@ export const pidginAllUnits = [
               "dat"
             ],
             "correctAnswer": "wey",
-            "explanation": "Standard media Pidgin: 'Find the place wey we de do our meeting for your area'.",
-            "sentence": "Find the place ___ (where) we de do our meeting.",
+            "explanation": "Relative particle 'wey': 'Find the place wey we de do our training'.",
+            "sentence": "Find the place ___ (where) we de do our training.",
             "missingWord": "wey"
           },
           {
@@ -6279,15 +6279,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l2-q3",
             "type": "multiple_choice",
-            "prompt": "In literary translation, how is 'As it was said by Jesus' rendered?",
+            "prompt": "In broadcast attribution, how is 'As it was said by the governor' rendered?",
             "options": [
-              "'As Jesus talk-am'",
-              "'As it was spoken by Christ'",
-              "'Jesus speech was made'",
-              "'Talked by Jesus'"
+              "'As governor talk-am'",
+              "'As it was spoken by governor'",
+              "'Governor speech was made'",
+              "'Talked by governor'"
             ],
-            "correctAnswer": "'As Jesus talk-am'",
-            "explanation": "Literary series title: 'Good News As Jesus Talk-Am' (The Good News as Jesus spoke it)."
+            "correctAnswer": "'As governor talk-am'",
+            "explanation": "Broadcast attribution: 'As governor talk-am' (As the governor said it)."
           },
           {
             "id": "p-u9-l2-q4",
@@ -6469,9 +6469,9 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l2-q16",
             "type": "scramble",
-            "prompt": "Arrange the words to say: 'The good news as Jesus spoke it.'",
+            "prompt": "Arrange the words to say: 'The good news as the commissioner spoke it.'",
             "tokens": [
-              "Jesus",
+              "commissioner",
               "news",
               "talk-am",
               "Good",
@@ -6481,10 +6481,10 @@ export const pidginAllUnits = [
               "Good",
               "news",
               "as",
-              "Jesus",
+              "commissioner",
               "talk-am"
             ],
-            "explanation": "Literary series title: 'Good news as Jesus talk-am'."
+            "explanation": "Broadcast phrasing: 'Good news as commissioner talk-am'."
           },
           {
             "id": "p-u9-l2-q17",
@@ -6568,17 +6568,17 @@ export const pidginAllUnits = [
           {
             "id": "p-u9-l2-q20",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'Read this publication and you go gain plenty things from-am.' What is the promised outcome of reading?",
-            "audioText": "Read this publication and you go gain plenty things from-am.",
+            "prompt": "Listen to the audio text: 'Read this document and you go gain plenty things from-am.' What is the promised outcome of reading?",
+            "audioText": "Read this document and you go gain plenty things from-am.",
             "options": [
               "You will gain much valuable benefit from it",
               "You will lose your reading eyeglasses",
-              "The publication is difficult to comprehend",
-              "You must pay money for the publication"
+              "The document is difficult to comprehend",
+              "You must pay money for the document"
             ],
             "correctAnswer": "You will gain much valuable benefit from it",
             "explanation": "Standard media Pidgin: 'gain plenty things from-am' (gain much from it).",
-            "phrase": "Read this publication and you go gain plenty things from-am."
+            "phrase": "Read this document and you go gain plenty things from-am."
           }
         ]
       }
@@ -6912,8 +6912,8 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l1-q19",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'When the comedian yab the big man, the whole hall burst into sweet laughter.' What did the comedian do?",
-            "audioText": "When the comedian yab the big man, the whole hall burst into sweet laughter.",
+            "prompt": "Listen to the audio text: 'When the comedian yab the big man, the whole audience burst into sweet laughter.' What did the comedian do?",
+            "audioText": "When the comedian yab the big man, the whole audience burst into sweet laughter.",
             "options": [
               "Roast a wealthy dignitary, making the whole audience roar with laughter",
               "Ask the wealthy man for financial donations",
@@ -6922,7 +6922,7 @@ export const pidginAllUnits = [
             ],
             "correctAnswer": "Roast a wealthy dignitary, making the whole audience roar with laughter",
             "explanation": "Classic comedy dynamic: using 'yab' to speak truth to power.",
-            "phrase": "When the comedian yab the big man, the whole hall burst into sweet laughter."
+            "phrase": "When the comedian yab the big man, the whole audience burst into sweet laughter."
           },
           {
             "id": "p-u10-l1-q20",
@@ -6950,28 +6950,28 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l2-q1",
             "type": "multiple_choice",
-            "prompt": "How does standard literary Nigerian Pidgin (West Africa) translate 'The Good News According to Jesus Christ'?",
+            "prompt": "How does standard broadcast Nigerian Pidgin translate 'The news according to the eyewitness'?",
             "options": [
-              "'Good News as Jesus Talk-am'",
-              "'The Jesus Christ News Story'",
-              "'Holy Gospel as Jesus Spoke'",
-              "'Book of Christian Drama'"
+              "'News as witness talk-am'",
+              "'The witness news story'",
+              "'Story as witness spoke'",
+              "'Book of witness drama'"
             ],
-            "correctAnswer": "'Good News as Jesus Talk-am'",
-            "explanation": "Standard literary publication series title: 'Good News As Jesus Talk-Am'."
+            "correctAnswer": "'News as witness talk-am'",
+            "explanation": "Standard broadcast media reporting: 'News As Witness Talk-Am'."
           },
           {
             "id": "p-u10-l2-q2",
             "type": "multiple_choice",
-            "prompt": "How is 'Why is it good for us to study the Bible?' rendered in formal literary Pidgin?",
+            "prompt": "How is 'Why is it good for us to read books?' rendered in formal broadcast Pidgin?",
             "options": [
-              "'Why E Good Make We Study Bible?'",
-              "'The Reasons of Bible Reading'",
-              "'Bible Study Good for Everyone'",
-              "'Make We Know Bible Book'"
+              "'Why E Good Make We Read Books?'",
+              "'The Reasons of Book Reading'",
+              "'Reading Good for Everyone'",
+              "'Make We Know Books'"
             ],
-            "correctAnswer": "'Why E Good Make We Study Bible?'",
-            "explanation": "Formal literary article headline: 'Why E Good Make We Study Bible?' (uses hortative 'make we' + stative 'good')."
+            "correctAnswer": "'Why E Good Make We Read Books?'",
+            "explanation": "Formal broadcast headline: 'Why E Good Make We Read Books?' (uses hortative 'make we' + stative 'good')."
           },
           {
             "id": "p-u10-l2-q3",
@@ -6997,7 +6997,7 @@ export const pidginAllUnits = [
               "take"
             ],
             "correctAnswer": "get",
-            "explanation": "Literary text: 'Check the different parts wey the translation get'.",
+            "explanation": "Standard broadcast text: 'Check the different parts wey the report get'.",
             "sentence": "Check the different-different parts wey the translation ___ (has).",
             "missingWord": "get"
           },
@@ -7045,7 +7045,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l2-q8",
             "type": "fill_blank",
-            "prompt": "Fill in the blank: 'Find the place wey we de do our meeting for your _____ (local area).' ",
+            "prompt": "Fill in the blank: 'Find the clinic wey dey near your _____ (local area).' ",
             "options": [
               "area",
               "corner",
@@ -7053,8 +7053,8 @@ export const pidginAllUnits = [
               "village"
             ],
             "correctAnswer": "area",
-            "explanation": "Standard community text: 'Find the place wey we de do our meeting for your area'.",
-            "sentence": "Find the place wey we de do our meeting for your ___ (local area).",
+            "explanation": "Standard community health text: 'Find the clinic wey dey near your area'.",
+            "sentence": "Find the clinic wey dey near your ___ (local area).",
             "missingWord": "area"
           },
           {
@@ -7127,7 +7127,7 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l2-q14",
             "type": "fill_blank",
-            "prompt": "Fill in the blank: 'The story make the life of Jesus dey _____ (real) to us.' ",
+            "prompt": "Fill in the blank: 'The documentary make the history dey _____ (real) to us.' ",
             "options": [
               "real",
               "true",
@@ -7135,18 +7135,18 @@ export const pidginAllUnits = [
               "near"
             ],
             "correctAnswer": "real",
-            "explanation": "Standard media text: 'make the story about Jesus Christ life dey real to us'.",
-            "sentence": "The story make the life of Jesus dey ___ (real) to us.",
+            "explanation": "Standard media documentary text: 'make the history dey real to us'.",
+            "sentence": "The documentary make the history dey ___ (real) to us.",
             "missingWord": "real"
           },
           {
             "id": "p-u10-l2-q15",
             "type": "scramble",
-            "prompt": "Arrange the words to say: 'Why is it good for us to study the Bible?'",
+            "prompt": "Arrange the words to say: 'Why is it good for us to read books?'",
             "tokens": [
-              "Study",
+              "Read",
               "E",
-              "Bible?",
+              "Books?",
               "Make",
               "We",
               "Good",
@@ -7158,22 +7158,22 @@ export const pidginAllUnits = [
               "Good",
               "Make",
               "We",
-              "Study",
-              "Bible?"
+              "Read",
+              "Books?"
             ],
-            "explanation": "Literary article title: 'Why E Good Make We Study Bible?'."
+            "explanation": "Broadcast article title: 'Why E Good Make We Read Books?'."
           },
           {
             "id": "p-u10-l2-q16",
             "type": "scramble",
-            "prompt": "Arrange the words to say: 'Things that we can use to study the Bible.'",
+            "prompt": "Arrange the words to say: 'Things that we can use to learn online.'",
             "tokens": [
               "Things",
               "Fit",
-              "Study",
+              "Learn",
               "Wey",
               "We",
-              "Bible",
+              "Online",
               "Use"
             ],
             "correctTokens": [
@@ -7182,10 +7182,10 @@ export const pidginAllUnits = [
               "We",
               "Fit",
               "Use",
-              "Study",
-              "Bible"
+              "Learn",
+              "Online"
             ],
-            "explanation": "Educational media category: 'Things Wey We Fit Use Study Bible'."
+            "explanation": "Educational portal category: 'Things Wey We Fit Use Learn Online'."
           },
           {
             "id": "p-u10-l2-q17",
@@ -7199,16 +7199,16 @@ export const pidginAllUnits = [
                 "right": "News and current events"
               },
               {
-                "native": "Why we should study the scriptures",
-                "english": "Why e good make we study Bible?",
-                "left": "Why e good make we study Bible?",
-                "right": "Why we should study the scriptures"
+                "native": "Why we should read books",
+                "english": "Why e good make we read books?",
+                "left": "Why e good make we read books?",
+                "right": "Why we should read books"
               },
               {
-                "native": "The Gospel according to Jesus",
-                "english": "Good news as Jesus talk-am",
-                "left": "Good news as Jesus talk-am",
-                "right": "The Gospel according to Jesus"
+                "native": "The report according to witness",
+                "english": "News as witness talk-am",
+                "left": "News as witness talk-am",
+                "right": "The report according to witness"
               },
               {
                 "native": "Stream the video presentation",
@@ -7217,7 +7217,7 @@ export const pidginAllUnits = [
                 "right": "Stream the video presentation"
               }
             ],
-            "explanation": "Official media and publishing terminology."
+            "explanation": "Official broadcast journalism terminology."
           },
           {
             "id": "p-u10-l2-q18",
@@ -7254,32 +7254,32 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l2-q19",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'For this website, we get Bible and you fit use-am for study.' What resources are available on the website?",
-            "audioText": "For this website, we get Bible and you fit use-am for study.",
+            "prompt": "Listen to the audio text: 'For this website, we get research materials and you fit use-am for study.' What resources are available on the website?",
+            "audioText": "For this website, we get research materials and you fit use-am for study.",
             "options": [
-              "The Bible and study tools that you can use for personal learning",
+              "Research materials and study tools that you can use for personal learning",
               "Only audio music tracks for download",
               "A commercial store selling paper books",
               "No study tools are provided"
             ],
-            "correctAnswer": "The Bible and study tools that you can use for personal learning",
-            "explanation": "Educational website description: 'For this website, we de get Bible... and you fit use-am for study'.",
-            "phrase": "For this website, we get Bible and you fit use-am for study."
+            "correctAnswer": "Research materials and study tools that you can use for personal learning",
+            "explanation": "Educational website description: 'For this website, we get research materials and you fit use-am for study'.",
+            "phrase": "For this website, we get research materials and you fit use-am for study."
           },
           {
             "id": "p-u10-l2-q20",
             "type": "audio_listen",
-            "prompt": "Listen to the audio text: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us.' What commitment is expressed?",
-            "audioText": "We de do everything wey we fit do to follow the example wey Jesus Christ give us.",
+            "prompt": "Listen to the audio text: 'We de do everything wey we fit do to support our community.' What commitment is expressed?",
+            "audioText": "We de do everything wey we fit do to support our community.",
             "options": [
-              "Doing everything possible to follow the example that Jesus Christ provided",
+              "Doing everything possible to support the local community",
               "Traveling to foreign countries every week",
-              "Disregarding religious teachings in business",
+              "Disregarding community welfare in business",
               "Building statues in the town center"
             ],
-            "correctAnswer": "Doing everything possible to follow the example that Jesus Christ provided",
-            "explanation": "Literary statement: 'We de do everything wey we fit do to follow the example wey Jesus Christ give us'.",
-            "phrase": "We de do everything wey we fit do to follow the example wey Jesus Christ give us."
+            "correctAnswer": "Doing everything possible to support the local community",
+            "explanation": "Civic community statement: 'We de do everything wey we fit do to support our community'.",
+            "phrase": "We de do everything wey we fit do to support our community."
           }
         ]
       }

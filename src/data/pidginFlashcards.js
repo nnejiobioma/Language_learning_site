@@ -402,7 +402,7 @@ export const pidginFlashcards = [
     phonetic: "STEEL-day",
     back: "Continuative aspect (still ongoing / still present)",
     category: "Unit 2: The Core Aspect Markers",
-    example: "The meeting still dey hold inside hall."
+    example: "The meeting still dey hold inside boardroom."
   },
   {
     id: "p-u2-fc-10",
@@ -726,7 +726,7 @@ export const pidginFlashcards = [
     phonetic: "BROH-dah dem",
     back: "The brothers / peer fraternity members",
     category: "Unit 3: Nouns, Pluralization & Ownership",
-    example: "Broda dem greet una for this hall."
+    example: "Broda dem greet una well well."
   },
   {
     id: "p-u3-fc-10",
@@ -1674,7 +1674,7 @@ export const pidginFlashcards = [
     phonetic: "Eem fyn pahs...",
     back: "Superlative aesthetic praise (Most beautiful of all)",
     category: "Unit 6: Comparisons & Functional Expressions",
-    example: "The bride fine pass all the ladies for hall."
+    example: "The bride fine pass all the ladies for party."
   },
   {
     id: "p-u6-fc-07",
@@ -2110,7 +2110,7 @@ export const pidginFlashcards = [
     phonetic: "soh-TAY",
     back: "Consecutive durative conjunction (To the extent that / Until)",
     category: "Unit 7: Conditionals, Relatives & Linkers",
-    example: "We praise God sote joy overflow for hall."
+    example: "We celebrate sote joy overflow for house."
   },
   {
     id: "p-u7-fc-21",
@@ -2142,7 +2142,7 @@ export const pidginFlashcards = [
     phonetic: "MAYK wee goh",
     back: "Hortative communal invitation (Let us depart together)",
     category: "Unit 7: Conditionals, Relatives & Linkers",
-    example: "Time don reach, make we go assembly hall."
+    example: "Time don reach, make we go stadium."
   },
   {
     id: "p-u7-fc-25",
@@ -2622,7 +2622,7 @@ export const pidginFlashcards = [
     phonetic: "VYB",
     back: "Atmospheric resonance / Emotional frequency of a social gathering",
     category: "Unit 9: Sociolinguistic Code-Switching & Registers",
-    example: "The fellowship hall get peaceful and joyful vibe."
+    example: "The festival center get peaceful and joyful vibe."
   },
   {
     id: "p-u9-fc-04",
