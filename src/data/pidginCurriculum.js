@@ -6950,15 +6950,15 @@ export const pidginAllUnits = [
           {
             "id": "p-u10-l2-q1",
             "type": "multiple_choice",
-            "prompt": "How does standard broadcast Nigerian Pidgin translate 'The news according to the eyewitness'?",
+            "prompt": "How does standard broadcast Nigerian Pidgin translate 'The news according to the reporter'?",
             "options": [
-              "'News as witness talk-am'",
-              "'The witness news story'",
-              "'Story as witness spoke'",
-              "'Book of witness drama'"
+              "'News as reporter talk-am'",
+              "'The reporter news story'",
+              "'Story as reporter spoke'",
+              "'Book of reporter drama'"
             ],
-            "correctAnswer": "'News as witness talk-am'",
-            "explanation": "Standard broadcast media reporting: 'News As Witness Talk-Am'."
+            "correctAnswer": "'News as reporter talk-am'",
+            "explanation": "Standard broadcast media reporting: 'News As Reporter Talk-Am'."
           },
           {
             "id": "p-u10-l2-q2",
@@ -7205,10 +7205,10 @@ export const pidginAllUnits = [
                 "right": "Why we should read books"
               },
               {
-                "native": "The report according to witness",
-                "english": "News as witness talk-am",
-                "left": "News as witness talk-am",
-                "right": "The report according to witness"
+                "native": "The report according to reporter",
+                "english": "News as reporter talk-am",
+                "left": "News as reporter talk-am",
+                "right": "The report according to reporter"
               },
               {
                 "native": "Stream the video presentation",

@@ -416,7 +416,7 @@ export const pidginFlashcards = [
     id: "p-u2-fc-11",
     front: "Never see",
     phonetic: "NEH-vahr SEE",
-    back: "Negative experiential (have not yet witnessed/seen)",
+    back: "Negative experiential (have not yet seen / encountered)",
     category: "Unit 2: The Core Aspect Markers",
     example: "I never see dat kind big fish before."
   },
@@ -1562,11 +1562,11 @@ export const pidginFlashcards = [
   },
   {
     id: "p-u5-fc-33",
-    front: "Don witness",
-    phonetic: "Dohn weet-nehs",
-    back: "Completive testimony (has provided official witness)",
+    front: "Don confirm",
+    phonetic: "Dohn kohn-FAHRM",
+    back: "Completive verification (has officially verified / confirmed)",
     category: "Unit 5: Advanced Tense & Aspect Structuring",
-    example: "The elder don witness the entire dispute."
+    example: "The chairman don confirm the entire report."
   },
   {
     id: "p-u5-fc-34",

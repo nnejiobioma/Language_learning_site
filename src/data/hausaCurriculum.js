@@ -6744,7 +6744,7 @@ export const hausaAllUnits = [
               "Never believe what you touch"
             ],
             "correctAnswer": "Seeing dispels hearing (Seeing is believing)",
-            "explanation": "'Gani ya kori ji' literally means 'Seeing chases away hearing'—eyewitness truth supersedes hearsay."
+            "explanation": "'Gani ya kori ji' literally means 'Seeing chases away hearing'—firsthand observation supersedes hearsay."
           },
           {
             "id": "ha-u10-l1-q16",
@@ -7103,7 +7103,7 @@ export const hausaAllUnits = [
           "Never believe what you touch"
         ],
         "correctAnswer": "Seeing dispels hearing (Seeing is believing)",
-        "explanation": "'Gani ya kori ji' literally means 'Seeing chases away hearing'—eyewitness truth supersedes hearsay."
+        "explanation": "'Gani ya kori ji' literally means 'Seeing chases away hearing'—firsthand observation supersedes hearsay."
       },
       {
         "id": "ha-u10-l1-q16",
