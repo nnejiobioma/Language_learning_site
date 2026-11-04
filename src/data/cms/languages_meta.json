@@ -1,0 +1,149 @@
+{
+  "languages": [
+    {
+      "id": "spanish",
+      "name": "Spanish",
+      "nativeName": "Español",
+      "motto": "The vibrant language of Cervantes, spoken across 20+ countries and 500M+ people worldwide.",
+      "flag": "🇪🇸",
+      "badge": "/images/spanish_badge.jpg",
+      "accentColor": "#ef4444",
+      "secondaryColor": "#f59e0b",
+      "greeting": "¡Hola! ¿Cómo estás?",
+      "description": "Master Spanish through the official MCER / Instituto Cervantes curriculum spanning 20 leveled units across A1 (Beginner), A2 (Elementary), B1 (Intermediate), B2 (Upper-Intermediate), and C1/C2 (Mastery)."
+    },
+    {
+      "id": "french",
+      "name": "French",
+      "nativeName": "Français",
+      "motto": "The language of diplomacy, romance, gastronomy, and international arts.",
+      "flag": "🇫🇷",
+      "badge": "/images/french_badge.jpg",
+      "accentColor": "#2563eb",
+      "secondaryColor": "#f43f5e",
+      "greeting": "Bonjour ! Comment allez-vous ?",
+      "description": "Immerse yourself in French culture with Parisian elegance, café dialogue, and fluent pronunciation secrets."
+    },
+    {
+      "id": "german",
+      "name": "German",
+      "nativeName": "Deutsch",
+      "motto": "The powerhouse language of engineering, philosophy, literature, and European commerce.",
+      "flag": "🇩🇪",
+      "badge": "/images/german_badge.jpg",
+      "accentColor": "#f59e0b",
+      "secondaryColor": "#1e293b",
+      "greeting": "Guten Tag! Wie geht es Ihnen?",
+      "description": "Master German through the official BAMF Rahmencurriculum (Integrationskurs DaZ) and DeuFöV Berufssprachkurse spanning 10 leveled units across A1, A2, B1, B2, and C1/C2 (TestDaF/DSH)."
+    },
+    {
+      "id": "japanese",
+      "name": "Japanese",
+      "nativeName": "日本語 (Nihongo)",
+      "motto": "The graceful language of harmony, anime, ancient Shinto shrines, and cutting-edge innovation.",
+      "flag": "🇯🇵",
+      "badge": "/images/japanese_badge.jpg",
+      "accentColor": "#ec4899",
+      "secondaryColor": "#dc2626",
+      "greeting": "こんにちは！お元気ですか？",
+      "description": "Master Japanese through the official JF Standard (Japan Foundation) and JLPT (N5 to N2) / MEXT national framework, featuring 6 leveled units, 24 lessons, 240 leveled flashcards, and official CBT examination simulation."
+    },
+    {
+      "id": "mandarin",
+      "name": "Mandarin Chinese",
+      "nativeName": "中文 (Zhōngwén)",
+      "motto": "The profound language of ancient dynasties, modern global trade, and over 1.1 billion speakers.",
+      "flag": "🇨🇳",
+      "badge": "/images/mandarin_badge.jpg",
+      "accentColor": "#dc2626",
+      "secondaryColor": "#eab308",
+      "greeting": "你好！你吃了吗？(Nǐ hǎo!)",
+      "description": "Learn Mandarin Chinese structured with the official GF 0025-2021 standards (HSK 1-9 & HSKK oral exam) governed by the Ministry of Education (PRC) & CLEC, covering Syllables, Characters, Vocabulary, Grammar, and Cultural Pragmatics."
+    },
+    {
+      "id": "pidgin",
+      "name": "Nigerian Pidgin",
+      "nativeName": "Naija Pidgin",
+      "motto": "The most expressive, energetic lingua franca across West Africa!",
+      "flag": "🇳🇬",
+      "badge": "/images/pidgin_badge.jpg",
+      "accentColor": "#10b981",
+      "secondaryColor": "#f59e0b",
+      "greeting": "How you dey!",
+      "description": "Learn the vibrant language spoken by over 75 million people across Nigeria, West Africa, and global Afrobeat culture — structured with the NERDC 4-Tier Oracy, Grammar, and Literature framework."
+    },
+    {
+      "id": "yoruba",
+      "name": "Yoruba",
+      "nativeName": "Èdè Yorùbá",
+      "motto": "A tonal, poetic language of royal traditions, respect, and ancient wisdom.",
+      "flag": "👑",
+      "badge": "/images/yoruba_badge.jpg",
+      "accentColor": "#3b82f6",
+      "secondaryColor": "#eab308",
+      "greeting": "Báwo ni o!",
+      "description": "Discover one of Africa's most influential languages, renowned for its melodic tones, respect systems (ọ̀wọ̀), and rich philosophical proverbs."
+    },
+    {
+      "id": "portuguese",
+      "name": "Portuguese",
+      "nativeName": "Português",
+      "motto": "The melodic language of maritime explorers, fado ballads, and 260M+ speakers worldwide.",
+      "flag": "🇵🇹",
+      "badge": "/images/portuguese_badge.jpg",
+      "accentColor": "#059669",
+      "secondaryColor": "#dc2626",
+      "greeting": "Olá! Como está?",
+      "description": "Master Portuguese through the official Adult Vocational Syllabus (PLA / IEFP Standard) and Primary/Secondary School Syllabus (DGE Standard) across 6 units (30 lessons), 240 flashcards, and CAPLE CIPLE/DIPLE CBT exam simulations."
+    },
+    {
+      "id": "swedish",
+      "name": "Swedish",
+      "nativeName": "Svenska",
+      "motto": "The harmonious Nordic tongue of balance (Lagom), archipelago islands, and innovation.",
+      "flag": "🇸🇪",
+      "badge": "/images/swedish_badge.jpg",
+      "accentColor": "#0284c7",
+      "secondaryColor": "#eab308",
+      "greeting": "Hej! Hur mår du?",
+      "description": "Master Swedish through official Skolverket and UHR curricula: Track A (SFI Kurs B–D, SVA & Tisus Standard) and Track B (Grundskolan Lgr22 & Gymnasiet SVA 3) across 6 units (24 lessons), 240 flashcards, culture vault, and CBT exam simulations."
+    },
+    {
+      "id": "finnish",
+      "name": "Finnish",
+      "nativeName": "Suomi",
+      "motto": "The mystical Uralic language of resilient grit (Sisu), midnight suns, and thousand lakes.",
+      "flag": "🇫🇮",
+      "badge": "/images/finnish_badge.jpg",
+      "accentColor": "#0ea5e9",
+      "secondaryColor": "#64748b",
+      "greeting": "Hei! Mitä kuuluu?",
+      "description": "Discover Finnish with Northern Lights wonders, sauna etiquette, and unique phonetic harmony."
+    },
+    {
+      "id": "igbo",
+      "name": "Igbo",
+      "nativeName": "Asụsụ Igbo",
+      "motto": "The entrepreneurial, rhythmic tonal language of southeastern Nigeria and rich masquerade heritage.",
+      "flag": "🦅",
+      "badge": "/images/igbo_badge.jpg",
+      "accentColor": "#16a34a",
+      "secondaryColor": "#b91c1c",
+      "greeting": "Kedụ kwanụ! Ị dị mma?",
+      "description": "Master Igbo greetings, respect for elders, vibrant commercial trade phrases, and deep philosophical proverbs."
+    },
+    {
+      "id": "hausa",
+      "name": "Hausa",
+      "nativeName": "Harshen Hausa",
+      "motto": "The major Afroasiatic trade language spoken by 80M+ people across West & Central Africa.",
+      "flag": "🌍",
+      "badge": "/images/hausa_badge.jpg",
+      "accentColor": "#b45309",
+      "secondaryColor": "#1d4ed8",
+      "greeting": "Sannu! Yaya kake?",
+      "description": "Discover Hausa with trans-Saharan trade warmth, royal Emirates greetings, and market eloquence."
+    }
+  ]
+}
+

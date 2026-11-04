@@ -38,11 +38,12 @@ export default function AdminPage() {
     openQuickEdit, 
     resetItem, 
     resetAllOverrides, 
+    refreshCmsData,
     syncStatus 
   } = useAdminContent();
 
   const [selectedLang, setSelectedLang] = useState('pidgin');
-  const [activeTab, setActiveTab] = useState('curriculum'); // 'curriculum' | 'flashcards' | 'culture' | 'subscribers'
+  const [activeTab, setActiveTab] = useState('decap'); // 'decap' | 'curriculum' | 'flashcards' | 'culture' | 'subscribers'
   const [searchQuery, setSearchQuery] = useState('');
   const [subscribers, setSubscribers] = useState([]);
   const [subscribersLoading, setSubscribersLoading] = useState(false);
@@ -135,31 +136,38 @@ export default function AdminPage() {
     );
   }
 
-  // Unauthorized view
+  // Unauthorized view for Firebase in-app overrides — still allows launching Decap CMS Studio
   if (!isAdmin) {
     return (
       <div className="admin-portal-root" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-        <div style={{ maxWidth: 540, background: '#0f172a', border: '1px solid #ef4444', borderRadius: 20, padding: '2.5rem', textAlign: 'center' }}>
-          <ShieldAlert size={56} style={{ color: '#ef4444', margin: '0 auto 1rem' }} />
+        <div style={{ maxWidth: 620, background: '#0f172a', border: '1px solid #10b981', borderRadius: 20, padding: '2.5rem', textAlign: 'center' }}>
+          <ShieldCheck size={56} style={{ color: '#10b981', margin: '0 auto 1rem' }} />
           <h1 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.75rem' }}>
-            Administrator Access Required
+            FliksLingo Decap CMS &amp; Admin Portal
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-            This portal is restricted to authorized site administrators. To manage site content from the frontend, please sign in with an administrator account:
+          <p style={{ color: '#94a3b8', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+            Manage global site settings, landing pages, language metadata, cultural vaults, flashcards, and curriculum units with <strong>Decap CMS</strong>, or sign in with an administrator account for live in-page overrides.
           </p>
-          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: 12, marginBottom: '1.5rem', textAlign: 'left', fontSize: '0.85rem' }}>
-            <p style={{ color: '#fbbf24', fontWeight: 700, marginBottom: '0.5rem' }}>Authorized Admin Accounts:</p>
+          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '1.75rem' }}>
+            <a
+              href="/admin/index.html"
+              className="admin-action-btn primary"
+              style={{ padding: '0.75rem 1.4rem', fontSize: '0.95rem' }}
+            >
+              <Sliders size={16} /> Launch Decap CMS Studio
+            </a>
+            <Link href="/login" className="admin-action-btn" style={{ padding: '0.75rem 1.2rem' }}>
+              Sign In for In-App Quick Edit
+            </Link>
+            <Link href="/" className="admin-action-btn" style={{ padding: '0.75rem 1.2rem' }}>
+              <ArrowLeft size={16} /> Return to Home
+            </Link>
+          </div>
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1rem', borderRadius: 12, textAlign: 'left', fontSize: '0.85rem' }}>
+            <p style={{ color: '#fbbf24', fontWeight: 700, marginBottom: '0.5rem' }}>Authorized Admin Accounts (for in-page quick overrides):</p>
             {ADMIN_EMAILS.map(email => (
               <p key={email} style={{ color: '#e2e8f0', fontFamily: 'monospace', margin: '0.2rem 0' }}>• {email}</p>
             ))}
-          </div>
-          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
-            <Link href="/" className="admin-action-btn">
-              <ArrowLeft size={16} /> Return to Home
-            </Link>
-            <Link href="/login" className="admin-action-btn primary">
-              Sign In as Admin
-            </Link>
           </div>
         </div>
       </div>
@@ -185,6 +193,10 @@ export default function AdminPage() {
           </div>
 
           <div className="admin-header-actions">
+            <a href="/admin/index.html" target="_blank" rel="noopener noreferrer" className="admin-action-btn primary" title="Open Decap CMS Studio in full screen">
+              <Sliders size={15} />
+              <span>Full-Screen Decap CMS</span>
+            </a>
             <button onClick={handleExportBackup} className="admin-action-btn" title="Download backup of all custom edits">
               <Download size={15} />
               <span>Export JSON</span>
@@ -193,7 +205,7 @@ export default function AdminPage() {
               <RotateCcw size={15} />
               <span>Reset All</span>
             </button>
-            <Link href="/learn" className="admin-action-btn primary">
+            <Link href="/learn" className="admin-action-btn">
               <ExternalLink size={15} />
               <span>View Learner App</span>
             </Link>
@@ -276,6 +288,13 @@ export default function AdminPage() {
         {/* Section Navigation Tabs */}
         <div className="admin-section-tabs">
           <button
+            className={`admin-tab-btn ${activeTab === 'decap' ? 'active' : ''}`}
+            onClick={() => setActiveTab('decap')}
+          >
+            <Sliders size={16} />
+            <span>Decap CMS Studio</span>
+          </button>
+          <button
             className={`admin-tab-btn ${activeTab === 'curriculum' ? 'active' : ''}`}
             onClick={() => setActiveTab('curriculum')}
           >
@@ -305,8 +324,61 @@ export default function AdminPage() {
           </button>
         </div>
 
+        {/* TAB 0: DECAP CMS STUDIO */}
+        {activeTab === 'decap' && (
+          <div className="admin-card-container">
+            <div className="admin-unit-box" style={{ padding: '1.25rem' }}>
+              <div className="admin-unit-header" style={{ marginBottom: '1rem' }}>
+                <div>
+                  <h4>Decap CMS Git &amp; File Content Studio</h4>
+                  <p style={{ fontSize: '0.84rem', color: '#94a3b8', marginTop: '0.25rem' }}>
+                    Edit global site settings, landing page sections, About Us page, all 12 language metadata profiles, cultural vaults, flashcards, and curriculum lessons directly via Decap CMS.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    className="admin-action-btn"
+                    onClick={() => refreshCmsData && refreshCmsData()}
+                    title="Reload latest saved Decap CMS JSON files into live app state"
+                  >
+                    <RotateCcw size={14} />
+                    <span>Sync CMS Changes</span>
+                  </button>
+                  <a
+                    href="/admin/index.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="admin-action-btn primary"
+                  >
+                    <ExternalLink size={14} />
+                    <span>Open Standalone Decap CMS</span>
+                  </a>
+                </div>
+              </div>
+              <div
+                style={{
+                  width: '100%',
+                  height: '78vh',
+                  minHeight: '640px',
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(16, 185, 129, 0.35)',
+                  background: '#ffffff'
+                }}
+              >
+                <iframe
+                  src="/admin/index.html"
+                  title="FliksLingo Decap CMS Studio"
+                  style={{ width: '100%', height: '100%', border: 'none' }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Filter / Search Row */}
-        {activeTab !== 'subscribers' && (
+        {activeTab !== 'subscribers' && activeTab !== 'decap' && (
           <div className="admin-filter-row">
             <div className="admin-search-box">
               <Search size={16} style={{ color: '#94a3b8' }} />

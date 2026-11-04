@@ -1,0 +1,309 @@
+{
+  "id": "pidgin",
+  "title": "Nigerian Pidgin",
+  "nativeName": "Naija Pidgin",
+  "flag": "🇳🇬",
+  "greeting": "How you dey!",
+  "motto": "The most expressive, energetic lingua franca across West Africa!",
+  "description": "Learn the vibrant language spoken by over 75 million people across Nigeria, West Africa, and global Afrobeat culture — structured with the NERDC 4-Tier Oracy, Grammar, and Literature framework.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Monkey dey work, baboon dey chop.",
+      "translation": "One person toils while another unjustly enjoys the fruit of the labor.",
+      "context": "The master proverb of Nigerian civic and commercial discourse, addressing unfair compensation, uncredited teamwork, and the struggle for equity."
+    },
+    "cultureTips": [
+      {
+        "title": "The Sacred Greeting: 'How You Dey?' & Tone Variations",
+        "description": "When meeting anyone in Nigeria, a cheerful 'How you dey?' or 'How far?' breaks all social friction. The reply can vary from 'I dey fine' (standard), to 'We dey push am' (humble resilience), or 'I dey kampe' (unshakeable energy).",
+        "category": "Salutations & Social Decorum"
+      },
+      {
+        "title": "The Danfo Transit Etiquette & 'Owa o!'",
+        "description": "In the famous yellow Danfo buses across Lagos, passengers must always alert the conductor before their stop by loudly calling 'Owa o!' (meaning 'Someone is alighting here!'). Always carry 'change' (small denomination notes) to avoid conductor disputes.",
+        "category": "Everyday Urban Navigation"
+      },
+      {
+        "title": "Food Hospitality: The Compulsory 'Come and Chop!'",
+        "description": "Whenever you are eating in the presence of colleagues, guests, or neighbors, it is cultural etiquette to warmly invite them: 'Come and chop!' A polite refusal is simply: 'Thank you, I dey alright' or 'Enjoy your food.'",
+        "category": "Dining Rituals & Table Manners"
+      },
+      {
+        "title": "The Magic Softener: 'Abeg'",
+        "description": "'Abeg' literally translates to 'I beg you' (Please). Placing 'Abeg' at the beginning or end of a question instantly diffuses tension, conveys mutual respect, and turns any hard negotiation into a warm transaction.",
+        "category": "Politeness & Social Harmony"
+      },
+      {
+        "title": "The Art of Market Haggling: 'How Much Last?'",
+        "description": "In open-air markets (like Balogun, Ariaria, or Bodija), the quoted initial price is never final. The buyer begins by asking 'How much last, my sister?' Building rapport, laughing together, and calling the seller 'Customer' or 'Oga/Madam' guarantees the best price.",
+        "category": "Commerce & Economic Exchange"
+      },
+      {
+        "title": "Respect for Elders: 'Bros', 'Uncle', and 'Ma'",
+        "description": "Never call an elder or senior acquaintance by their bare first name in NPE. Prefixing with 'Bros' (for older peers), 'Uncle/Aunty' (for generationally older contacts), or 'Sir/Ma' reflects the deep communal respect foundational to Nigerian culture.",
+        "category": "Age Cohorts & Honorifics"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "Dey play!",
+        "meaning": "Keep wasting valuable time or behaving carelessly (a viral, playfully urgent wake-up call).",
+        "example": "Exam dey next week and you still dey sleep? Dey play!",
+        "category": "Colloquial"
+      },
+      {
+        "term": "I dey kampe",
+        "meaning": "I am completely fine, resilient, strong, and unshaken by difficulties.",
+        "example": "No shaking at all, my brother, I dey kampe.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "No wahala",
+        "meaning": "No trouble at all; everything is smooth, agreed, and peaceful.",
+        "example": "You want borrow my car tomorrow? No wahala, take the key.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Chop life",
+        "meaning": "To enjoy life, celebrate milestones, and embrace happiness without guilt.",
+        "example": "Hard work don pay off, this weekend we must chop life small.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Wetin dey?",
+        "meaning": "What is happening? What is the current news or situation?",
+        "example": "My guy, wetin dey happen for this your side?",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Oya",
+        "meaning": "Come on / Let's go / Hurry up (an energetic catalyst for immediate action).",
+        "example": "Oya now, make we pack our bags before rain start to fall!",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "p-u1-fc-01",
+      "front": "Ting",
+      "phonetic": "TING",
+      "back": "Thing (Voiceless dental fricative /θ/ replaced with alveolar plosive /t/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "That ting wey you talk make sense well well."
+    },
+    {
+      "id": "p-u1-fc-02",
+      "front": "Dem",
+      "phonetic": "DEM",
+      "back": "They / Them / Noun plural marker (Voiced dental fricative /ð/ becomes /d/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "Dem don reach house; the student dem dey read."
+    },
+    {
+      "id": "p-u1-fc-03",
+      "front": "Tree",
+      "phonetic": "TREE",
+      "back": "Three (Standard phonetic replacement of /θ/ with /t/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "I buy tree loaf of bread for market."
+    },
+    {
+      "id": "p-u1-fc-04",
+      "front": "Tank",
+      "phonetic": "TANK",
+      "back": "Thank (Voiceless dental fricative /θ/ becomes /t/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "I tank God for life and good health today."
+    },
+    {
+      "id": "p-u1-fc-05",
+      "front": "Tink",
+      "phonetic": "TINK",
+      "back": "Think (Phonetic shift /θ/ -> /t/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "Wetin you tink about the new project?"
+    },
+    {
+      "id": "p-u1-fc-06",
+      "front": "Dat",
+      "phonetic": "DAT",
+      "back": "That (Voiced dental fricative /ð/ becomes /d/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "Dat book sweet to read well well."
+    },
+    {
+      "id": "p-u1-fc-07",
+      "front": "Dis",
+      "phonetic": "DIS",
+      "back": "This (Voiced dental fricative /ð/ becomes /d/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "Dis motor fine pass the other one."
+    },
+    {
+      "id": "p-u1-fc-08",
+      "front": "Dere",
+      "phonetic": "DEHR",
+      "back": "There (Voiced dental fricative /ð/ becomes /d/)",
+      "category": "Unit 1: Phonology & Sound Substitutions",
+      "example": "Put the bag dere for corner."
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "p-unit-1",
+      "unitNumber": 1,
+      "level": "Level 1: Beginner (Foundational Pikin)",
+      "title": "Unit 1: Phonology & Sound Substitutions",
+      "subtitle": "Foundational phonetic shifts: dental fricative substitution (/θ/ and /ð/ to /t/ and /d/), initial /h/ dropping, and pronoun grid.",
+      "icon": "Sun",
+      "color": "#10b981",
+      "lessons": [
+        {
+          "id": "p-u1-l1",
+          "title": "Lesson 1: Dental Fricative Shift & Initial H Dropping",
+          "description": "Master standard consonant sound substitutions (thing -> ting, them -> dem) and the dropping of initial 'h' (house -> ouse).",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "p-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "In Nigerian Pidgin phonology, how is the English voiceless dental fricative 'th' in 'thing' pronounced?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "'Ting' (the dental fricative /θ/ systematically becomes /t/)",
+                "'Sing' (it turns into an /s/)",
+                "'Fing' (it turns into an /f/)",
+                "It remains identical to British English 'thing'"
+              ],
+              "correctAnswer": "'Ting' (the dental fricative /θ/ systematically becomes /t/)",
+              "explanation": "Nigerian Pidgin (West Africa) systematically replaces the voiceless dental fricative /θ/ with the alveolar plosive /t/ (thing -> ting, thank -> tank, three -> tree)."
+            },
+            {
+              "id": "p-u1-l1-q2",
+              "type": "multiple_choice",
+              "prompt": "How does the voiced 'th' in 'them' or 'they' sound in standard Nigerian Pidgin?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "'Dem' (the voiced dental /ð/ becomes /d/)",
+                "'Zem' (it becomes a /z/)",
+                "'Vem' (it becomes a /v/)",
+                "'Them' (no phonetic change)"
+              ],
+              "correctAnswer": "'Dem' (the voiced dental /ð/ becomes /d/)",
+              "explanation": "The voiced dental fricative /ð/ systematically becomes /d/, producing 'dem' (them/they), 'dat' (that), and 'dis' (this)."
+            },
+            {
+              "id": "p-u1-l1-q3",
+              "type": "multiple_choice",
+              "prompt": "What happens to the initial 'h' sound in words like 'house' or 'hospital' in everyday Pidgin speech?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "The initial /h/ is dropped ('ouse', 'ospital')",
+                "The /h/ is intensified into a harsh guttural sound",
+                "An extra 'k' is added before the /h/",
+                "It is always pronounced with British RP precision"
+              ],
+              "correctAnswer": "The initial /h/ is dropped ('ouse', 'ospital')",
+              "explanation": "NPE phonotactics frequently drops initial voiceless glottal fricatives /h/, yielding 'ouse' for house, 'ospital' for hospital, and 'ungry' for hungry."
+            },
+            {
+              "id": "p-u1-l1-q4",
+              "type": "fill_blank",
+              "prompt": "Fill in the blank: 'I want go back to my _____ (house).'",
+              "phrase": "",
+              "sentence": "I want go back to my ___ (house).",
+              "missingWord": "ouse",
+              "options": [
+                "ouse",
+                "houze",
+                "haus",
+                "h-house"
+              ],
+              "correctAnswer": "ouse",
+              "explanation": "With the initial /h/ dropped, 'house' is rendered as 'ouse'."
+            }
+          ]
+        },
+        {
+          "id": "p-u1-l2",
+          "title": "Lesson 2: Vowel Systems & Orthographic Precision",
+          "description": "Understand the 7-vowel system of Nigerian Pidgin, vowel harmony, and standard written spellings (chop, wetin, commot, sabi).",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "p-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "How many vowel phonemes characterize the core Nigerian Pidgin sound system?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "7 vowels (/i, e, ɛ, a, ɔ, o, u/)",
+                "5 vowels only (/a, e, i, o, u/)",
+                "12 pure vowels like British Received Pronunciation",
+                "20 vowels including diphthongs"
+              ],
+              "correctAnswer": "7 vowels (/i, e, ɛ, a, ɔ, o, u/)",
+              "explanation": "Unlike English with 12 monopthongs, NPE uses a 7-vowel African substrate system including open /ɛ/ and open /ɔ/."
+            },
+            {
+              "id": "p-u1-l2-q2",
+              "type": "multiple_choice",
+              "prompt": "What does the high-frequency verb 'chop' mean in Nigerian Pidgin?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "To eat / to consume food",
+                "To cut wood with an axe only",
+                "To sleep peacefully",
+                "To travel abroad"
+              ],
+              "correctAnswer": "To eat / to consume food",
+              "explanation": "'Chop' is the foundational verb meaning to eat, dine, or enjoy consumption."
+            },
+            {
+              "id": "p-u1-l2-q3",
+              "type": "multiple_choice",
+              "prompt": "What is the meaning of the essential question word 'wetin'?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "What",
+                "Where",
+                "When",
+                "Who"
+              ],
+              "correctAnswer": "What",
+              "explanation": "'Wetin' is derived from 'what thing' and is the universal question word for 'what' (e.g. 'Wetin dey happen?')."
+            },
+            {
+              "id": "p-u1-l2-q4",
+              "type": "multiple_choice",
+              "prompt": "What does the Portuguese-derived word 'sabi' mean?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "To know / to understand / to be skilled",
+                "To run very fast",
+                "To cook jollof rice",
+                "To sing praises"
+              ],
+              "correctAnswer": "To know / to understand / to be skilled",
+              "explanation": "'Sabi' comes from Portuguese 'saber' and means to know or possess competence."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

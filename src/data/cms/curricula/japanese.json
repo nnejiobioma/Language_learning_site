@@ -1,0 +1,289 @@
+{
+  "id": "japanese",
+  "title": "Japanese",
+  "nativeName": "日本語 (Nihongo)",
+  "flag": "🇯🇵",
+  "greeting": "こんにちは！お元気ですか？",
+  "motto": "The graceful language of harmony, anime, ancient Shinto shrines, and cutting-edge innovation.",
+  "description": "Master Japanese through the official JF Standard (Japan Foundation) and JLPT (N5 to N2) / MEXT national framework, featuring 6 leveled units, 24 lessons, 240 leveled flashcards, and official CBT examination simulation.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "七転び八起き (Nana korobi ya oki)",
+      "translation": "Fall seven times, stand up eight.",
+      "context": "The revered Japanese philosophical principle of resilience, perseverance, and indomitable spirit. No matter how many times setbacks or adversity occur, one gathers inner fortitude and rises again with greater determination."
+    },
+    "cultureTips": [
+      {
+        "title": "お辞儀とおもてなしの心 (The Art of Bowing & Omotenashi)",
+        "description": "In Japan, bowing (お辞儀 - Ojigi) is far more than a physical greeting; it communicates respect, deference, and goodwill. Angles matter: a 15-degree nod (会釈 Eshaku) serves for casual encounters; a 30-degree bow (敬礼 Keirei) is standard in business; and a deep 45-degree bow (最敬礼 Saikeirei) expresses profound gratitude or apology. This harmonizes with 'Omotenashi' — selfless hospitality where the host anticipates every comfort without expecting anything in return.",
+        "category": "General"
+      },
+      {
+        "title": "本音と建前・空気を読む文化 (Honne, Tatemae & Reading the Air)",
+        "description": "To navigate Japanese social life, one must understand 'Honne' (one's private, authentic feelings) and 'Tatemae' (the public, courteous stance adopted to preserve social harmony and avoid conflict). High-context communication means that what is left unsaid is often as important as what is spoken. Disagreeing directly is considered jarring; instead, polite qualifiers such as 'Sore wa chotto...' (That might be a bit difficult...) gently signal a soft refusal without making anyone lose face.",
+        "category": "General"
+      },
+      {
+        "title": "ビジネス作法：名刺交換と上座・下座 (Business Etiquette & Seating)",
+        "description": "Business cards (名刺 Meishi) are treated with supreme reverence as an extension of the person's identity. Always present and receive cards with both hands, bow slightly, read the name carefully, and place it respectfully atop the card case on the table. In meeting rooms, taxis, and elevators, hierarchy dictates seating: 'Kamiza' (上座) is the seat of honor farthest from the door, reserved for clients and highest executives, while 'Shimoza' (下座) is near the entrance for junior personnel.",
+        "category": "General"
+      },
+      {
+        "title": "温泉と銭湯のマナー (Onsen & Sento Bathing Protocol)",
+        "description": "Japan's volcanic archipelago boasts thousands of natural geothermal hot springs (温泉 Onsen) and neighborhood public bathhouses (銭湯 Sento). Sacred protocol must be respected: wash and rinse your body completely with soap at the individual shower stations before entering the communal pool. Bathwater is solely for soaking, not cleaning. Keep hair tied up, never let towels touch the hot spring water, and step quietly to preserve tranquil meditative relaxation.",
+        "category": "General"
+      },
+      {
+        "title": "和食と食事の作法（箸使い・いただきます） (Washoku Dining Rules)",
+        "description": "UNESCO-inscribed traditional Japanese cuisine (和食 Washoku) centers on seasonal freshness (旬 Shun) and balance (一汁三菜 Ichiju-sansai). Before dining, clap hands together softly and state 'Itadakimasu' (humbly receiving this food). Avoid chopstick taboos: never pass food chopstick-to-chopstick (Hashi-watashi, associated with Buddhist funeral bone rites), never plant chopsticks vertically in rice (Tsukitate-bashi), and always lift the rice or soup bowl with one hand while eating.",
+        "category": "General"
+      },
+      {
+        "title": "季節を愛でる文化：花見・紅葉と旬 (Seasonal Appreciation: Hanami & Momiji)",
+        "description": "Japanese aesthetics are deeply attuned to the ephemeral transition of nature's four seasons. In spring, millions celebrate 'Hanami' (cherry blossom viewing) under fleeting sakura petals, reflecting on Mono no Aware (pathos of transience). In autumn, 'Momijigari' (hunting red maple foliage) draws people to mountain valleys. Seasonal foods ('Hatsumono' or first harvest) are cherished as culinary blessings that bring health and long life.",
+        "category": "General"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "空気を読む (Kūki o yomu)",
+        "meaning": "Literally 'Reading the air' — tacitly understanding social cues, mood, and unstated intentions without needing verbal explanation",
+        "example": "会議の張り詰めた雰囲気を察して、彼は空気を読んで発言を控えた。",
+        "category": "Colloquial"
+      },
+      {
+        "term": "もったいない (Mottainai)",
+        "meaning": "A deep philosophical sense of regret over wastefulness, reflecting reverence for resources and craftsmanship",
+        "example": "まだ美味しく食べられるご飯を捨てるのは本当にもったいない。",
+        "category": "Colloquial"
+      },
+      {
+        "term": "いただきます (Itadakimasu)",
+        "meaning": "Grateful phrase uttered before dining ('I humbly receive the sacrifice of lives and labor that made this meal')",
+        "example": "食卓で手を合わせ、『いただきます！』と言ってから箸をとる。",
+        "category": "Colloquial"
+      },
+      {
+        "term": "お疲れ様です (Otsukaresama desu)",
+        "meaning": "The indispensable greeting acknowledging colleagues' dedicated effort, used when greeting peers or ending the workday",
+        "example": "今日も一日、本当にお疲れ様でした！",
+        "category": "Colloquial"
+      },
+      {
+        "term": "木漏れ日 (Komorebi)",
+        "meaning": "The untranslatable aesthetic term for sunlight filtering gently through the leaves of trees in a forest",
+        "example": "新緑の森を歩きながら、美しい木漏れ日を眺める。",
+        "category": "Colloquial"
+      },
+      {
+        "term": "侘び寂び (Wabi-sabi)",
+        "meaning": "The traditional Zen aesthetic celebrating beauty found in imperfection, impermanence, aged patina, and rustic simplicity",
+        "example": "古い茶碗のひび割れに、深い侘び寂びの風情を感じる。",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "ja-fc-1",
+      "front": "私（わたし）",
+      "phonetic": "wah-tah-shee",
+      "back": "I / Me (Polite pronoun)",
+      "category": "Pronoun",
+      "example": "私は田中です。(I am Tanaka.)"
+    },
+    {
+      "id": "ja-fc-2",
+      "front": "あなた",
+      "phonetic": "ah-nah-tah",
+      "back": "You (Polite pronoun)",
+      "category": "Pronoun",
+      "example": "あなたは学生ですか？(Are you a student?)"
+    },
+    {
+      "id": "ja-fc-3",
+      "front": "先生（せんせい）",
+      "phonetic": "sen-say",
+      "back": "Teacher / Professor / Doctor",
+      "category": "People",
+      "example": "日本語の先生に質問します。(I ask the Japanese teacher a question.)"
+    },
+    {
+      "id": "ja-fc-4",
+      "front": "学生（がくせい）",
+      "phonetic": "gahk-say",
+      "back": "Student",
+      "category": "People",
+      "example": "彼は大学の学生です。(He is a university student.)"
+    },
+    {
+      "id": "ja-fc-5",
+      "front": "会社員（かいしゃいん）",
+      "phonetic": "kye-shah-een",
+      "back": "Company employee / Office worker",
+      "category": "People",
+      "example": "父は会社員です。(My father is an office worker.)"
+    },
+    {
+      "id": "ja-fc-6",
+      "front": "日本（にほん / にっぽん）",
+      "phonetic": "nee-hohn",
+      "back": "Japan",
+      "category": "Geography",
+      "example": "来年日本へ旅行します。(I will travel to Japan next year.)"
+    },
+    {
+      "id": "ja-fc-7",
+      "front": "日本語（にほんご）",
+      "phonetic": "nee-hohn-goh",
+      "back": "Japanese language",
+      "category": "Language",
+      "example": "毎日日本語を勉強します。(I study Japanese every day.)"
+    },
+    {
+      "id": "ja-fc-8",
+      "front": "本（ほん）",
+      "phonetic": "hohn",
+      "back": "Book",
+      "category": "Objects",
+      "example": "図書館で本を借ります。(I borrow books at the library.)"
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "ja-unit-1",
+      "unitNumber": 1,
+      "level": "JF Standard A1 / JLPT N5",
+      "title": "Unit 1: Foundational Literacy & Daily Routines (入門・生活の基本)",
+      "subtitle": "自己紹介、ひらがな・カタカナ、基本助詞（は・が・を・に・で）、時間、移動動詞、買い物と願望表現（〜たい）。",
+      "icon": "Sparkles",
+      "color": "#ec4899",
+      "lessons": [
+        {
+          "id": "ja-u1-l1",
+          "title": "Lesson 1.1: 自己紹介と教室の日本語 (Self-Introductions & Basic Particles)",
+          "description": "丁寧体（です・ます）、主題の助詞「は」、対象の助詞「を」、挨拶（おはようございます・こんにちは）。",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "ja-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "日本語の自己紹介で「私は田中です」という文の助詞「は」の正しい発音と文法的役割は何ですか？",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "発音は「わ」で、文の主題（トピック）を示す",
+                "発音は「は」で、直接目的語を示す",
+                "発音は「ふぁ」で、主語の所有を示す",
+                "発音は「お」で、過去形を示す"
+              ],
+              "correctAnswer": "発音は「わ」で、文の主題（トピック）を示す",
+              "explanation": "助詞「は」は文字としては「ha」と書きますが、助詞として機能するときは発音「wa」となります。文の主題（〜について言えば）を取り立てます。"
+            },
+            {
+              "id": "ja-u1-l1-q2",
+              "type": "fill_blank",
+              "prompt": "初めまして、スミスです。アメリカから ___。よろしくお願いします。",
+              "phrase": "",
+              "sentence": "初めまして、スミスです。アメリカから ___。よろしくお願いします。",
+              "missingWord": "来ました",
+              "options": [
+                "来ました",
+                "行きます",
+                "帰ります",
+                "食べます"
+              ],
+              "correctAnswer": "来ました",
+              "explanation": "出身国を述べるときは動詞「来る」の過去形「来ました (kimashita)」を用います。「〜から来ました」で「〜の出身です」を表します。"
+            },
+            {
+              "id": "ja-u1-l1-q3",
+              "type": "scramble",
+              "prompt": "単語を並べ替えて「毎朝、日本語を勉強します」という自然な日本語の文を作ってください：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "日本語の標準語順は【時間】＋【目的語（名詞＋を）】＋【動詞】です：毎朝 (maiasa) 日本語を (nihongo o) 勉強します (benkyō shimasu)。"
+            },
+            {
+              "id": "ja-u1-l1-q4",
+              "type": "matching",
+              "prompt": "基本的な挨拶と意味を正しく結びつけてください：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        },
+        {
+          "id": "ja-u1-l2",
+          "title": "Lesson 1.2: 時間・日常スケジュールと移動 (Time, Routine & Motion Verbs)",
+          "description": "時刻（時・分）、曜日、助詞「に・で・へ」、移動動詞（行く・来る・帰る）の文型。",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "ja-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "「毎朝七時【 に 】起きます」のように、特定の時刻を表す名詞につく正しい助詞はどれですか？",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "に",
+                "で",
+                "を",
+                "から"
+              ],
+              "correctAnswer": "に",
+              "explanation": "具体的な数字を含む特定の時刻や曜日には助詞「に」を用います（例：7時に、月曜日に）。毎朝や今日などの相対的名詞には「に」はつきません。"
+            },
+            {
+              "id": "ja-u1-l2-q2",
+              "type": "fill_blank",
+              "prompt": "私は明日、新幹線 ___ 京都へ行きます。",
+              "phrase": "",
+              "sentence": "私は明日、新幹線 ___ 京都へ行きます。",
+              "missingWord": "で",
+              "options": [
+                "で",
+                "に",
+                "を",
+                "へ"
+              ],
+              "correctAnswer": "で",
+              "explanation": "交通手段や道具・手段を表す助詞は「で」です（例：電車で、車で、箸で）。"
+            },
+            {
+              "id": "ja-u1-l2-q3",
+              "type": "scramble",
+              "prompt": "単語を並べ替えて「日曜日に図書館で本を読みます」という文を作ってください：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "場所で動作が行われる場合は【場所＋で】を用います：日曜日に (time) 図書館で (location of action) 本を (object) 読みます (verb)。"
+            },
+            {
+              "id": "ja-u1-l2-q4",
+              "type": "matching",
+              "prompt": "助詞とその典型的な文法的機能を正しく結びつけてください：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

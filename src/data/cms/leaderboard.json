@@ -1,0 +1,16 @@
+{
+  "entries": [
+    { "rank": 1, "name": "Sofia Rodriguez", "avatar": "💃", "xp": 1940, "streak": 26, "language": "Spanish", "tier": "Diamond" },
+    { "rank": 2, "name": "Lucas Silva", "avatar": "⚽", "xp": 1780, "streak": 22, "language": "Portuguese", "tier": "Diamond" },
+    { "rank": 3, "name": "Chinedu Okafor", "avatar": "🦅", "xp": 1650, "streak": 19, "language": "Naija Pidgin", "tier": "Diamond" },
+    { "rank": 4, "name": "Astrid Lindgren", "avatar": "🇸🇪", "xp": 1510, "streak": 17, "language": "Swedish", "tier": "Gold" },
+    { "rank": 5, "name": "Kenji Sato", "avatar": "🌸", "xp": 1450, "streak": 16, "language": "Japanese", "tier": "Gold" },
+    { "rank": 6, "name": "Folashade Adeleke", "avatar": "👑", "xp": 1390, "streak": 14, "language": "Yoruba", "tier": "Gold" },
+    { "rank": 7, "name": "Matti Virtanen", "avatar": "❄️", "xp": 1310, "streak": 13, "language": "Finnish", "tier": "Gold" },
+    { "rank": 8, "name": "Ibrahim Danladi", "avatar": "🌍", "xp": 1240, "streak": 12, "language": "Hausa", "tier": "Gold" },
+    { "rank": 9, "name": "Ngozi Achebe", "avatar": "🦁", "xp": 1190, "streak": 11, "language": "Igbo", "tier": "Silver" },
+    { "rank": 10, "name": "Claire Dupont", "avatar": "🥐", "xp": 1120, "streak": 10, "language": "French", "tier": "Silver" },
+    { "rank": 11, "name": "Maximilian Weber", "avatar": "🥨", "xp": 1040, "streak": 9, "language": "German", "tier": "Silver" },
+    { "rank": 12, "name": "Li Wei", "avatar": "🐉", "xp": 950, "streak": 8, "language": "Mandarin Chinese", "tier": "Silver" }
+  ]
+}

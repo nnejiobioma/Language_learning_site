@@ -1,0 +1,289 @@
+{
+  "id": "german",
+  "title": "German",
+  "nativeName": "Deutsch",
+  "flag": "🇩🇪",
+  "greeting": "Guten Tag! Wie geht es Ihnen?",
+  "motto": "The powerhouse language of engineering, philosophy, literature, and European commerce.",
+  "description": "Master German through the official BAMF Rahmencurriculum (Integrationskurs DaZ) and DeuFöV Berufssprachkurse spanning 10 leveled units across A1, A2, B1, B2, and C1/C2 (TestDaF/DSH).",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Übung macht den Meister.",
+      "translation": "Practice makes the master (Practice makes perfect).",
+      "context": "The quintessential German reminder that discipline, deliberate practice, precision, and repetition yield true expertise and professional mastery."
+    },
+    "cultureTips": [
+      {
+        "title": "Die Pünktlichkeit (Punctuality as Golden Rule)",
+        "description": "In Germany, punctuality is not merely a courtesy; it is seen as a direct reflection of personal integrity and respect for others' time. In business, arriving 5 minutes before the agreed hour is considered on time. If you foresee being even 5 minutes late, standard etiquette dictates calling or messaging ahead with an apology.",
+        "category": "Umgangsformen & Etikette"
+      },
+      {
+        "title": "Die Anmeldung (Mandatory Residence Registration)",
+        "description": "Under the Federal Act on Registration (Bundesmeldegesetz), every person residing in Germany must officially register their address at the local Citizens' Office (Bürgeramt / Einwohnermeldeamt) within 14 days of moving in. You must bring your passport and a signed confirmation from your landlord (Wohnungsgeberbestätigung). The resulting Meldebestätigung is essential for opening bank accounts, getting tax IDs, and signing internet contracts.",
+        "category": "Alltag & Bürokratie"
+      },
+      {
+        "title": "Die Kehrwoche & Hausordnung (Building Etiquette)",
+        "description": "Particularly famous in Southern Germany but practiced nationwide through tenancy house rules, the 'Kehrwoche' (sweep week) assigns tenants alternating turns to clean communal stairwells, clear walkways, and maintain trash areas. Respecting the building's Hausordnung ensures warm relations with neighbors.",
+        "category": "Wohnen & Nachbarschaft"
+      },
+      {
+        "title": "Die Mülltrennung (World-Class Recycling Culture)",
+        "description": "Germany is a global pioneer in circular waste management. Households separate waste strictly into: Blue bin (paper and cardboard), Brown bin (organic compostable kitchen scraps), Yellow bin / Gelber Sack (light packaging plastics, composites, metals with the Green Dot), and Grey/Black bin (non-recyclable residual waste). Glass bottles must be sorted by color (white, green, brown) into street containers only during permitted daytime hours.",
+        "category": "Alltag & Bürokratie"
+      },
+      {
+        "title": "Die Ruhezeiten & Sonntagsruhe (Statutory Quiet Hours)",
+        "description": "Federal and state immission laws protect quiet hours. The gesetzliche Nachtruhe spans from 22:00 to 06:00 or 07:00, during which loud music, laundry washing in thin-walled flats, and drilling are forbidden. Additionally, Sunday is legally designated as a day of rest (Ruhetag); standard retail stores remain closed, and lawnmowers or power tools are strictly prohibited.",
+        "category": "Wohnen & Nachbarschaft"
+      },
+      {
+        "title": "Siezen vs. Duzen (Formal 'Sie' vs. Informal 'du')",
+        "description": "German maintains a clear demarcation between the formal 'Sie' (with colleagues, supervisors, officials, doctors, shopkeepers, and adult strangers) and the informal 'du' (family, close friends, students among themselves). The transition from 'Sie' to 'du' is traditionally offered by the elder or higher-ranking person ('das Du anbieten').",
+        "category": "Umgangsformen & Etikette"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "Alles klar!",
+        "meaning": "All clear / Everything is good / Understood!",
+        "example": "Wir treffen uns um 18 Uhr vor dem Rathaus. — Alles klar, bis später!",
+        "category": "Alltagssprache & Umgangston"
+      },
+      {
+        "term": "Feierabend",
+        "meaning": "The cherished end of the workday and beginning of leisure time",
+        "example": "Endlich 17 Uhr! Ich mache jetzt Feierabend und gehe mit Kollegen ein Bier trinken.",
+        "category": "Berufswelt & Feierabend"
+      },
+      {
+        "term": "Doch!",
+        "meaning": "The indispensable single-word contradiction to a negative statement or question ('Oh yes it is!')",
+        "example": "Du hast doch keine Zeit? — Doch, natürlich habe ich Zeit!",
+        "category": "Alltagssprache & Umgangston"
+      },
+      {
+        "term": "Na?",
+        "meaning": "The world's most compact German greeting, serving as 'Well? / How are things? / What's up?'",
+        "example": "Na, wie läuft das neue Projekt bei euch?",
+        "category": "Alltagssprache & Umgangston"
+      },
+      {
+        "term": "Kummerspeck",
+        "meaning": "Weight gained from emotional or stress-induced overeating (literally: grief bacon)",
+        "example": "Nach der Prüfungsphase im Winter hatte ich ein paar Kilo Kummerspeck auf den Rippen.",
+        "category": "Psychologische Unikate"
+      },
+      {
+        "term": "innerer Schweinehund",
+        "meaning": "The inner couch potato / voice of laziness and inertia that one must conquer",
+        "example": "Um sechs Uhr morgens joggen zu gehen, erfordert die Überwindung des inneren Schweinehundes.",
+        "category": "Psychologische Unikate"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "de-fc-u1-01",
+      "front": "Guten Tag",
+      "phonetic": "GOO-ten TAHK",
+      "back": "Good day / Hello (formal)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Guten Tag, Herr Müller, wie geht es Ihnen?"
+    },
+    {
+      "id": "de-fc-u1-02",
+      "front": "Guten Morgen",
+      "phonetic": "GOO-ten MOR-gen",
+      "back": "Good morning",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Guten Morgen! Haben Sie gut geschlafen?"
+    },
+    {
+      "id": "de-fc-u1-03",
+      "front": "Guten Abend",
+      "phonetic": "GOO-ten AH-bent",
+      "back": "Good evening",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Guten Abend, meine Damen und Herren."
+    },
+    {
+      "id": "de-fc-u1-04",
+      "front": "Gute Nacht",
+      "phonetic": "GOO-tuh NAKHT",
+      "back": "Good night (before sleeping)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Schlaf gut und gute Nacht!"
+    },
+    {
+      "id": "de-fc-u1-05",
+      "front": "Auf Wiedersehen",
+      "phonetic": "owf VEE-der-zay-en",
+      "back": "Goodbye (formal)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Auf Wiedersehen und einen schönen Tag noch!"
+    },
+    {
+      "id": "de-fc-u1-06",
+      "front": "Tschüss",
+      "phonetic": "chooss",
+      "back": "Bye / See you (informal)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Bis morgen, tschüss!"
+    },
+    {
+      "id": "de-fc-u1-07",
+      "front": "Hallo",
+      "phonetic": "HAH-lo",
+      "back": "Hello (informal)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Hallo Peter, schön dich zu sehen!"
+    },
+    {
+      "id": "de-fc-u1-08",
+      "front": "Wie heißen Sie?",
+      "phonetic": "vee HY-sen zee",
+      "back": "What is your name? (formal)",
+      "category": "Unit 1 (A1.1): Erste Kontakte & Orientierung",
+      "example": "Wie heißen Sie bitte?"
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "de-unit-1",
+      "unitNumber": 1,
+      "level": "Phase 1: A1.1 (Elementare Sprachverwendung)",
+      "title": "Unit 1: Erste Kontakte & Orientierung (A1.1)",
+      "subtitle": "Wohnen / Kontakte und Alltag — Present tense verbs, V2 word order, W-Fragen, nominative personal pronouns.",
+      "icon": "Sparkles",
+      "color": "#10b981",
+      "lessons": [
+        {
+          "id": "de-u1-l1",
+          "title": "Lesson 1.1: Guten Tag!",
+          "description": "Begrüßungen, formelles 'Sie' vs. informelles 'du', das deutsche Alphabet, Buchstabieren und Zahlen 0–20.",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "de-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "Wie begrüßt man jemanden am Morgen formell auf Deutsch?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Guten Morgen!",
+                "Gute Nacht!",
+                "Tschüss!",
+                "Mahlzeit!"
+              ],
+              "correctAnswer": "Guten Morgen!",
+              "explanation": "'Guten Morgen' ist die korrekte und höfliche Begrüßung am Vormittag (bis ca. 11:00 Uhr)."
+            },
+            {
+              "id": "de-u1-l1-q2",
+              "type": "matching",
+              "prompt": "Ordnen Sie die deutschen Pronomen und Verbformen von 'sein' zu:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "de-u1-l1-q3",
+              "type": "fill_blank",
+              "prompt": "Guten Tag, wie ___ Sie? — Ich heiße Müller.",
+              "phrase": "",
+              "sentence": "Guten Tag, wie ___ Sie? — Ich heiße Müller.",
+              "missingWord": "heißen",
+              "options": [
+                "heißen",
+                "heißt",
+                "heiße",
+                "heiß"
+              ],
+              "correctAnswer": "heißen",
+              "explanation": "Für die formelle Höflichkeitsform 'Sie' lautet die Konjugation: 'Wie heißen Sie?'."
+            },
+            {
+              "id": "de-u1-l1-q4",
+              "type": "scramble",
+              "prompt": "Bringen Sie die Wörter in die richtige Reihenfolge (Verb an Position 2):",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "Im deutschen Hauptsatz steht das konjugierte Verb immer an Position 2: 'Ich heiße Lukas'."
+            }
+          ]
+        },
+        {
+          "id": "de-u1-l2",
+          "title": "Lesson 1.2: Woher kommen Sie?",
+          "description": "Herkunftsländer, Nationalitäten, Herkunftspräpositionen 'aus' und 'in', Konjugation von 'kommen' und 'wohnen'.",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "de-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "Welche Präposition drückt die Herkunft (Heimatland oder Geburtsstadt) aus?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "aus",
+                "nach",
+                "in",
+                "bei"
+              ],
+              "correctAnswer": "aus",
+              "explanation": "Für die Herkunft verwendet man 'aus + Dativ': 'Ich komme aus Spanien / aus Berlin'."
+            },
+            {
+              "id": "de-u1-l2-q2",
+              "type": "fill_blank",
+              "prompt": "Woher kommen Sie? — Ich ___ aus Italien.",
+              "phrase": "",
+              "sentence": "Woher kommen Sie? — Ich ___ aus Italien.",
+              "missingWord": "komme",
+              "options": [
+                "komme",
+                "kommst",
+                "kommt",
+                "kommen"
+              ],
+              "correctAnswer": "komme",
+              "explanation": "Die 1. Person Singular von 'kommen' lautet: 'ich komme'."
+            },
+            {
+              "id": "de-u1-l2-q3",
+              "type": "matching",
+              "prompt": "Ordnen Sie das Land der passenden Sprache zu:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "de-u1-l2-q4",
+              "type": "scramble",
+              "prompt": "Bauen Sie eine korrekte W-Frage (Fragewort an Position 1, Verb an Position 2):",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "In einer W-Frage steht das Fragewort (Wo) auf Position 1, das konjugierte Verb (wohnen) auf Position 2."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

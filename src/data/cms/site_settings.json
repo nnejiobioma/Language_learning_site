@@ -1,0 +1,100 @@
+{
+  "brandName": "FliksLingo",
+  "tagline": "Master World Languages",
+  "announcement": {
+    "enabled": false,
+    "text": "New NERDC-aligned Hausa, Igbo, Yoruba & Pidgin curricula now live!",
+    "linkText": "Start Learning",
+    "linkUrl": "/learn"
+  },
+  "hero": {
+    "pill": "🌍 12 languages · free to start",
+    "title": "Learn a new language,",
+    "highlight": "the fun way.",
+    "lead": "FliksLingo turns language learning into a daily habit with short gamified lessons, spoken audio and real cultural context.",
+    "primaryCtaText": "Create your free account",
+    "primaryCtaUrl": "/signup",
+    "secondaryCtaText": "I already have an account",
+    "secondaryCtaUrl": "/login",
+    "heroImage": "/images/mascot.jpg",
+    "floatingBadgeA": "🔥 7 day streak",
+    "floatingBadgeB": "⭐ +20 XP",
+    "floatingBadgeC": "¡Hola! · Bonjour · Sannu",
+    "stats": [
+      { "value": "12", "label": "languages" },
+      { "value": "5", "label": "quiz types" },
+      { "value": "Free", "label": "to sign up" }
+    ]
+  },
+  "languagesSection": {
+    "heading": "Choose your language",
+    "subheading": "From global favourites to African languages you will not find everywhere."
+  },
+  "featuresSection": {
+    "heading": "Everything you need to stay motivated",
+    "subheading": "Built to make practice feel like play.",
+    "features": [
+      {
+        "icon": "🎮",
+        "title": "Gamified lessons",
+        "text": "Earn XP, keep streaks alive and protect your hearts as you move through bite-sized units."
+      },
+      {
+        "icon": "🔊",
+        "title": "Hear it spoken",
+        "text": "Native-style pronunciation for every phrase, so you learn to speak, not just read."
+      },
+      {
+        "icon": "🎴",
+        "title": "Smart flashcards",
+        "text": "Flip through 3D cards with phonetics and example sentences, and track what you have mastered."
+      },
+      {
+        "icon": "🏛️",
+        "title": "Culture vault",
+        "text": "Daily proverbs, etiquette tips and street slang that bring each language to life."
+      },
+      {
+        "icon": "🧩",
+        "title": "Five quiz styles",
+        "text": "Multiple choice, sentence builder, matching, listening and fill-in-the-blank."
+      },
+      {
+        "icon": "🏆",
+        "title": "Friendly competition",
+        "text": "Climb the weekly leaderboard and see how you rank against other learners."
+      }
+    ]
+  },
+  "howItWorksSection": {
+    "heading": "How it works",
+    "steps": [
+      {
+        "n": "1",
+        "title": "Pick a language",
+        "text": "Choose from 12 languages across Europe, Asia and Africa."
+      },
+      {
+        "n": "2",
+        "title": "Learn in minutes",
+        "text": "Short lessons with audio, quizzes and instant feedback."
+      },
+      {
+        "n": "3",
+        "title": "Build the habit",
+        "text": "Keep your daily streak, review flashcards and level up."
+      }
+    ]
+  },
+  "ctaBanner": {
+    "heading": "Ready to say hello in a new language?",
+    "subheading": "Create your free account in seconds and start your first lesson today.",
+    "buttonText": "Get started for free",
+    "buttonUrl": "/signup"
+  },
+  "footer": {
+    "copyrightText": "FliksLingo. Learn with joy.",
+    "supportEmail": "nnejieb@gmail.com"
+  }
+}
+

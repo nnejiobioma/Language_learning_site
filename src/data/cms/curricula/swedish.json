@@ -1,0 +1,289 @@
+{
+  "id": "swedish",
+  "title": "Swedish",
+  "nativeName": "Svenska",
+  "flag": "🇸🇪",
+  "greeting": "Hej! Hur mår du?",
+  "motto": "The harmonious Nordic tongue of balance (Lagom), archipelago islands, and innovation.",
+  "description": "Master Swedish through official Skolverket and UHR curricula: Track A (SFI Kurs B–D, SVA & Tisus Standard) and Track B (Grundskolan Lgr22 & Gymnasiet SVA 3) across 6 units (24 lessons), 240 flashcards, culture vault, and CBT exam simulations.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Finns det hjärterum så finns det stjärterum.",
+      "translation": "Where there is room in the heart, there is room for a seat.",
+      "context": "A quintessential Swedish proverb reflecting warm hospitality and solidarity. Even in small homes or crowded rooms, there is always space to welcome one more friend or traveler if the heart is generous."
+    },
+    "cultureTips": [
+      {
+        "title": "Fika-kulturen: Mer än bara kaffe",
+        "description": "Fika är Sveriges mest omhuldade sociala sedvänja. På svenska arbetsplatser är morgon- och eftermiddagsfikan (vanligtvis klockan 09:00 och 14:30) institutionaliserad. Hierarkier suddas ut vid fikabordet: chefer och nyanställda dricker bryggkaffe ur likadana muggar, äter kanelbullar och diskuterar såväl helgplaner som projekt. Att tacka nej till fika uppfattas ofta som distanserat.",
+        "category": "General"
+      },
+      {
+        "title": "Allemansrätten: Friheten att vistas i naturen",
+        "description": "Allemansrätten är grundlagsskyddad i Sverige och ger alla människor rätt att röra sig fritt till fots, på cykel eller på skidor i skog och mark, oavsett vem som äger marken. Man får plocka vilda bär, svamp och blommor samt tälta ett dygn i naturen, under den gyllene huvudregeln: 'Inte störa – inte förstöra'.",
+        "category": "General"
+      },
+      {
+        "title": "Lagom och Jantelagen: Balans och ödmjukhet",
+        "description": "Begreppet 'lagom' genomsyrar det svenska samhällsbygget — varken skrytsamt överdrivet eller torftigt snålt, utan funktionellt och harmoniskt. Detta samverkar med den sociokulturella koden Jantelagen ('Du skall icke tro att du är förmer än vi'), som historiskt har uppmuntrat kollektiv sammanhållning, blygsamhet och jämlikhet.",
+        "category": "General"
+      },
+      {
+        "title": "Personnumret, BankID och det kontantlösa samhället",
+        "description": "Sverige är ett av världens mest digitaliserade länder. Det tiosiffriga personnumret från Skatteverket i kombination med mobilt BankID är nyckeln till allt: bankärenden, läkarbesök på vårdcentralen, bostadsköer och deklaration. Kontanter används ytterst sällan; betalningar sker i stället via betalkort eller direktöverföringsappen Swish.",
+        "category": "General"
+      },
+      {
+        "title": "Midsommarafton: Årets ljusaste högtid",
+        "description": "Midsommar firas fredagen mellan 19 och 25 juni och är svenskarnas mest firade tradition tillsammans med julen. Man reser en blomsterprydd majstång, binder blomsterkransar till håret, dansar 'Små grodorna', och avnjuter inlagd sill, nypotatis med gräddfil och gräslök samt färska svenska jordgubbar i den ljusa sommarnatten.",
+        "category": "General"
+      },
+      {
+        "title": "Systembolaget & Fredagsmyset",
+        "description": "Försäljning av alkohol över 3,5 volymprocent är i Sverige ett statligt monopol hos Systembolaget med reglerade öppettider och åldersgräns (20 år). På fredagar fylls butikerna inför helgen, där många svenskar samlas kring 'fredagsmys' — en modern sekulär tradition där familjen kopplar av tillsammans i soffan.",
+        "category": "General"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "Fika",
+        "meaning": "The sacred social institution of enjoying coffee, tea, and baked goods (like a cinnamon bun) while conversing with friends or colleagues",
+        "example": "Ska vi ta en fika på stan och prata om helgens planer?",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Lagom",
+        "meaning": "Not too little, not too much; just the exact golden mean of perfection and balance",
+        "example": "Kaffet är precis lagom varmt att dricka nu.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Orka",
+        "meaning": "To have the energy, stamina, or mental willpower to do something (often used ironically as 'Orka!' meaning 'Can't be bothered!')",
+        "example": "Jag orkar verkligen inte laga mat i kväll, vi köper hämtmat istället.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Fredagsmys",
+        "meaning": "The cherished Friday evening ritual of curling up on the sofa with tacos, crisps, and family to welcome the weekend",
+        "example": "På fredagar har vi alltid fredagsmys med hemgjorda tacos och en spännande film.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Götta sig",
+        "meaning": "To truly indulge oneself, relax in absolute comfort, or savor delicious food",
+        "example": "I helgen ska vi bara vara i stugan, bada bastu och götta oss.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Skit- (som förstärkningsord)",
+        "meaning": "Used ubiquitously as an intensifier prefix meaning 'extremely' or 'super' (e.g., skitbra = super good, skitsnygg = gorgeous)",
+        "example": "Filmen vi såg på bio var verkligen skitbra!",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "sv-fc-u1-01",
+      "front": "Personnummer",
+      "phonetic": "PAIR-soon-num-mair",
+      "back": "Personal Identity Number (Swedish National ID)",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Du behöver ett svenskt personnummer för att öppna ett bankkonto och folkbokföra dig."
+    },
+    {
+      "id": "sv-fc-u1-02",
+      "front": "Skatteverket",
+      "phonetic": "SKAHT-teh-vair-ket",
+      "back": "Swedish Tax Agency",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Skatteverket hanterar folkbokföring, personnummer och ID-kort."
+    },
+    {
+      "id": "sv-fc-u1-03",
+      "front": "Folkbokföring",
+      "phonetic": "FOLK-book-feh-ring",
+      "back": "Civil Registration / Population Register",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "När du flyttar till Sverige måste du anmäla folkbokföring hos Skatteverket."
+    },
+    {
+      "id": "sv-fc-u1-04",
+      "front": "ID-kort",
+      "phonetic": "EE-deh-koort",
+      "back": "Identity Card",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Visa upp ditt ID-kort när du hämtar ut paket på posten."
+    },
+    {
+      "id": "sv-fc-u1-05",
+      "front": "Förnamn",
+      "phonetic": "FEUR-nahmn",
+      "back": "First Name / Given Name",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Mitt förnamn är Johan och mitt efternamn är Andersson."
+    },
+    {
+      "id": "sv-fc-u1-06",
+      "front": "Efternamn",
+      "phonetic": "EF-tehr-nahmn",
+      "back": "Surname / Last Name",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Vad stavar du ditt efternamn med för bokstäver?"
+    },
+    {
+      "id": "sv-fc-u1-07",
+      "front": "Bostad",
+      "phonetic": "BOO-stahd",
+      "back": "Housing / Residence",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Jag letar efter en trivsam bostad nära tunnelbanan."
+    },
+    {
+      "id": "sv-fc-u1-08",
+      "front": "Lägenhet",
+      "phonetic": "LEH-gen-heht",
+      "back": "Apartment / Flat",
+      "category": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "example": "Vi bor i en tvårumslägenhet på tredje våningen med balkong."
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "sv-unit-1",
+      "unitNumber": 1,
+      "level": "Track A: SFI Kurs B (SeQF 1 / CEFR A1)",
+      "title": "Unit 1: Foundational Daily Interactions & SFI Course B Exam Prep",
+      "subtitle": "Personnummer, personuppgifter, bostad, tidsuttryck, V2-regeln, en/ett-ord och kollektivtrafik (SL/Västtrafik).",
+      "icon": "Sparkles",
+      "color": "#0284c7",
+      "lessons": [
+        {
+          "id": "sv-u1-l1",
+          "title": "Lesson 1.1: Personal Identification & Demographics",
+          "description": "Hälsningsfraser, personnummer, folkbokföring hos Skatteverket och vokalernas längd (långa vs. korta vokaler).",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "sv-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "Vad är det svenska personnumret och varför är det centralt i samhället?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Ett tiosiffrigt identifikationsnummer från Skatteverket som krävs för vård, bank och bostad",
+                "Ett tillfälligt busskort i Stockholm",
+                "En fyrsiffrig kod till porttelefonen",
+                "Numret på bibliotekslånekortet"
+              ],
+              "correctAnswer": "Ett tiosiffrigt identifikationsnummer från Skatteverket som krävs för vård, bank och bostad",
+              "explanation": "Personnumret (ÅÅMMDD-XXXX) utfärdas av Skatteverket vid folkbokföring och är navet för alla myndighets- och vardagskontakter i Sverige."
+            },
+            {
+              "id": "sv-u1-l1-q2",
+              "type": "fill_blank",
+              "prompt": "Hej! Jag ___ från Syrien och jag ___ i Göteborg.",
+              "phrase": "",
+              "sentence": "Hej! Jag ___ från Syrien och jag ___ i Göteborg.",
+              "missingWord": "kommer",
+              "options": [
+                "kommer",
+                "kom",
+                "komma",
+                "kommit"
+              ],
+              "correctAnswer": "kommer",
+              "explanation": "Presensformen av verbet 'komma' är 'kommer': 'Jag kommer från...'."
+            },
+            {
+              "id": "sv-u1-l1-q3",
+              "type": "scramble",
+              "prompt": "Ordna orden till en korrekt presentation på svenska (subjekt + verb + predikativ):",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "I en vanlig svensk påståendesats står verbet på andra plats: 'Jag heter Amina'."
+            },
+            {
+              "id": "sv-u1-l1-q4",
+              "type": "matching",
+              "prompt": "Para ihop de svenska personliga pronomina i subjektsform med motsvarande i objektsform:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        },
+        {
+          "id": "sv-u1-l2",
+          "title": "Lesson 1.2: Housing, Domestic Life & Time Expressions",
+          "description": "Bostadens planlösning, hyreskontrakt, klockan och tidsuttryck. V2-regeln i huvudsats.",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "sv-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "Vad innebär den fundamentala V2-regeln (verb på andra plats) i en svensk påståendesats?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Det finita verbet ska alltid stå på andra plats, även om satsen inleds med ett tids- eller platsuttryck (inversion)",
+                "Varje mening måste innehålla minst två verb",
+                "Verbet placeras alltid allra sist i satsen",
+                "Verbet används bara på tisdagar"
+              ],
+              "correctAnswer": "Det finita verbet ska alltid stå på andra plats, även om satsen inleds med ett tids- eller platsuttryck (inversion)",
+              "explanation": "V2-regeln är svenskans striktaste syntaktiska regel: 'Idag *vaknar* jag tidigt' (inte: 'Idag jag vaknar')."
+            },
+            {
+              "id": "sv-u1-l2-q2",
+              "type": "fill_blank",
+              "prompt": "Klockan är kvart ___ sju (06:45).",
+              "phrase": "",
+              "sentence": "Klockan är kvart ___ sju (06:45).",
+              "missingWord": "i",
+              "options": [
+                "i",
+                "över",
+                "halv",
+                "på"
+              ],
+              "correctAnswer": "i",
+              "explanation": "I svenskan uttrycks minuter före hel timme med 'i': 'kvart i sju' betyder 06:45."
+            },
+            {
+              "id": "sv-u1-l2-q3",
+              "type": "scramble",
+              "prompt": "Bygg meningen med tidsadverbial först och tillämpa V2-inversion:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "Efter tidsuttrycket 'På morgonen' kommer verbet 'dricker' på position 2, följt av subjektet 'jag'."
+            },
+            {
+              "id": "sv-u1-l2-q4",
+              "type": "matching",
+              "prompt": "Para ihop rummen i en svensk lägenhet med typiska inventarier:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

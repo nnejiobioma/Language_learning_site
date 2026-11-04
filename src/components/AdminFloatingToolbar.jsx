@@ -61,10 +61,10 @@ export default function AdminFloatingToolbar() {
               type="button"
               className="admin-dashboard-link"
               onClick={() => router.push('/admin')}
-              title="Open Full Content Management System"
+              title="Open Admin & Decap CMS Portal"
             >
               <Sliders size={14} />
-              <span>Full CMS</span>
+              <span>Admin &amp; Decap CMS</span>
             </button>
           </div>
         </div>

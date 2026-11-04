@@ -1,0 +1,332 @@
+# ==============================================================================
+# FliksLingo — Decap CMS Configuration
+# ==============================================================================
+# Supports:
+# 1. Local development out-of-the-box via built-in Next.js `/api/decap` backend
+#    (or `npm run cms:proxy` with `npx decap-server`).
+# 2. Production Git-based workflow via Netlify Git Gateway or GitHub OAuth.
+# ==============================================================================
+
+backend:
+  name: git-gateway
+  branch: main
+  repo: nnejiobioma/Language_learning_site
+  # To use GitHub OAuth directly instead of Netlify Identity / Git Gateway,
+  # uncomment the lines below and set GITHUB_CLIENT_ID & GITHUB_CLIENT_SECRET:
+  # name: github
+  # base_url: https://your-production-domain.com
+  # auth_endpoint: api/auth
+
+# Local development backend — connects directly to Next.js `/api/decap` route
+local_backend:
+  url: /api/decap
+  allowed_hosts:
+    - localhost
+    - 127.0.0.1
+
+site_url: /
+display_url: https://flikslingo.com
+logo_url: /images/mascot.jpg
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  # ============================================================================
+  # 1. SITE & MARKETING PAGES CONFIGURATION
+  # ============================================================================
+  - name: "site_config"
+    label: "Site & Pages Configuration"
+    description: "Manage global site branding, landing page sections, announcements, About Us page, and leaderboard showcase."
+    files:
+      - name: "site_settings"
+        label: "Landing Page & Global Settings"
+        file: "src/data/cms/site_settings.json"
+        format: "json"
+        fields:
+          - { label: "Brand Name", name: "brandName", widget: "string", default: "FliksLingo" }
+          - { label: "Brand Tagline", name: "tagline", widget: "string", default: "Master World Languages" }
+          - label: "Top Announcement Banner"
+            name: "announcement"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Enable Banner", name: "enabled", widget: "boolean", default: false }
+              - { label: "Announcement Text", name: "text", widget: "string", required: false }
+              - { label: "Link Label", name: "linkText", widget: "string", required: false }
+              - { label: "Link URL", name: "linkUrl", widget: "string", required: false }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Top Pill Badge", name: "pill", widget: "string" }
+              - { label: "Main Headline", name: "title", widget: "string" }
+              - { label: "Highlighted Headline Phrase", name: "highlight", widget: "string" }
+              - { label: "Lead Description", name: "lead", widget: "text" }
+              - { label: "Primary CTA Text", name: "primaryCtaText", widget: "string" }
+              - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string" }
+              - { label: "Secondary CTA Text", name: "secondaryCtaText", widget: "string" }
+              - { label: "Secondary CTA URL", name: "secondaryCtaUrl", widget: "string" }
+              - { label: "Hero Mascot / Illustration", name: "heroImage", widget: "image", default: "/images/mascot.jpg" }
+              - { label: "Floating Badge A", name: "floatingBadgeA", widget: "string", required: false }
+              - { label: "Floating Badge B", name: "floatingBadgeB", widget: "string", required: false }
+              - { label: "Floating Badge C", name: "floatingBadgeC", widget: "string", required: false }
+              - label: "Hero Statistics"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Stat Value", name: "value", widget: "string" }
+                  - { label: "Stat Label", name: "label", widget: "string" }
+          - label: "Languages Showcase Section"
+            name: "languagesSection"
+            widget: "object"
+            fields:
+              - { label: "Section Heading", name: "heading", widget: "string" }
+              - { label: "Section Subheading", name: "subheading", widget: "text" }
+          - label: "Features Section"
+            name: "featuresSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "string" }
+              - label: "Feature Cards"
+                name: "features"
+                widget: "list"
+                fields:
+                  - { label: "Emoji / Icon", name: "icon", widget: "string" }
+                  - { label: "Feature Title", name: "title", widget: "string" }
+                  - { label: "Feature Description", name: "text", widget: "text" }
+          - label: "How It Works Section"
+            name: "howItWorksSection"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Step Number", name: "n", widget: "string" }
+                  - { label: "Step Title", name: "title", widget: "string" }
+                  - { label: "Step Description", name: "text", widget: "text" }
+          - label: "Bottom Call-To-Action Banner"
+            name: "ctaBanner"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text" }
+              - { label: "Button Text", name: "buttonText", widget: "string" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+          - label: "Footer & Support Settings"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Copyright Text", name: "copyrightText", widget: "string" }
+              - { label: "Support Email", name: "supportEmail", widget: "string" }
+
+      - name: "about_page"
+        label: "About Us Page Content"
+        file: "src/data/cms/about.json"
+        format: "json"
+        fields:
+          - { label: "Hero Badge", name: "heroBadge", widget: "string" }
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Highlight", name: "heroHighlight", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+          - label: "Key Platform Metrics"
+            name: "metrics"
+            widget: "list"
+            fields:
+              - { label: "Metric Value", name: "value", widget: "string" }
+              - { label: "Metric Label", name: "label", widget: "string" }
+          - label: "Core Mission Pillars"
+            name: "pillars"
+            widget: "list"
+            fields:
+              - { label: "Icon Name", name: "icon", widget: "select", options: ["Sparkles", "Globe2", "Compass", "GraduationCap", "Heart", "Award", "BookOpen"], default: "Sparkles" }
+              - { label: "Color Accent Class", name: "colorClass", widget: "select", options: ["", "blue", "gold", "purple"], required: false, default: "" }
+              - { label: "Pillar Title", name: "title", widget: "string" }
+              - { label: "Pillar Description", name: "desc", widget: "text" }
+
+      - name: "leaderboard_data"
+        label: "Weekly Leaderboard Showcase"
+        file: "src/data/cms/leaderboard.json"
+        format: "json"
+        fields:
+          - label: "Leaderboard Entries"
+            name: "entries"
+            widget: "list"
+            fields:
+              - { label: "Rank", name: "rank", widget: "number", value_type: "int" }
+              - { label: "Learner Name", name: "name", widget: "string" }
+              - { label: "Avatar Emoji", name: "avatar", widget: "string" }
+              - { label: "Total XP", name: "xp", widget: "number", value_type: "int" }
+              - { label: "Day Streak", name: "streak", widget: "number", value_type: "int" }
+              - { label: "Primary Language", name: "language", widget: "string" }
+              - { label: "League Tier", name: "tier", widget: "select", options: ["Diamond", "Gold", "Silver", "Bronze"] }
+
+  # ============================================================================
+  # 2. LANGUAGES METADATA & THEME CATALOG
+  # ============================================================================
+  - name: "languages_catalog"
+    label: "Languages Catalog & Metadata"
+    description: "Manage display names, greetings, flags, badges, theme colors, and syllabus summaries for all 12 languages."
+    files:
+      - name: "all_languages"
+        label: "All 12 World Languages Metadata"
+        file: "src/data/cms/languages_meta.json"
+        format: "json"
+        fields:
+          - label: "Languages"
+            name: "languages"
+            widget: "list"
+            summary: "{{fields.flag}} {{fields.name}} ({{fields.nativeName}})"
+            fields:
+              - { label: "Language ID (slug)", name: "id", widget: "string" }
+              - { label: "English Name", name: "name", widget: "string" }
+              - { label: "Native Name", name: "nativeName", widget: "string" }
+              - { label: "Cultural Motto", name: "motto", widget: "string" }
+              - { label: "Flag / Icon Emoji", name: "flag", widget: "string" }
+              - { label: "Badge Image", name: "badge", widget: "image" }
+              - { label: "Primary Accent Color (Hex)", name: "accentColor", widget: "color" }
+              - { label: "Secondary Color (Hex)", name: "secondaryColor", widget: "color" }
+              - { label: "Signature Greeting", name: "greeting", widget: "string" }
+              - { label: "Curriculum Description", name: "description", widget: "text" }
+
+  # ============================================================================
+  # 3. LANGUAGE CURRICULA, FLASHCARDS & CULTURE VAULT (12 LANGUAGES)
+  # ============================================================================
+  - name: "curricula"
+    label: "Language Curricula & Culture Vaults"
+    label_singular: "Language Curriculum"
+    description: "Edit Culture Vault proverbs, etiquette tips, slangs, flashcards, and curriculum units/lessons/questions for each language."
+    folder: "src/data/cms/curricula"
+    extension: "json"
+    format: "json"
+    create: true
+    slug: "{{id}}"
+    identifier_field: "title"
+    summary: "{{flag}} {{title}} ({{nativeName}}) — {{greeting}}"
+    fields:
+      - { label: "Language ID (e.g. spanish, hausa, pidgin)", name: "id", widget: "string" }
+      - { label: "Language Name", name: "title", widget: "string" }
+      - { label: "Native Name", name: "nativeName", widget: "string" }
+      - { label: "Flag Emoji", name: "flag", widget: "string" }
+      - { label: "Signature Greeting", name: "greeting", widget: "string" }
+      - { label: "Motto", name: "motto", widget: "string" }
+      - { label: "Curriculum Overview", name: "description", widget: "text" }
+
+      - label: "Cultural Vault (Proverbs, Etiquette & Slang)"
+        name: "cultureVault"
+        widget: "object"
+        collapsed: false
+        fields:
+          - label: "Proverb of the Day"
+            name: "proverbOfDay"
+            widget: "object"
+            fields:
+              - { label: "Native Proverb", name: "proverb", widget: "string", required: false }
+              - { label: "English Translation", name: "translation", widget: "text", required: false }
+              - { label: "Cultural Context & Wisdom", name: "context", widget: "text", required: false }
+          - label: "Cultural Etiquette & Heritage Tips"
+            name: "cultureTips"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.category}})"
+            fields:
+              - { label: "Tip Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Category", name: "category", widget: "string", default: "Etiquette", required: false }
+          - label: "Expressions & Street Slang"
+            name: "slangs"
+            widget: "list"
+            summary: "{{fields.term}} — {{fields.meaning}}"
+            fields:
+              - { label: "Native Term / Expression", name: "term", widget: "string" }
+              - { label: "English Meaning", name: "meaning", widget: "string" }
+              - { label: "Example Sentence", name: "example", widget: "string", required: false }
+              - { label: "Category", name: "category", widget: "string", default: "Colloquial", required: false }
+
+      - label: "Flashcards Deck (CMS Managed & Custom Cards)"
+        name: "customFlashcards"
+        widget: "list"
+        summary: "{{fields.front}} → {{fields.back}} ({{fields.category}})"
+        fields:
+          - { label: "Card ID", name: "id", widget: "string" }
+          - { label: "Front (Native Word / Phrase)", name: "front", widget: "string" }
+          - { label: "Phonetic Pronunciation", name: "phonetic", widget: "string", required: false }
+          - { label: "Back (English Meaning)", name: "back", widget: "string" }
+          - { label: "Category", name: "category", widget: "string", default: "Greetings", required: false }
+          - { label: "Example Usage Sentence", name: "example", widget: "string", required: false }
+
+      - label: "Curriculum Units, Lessons & Quiz Questions"
+        name: "customUnits"
+        widget: "list"
+        summary: "{{fields.title}} ({{fields.level}})"
+        fields:
+          - { label: "Unit ID", name: "id", widget: "string" }
+          - { label: "Unit Number", name: "unitNumber", widget: "number", value_type: "int", default: 1 }
+          - { label: "CEFR / NERDC Level", name: "level", widget: "string", default: "Level 1: Beginner" }
+          - { label: "Unit Title", name: "title", widget: "string" }
+          - { label: "Unit Subtitle", name: "subtitle", widget: "text" }
+          - { label: "Unit Icon", name: "icon", widget: "select", options: ["BookOpen", "Sparkles", "Utensils", "ShoppingBag", "Sun", "Award", "Flame", "Shield", "Compass", "Smile", "GraduationCap"], default: "BookOpen" }
+          - { label: "Unit Theme Color", name: "color", widget: "color", default: "#10b981" }
+          - label: "Lessons"
+            name: "lessons"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.xp}} XP)"
+            fields:
+              - { label: "Lesson ID", name: "id", widget: "string" }
+              - { label: "Lesson Title", name: "title", widget: "string" }
+              - { label: "Lesson Description", name: "description", widget: "text" }
+              - { label: "XP Reward", name: "xp", widget: "number", value_type: "int", default: 20 }
+              - label: "Quiz Questions"
+                name: "questions"
+                widget: "list"
+                summary: "[{{fields.type}}] {{fields.prompt}} → {{fields.correctAnswer}}"
+                fields:
+                  - { label: "Question ID", name: "id", widget: "string" }
+                  - label: "Question Type"
+                    name: "type"
+                    widget: "select"
+                    options:
+                      - { label: "Multiple Choice", value: "multiple_choice" }
+                      - { label: "Fill in the Blank", value: "fill_blank" }
+                      - { label: "Audio Listening", value: "audio_listen" }
+                      - { label: "Word Scramble", value: "scramble" }
+                      - { label: "Matching Pairs", value: "matching" }
+                    default: "multiple_choice"
+                  - { label: "Question Prompt", name: "prompt", widget: "text" }
+                  - { label: "Spoken Audio Phrase (for audio_listen)", name: "phrase", widget: "string", required: false }
+                  - { label: "Sentence with Blank (for fill_blank)", name: "sentence", widget: "string", required: false }
+                  - { label: "Missing Word (for fill_blank)", name: "missingWord", widget: "string", required: false }
+                  - label: "Answer Options"
+                    name: "options"
+                    widget: "list"
+                    required: false
+                    field: { label: "Option", name: "option", widget: "string" }
+                  - { label: "Correct Answer", name: "correctAnswer", widget: "string", required: false }
+                  - { label: "Explanation / Grammar Note", name: "explanation", widget: "text", required: false }
+
+  # ============================================================================
+  # 4. LIVE OVERRIDES & AUDIENCE DATA
+  # ============================================================================
+  - name: "system_data"
+    label: "Live Overrides & Subscribers"
+    description: "Inspect and manage in-place frontend overrides and newsletter subscribers."
+    files:
+      - name: "subscribers_list"
+        label: "Newsletter Subscribers"
+        file: "src/data/subscribers.json"
+        format: "json"
+        fields:
+          - label: "Subscribers"
+            name: "subscribers"
+            widget: "list"
+            summary: "{{fields.name}} <{{fields.email}}> ({{fields.source}})"
+            fields:
+              - { label: "Subscriber Name", name: "name", widget: "string", required: false }
+              - { label: "Email Address", name: "email", widget: "string" }
+              - { label: "Signup Source", name: "source", widget: "string", required: false }
+              - { label: "Subscribed Timestamp", name: "subscribedAt", widget: "datetime", required: false }
+

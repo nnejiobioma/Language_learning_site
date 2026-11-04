@@ -1,0 +1,39 @@
+{
+  "heroBadge": "Our Mission & Story",
+  "heroTitle": "Bridging Cultures,",
+  "heroHighlight": "One Language at a Time.",
+  "heroSubtitle": "FliksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. We empower learners across the globe to speak authentically, appreciate rich traditions, and build lifelong fluency.",
+  "metrics": [
+    { "value": "12", "label": "World & Heritage Languages" },
+    { "value": "3,600+", "label": "Interactive Quiz Prompts" },
+    { "value": "2,400+", "label": "3D Audio Flashcards" },
+    { "value": "100%", "label": "Free Core Access" }
+  ],
+  "pillars": [
+    {
+      "icon": "Sparkles",
+      "colorClass": "",
+      "title": "Gamified Habit Building",
+      "desc": "Learning should never feel like a chore. With daily streaks, XP gains, dynamic quizzes, and interactive feedback, FliksLingo turns 10 minutes a day into lasting fluency."
+    },
+    {
+      "icon": "Globe2",
+      "colorClass": "blue",
+      "title": "Authentic Culture Vaults",
+      "desc": "Languages are more than grammar. Every language on FliksLingo includes street slang, cultural proverbs, social etiquette, and regional idioms that bring each culture to life."
+    },
+    {
+      "icon": "Compass",
+      "colorClass": "gold",
+      "title": "Global & African Inclusivity",
+      "desc": "While most apps stop at European languages, FliksLingo gives African heritage languages—Yoruba, Igbo, Hausa, and Nigerian Pidgin—the same first-class gamified treatment as Spanish or Japanese."
+    },
+    {
+      "icon": "GraduationCap",
+      "colorClass": "purple",
+      "title": "Rigorous Exam Simulation",
+      "desc": "From official MCER (Spanish & French) and JLPT (Japanese) to HSK/CLEC (Mandarin), our Computer-Based Testing (CBT) engine tests your true retention with timed exam simulations."
+    }
+  ]
+}
+

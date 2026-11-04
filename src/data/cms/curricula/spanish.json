@@ -1,0 +1,289 @@
+{
+  "id": "spanish",
+  "title": "Spanish",
+  "nativeName": "Español",
+  "flag": "🇪🇸",
+  "greeting": "¡Hola! ¿Cómo estás?",
+  "motto": "The vibrant language of Cervantes, spoken across 20+ countries and 500M+ people worldwide.",
+  "description": "Master Spanish through the official MCER / Instituto Cervantes curriculum spanning 20 leveled units across A1 (Beginner), A2 (Elementary), B1 (Intermediate), B2 (Upper-Intermediate), and C1/C2 (Mastery).",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Dime con quién andas, y te diré quién eres.",
+      "translation": "Tell me who you walk with, and I will tell you who you are.",
+      "context": "A cornerstone proverb across the Hispanic world, celebrating integrity, community solidarity, and how our chosen social circle shapes our character."
+    },
+    "cultureTips": [
+      {
+        "title": "The Art of 'La Sobremesa'",
+        "description": "In Spain and Latin America, meals do not end when the dessert is finished. 'La sobremesa' is the relaxed, cherished conversation with family and friends around the table lasting for hours, discussing ideas and strengthening bonds.",
+        "category": "Dining Rituals & Social Decorum"
+      },
+      {
+        "title": "The Subtle Shift: 'Tú' vs 'Usted'",
+        "description": "While contemporary Spain leans heavily into casual 'tú' (tutear), respect for elders, professors, doctors, and formal institutions still calls for 'usted'. In Colombia and Costa Rica, 'usted' is used even among family members as a mark of warmth and deep esteem.",
+        "category": "Sociolinguistics & Politeness"
+      },
+      {
+        "title": "The Two Cheek Kisses: 'Dos besos'",
+        "description": "In Spain, women greeting friends (and men greeting women) give two light cheek kisses—always starting on the right cheek, then the left. Men greeting men typically exchange a warm handshake and a pat on the shoulder.",
+        "category": "Salutations & Physical Etiquette"
+      },
+      {
+        "title": "The Inverted Question and Exclamation Marks (¿ and ¡)",
+        "description": "Spanish is the only language in the world that brackets sentences with inverted opening punctuation (¿...?, ¡...!). Established by the Real Academia Española in 1754, this ingenious rule alerts the reader to intonation and cadence before speaking the first word.",
+        "category": "Orthographic Heritage & Expression"
+      },
+      {
+        "title": "Linguistic Diversity: The Four Co-official Languages",
+        "description": "Article 3 of Spain's 1978 Constitution recognizes castellano as the official language of the State, while catalán (in Catalonia, Valencia, and the Balearics), gallego (in Galicia), and euskera (in the Basque Country and Navarre) hold co-official status, forming a treasured plurilingual heritage.",
+        "category": "Constitutional & Regional Identity"
+      },
+      {
+        "title": "The Spanish Schedule: Late Lunches and Evening Dinners",
+        "description": "Spain operates on a unique circadian schedule due to its geographical longitude. Lunch (la comida) takes place between 14:00 and 15:30 as the main meal of the day, while dinner (la cena) is rarely served before 21:00 or 22:00.",
+        "category": "Daily Rhythms & Lifestyle"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "¡Mola mucho!",
+        "meaning": "It's super cool / Awesome (Essential colloquialism across Spain).",
+        "example": "Este nuevo proyecto de literatura mola un montón.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Estar en las nubes",
+        "meaning": "To have one's head in the clouds / Daydreaming during class.",
+        "example": "Baja a la tierra, Lucas, estás en las nubes y no escuchas al profesor.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "¡Qué chulo!",
+        "meaning": "How lovely / How pretty and cool (Very popular in central Spain).",
+        "example": "¡Qué chulo el cartel que diseñaste para la revista digital!",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Vale",
+        "meaning": "Alright / Okay / Understood (The most frequent conversational pivot in Spain).",
+        "example": "¿Nos vemos en la biblioteca a las cinco? — ¡Vale, allí estaré!",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Buena onda",
+        "meaning": "Good vibes / Kind, relaxed person (Universally loved in Latin America).",
+        "example": "La profesora de ciencias tiene muy buena onda con el alumnado.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Pura vida",
+        "meaning": "Pure life / Everything is marvelous (Costa Rica's world-famous life philosophy).",
+        "example": "¿Cómo marchan tus estudios? — ¡Pura vida, aprendiendo a diario!",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "es-fc-u1-01",
+      "front": "Hola",
+      "phonetic": "OH-lah",
+      "back": "Hello / Hi — standard universal greeting in Spanish for any time of day.",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "¡Hola! ¿Cómo estás hoy?"
+    },
+    {
+      "id": "es-fc-u1-02",
+      "front": "Buenos días",
+      "phonetic": "BWEH-nos DEE-ahs",
+      "back": "Good morning — used from dawn until lunchtime / noon.",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Buenos días, señor Morales, ¿qué tal?"
+    },
+    {
+      "id": "es-fc-u1-03",
+      "front": "Buenas tardes",
+      "phonetic": "BWEH-nahs TAHR-des",
+      "back": "Good afternoon — used from post-lunch / midday until sunset.",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Buenas tardes a todos los presentes."
+    },
+    {
+      "id": "es-fc-u1-04",
+      "front": "Buenas noches",
+      "phonetic": "BWEH-nahs NOH-ches",
+      "back": "Good evening / Good night — used both as a nighttime greeting and farewell.",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Buenas noches, que descanses bien."
+    },
+    {
+      "id": "es-fc-u1-05",
+      "front": "Mucho gusto",
+      "phonetic": "MOO-choh GOOS-toh",
+      "back": "Pleased to meet you — polite formula upon being introduced.",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "—Soy Javier. —Mucho gusto, Javier, soy Elena."
+    },
+    {
+      "id": "es-fc-u1-06",
+      "front": "Encantado / Encantada",
+      "phonetic": "en-kahn-TAH-doh / en-kahn-TAH-dah",
+      "back": "Delighted to meet you — agrees in gender with the speaker (male: -o, female: -a).",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Encantada de conocerte, me llamo Carmen."
+    },
+    {
+      "id": "es-fc-u1-07",
+      "front": "¿Cómo te llamas?",
+      "phonetic": "KOH-moh teh YAH-mahs",
+      "back": "What is your name? (informal 2nd person singular).",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Hola, ¿cómo te llamas tú?"
+    },
+    {
+      "id": "es-fc-u1-08",
+      "front": "Me llamo...",
+      "phonetic": "meh YAH-moh",
+      "back": "My name is... (literally 'I call myself...').",
+      "category": "Unidad 1: Primeros Pasos",
+      "example": "Me llamo Mateo y soy de Valencia."
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "es-unit-1",
+      "unitNumber": 1,
+      "level": "Nivel A1: Inicial (Principiante)",
+      "title": "Unidad 1: Primeros Pasos (First Steps)",
+      "subtitle": "Presente de indicativo (ser, estar, verbos regulares), saludos, alfabeto, números y países.",
+      "icon": "Sparkles",
+      "color": "#10b981",
+      "lessons": [
+        {
+          "id": "es-u1-l1",
+          "title": "Lección 1: Saludos, Alfabeto y Verbos Esenciales (Ser vs. Estar)",
+          "description": "Aprende los saludos básicos, el alfabeto en español y la conjugación en presente de los verbos 'ser' y 'estar'.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "es-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "¿Cuál es la forma correcta del verbo 'ser' para 'Yo'?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Soy",
+                "Eres",
+                "Es",
+                "Somos"
+              ],
+              "correctAnswer": "Soy",
+              "explanation": "'Yo soy' es la primera persona del singular del verbo irregular 'ser'."
+            },
+            {
+              "id": "es-u1-l1-q2",
+              "type": "matching",
+              "prompt": "Empareja los pronombres personales con la forma correcta de 'ser':",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "es-u1-l1-q3",
+              "type": "fill_blank",
+              "prompt": "Hola, me ___ Mateo y soy de España.",
+              "phrase": "",
+              "sentence": "Hola, me ___ Mateo y soy de España.",
+              "missingWord": "llamo",
+              "options": [
+                "llamo",
+                "llamas",
+                "llama",
+                "llamar"
+              ],
+              "correctAnswer": "llamo",
+              "explanation": "Para decir el nombre usamos 'me llamo' (del verbo reflexivo llamarse)."
+            },
+            {
+              "id": "es-u1-l1-q4",
+              "type": "scramble",
+              "prompt": "Ordena las palabras para formar una presentación básica:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "Estructura canónica: Saludo + sujeto + verbo ser + atributo + complemento."
+            }
+          ]
+        },
+        {
+          "id": "es-u1-l2",
+          "title": "Lección 2: Presentaciones, Países, Nacionalidades y Números",
+          "description": "Aprende a indicar tu procedencia, expresar nacionalidades con concordancia de género y dominar los números del 0 al 100.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "es-u1-l2-q1",
+              "type": "scramble",
+              "prompt": "Ordena las palabras para indicar país de origen:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "Para expresar procedencia se usa 'ser + de + país': Mi profesor es de Colombia."
+            },
+            {
+              "id": "es-u1-l2-q2",
+              "type": "matching",
+              "prompt": "Empareja cada país con la nacionalidad correspondiente (masculino):",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "es-u1-l2-q3",
+              "type": "multiple_choice",
+              "prompt": "Si María nació en México, ¿cuál es su nacionalidad en femenino?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Mexicana",
+                "Mexicano",
+                "Mexicanas",
+                "México"
+              ],
+              "correctAnswer": "Mexicana",
+              "explanation": "Las nacionalidades concuerdan en género con el sujeto: María es mexicana."
+            },
+            {
+              "id": "es-u1-l2-q4",
+              "type": "fill_blank",
+              "prompt": "Tengo ___ años y mi hermano tiene quince.",
+              "phrase": "",
+              "sentence": "Tengo ___ años y mi hermano tiene quince.",
+              "missingWord": "veinte",
+              "options": [
+                "veinte",
+                "veinti",
+                "veintes",
+                "vigésimo"
+              ],
+              "correctAnswer": "veinte",
+              "explanation": "El número cardinal para 20 es 'veinte'. La edad en español se expresa con el verbo 'tener'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

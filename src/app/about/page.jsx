@@ -5,6 +5,8 @@ import Link from 'next/link';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import SubscribeButton from '../../components/SubscribeButton';
 import { LANGUAGES } from '../../data/languages';
+import aboutDefault from '../../data/cms/about.json';
+import { useAdminContent } from '../../context/AdminContentContext';
 import { 
   Globe2, 
   Sparkles, 
@@ -22,35 +24,24 @@ import {
 } from 'lucide-react';
 import './about.css';
 
-const PILLARS = [
-  {
-    icon: <Sparkles size={26} />,
-    colorClass: '',
-    title: 'Gamified Habit Building',
-    desc: 'Learning should never feel like a chore. With daily streaks, XP gains, dynamic quizzes, and interactive feedback, FliksLingo turns 10 minutes a day into lasting fluency.'
-  },
-  {
-    icon: <Globe2 size={26} />,
-    colorClass: 'blue',
-    title: 'Authentic Culture Vaults',
-    desc: 'Languages are more than grammar. Every language on FliksLingo includes street slang, cultural proverbs, social etiquette, and regional idioms that bring each culture to life.'
-  },
-  {
-    icon: <Compass size={26} />,
-    colorClass: 'gold',
-    title: 'Global & African Inclusivity',
-    desc: 'While most apps stop at European languages, FliksLingo gives African heritage languages—Yoruba, Igbo, Hausa, and Nigerian Pidgin—the same first-class gamified treatment as Spanish or Japanese.'
-  },
-  {
-    icon: <GraduationCap size={26} />,
-    colorClass: 'purple',
-    title: 'Rigorous Exam Simulation',
-    desc: 'From official MCER (Spanish & French) and JLPT (Japanese) to HSK/CLEC (Mandarin), our Computer-Based Testing (CBT) engine tests your true retention with timed exam simulations.'
-  }
-];
+const PILLAR_ICONS = {
+  Sparkles: <Sparkles size={26} />,
+  Globe2: <Globe2 size={26} />,
+  Compass: <Compass size={26} />,
+  GraduationCap: <GraduationCap size={26} />,
+  Heart: <Heart size={26} />,
+  Award: <Award size={26} />,
+  BookOpen: <BookOpen size={26} />
+};
 
 export default function AboutUsPage() {
   const languagesList = Object.values(LANGUAGES);
+  const adminCtx = useAdminContent();
+  const aboutData = adminCtx?.aboutPage || aboutDefault;
+  const PILLARS = (aboutData.pillars || aboutDefault.pillars || []).map((p) => ({
+    ...p,
+    icon: typeof p.icon === 'string' ? (PILLAR_ICONS[p.icon] || <Sparkles size={26} />) : p.icon
+  }));
 
   return (
     <div className="about-page-root">
@@ -86,35 +77,30 @@ export default function AboutUsPage() {
         <div className="about-container">
           <div className="about-hero-badge">
             <Sparkles size={16} />
-            <span>Our Mission &amp; Story</span>
+            <span>{aboutData.heroBadge || 'Our Mission & Story'}</span>
           </div>
           <h1 className="about-hero-title">
-            Bridging Cultures, <br />
-            <span className="about-hero-highlight">One Language at a Time.</span>
+            {aboutData.heroTitle || 'Bridging Cultures,'} <br />
+            <span className="about-hero-highlight">{aboutData.heroHighlight || 'One Language at a Time.'}</span>
           </h1>
           <p className="about-hero-sub">
-            FliksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. 
-            We empower learners across the globe to speak authentically, appreciate rich traditions, and build lifelong fluency.
+            {aboutData.heroSubtitle ||
+              'FliksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. We empower learners across the globe to speak authentically, appreciate rich traditions, and build lifelong fluency.'}
           </p>
 
           {/* Key Metrics */}
           <div className="about-stats-grid">
-            <div className="about-stat-box">
-              <span className="about-stat-number">12</span>
-              <span className="about-stat-label">World Languages</span>
-            </div>
-            <div className="about-stat-box">
-              <span className="about-stat-number">2,400+</span>
-              <span className="about-stat-label">Vocabulary &amp; Questions</span>
-            </div>
-            <div className="about-stat-box">
-              <span className="about-stat-number">5</span>
-              <span className="about-stat-label">Quiz Styles &amp; Audio</span>
-            </div>
-            <div className="about-stat-box">
-              <span className="about-stat-number">100%</span>
-              <span className="about-stat-label">Free to Learn</span>
-            </div>
+            {(aboutData.metrics || [
+              { value: '12', label: 'World Languages' },
+              { value: '2,400+', label: 'Vocabulary & Questions' },
+              { value: '5', label: 'Quiz Styles & Audio' },
+              { value: '100%', label: 'Free to Learn' }
+            ]).map((m, idx) => (
+              <div key={idx} className="about-stat-box">
+                <span className="about-stat-number">{m.value}</span>
+                <span className="about-stat-label">{m.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -1,0 +1,289 @@
+{
+  "id": "portuguese",
+  "title": "Portuguese",
+  "nativeName": "Português",
+  "flag": "🇵🇹",
+  "greeting": "Olá! Como está?",
+  "motto": "The melodic language of maritime explorers, fado ballads, and 260M+ speakers worldwide.",
+  "description": "Master Portuguese through the official Adult Vocational Syllabus (PLA / IEFP Standard) and Primary/Secondary School Syllabus (DGE Standard) across 6 units (30 lessons), 240 flashcards, and CAPLE CIPLE/DIPLE CBT exam simulations.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Quem não arrisca, não petisca.",
+      "translation": "Those who do not take risks do not snack (Fortune favors the bold).",
+      "context": "A classic and beloved Portuguese proverb reminding learners that courage, speaking up without fear of making mistakes, and taking proactive initiative are essential for progress in language, career, and life."
+    },
+    "cultureTips": [
+      {
+        "title": "O Ritual do Café & O Pastel de Nata",
+        "description": "Tomar café ao balcão ('uma bica' em Lisboa ou 'um cimbalino' no Porto) acompanhado por um pastel de nata polvilhado com canela é um ato social diário sagrado. As pausas para café no trabalho são momentos de confraternização, diálogo e alívio do stress.",
+        "category": "General"
+      },
+      {
+        "title": "As Senhas de Atendimento e a Burocracia",
+        "description": "Em quase todos os serviços públicos e privados em Portugal (Loja do Cidadão, Finanças, bancos, farmácias, padarias e talhos), é mandatório retirar uma senha eletrónica no dispensador de senhas (A, B, C...) e aguardar a chamada no painel luminoso.",
+        "category": "General"
+      },
+      {
+        "title": "Tratamento Formal vs. Informal (Você, O Senhor, Tu)",
+        "description": "Em Portugal continental, usar a palavra 'você' diretamente pode soar desajeitado ou áspero. Para tratamento formal respeitoso, utiliza-se a 3.ª pessoa com o nome ou cargo ('O senhor Silva quer?', 'A senhora doutora prefere?'). Entre amigos, familiares e colegas de idade aproximada, usa-se o 'tu'.",
+        "category": "General"
+      },
+      {
+        "title": "O Fado: Património Imaterial da Humanidade",
+        "description": "O Fado (com as suas duas grandes vertentes: o Fado de Lisboa, mais taberneiro e lírico, imortalizado por Amália Rodrigues e Mariza, e o Fado de Coimbra, cantado exclusivamente por estudantes universitários vestidos de capa e batina) expressa o destino, a saudade e a alma profunda do povo português.",
+        "category": "General"
+      },
+      {
+        "title": "A Calçada Portuguesa e os Azulejos",
+        "description": "As ruas de Portugal são verdadeiras galerias de arte a céu aberto. O pavimento de pedra calcária e basalto forma padrões geométricos e marítimos (a Calçada Portuguesa), enquanto as fachadas históricas são revestidas pelos famosos azulejos azuis e brancos que contam episódios históricos.",
+        "category": "General"
+      },
+      {
+        "title": "Festas Populares dos Santos Populares",
+        "description": "Em junho, o país inteiro festeja os Santos Populares: Santo António em Lisboa (com marchas populares e casamentos na Sé a 12 e 13 de junho) e São João no Porto (a 23 e 24 de junho, com martelinhos de plástico, balões de ar quente e fogueiras). O aroma a sardinhas assadas e manjericos com quadras populares inunda as ruas.",
+        "category": "General"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "Saudade",
+        "meaning": "The untranslatable, profound longing for someone, a homeland, or a cherished memory distant in time or space",
+        "example": "Depois de tantos anos fora, tenho uma imensa saudade de Portugal e do mar.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Giro / Gira",
+        "meaning": "Pretty, cute, nice, attractive, or pleasant (quintessential European Portuguese)",
+        "example": "Que camisola tão gira! Onde compraste?",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Fixe",
+        "meaning": "Cool, great, awesome, fantastic (the universal Portuguese word for high approval)",
+        "example": "O teu novo trabalho em Lisboa é mesmo fixe!",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Desenrascar-se",
+        "meaning": "The legendary Portuguese art of improvising a creative, effective solution out of thin air",
+        "example": "Não tínhamos ferramentas certas, mas o João conseguiu desenrascar-se muito bem.",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Bica",
+        "meaning": "A piping-hot espresso in Lisbon (reportedly from 'Beba Isto Com Açúcar')",
+        "example": "Vamos ao balcão tomar uma bica e comer um pastel de nata?",
+        "category": "Colloquial"
+      },
+      {
+        "term": "Cimbalino",
+        "meaning": "The Northern / Porto regional term for an espresso coffee (named after La Cimbali machines)",
+        "example": "No Porto, pede-se um cimbalino ao balcão do café.",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "pt-fc-u1-01",
+      "front": "Número de Identificação Fiscal (NIF)",
+      "phonetic": "NOO-meh-roo deh ee-den-tee-fee-kah-SOWNG feesh-KAHL",
+      "back": "Tax Identification Number (Tax ID / NIF)",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "Preciso do seu NIF para emitir a fatura com número de contribuinte."
+    },
+    {
+      "id": "pt-fc-u1-02",
+      "front": "Número de Identificação da Segurança Social (NISS)",
+      "phonetic": "NOO-meh-roo deh ee-den-tee-fee-kah-SOWNG dah seh-goo-RAHN-sah soh-see-AHL",
+      "back": "Social Security Number (NISS)",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "O empregador necessita do NISS para comunicar a admissão de novos trabalhadores."
+    },
+    {
+      "id": "pt-fc-u1-03",
+      "front": "Número de Utente do SNS",
+      "phonetic": "NOO-meh-roo deh oo-TEN-teh doo eh-seh-neh-EH-seh",
+      "back": "National Health Service User Number",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "Apresente o seu Número de Utente para marcar consulta no Centro de Saúde."
+    },
+    {
+      "id": "pt-fc-u1-04",
+      "front": "Cartão de Cidadão",
+      "phonetic": "kahr-TOWNG deh see-dah-DOWNG",
+      "back": "Citizen Card / National Identity Card",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "O Cartão de Cidadão concentra a identificação civil, fiscal e de saúde."
+    },
+    {
+      "id": "pt-fc-u1-05",
+      "front": "Autoridade Tributária e Aduaneira (Finanças)",
+      "phonetic": "ow-toh-ree-DAH-deh tree-boo-TAH-ryah",
+      "back": "Tax and Customs Authority (Tax Office)",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "Fiz o agendamento no Portal das Finanças para alterar o domicílio fiscal."
+    },
+    {
+      "id": "pt-fc-u1-06",
+      "front": "Título de Residência",
+      "phonetic": "TEE-too-loo deh heh-zee-DEN-syah",
+      "back": "Residence Permit",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "O cidadão estrangeiro apresentou o seu título de residência válido emitido pela AIMA."
+    },
+    {
+      "id": "pt-fc-u1-07",
+      "front": "Atestado de Residência",
+      "phonetic": "ah-tehsh-TAH-doo deh heh-zee-DEN-syah",
+      "back": "Proof / Certificate of Residence (from Junta)",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "A Junta de Freguesia emitiu o atestado de residência comprovado por duas testemunhas."
+    },
+    {
+      "id": "pt-fc-u1-08",
+      "front": "Junta de Freguesia",
+      "phonetic": "ZHOON-tah deh freh-geh-ZEE-ah",
+      "back": "Parish Council (Local civil authority)",
+      "category": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "example": "Vou à Junta de Freguesia para registar o meu animal de companhia e pedir certidões."
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "pt-unit-1",
+      "unitNumber": 1,
+      "level": "Track A: PLA / IEFP A1–A2 (Vocacional)",
+      "title": "Unit 1: Identificação, Burocracia e Direitos de Cidadania",
+      "subtitle": "NIF, NISS, Número de Utente, habitação, agendamentos no Portal das Finanças e direitos cívicos.",
+      "icon": "ShieldCheck",
+      "color": "#059669",
+      "lessons": [
+        {
+          "id": "pt-u1-l1",
+          "title": "Lesson 1.1: O Registo do Cidadão",
+          "description": "Preenchimento de dados administrativos (NIF, NISS, Utente). Apresentações com ser, ter e chamar-se.",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "pt-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "Qual é o documento fiscal essencial em Portugal para assinar um contrato ou abrir conta bancária?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "O NIF (Número de Identificação Fiscal)",
+                "O Passe Social de metro",
+                "O Bilhete de Comboio",
+                "A Carta de Condução internacional"
+              ],
+              "correctAnswer": "O NIF (Número de Identificação Fiscal)",
+              "explanation": "O NIF (Número de Contribuinte) é atribuído pela Autoridade Tributária e é indispensável para qualquer ato económico e jurídico em Portugal."
+            },
+            {
+              "id": "pt-u1-l1-q2",
+              "type": "matching",
+              "prompt": "Associe as siglas administrativas aos respetivos serviços públicos em Portugal:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "pt-u1-l1-q3",
+              "type": "fill_blank",
+              "prompt": "Bom dia. Eu ___ Manuel e ___ residente em Lisboa.",
+              "phrase": "",
+              "sentence": "Bom dia. Eu ___ Manuel e ___ residente em Lisboa.",
+              "missingWord": "chamo-me",
+              "options": [
+                "chamo-me",
+                "chama-se",
+                "chamam-se",
+                "chamar"
+              ],
+              "correctAnswer": "chamo-me",
+              "explanation": "Em português europeu, a primeira pessoa do presente reflexo é 'eu chamo-me'."
+            },
+            {
+              "id": "pt-u1-l1-q4",
+              "type": "scramble",
+              "prompt": "Ordene os elementos para formar a apresentação formal com o NISS:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "A estrutura de identificação pessoal segue: Sujeito + verbo ter + objeto direto."
+            }
+          ]
+        },
+        {
+          "id": "pt-u1-l2",
+          "title": "Lesson 1.2: A Habitação e Contratos",
+          "description": "Leitura de anúncios imobiliários e faturas de serviços essenciais (água, luz, gás). Presente do indicativo e preposições de lugar.",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "pt-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "Num anúncio imobiliário em Portugal, o que significa a sigla 'T2'?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Apartamento com dois quartos",
+                "Apartamento no segundo andar",
+                "Casa com dois terraços",
+                "Moradia com duas garagens"
+              ],
+              "correctAnswer": "Apartamento com dois quartos",
+              "explanation": "A tipologia 'T' indica o número de quartos: T0 (estúdio), T1 (um quarto), T2 (dois quartos), etc."
+            },
+            {
+              "id": "pt-u1-l2-q2",
+              "type": "fill_blank",
+              "prompt": "A farmácia fica ___ do supermercado e ao lado da paragem de autocarro.",
+              "phrase": "",
+              "sentence": "A farmácia fica ___ do supermercado e ao lado da paragem de autocarro.",
+              "missingWord": "em frente",
+              "options": [
+                "em frente",
+                "para",
+                "com",
+                "sob"
+              ],
+              "correctAnswer": "em frente",
+              "explanation": "'Em frente de / do' é a locução prepositiva correta para indicar localização frontal oposta."
+            },
+            {
+              "id": "pt-u1-l2-q3",
+              "type": "scramble",
+              "prompt": "Ordene os termos para formar a frase sobre pagamento da renda:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": "Em Portugal, quem aluga o imóvel é o inquilino e o proprietário é o senhorio."
+            },
+            {
+              "id": "pt-u1-l2-q4",
+              "type": "matching",
+              "prompt": "Associe os termos da fatura de serviços básicos à sua tradução funcional:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

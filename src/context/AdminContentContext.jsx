@@ -1,7 +1,10 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { LANGUAGES as BASE_LANGUAGES } from '../data/languages';
+import { LANGUAGES as BASE_LANGUAGES, mergeLanguageWithCmsData } from '../data/languages';
+import initialOverridesJson from '../data/content_overrides.json';
+import initialSiteSettings from '../data/cms/site_settings.json';
+import initialAboutPage from '../data/cms/about.json';
 import { useAuth } from './AuthContext';
 import { db, isFirebaseConfigured, doc, getDoc, setDoc, onSnapshot } from '../lib/firebase';
 
@@ -14,13 +17,20 @@ export function AdminContentProvider({ children }) {
   const isAdmin = Boolean(profile?.role === 'admin');
 
   const [overrides, setOverrides] = useState({
-    questions: {},   // { [questionId]: { prompt, options, correctAnswer, explanation, ... } }
-    lessons: {},     // { [lessonId]: { title, description, ... } }
-    units: {},       // { [unitId]: { title, description, subtitle, ... } }
-    flashcards: {},  // { [cardId]: { front, back, phonetic, example, ... } }
-    culture: {},     // { [itemId]: { title, proverb, meaning, context, ... } }
-    cbt: {},         // { [qId]: { prompt, options, correctAnswer, explanation, ... } }
-    site: {}         // { heroTitle, heroSubtitle, announcements, ... }
+    questions: { ...(initialOverridesJson?.questions || {}) },
+    lessons: { ...(initialOverridesJson?.lessons || {}) },
+    units: { ...(initialOverridesJson?.units || {}) },
+    flashcards: { ...(initialOverridesJson?.flashcards || {}) },
+    culture: { ...(initialOverridesJson?.culture || {}) },
+    cbt: { ...(initialOverridesJson?.cbt || {}) },
+    site: { ...(initialOverridesJson?.site || {}) }
+  });
+
+  const [cmsRuntime, setCmsRuntime] = useState({
+    siteSettings: initialSiteSettings,
+    aboutPage: initialAboutPage,
+    languagesMeta: {},
+    curricula: {}
   });
 
   const [adminEditMode, setAdminEditMode] = useState(() => {
@@ -34,8 +44,42 @@ export function AdminContentProvider({ children }) {
   const [activeEditItem, setActiveEditItem] = useState(null); // { type, id, data, langId, parentId }
   const [syncStatus, setSyncStatus] = useState('idle'); // 'idle' | 'saving' | 'synced' | 'error'
 
-  // Load saved overrides from localStorage on mount
+  const refreshCmsData = useCallback(async () => {
+    try {
+      const res = await fetch('/api/cms/data', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.success) {
+        const metaMap = Object.fromEntries(
+          (data.languagesMeta || []).map((m) => [m.id, m])
+        );
+        setCmsRuntime((prev) => ({
+          siteSettings: data.siteSettings || prev.siteSettings,
+          aboutPage: data.aboutPage || prev.aboutPage,
+          languagesMeta: metaMap,
+          curricula: data.curricula || prev.curricula
+        }));
+        if (data.overrides && typeof data.overrides === 'object') {
+          setOverrides((prev) => ({
+            questions: { ...(data.overrides.questions || {}), ...prev.questions },
+            lessons: { ...(data.overrides.lessons || {}), ...prev.lessons },
+            units: { ...(data.overrides.units || {}), ...prev.units },
+            flashcards: { ...(data.overrides.flashcards || {}), ...prev.flashcards },
+            culture: { ...(data.overrides.culture || {}), ...prev.culture },
+            cbt: { ...(data.overrides.cbt || {}), ...prev.cbt },
+            site: { ...(data.overrides.site || {}), ...prev.site }
+          }));
+        }
+      }
+    } catch {
+      // Fallback to static build imports when offline
+    }
+  }, []);
+
+  // Load saved overrides from localStorage & live CMS files on mount
   useEffect(() => {
+    refreshCmsData();
+
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
@@ -280,10 +324,17 @@ export function AdminContentProvider({ children }) {
     persistOverrides(empty);
   }, [persistOverrides]);
 
-  // Merge language data with active overrides
+  // Merge language data with Decap CMS files and active overrides
   const getLanguageData = useCallback((langId) => {
-    const base = BASE_LANGUAGES[langId] || BASE_LANGUAGES.spanish;
-    if (!base) return null;
+    const rawBase = BASE_LANGUAGES[langId] || BASE_LANGUAGES.spanish;
+    if (!rawBase) return null;
+
+    // First apply any live Decap CMS runtime file updates
+    const base = mergeLanguageWithCmsData(
+      rawBase,
+      cmsRuntime.languagesMeta?.[langId] || null,
+      cmsRuntime.curricula?.[langId] || null
+    );
 
     // Apply Unit, Lesson, and Question overrides
     const units = (base.units || []).map(unit => {
@@ -353,7 +404,7 @@ export function AdminContentProvider({ children }) {
       flashcards,
       cultureVault
     };
-  }, [overrides]);
+  }, [overrides, cmsRuntime]);
 
   // Open modal for quick in-place editing
   const openQuickEdit = (itemData, sectionType, meta = {}) => {
@@ -398,6 +449,10 @@ export function AdminContentProvider({ children }) {
     <AdminContentContext.Provider value={{
       isAdmin,
       overrides,
+      cmsRuntime,
+      siteSettings: cmsRuntime.siteSettings,
+      aboutPage: cmsRuntime.aboutPage,
+      refreshCmsData,
       adminEditMode,
       activeEditItem,
       syncStatus,

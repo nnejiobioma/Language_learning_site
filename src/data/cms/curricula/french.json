@@ -1,0 +1,299 @@
+{
+  "id": "french",
+  "title": "French",
+  "nativeName": "Français",
+  "flag": "🇫🇷",
+  "greeting": "Bonjour ! Comment allez-vous ?",
+  "motto": "The language of diplomacy, romance, gastronomy, and international arts.",
+  "description": "Immerse yourself in French culture with Parisian elegance, café dialogue, and fluent pronunciation secrets.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Petit à petit, l'oiseau fait son nid.",
+      "translation": "Little by little, the bird builds its nest.",
+      "context": "A classic French reminder of the power of patient consistency: daily language practice yields lasting fluency and deep cultural connection."
+    },
+    "cultureTips": [
+      {
+        "title": "The Sacred Greeting: Always Say 'Bonjour'",
+        "description": "In France, entering any bakery, boutique, taxi, or elevator without an audible 'Bonjour' is considered a serious social blunder. 'Bonjour' is not just a greeting; it is the polite pass-key that acknowledges the other person's humanity.",
+        "category": "Salutations, Decorum & Social Codes"
+      },
+      {
+        "title": "The 'Tu' vs 'Vous' Boundary",
+        "description": "French draws a strict line between intimacy and respect. Use 'Vous' with shopkeepers, elders, strangers, and professional colleagues. Switch to 'Tu' only when invited ('On peut se tutoyer ?') or among close friends and peers.",
+        "category": "Salutations, Decorum & Social Codes"
+      },
+      {
+        "title": "The Art of 'La Bise' (Cheek Kissing)",
+        "description": "When greeting friends and family, the French exchange cheek kisses (air kisses making a soft kiss sound while touching cheeks). The count varies by region: 2 kisses in Paris, 3 in Montpellier, and 4 in parts of Normandy.",
+        "category": "Salutations, Decorum & Social Codes"
+      },
+      {
+        "title": "Whisper Volume on Public Transit",
+        "description": "The Paris Métro and regional trains are shared sanctuaries of calm. Speaking loudly, shouting on phones, or playing music without headphones is deeply frowned upon. Keep voices measured and considerate.",
+        "category": "Salutations, Decorum & Social Codes"
+      },
+      {
+        "title": "Casual Elegance over Gym Wear",
+        "description": "The French default dress code is smart casual ('BCBG' or relaxed chic). Sweatpants, gym attire, and flip-flops are strictly reserved for the gym, home, or beach, and rarely worn on city streets or in restaurants.",
+        "category": "Salutations, Decorum & Social Codes"
+      },
+      {
+        "title": "The Departure Courtesy: 'Merci, Au Revoir'",
+        "description": "When leaving any small shop, bakery, or post office, it is customary to call out 'Merci, bonne journée, au revoir !' to the cashier or shopkeeper, maintaining the social circle of respect.",
+        "category": "Salutations, Decorum & Social Codes"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "C'est la vie",
+        "meaning": "That's life / Such is life — accepting unavoidable setbacks with philosophical grace",
+        "example": "J'ai raté mon train de dix minutes, mais bon, c'est la vie !",
+        "category": "Everyday Conversation & Casual Reactions"
+      },
+      {
+        "term": "Bof",
+        "meaning": "The quintessential French shrug: 'Meh / I don't care / Not impressed'",
+        "example": "Tu as aimé la pièce de théâtre ? — Bof, sans plus.",
+        "category": "Everyday Conversation & Casual Reactions"
+      },
+      {
+        "term": "Nickel",
+        "meaning": "Spotless / Perfect / Awesome / Cleanly executed",
+        "example": "Le dossier est bouclé et validé ? — Oui, tout est nickel !",
+        "category": "Everyday Conversation & Casual Reactions"
+      },
+      {
+        "term": "Ça roule ? / Ça marche !",
+        "meaning": "Is everything going smoothly? / Sounds like a plan! Works for me!",
+        "example": "On se retrouve à 20h devant le cinéma ? — Ça marche !",
+        "category": "Everyday Conversation & Casual Reactions"
+      },
+      {
+        "term": "C'est du gâteau !",
+        "meaning": "It's a piece of cake! / Extremely simple to accomplish",
+        "example": "L'épreuve de grammaire était vraiment du gâteau.",
+        "category": "Everyday Conversation & Casual Reactions"
+      },
+      {
+        "term": "Laisse tomber",
+        "meaning": "Drop it / forget about it / never mind (very common phrase)",
+        "example": "Tu ne comprends pas ce que je veux dire ? Laisse tomber.",
+        "category": "Everyday Conversation & Casual Reactions"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "fr-fc-alpha-01",
+      "front": "A / a",
+      "phonetic": "AH",
+      "back": "A — pronounced 'ah'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "A comme Avion (Airplane)."
+    },
+    {
+      "id": "fr-fc-alpha-02",
+      "front": "B / b",
+      "phonetic": "BEH",
+      "back": "B — pronounced 'beh'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "B comme Bonjour (Hello)."
+    },
+    {
+      "id": "fr-fc-alpha-03",
+      "front": "C / c",
+      "phonetic": "SEH",
+      "back": "C — pronounced 'seh'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "C comme Café (Coffee)."
+    },
+    {
+      "id": "fr-fc-alpha-04",
+      "front": "D / d",
+      "phonetic": "DEH",
+      "back": "D — pronounced 'deh'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "D comme Demain (Tomorrow)."
+    },
+    {
+      "id": "fr-fc-alpha-05",
+      "front": "E / e",
+      "phonetic": "EUH",
+      "back": "E — pronounced 'euh'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "E comme Eau (Water)."
+    },
+    {
+      "id": "fr-fc-alpha-06",
+      "front": "F / f",
+      "phonetic": "EFF",
+      "back": "F — pronounced 'eff'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "F comme France (France)."
+    },
+    {
+      "id": "fr-fc-alpha-07",
+      "front": "G / g",
+      "phonetic": "ZHEH",
+      "back": "G — pronounced soft 'zheh'",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "G comme Gare (Station)."
+    },
+    {
+      "id": "fr-fc-alpha-08",
+      "front": "H / h",
+      "phonetic": "ASH",
+      "back": "H — silent in French (muet / aspiré)",
+      "category": "Unit 1 (A1): French Alphabet & Sounds",
+      "example": "H comme Hôtel (Hotel)."
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "fr-unit-1",
+      "unitNumber": 1,
+      "level": "Level 1: Beginner",
+      "title": "Unit 1 (A1): First Contact",
+      "subtitle": "Salutations, introducing yourself and others, spelling your name, and numbers 0–100.",
+      "icon": "Sun",
+      "color": "#2563eb",
+      "lessons": [
+        {
+          "id": "fr-u1-l1",
+          "title": "Lesson 1: French Alphabet, Accents & Sounds",
+          "description": "Master the French alphabet, essential accents (é, è, ê, ç), and key pronunciation secrets like silent final letters.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "fr-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "How is the acute accent (l'accent aigu: 'é') pronounced in French?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Like 'ay' in 'say' / closed 'e'",
+                "Like 'e' in 'bed'",
+                "Like 'ee' in 'see'",
+                "It is completely silent"
+              ],
+              "correctAnswer": "Like 'ay' in 'say' / closed 'e'",
+              "explanation": "The accent aigu ('é') produces a crisp, closed sound like 'ay' in English (e.g. 'café', 'été')."
+            },
+            {
+              "id": "fr-u1-l1-q2",
+              "type": "matching",
+              "prompt": "Match the French accents with their names:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "fr-u1-l1-q3",
+              "type": "audio_listen",
+              "prompt": "Listen to the word 'Français'. Why does the 'c' have a cedilla (ç)?",
+              "phrase": "Français",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "To make the 'c' sound like a soft 's' before 'a'",
+                "To make the 'c' sound like 'k'",
+                "To indicate a silent letter",
+                "To show the word is plural"
+              ],
+              "correctAnswer": "To make the 'c' sound like a soft 's' before 'a'",
+              "explanation": "The cédille ('ç') softens the letter 'C' to an 'S' sound in front of A, O, or U."
+            },
+            {
+              "id": "fr-u1-l1-q4",
+              "type": "multiple_choice",
+              "prompt": "In general, what happens to final consonants (like -d, -s, -t, -x) in French words?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "They are usually silent",
+                "They are pronounced extra loudly",
+                "They are swapped with vowels",
+                "They turn into nasal vowels"
+              ],
+              "correctAnswer": "They are usually silent",
+              "explanation": "In French, final consonants like 's' in 'Paris' or 't' in 'chat' are usually silent unless liaison occurs."
+            }
+          ]
+        },
+        {
+          "id": "fr-u1-l2",
+          "title": "Lesson 2: Salutations & Courtesies",
+          "description": "Master essential greetings, polite requests, and daily social etiquette in France.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "fr-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "What is the universal French greeting used throughout the day?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Bonjour",
+                "Bonsoir",
+                "Bonne nuit",
+                "Au revoir"
+              ],
+              "correctAnswer": "Bonjour",
+              "explanation": "'Bonjour' (Good day / Hello) is the fundamental polite greeting in France."
+            },
+            {
+              "id": "fr-u1-l2-q2",
+              "type": "matching",
+              "prompt": "Match French greetings with their English meanings:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "fr-u1-l2-q3",
+              "type": "audio_listen",
+              "prompt": "Listen to the phrase. What does it mean?",
+              "phrase": "S'il vous plaît",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Please (formal/polite)",
+                "Thank you very much",
+                "Excuse me",
+                "You're welcome"
+              ],
+              "correctAnswer": "Please (formal/polite)",
+              "explanation": "'S'il vous plaît' is the polite form of 'Please'."
+            },
+            {
+              "id": "fr-u1-l2-q4",
+              "type": "fill_blank",
+              "prompt": "Merci beaucoup ! — De ___ !",
+              "phrase": "",
+              "sentence": "Merci beaucoup ! — De ___ !",
+              "missingWord": "rien",
+              "options": [
+                "rien",
+                "bonjour",
+                "salut",
+                "plaisir"
+              ],
+              "correctAnswer": "rien",
+              "explanation": "'De rien' is the most common way to say 'You're welcome' in French."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

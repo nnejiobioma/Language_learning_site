@@ -1,0 +1,177 @@
+{
+  "id": "hausa",
+  "title": "Hausa",
+  "nativeName": "Harshen Hausa",
+  "flag": "🌍",
+  "greeting": "Sannu! Yaya kake?",
+  "motto": "The major Afroasiatic trade language spoken by 80M+ people across West & Central Africa.",
+  "description": "Discover Hausa with trans-Saharan trade warmth, royal Emirates greetings, and market eloquence.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Komi ya yi nisa, zai dawo kusa.",
+      "translation": "However far a journey or circumstance goes, it will eventually return near.",
+      "context": "A proverb counseling patience, endurance, and knowing that events run full circles."
+    },
+    "slangs": [
+      {
+        "term": "Sannu",
+        "meaning": "Hello / Well done / Greetings",
+        "example": "Sannu da aiki! (Well done with your work!)",
+        "category": "Greetings"
+      },
+      {
+        "term": "Nagode",
+        "meaning": "Thank you / Gratitude",
+        "example": "Nagode sosai da taimakonka.",
+        "category": "Courtesy"
+      },
+      {
+        "term": "Lafiya lau",
+        "meaning": "Very well / In peace / Fine",
+        "example": "Yaya gida? — Lafiya lau!",
+        "category": "Basics"
+      },
+      {
+        "term": "Yauwa!",
+        "meaning": "Great! / Exactly! / That's right!",
+        "example": "Yauwa, kin yi daidai!",
+        "category": "Affirmation"
+      },
+      {
+        "term": "Sai an jima",
+        "meaning": "See you later / Goodbye",
+        "example": "Sai an jima, mu kwana lafiya.",
+        "category": "Farewell"
+      }
+    ],
+    "cultureTips": [
+      {
+        "title": "The Respectful 'Gaisuwa' Salutation",
+        "description": "In Hausa culture, greetings are comprehensive and cordial, inquiring about health ('lafiya'), family, and work before moving to any business.",
+        "category": "Etiquette"
+      },
+      {
+        "title": "Trans-Saharan Trade Heritage",
+        "description": "Hausa has functioned as the primary mercantile language across West and Central Africa from Niger to Cameroon for over seven centuries.",
+        "category": "History"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "ha-fc-1",
+      "front": "Sannu",
+      "phonetic": "SAHN-noo",
+      "back": "Hello / Greetings / Well done",
+      "category": "Greetings",
+      "example": "Sannu abokina!"
+    },
+    {
+      "id": "ha-fc-2",
+      "front": "Yaya kake?",
+      "phonetic": "YAH-yah KAH-keh",
+      "back": "How are you? (To a male)",
+      "category": "Greetings",
+      "example": "Sannu Aminu, yaya kake?"
+    },
+    {
+      "id": "ha-fc-3",
+      "front": "Nagode",
+      "phonetic": "nah-GOH-day",
+      "back": "Thank you",
+      "category": "Courtesy",
+      "example": "Nagode kwarai da gaske."
+    },
+    {
+      "id": "ha-fc-4",
+      "front": "Lafiya lau",
+      "phonetic": "lah-FEE-yah low",
+      "back": "Fine / Very well / Peace",
+      "category": "Basics",
+      "example": "Ina lafiya lau, alhamdulillah."
+    },
+    {
+      "id": "ha-fc-5",
+      "front": "Sai an jima",
+      "phonetic": "sigh ahn JEE-mah",
+      "back": "See you later / Goodbye",
+      "category": "Farewell",
+      "example": "To, sai an jima!"
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "ha-unit-1",
+      "unitNumber": 1,
+      "level": "Level 1: Beginner (Lower Basic / Primary 1–3)",
+      "title": "Unit 1: The Hausa Alphabet and Vowels (Bakaken Da Wasula)",
+      "subtitle": "Consonants, hook letters (ɓ, ɗ, ƙ, ʼy), glottal stop, vowel length, and tonal drills.",
+      "icon": "BookOpen",
+      "color": "#b45309",
+      "lessons": [
+        {
+          "id": "ha-u1-l1",
+          "title": "Lesson 1: Boko Orthography, Hook Letters & Tonal System",
+          "description": "Master standard Hausa Latin (Boko) characters, unique hooked consonants, and short vs. long vowel distinctions.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "ha-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "Which of the following is a special hooked consonant (bàƙin ƙirƙira) in the Hausa Boko alphabet?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Ɗ (hooked D)",
+                "Z",
+                "M",
+                "T"
+              ],
+              "correctAnswer": "Ɗ (hooked D)",
+              "explanation": "Hausa features distinctive implosive and ejective consonants written with hooked letters: Ɓ/ɓ, Ɗ/ɗ, Ƙ/ƙ, and ʼY/ʼy."
+            },
+            {
+              "id": "ha-u1-l1-q2",
+              "type": "matching",
+              "prompt": "Match the Hausa hooked letter with its phonetic description:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "ha-u1-l1-q3",
+              "type": "fill_blank",
+              "prompt": "In Hausa, vowel length changes meaning: 'fari' means white, while 'faari' means ___.",
+              "phrase": "",
+              "sentence": "In Hausa, vowel length changes meaning: 'fari' means white, while 'faari' means ___.",
+              "missingWord": "drought",
+              "options": [
+                "drought",
+                "rain",
+                "horse",
+                "market"
+              ],
+              "correctAnswer": "drought",
+              "explanation": "Vowel length is phonemic in Hausa: short vowel 'fari' (white) contrasts with long vowel 'faari' (drought/famine)."
+            },
+            {
+              "id": "ha-u1-l1-q4",
+              "type": "scramble",
+              "prompt": "Arrange the words to say: 'Hausa alphabet has vowels' (Bakaken Hausa suna da wasula):",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "id": "finnish",
+  "title": "Finnish",
+  "nativeName": "Suomi",
+  "flag": "🇫🇮",
+  "greeting": "Hei! Mitä kuuluu?",
+  "motto": "The mystical Uralic language of resilient grit (Sisu), midnight suns, and thousand lakes.",
+  "description": "Discover Finnish with Northern Lights wonders, sauna etiquette, and unique phonetic harmony.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "Alku aina hankalaa, lopussa kiitos seisoo.",
+      "translation": "The beginning is always difficult, but at the end gratitude stands.",
+      "context": "A beloved Finnish encouragement for learners mastering complex grammar: persistent grit and sisu always lead to triumph."
+    },
+    "cultureTips": [
+      {
+        "title": "The Sauna Sanctuary (Saunarituaali)",
+        "description": "Finland boasts over 3 million saunas for 5.5 million citizens. It is a tranquil, egalitarian sanctuary for physical and mental cleansing. Etiquette: shower first, remove footwear, relax without judgment, and ask before tossing 'löyly' (water onto hot stones).",
+        "category": "Sauna, Sisu & Core Identity"
+      },
+      {
+        "title": "The Spirit of 'Sisu' (Perseverance Against Odds)",
+        "description": "Sisu is Finland's defining cultural soul: stoic determination, quiet courage, and unbroken grit when facing formidable challenges. It means pushing through sub-zero winters or tough exams with quiet resolve rather than loud boastfulness.",
+        "category": "Sauna, Sisu & Core Identity"
+      },
+      {
+        "title": "Comfort with Silence (Hiljaisuus on kultaa)",
+        "description": "In Finnish social codes, conversational pauses are natural marks of thoughtful contemplation and respect, not 'awkward silence'. Finns listen with full attention until you finish speaking and don't feel compelled to fill pauses with idle chatter.",
+        "category": "Sauna, Sisu & Core Identity"
+      },
+      {
+        "title": "Summer Cottage Escapism (Mökkikulttuuri)",
+        "description": "During summer, cities empty out as Finns retreat to rustic lakeside cabins (mökki). Life revolves around chopping firewood, fishing, swimming in pristine lakes, harvesting berries, and disconnecting from digital stress.",
+        "category": "Sauna, Sisu & Core Identity"
+      },
+      {
+        "title": "Everyman's Right (Jokamiehenoikeus)",
+        "description": "Ancient legal custom grants everyone the freedom to roam wild forests, paddle pristine lakes, forage wild bilberries (mustikka) and chanterelles, and pitch a tent overnight—provided you protect nature and leave zero trace.",
+        "category": "Sauna, Sisu & Core Identity"
+      },
+      {
+        "title": "The Birch Whisk Sauna Ritual (Vihta / Vasta)",
+        "description": "In the summer sauna, fresh birch twigs bundled together with twine are used to gently whisk the skin. The leaves release fragrant essential oils, improve blood circulation, and open pores.",
+        "category": "Sauna, Sisu & Core Identity"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "Nonni / No niin",
+        "meaning": "The ultimate Finnish multi-tool word: can mean 'Alright!', 'Here we go', 'Look what happened', 'Finished', or 'Calm down' depending entirely on pitch and tone",
+        "example": "Nonni, nyt kahvi on valmista ja päivä voi alkaa!",
+        "category": "Iconic Finnish Staples & Exclamations"
+      },
+      {
+        "term": "Torille! / Torilla tavataan!",
+        "meaning": "'To the market square! / We meet at the square!' The universal celebration cry shouted whenever Finland achieves international acclaim or wins gold",
+        "example": "Suomi voitti maailmanmestaruuden — torille tavataan!",
+        "category": "Iconic Finnish Staples & Exclamations"
+      },
+      {
+        "term": "Kalsarikännit",
+        "meaning": "The proud Finnish art of drinking at home alone in your underwear with zero intention of going out (an official Finnish emoji)",
+        "example": "Ulkona sataa räntää, tänään on kalsarikännit.",
+        "category": "Iconic Finnish Staples & Exclamations"
+      },
+      {
+        "term": "Sisu",
+        "meaning": "Incredible tenacity, endurance, and gut fortitude in the face of impossible odds",
+        "example": "Suomalaisilla urheilijoilla on valtavasti sisua!",
+        "category": "Iconic Finnish Staples & Exclamations"
+      },
+      {
+        "term": "Jees / Jeppis",
+        "meaning": "Casual colloquial for 'Cool', 'Great', 'Yes', or 'All good'",
+        "example": "Nähdään huomenna lounaalla? — Jees, sopii hyvin!",
+        "category": "Iconic Finnish Staples & Exclamations"
+      },
+      {
+        "term": "Hieno homma!",
+        "meaning": "'Awesome job! / Great stuff!' Warm and sincere praise among friends or colleagues",
+        "example": "Sait tentistä täydet pisteet? Hieno homma!",
+        "category": "Iconic Finnish Staples & Exclamations"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "fi-fc-alpha-01",
+      "front": "A / a",
+      "phonetic": "AH",
+      "back": "A — pronounced like 'a' in 'father'",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Aurinko paistaa. (The sun is shining.)"
+    },
+    {
+      "id": "fi-fc-alpha-02",
+      "front": "B / b",
+      "phonetic": "BEH",
+      "back": "B — used primarily in modern loanwords",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Banaani on keltainen. (The banana is yellow.)"
+    },
+    {
+      "id": "fi-fc-alpha-03",
+      "front": "C / c",
+      "phonetic": "SEH",
+      "back": "C — used in international loanwords",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Celsius-asteet. (Degrees Celsius.)"
+    },
+    {
+      "id": "fi-fc-alpha-04",
+      "front": "D / d",
+      "phonetic": "DEH",
+      "back": "D — soft dental stop, key to k-p-t gradation",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Pöytä -> Pöydällä. (Table -> On the table.)"
+    },
+    {
+      "id": "fi-fc-alpha-05",
+      "front": "E / e",
+      "phonetic": "EH",
+      "back": "E — neutral vowel, like 'e' in 'bed'",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Ei tarkoittaa no. (Ei means no.)"
+    },
+    {
+      "id": "fi-fc-alpha-06",
+      "front": "F / f",
+      "phonetic": "EF",
+      "back": "F — used in loanwords and names",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Farkut ovat siniset. (The jeans are blue.)"
+    },
+    {
+      "id": "fi-fc-alpha-07",
+      "front": "G / g",
+      "phonetic": "GEH",
+      "back": "G — voiced velar stop; 'ng' makes a nasal sound",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Helsingissä sataa. (In Helsinki it's raining.)"
+    },
+    {
+      "id": "fi-fc-alpha-08",
+      "front": "H / h",
+      "phonetic": "HOH",
+      "back": "H — clearly aspirated, even before consonants",
+      "category": "Unit 1 (A1.1): Alphabet & Numbers",
+      "example": "Kahvi on kuumaa. (Coffee is hot.)"
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "fi-unit-1",
+      "unitNumber": 1,
+      "level": "Level 1: Beginner",
+      "title": "Unit 1 (A1.1): Foundations & Phonetics (Introduce Yourself)",
+      "subtitle": "Vowel harmony, k-p-t gradation, pronouns, greetings, numbers, family, and survival courtesy phrases.",
+      "icon": "Sun",
+      "color": "#0ea5e9",
+      "lessons": [
+        {
+          "id": "fi-u1-l01-alphabet",
+          "title": "Lesson 1: Finnish Alphabet & Phonetics",
+          "description": "Master Finnish letters, special vowels (Ä, Ö, Å, Y), letter sounds, and vowel & consonant lengths.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "fi-l01-q1",
+              "type": "multiple_choice",
+              "prompt": "How many letters are in the standard Finnish alphabet (including Å, Ä, and Ö)?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "29",
+                "26",
+                "24",
+                "32"
+              ],
+              "correctAnswer": "29",
+              "explanation": "The Finnish alphabet has 29 letters: 26 standard Latin letters plus Å, Ä, and Ö."
+            },
+            {
+              "id": "fi-l01-q2",
+              "type": "multiple_choice",
+              "prompt": "How is the Finnish letter 'J' pronounced?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Always like 'y' in 'yes'",
+                "Like 'j' in 'jump'",
+                "Like 'h' in 'hat'",
+                "Like 'sh' in 'ship'"
+              ],
+              "correctAnswer": "Always like 'y' in 'yes'",
+              "explanation": "In Finnish, 'j' is always pronounced like the English 'y' in 'yes' (e.g. 'juna' sounds like 'yoo-nah')."
+            },
+            {
+              "id": "fi-l01-q3",
+              "type": "matching",
+              "prompt": "Match the special Finnish vowels to their pronunciation sounds:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "fi-l01-q4",
+              "type": "audio_listen",
+              "prompt": "Listen to the word 'Äiti' (mother). What special Finnish letter does it start with?",
+              "phrase": "Äiti",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Ä",
+                "A",
+                "O",
+                "Ö"
+              ],
+              "correctAnswer": "Ä",
+              "explanation": "'Äiti' (mother) starts with the front vowel Ä, pronounced like 'a' in 'cat'."
+            }
+          ]
+        },
+        {
+          "id": "fi-u1-l02-numbers",
+          "title": "Lesson 2: Finnish Numbers 0–10 & Counting",
+          "description": "Learn to count from 0 to 10 in Finnish (nolla, yksi, kaksi, kolme...) and understand Finnish number logic.",
+          "xp": 20,
+          "questions": [
+            {
+              "id": "fi-l02-q1",
+              "type": "multiple_choice",
+              "prompt": "What is the Finnish word for the number 1?",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Yksi",
+                "Kaksi",
+                "Kolme",
+                "Nolla"
+              ],
+              "correctAnswer": "Yksi",
+              "explanation": "'Yksi' is the number one in Finnish."
+            },
+            {
+              "id": "fi-l02-q2",
+              "type": "matching",
+              "prompt": "Match the first numbers (0 to 3) in Finnish with English digits:",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            },
+            {
+              "id": "fi-l02-q3",
+              "type": "audio_listen",
+              "prompt": "Listen to the audio. What number did you hear?",
+              "phrase": "Kaksi",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "Two (2)",
+                "One (1)",
+                "Three (3)",
+                "Five (5)"
+              ],
+              "correctAnswer": "Two (2)",
+              "explanation": "'Kaksi' is two."
+            },
+            {
+              "id": "fi-l02-q4",
+              "type": "fill_blank",
+              "prompt": "Yksi, kaksi, ___.",
+              "phrase": "",
+              "sentence": "Yksi, kaksi, ___.",
+              "missingWord": "kolme",
+              "options": [
+                "kolme",
+                "nolla",
+                "kymmenen",
+                "kuusi"
+              ],
+              "correctAnswer": "kolme",
+              "explanation": "One, two, three -> 'Yksi, kaksi, kolme'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

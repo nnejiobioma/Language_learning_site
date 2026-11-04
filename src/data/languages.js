@@ -29,7 +29,38 @@ import { mandarinAllUnits } from './mandarinCurriculum';
 import { mandarinFlashcards } from './mandarinFlashcards';
 import { mandarinCultureVault } from './mandarinCultureVault';
 
-export const LANGUAGES = {
+// Decap CMS Managed Data Sources
+import languagesMetaCms from './cms/languages_meta.json';
+import leaderboardCms from './cms/leaderboard.json';
+import spanishCms from './cms/curricula/spanish.json';
+import frenchCms from './cms/curricula/french.json';
+import germanCms from './cms/curricula/german.json';
+import japaneseCms from './cms/curricula/japanese.json';
+import mandarinCms from './cms/curricula/mandarin.json';
+import pidginCms from './cms/curricula/pidgin.json';
+import yorubaCms from './cms/curricula/yoruba.json';
+import portugueseCms from './cms/curricula/portuguese.json';
+import swedishCms from './cms/curricula/swedish.json';
+import finnishCms from './cms/curricula/finnish.json';
+import igboCms from './cms/curricula/igbo.json';
+import hausaCms from './cms/curricula/hausa.json';
+
+export const CMS_CURRICULA = {
+  spanish: spanishCms,
+  french: frenchCms,
+  german: germanCms,
+  japanese: japaneseCms,
+  mandarin: mandarinCms,
+  pidgin: pidginCms,
+  yoruba: yorubaCms,
+  portuguese: portugueseCms,
+  swedish: swedishCms,
+  finnish: finnishCms,
+  igbo: igboCms,
+  hausa: hausaCms
+};
+
+const RAW_LANGUAGES = {
   spanish: {
     id: "spanish",
     name: "Spanish",
@@ -291,7 +322,179 @@ export const LANGUAGES = {
   }
 };
 
-export const LEADERBOARD_DATA = [
+/**
+ * Merges a base language definition with Decap CMS metadata and curriculum JSON.
+ * Preserves full curriculum banks while applying edits or newly added units, lessons,
+ * questions, flashcards, and culture vault items authored in Decap CMS.
+ */
+export function mergeLanguageWithCmsData(baseLang, metaOverride = null, cmsDoc = null) {
+  if (!baseLang) return null;
+
+  const mergedMeta = {
+    ...baseLang,
+    ...(metaOverride || {}),
+    ...(cmsDoc
+      ? {
+          name: cmsDoc.title || metaOverride?.name || baseLang.name,
+          nativeName: cmsDoc.nativeName || metaOverride?.nativeName || baseLang.nativeName,
+          flag: cmsDoc.flag || metaOverride?.flag || baseLang.flag,
+          greeting: cmsDoc.greeting || metaOverride?.greeting || baseLang.greeting,
+          motto: cmsDoc.motto || metaOverride?.motto || baseLang.motto,
+          description: cmsDoc.description || metaOverride?.description || baseLang.description
+        }
+      : {})
+  };
+
+  // 1. Merge Flashcards (update matching IDs, append new CMS flashcards)
+  let flashcards = [...(baseLang.flashcards || [])];
+  const cmsCards = cmsDoc?.customFlashcards || [];
+  if (cmsCards.length > 0) {
+    const cardMap = new Map(flashcards.map((c) => [c.id, c]));
+    const newCards = [];
+    for (const c of cmsCards) {
+      if (!c || (!c.front && !c.back)) continue;
+      if (c.id && cardMap.has(c.id)) {
+        cardMap.set(c.id, { ...cardMap.get(c.id), ...c });
+      } else {
+        newCards.push({
+          ...c,
+          id: c.id || `${baseLang.id}-cms-fc-${newCards.length + 1}`
+        });
+      }
+    }
+    flashcards = [...Array.from(cardMap.values()), ...newCards];
+  }
+
+  // 2. Merge Culture Vault
+  let cultureVault = baseLang.cultureVault;
+  const cmsCv = cmsDoc?.cultureVault;
+  if (cmsCv) {
+    if (Array.isArray(cultureVault)) {
+      const updatedArr = [...cultureVault];
+      if (cmsCv.proverbOfDay?.proverb && updatedArr.length > 0) {
+        updatedArr[0] = {
+          ...updatedArr[0],
+          proverb: cmsCv.proverbOfDay.proverb,
+          meaning: cmsCv.proverbOfDay.translation || updatedArr[0].meaning,
+          context: cmsCv.proverbOfDay.context || updatedArr[0].context
+        };
+      }
+      cultureVault = updatedArr;
+    } else if (cultureVault && typeof cultureVault === 'object') {
+      cultureVault = {
+        ...cultureVault,
+        proverbOfDay: cmsCv.proverbOfDay?.proverb
+          ? { ...cultureVault.proverbOfDay, ...cmsCv.proverbOfDay }
+          : cultureVault.proverbOfDay,
+        cultureTips:
+          Array.isArray(cmsCv.cultureTips) && cmsCv.cultureTips.length > 0
+            ? cmsCv.cultureTips
+            : cultureVault.cultureTips || [],
+        slangs:
+          Array.isArray(cmsCv.slangs) && cmsCv.slangs.length > 0
+            ? cmsCv.slangs
+            : cultureVault.slangs || []
+      };
+    }
+  }
+
+  // 3. Merge Units, Lessons, and Questions non-destructively
+  let units = [...(baseLang.units || [])];
+  const cmsUnits = cmsDoc?.customUnits || [];
+  if (cmsUnits.length > 0) {
+    const unitMap = new Map(units.map((u) => [u.id || u.unitId, u]));
+    const appendedUnits = [];
+
+    for (const cu of cmsUnits) {
+      if (!cu) continue;
+      const uKey = cu.id || cu.unitId;
+      if (uKey && unitMap.has(uKey)) {
+        const existingUnit = unitMap.get(uKey);
+        const lessonMap = new Map((existingUnit.lessons || []).map((l) => [l.id, l]));
+        const appendedLessons = [];
+
+        for (const cl of cu.lessons || []) {
+          if (!cl) continue;
+          if (cl.id && lessonMap.has(cl.id)) {
+            const existingLesson = lessonMap.get(cl.id);
+            const qMap = new Map((existingLesson.questions || []).map((q) => [q.id, q]));
+            const appendedQuestions = [];
+
+            for (const cq of cl.questions || []) {
+              if (!cq) continue;
+              if (cq.id && qMap.has(cq.id)) {
+                const origQ = qMap.get(cq.id);
+                qMap.set(cq.id, {
+                  ...origQ,
+                  ...cq,
+                  options: Array.isArray(cq.options) && cq.options.length > 0 ? cq.options : origQ.options
+                });
+              } else {
+                appendedQuestions.push({
+                  ...cq,
+                  id: cq.id || `${cl.id}-cms-q-${appendedQuestions.length + 1}`
+                });
+              }
+            }
+
+            lessonMap.set(cl.id, {
+              ...existingLesson,
+              title: cl.title || existingLesson.title,
+              description: cl.description || existingLesson.description,
+              xp: cl.xp ?? existingLesson.xp,
+              questions: [...Array.from(qMap.values()), ...appendedQuestions]
+            });
+          } else {
+            appendedLessons.push({
+              ...cl,
+              id: cl.id || `${uKey}-cms-l-${appendedLessons.length + 1}`,
+              questions: cl.questions || []
+            });
+          }
+        }
+
+        unitMap.set(uKey, {
+          ...existingUnit,
+          title: cu.title || existingUnit.title,
+          subtitle: cu.subtitle || existingUnit.subtitle,
+          level: cu.level || existingUnit.level,
+          icon: cu.icon || existingUnit.icon,
+          color: cu.color || existingUnit.color,
+          lessons: [...Array.from(lessonMap.values()), ...appendedLessons]
+        });
+      } else {
+        appendedUnits.push({
+          ...cu,
+          id: uKey || `${baseLang.id}-cms-unit-${appendedUnits.length + 1}`,
+          unitId: uKey || `${baseLang.id}-cms-unit-${appendedUnits.length + 1}`,
+          lessons: cu.lessons || []
+        });
+      }
+    }
+
+    units = [...Array.from(unitMap.values()), ...appendedUnits];
+  }
+
+  return {
+    ...mergedMeta,
+    flashcards,
+    cultureVault,
+    units
+  };
+}
+
+const metaById = Object.fromEntries(
+  (languagesMetaCms?.languages || []).map((item) => [item.id, item])
+);
+
+export const LANGUAGES = Object.fromEntries(
+  Object.entries(RAW_LANGUAGES).map(([id, baseLang]) => [
+    id,
+    mergeLanguageWithCmsData(baseLang, metaById[id], CMS_CURRICULA[id])
+  ])
+);
+
+export const LEADERBOARD_DATA = leaderboardCms?.entries || [
   { rank: 1, name: "Sofia Rodriguez", avatar: "💃", xp: 1940, streak: 26, language: "Spanish", tier: "Diamond" },
   { rank: 2, name: "Lucas Silva", avatar: "⚽", xp: 1780, streak: 22, language: "Portuguese", tier: "Diamond" },
   { rank: 3, name: "Chinedu Okafor", avatar: "🦅", xp: 1650, streak: 19, language: "Naija Pidgin", tier: "Diamond" },
@@ -305,4 +508,5 @@ export const LEADERBOARD_DATA = [
   { rank: 11, name: "Maximilian Weber", avatar: "🥨", xp: 1040, streak: 9, language: "German", tier: "Silver" },
   { rank: 12, name: "Li Wei", avatar: "🐉", xp: 950, streak: 8, language: "Mandarin Chinese", tier: "Silver" }
 ];
+
 

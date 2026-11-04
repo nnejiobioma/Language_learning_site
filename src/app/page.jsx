@@ -2,14 +2,15 @@ import Link from 'next/link';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import SubscribeButton from '../components/SubscribeButton';
 import { LANGUAGES } from '../data/languages';
+import siteSettings from '../data/cms/site_settings.json';
 
 export const metadata = {
-  title: 'FliksLingo — Learn 12 World Languages the Fun Way',
+  title: `${siteSettings.brandName || 'FliksLingo'} — Learn 12 World Languages the Fun Way`,
   description:
     'Learn Spanish, French, German, Japanese, Mandarin, Portuguese, Swedish, Finnish, Igbo, Hausa, Nigerian Pidgin and Yoruba with gamified lessons, audio pronunciation and culture insights.',
 };
 
-const FEATURES = [
+const FEATURES = siteSettings.featuresSection?.features || [
   { icon: '🎮', title: 'Gamified lessons', text: 'Earn XP, keep streaks alive and protect your hearts as you move through bite-sized units.' },
   { icon: '🔊', title: 'Hear it spoken', text: 'Native-style pronunciation for every phrase, so you learn to speak, not just read.' },
   { icon: '🎴', title: 'Smart flashcards', text: 'Flip through 3D cards with phonetics and example sentences, and track what you have mastered.' },
@@ -18,7 +19,7 @@ const FEATURES = [
   { icon: '🏆', title: 'Friendly competition', text: 'Climb the weekly leaderboard and see how you rank against other learners.' },
 ];
 
-const STEPS = [
+const STEPS = siteSettings.howItWorksSection?.steps || [
   { n: '1', title: 'Pick a language', text: 'Choose from 12 languages across Europe, Asia and Africa.' },
   { n: '2', title: 'Learn in minutes', text: 'Short lessons with audio, quizzes and instant feedback.' },
   { n: '3', title: 'Build the habit', text: 'Keep your daily streak, review flashcards and level up.' },
@@ -26,16 +27,40 @@ const STEPS = [
 
 export default function LandingPage() {
   const languages = Object.values(LANGUAGES);
+  const hero = siteSettings.hero || {};
+  const announcement = siteSettings.announcement || {};
 
   return (
     <div className="lp-root">
+      {announcement.enabled && announcement.text && (
+        <div
+          style={{
+            background: 'linear-gradient(90deg, #059669 0%, #10b981 100%)',
+            color: '#ffffff',
+            textAlign: 'center',
+            padding: '0.5rem 1rem',
+            fontSize: '0.85rem',
+            fontWeight: 600
+          }}
+        >
+          <span>{announcement.text} </span>
+          {announcement.linkUrl && (
+            <Link
+              href={announcement.linkUrl}
+              style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 800, marginLeft: 8 }}
+            >
+              {announcement.linkText || 'Learn more →'}
+            </Link>
+          )}
+        </div>
+      )}
       <header className="lp-nav">
         <div className="lp-container lp-nav-inner">
           <Link href="/" className="lp-brand" aria-label="FliksLingo home">
-            <img src="/images/mascot.jpg" alt="" className="lp-brand-img" />
+            <img src={hero.heroImage || '/images/mascot.jpg'} alt="" className="lp-brand-img" />
             <div className="lp-brand-text">
-              <span className="lp-brand-name">FliksLingo</span>
-              <span className="lp-brand-tagline">Master World Languages</span>
+              <span className="lp-brand-name">{siteSettings.brandName || 'FliksLingo'}</span>
+              <span className="lp-brand-tagline">{siteSettings.tagline || 'Master World Languages'}</span>
             </div>
           </Link>
           <nav className="lp-nav-links" aria-label="Page sections">
@@ -59,43 +84,51 @@ export default function LandingPage() {
         <section className="lp-hero">
           <div className="lp-container lp-hero-grid">
             <div className="lp-hero-copy">
-              <span className="lp-pill">🌍 12 languages · free to start</span>
+              <span className="lp-pill">{hero.pill || '🌍 12 languages · free to start'}</span>
               <h1 className="lp-h1">
-                Learn a new language, <span className="lp-highlight">the fun way.</span>
+                {hero.title || 'Learn a new language,'}{' '}
+                <span className="lp-highlight">{hero.highlight || 'the fun way.'}</span>
               </h1>
               <p className="lp-lead">
-                FliksLingo turns language learning into a daily habit with short gamified lessons,
-                spoken audio and real cultural context.
+                {hero.lead ||
+                  'FliksLingo turns language learning into a daily habit with short gamified lessons, spoken audio and real cultural context.'}
               </p>
               <div className="lp-cta-row">
-                <Link href="/signup" className="lp-btn lp-btn-primary" id="landing-hero-start">
-                  Create your free account
+                <Link href={hero.primaryCtaUrl || '/signup'} className="lp-btn lp-btn-primary" id="landing-hero-start">
+                  {hero.primaryCtaText || 'Create your free account'}
                 </Link>
-                <Link href="/login" className="lp-btn lp-btn-ghost">
-                  I already have an account
+                <Link href={hero.secondaryCtaUrl || '/login'} className="lp-btn lp-btn-ghost">
+                  {hero.secondaryCtaText || 'I already have an account'}
                 </Link>
               </div>
               <ul className="lp-stats" aria-label="FliksLingo at a glance">
-                <li><strong>12</strong><span>languages</span></li>
-                <li><strong>5</strong><span>quiz types</span></li>
-                <li><strong>Free</strong><span>to sign up</span></li>
+                {(hero.stats || [
+                  { value: '12', label: 'languages' },
+                  { value: '5', label: 'quiz types' },
+                  { value: 'Free', label: 'to sign up' }
+                ]).map((st, idx) => (
+                  <li key={idx}>
+                    <strong>{st.value}</strong>
+                    <span>{st.label}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className="lp-hero-visual" aria-hidden="true">
               <div className="lp-blob" />
-              <img src="/images/mascot.jpg" alt="" className="lp-hero-img" />
-              <div className="lp-float lp-float-a">🔥 7 day streak</div>
-              <div className="lp-float lp-float-b">⭐ +20 XP</div>
-              <div className="lp-float lp-float-c">¡Hola! · Bonjour · Sannu</div>
+              <img src={hero.heroImage || '/images/mascot.jpg'} alt="" className="lp-hero-img" />
+              <div className="lp-float lp-float-a">{hero.floatingBadgeA || '🔥 7 day streak'}</div>
+              <div className="lp-float lp-float-b">{hero.floatingBadgeB || '⭐ +20 XP'}</div>
+              <div className="lp-float lp-float-c">{hero.floatingBadgeC || '¡Hola! · Bonjour · Sannu'}</div>
             </div>
           </div>
         </section>
 
         <section id="languages" className="lp-section lp-section-tint">
           <div className="lp-container">
-            <h2 className="lp-h2">Choose your language</h2>
-            <p className="lp-sub">From global favourites to African languages you will not find everywhere.</p>
+            <h2 className="lp-h2">{siteSettings.languagesSection?.heading || 'Choose your language'}</h2>
+            <p className="lp-sub">{siteSettings.languagesSection?.subheading || 'From global favourites to African languages you will not find everywhere.'}</p>
             <div className="lp-lang-grid">
               {languages.map((lang) => (
                 <Link
@@ -192,6 +225,7 @@ export default function LandingPage() {
             <Link href="/contact" id="footer-contact-link">Contact Us</Link>
             <Link href="/terms" id="footer-terms-link">Terms of Use</Link>
             <Link href="/privacy" id="footer-privacy-link">Privacy Policy</Link>
+            <Link href="/admin" id="footer-cms-link">CMS Admin</Link>
             <Link href="/login">Log in</Link>
             <Link href="/signup">Sign up</Link>
           </div>

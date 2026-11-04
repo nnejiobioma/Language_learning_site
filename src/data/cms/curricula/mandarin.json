@@ -1,0 +1,289 @@
+{
+  "id": "mandarin",
+  "title": "Mandarin Chinese",
+  "nativeName": "中文 (Zhōngwén)",
+  "flag": "🇨🇳",
+  "greeting": "你好！你吃了吗？(Nǐ hǎo!)",
+  "motto": "The profound language of ancient dynasties, modern global trade, and over 1.1 billion speakers.",
+  "description": "Learn Mandarin Chinese structured with the official GF 0025-2021 standards (HSK 1-9 & HSKK oral exam) governed by the Ministry of Education (PRC) & CLEC, covering Syllables, Characters, Vocabulary, Grammar, and Cultural Pragmatics.",
+  "cultureVault": {
+    "proverbOfDay": {
+      "proverb": "千里之行，始于足下 (Qiān lǐ zhī xíng, shǐ yú zú xià)",
+      "translation": "A journey of a thousand miles begins with a single step.",
+      "context": "源自老子《道德经》第六十四章：'合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。' 勉励学习者哪怕面对博大精深的汉语汉字体系，只要坚持每日扎实积累，必能登堂入室。"
+    },
+    "cultureTips": [
+      {
+        "title": "面子与人情 (Face & Renqing: The Social Currency of Respect)",
+        "description": "在中华高语境社交网络中，'面子'（Mianzi）代表一个人的社会声望与尊严，'人情'（Renqing）代表互惠的情感纽带。在公共场合永远要给对方留面子（保面子），切忌直白驳斥让对方当众'丢面子'。人情如春雨润物，讲究'投桃报李、来日方长'，礼尚往来是人际互信的重要基石。",
+        "category": "General"
+      },
+      {
+        "title": "茶道礼仪与叩指礼 (Tea Culture: Pouring Order & Finger Tapping)",
+        "description": "在中国茶席上，主人沏茶奉茶遵循'酒满敬人，茶满欺人'的规矩：茶水通常只倒七分满，留下三分是人情。主人倒茶时，受茶客人通常会以食指和中指轻叩桌面（叩指礼），以微声表示崇高谢意（相传源于乾隆微服南巡侍卫以手叩地代跪拜的历史典故）。",
+        "category": "General"
+      },
+      {
+        "title": "中餐圆桌礼仪与座次规矩 (Chinese Dining: Facing the Door & Paying the Bill)",
+        "description": "中餐宴席多用圆桌，象征天圆地方与团圆圆满。正对餐厅包间大门的座位为'主座'（上座），通常安排给宴会主人或地位最尊贵的长辈主宾。用餐时待长辈动筷后晚辈方可进食；转动转盘时务必观察他人是否正在夹菜。结账时'争抢买单'是中国亲友间真诚热情、重视友情的典型社交文化。",
+        "category": "General"
+      },
+      {
+        "title": "传统节日与哲学民俗 (Traditional Festivals: Cultural Codes & Heritage)",
+        "description": "中国传统节日深深植根于二十四节气农耕文明与儒道天人合一哲学：春节除夕夜阖家团圆吃饺子守岁纳福；清明扫墓祭祖踏青缅怀慎终追远；端午赛龙舟挂艾草吃粽子纪念屈原爱国情怀；中秋赏月吃月饼祈愿'但愿人长久，千里共婵娟'。每个节日都是民族集体记忆与伦理价值的洗礼。",
+        "category": "General"
+      },
+      {
+        "title": "职场社交与名片礼仪 (Business Etiquette: Two-Handed Exchange & Hierarchy)",
+        "description": "在商务洽谈中交换名片时，务必双手递上，将名片文字正向朝向对方；接过对方名片时同样用双手承接，并花几秒钟认真注视研读，赞美其头衔职务，不可随手塞进裤兜或在上面涂画。在会议发言中注意聆听长者与领导讲话，提出不同意见时先予以肯定再委婉陈述。",
+        "category": "General"
+      },
+      {
+        "title": "谦逊之道与客套辞令 (The Art of Modesty: Where Where 哪里哪里 & Courtesy)",
+        "description": "中华传统倡导'满招损，谦受益'。当外国朋友由衷称赞中文流利或才华出众时，中国人通常习惯性谦虚回应'哪里哪里，您过奖了，还差得远呢'，这是优雅自谦的社交客气，而非虚伪否定。面对邀请送礼时的'三辞三让'也是一种客套缓冲，真诚坚持往往能促成圆满交往。",
+        "category": "General"
+      }
+    ],
+    "slangs": [
+      {
+        "term": "加油 (Jiāyóu!)",
+        "meaning": "Keep going! / Add oil! / Come on! (Universal Chinese encouragement)",
+        "example": "离考试还有最后一周，大家一起加油！(One week left, let's keep going together!)",
+        "category": "Colloquial"
+      },
+      {
+        "term": "给力 (Gěilì)",
+        "meaning": "Awesome / Impactful / Cool / Effective (literally: giving power)",
+        "example": "这个翻译功能太给力了，省了我很多时间！(This feature is so awesome, saved me tons of time!)",
+        "category": "Colloquial"
+      },
+      {
+        "term": "牛 / 太牛了 (Niú)",
+        "meaning": "Incredible / Badass / Super competent (literally: ox/bull)",
+        "example": "你第一次考HSK就拿了满分，太牛了！(Aced HSK on first try, you are incredible!)",
+        "category": "Colloquial"
+      },
+      {
+        "term": "内卷 / 卷 (Nèijuǎn)",
+        "meaning": "Involution / Hyper-competition without productive expansion",
+        "example": "现在各行各业都在卷技术创新。(Every industry is hyper-competing in tech innovation.)",
+        "category": "Colloquial"
+      },
+      {
+        "term": "躺平 (Tǎngpíng)",
+        "meaning": "Lying flat / Choosing simple peace over burnout rat race",
+        "example": "周末我就想在家里躺平看书休息。(On weekends I just want to lie flat and read peacefully.)",
+        "category": "Colloquial"
+      },
+      {
+        "term": "打卡 (Dǎkǎ)",
+        "meaning": "To clock in / Visit a must-see landmark / Complete daily streak",
+        "example": "今天来长城打卡，完成了童年的梦想。(Clocked in at the Great Wall today, dream achieved!)",
+        "category": "Colloquial"
+      }
+    ]
+  },
+  "customFlashcards": [
+    {
+      "id": "zh-fc-1",
+      "front": "你好 (Nǐ hǎo)",
+      "phonetic": "nee-how",
+      "back": "Hello / Hi",
+      "category": "Greetings",
+      "example": "你好，很高兴认识你！(Hello, nice to meet you!)"
+    },
+    {
+      "id": "zh-fc-2",
+      "front": "您好 (Nín hǎo)",
+      "phonetic": "neen-how",
+      "back": "Hello (Polite/Honorific)",
+      "category": "Greetings",
+      "example": "王老师，您好！(Hello, Teacher Wang!)"
+    },
+    {
+      "id": "zh-fc-3",
+      "front": "谢谢 (Xièxie)",
+      "phonetic": "shyeh-shyeh",
+      "back": "Thank you",
+      "category": "Courtesy",
+      "example": "非常谢谢你的帮助。(Thank you so much for your help.)"
+    },
+    {
+      "id": "zh-fc-4",
+      "front": "不客气 (Bú kèqi)",
+      "phonetic": "boo kuh-chee",
+      "back": "You're welcome",
+      "category": "Courtesy",
+      "example": "不客气，随时为你效劳。(You're welcome, at your service anytime.)"
+    },
+    {
+      "id": "zh-fc-5",
+      "front": "对不起 (Duìbuqǐ)",
+      "phonetic": "dway-boo-chee",
+      "back": "I am sorry",
+      "category": "Courtesy",
+      "example": "对不起，我今天迟到了。(Sorry, I'm late today.)"
+    },
+    {
+      "id": "zh-fc-6",
+      "front": "没关系 (Méi guānxi)",
+      "phonetic": "may gwan-shee",
+      "back": "It doesn't matter / That's okay",
+      "category": "Courtesy",
+      "example": "没关系，别放在心上。(That's okay, don't worry about it.)"
+    },
+    {
+      "id": "zh-fc-7",
+      "front": "再见 (Zàijiàn)",
+      "phonetic": "zeye-jyen",
+      "back": "Goodbye / See you again",
+      "category": "Farewell",
+      "example": "明天见，再见！(See you tomorrow, goodbye!)"
+    },
+    {
+      "id": "zh-fc-8",
+      "front": "请 (Qǐng)",
+      "phonetic": "cheeng",
+      "back": "Please / To invite",
+      "category": "Courtesy",
+      "example": "请进，请坐，请喝茶。(Please come in, sit down, and have tea.)"
+    }
+  ],
+  "customUnits": [
+    {
+      "id": "zh-unit-1",
+      "unitNumber": 1,
+      "level": "GF 0025-2021 初等一级 / HSK 1",
+      "title": "Unit 1: Pinyin Foundations, Greetings & Personal Profile (拼音入门、问候与个人信息)",
+      "subtitle": "汉语拼音声母韵母与四声声调、三声变调规则、基础问候（你好/您好）、数字时间与基础主谓宾句型。",
+      "icon": "Sparkles",
+      "color": "#dc2626",
+      "lessons": [
+        {
+          "id": "zh-u1-l1",
+          "title": "Lesson 1.1: 汉语拼音声调与礼貌问候 (Pinyin Tones & Polite Greetings)",
+          "description": "掌握汉语四个基本声调、轻声、三声变调规律以及'你好'、'您好'、'谢谢'等日常交际用语。",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "zh-u1-l1-q1",
+              "type": "multiple_choice",
+              "prompt": "在普通话语音规则中，两个第三声音节相连时（如'你好 nǐ hǎo'），第一个第三声应该如何变调？",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "变为第二声（阳平，升调），读作 'ní hǎo'",
+                "变为第一声（阴平，高平调），读作 'nī hǎo'",
+                "变为第四声（去声，降调），读作 'nì hǎo'",
+                "保持不变，依然读完整的第三声"
+              ],
+              "correctAnswer": "变为第二声（阳平，升调），读作 'ní hǎo'",
+              "explanation": "根据普通话三声变调规律（3-3变调）：两个第三声音节连续出现时，前一个音节变为第二声（升调），但拼写通常保持原调标。因此'你好'实际读作 'ní hǎo'。"
+            },
+            {
+              "id": "zh-u1-l1-q2",
+              "type": "fill_blank",
+              "prompt": "老师，早上好！___ 辛苦了！",
+              "phrase": "",
+              "sentence": "老师，早上好！___ 辛苦了！",
+              "missingWord": "您",
+              "options": [
+                "您",
+                "你",
+                "他",
+                "谁"
+              ],
+              "correctAnswer": "您",
+              "explanation": "称呼长辈、老师或上级时，应使用尊称代词'您'（nín），以表达崇敬与客气礼貌。"
+            },
+            {
+              "id": "zh-u1-l1-q3",
+              "type": "scramble",
+              "prompt": "连词成句：将词语排列成'很高兴认识你'的标准句子：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "很高兴 认识 你。",
+              "explanation": "'很高兴认识你' (Hěn gāoxìng rènshi nǐ) 是初次结识朋友时最标准的礼貌表达。"
+            },
+            {
+              "id": "zh-u1-l1-q4",
+              "type": "matching",
+              "prompt": "将日常礼貌用语与对应的汉语拼音和释义进行匹配：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        },
+        {
+          "id": "zh-u1-l2",
+          "title": "Lesson 1.2: 数字、日期与时间表达 (Numbers, Dates & Time Expressions)",
+          "description": "掌握汉字基数词1–100、大写数字认识、年月日、星期表达以及钟点几点几分的表达规则。",
+          "xp": 25,
+          "questions": [
+            {
+              "id": "zh-u1-l2-q1",
+              "type": "multiple_choice",
+              "prompt": "在中文中，表达日期时间的顺序原则与西方语言有何核心不同？",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [
+                "中文遵循'从大到小'的层级结构：年 → 月 → 日/号 → 星期 → 上午/下午 → 点 → 分",
+                "中文遵循'从小到大'的层级结构：分 → 点 → 日 → 月 → 年",
+                "中文必须将星期放在年份之前",
+                "中文没有固定的时间词排列顺序"
+              ],
+              "correctAnswer": "中文遵循'从大到小'的层级结构：年 → 月 → 日/号 → 星期 → 上午/下午 → 点 → 分",
+              "explanation": "汉语的时空认知思维遵循'整体到局部、从大到小'的层级原则：例如'2026年10月19日星期一上午九点三十分'。"
+            },
+            {
+              "id": "zh-u1-l2-q2",
+              "type": "fill_blank",
+              "prompt": "请问现在是 ___ 点三刻？也就是八点四十五分。",
+              "phrase": "",
+              "sentence": "请问现在是 ___ 点三刻？也就是八点四十五分。",
+              "missingWord": "八",
+              "options": [
+                "八",
+                "十",
+                "七",
+                "六"
+              ],
+              "correctAnswer": "八",
+              "explanation": "中文中'一刻'代表15分钟，'三刻'代表45分钟。'八点三刻'即8:45。"
+            },
+            {
+              "id": "zh-u1-l2-q3",
+              "type": "scramble",
+              "prompt": "连词成句：将词块组合为'今天星期三，明天是我的生日'：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "今天星期三， 明天是 我的生日。",
+              "explanation": "中文表述中'今天星期...'属于名词谓语句，语序自然流畅。"
+            },
+            {
+              "id": "zh-u1-l2-q4",
+              "type": "matching",
+              "prompt": "将下列中文时间表达与对应的英文钟点进行匹配：",
+              "phrase": "",
+              "sentence": "",
+              "missingWord": "",
+              "options": [],
+              "correctAnswer": "",
+              "explanation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

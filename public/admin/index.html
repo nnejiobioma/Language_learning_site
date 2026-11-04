@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>FliksLingo — Decap CMS Content Studio</title>
+  <link rel="icon" href="/images/mascot.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Netlify Identity Widget for Git Gateway Auth in Production -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --fliks-emerald: #10b981;
+      --fliks-dark: #0f172a;
+      --fliks-slate: #1e293b;
+    }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+    }
+    /* Top Quick-Nav Bar for FliksLingo Admins */
+    .fliks-decap-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 20px;
+      background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      font-size: 13px;
+      border-bottom: 2px solid #10b981;
+      position: sticky;
+      top: 0;
+      z-index: 99999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .fliks-decap-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .fliks-decap-brand img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #10b981;
+    }
+    .fliks-decap-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .fliks-decap-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .fliks-decap-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.15s ease;
+    }
+    .fliks-decap-links a:hover {
+      background: #10b981;
+      color: #0f172a;
+      border-color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div class="fliks-decap-topbar">
+    <a href="/" class="fliks-decap-brand">
+      <img src="/images/mascot.jpg" alt="FliksLingo" />
+      <span>FliksLingo</span>
+      <span class="fliks-decap-badge">DECAP CMS STUDIO</span>
+    </a>
+    <div class="fliks-decap-links">
+      <a href="/admin">⚡ Quick Override Portal</a>
+      <a href="/learn">🎓 View Learner App</a>
+      <a href="/">🏠 Live Home Page</a>
+    </div>
+  </div>
+
+  <!-- Decap CMS Core Bundle -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Custom Preview Styling inside Decap CMS Preview Pane
+    if (window.CMS && window.createClass && window.h) {
+      var h = window.h;
+
+      CMS.registerPreviewStyle(
+        "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      );
+
+      // Rich Preview Template for Language Curricula & Culture Vaults
+      var LanguageCurriculumPreview = createClass({
+        render: function() {
+          var entry = this.props.entry;
+          var data = entry.getIn(['data']).toJS();
+          var cv = data.cultureVault || {};
+          var proverb = cv.proverbOfDay || {};
+          var tips = cv.cultureTips || [];
+          var slangs = cv.slangs || [];
+          var flashcards = data.customFlashcards || [];
+          var units = data.customUnits || [];
+
+          return h('div', {
+            style: {
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              padding: '24px',
+              background: '#0f172a',
+              color: '#f8fafc',
+              borderRadius: '16px',
+              minHeight: '100vh'
+            }
+          }, [
+            h('div', {
+              style: {
+                background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                border: '1px solid rgba(16, 185, 129, 0.35)',
+                borderRadius: '16px',
+                padding: '20px',
+                marginBottom: '20px'
+              }
+            }, [
+              h('div', { style: { fontSize: '32px', marginBottom: '6px' } }, (data.flag || '🌍') + ' ' + (data.title || '')),
+              h('div', { style: { color: '#34d399', fontWeight: 700, fontSize: '15px', marginBottom: '8px' } }, (data.nativeName || '') + ' · "' + (data.greeting || '') + '"'),
+              h('p', { style: { color: '#cbd5e1', fontSize: '14px', margin: '0 0 8px 0' } }, data.motto || ''),
+              h('p', { style: { color: '#94a3b8', fontSize: '13px', margin: 0 } }, data.description || '')
+            ]),
+
+            proverb.proverb ? h('div', {
+              style: {
+                background: '#1e293b',
+                borderLeft: '4px solid #f59e0b',
+                padding: '16px',
+                borderRadius: '12px',
+                marginBottom: '20px'
+              }
+            }, [
+              h('div', { style: { fontSize: '11px', textTransform: 'uppercase', color: '#fbbf24', fontWeight: 800 } }, 'Proverb of the Day'),
+              h('h3', { style: { margin: '6px 0', color: '#ffffff' } }, '“' + proverb.proverb + '”'),
+              h('p', { style: { margin: '4px 0', color: '#e2e8f0', fontSize: '14px' } }, proverb.translation || ''),
+              h('p', { style: { margin: '4px 0 0', color: '#94a3b8', fontSize: '12px' } }, proverb.context || '')
+            ]) : null,
+
+            h('h4', { style: { color: '#34d399', margin: '18px 0 10px' } }, 'Curriculum Units (' + units.length + ')'),
+            h('div', { style: { display: 'grid', gap: '12px' } },
+              units.map(function(u, idx) {
+                return h('div', {
+                  key: idx,
+                  style: { background: '#1e293b', padding: '14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }
+                }, [
+                  h('div', { style: { fontWeight: 700, color: '#f8fafc' } }, u.title || 'Unit'),
+                  h('div', { style: { fontSize: '12px', color: '#94a3b8', marginBottom: '8px' } }, u.subtitle || ''),
+                  h('div', { style: { fontSize: '12px', color: '#38bdf8' } }, ((u.lessons || []).length) + ' Lesson(s) configured')
+                ]);
+              })
+            ),
+
+            h('h4', { style: { color: '#34d399', margin: '18px 0 10px' } }, 'Flashcards (' + flashcards.length + ')'),
+            h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '10px' } },
+              flashcards.map(function(fc, idx) {
+                return h('div', {
+                  key: idx,
+                  style: { background: '#1e293b', padding: '12px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }
+                }, [
+                  h('div', { style: { fontWeight: 700, color: '#ffffff' } }, fc.front || ''),
+                  h('div', { style: { fontSize: '12px', color: '#34d399', marginTop: '4px' } }, fc.back || ''),
+                  fc.phonetic ? h('div', { style: { fontSize: '11px', color: '#94a3b8', marginTop: '2px' } }, '🗣 ' + fc.phonetic) : null
+                ]);
+              })
+            ),
+
+            h('h4', { style: { color: '#34d399', margin: '18px 0 10px' } }, 'Cultural Tips (' + tips.length + ') & Slangs (' + slangs.length + ')')
+          ]);
+        }
+      });
+
+      CMS.registerPreviewTemplate('curricula', LanguageCurriculumPreview);
+    }
+  </script>
+</body>
+</html>
+
