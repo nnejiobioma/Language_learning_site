@@ -23,12 +23,8 @@ import {
   CloudCheck,
   CloudOff,
   Mail,
-  Info,
-  ShieldAlert,
-  Sliders,
-  Edit3
+  Info
 } from 'lucide-react';
-import { useAdminContent } from '../context/AdminContentContext';
 
 export default function Header() {
   const { 
@@ -46,7 +42,6 @@ export default function Header() {
 
   const router = useRouter();
   const { user, profile, isFirebaseConfigured, logout } = useAuth();
-  const { isAdmin, adminEditMode, toggleAdminEditMode } = useAdminContent();
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const langRef = useRef(null);
@@ -233,19 +228,6 @@ export default function Header() {
           {/* Theme Switcher (Light / Dark / System) */}
           <ThemeSwitcher />
 
-          {/* Admin CMS Access Button */}
-          {isAdmin && (
-            <button
-              className={`stat-chip admin-header-chip ${adminEditMode ? 'active' : ''}`}
-              onClick={() => router.push('/admin')}
-              title="Admin CMS Portal - Edit Site Content"
-              id="header-admin-cms-btn"
-            >
-              <Sliders size={16} className="admin-chip-icon" />
-              <span className="stat-value admin-chip-text">CMS</span>
-            </button>
-          )}
-
           {/* User Account / Profile */}
           <div className="user-profile-wrapper" ref={userRef}>
             <button 
@@ -269,11 +251,6 @@ export default function Header() {
                 <div className="user-card-header">
                   <p className="card-name">{profile?.displayName || user?.displayName || 'Learner'}</p>
                   <p className="card-email">{user?.email || 'Signed in'}</p>
-                  {isAdmin && (
-                    <div className="admin-status-badge">
-                      <span>👑 Site Administrator</span>
-                    </div>
-                  )}
                   <div className="cloud-status-badge">
                     {isFirebaseConfigured ? (
                       <span className="cloud-connected">🟢 Progress synced</span>
@@ -282,34 +259,6 @@ export default function Header() {
                     )}
                   </div>
                 </div>
-
-                {isAdmin && (
-                  <div className="admin-dropdown-section" style={{ padding: '6px 0', borderBottom: '1px solid var(--border-color, #e2e8f0)', marginBottom: 8 }}>
-                    <button 
-                      className="dropdown-signout-btn admin-link-btn"
-                      style={{ marginBottom: 6, fontWeight: 700, color: '#0284c7' }}
-                      onClick={() => {
-                        setUserDropdownOpen(false);
-                        router.push('/admin');
-                      }}
-                      id="dropdown-admin-cms-btn"
-                    >
-                      <Sliders size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-                      Manage Site Content (CMS)
-                    </button>
-                    <button 
-                      className="dropdown-signout-btn"
-                      style={{ marginBottom: 4, fontSize: '0.82rem' }}
-                      onClick={() => {
-                        toggleAdminEditMode();
-                      }}
-                      id="dropdown-toggle-edit-mode-btn"
-                    >
-                      <Edit3 size={14} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-                      {adminEditMode ? 'Disable Inline Edit' : 'Enable Inline Edit Mode'}
-                    </button>
-                  </div>
-                )}
 
                 <button 
                   className="dropdown-signout-btn"

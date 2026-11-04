@@ -5,7 +5,6 @@ import path from 'path';
 export const dynamic = 'force-dynamic';
 
 const CMS_DIR = path.join(process.cwd(), 'src', 'data', 'cms');
-const OVERRIDES_FILE = path.join(process.cwd(), 'src', 'data', 'content_overrides.json');
 
 function readJsonSafe(filePath, fallback = null) {
   try {
@@ -24,7 +23,6 @@ export async function GET() {
     const aboutPage = readJsonSafe(path.join(CMS_DIR, 'about.json'), {});
     const leaderboard = readJsonSafe(path.join(CMS_DIR, 'leaderboard.json'), { entries: [] });
     const languagesMeta = readJsonSafe(path.join(CMS_DIR, 'languages_meta.json'), { languages: [] });
-    const overrides = readJsonSafe(OVERRIDES_FILE, {});
 
     const curriculaDir = path.join(CMS_DIR, 'curricula');
     const curricula = {};
@@ -47,8 +45,7 @@ export async function GET() {
       aboutPage,
       leaderboard: leaderboard.entries || [],
       languagesMeta: languagesMeta.languages || [],
-      curricula,
-      overrides
+      curricula
     });
   } catch (err) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });

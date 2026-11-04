@@ -27,7 +27,6 @@ import {
   getRememberedLogin, 
   getSavedLanguage 
 } from '../lib/cookies';
-import { isUserAdmin } from '../lib/admin';
 
 const AuthContext = createContext(null);
 
@@ -83,11 +82,10 @@ export function AuthProvider({ children }) {
               (snap) => {
                 if (snap.exists()) {
                   const snapData = snap.data();
-                  const userIsAdmin = isUserAdmin(fbUser.email);
                   setProfile({ 
                     ...DEFAULT_PROFILE, 
                     ...snapData, 
-                    role: userIsAdmin ? 'admin' : (snapData.role || 'student') 
+                    role: snapData.role || 'student'
                   });
                 }
               },
@@ -114,10 +112,9 @@ export function AuthProvider({ children }) {
         setUser(savedUser);
         const userProfileKey = `lingo_profile_${savedUser.uid}`;
         const savedProfile = localStorage.getItem(userProfileKey) || localStorage.getItem(DEMO_PROFILE_KEY);
-        const userIsAdmin = isUserAdmin(savedUser.email);
         setProfile(savedProfile 
-          ? { ...DEFAULT_PROFILE, ...JSON.parse(savedProfile), ...(userIsAdmin ? { role: 'admin' } : {}) } 
-          : { ...DEFAULT_PROFILE, ...(userIsAdmin ? { role: 'admin' } : {}) }
+          ? { ...DEFAULT_PROFILE, ...JSON.parse(savedProfile) } 
+          : { ...DEFAULT_PROFILE }
         );
       }
     } catch {
@@ -129,13 +126,12 @@ export function AuthProvider({ children }) {
   const loadUserProfile = async (uid, defaultName, email) => {
     if (!db) return;
     const name = pendingNameRef.current || defaultName || (email ? email.split('@')[0] : 'Learner');
-    const userIsAdmin = isUserAdmin(email || user?.email);
     try {
       const userRef = doc(db, 'users', uid);
       const snap = await getDoc(userRef);
       if (snap.exists()) {
         const data = snap.data();
-        const role = userIsAdmin ? 'admin' : (data.role || 'student');
+        const role = data.role || 'student';
         setProfile({ ...DEFAULT_PROFILE, ...data, role });
         try {
           localStorage.setItem(`lingo_profile_${uid}`, JSON.stringify({ ...DEFAULT_PROFILE, ...data, role }));
@@ -152,7 +148,7 @@ export function AuthProvider({ children }) {
           ...(cached || {}),
           displayName: cached?.displayName || name,
           email: email || null,
-          role: userIsAdmin ? 'admin' : (cached?.role || 'student'),
+          role: cached?.role || 'student',
           acceptedTerms: true,
           termsAcceptedAt: new Date().toISOString(),
           acceptedPrivacy: true,
@@ -172,7 +168,7 @@ export function AuthProvider({ children }) {
         const cachedStr = localStorage.getItem(`lingo_profile_${uid}`);
         if (cachedStr) cached = JSON.parse(cachedStr);
       } catch {}
-      setProfile(cached ? { ...DEFAULT_PROFILE, ...cached, ...(userIsAdmin ? { role: 'admin' } : {}) } : { ...DEFAULT_PROFILE, displayName: name, role: userIsAdmin ? 'admin' : 'student' });
+      setProfile(cached ? { ...DEFAULT_PROFILE, ...cached } : { ...DEFAULT_PROFILE, displayName: name, role: 'student' });
     } finally {
       pendingNameRef.current = null;
     }
@@ -212,14 +208,13 @@ export function AuthProvider({ children }) {
     localStorage.setItem(DEMO_USER_KEY, JSON.stringify(demoUser));
     const userProfileKey = `lingo_profile_${demoUser.uid}`;
     const savedProfile = localStorage.getItem(userProfileKey) || localStorage.getItem(DEMO_PROFILE_KEY);
-    const userIsAdmin = isUserAdmin(demoUser.email);
     const initial = savedProfile
-      ? { ...DEFAULT_PROFILE, ...JSON.parse(savedProfile), ...(userIsAdmin ? { role: 'admin' } : {}) }
+      ? { ...DEFAULT_PROFILE, ...JSON.parse(savedProfile) }
       : { 
           ...DEFAULT_PROFILE, 
           displayName: demoUser.displayName, 
           email: demoUser.email,
-          role: userIsAdmin ? 'admin' : 'student',
+          role: 'student',
           acceptedTerms: true,
           termsAcceptedAt: new Date().toISOString(),
           acceptedPrivacy: true,
@@ -316,7 +311,6 @@ export function AuthProvider({ children }) {
       profile,
       loading,
       isAuthenticated: Boolean(user),
-      isAdmin: isUserAdmin(user?.email || profile?.email),
       isFirebaseConfigured,
       saveProfileData,
       loginWithGoogle,

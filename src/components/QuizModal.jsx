@@ -13,11 +13,8 @@ import {
   Sparkles, 
   ArrowRight, 
   RotateCcw,
-  Award,
-  Edit3
+  Award
 } from 'lucide-react';
-import { useAdminContent } from '../context/AdminContentContext';
-import InlineEditableText from './InlineEditableText';
 
 // Helper to safely get native/foreign term from a pair
 function getPairNative(p) {
@@ -75,8 +72,6 @@ export default function QuizModal() {
     currentLanguage
   } = useGame();
 
-  const { isAdmin, openQuickEdit, overrides, updateQuestion } = useAdminContent();
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -95,12 +90,7 @@ export default function QuizModal() {
   const [hadReview, setHadReview] = useState(false);
 
   const questions = shuffledQuestions.length > 0 ? shuffledQuestions : (activeLesson?.questions || []);
-  const rawQ = questions[currentIndex];
-  const currentQ = useMemo(() => {
-    if (!rawQ) return null;
-    const qOverride = overrides?.questions?.[rawQ.id] || {};
-    return { ...rawQ, ...qOverride };
-  }, [rawQ, overrides?.questions]);
+  const currentQ = questions[currentIndex] || null;
 
   // Guaranteed deranged shuffle of pairs for matching question
   const shuffledEnglishPairs = useMemo(() => {
@@ -299,19 +289,6 @@ export default function QuizModal() {
             <Heart size={20} className="heart-fill-icon" />
             <span>{hearts}</span>
           </div>
-
-          {/* Admin Edit Current Question Button */}
-          {isAdmin && currentQ && !isFinished && (
-            <button
-              className="admin-quiz-edit-btn"
-              onClick={() => openQuickEdit(currentQ, 'question', { langId: currentLanguage, lessonId: activeLesson?.id })}
-              title="Admin: Edit this question on the fly"
-              id="admin-quiz-edit-btn"
-            >
-              <Edit3 size={14} />
-              <span>Edit Question</span>
-            </button>
-          )}
         </div>
 
         {/* Finished Screen */}
@@ -382,14 +359,7 @@ export default function QuizModal() {
 
             {/* Question prompt header */}
             <div className="question-prompt-header">
-              <InlineEditableText
-                value={currentQ.prompt}
-                tagName="h2"
-                className="q-prompt-text"
-                multiline={true}
-                fieldLabel="Question Prompt"
-                onSave={(newPrompt) => updateQuestion(currentQ.id, { prompt: newPrompt })}
-              />
+              <h2 className="q-prompt-text">{currentQ.prompt}</h2>
 
               {currentQ.type === 'audio_listen' && (
                 <div className="audio-prompt-box">
@@ -418,21 +388,7 @@ export default function QuizModal() {
                       disabled={feedbackStatus !== null}
                     >
                       <span className="option-index">{idx + 1}</span>
-                      <InlineEditableText
-                        value={opt}
-                        tagName="span"
-                        className="option-text"
-                        fieldLabel={`Option ${idx + 1}`}
-                        onSave={(newOpt) => {
-                          const newOptions = [...currentQ.options];
-                          newOptions[idx] = newOpt;
-                          const wasCorrect = currentQ.correctAnswer === opt;
-                          updateQuestion(currentQ.id, {
-                            options: newOptions,
-                            ...(wasCorrect ? { correctAnswer: newOpt } : {})
-                          });
-                        }}
-                      />
+                      <span className="option-text">{opt}</span>
                     </button>
                   ))}
                 </div>
@@ -566,14 +522,7 @@ export default function QuizModal() {
                   <div className="feedback-text">
                     <strong>{isReviewPhase ? 'Great comeback! You mastered it!' : 'Excellent! Correct answer!'}</strong>
                     {currentQ.explanation && (
-                      <InlineEditableText
-                        value={currentQ.explanation}
-                        tagName="p"
-                        className="explanation-text"
-                        multiline={true}
-                        fieldLabel="Explanation"
-                        onSave={(newExp) => updateQuestion(currentQ.id, { explanation: newExp })}
-                      />
+                      <p className="explanation-text">{currentQ.explanation}</p>
                     )}
                   </div>
                 </div>
@@ -590,14 +539,7 @@ export default function QuizModal() {
                       </p>
                     )}
                     {currentQ.explanation && (
-                      <InlineEditableText
-                        value={currentQ.explanation}
-                        tagName="p"
-                        className="explanation-text"
-                        multiline={true}
-                        fieldLabel="Explanation"
-                        onSave={(newExp) => updateQuestion(currentQ.id, { explanation: newExp })}
-                      />
+                      <p className="explanation-text">{currentQ.explanation}</p>
                     )}
                   </div>
                 </div>

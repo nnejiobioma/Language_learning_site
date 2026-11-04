@@ -5,8 +5,7 @@ import Link from 'next/link';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import SubscribeButton from '../../components/SubscribeButton';
 import { LANGUAGES } from '../../data/languages';
-import aboutDefault from '../../data/cms/about.json';
-import { useAdminContent } from '../../context/AdminContentContext';
+import aboutData from '../../data/cms/about.json';
 import { 
   Globe2, 
   Sparkles, 
@@ -36,9 +35,7 @@ const PILLAR_ICONS = {
 
 export default function AboutUsPage() {
   const languagesList = Object.values(LANGUAGES);
-  const adminCtx = useAdminContent();
-  const aboutData = adminCtx?.aboutPage || aboutDefault;
-  const PILLARS = (aboutData.pillars || aboutDefault.pillars || []).map((p) => ({
+  const PILLARS = (aboutData.pillars || []).map((p) => ({
     ...p,
     icon: typeof p.icon === 'string' ? (PILLAR_ICONS[p.icon] || <Sparkles size={26} />) : p.icon
   }));

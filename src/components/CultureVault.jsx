@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { LANGUAGES } from '../data/languages';
-import { useAdminContent } from '../context/AdminContentContext';
-import InlineEditableText from './InlineEditableText';
 import { soundEngine } from '../lib/audio';
 import { 
   Sparkles, 
@@ -22,8 +20,7 @@ import {
   Coffee,
   Building,
   Check,
-  FolderOpen,
-  Edit3
+  FolderOpen
 } from 'lucide-react';
 
 // Helper icon selector based on subsection name
@@ -61,8 +58,7 @@ function getSubSectionIcon(categoryName) {
 
 export default function CultureVault() {
   const { currentLanguage } = useGame();
-  const { getLanguageData, isAdmin, openQuickEdit, updateCulture } = useAdminContent();
-  const langData = (getLanguageData ? getLanguageData(currentLanguage) : null) || LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
+  const langData = LANGUAGES[currentLanguage] || LANGUAGES.pidgin;
   const vault = langData.cultureVault;
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -181,32 +177,12 @@ export default function CultureVault() {
             <Sparkles size={16} className="sparkle-gold" />
             <span>Proverb of the Day</span>
           </div>
-          <InlineEditableText
-            value={vault.proverbOfDay.proverb}
-            tagName="h3"
-            className="proverb-highlight-text"
-            multiline={true}
-            fieldLabel="Proverb"
-            onSave={(newVal) => updateCulture('proverbOfDay', { proverb: newVal })}
-          />
+          <h3 className="proverb-highlight-text">{vault.proverbOfDay.proverb}</h3>
           <p className="proverb-trans">
-            <strong>Translation:</strong>{' '}
-            <InlineEditableText
-              value={vault.proverbOfDay.translation}
-              tagName="span"
-              fieldLabel="Proverb Translation"
-              onSave={(newVal) => updateCulture('proverbOfDay', { translation: newVal })}
-            />
+            <strong>Translation:</strong> {vault.proverbOfDay.translation}
           </p>
           <p className="proverb-context">
-            <strong>Cultural Context:</strong>{' '}
-            <InlineEditableText
-              value={vault.proverbOfDay.context}
-              tagName="span"
-              multiline={true}
-              fieldLabel="Cultural Context"
-              onSave={(newVal) => updateCulture('proverbOfDay', { context: newVal })}
-            />
+            <strong>Cultural Context:</strong> {vault.proverbOfDay.context}
           </p>
           <button 
             className="speak-proverb-btn"
@@ -215,18 +191,6 @@ export default function CultureVault() {
             <Volume2 size={18} />
             <span>Hear Native Tone</span>
           </button>
-
-          {isAdmin && (
-            <button
-              className="admin-inline-btn"
-              style={{ marginTop: 8 }}
-              onClick={() => openQuickEdit({ ...vault.proverbOfDay, id: 'proverbOfDay' }, 'culture', { langId: currentLanguage, section: 'proverbOfDay' })}
-              title="Admin: Edit Proverb of the Day"
-            >
-              <Edit3 size={13} />
-              <span>Edit Proverb</span>
-            </button>
-          )}
         </div>
       </div>
 
@@ -298,38 +262,10 @@ export default function CultureVault() {
                       <div key={tip.originalIndex} className="tip-card">
                         <div className="tip-header">
                           <span className="tip-number">{(tip.originalIndex + 1).toString().padStart(2, '0')}</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            {isAdmin && (
-                              <button
-                                className="admin-inline-btn"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  openQuickEdit({ ...tip, id: tip.title || `tip-${tip.originalIndex}` }, 'culture', { langId: currentLanguage, type: 'tip' });
-                                }}
-                                title="Admin: Edit this cultural guideline"
-                              >
-                                <Edit3 size={11} />
-                                <span>Edit</span>
-                              </button>
-                            )}
-                            <Lightbulb size={20} className="tip-bulb" />
-                          </div>
+                          <Lightbulb size={20} className="tip-bulb" />
                         </div>
-                        <InlineEditableText
-                          value={tip.title}
-                          tagName="h5"
-                          className="tip-title"
-                          fieldLabel="Guideline Title"
-                          onSave={(newVal) => updateCulture(tip.title || `tip-${tip.originalIndex}`, { title: newVal })}
-                        />
-                        <InlineEditableText
-                          value={tip.description}
-                          tagName="p"
-                          className="tip-desc"
-                          multiline={true}
-                          fieldLabel="Guideline Description"
-                          onSave={(newVal) => updateCulture(tip.title || `tip-${tip.originalIndex}`, { description: newVal })}
-                        />
+                        <h5 className="tip-title">{tip.title}</h5>
+                        <p className="tip-desc">{tip.description}</p>
                       </div>
                     ))}
                   </div>
@@ -427,13 +363,7 @@ export default function CultureVault() {
                         <div key={slang.originalIndex} className="slang-card">
                           <div className="slang-card-top">
                             <div className="term-group">
-                              <InlineEditableText
-                                value={slang.term}
-                                tagName="span"
-                                className="slang-term"
-                                fieldLabel="Slang Term"
-                                onSave={(newVal) => updateCulture(slang.term || `slang-${slang.originalIndex}`, { term: newVal })}
-                              />
+                              <span className="slang-term">{slang.term}</span>
                               <button 
                                 className="mini-speak-btn"
                                 onClick={() => handleSpeak(slang.term)}
@@ -443,40 +373,13 @@ export default function CultureVault() {
                                 <Volume2 size={16} />
                               </button>
                             </div>
-                            {isAdmin && (
-                              <button
-                                className="admin-inline-btn"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  openQuickEdit({ ...slang, id: slang.term || `slang-${slang.originalIndex}` }, 'culture', { langId: currentLanguage, type: 'slang' });
-                                }}
-                                title="Admin: Edit this slang phrase"
-                              >
-                                <Edit3 size={11} />
-                                <span>Edit</span>
-                              </button>
-                            )}
                           </div>
 
-                          <InlineEditableText
-                            value={slang.meaning}
-                            tagName="p"
-                            className="slang-meaning"
-                            multiline={true}
-                            fieldLabel="Meaning"
-                            onSave={(newVal) => updateCulture(slang.term || `slang-${slang.originalIndex}`, { meaning: newVal })}
-                          />
+                          <p className="slang-meaning">{slang.meaning}</p>
 
                           <div className="slang-example-bubble">
                             <span className="bubble-label">Usage:</span>
-                            <InlineEditableText
-                              value={slang.example}
-                              tagName="p"
-                              className="bubble-example"
-                              multiline={true}
-                              fieldLabel="Usage Example"
-                              onSave={(newVal) => updateCulture(slang.term || `slang-${slang.originalIndex}`, { example: newVal })}
-                            />
+                            <p className="bubble-example">{slang.example}</p>
                           </div>
                         </div>
                       ))}
