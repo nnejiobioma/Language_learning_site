@@ -107,29 +107,29 @@ export default function AboutUsPage() {
         <div className="about-container">
           <div className="about-story-grid">
             <div className="story-copy">
-              <h2>Why We Built FliksLingo</h2>
+              <h2>{aboutData.story?.heading || 'Why We Built FliksLingo'}</h2>
               <p className="story-lead">
-                We believe that learning a new language is the most powerful way to build empathy, expand horizons, and discover new cultures.
+                {aboutData.story?.lead || 'We believe that learning a new language is the most powerful way to build empathy, expand horizons, and discover new cultures.'}
               </p>
               <p className="story-p">
-                Most traditional language apps have two major flaws: they force you through tedious mechanical grammar drills that don’t reflect real everyday speech, and they routinely ignore African and regional heritage languages that millions of people want and need to learn.
+                {aboutData.story?.paragraph1 || 'Most traditional language apps have two major flaws: they force you through tedious mechanical grammar drills that don’t reflect real everyday speech, and they routinely ignore African and regional heritage languages that millions of people want and need to learn.'}
               </p>
               <p className="story-p">
-                FliksLingo was created to break those boundaries. We paired modern gamification—streaks, XP, and multi-format quizzes—with native pronunciation audio, cultural proverbs, street slang, and Computer-Based Testing. Whether you are learning Spanish for travel, Mandarin for business, Japanese for anime, or Yoruba to connect with ancestral heritage, FliksLingo gives you the tools to succeed.
+                {aboutData.story?.paragraph2 || 'FliksLingo was created to break those boundaries. We paired modern gamification—streaks, XP, and multi-format quizzes—with native pronunciation audio, cultural proverbs, street slang, and Computer-Based Testing. Whether you are learning Spanish for travel, Mandarin for business, Japanese for anime, or Yoruba to connect with ancestral heritage, FliksLingo gives you the tools to succeed.'}
               </p>
             </div>
 
             <div className="story-card-visual">
               <div className="mascot-feature-box">
                 <img 
-                  src="/images/mascot.jpg" 
+                  src={aboutData.story?.image || '/images/mascot.jpg'} 
                   alt="FliksLingo mascot" 
                   className="mascot-feature-img" 
                 />
                 <blockquote className="mascot-feature-quote">
-                  &ldquo;A different language is a different vision of life.&rdquo;
+                  &ldquo;{aboutData.story?.quoteText || 'A different language is a different vision of life.'}&rdquo;
                 </blockquote>
-                <span className="mascot-feature-author">— Federico Fellini</span>
+                <span className="mascot-feature-author">— {aboutData.story?.quoteAuthor || 'Federico Fellini'}</span>
               </div>
             </div>
           </div>
@@ -140,8 +140,8 @@ export default function AboutUsPage() {
       <section className="about-section tint">
         <div className="about-container">
           <div className="section-header-centered">
-            <h2>The FliksLingo Difference</h2>
-            <p>Built from the ground up for modern polyglots, students, and culture enthusiasts.</p>
+            <h2>{aboutData.pillarsHeading || 'The FliksLingo Difference'}</h2>
+            <p>{aboutData.pillarsSubheading || 'Built from the ground up for modern polyglots, students, and culture enthusiasts.'}</p>
           </div>
 
           <div className="pillars-grid">
@@ -189,58 +189,33 @@ export default function AboutUsPage() {
       <section className="about-section tint">
         <div className="about-container">
           <div className="section-header-centered">
-            <h2>Leadership &amp; Academic Team</h2>
-            <p>Driven by passionate polyglots, educators, and software engineers.</p>
+            <h2>{aboutData.teamHeading || 'Leadership & Academic Team'}</h2>
+            <p>{aboutData.teamSubheading || 'Driven by passionate polyglots, educators, and software engineers.'}</p>
           </div>
 
           <div className="team-cards-grid">
-            {/* Obioma Nneji */}
-            <div className="team-showcase-card">
-              <div className="team-lead-grid">
-                <div className="team-avatar-lead obioma">
-                  <span>ON</span>
-                </div>
-                <div className="team-lead-copy">
-                  <h3>Obioma Nneji</h3>
-                  <span className="team-lead-role">Founder &amp; Lead Architect</span>
-                  <p className="team-lead-bio">
-                    Obioma founded FliksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Leading platform architecture and curriculum systems, Obioma oversees the interactive CBT assessment engines and multi-language learning tracks.
-                  </p>
-                  <div className="team-contact-actions">
-                    <a href="mailto:nneji.obioma@gmail.com" className="team-email-pill" title="Email Obioma Nneji">
-                      <Mail size={14} /> nneji.obioma@gmail.com
-                    </a>
-                    <Link href="/contact" className="team-email-pill" style={{ color: '#10b981' }}>
-                      <ArrowRight size={14} /> Contact Team
-                    </Link>
+            {(aboutData.teamMembers || []).map((member, mIdx) => (
+              <div key={mIdx} className="team-showcase-card">
+                <div className="team-lead-grid">
+                  <div className={`team-avatar-lead ${member.avatarClass || 'obioma'}`}>
+                    <span>{member.initials}</span>
+                  </div>
+                  <div className="team-lead-copy">
+                    <h3>{member.name}</h3>
+                    <span className={`team-lead-role ${member.roleClass || ''}`}>{member.role}</span>
+                    <p className="team-lead-bio">{member.bio}</p>
+                    <div className="team-contact-actions">
+                      <a href={`mailto:${member.email}`} className="team-email-pill" title={`Email ${member.name}`}>
+                        <Mail size={14} /> {member.email}
+                      </a>
+                      <Link href="/contact" className="team-email-pill" style={{ color: member.roleClass === 'gold' ? '#f59e0b' : '#10b981' }}>
+                        <ArrowRight size={14} /> Contact Team
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Ebere Nneji */}
-            <div className="team-showcase-card">
-              <div className="team-lead-grid">
-                <div className="team-avatar-lead ebere">
-                  <span>EN</span>
-                </div>
-                <div className="team-lead-copy">
-                  <h3>Ebere Nneji</h3>
-                  <span className="team-lead-role gold">Co-Founder &amp; Lead Instructor</span>
-                  <p className="team-lead-bio">
-                    Ebere serves as Co-Founder and Lead Instructor, driving pedagogy, instructional design, and speech pronunciation frameworks across FliksLingo's courses. With a passion for communicative teaching and cultural immersion, Ebere shapes the interactive lesson journeys and Culture Vault insights.
-                  </p>
-                  <div className="team-contact-actions">
-                    <a href="mailto:nnejieb@gmail.com" className="team-email-pill" title="Email Ebere Nneji">
-                      <Mail size={14} /> nnejieb@gmail.com
-                    </a>
-                    <Link href="/contact" className="team-email-pill" style={{ color: '#f59e0b' }}>
-                      <ArrowRight size={14} /> Contact Team
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -249,17 +224,16 @@ export default function AboutUsPage() {
       <section className="about-cta-section">
         <div className="about-container">
           <div className="about-cta-box">
-            <h2>Ready to Speak a New Language?</h2>
+            <h2>{aboutData.cta?.heading || 'Ready to Speak a New Language?'}</h2>
             <p>
-              Join thousands of learners discovering the beauty of world languages. 
-              Start today with bite-sized lessons, native audio, and interactive quizzes.
+              {aboutData.cta?.subheading || 'Join thousands of learners discovering the beauty of world languages. Start today with bite-sized lessons, native audio, and interactive quizzes.'}
             </p>
             <div className="about-cta-btns">
-              <Link href="/signup" className="cta-white-btn" id="about-cta-signup">
-                Start Learning Free
+              <Link href={aboutData.cta?.primaryBtnUrl || '/signup'} className="cta-white-btn" id="about-cta-signup">
+                {aboutData.cta?.primaryBtnText || 'Start Learning Free'}
               </Link>
-              <Link href="/learn" className="cta-outline-btn" id="about-cta-explore">
-                Explore Curriculum
+              <Link href={aboutData.cta?.secondaryBtnUrl || '/learn'} className="cta-outline-btn" id="about-cta-explore">
+                {aboutData.cta?.secondaryBtnText || 'Explore Curriculum'}
               </Link>
             </div>
           </div>

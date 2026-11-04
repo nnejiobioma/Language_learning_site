@@ -112,6 +112,28 @@ collections:
               - { label: "Subheading", name: "subheading", widget: "text" }
               - { label: "Button Text", name: "buttonText", widget: "string" }
               - { label: "Button URL", name: "buttonUrl", widget: "string" }
+          - label: "Weekly Newsletter Banner"
+            name: "newsletterBanner"
+            widget: "object"
+            fields:
+              - { label: "Tag Badge", name: "tag", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text" }
+              - { label: "Subscribe Button Label", name: "buttonLabel", widget: "string" }
+          - label: "1-on-1 Tutoring Floating Side Banner"
+            name: "tutoringBanner"
+            widget: "object"
+            fields:
+              - { label: "Enable Tutoring Banner", name: "enabled", widget: "boolean", default: true }
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Title Prefix", name: "titlePrefix", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Bullet Highlights"
+                name: "highlights"
+                widget: "list"
+                field: { label: "Highlight", name: "highlight", widget: "string" }
+              - { label: "CTA Button Text", name: "ctaText", widget: "string" }
           - label: "Footer & Support Settings"
             name: "footer"
             widget: "object"
@@ -134,6 +156,19 @@ collections:
             fields:
               - { label: "Metric Value", name: "value", widget: "string" }
               - { label: "Metric Label", name: "label", widget: "string" }
+          - label: "Our Story Section"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Section Heading", name: "heading", widget: "string" }
+              - { label: "Lead Paragraph", name: "lead", widget: "text" }
+              - { label: "Body Paragraph 1", name: "paragraph1", widget: "text" }
+              - { label: "Body Paragraph 2", name: "paragraph2", widget: "text" }
+              - { label: "Featured Quote", name: "quoteText", widget: "string" }
+              - { label: "Quote Author", name: "quoteAuthor", widget: "string" }
+              - { label: "Story Image", name: "image", widget: "image", default: "/images/mascot.jpg" }
+          - { label: "Pillars Section Heading", name: "pillarsHeading", widget: "string" }
+          - { label: "Pillars Section Subheading", name: "pillarsSubheading", widget: "string" }
           - label: "Core Mission Pillars"
             name: "pillars"
             widget: "list"
@@ -142,6 +177,56 @@ collections:
               - { label: "Color Accent Class", name: "colorClass", widget: "select", options: ["", "blue", "gold", "purple"], required: false, default: "" }
               - { label: "Pillar Title", name: "title", widget: "string" }
               - { label: "Pillar Description", name: "desc", widget: "text" }
+          - { label: "Team Section Heading", name: "teamHeading", widget: "string" }
+          - { label: "Team Section Subheading", name: "teamSubheading", widget: "string" }
+          - label: "Leadership & Academic Team"
+            name: "teamMembers"
+            widget: "list"
+            fields:
+              - { label: "Avatar Initials", name: "initials", widget: "string" }
+              - { label: "Avatar Style", name: "avatarClass", widget: "select", options: ["obioma", "ebere"], default: "obioma" }
+              - { label: "Full Name", name: "name", widget: "string" }
+              - { label: "Role / Title", name: "role", widget: "string" }
+              - { label: "Role Accent", name: "roleClass", widget: "select", options: ["", "gold"], required: false, default: "" }
+              - { label: "Biography", name: "bio", widget: "text" }
+              - { label: "Contact Email", name: "email", widget: "string" }
+          - label: "Bottom Call-To-Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Subheading", name: "subheading", widget: "text" }
+              - { label: "Primary Button Text", name: "primaryBtnText", widget: "string" }
+              - { label: "Primary Button URL", name: "primaryBtnUrl", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondaryBtnText", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondaryBtnUrl", widget: "string" }
+
+      - name: "contact_page"
+        label: "Contact Us & FAQ Page Content"
+        file: "src/data/cms/contact.json"
+        format: "json"
+        fields:
+          - { label: "Hero Badge", name: "heroBadge", widget: "string" }
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+          - label: "Direct Contact Emails"
+            name: "recipientEmails"
+            widget: "list"
+            fields:
+              - { label: "Email Address", name: "email", widget: "string" }
+              - { label: "Role / Label", name: "label", widget: "string" }
+          - label: "Inquiry Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category ID", name: "id", widget: "string" }
+              - { label: "Display Label", name: "label", widget: "string" }
+          - label: "Frequently Asked Questions (FAQ)"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
 
       - name: "leaderboard_data"
         label: "Weekly Leaderboard Showcase"

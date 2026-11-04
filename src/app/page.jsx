@@ -150,8 +150,8 @@ export default function LandingPage() {
 
         <section id="features" className="lp-section">
           <div className="lp-container">
-            <h2 className="lp-h2">Everything you need to stay motivated</h2>
-            <p className="lp-sub">Built to make practice feel like play.</p>
+            <h2 className="lp-h2">{siteSettings.featuresSection?.heading || 'Everything you need to stay motivated'}</h2>
+            <p className="lp-sub">{siteSettings.featuresSection?.subheading || 'Built to make practice feel like play.'}</p>
             <div className="lp-feature-grid">
               {FEATURES.map((f) => (
                 <article key={f.title} className="lp-feature">
@@ -166,7 +166,7 @@ export default function LandingPage() {
 
         <section id="how" className="lp-section lp-section-tint">
           <div className="lp-container">
-            <h2 className="lp-h2">How it works</h2>
+            <h2 className="lp-h2">{siteSettings.howItWorksSection?.heading || 'How it works'}</h2>
             <div className="lp-steps">
               {STEPS.map((s) => (
                 <div key={s.n} className="lp-step">
@@ -182,10 +182,10 @@ export default function LandingPage() {
         <section className="lp-section">
           <div className="lp-container">
             <div className="lp-final-cta">
-              <h2>Ready to speak a new language?</h2>
-              <p>Create your free account in seconds and start your first lesson today.</p>
-              <Link href="/signup" className="lp-btn lp-btn-light" id="landing-final-start">
-                Create your free account
+              <h2>{siteSettings.ctaBanner?.heading || 'Ready to speak a new language?'}</h2>
+              <p>{siteSettings.ctaBanner?.subheading || 'Create your free account in seconds and start your first lesson today.'}</p>
+              <Link href={siteSettings.ctaBanner?.buttonUrl || '/signup'} className="lp-btn lp-btn-light" id="landing-final-start">
+                {siteSettings.ctaBanner?.buttonText || 'Create your free account'}
               </Link>
             </div>
           </div>
@@ -194,13 +194,13 @@ export default function LandingPage() {
           <div className="lp-container">
             <div className="lp-subscribe-banner">
               <div className="lp-subscribe-copy">
-                <span className="lp-sub-tag">Free Weekly Newsletter</span>
-                <h3 className="lp-sub-title">Learn faster with our weekly vocabulary drops</h3>
-                <p className="lp-sub-text">Join 25,000+ polyglots receiving handpicked phrases, cultural guides, and streak motivation.</p>
+                <span className="lp-sub-tag">{siteSettings.newsletterBanner?.tag || 'Free Weekly Newsletter'}</span>
+                <h3 className="lp-sub-title">{siteSettings.newsletterBanner?.heading || 'Learn faster with our weekly vocabulary drops'}</h3>
+                <p className="lp-sub-text">{siteSettings.newsletterBanner?.subheading || 'Join 25,000+ polyglots receiving handpicked phrases, cultural guides, and streak motivation.'}</p>
               </div>
               <SubscribeButton
                 source="landing_banner"
-                label="Subscribe with Name & Email"
+                label={siteSettings.newsletterBanner?.buttonLabel || 'Subscribe with Name & Email'}
                 icon="mail"
                 className="lp-subscribe-cta-btn"
                 buttonId="landing-newsletter-btn"
@@ -212,7 +212,7 @@ export default function LandingPage() {
 
       <footer className="lp-footer">
         <div className="lp-container lp-footer-inner">
-          <span>© {new Date().getFullYear()} FliksLingo. Master world languages.</span>
+          <span>© {new Date().getFullYear()} {siteSettings.footer?.copyrightText || 'FliksLingo. Master world languages.'}</span>
           <div className="lp-footer-links">
             <SubscribeButton 
               source="landing_footer" 

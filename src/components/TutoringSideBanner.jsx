@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import siteSettings from '../data/cms/site_settings.json';
 import { 
   GraduationCap, 
   X, 
@@ -17,6 +18,7 @@ export default function TutoringSideBanner() {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const tb = siteSettings.tutoringBanner || {};
 
   useEffect(() => {
     setMounted(true);
@@ -51,10 +53,18 @@ export default function TutoringSideBanner() {
     } catch {}
   };
 
-  // Do not display if on the contact page itself
-  if (!mounted || pathname === '/contact') {
+  // Do not display if disabled in CMS or on the contact page itself
+  if (!mounted || tb.enabled === false || pathname === '/contact' || pathname?.startsWith('/admin')) {
     return null;
   }
+
+  const highlights = Array.isArray(tb.highlights) && tb.highlights.length > 0
+    ? tb.highlights
+    : [
+        'Tailored 1-on-1 video & audio sessions',
+        'All 12 European, Asian & African languages',
+        'Flexible hours & exam preparation'
+      ];
 
   return (
     <aside 
@@ -67,7 +77,7 @@ export default function TutoringSideBanner() {
           <div className="tutoring-card-header">
             <span className="tutoring-badge">
               <Sparkles size={12} />
-              <span>1-on-1 Tutoring</span>
+              <span>{tb.badge || '1-on-1 Tutoring'}</span>
             </span>
             <button
               type="button"
@@ -83,25 +93,19 @@ export default function TutoringSideBanner() {
           {/* Body */}
           <div className="tutoring-card-body">
             <h3 id="tutoring-title" className="tutoring-title">
-              Need <span className="tutoring-title-gradient">Personal Tutoring</span>?
+              {tb.titlePrefix || 'Need'} <span className="tutoring-title-gradient">{tb.titleHighlight || 'Personal Tutoring'}</span>?
             </h3>
             <p className="tutoring-desc">
-              Accelerate your fluency with private, customized lessons taught by our native language coaches.
+              {tb.description || 'Accelerate your fluency with private, customized lessons taught by our native language coaches.'}
             </p>
 
             <ul className="tutoring-highlights">
-              <li className="tutoring-highlight-item">
-                <Check size={14} className="tutoring-check-icon" />
-                <span>Tailored 1-on-1 video &amp; audio sessions</span>
-              </li>
-              <li className="tutoring-highlight-item">
-                <Check size={14} className="tutoring-check-icon" />
-                <span>All 12 European, Asian &amp; African languages</span>
-              </li>
-              <li className="tutoring-highlight-item">
-                <Check size={14} className="tutoring-check-icon" />
-                <span>Flexible hours &amp; exam preparation</span>
-              </li>
+              {highlights.map((item, idx) => (
+                <li key={idx} className="tutoring-highlight-item">
+                  <Check size={14} className="tutoring-check-icon" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -113,7 +117,7 @@ export default function TutoringSideBanner() {
             onClick={handleCollapse}
           >
             <MessageSquare size={15} />
-            <span>Fill Contact Form</span>
+            <span>{tb.ctaText || 'Fill Contact Form'}</span>
             <ArrowRight size={15} />
           </Link>
 

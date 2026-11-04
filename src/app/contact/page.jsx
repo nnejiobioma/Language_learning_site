@@ -6,6 +6,7 @@ import confetti from 'canvas-confetti';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 import SubscribeButton from '../../components/SubscribeButton';
 import { LANGUAGES } from '../../data/languages';
+import contactData from '../../data/cms/contact.json';
 import { 
   Mail, 
   Send, 
@@ -26,12 +27,12 @@ import {
 } from 'lucide-react';
 import './contact.css';
 
-const RECIPIENT_EMAILS = [
+const RECIPIENT_EMAILS = contactData.recipientEmails || [
   { email: 'nnejieb@gmail.com', label: 'Primary Contact' },
   { email: 'nneji.obioma@gmail.com', label: 'Founder & Academic Lead' }
 ];
 
-const CATEGORIES = [
+const CATEGORIES = contactData.categories || [
   { id: 'tutoring', label: 'One-on-One Tutoring / Private Coaching' },
   { id: 'general', label: 'General Inquiry' },
   { id: 'feedback', label: 'Feedback & Feature Suggestions' },
@@ -43,26 +44,10 @@ const CATEGORIES = [
   { id: 'other', label: 'Other Topic' }
 ];
 
-const FAQ_ITEMS = [
+const FAQ_ITEMS = contactData.faqs || [
   {
     question: 'Who receives my contact request?',
     answer: 'Your submission is dispatched immediately to both nnejieb@gmail.com and nneji.obioma@gmail.com. We also securely log the message so that no learner request is ever lost.'
-  },
-  {
-    question: 'How fast can I expect a response?',
-    answer: 'We review all inquiries daily and typically reply within 12 to 24 hours (Monday through Saturday). Urgent technical or account queries are prioritized.'
-  },
-  {
-    question: 'Can I suggest a new world language or local dialect?',
-    answer: 'Absolutely! FliksLingo is committed to promoting both widely spoken international languages (Spanish, French, Mandarin, German, Japanese) and culturally rich African languages (Yoruba, Igbo, Hausa, Nigerian Pidgin). If you want a specific language added, select "Request a New Language" in the form.'
-  },
-  {
-    question: 'Can schools or universities integrate FliksLingo for students?',
-    answer: 'Yes! We support classroom use, customized language modules, and group leaderboards. Contact us via the form or email us directly at nnejieb@gmail.com and nneji.obioma@gmail.com for institutional setup.'
-  },
-  {
-    question: 'Is FliksLingo free for learners?',
-    answer: 'Yes, all 12 languages, quizzes, culture vaults, audio pronunciation, and daily practice streaks are completely free to start!'
   }
 ];
 
@@ -220,12 +205,11 @@ export default function ContactPage() {
         <div className="contact-container">
           <div className="contact-hero-badge">
             <Mail size={16} />
-            <span>We are here to support your learning journey</span>
+            <span>{contactData.heroBadge || 'We are here to support your learning journey'}</span>
           </div>
-          <h1 className="contact-hero-title">Get in Touch with FliksLingo</h1>
+          <h1 className="contact-hero-title">{contactData.heroTitle || 'Get in Touch with FliksLingo'}</h1>
           <p className="contact-hero-sub">
-            Have questions about our 12 world languages, feedback on quizzes, suggestions for new dialects, 
-            or want to partner with us? Reach our dedicated team directly below.
+            {contactData.heroSubtitle || 'Have questions about our 12 world languages, feedback on quizzes, suggestions for new dialects, or want to partner with us? Reach our dedicated team directly below.'}
           </p>
         </div>
       </section>

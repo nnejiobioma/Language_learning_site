@@ -4,11 +4,22 @@
   "heroHighlight": "One Language at a Time.",
   "heroSubtitle": "FliksLingo is a modern, gamified language learning platform built to celebrate linguistic diversity. We empower learners across the globe to speak authentically, appreciate rich traditions, and build lifelong fluency.",
   "metrics": [
-    { "value": "12", "label": "World & Heritage Languages" },
-    { "value": "3,600+", "label": "Interactive Quiz Prompts" },
-    { "value": "2,400+", "label": "3D Audio Flashcards" },
-    { "value": "100%", "label": "Free Core Access" }
+    { "value": "12", "label": "World Languages" },
+    { "value": "2,400+", "label": "Vocabulary & Questions" },
+    { "value": "5", "label": "Quiz Styles & Audio" },
+    { "value": "100%", "label": "Free to Learn" }
   ],
+  "story": {
+    "heading": "Why We Built FliksLingo",
+    "lead": "We believe that learning a new language is the most powerful way to build empathy, expand horizons, and discover new cultures.",
+    "paragraph1": "Most traditional language apps have two major flaws: they force you through tedious mechanical grammar drills that don’t reflect real everyday speech, and they routinely ignore African and regional heritage languages that millions of people want and need to learn.",
+    "paragraph2": "FliksLingo was created to break those boundaries. We paired modern gamification—streaks, XP, and multi-format quizzes—with native pronunciation audio, cultural proverbs, street slang, and Computer-Based Testing. Whether you are learning Spanish for travel, Mandarin for business, Japanese for anime, or Yoruba to connect with ancestral heritage, FliksLingo gives you the tools to succeed.",
+    "quoteText": "A different language is a different vision of life.",
+    "quoteAuthor": "Federico Fellini",
+    "image": "/images/mascot.jpg"
+  },
+  "pillarsHeading": "The FliksLingo Difference",
+  "pillarsSubheading": "Built from the ground up for modern polyglots, students, and culture enthusiasts.",
   "pillars": [
     {
       "icon": "Sparkles",
@@ -34,6 +45,35 @@
       "title": "Rigorous Exam Simulation",
       "desc": "From official MCER (Spanish & French) and JLPT (Japanese) to HSK/CLEC (Mandarin), our Computer-Based Testing (CBT) engine tests your true retention with timed exam simulations."
     }
-  ]
+  ],
+  "teamHeading": "Leadership & Academic Team",
+  "teamSubheading": "Driven by passionate polyglots, educators, and software engineers.",
+  "teamMembers": [
+    {
+      "initials": "ON",
+      "avatarClass": "obioma",
+      "name": "Obioma Nneji",
+      "role": "Founder & Lead Architect",
+      "roleClass": "",
+      "bio": "Obioma founded FliksLingo with the vision of making polyglot education universally accessible, culturally authentic, and engaging. Leading platform architecture and curriculum systems, Obioma oversees the interactive CBT assessment engines and multi-language learning tracks.",
+      "email": "nneji.obioma@gmail.com"
+    },
+    {
+      "initials": "EN",
+      "avatarClass": "ebere",
+      "name": "Ebere Nneji",
+      "role": "Co-Founder & Lead Instructor",
+      "roleClass": "gold",
+      "bio": "Ebere serves as Co-Founder and Lead Instructor, driving pedagogy, instructional design, and speech pronunciation frameworks across FliksLingo's courses. With a passion for communicative teaching and cultural immersion, Ebere shapes the interactive lesson journeys and Culture Vault insights.",
+      "email": "nnejieb@gmail.com"
+    }
+  ],
+  "cta": {
+    "heading": "Ready to Speak a New Language?",
+    "subheading": "Join thousands of learners discovering the beauty of world languages. Start today with bite-sized lessons, native audio, and interactive quizzes.",
+    "primaryBtnText": "Start Learning Free",
+    "primaryBtnUrl": "/signup",
+    "secondaryBtnText": "Explore Curriculum",
+    "secondaryBtnUrl": "/learn"
+  }
 }
-

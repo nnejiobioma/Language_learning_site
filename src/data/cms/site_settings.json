@@ -87,14 +87,32 @@
     ]
   },
   "ctaBanner": {
-    "heading": "Ready to say hello in a new language?",
+    "heading": "Ready to speak a new language?",
     "subheading": "Create your free account in seconds and start your first lesson today.",
-    "buttonText": "Get started for free",
+    "buttonText": "Create your free account",
     "buttonUrl": "/signup"
   },
+  "newsletterBanner": {
+    "tag": "Free Weekly Newsletter",
+    "heading": "Learn faster with our weekly vocabulary drops",
+    "subheading": "Join 25,000+ polyglots receiving handpicked phrases, cultural guides, and streak motivation.",
+    "buttonLabel": "Subscribe with Name & Email"
+  },
+  "tutoringBanner": {
+    "enabled": true,
+    "badge": "1-on-1 Tutoring",
+    "titlePrefix": "Need",
+    "titleHighlight": "Personal Tutoring",
+    "description": "Accelerate your fluency with private, customized lessons taught by our native language coaches.",
+    "highlights": [
+      "Tailored 1-on-1 video & audio sessions",
+      "All 12 European, Asian & African languages",
+      "Exam prep (IELTS, DELF, TestDaF, JLPT, HSK) & conversational mastery"
+    ],
+    "ctaText": "Book 1-on-1 Tutoring"
+  },
   "footer": {
-    "copyrightText": "FliksLingo. Learn with joy.",
+    "copyrightText": "FliksLingo. Master world languages.",
     "supportEmail": "nnejieb@gmail.com"
   }
 }
-
