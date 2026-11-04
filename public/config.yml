@@ -8,21 +8,15 @@
 # ==============================================================================
 
 backend:
-  name: git-gateway
+  name: proxy
+  proxy_url: /api/decap
   branch: main
-  repo: nnejiobioma/Language_learning_site
-  # To use GitHub OAuth directly instead of Netlify Identity / Git Gateway,
-  # uncomment the lines below and set GITHUB_CLIENT_ID & GITHUB_CLIENT_SECRET:
+  # Optional alternative for GitHub OAuth login flow:
   # name: github
+  # repo: nnejiobioma/Language_learning_site
+  # branch: main
   # base_url: https://your-production-domain.com
   # auth_endpoint: api/auth
-
-# Local development backend — connects directly to Next.js `/api/decap` route
-local_backend:
-  url: /api/decap
-  allowed_hosts:
-    - localhost
-    - 127.0.0.1
 
 site_url: /
 display_url: https://flikslingo.com

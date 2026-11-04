@@ -3,6 +3,45 @@ import fs from 'fs';
 import path from 'path';
 
 const ROOT_DIR = process.cwd();
+const GITHUB_REPO = process.env.GITHUB_REPO || 'nnejiobioma/Language_learning_site';
+const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'main';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.DECAP_GITHUB_TOKEN || '';
+
+async function commitFileToGitHub(relPath, contentBase64, commitMessage) {
+  if (!GITHUB_TOKEN) return false;
+  const cleanPath = String(relPath).replace(/^[/\\]+/, '').split(path.sep).join('/');
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${cleanPath}`;
+  const headers = {
+    Authorization: `Bearer ${GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'Content-Type': 'application/json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+
+  let sha = undefined;
+  const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(GITHUB_BRANCH)}`, { headers });
+  if (getRes.ok) {
+    const existing = await getRes.json();
+    sha = existing.sha;
+  }
+
+  const putRes = await fetch(apiUrl, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify({
+      message: commitMessage || `Update ${cleanPath} via Decap CMS`,
+      content: contentBase64,
+      branch: GITHUB_BRANCH,
+      ...(sha ? { sha } : {})
+    })
+  });
+
+  if (!putRes.ok) {
+    const errText = await putRes.text();
+    throw new Error(`GitHub API commit failed (${putRes.status}): ${errText}`);
+  }
+  return true;
+}
 
 function resolveSafePath(relPath = '') {
   const clean = String(relPath).replace(/^[/\\]+/, '');
@@ -122,22 +161,37 @@ export async function POST(req) {
       }
 
       case 'persistEntry': {
-        const { entry, dataFiles = [], assets = [] } = params;
+        const { entry, dataFiles = [], assets = [], options = {} } = params;
         const filesToWrite = dataFiles.length > 0 ? dataFiles : entry ? [entry] : [];
+        const commitMsg = options.commitMessage || 'Update content via Decap CMS';
 
         for (const df of filesToWrite) {
           if (!df || !df.path) continue;
-          const absFile = resolveSafePath(df.path);
-          fs.mkdirSync(path.dirname(absFile), { recursive: true });
-          fs.writeFileSync(absFile, df.raw, 'utf8');
+          try {
+            const absFile = resolveSafePath(df.path);
+            fs.mkdirSync(path.dirname(absFile), { recursive: true });
+            fs.writeFileSync(absFile, df.raw, 'utf8');
+          } catch (fsErr) {
+            console.warn('[Decap API] Local write skipped (read-only fs):', fsErr.message);
+          }
+          if (GITHUB_TOKEN) {
+            await commitFileToGitHub(df.path, Buffer.from(df.raw, 'utf8').toString('base64'), commitMsg);
+          }
         }
 
         for (const asset of assets) {
           if (!asset || !asset.path) continue;
-          const absAsset = resolveSafePath(asset.path);
-          fs.mkdirSync(path.dirname(absAsset), { recursive: true });
           const buf = Buffer.from(asset.content, asset.encoding || 'base64');
-          fs.writeFileSync(absAsset, buf);
+          try {
+            const absAsset = resolveSafePath(asset.path);
+            fs.mkdirSync(path.dirname(absAsset), { recursive: true });
+            fs.writeFileSync(absAsset, buf);
+          } catch (fsErr) {
+            console.warn('[Decap API] Local asset write skipped:', fsErr.message);
+          }
+          if (GITHUB_TOKEN) {
+            await commitFileToGitHub(asset.path, buf.toString('base64'), commitMsg);
+          }
         }
 
         return NextResponse.json({ saved: true });
