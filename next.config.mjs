@@ -10,6 +10,14 @@ const nextConfig = {
         source: '/admin',
         destination: '/admin/index.html',
       },
+      {
+        source: '/admin/',
+        destination: '/admin/index.html',
+      },
+      {
+        source: '/config.yml',
+        destination: '/admin/config.yml',
+      },
     ];
   },
 };
