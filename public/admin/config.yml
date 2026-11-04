@@ -379,12 +379,30 @@ collections:
                   - { label: "Spoken Audio Phrase (for audio_listen)", name: "phrase", widget: "string", required: false }
                   - { label: "Sentence with Blank (for fill_blank)", name: "sentence", widget: "string", required: false }
                   - { label: "Missing Word (for fill_blank)", name: "missingWord", widget: "string", required: false }
-                  - label: "Answer Options"
+                  - label: "Answer Options (for multiple_choice / fill_blank / audio_listen)"
                     name: "options"
                     widget: "list"
                     required: false
                     field: { label: "Option", name: "option", widget: "string" }
-                  - { label: "Correct Answer", name: "correctAnswer", widget: "string", required: false }
+                  - { label: "Correct Answer (for multiple_choice / fill_blank / audio_listen)", name: "correctAnswer", widget: "string", required: false }
+                  - label: "Word Bank Tokens (for scramble)"
+                    name: "tokens"
+                    widget: "list"
+                    required: false
+                    field: { label: "Token", name: "token", widget: "string" }
+                  - label: "Correct Ordered Tokens (for scramble)"
+                    name: "correctTokens"
+                    widget: "list"
+                    required: false
+                    field: { label: "Correct Token", name: "token", widget: "string" }
+                  - label: "Matching Pairs (for matching)"
+                    name: "pairs"
+                    widget: "list"
+                    required: false
+                    summary: "{{fields.native}} ↔ {{fields.english}}"
+                    fields:
+                      - { label: "Native Word / Phrase", name: "native", widget: "string" }
+                      - { label: "English Translation", name: "english", widget: "string" }
                   - { label: "Explanation / Grammar Note", name: "explanation", widget: "text", required: false }
 
   # ============================================================================

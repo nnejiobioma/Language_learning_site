@@ -345,24 +345,21 @@ export function mergeLanguageWithCmsData(baseLang, metaOverride = null, cmsDoc =
       : {})
   };
 
-  // 1. Merge Flashcards (update matching IDs, append new CMS flashcards)
+  // 1. Flashcards (CMS list is authoritative when populated, enriched by base card fields)
   let flashcards = [...(baseLang.flashcards || [])];
   const cmsCards = cmsDoc?.customFlashcards || [];
   if (cmsCards.length > 0) {
-    const cardMap = new Map(flashcards.map((c) => [c.id, c]));
-    const newCards = [];
-    for (const c of cmsCards) {
-      if (!c || (!c.front && !c.back)) continue;
-      if (c.id && cardMap.has(c.id)) {
-        cardMap.set(c.id, { ...cardMap.get(c.id), ...c });
-      } else {
-        newCards.push({
+    const baseCardMap = new Map(flashcards.map((c) => [c.id, c]));
+    flashcards = cmsCards
+      .filter((c) => c && (c.front || c.back))
+      .map((c, idx) => {
+        const baseCard = c.id ? baseCardMap.get(c.id) : null;
+        return {
+          ...(baseCard || {}),
           ...c,
-          id: c.id || `${baseLang.id}-cms-fc-${newCards.length + 1}`
-        });
-      }
-    }
-    flashcards = [...Array.from(cardMap.values()), ...newCards];
+          id: c.id || `${baseLang.id}-cms-fc-${idx + 1}`
+        };
+      });
   }
 
   // 2. Merge Culture Vault
@@ -398,81 +395,77 @@ export function mergeLanguageWithCmsData(baseLang, metaOverride = null, cmsDoc =
     }
   }
 
-  // 3. Merge Units, Lessons, and Questions non-destructively
+  // 3. Units, Lessons, and Questions (CMS list is authoritative when populated)
   let units = [...(baseLang.units || [])];
   const cmsUnits = cmsDoc?.customUnits || [];
   if (cmsUnits.length > 0) {
-    const unitMap = new Map(units.map((u) => [u.id || u.unitId, u]));
-    const appendedUnits = [];
+    const baseUnitMap = new Map(units.map((u) => [u.id || u.unitId, u]));
+    units = cmsUnits
+      .filter(Boolean)
+      .map((cu, uIdx) => {
+        const uKey = cu.id || cu.unitId || `${baseLang.id}-cms-unit-${uIdx + 1}`;
+        const existingUnit = baseUnitMap.get(uKey) || {};
+        const baseLessonMap = new Map((existingUnit.lessons || []).map((l) => [l.id, l]));
 
-    for (const cu of cmsUnits) {
-      if (!cu) continue;
-      const uKey = cu.id || cu.unitId;
-      if (uKey && unitMap.has(uKey)) {
-        const existingUnit = unitMap.get(uKey);
-        const lessonMap = new Map((existingUnit.lessons || []).map((l) => [l.id, l]));
-        const appendedLessons = [];
+        const lessons = (cu.lessons || [])
+          .filter(Boolean)
+          .map((cl, lIdx) => {
+            const lKey = cl.id || `${uKey}-l-${lIdx + 1}`;
+            const existingLesson = baseLessonMap.get(lKey) || {};
+            const baseQMap = new Map((existingLesson.questions || []).map((q) => [q.id, q]));
 
-        for (const cl of cu.lessons || []) {
-          if (!cl) continue;
-          if (cl.id && lessonMap.has(cl.id)) {
-            const existingLesson = lessonMap.get(cl.id);
-            const qMap = new Map((existingLesson.questions || []).map((q) => [q.id, q]));
-            const appendedQuestions = [];
-
-            for (const cq of cl.questions || []) {
-              if (!cq) continue;
-              if (cq.id && qMap.has(cq.id)) {
-                const origQ = qMap.get(cq.id);
-                qMap.set(cq.id, {
+            const questions = (cl.questions || [])
+              .filter(Boolean)
+              .map((cq, qIdx) => {
+                const qKey = cq.id || `${lKey}-q-${qIdx + 1}`;
+                const origQ = baseQMap.get(qKey) || {};
+                return {
                   ...origQ,
                   ...cq,
-                  options: Array.isArray(cq.options) && cq.options.length > 0 ? cq.options : origQ.options
-                });
-              } else {
-                appendedQuestions.push({
-                  ...cq,
-                  id: cq.id || `${cl.id}-cms-q-${appendedQuestions.length + 1}`
-                });
-              }
-            }
+                  id: qKey,
+                  options:
+                    Array.isArray(cq.options) && cq.options.length > 0
+                      ? cq.options
+                      : origQ.options || [],
+                  tokens:
+                    Array.isArray(cq.tokens) && cq.tokens.length > 0
+                      ? cq.tokens
+                      : origQ.tokens || [],
+                  correctTokens:
+                    Array.isArray(cq.correctTokens) && cq.correctTokens.length > 0
+                      ? cq.correctTokens
+                      : origQ.correctTokens || [],
+                  pairs:
+                    Array.isArray(cq.pairs) && cq.pairs.length > 0
+                      ? cq.pairs
+                      : origQ.pairs || []
+                };
+              });
 
-            lessonMap.set(cl.id, {
+            return {
               ...existingLesson,
-              title: cl.title || existingLesson.title,
-              description: cl.description || existingLesson.description,
-              xp: cl.xp ?? existingLesson.xp,
-              questions: [...Array.from(qMap.values()), ...appendedQuestions]
-            });
-          } else {
-            appendedLessons.push({
               ...cl,
-              id: cl.id || `${uKey}-cms-l-${appendedLessons.length + 1}`,
-              questions: cl.questions || []
-            });
-          }
-        }
+              id: lKey,
+              title: cl.title || existingLesson.title,
+              description: cl.description ?? existingLesson.description,
+              xp: cl.xp ?? existingLesson.xp ?? 20,
+              questions
+            };
+          });
 
-        unitMap.set(uKey, {
+        return {
           ...existingUnit,
+          ...cu,
+          id: uKey,
+          unitId: uKey,
           title: cu.title || existingUnit.title,
-          subtitle: cu.subtitle || existingUnit.subtitle,
+          subtitle: cu.subtitle ?? existingUnit.subtitle,
           level: cu.level || existingUnit.level,
           icon: cu.icon || existingUnit.icon,
           color: cu.color || existingUnit.color,
-          lessons: [...Array.from(lessonMap.values()), ...appendedLessons]
-        });
-      } else {
-        appendedUnits.push({
-          ...cu,
-          id: uKey || `${baseLang.id}-cms-unit-${appendedUnits.length + 1}`,
-          unitId: uKey || `${baseLang.id}-cms-unit-${appendedUnits.length + 1}`,
-          lessons: cu.lessons || []
-        });
-      }
-    }
-
-    units = [...Array.from(unitMap.values()), ...appendedUnits];
+          lessons
+        };
+      });
   }
 
   return {
